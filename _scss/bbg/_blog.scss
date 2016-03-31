@@ -1,0 +1,602 @@
+/** HEADER AREA */
+
+/* Featured image */
+.bbg__article-header__thumbnail--large {
+	line-height: 0;
+	margin: {
+		top: $site-margins;
+		bottom: $site-margins;
+	}
+	max-height: 624px;
+	overflow: hidden;
+	position: relative;
+	img {
+		width: 100%;
+	}
+}
+
+.bbg__article-header__caption {
+	@extend .wp-caption-text;
+	margin: -2rem 0 $site-margins auto;
+	width: 100%;
+	@include media($medium-screen) {
+		max-width: 33%;
+		//text-align: right;
+	}
+}
+
+
+/* Post title */
+.bbg__article-header__title {
+	font-size: $h1-font-size * .8;
+	@include media($medium-screen) {
+		font-size: $h1-font-size;
+	}
+	@include media($medium-large-screen) {
+		font-size: $h1-font-size * 1.25;
+	}
+}
+
+
+/* Author byline */
+.bbg__article-meta {
+	font: {
+		family: $font-serif;
+		size: $small-font-size;
+		weight: $font-light;
+	}
+	@include media($medium-large-screen) {
+		font-size: $base-font-size;
+		margin-bottom: $site-margins * 1.3;
+	}
+	.author {
+		font: {
+			weight: $font-bold;
+			style: italic;
+		}
+	}
+}
+
+
+/** ARTICLE SHARE AREA */
+.bbg__article-share {
+	margin: {
+		top: 0;
+		bottom: 1rem;
+	}
+	@include media ($medium-screen) {
+		margin: {
+			top: 0;
+			bottom: 0;
+		}
+	}
+	@include media($medium-large-screen) {
+		float: left;
+		margin-top: -1%;
+		/* Added to overwrite the existing margin-top applied to all UL tags by USDS :: GIGI */
+	}
+}
+
+
+/* Article share links */
+.bbg__article-share__link {
+	display: inline-block;
+	margin-right: 1rem;
+	a:hover,
+	a:focus {
+		background: none;
+		text-decoration: none;
+	}
+	@include media($medium-large-screen) {
+		display: block;
+	}
+}
+
+.bbg__article-share__link:before {
+	content: "";
+}
+
+
+/* Article share links: icons */
+.bbg__article-share__icon {
+	background-color: $color-gray-lightest;
+	@include backgroundCover();
+	border-radius: $border-radius;
+	display: inline-block;
+	height: $share-icon-large;
+	margin-right: .5rem;
+	vertical-align: middle;
+	width: $share-icon-large;
+	@include media($medium-screen) {
+		border-radius: 0;
+		height: $share-icon-small;
+		width: $share-icon-small;
+	}
+}
+
+.bbg__article-share__icon.email {
+	background: {
+		color: $color-gray-lightest;
+		image: url(img/social-icons/png-white/social-icons_email.png);
+	}
+}
+
+.bbg__article-share__icon.facebook {
+	background: {
+		color: $color-share-facebook;
+		image: url(img/social-icons/png-white/social-icons_facebook.png);
+	}
+}
+
+.bbg__article-share__icon.twitter {
+	background: {
+		color: $color-share-twitter;
+		image: url(img/social-icons/png-white/social-icons_twitter.png);
+	}
+}
+
+
+/* Article share links: text */
+.bbg__article-share__text {
+	display: none;
+	&:hover,
+	&:focus {
+		background: none;
+		text-decoration: underline;
+	}
+	@include media($medium-screen) {
+		display: inline-block;
+	}
+}
+
+
+/** POST CONTENT */
+.bbg__article-content > * {
+	margin: {
+		right: auto;
+		left: auto;
+	}
+	max-width: $article-max-width;
+}
+
+.single-post .bbg__article-content > p:first-of-type {
+	@extend .readin;
+}
+
+.bbg__article-content {
+	> h3 {
+		font-family: $font-sans;
+		margin-top: 2em;
+		text-transform: uppercase;
+	}
+
+	> h4 {
+		clear: none;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		+ ul,
+		+ ol {
+			margin: {
+				top: 0;
+				bottom: 1em;
+			}
+		}
+	}
+
+	a,
+	p {
+		word-wrap: break-word;
+	}
+
+	.bbg__article-content__subhead {
+		color: $color-gray-medium;
+		font-size: 2.5rem;
+		line-height: $heading-line-height;
+		text-transform: uppercase;
+		+ .bbg__article-content__section-title {
+			margin-top: $site-margins-medium;
+		}
+	}
+
+	.bbg__article-content__section-title {
+		color: $color-gray-dark;
+		font-size: $h3-font-size;
+		line-height: $heading-line-height;
+		margin: {
+			top: $site-margins;
+			bottom: 0;
+		}
+		+ p {
+			margin-top: .5rem;
+		}
+	}
+
+	.bbg__article-content__form-title {
+		color: $color-gray-dark;
+		font-size: $h3-font-size;
+		line-height: $heading-line-height;
+		margin: {
+			top: $site-margins-large;
+			bottom: 0;
+		}
+	}
+
+	.bbg__article-content__image--extra-large {
+		margin: 0;
+		max-width: 100%;
+	}
+
+	ul {
+		width: 100%;
+	}
+
+	li {
+		margin-bottom: 3.5em;
+	}
+
+	blockquote {
+		margin: {
+			top: 0;
+			right: auto;
+			left: auto;
+		}
+
+		padding: {
+			top: 0;
+			right: 4rem;
+			left: 4rem;
+		}
+
+		&.pullquote {
+			border-bottom: {
+				color: $color-primary;
+				style: solid;
+				width: 6px;
+			}
+
+			font: {
+				family: $font-serif;
+				size: 2rem;
+			}
+
+			margin-bottom: $site-margins;
+
+			@include media($medium-large-screen) {
+				float: left;
+				margin-right: $grid-margins;
+				max-width: 50%;
+				padding: 0;
+			}
+		}
+	}
+}
+
+
+/** INLINE LISTS */
+ul.bbg__article-content__list--inline {
+		display: block;
+		list-style-type: none;
+
+		@include media($small-screen) {
+			margin: {
+				top: -1rem;
+				bottom: 0;
+			}
+		}
+
+	li {
+		display: inline-block;
+		margin: 1rem 0;
+		padding-right: $site-margins;
+
+		@include media($small-screen) {
+			margin: 0;
+		}
+
+	    &:before,
+	    &:after {
+	      display: none;
+	    }
+	}
+}
+
+// Override Skype styles
+#SkypeButton_Call_atgatwork_1 {
+	#SkypeButton_Call_atgatwork_1_paraElement {
+		font-size: $small-font-size;
+		line-height: 0;
+		margin: 0;
+	}
+
+	img {
+		margin: 0 !important;
+		vertical-align: -5px !important;
+	}
+}
+
+
+/** RELATED LINKS */
+
+/* Style related links for portfolio projects */
+.bbg__related-links {
+	a {
+		background: {
+			position: left top;
+			repeat: no-repeat;
+			size: contain;
+		}
+
+		color: $color-primary-darkest;
+		font: {
+			size: $small-font-size;
+			weight: $font-bold;
+		}
+
+		text-decoration: none;
+
+		&:hover {
+			color: black;
+			text-decoration: underline;
+		}
+
+		// Generic external website URL
+		&[href] {
+			background: {
+				image: url(img/social-icons/png/link-icon.png);
+				image: url(img/social-icons/svg/link-icon.svg);
+			}
+			padding-left: 2.5rem;
+		}
+
+		// email links
+		&[href^="mailto:"] {
+			background: {
+				image: url(img/social-icons/png/email-icon.png);
+				image: url(img/social-icons/svg/email-icon.svg);
+			}
+		}
+
+		// Facebook links
+		&[href*="facebook.com/"] {
+			background: {
+				image: url(img/social-icons/png/facebook-icon.png);
+				image: url(img/social-icons/svg/facebook-icon.svg);
+			}
+		}
+
+		// Twitter links
+		&[href*="twitter.com/"], {
+			background: {
+				image: url(img/social-icons/png/twitter-icon.png);
+				image: url(img/social-icons/svg/twitter-icon.svg);
+			}
+		}
+
+		// LinkedIn links
+		&[href*="linkedin.com"] {
+			background: {
+				image: url(img/social-icons/png/linkedin-icon.png);
+				image: url(img/social-icons/svg/linkedin-icon.svg);
+			}
+		}
+
+		//YouTube links
+		&[href*="youtube.com/watch?"] {
+			background: {
+				image: url(img/social-icons/png/youtube-icon.png);
+				image: url(img/social-icons/svg/youtube-icon.svg);
+			}
+		}
+
+		//Vimeo links
+		&[href*="vimeo.com/"] {
+			background: {
+				image: url(img/social-icons/png/vimeo-icon.png);
+				image: url(img/social-icons/svg/vimeo-icon.svg);
+			}
+		}
+
+		//Video links
+		&[href*="video"],
+		&[type="video"] {
+			background: {
+				image: url(img/social-icons/png/video-icon.png);
+				image: url(img/social-icons/svg/video-icon.svg);
+			}
+		}
+
+		// GitHub links
+		&[href*="github.com/"] {
+			background: {
+				image: url(img/social-icons/png/github-mark.png);
+				image: url(img/social-icons/svg/github-mark.svg);
+			}
+		}
+
+		//PDF links
+		&[href*=".pdf"],
+		&[type="application/pdf"] {
+			background: {
+				image: url(img/social-icons/png/pdf-icon.png);
+				image: url(img/social-icons/svg/pdf-icon.svg);
+			}
+		}
+
+		// ePub links
+		&[href*=".epub"],
+		&[type="application/epub+zip"] {
+			background: {
+				image: url(img/social-icons/png/epub-icon.png);
+				image: url(img/social-icons/svg/epub-icon.svg);
+			}
+		}
+
+		// Android apps on GooglePlay
+		&[href*="play.google.com/store/"],
+		&[type="text/html+play"] {
+			background: {
+				image: url(img/social-icons/png/google-play-badge.png);
+				image: url(img/social-icons/svg/google-play-badge.svg);
+			}
+			padding-left: 6.7rem;
+		}
+
+		// iOS apps on App Store
+		&[href*="itunes.apple.com/us/app"],
+		&[type="text/html+app"] {
+			background: {
+				image: url(img/social-icons/png/apple-app-store-badge.png);
+				image: url(img/social-icons/svg/apple-app-store-badge.svg);
+			}
+			padding-left: 6.7rem;
+		}
+
+		// iBooks
+		&[href*="itunes.apple.com/us/book"],
+		&[type="text/html+ibook"] {
+			background: {
+				image: url(img/social-icons/png/badge_ibooks-sm.png);
+				image: url(img/social-icons/svg/badge_ibooks-sm.svg);
+			}
+
+			padding-left: 6.2rem;
+		}
+	}
+}
+
+
+/** POST AUTHOR */
+.bbg__article-author {
+	background-color: $color-gray-lightest;
+	border-radius: $border-radius;
+	margin: {
+		top: 4rem;
+		right: auto;
+		bottom: $site-margins;
+		left: auto;
+	}
+
+	max-width: $article-max-width;
+	padding: 2rem;
+	text-align: center;
+
+	@include clearfix();
+
+	@include media($small-screen) {
+		bottom: 4rem;
+		text-align: left;
+	}
+
+	.bbg-staff__author-name {
+		font-weight: $font-bold;
+		margin-bottom: .5rem;
+	}
+
+	.bbg__author-description {
+		margin-bottom: 1rem;
+
+		@include media($small-screen) {
+			margin-left: $bbg-team__icon-width + 10px;
+		}
+
+		.bbg__author-occupation {
+			font-weight: $font-normal;
+			margin-bottom: 1.3rem;
+		}
+
+		.bbg__author-bio {
+			font: {
+				family: $font-serif;
+				size: $small-font-size;
+				weight: $font-light;
+			}
+
+			line-height: $lead-line-height;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.bbg__author-contact {
+		font: {
+			size: $small-font-size;
+			weight: $font-light;
+		}
+
+		line-height: $lead-line-height;
+		margin-bottom: 0;
+		padding-left: 0;
+
+		@include media($small-screen) {
+			margin-left: $bbg-team__icon-width + 10px;
+		}
+
+		@include media($medium-screen) {
+			float: right;
+			margin-left: 0;
+			text-align: right;
+		}
+
+		.bbg__author-contact__email {
+			display: block;
+			font: {
+				size: $base-font-size;
+				weight: 500;
+			}
+
+			margin-bottom: .5rem;
+
+			@include media($medium-screen) {
+				display: inline-block;
+			}
+		}
+
+		.bbg__author-contact__twitter {
+			display: block;
+
+			@include media($medium-screen) {
+				display: inline-block;
+				margin-right: .25rem;
+			}
+		}
+
+		.bbg__author-contact__website {
+			display: block;
+
+			@include media($medium-screen) {
+				display: inline-block;
+				&:before {
+					content: " | ";
+				}
+			}
+		}
+	}
+}
+
+
+/** BBG tagline */
+.bbg-tagline,
+.bbg-tagline a {
+	color: $color-gray-medium;
+	font-size: $small-font-size;
+	margin-bottom: $site-margins;
+}
+
+.bbg__article-footer {
+	margin-top: $site-margins-large;
+}
+
+.usa-table,
+.usa-table-borderless {
+	font-size: $small-font-size;
+
+	@include media($small-screen) {
+		font-size: $base-font-size;
+	}
+}

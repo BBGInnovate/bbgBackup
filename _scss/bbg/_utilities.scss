@@ -1,0 +1,63 @@
+.u--no-wrap {
+	white-space: nowrap;
+}
+
+.u--show-mobile {
+	@include media($small-screen) {
+		display: none;
+	}
+}
+
+.u--hide-mobile {
+	display: none;
+
+	@include media($small-screen) {
+		display: inline;
+	}
+}
+
+//Used to consistently specifiy seperators throughout the site.
+.u--seperator:before {
+	content: " | ";
+}
+
+
+@mixin backgroundCover() {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@mixin hide-text {
+	font: 0px/0 a;
+	text-shadow: none;
+	color: transparent;
+	overflow: hidden;
+	text-indent: -9000px;
+	display: block;
+}
+
+// Center block (from wordpress)
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Define the larger typed readin for first paragraphs and page headers
+.readin {
+	font: {
+		family: $font-serif;
+		size: $read-in-font-size * .8;
+		weight: $font-light;
+	}
+	line-height: $base-line-height * 1.2;
+	margin: {
+		top: 1rem;
+		bottom: $site-margins;
+	}
+
+	@include media($medium-screen) {
+		font-size: $read-in-font-size;
+	}
+}

@@ -1,0 +1,166 @@
+* {
+    font-family: 'Lato', 'Helvetica', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/**
+ * Article special headings
+ */
+.bbg__article-content__subhead {
+  color: #757575;
+  font-family: 'Lato', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.bbg__article-content__section-title {
+  color: #323a45;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-top: 1.2rem;
+}
+
+.bbg__article-content__section-title + p {
+  margin-top: 0;
+}
+
+/**
+ * Extra-large images
+ */
+.bbg__article-content__image--extra-large {
+  margin: 0;
+  max-width: 100%;
+}
+
+/**
+ * Blockquotes and Pullquotes
+ */
+blockquote {
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+blockquote.pullquote p {
+    border-bottom-color: #0071bc;
+    border-bottom-style: solid;
+    border-bottom-width: 6px;
+    font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    max-width: 80%;
+}
+
+@media screen and (min-width: 900px) {
+	blockquote.pullquote p {
+        float: left;
+        margin-right: 3rem;
+        max-width: 50%;
+        padding: 0;
+    }
+}
+
+/**
+ * Related links
+ */
+.bbg__related-links a {
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #112e51;
+    font-size: .85rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.bbg__related-links a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.bbg__related-links a[href] {
+  background-image: url(img/social-icons/png/link-icon.png);
+  background-image: url(img/social-icons/svg/link-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href^="mailto:"] {
+  background-image: url(img/social-icons/png/email-icon.png);
+  background-image: url(img/social-icons/svg/email-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="facebook.com"] {
+  background-image: url(img/social-icons/png/facebook-icon.png);
+  background-image: url(img/social-icons/svg/facebook-icon.svg);
+  /*margin-left: -1rem;*/
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="twitter.com"] {
+  background-image: url(img/social-icons/png/twitter-icon.png);
+  background-image: url(img/social-icons/svg/twitter-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="linkedin.com"] {
+  background-image: url(img/social-icons/png/linkedin-icon.png);
+  background-image: url(img/social-icons/svg/linkedin-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="youtube.com"] {
+  background-image: url(img/social-icons/png/youtube-icon.png);
+  background-image: url(img/social-icons/svg/youtube-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="vimeo.com"] {
+  background-image: url(img/social-icons/png/vimeo-icon.png);
+  background-image: url(img/social-icons/svg/vimeo-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="video"]  {
+  background-image: url(img/social-icons/png/video-icon.png);
+  background-image: url(img/social-icons/svg/video-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="github.com"] {
+  background-image: url(img/social-icons/png/github-mark.png);
+  background-image: url(img/social-icons/svg/github-mark.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*=".pdf"], .bbg__related-links a[type="application/pdf"] {
+  background-image: url(img/social-icons/png/pdf-icon.png);
+  background-image: url(img/social-icons/svg/pdf-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*=".epub"], .bbg__related-links a[type="application/epub+zip"] {
+  background-image: url(img/social-icons/png/epub-icon.png);
+  background-image: url(img/social-icons/svg/epub-icon.svg);
+  padding-left: 2.5rem;
+}
+.bbg__related-links a[href*="https://play.google.com/store/"], .bbg__related-links a[type="text/html+play"] {
+  background-image: url(img/social-icons/png/google-play-badge.png);
+  background-image: url(img/social-icons/svg/google-play-badge.svg);
+  padding-left: 6.7rem;
+}
+.bbg__related-links a[href*="itunes.apple.com/us/app"], .bbg__related-links a[type="text/html+app"] {
+  background-image: url(img/social-icons/png/apple-app-store-badge.png);
+  background-image: url(img/social-icons/svg/apple-app-store-badge.svg);
+  padding-left: 6.7rem;
+}
+.bbg__related-links a[href*="itunes.apple.com/us/book"], .bbg__related-links a[type="text/html+ibook"] {
+  background-image: url(img/social-icons/png/badge_ibooks-sm.png);
+  background-image: url(img/social-icons/svg/badge_ibooks-sm.svg);
+  padding-left: 6.2rem;
+}
+
+/**
+ * BBG Taglines
+ */
+.bbg-tagline, .bbg-tagline a {
+  color: #757575;
+  font-size: .85rem;
+}

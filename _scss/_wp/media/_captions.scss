@@ -1,0 +1,38 @@
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+
+	img[class*="wp-image-"] {
+		@include center-block;
+	}
+
+	.size-large {
+		max-width: $article-max-width;
+		width: 100%;
+
+		+ .wp-caption-text {
+			margin: {
+				right: auto;
+				left: auto;
+			}
+			max-width: $article-max-width;
+		}
+	}
+
+	.wp-caption-text {
+		margin: 0.8075em 0;
+	}
+}
+
+.wp-caption-text {
+	color: $color-gray-dark;
+	font: {
+		family: $font-serif;
+		size: $caption-font-size;
+		style: italic;
+		weight: $font-light;
+	}
+	line-height: $lead-line-height;
+	margin-top: 1rem;
+	text-align: left;
+}

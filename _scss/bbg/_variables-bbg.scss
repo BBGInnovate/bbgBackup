@@ -1,0 +1,58 @@
+// Typography
+$font-sans: 'Lato', 'Helvetica', 'Arial', sans-serif;
+
+$base-font-size:            rem(16px);
+$small-font-size: 			rem(13px);
+$read-in-font-size:         rem(20px);
+$caption-font-size:         rem(12px);
+$site-title-font-size:      rem(40px);
+
+$base-line-height:          1.7;
+$small-line-height:         1.4;
+
+$text-shadow:               1px 1px 1px rgba(#000, .5);
+
+$font-light:    300;
+$font-normal:   400;
+$font-medium:   500;
+$font-bold:     700;
+
+$focus-shadow: none; //overwriting default set in _variables.scss
+
+// Color
+$color-share-facebook:        #3d5a98;
+$color-share-twitter:         #55acee;
+$color-light-gray:            #ECECEC;
+
+$color-focus:                 #3e94cf;
+$color-visited:               #4773aa;
+
+
+// Additional breakpoint(s)
+$medium-large-screen:         900px;
+
+
+// Misc styles
+$border-dotted:               1px dotted #CCC;
+$border-dotted-section:       1px dotted #981b1e;
+$border-solid:                1px solid #CCC;
+$border-solid-links:          3px solid #02bfe7;
+$box-transparent:             rgba(#000, .4);
+
+
+// Magic Numbers
+$banner-image-height:         400px;
+$thumbnail-small-max-width:   200px;
+$bbg-avatar-width:            200px;
+$bbg-avatar-width-small:       50px;
+$bbg-avatar-width-percentage:  20%;
+$bbg-avatar-twitter:           70px;
+$bbg-team__icon-width:        100px;
+$share-icon-small:             20px;
+$share-icon-large:             40px;
+$social-icon-home:             40px;
+
+// Are we (consistently) using these?
+$site-margins-small:           1rem;
+$site-margins-medium:         $site-margins / 2;
+$site-margins-large:          $site-margins * 2;

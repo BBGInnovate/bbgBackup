@@ -1,0 +1,67 @@
+/** ---------------
+ * TABLES
+ ------------------ */
+.usa-table,
+.usa-table-borderless,
+.bbg__table-plain {
+	font-size: $small-font-size;
+
+	@include media($small-screen) {
+		font-size: $base-font-size;
+	}
+}
+
+.bbg__table-plain {
+	display: block;
+	margin: 0 auto;
+	min-width: auto;
+	max-width: $article-max-width;
+	width: 100%;
+
+	th,
+	td {
+		border: none;
+		padding: 0 $site-margins-medium;
+	}
+}
+
+/** ---------------
+ * FORMS
+ ------------------ */
+.bbg__article__form {
+	display: none;
+
+	.bbg__article__form-select--sub {
+		display: none;
+	}
+}
+
+.usa-fieldset-inputs .bbg__article__form-radio__label,
+.bbg__article__form-select--main label {
+	color: $color-gray-medium;
+	font-size: 80%;
+	margin: {
+		top: $site-margins;
+		bottom: $site-margins-small;
+	}
+	text-transform: uppercase;
+}
+
+.bbg__article__form--inline {
+	@extend .bbg__table-plain;
+
+	fieldset {
+		display: table-row;
+	}
+
+	legend {
+		display: table-caption;
+	}
+
+	div {
+		display: table-cell;
+		padding: {
+			right: $site-margins-large;
+		}
+	}
+}

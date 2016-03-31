@@ -1,0 +1,166 @@
+/**
+ *  Changing styles on content-single for portfolio posts
+ *
+ */
+.category-project { // Only apply to posts in the portfolio category
+
+	/* Hide article meta (author and date) */
+	.bbg__article-meta  {
+		display: none;
+	}
+
+	/**
+ 	 * Style content of section listing project team members
+ 	 */
+	.bbg__portfolio-members {
+		margin: {
+			top: 4rem;
+			right: auto;
+			left: auto;
+		}
+		max-width: $article-max-width;
+
+		@include media($medium-screen) {
+			margin-top: 1.5rem;
+		}
+
+		@include media($medium-large-screen) {
+			margin-top: 0;
+		}
+
+		.bbg__portfolio-members__title {
+			@extend .bbg__comments-title;
+			font-size: $h4-font-size;
+			text-transform: uppercase;
+		}
+
+		.bbg__portfolio-members__list {
+			@include unstyled-list;
+
+			.bbg__portfolio-members__member-name {
+				font-weight: $font-bold;
+				margin-bottom: 1.5rem;
+				line-height: 2.2rem;
+			}
+
+			.bbg__portfolio-members__member-job {
+				color: $color-gray-dark;
+
+				font: {
+					family: $font-serif;
+					size: $small-font-size;
+					style: italic;
+					weight: $font-light;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Change layout of main elements for different breakpoints
+	 */
+	@include media($medium-screen) {
+		.bbg__article-content {
+			margin: {
+				top: 0;
+				right: auto;
+				bottom: $site-margins;
+				left: auto;
+			}
+			max-width: $article-max-width;
+		}
+	}
+
+	@include media($medium-large-screen) {
+
+		.bbg__article-content {
+			float: left;
+			margin: {
+				top: 0;
+				//right: auto;
+				bottom: $site-margins;
+				//left: auto;
+			}
+			width: 68%;
+		}
+
+		.bbg__article-share {
+			display: inline-block;
+			float: left;
+			margin: {
+				top: 0;
+				right: $site-margins;
+			}
+			width: 15%;
+		}
+
+		.bbg__article-sidebar {
+			float: right;
+			max-width: 17rem;
+			width: 12%;
+		}
+	}
+}
+
+
+/** POST AUTHOR Previous/next links on project posts */
+.bbg__article__nav {
+	display: block;
+	margin: 0 auto;
+	pointer-events: none;
+	position: fixed;
+		bottom: 100px;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+
+
+	.bbg__article__nav-link {
+		height: 45px;
+		pointer-events: initial;
+		width: 30px;
+
+		@include media($medium-large-screen) {
+			width: 60px;
+			height: 90px;
+		}
+	}
+
+	.bbg__article__nav-icon {
+		display: block;
+		height: 100%;
+		padding: 0;
+		width: 100%;
+
+		&.left-arrow{
+			background: {
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_left.png);
+			}
+		}
+
+		&.right-arrow{
+			background: {
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_right.png);
+			}
+		}
+
+	}
+
+	.bbg__article__nav-text {
+		display: none;
+	}
+
+	.bbg__article__nav-previous {
+		float: left;
+	}
+
+	.bbg__article__nav-next {
+		float: right;
+	}
+}

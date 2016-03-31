@@ -1,0 +1,237 @@
+//Small profile photos or icons
+//Used for staff profiles, team icons and comment gravatars(?)
+.bbg-avatar__container {
+	margin: 0 auto;
+	max-width: $bbg-avatar-width;
+
+	@include media($small-screen) {
+		float: left;
+		margin: 0 1rem .5rem 0;
+		width: $bbg-team__icon-width;
+	}
+}
+
+.bbg-avatar__container--small {
+	float: left;
+	margin: 0 1rem .5rem 0;
+	max-width: $bbg-avatar-width-small;
+
+	@include media($medium-screen) {
+		max-width: $bbg-avatar-width-small * 1.5;
+	}
+}
+
+.bbg-avatar {
+	border-radius: 50%;
+	display: block;
+	margin: 0 auto;
+
+	@include media($small-screen) {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+
+//Styles for the team icons
+.bbg-team {
+	margin-bottom: $site-margins;
+}
+
+.bbg-team__name {
+	clear: none;
+	font-size: 3rem;
+	margin-bottom: 0;
+	text-align: center;
+	text-transform: uppercase;
+
+	@include media($small-screen) {
+		text-align: left;
+	}
+}
+
+.bbg-team__icon {
+	border-radius: 50%;
+	height: $bbg-team__icon-width;
+	margin: 0 auto 2.5rem;
+	width: $bbg-team__icon-width;
+
+	@include media($small-screen)  {
+		margin-bottom: 0;
+	}
+}
+
+.bbg-team__text {
+	@include media($small-screen) {
+		padding-left: $bbg-team__icon-width + 10px;
+	}
+}
+
+.bbg-team__icon__image {
+	@include backgroundCover;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.bbg-team__text-description {
+	clear: none;
+	margin-top: 0;
+	max-width: $article-max-width;
+}
+
+
+
+//staff page author profiles
+.bbg-staff__author {
+	margin-bottom: $site-margins;
+
+	@include media($medium-screen) {
+		margin-bottom: $site-margins-large;
+	}
+}
+
+.bbg-staff__author__text {
+	width: 100%;
+}
+
+.bbg-staff__author-bio {
+}
+
+
+
+.bbg-staff__author-bio {
+	@extend .readin;
+}
+
+
+.bbg-staff__author-name{
+	clear: none;
+	font-size: $h2-font-size * .8;
+	line-height: 1;
+	margin: {
+		top: 1rem;
+		bottom: .1rem;
+	}
+
+	@include media($small-screen) {
+		font-size: $h2-font-size;
+		margin: {
+			top: 0;
+			bottom: .5rem;
+		}
+	}
+}
+
+.bbg-staff__author-occupation {
+	font-weight: $font-light;
+	text-transform: uppercase;
+
+	@include media($small-screen) {
+		padding-left: $bbg-avatar-width-small * 1.5 + 10px;
+		text-align: left;
+	}
+}
+
+.bbg-staff__author-contact {
+	@include clearfix();
+	font-weight: $font-light;
+	margin-bottom: 1rem;
+
+	@include media($medium-screen) {
+		padding-left: $bbg-avatar-width-small * 1.5 + 10px;
+	}
+}
+
+
+
+.bbg-staff__roster .bbg-staff__author-bio {
+	font-size: $read-in-font-size * .8;
+	line-height: $base-line-height;
+}
+
+
+/* Individual author page */
+
+.bbg-author-name{
+	clear: none;
+	font-size: $h2-font-size * .8;
+	line-height: 1;
+	margin: {
+		top: 1rem;
+		bottom: .1rem;
+	}
+	text-align: center;
+
+	@include media($small-screen) {
+		font-size: $h2-font-size;
+		margin: {
+			top: 0;
+			bottom: .5rem;
+		}
+		padding-left: $bbg-team__icon-width + 10px;
+		text-align: left;
+	}
+}
+
+.bbg-author-bio {
+	font-family: $font-serif;
+	line-height: 1.8;
+	margin-top: 1rem;
+
+	@include media($small-screen) {
+		font-size: 1.8rem;
+		font-weight: 300;
+
+		margin: {
+			top: 2rem;
+			left: $bbg-team__icon-width + 10px;
+		}
+		max-width: $article-max-width;
+	}
+}
+
+.bbg-author-contact {
+	font-weight: $font-light;
+	margin-bottom: 0;
+	text-align: center;
+
+	@include media($small-screen) {
+		padding-left: $bbg-team__icon-width + 10px;
+		text-align: left;
+	}
+}
+
+.bbg-author-occupation {
+	font-weight: $font-light;
+	text-align: center;
+	text-transform: uppercase;
+
+	@include media($small-screen) {
+		padding-left: $bbg-team__icon-width + 10px;
+		text-align: left;
+	}
+}
+
+.bbg-author-projects {
+	margin-top: 2rem;
+
+	@include media($small-screen) {
+		padding-left: $bbg-team__icon-width + 10px;
+	}
+
+	@include media($medium-screen) {
+		padding-left: 0;
+		margin-top: 3.5rem;
+	}
+}
+
+.bbg-author-projects__list {
+	@include unstyled-list();
+
+	li {
+		list-style: disc;
+	}
+	margin-bottom: 0;
+	padding-left: 2rem;
+}
