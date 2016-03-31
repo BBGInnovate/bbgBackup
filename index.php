@@ -31,15 +31,15 @@ get_header(); ?>
 
 
 				<?php if ( is_home() && ! is_front_page() ) : ?>
-					<!--
+
 					<header class="page-header">
 						<h6 class="page-title screen-reader-text bbg-label large"><?php single_post_title(); ?></h6>
 					</header>
-					-->
+
 				<?php endif; ?>
 
 
-				<?php /* Start the Loop */ 
+				<?php /* Start the Loop */
 					$counter = 0;
 				?>
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -48,7 +48,7 @@ get_header(); ?>
 
 						$counter++;
 
-						
+
 						//Add a check here to only show featured if it's not paginated.
 						if (  (!is_paged() && $counter==1) ){
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
@@ -68,7 +68,7 @@ get_header(); ?>
 								$includeImage = FALSE;
 								$includeMeta = FALSE;
 								$includeExcerpt=FALSE;
-							} 
+							}
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 						}
 					?>
