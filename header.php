@@ -164,7 +164,7 @@ $ogDescription = str_replace('"','&qout;',$ogDescription);
 
 		<?php 
 			/* exclude default site-branding on the custom home page */
-			if ($templateName!="customHome"){
+			if ($templateName!="customBBGHome"){
 		?>
 
 			<div id="header" class="usa-grid-full">
