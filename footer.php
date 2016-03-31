@@ -64,7 +64,7 @@
 		<div class="usa-footer-secondary_section usa-footer-big-secondary-section">
 			<div class="usa-grid">
 				<div class="usa-footer-logo usa-width-one-half">
-					<a href="http://www.bbg.gov">
+					<a href="<?php echo site_url(); ?>">
 						<img class="usa-footer-logo-img" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Broadcasting Board of Governors logo">
 						<h3 class="usa-footer-logo-heading">Broadcasting Board of Governors</h3>
 					</a>
