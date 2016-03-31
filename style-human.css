@@ -3374,11 +3374,6 @@ object {
   margin: -2rem 0 3rem auto;
   width: 100%;
 }
-@media screen and (min-width: 600px) {
-  .bbg__article-header__caption {
-    max-width: 33%;
-  }
-}
 
 /* Post title */
 .bbg__article-header__title {
