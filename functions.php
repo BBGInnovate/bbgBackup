@@ -1,10 +1,10 @@
 <?php
 /**
- * bbginnovate functions and definitions.
+ * bbgRedesign functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package bbginnovate
+ * @package bbgRedesign
  */
 
 require "config_bbgWPtheme.php";

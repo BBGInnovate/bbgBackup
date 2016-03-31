@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package bbginnovate
+ * @package bbgRedesign
  */
 
 if ( is_active_sidebar( 'sidebar-2' ) ) { // If there are widgets assigned to this sidebar...

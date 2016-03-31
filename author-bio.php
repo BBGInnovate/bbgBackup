@@ -2,7 +2,7 @@
 /**
  * The template for displaying Author bios.
  *
- * @package bbginnovate
+ * @package bbgRedesign
  */
 ?>
 <?php

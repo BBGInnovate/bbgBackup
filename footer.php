@@ -9,7 +9,7 @@
  * US Web Design Standards (alpha) includes 3 footers alternatives.
  * @link https://playbook.cio.gov/designstandards/footers/
  *
- * @package bbginnovate
+ * @package bbgRedesign
  */
 
 ?>

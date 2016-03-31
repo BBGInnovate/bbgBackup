@@ -2,8 +2,7 @@
 /**
  * The Template for displaying the staff.
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package bbgRedesign
  * template name: Staff
  */
 

@@ -3,8 +3,7 @@
  * The custom home page for the Broadcasting Board of Governors.
  * It includes the mission, a portfolio of recent projects, recent blog posts and staff.
  *
- * @package BBGInnovate
- * @since   BBGInnovate 1.0
+ * @package bbgRedesign
   template name: Teams Landing Page
  */
 

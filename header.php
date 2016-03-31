@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package bbginnovate
+ * @package bbgRedesign
  */
 
 /* ODDI CUSTOM: several variables can be passed into the header */ 
