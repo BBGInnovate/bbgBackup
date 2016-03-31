@@ -41,11 +41,6 @@ get_header();
 
 					<div class="bbg-social__container">
 						<div class="bbg-social">
-							<ul class="bbg-social__list">
-								<li class="bbg-social__list__link"><a href="https://github.com/BBGInnovate" title="The ODDI GitHub repo" class="bbg-icon-github"></a></li>
-								<li class="bbg-social__list__link"><a href="https://www.youtube.com/channel/UCtDMNCM2Vt_w2M3Irzb-1PQ" title="Check out the ODDI videos on YouTube" class="bbg-icon-youtube"></a></li>
-								<li class="bbg-social__list__link"><a href="https://twitter.com/BBGinnovate" title="Follow ODDI on Twitter" class="bbg-icon-twitter"></a></li>
-							</ul>
 						</div>
 					</div>
 				</div>
