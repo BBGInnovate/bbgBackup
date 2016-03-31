@@ -1,4 +1,4 @@
-# BBG WordPress theme based on the U.S. Web Design Standards
+# REDESIGN BBG WordPress theme based on the U.S. Web Design Standards
 
 We're creating a Broadcasting Board of Governors WordPress theme based on 18F and U.S. Digital Services' proposed U.S. Web Design Standards. 
 
