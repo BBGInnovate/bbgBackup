@@ -74,7 +74,7 @@ get_header();
 			<!-- Portfolio -->
 			<section id="projects" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'projects' ) ) ?>">Projects</a></h6>
+					<h6 class="bbg-label"><a href="/blog/category/press-release/">Around the BBG</a></h6>
 
 					<div class="usa-grid-full">
 					<?php
@@ -83,7 +83,7 @@ get_header();
 							'posts_per_page' => 3,
 							'orderby' => 'post_date',
 							'order' => 'desc',
-							'cat' => get_cat_id('Project')
+							'cat' => get_cat_id('Press Release')
 						);
 						query_posts($qParams);
 
@@ -98,7 +98,7 @@ get_header();
 					?>
 					</div><!-- .usa-grid-full -->
 
-					<a href="<?php echo get_permalink( get_page_by_path( 'projects' ) ) ?>">Explore entire portfolio »</a>
+					<a href="/blog/category/press-release/">View all press releases »</a>
 
 				</div><!-- .usa-grid -->
 			</section><!-- .bbg-portfolio -->
