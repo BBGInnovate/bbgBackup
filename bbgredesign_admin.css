@@ -1,2 +1,10 @@
 /* admin-only styles for bbg redesign */
-h1 {color:red;}
+.acf_postbox.no_box {
+	background-color: #FFFFFF;
+	padding: 2%;
+	width: 96%;
+}
+
+.acf_postbox.no_box:before {
+	content: "";
+}
