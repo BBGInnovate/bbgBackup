@@ -142,6 +142,27 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
+						<?php 
+							if ( $relatedLinksTag != "" ) {
+								echo "<h3>related posts  (tag '$relatedLinksTag')</h3>";
+								$qParams2=array(
+									'post_type' => array('post'),
+									'posts_per_page' => 100,
+									'tag' => $relatedLinksTag
+								);
+								$custom_query = new WP_Query( $qParams2 );
+								$counter=0;
+								echo "<ul>";
+								while ( $custom_query -> have_posts() )  {
+									$custom_query->the_post();
+									$link = get_the_permalink();
+									$title = get_the_title();
+									echo "<li><a href='" . $link . "'>" . $title . "</a></li>";
+								}
+								echo "</ul>";
+								wp_reset_postdata();
+							}
+						?>
 
 
 
