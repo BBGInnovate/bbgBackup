@@ -19,12 +19,14 @@
 	@extend .wp-caption-text;
 	margin: -2rem 0 $site-margins auto;
 	width: 100%;
-	@include media($medium-screen) {
-		//max-width: 33%;
-		//text-align: right;
-	}
 }
 
+.bbg__article--no-featured-image {
+	margin-top: $site-margins;
+	@include media($medium-screen) {
+		margin-top: $site-margins-large;
+	}
+}
 
 /* Post title */
 .bbg__article-header__title {

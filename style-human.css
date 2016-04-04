@@ -3375,6 +3375,15 @@ object {
   width: 100%;
 }
 
+.bbg__article--no-featured-image {
+  margin-top: 3rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__article--no-featured-image {
+    margin-top: 6rem;
+  }
+}
+
 /* Post title */
 .bbg__article-header__title {
   font-size: 3.2rem;

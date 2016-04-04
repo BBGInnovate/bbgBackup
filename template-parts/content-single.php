@@ -8,10 +8,13 @@
  */
 
 /**** BEGIN: get next post link for project links ****/
-$projectCategoryID= get_cat_id('Project');
-$isProject=has_category($projectCategoryID);
-$prevLink="";
-$nextLink="";
+$projectCategoryID = get_cat_id('Project');
+$isProject = has_category($projectCategoryID);
+$prevLink = "";
+$nextLink = "";
+
+//Default adds a space above header if there's no image set
+$featuredImageClass = " bbg__article--no-featured-image";
 	
 if ($isProject) {
 	//$categories=get_the_category();
@@ -104,6 +107,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
 			if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 				echo '<div class="usa-grid-full">';
+				$featuredImageClass = "";
 				$featuredImageCutline="";
 				$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
 				if ($thumbnail_image && isset($thumbnail_image[0])) {
@@ -121,7 +125,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 						echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
 					echo '</div> <!-- usa-grid -->';
 				}
-
 			}
 		?><!-- .bbg__article-header__thumbnail -->
 
@@ -133,7 +136,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	<div class="usa-grid">
 
-		<header class="entry-header bbg__article-header">
+		<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
 		<?php echo bbginnovate_post_categories(); ?>
 		<!-- .bbg-label -->
