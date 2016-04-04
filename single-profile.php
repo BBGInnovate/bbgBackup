@@ -39,7 +39,7 @@ if ( have_posts() ) {
 }
 
 get_header(); ?>
-	<h1>PROFILE SINGLE FOR $email</h1>
+	<h1>PROFILE SINGLE FOR <?php echo $email; ?></h1>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
