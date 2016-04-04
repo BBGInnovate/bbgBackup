@@ -482,6 +482,12 @@ function oddi_settings_api_init() {
 
 add_action( 'admin_init', 'oddi_settings_api_init' );
 
+function enqueueAdminStyles() {
+	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
+}
+
+add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
+add_action( 'admin_init', 'oddi_settings_api_init' );
 
 
 
