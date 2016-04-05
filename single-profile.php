@@ -100,26 +100,11 @@ get_header(); ?>
 							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 						}
 
-$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
-//echo $src[0];
-
+						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
 						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
-						//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-
-
-
-						//echo the_post_thumbnail( 'large-thumb' );
-
 						echo '</div>';
 						echo '</div> <!-- usa-grid-full -->';
-						/*
-						if ($featuredImageCutline != "") {
-							echo '<div class="usa-grid">';
-								echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-							echo '</div> <!-- usa-grid -->';
-						}
-						*/
 					}
 				?><!-- .bbg__article-header__thumbnail -->
 
@@ -176,7 +161,6 @@ $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
 						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
-
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
@@ -209,12 +193,6 @@ $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700
 
 			</article><!-- #post-## -->
 
-
-			<div class="bbg__article-footer usa-grid">
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-				?>
-			</div>
 		<?php endwhile; // End of the loop. ?>
 
 		</main><!-- #main -->
