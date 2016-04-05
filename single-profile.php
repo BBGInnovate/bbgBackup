@@ -155,6 +155,12 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
+
+						<?php 
+							//https://codex.wordpress.org/Formatting_Date_and_Time
+							//echo "last modified " . get_the_modified_date('F d Y, h:iA') . "<BR>"; 
+							echo "last modified " . get_the_modified_date('F d, Y') . "<BR>"; 
+						?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
