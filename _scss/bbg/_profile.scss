@@ -1,11 +1,16 @@
 .bbg__profile-photo {
-	margin: -100px auto auto;
+	margin: -60px auto auto;
 	position: relative;
 	width: 120px;
 	z-index: 9999;
 
 	@include media($medium-screen) {
 		float: left;
+		margin: -60px $site-margins-small auto;
+		width: 160px;
+	}
+
+	@include media($medium-large-screen) {
 		margin: -100px $site-margins-small auto;
 		width: 20%;
 	}
@@ -48,12 +53,22 @@
 }
 
 .category-profile {
+	.bbg__article-header__thumbnail--large {
+		margin-bottom: 0;
+	}
+
 	.bbg__article-header {
 		@include clearfix();
 		margin-bottom: $site-margins;
 	}
 
+	.bbg__article-sidebar {
+		margin: 0 auto;
+		max-width: 600px;
+	}
+
 	@include media($medium-large-screen) {
+
 
 		.bbg__article-content{
 			float: left;
@@ -63,14 +78,13 @@
 				bottom: 3rem;
 				left: auto;
 			}
-			max-width: 600px;
-			width: 68%;
+			width: 56%;
 		}
 
 		.bbg__article-sidebar {
 			float: right;
 			max-width: 17rem;
-			width: 12%;
+			width: 18%;
 		}
 
 		.bbg__article-share {
@@ -78,7 +92,7 @@
 			float: left;
 			margin-top: 0;
 			margin-right: 3rem;
-			width: 15%;
+			width: 20%;
 		}
 	}
 }

@@ -3477,7 +3477,7 @@ object {
 }
 
 .bbg__article-share__icon.email {
-  background-color: #f1f1f1;
+  background-color: #757575;
   background-image: url(img/social-icons/png-white/social-icons_email.png);
 }
 
@@ -5201,7 +5201,7 @@ ol li:before {
 }
 
 .bbg__profile-photo {
-  margin: -100px auto auto;
+  margin: -60px auto auto;
   position: relative;
   width: 120px;
   z-index: 9999;
@@ -5209,6 +5209,12 @@ ol li:before {
 @media screen and (min-width: 600px) {
   .bbg__profile-photo {
     float: left;
+    margin: -60px 1rem auto;
+    width: 160px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__profile-photo {
     margin: -100px 1rem auto;
     width: 20%;
   }
@@ -5258,6 +5264,9 @@ ol li:before {
   margin-bottom: 1.5rem;
 }
 
+.category-profile .bbg__article-header__thumbnail--large {
+  margin-bottom: 0;
+}
 .category-profile .bbg__article-header {
   margin-bottom: 3rem;
 }
@@ -5268,6 +5277,10 @@ ol li:before {
   clear: both;
   visibility: hidden;
 }
+.category-profile .bbg__article-sidebar {
+  margin: 0 auto;
+  max-width: 600px;
+}
 @media screen and (min-width: 900px) {
   .category-profile .bbg__article-content {
     float: left;
@@ -5275,19 +5288,18 @@ ol li:before {
     margin-right: auto;
     margin-bottom: 3rem;
     margin-left: auto;
-    max-width: 600px;
-    width: 68%;
+    width: 56%;
   }
   .category-profile .bbg__article-sidebar {
     float: right;
     max-width: 17rem;
-    width: 12%;
+    width: 18%;
   }
   .category-profile .bbg__article-share {
     display: inline-block;
     float: left;
     margin-top: 0;
     margin-right: 3rem;
-    width: 15%;
+    width: 20%;
   }
 }

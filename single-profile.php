@@ -138,42 +138,47 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="container" style="position: relative;">
-					<ul class="bbg__article-share">
-						<li class="bbg__article-share__link facebook">
-							<a href="<?php echo $fbUrl; ?>">
-								<span class="bbg__article-share__icon facebook"></span>
-								<span class="bbg__article-share__text">Share</span>
-							</a>
-						</li>
-						<li class="bbg__article-share__link twitter">
-							<a href="<?php echo $twitterURL; ?>">
-								<span class="bbg__article-share__icon twitter"></span>
-								<span class="bbg__article-share__text">Tweet</span>
-							</a>
-						</li>
-					</ul>
+
+					<div class="bbg__article-sidebar--left">
+
+						<ul class="bbg__article-share ">
+						<?php 
+						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
+						?>
+						<h3 class="bbg__sidebar-label">Contact </h3>
+						<?php } ?>
+
+
+						<?php 
+						if ($email!=""){
+							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
+						}
+						if ($twitterProfileHandle!=""){
+							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+						}
+
+						if ($phone!=""){
+							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
+						}
+						?>
+						</ul>
 
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
+						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
-						<?php 
-							//https://codex.wordpress.org/Formatting_Date_and_Time
-							//echo "last modified " . get_the_modified_date('F d Y, h:iA') . "<BR>"; 
-							echo "last modified " . get_the_modified_date('F d, Y') . "<BR>"; 
-						?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
 						<?php 
 							if ( $relatedLinksTag != "" ) {
-								echo "<h3>Related posts  <!--(tag '$relatedLinksTag')--></h3>";
+								echo '<h3 class="bbg__sidebar-label">Related posts  <!--(tag "$relatedLinksTag")--></h3>';
 								$qParams2=array(
 									'post_type' => array('post'),
-									'posts_per_page' => 100,
+									'posts_per_page' => 5,
 									'tag' => $relatedLinksTag
 								);
 								$custom_query = new WP_Query( $qParams2 );
-								$counter=0;
 								echo '<ul class="bbg__profile__related-link__list">';
 								while ( $custom_query -> have_posts() )  {
 									$custom_query->the_post();
@@ -187,29 +192,6 @@ get_header(); ?>
 						?>
 
 					</div>
-
-					<div class="bbg__article-sidebar__x">
-						<?php 
-						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
-						?>
-						<h3>Contact </h3>
-						<?php } ?>
-
-						<ul class="">
-						<?php 
-						if ($email!=""){
-							echo '<li><a href="mailto:'.$email.'">'.$email.'</a></li>'; 
-						}
-						if ($twitterProfileHandle!=""){
-							echo '<li><a href="https://twitter.com/'.$twitterProfileHandle.'">@'.$twitterProfileHandle.'</a></li>'; 
-						}
-
-						if ($phone!=""){
-							echo "<li>".$phone."</li>"; 
-						}
-						?>
-						</ul>
-					</div> <!-- .bbg__article-sidebar -->
 
 
 					</div><!-- container -->
