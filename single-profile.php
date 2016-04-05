@@ -103,12 +103,13 @@ get_header(); ?>
 
 						echo '</div>';
 						echo '</div> <!-- usa-grid-full -->';
-
+						/*
 						if ($featuredImageCutline != "") {
 							echo '<div class="usa-grid">';
 								echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
 							echo '</div> <!-- usa-grid -->';
 						}
+						*/
 					}
 				?><!-- .bbg__article-header__thumbnail -->
 
