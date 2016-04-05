@@ -3491,6 +3491,11 @@ object {
   background-image: url(img/social-icons/png-white/social-icons_twitter.png);
 }
 
+.bbg__article-share__icon.phone {
+  background-color: #3d5a98;
+  background-image: url(img/social-icons/png-white/social-icons_phone.png);
+}
+
 /* Article share links: text */
 .bbg__article-share__text {
   display: none;

@@ -158,7 +158,7 @@ get_header(); ?>
 						}
 
 						if ($phone!=""){
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
+							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
 						</ul>
