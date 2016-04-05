@@ -39,7 +39,6 @@ if ( have_posts() ) {
 }
 
 get_header(); ?>
-	<h1>PROFILE SINGLE FOR <?php echo $email; ?></h1>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
@@ -114,14 +113,18 @@ get_header(); ?>
 
 					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
-					<?php echo bbginnovate_post_categories(); ?>
+					<!-- <?php echo bbginnovate_post_categories(); ?> -->
 					<!-- .bbg-label -->
+
+					<h5 class="entry-category bbg-label">
+						<?php echo $occupation; ?>
+					</h5><!-- .bbg-label -->
 
 						<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 						<!-- .bbg__article-header__title -->
 
 						<div class="entry-meta bbg__article-meta">
-							<?php bbginnovate_posted_on(); ?>
+							<!-- <?php bbginnovate_posted_on(); ?> -->
 						</div><!-- .bbg__article-meta -->
 					</header><!-- .bbg__article-header -->
 					<div class="container" style="position: relative;">
@@ -164,42 +167,26 @@ get_header(); ?>
 							}
 						?>
 
-
-
 					<!-- old nav location -->
 
 
 
 					</div><!-- .entry-content -->
 
+
+
 					<div class="bbg__article-sidebar">
-						<?php
-							$usersInProjectStr = get_post_meta( get_the_ID(), 'users_in_project', true );
-
-							if(!in_category('project')) {
-								bbg_post_author_bottom_card(get_the_author_meta('ID'));
-							} elseif ( $usersInProjectStr != "" ) {
-								$userIDs = explode( ',', $usersInProjectStr );
-								array_walk( $userIDs, 'intval' );
-								$args = array( 'include' => $userIDs, 'orderby' => 'include' );
-
-								$blogusers = get_users( $args );
-								// Loop through the users to create the staff profiles
-								if ( $blogusers ) {
-									echo "<div class='bbg__portfolio-members'><h3 class='bbg__portfolio-members__title'>ODDI Team</h3> <ul class='bbg__portfolio-members__list'>";
-									foreach ( $blogusers as $user ) {
-										$authorName = esc_html( $user -> display_name );
-										$authorUrl = get_author_posts_url( $user -> ID, $user -> user_nicename );
-										$authorOccupation = esc_html( $user -> occupation );
-										echo "<li class='bbg__portfolio-members__member-name'><a href='$authorUrl'>$authorName</a><br/><span class='bbg__portfolio-members__member-job'>$authorOccupation</span></li>";
-									}
-									echo "</ul></div>";
-								}
-
-							}
-						?>
+						<h3>Contact</h3>
+						<ul class="">
+						<?php echo '<li><a href="mailto:'.$email.'">'.$email.'</a></li>'; ?>
+						<?php echo '<li><a href="https://twitter.com/'.$twitterHandle.'">@'.$twitterHandle.'</a></li>'; ?>
+						<?php echo "<li>".$phone."</li>"; ?>
+						</ul>
+						<?php echo $profilePhoto; ?>
 					</div> <!-- .bbg__article-sidebar -->
-					
+
+
+
 					</div><!-- container -->
 				</div><!-- .usa-grid -->
 
@@ -212,7 +199,7 @@ get_header(); ?>
 			<div class="bbg__article-footer usa-grid">
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template.
-					if ( !in_category('Project') &&(comments_open() || get_comments_number())):
+					if ( !in_category('Profile' ) && !in_category('Project' ) &&(comments_open() || get_comments_number())):
 						comments_template();
 					endif;
 				?>
