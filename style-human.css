@@ -5290,8 +5290,17 @@ ol li:before {
   }
 }
 
-.category-profile .bbg__article-header__thumbnail--large {
+.category-profile .bbg__profile-header__banner {
+  background-size: cover;
+  background-position: center center;
+  height: 250px;
   margin-bottom: 0;
+  width: 100%;
+}
+@media screen and (min-width: 900px) {
+  .category-profile .bbg__profile-header__banner {
+    height: 400px;
+  }
 }
 .category-profile .bbg__article-header {
   margin-bottom: 3rem;

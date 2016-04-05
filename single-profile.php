@@ -97,9 +97,17 @@ get_header(); ?>
 						if ($thumbnail_image && isset($thumbnail_image[0])) {
 							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 						}
-						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+
+$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+//echo $src[0];
+
+
+						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].');">';
 						//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-						echo the_post_thumbnail( 'large-thumb' );
+
+
+
+						//echo the_post_thumbnail( 'large-thumb' );
 
 						echo '</div>';
 						echo '</div> <!-- usa-grid-full -->';

@@ -71,8 +71,18 @@
 	}
 
 .category-profile {
-	.bbg__article-header__thumbnail--large {
+	.bbg__profile-header__banner {
+		background: {
+			size: cover;
+			position: center center;
+		}
+		height: 250px;
 		margin-bottom: 0;
+		width: 100%;
+
+		@include media($medium-large-screen) {
+			height: 400px;
+		}
 	}
 
 	.bbg__article-header {
