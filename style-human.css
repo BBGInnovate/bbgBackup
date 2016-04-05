@@ -5199,3 +5199,95 @@ ol li:before {
   display: table-cell;
   padding-right: 6rem;
 }
+
+.bbg__profile-photo {
+  margin: -100px auto auto;
+  position: relative;
+  width: 120px;
+  z-index: 9999;
+}
+@media screen and (min-width: 600px) {
+  .bbg__profile-photo {
+    float: left;
+    margin: -100px 1rem auto;
+    width: 20%;
+  }
+}
+.bbg__profile-photo .bbg__profile-photo__image {
+  background-color: #FFF;
+  border: 5px solid #FFF;
+  max-width: 100%;
+}
+
+.bbg__profile-title {
+  text-align: center;
+}
+.bbg__profile-title h1, .bbg__profile-title h5 {
+  margin: 0;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .bbg__profile-title {
+    margin: 20px 8% auto auto;
+    max-width: 68%;
+    text-align: left;
+  }
+  .bbg__profile-title h1, .bbg__profile-title h5 {
+    clear: none;
+    text-align: left;
+  }
+}
+
+.bbg__profile__related-link__list {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.bbg__profile__related-link__list li {
+  display: list-item;
+  margin: 0;
+}
+.bbg__profile__related-link__list li:before {
+  display: none;
+}
+.bbg__profile__related-link__list li:after {
+  display: none;
+}
+.bbg__profile__related-link__list .bbg__profile__related-link {
+  margin-bottom: 1.5rem;
+}
+
+.category-profile .bbg__article-header {
+  margin-bottom: 3rem;
+}
+.category-profile .bbg__article-header:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media screen and (min-width: 900px) {
+  .category-profile .bbg__article-content {
+    float: left;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    max-width: 600px;
+    width: 68%;
+  }
+  .category-profile .bbg__article-sidebar {
+    float: right;
+    max-width: 17rem;
+    width: 12%;
+  }
+  .category-profile .bbg__article-share {
+    display: inline-block;
+    float: left;
+    margin-top: 0;
+    margin-right: 3rem;
+    width: 15%;
+  }
+}

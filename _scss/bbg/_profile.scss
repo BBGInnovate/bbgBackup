@@ -1,0 +1,84 @@
+.bbg__profile-photo {
+	margin: -100px auto auto;
+	position: relative;
+	width: 120px;
+	z-index: 9999;
+
+	@include media($medium-screen) {
+		float: left;
+		margin: -100px $site-margins-small auto;
+		width: 20%;
+	}
+
+
+	.bbg__profile-photo__image {
+		background-color: #FFF;
+		border: 5px solid #FFF;
+		max-width: 100%;
+	}
+}
+
+.bbg__profile-title {
+	text-align: center;
+
+	h1, h5 {
+		margin: 0;
+		text-align: center;
+	}
+
+	@include media($medium-screen) {
+		margin: 20px 8% auto auto;
+		max-width: 68%;
+		text-align: left;
+
+		h1, h5 {
+			clear: none;
+			text-align: left;
+		}
+
+	}
+}
+
+.bbg__profile__related-link__list {
+	@include unstyled-list;
+
+	.bbg__profile__related-link {
+		margin-bottom: $site-margins-medium;
+	}
+}
+
+.category-profile {
+	.bbg__article-header {
+		@include clearfix();
+		margin-bottom: $site-margins;
+	}
+
+	@include media($medium-large-screen) {
+
+		.bbg__article-content{
+			float: left;
+			margin: {
+				top: 0;
+				right: auto;
+				bottom: 3rem;
+				left: auto;
+			}
+			max-width: 600px;
+			width: 68%;
+		}
+
+		.bbg__article-sidebar {
+			float: right;
+			max-width: 17rem;
+			width: 12%;
+		}
+
+		.bbg__article-share {
+			display: inline-block;
+			float: left;
+			margin-top: 0;
+			margin-right: 3rem;
+			width: 15%;
+		}
+	}
+}

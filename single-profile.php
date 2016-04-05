@@ -29,9 +29,18 @@ if ( have_posts() ) {
 	$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 	$email=get_post_meta( get_the_ID(), 'email', true );
 	$phone=get_post_meta( get_the_ID(), 'phone', true );
-	$twitterHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-	$profilePhoto=get_post_meta( get_the_ID(), 'profile_photo', true );
+	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
 	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
+
+	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
+	$profilePhoto = "";
+	//$socialImageID = get_post_meta( $post->ID, 'social_image',true );
+	if ($profilePhotoID) {
+		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'Full');
+		$profilePhoto = $profilePhoto[0];
+	}
+
+
 
 	$ogDescription = get_the_excerpt(); //get_the_excerpt()
 
@@ -113,20 +122,20 @@ get_header(); ?>
 
 					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
-					<!-- <?php echo bbginnovate_post_categories(); ?> -->
-					<!-- .bbg-label -->
+						<div class="bbg__profile-photo">
+							<img src="<?php echo $profilePhoto; ?>" class="bbg__profile-photo__image"/>
+						</div>
+						<div class="bbg__profile-title">
 
-					<h5 class="entry-category bbg-label">
-						<?php echo $occupation; ?>
-					</h5><!-- .bbg-label -->
+							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
+							<!-- .bbg__article-header__title -->
+							<h5 class="entry-category bbg-label">
+								<?php echo $occupation; ?>
+							</h5><!-- .bbg-label -->
 
-						<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
-						<!-- .bbg__article-header__title -->
-
-						<div class="entry-meta bbg__article-meta">
-							<!-- <?php bbginnovate_posted_on(); ?> -->
-						</div><!-- .bbg__article-meta -->
+						</div>
 					</header><!-- .bbg__article-header -->
+
 					<div class="container" style="position: relative;">
 					<ul class="bbg__article-share">
 						<li class="bbg__article-share__link facebook">
@@ -145,9 +154,12 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
+					</div><!-- .entry-content -->
+
+					<div class="bbg__article-sidebar">
 						<?php 
 							if ( $relatedLinksTag != "" ) {
-								echo "<h3>related posts  (tag '$relatedLinksTag')</h3>";
+								echo "<h3>Related posts  <!--(tag '$relatedLinksTag')--></h3>";
 								$qParams2=array(
 									'post_type' => array('post'),
 									'posts_per_page' => 100,
@@ -155,53 +167,53 @@ get_header(); ?>
 								);
 								$custom_query = new WP_Query( $qParams2 );
 								$counter=0;
-								echo "<ul>";
+								echo '<ul class="bbg__profile__related-link__list">';
 								while ( $custom_query -> have_posts() )  {
 									$custom_query->the_post();
 									$link = get_the_permalink();
 									$title = get_the_title();
-									echo "<li><a href='" . $link . "'>" . $title . "</a></li>";
+									echo '<li class="bbg__profile__related-link"><a href="' . $link . '">' . $title . '</a></li>';
 								}
 								echo "</ul>";
 								wp_reset_postdata();
 							}
 						?>
 
-					<!-- old nav location -->
+					</div>
 
+					<div class="bbg__article-sidebar__x">
+						<?php 
+						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
+						?>
+						<h3>Contact </h3>
+						<?php } ?>
 
-
-					</div><!-- .entry-content -->
-
-
-
-					<div class="bbg__article-sidebar">
-						<h3>Contact</h3>
 						<ul class="">
-						<?php echo '<li><a href="mailto:'.$email.'">'.$email.'</a></li>'; ?>
-						<?php echo '<li><a href="https://twitter.com/'.$twitterHandle.'">@'.$twitterHandle.'</a></li>'; ?>
-						<?php echo "<li>".$phone."</li>"; ?>
-						</ul>
-						<?php echo $profilePhoto; ?>
-					</div> <!-- .bbg__article-sidebar -->
+						<?php 
+						if ($email!=""){
+							echo '<li><a href="mailto:'.$email.'">'.$email.'</a></li>'; 
+						}
+						if ($twitterProfileHandle!=""){
+							echo '<li><a href="https://twitter.com/'.$twitterProfileHandle.'">@'.$twitterProfileHandle.'</a></li>'; 
+						}
 
+						if ($phone!=""){
+							echo "<li>".$phone."</li>"; 
+						}
+						?>
+						</ul>
+					</div> <!-- .bbg__article-sidebar -->
 
 
 					</div><!-- container -->
 				</div><!-- .usa-grid -->
 
-				<!-- <footer class="entry-footer bbg__article-footer">
-					<?php bbginnovate_entry_footer(); ?>
-				</footer> --><!-- .entry-footer -->
 			</article><!-- #post-## -->
 
 
 			<div class="bbg__article-footer usa-grid">
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template.
-					if ( !in_category('Profile' ) && !in_category('Project' ) &&(comments_open() || get_comments_number())):
-						comments_template();
-					endif;
 				?>
 			</div>
 		<?php endwhile; // End of the loop. ?>
