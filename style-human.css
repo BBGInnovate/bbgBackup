@@ -5209,13 +5209,13 @@ ol li:before {
 @media screen and (min-width: 600px) {
   .bbg__profile-photo {
     float: left;
-    margin: -60px 1rem auto;
+    margin: -60px 1rem auto 0;
     width: 160px;
   }
 }
 @media screen and (min-width: 900px) {
   .bbg__profile-photo {
-    margin: -100px 1rem auto;
+    margin: -100px 1rem auto 0;
     width: 20%;
   }
 }
@@ -5234,7 +5234,7 @@ ol li:before {
 }
 @media screen and (min-width: 600px) {
   .bbg__profile-title {
-    margin: 20px 8% auto auto;
+    margin: 20px 9% auto auto;
     max-width: 68%;
     text-align: left;
   }
@@ -5262,6 +5262,27 @@ ol li:before {
 }
 .bbg__profile__related-link__list .bbg__profile__related-link {
   margin-bottom: 1.5rem;
+}
+
+.bbg__contact-label {
+  display: inline;
+  margin-right: 1rem;
+}
+@media screen and (min-width: 900px) {
+  .bbg__contact-label {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .bbg__contact-label:after {
+    content: ": ";
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__contact-label:after {
+    content: "";
+  }
 }
 
 .category-profile .bbg__article-header__thumbnail--large {

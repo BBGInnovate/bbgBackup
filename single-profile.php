@@ -145,7 +145,7 @@ get_header(); ?>
 						<?php 
 						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
 						?>
-						<h3 class="bbg__sidebar-label">Contact </h3>
+						<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
 						<?php } ?>
 
 
