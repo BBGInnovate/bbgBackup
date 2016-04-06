@@ -47,7 +47,7 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 		add_image_size( 'medium-thumb', 600, 360, true );
 		add_image_size( 'small-thumb', 300, 180, true );
 
-		add_image_size( 'mugshot', 200, 200 ); // 220 pixels wide by 180 pixels tall, soft proportional crop mode
+		add_image_size( 'mugshot', 200, 200, true );  
 
 		function my_custom_sizes( $sizes ) {
 			/*  NOTE: the $sizes array here is simply an associative array.  It doesn't provide actual dimensions.
