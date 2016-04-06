@@ -906,26 +906,19 @@ add_action( 'publish_post', 'clearFBCache', 10, 2 );
 function acf_load_color_field_choices( $field ) {
     // reset choices
     $field['choices'] = array();
-    $choices = get_field('my_select_values', 'option', false);
-    $choices = explode("\n", $choices);
-    $choices = array_map('trim', $choices);
-
     $qParamsContact=array(
 		'post_type' => array('post')
 		,'cat' => get_cat_id('contact')
 		,'posts_per_page' => 100
 	);
-	/*** late in the game we ran into a pagination issue, so we're running a second query here ***/
-	$custom_query_args= $qParamsContact;
-	$custom_query = new WP_Query( $custom_query_args );
+	$custom_query = new WP_Query( $qParamsContact );
 	while ( $custom_query -> have_posts() )  {
 		$custom_query->the_post();
 		$title = get_the_title();
 		$field['choices'][ $title ] = $title;
 	}
 	wp_reset_postdata();
-
-	
+	wp_reset_query();
 	// return the field
 	return $field;
 }
