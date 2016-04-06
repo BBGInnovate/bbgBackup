@@ -919,7 +919,7 @@ function acf_load_color_field_choices( $field ) {
 	while ( $custom_query -> have_posts() )  {
 		$custom_query->the_post();
 		$title = get_the_title();
-		$field['choices'][ $title ] = $title;
+		$field['choices'][ $title ] = $get_the_ID();
 	}
 	$post=$post_original;
 	// return the field
