@@ -155,6 +155,7 @@ get_header(); ?>
 							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
+						&nbsp;
 						</ul>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
