@@ -27,7 +27,6 @@ if ( have_posts() ) {
 	}
 
 	$ogDescription = get_the_excerpt(); //get_the_excerpt()
-
 	rewind_posts();
 }
 
@@ -39,6 +38,37 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'single' ); ?>
+			<div class="usa-grid">
+			<?php
+				/* START CONTACT CARDS */
+				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',false );
+				if (count($contactPostIDs) > 0) {
+					$qParamsContactCard=array(
+						'post__in' => $contactPostIDs
+					);
+					$custom_query = new WP_Query( $qParamsContactCard );
+					if ( $custom_query->have_posts() ) :
+						echo "<h1>Related contact data</h1>";
+						while ( $custom_query->have_posts() ) : $custom_query->the_post();
+							//now let's get the custom fields associated with our related contac tposts
+							$email = get_post_meta( get_the_ID(), 'email',true );
+							$fullname=get_post_meta( get_the_ID(), 'fullname',true );
+							$phone=get_post_meta( get_the_ID(), 'phone',true );
+							$bio=get_the_content();
+
+							echo "email: $email<BR>";
+							echo "fullname: $fullname<BR>";
+							echo "phone: $phone<BR>";
+							echo "bio: $bio<BR>";
+
+						endwhile;
+					endif;
+					wp_reset_postdata();
+					wp_reset_query();
+				}
+				/* END CONTACT CARDS */
+			?>
+			</div>
 
 			<div class="bbg__article-footer usa-grid">
 				<?php
