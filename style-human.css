@@ -5235,6 +5235,7 @@ ol li:before {
 @media screen and (min-width: 900px) {
   .bbg__profile-photo {
     margin-top: -100px;
+    margin-right: 3%;
     width: 20%;
   }
 }
@@ -5253,8 +5254,8 @@ ol li:before {
 }
 @media screen and (min-width: 600px) {
   .bbg__profile-title {
-    margin: 20px 9% auto auto;
-    max-width: 68%;
+    margin: 20px 0 auto auto;
+    max-width: 77%;
     text-align: left;
   }
   .bbg__profile-title h1, .bbg__profile-title h5 {

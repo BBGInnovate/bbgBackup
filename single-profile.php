@@ -124,6 +124,7 @@ get_header(); ?>
 						<div class="bbg__profile-title">
 
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
+
 							<!-- .bbg__article-header__title -->
 							<h5 class="entry-category bbg-label">
 								<?php echo $occupation; ?>
@@ -144,10 +145,10 @@ get_header(); ?>
 
 						<?php 
 						if ($email!=""){
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
+							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
 						}
 						if ($twitterProfileHandle!=""){
-							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
 						}
 
 						if ($phone!=""){
@@ -194,5 +195,7 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+	<section class="usa-grid">
+		<?php get_sidebar(); ?>
+	</section>
 <?php get_footer(); ?>

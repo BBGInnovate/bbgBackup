@@ -27,6 +27,7 @@
 
 	@include media($medium-large-screen) {
 		margin-top: $profile-photo-margin-large;
+		margin-right: 3%;
 		width: 20%;
 	}
 
@@ -47,8 +48,8 @@
 	}
 
 	@include media($medium-screen) {
-		margin: 20px 9% auto auto;
-		max-width: 68%;
+		margin: 20px 0 auto auto;
+		max-width: 77%;
 		text-align: left;
 
 		h1, h5 {
