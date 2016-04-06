@@ -41,7 +41,7 @@ get_header(); ?>
 			<div class="usa-grid">
 			<?php
 				/* START CONTACT CARDS */
-				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',false );
+				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				if (count($contactPostIDs) > 0) {
 					$qParamsContactCard=array(
 						'post__in' => $contactPostIDs
