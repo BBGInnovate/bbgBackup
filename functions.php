@@ -904,7 +904,11 @@ function clearFBCache( $post_ID, $post) {
 add_action( 'publish_post', 'clearFBCache', 10, 2 );
 
 function acf_load_color_field_choices( $field ) {
-    // reset choices
+    //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
+    //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
+
+	global $post;
+	$post_original=$post;
     $field['choices'] = array();
     $qParamsContact=array(
 		'post_type' => array('post')
@@ -917,8 +921,7 @@ function acf_load_color_field_choices( $field ) {
 		$title = get_the_title();
 		$field['choices'][ $title ] = $title;
 	}
-	wp_reset_postdata();
-	wp_reset_query();
+	$post=$post_original;
 	// return the field
 	return $field;
 }
