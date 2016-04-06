@@ -38,7 +38,7 @@ if ( have_posts() ) {
 	$profilePhoto = "";
 	//$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($profilePhotoID) {
-		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'Full');
+		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 		$profilePhoto = $profilePhoto[0];
 	}
 
