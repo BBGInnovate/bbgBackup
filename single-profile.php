@@ -132,8 +132,6 @@ get_header(); ?>
 						</div>
 					</header><!-- .bbg__article-header -->
 
-					<div class="container" style="position: relative;">
-
 					<div class="bbg__article-sidebar--left">
 
 						<ul class="bbg__article-share ">
@@ -158,7 +156,7 @@ get_header(); ?>
 						?>
 						</ul>
 
-					<div class="entry-content bbg__article-content">
+					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
 						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 					</div><!-- .entry-content -->
@@ -185,10 +183,8 @@ get_header(); ?>
 							}
 						?>
 
-					</div>
+					</div><!-- .bbg__article-sidebar -->
 
-
-					</div><!-- container -->
 				</div><!-- .usa-grid -->
 
 			</article><!-- #post-## -->

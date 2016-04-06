@@ -1,17 +1,32 @@
+.bbg__article--no-featured-image {
+	.bbg__profile-photo {
+		margin: 0 auto;
+
+		@include media($medium-screen) {
+			margin: 0 $site-margins-small auto 0;
+		}
+
+		@include media($medium-large-screen) {
+			margin: 0 $site-margins-small auto 0;
+		}
+	}
+}
+
+
 .bbg__profile-photo {
-	margin: -60px auto auto;
+	margin: -60px auto 0;
 	position: relative;
 	width: 120px;
 	z-index: 9999;
 
 	@include media($medium-screen) {
 		float: left;
-		margin: -60px $site-margins-small auto 0;
+		margin-right: $site-margins-small;
 		width: 160px;
 	}
 
 	@include media($medium-large-screen) {
-		margin: -100px $site-margins-small auto 0;
+		margin-top: $profile-photo-margin-large;
 		width: 20%;
 	}
 
@@ -74,7 +89,7 @@
 	.bbg__profile-header__banner {
 		background: {
 			size: cover;
-			position: center center;
+			position: center center; //default positioning, maybe be set in post.
 		}
 		height: 250px;
 		margin-bottom: 0;
@@ -106,7 +121,12 @@
 				left: auto;
 			}
 			width: 56%;
+
+			&.bbg__article--no-featured-image{
+				margin-top: $profile-photo-margin-large;
+			}
 		}
+
 
 		.bbg__article-sidebar {
 			float: right;
@@ -123,3 +143,4 @@
 		}
 	}
 }
+

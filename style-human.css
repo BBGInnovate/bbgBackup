@@ -5205,8 +5205,22 @@ ol li:before {
   padding-right: 6rem;
 }
 
+.bbg__article--no-featured-image .bbg__profile-photo {
+  margin: 0 auto;
+}
+@media screen and (min-width: 600px) {
+  .bbg__article--no-featured-image .bbg__profile-photo {
+    margin: 0 1rem auto 0;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__article--no-featured-image .bbg__profile-photo {
+    margin: 0 1rem auto 0;
+  }
+}
+
 .bbg__profile-photo {
-  margin: -60px auto auto;
+  margin: -60px auto 0;
   position: relative;
   width: 120px;
   z-index: 9999;
@@ -5214,13 +5228,13 @@ ol li:before {
 @media screen and (min-width: 600px) {
   .bbg__profile-photo {
     float: left;
-    margin: -60px 1rem auto 0;
+    margin-right: 1rem;
     width: 160px;
   }
 }
 @media screen and (min-width: 900px) {
   .bbg__profile-photo {
-    margin: -100px 1rem auto 0;
+    margin-top: -100px;
     width: 20%;
   }
 }
@@ -5324,6 +5338,9 @@ ol li:before {
     margin-bottom: 3rem;
     margin-left: auto;
     width: 56%;
+  }
+  .category-profile .bbg__article-content.bbg__article--no-featured-image {
+    margin-top: -100px;
   }
   .category-profile .bbg__article-sidebar {
     float: right;

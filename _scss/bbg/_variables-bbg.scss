@@ -52,7 +52,12 @@ $share-icon-small:             20px;
 $share-icon-large:             40px;
 $social-icon-home:             40px;
 
-// Are we (consistently) using these?
+// Site margins
 $site-margins-small:           1rem;
 $site-margins-medium:         $site-margins / 2;
+//$site-margins:              3rem;//defined in master _variables.scss
 $site-margins-large:          $site-margins * 2;
+
+
+//Profile stuff
+$profile-photo-margin-large: -100px;
