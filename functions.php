@@ -545,8 +545,7 @@ function bbginnovate_query_offset(&$query) {
 					get_cat_id('Site Introduction'),
 					get_cat_id('Profile'),
 					get_cat_id("John's take"),
-					get_cat_id('Contact'),
-					get_cat_id('MobileApps Introduction')
+					get_cat_id('Contact')
 				),
 				'operator' => 'NOT IN',
 			)
