@@ -48,18 +48,21 @@ get_header(); ?>
 					);
 					$custom_query = new WP_Query( $qParamsContactCard );
 					if ( $custom_query->have_posts() ) :
-						echo "<h1>Related contact data</h1>";
+						echo "<h2>Related contact data</h2>";
 						while ( $custom_query->have_posts() ) : $custom_query->the_post();
-							//now let's get the custom fields associated with our related contac tposts
+							//now let's get the custom fields associated with our related contact posts
 							$email = get_post_meta( get_the_ID(), 'email',true );
 							$fullname=get_post_meta( get_the_ID(), 'fullname',true );
 							$phone=get_post_meta( get_the_ID(), 'phone',true );
 							$bio=get_the_content();
 
-							echo "email: $email<BR>";
-							echo "fullname: $fullname<BR>";
-							echo "phone: $phone<BR>";
-							echo "bio: $bio<BR>";
+							echo "<div>";
+							echo "<h4>fullname: $fullname</h4>";
+							echo "<p>bio: $bio</p>";
+							echo "<ul>";
+							echo "<li>email: $email</li>";
+							echo "<li>phone: $phone</li>";
+							echo "</ul></div>";
 
 						endwhile;
 					endif;
