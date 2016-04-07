@@ -190,11 +190,11 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 							$bio=get_the_content();
 
 							echo '<div class="bbg__contact-box">';
-							echo '<h4>$fullname</h4>';
-							echo '<p>$bio</p>';
+							echo '<h4>'.$fullname.'</h4>';
+							echo '<p>'.$bio.'</p>';
 							echo '<ul>';
-							echo '<li>email: <a href="mailto:'.$email.'" title="Email '.$fullname.'">$email</a></li>';
-							echo '<li>phone: $phone</li>';
+							echo '<li>email: <a href="mailto:'.$email.'" title="Email '.$fullname.'">'.$email.'</a></li>';
+							echo '<li>phone: '.$phone.'</li>';
 							echo '</ul></div>';
 
 						endwhile;
