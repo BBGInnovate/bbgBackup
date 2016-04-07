@@ -36,7 +36,7 @@ if ( have_posts() ) {
 
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
 	$profilePhoto = "";
-	//$socialImageID = get_post_meta( $post->ID, 'social_image',true );
+
 	if ($profilePhotoID) {
 		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 		$profilePhoto = $profilePhoto[0];
@@ -44,7 +44,7 @@ if ( have_posts() ) {
 
 
 
-	$ogDescription = get_the_excerpt(); //get_the_excerpt()
+	$ogDescription = get_the_excerpt();
 
 	rewind_posts();
 }
