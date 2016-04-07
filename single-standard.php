@@ -59,7 +59,7 @@ get_header(); ?>
 							echo "<div>";
 							echo "<h4>fullname: $fullname</h4>";
 							echo "<p>bio: $bio</p>";
-							echo "<ul>"
+							echo "<ul>";
 							echo "<li>email: $email</li>";
 							echo "<li>phone: $phone</li>";
 							echo "</ul></div>";
