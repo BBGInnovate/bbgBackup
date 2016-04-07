@@ -42,7 +42,7 @@ get_header(); ?>
 			<?php
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
-				if (count($contactPostIDs) > 0) {
+				if (is_array($contactPostIDs) && count($contactPostIDs) > 0) {
 					$qParamsContactCard=array(
 						'post__in' => $contactPostIDs
 					);
