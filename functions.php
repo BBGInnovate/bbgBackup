@@ -533,15 +533,21 @@ add_action( 'edited_category', 'xg_save_tax_meta', 10, 2 );
 
 add_action('pre_get_posts', 'bbginnovate_query_offset', 1 );
 function bbginnovate_query_offset(&$query) {
-	/* don't show in focus posts on homepage */
-	if ($query -> is_home()) {
-		$portfolio_cat_id=get_cat_id('Project');
-		$siteintro_cat_id=get_cat_id('Site Introduction');
+	/* note that is_home really means 'blog index page' ... which is not necessarily the homepage */
+
+	if ( $query->is_main_query() && ($query -> is_home() || $query->is_archive() )) {
 		$tax_query = array(
+			//'relation' => 'OR',
 			array(
 				'taxonomy' => 'category',
 				'field' => 'term_id',
-				'terms' => [$portfolio_cat_id,$siteintro_cat_id],
+				'terms' => array(
+					get_cat_id('Site Introduction'),
+					get_cat_id('Profile'),
+					get_cat_id("John's take"),
+					get_cat_id('Contact'),
+					get_cat_id('MobileApps Introduction')
+				),
 				'operator' => 'NOT IN',
 			)
 		);
