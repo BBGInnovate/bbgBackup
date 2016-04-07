@@ -171,6 +171,40 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<!-- old nav location -->
 
+			<div class="usa-grid">
+			<?php
+				/* START CONTACT CARDS */
+				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
+				if (is_array($contactPostIDs) && count($contactPostIDs) > 0) {
+					$qParamsContactCard=array(
+						'post__in' => $contactPostIDs
+					);
+					$custom_query = new WP_Query( $qParamsContactCard );
+					if ( $custom_query->have_posts() ) :
+						echo "<h2>Related contact data</h2>";
+						while ( $custom_query->have_posts() ) : $custom_query->the_post();
+							//now let's get the custom fields associated with our related contact posts
+							$email = get_post_meta( get_the_ID(), 'email',true );
+							$fullname=get_post_meta( get_the_ID(), 'fullname',true );
+							$phone=get_post_meta( get_the_ID(), 'phone',true );
+							$bio=get_the_content();
+
+							echo "<div>";
+							echo "<h4>fullname: $fullname</h4>";
+							echo "<p>bio: $bio</p>";
+							echo "<ul>";
+							echo "<li>email: $email</li>";
+							echo "<li>phone: $phone</li>";
+							echo "</ul></div>";
+
+						endwhile;
+					endif;
+					wp_reset_postdata();
+					wp_reset_query();
+				}
+				/* END CONTACT CARDS */
+			?>
+			</div>
 
 
 		</div><!-- .entry-content -->
