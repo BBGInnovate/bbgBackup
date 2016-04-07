@@ -189,18 +189,18 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 							$phone = get_post_meta( get_the_ID(), 'phone',true );
 							$bio = get_the_content();
 							$office = get_post_meta( get_the_ID(), 'office',true );
-							$jobTitle = get_post_meta( get_the_ID(), 'job-title',true );
+							$jobTitle = get_post_meta( get_the_ID(), 'job_title',true );
 
 							if ($jobTitle!=""){
 								$office = $jobTitle . ", " . $office;
 							}
 
 							echo '<div class="bbg__contact-box">';
-							echo '<h4>Contact '.$fullname.'</h4>';
-							echo '<p>'.$office.'</p>';
-							echo '<ul>';
-							echo '<li>email: <a href="mailto:'.$email.'" title="Email '.$fullname.'">'.$email.'</a></li>';
-							echo '<li>phone: '.$phone.'</li>';
+							echo '<p>Contact '.$fullname.'<br/>';
+							echo $office.'</p>';
+							echo '<ul class="bbg__contact-box__contact-list">';
+							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
+							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>';
 							echo '</ul></div>';
 
 						endwhile;
