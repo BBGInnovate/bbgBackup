@@ -171,7 +171,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<!-- old nav location -->
 
-			<div class="usa-grid">
+			<div class="usa-grid-full">
 			<?php
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
@@ -181,7 +181,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					);
 					$custom_query = new WP_Query( $qParamsContactCard );
 					if ( $custom_query->have_posts() ) :
-						echo "<h2>Related contact data</h2>";
+						echo "<h3>Find out more</h3>";
 						while ( $custom_query->have_posts() ) : $custom_query->the_post();
 							//now let's get the custom fields associated with our related contact posts
 							$email = get_post_meta( get_the_ID(), 'email',true );
@@ -189,13 +189,13 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 							$phone=get_post_meta( get_the_ID(), 'phone',true );
 							$bio=get_the_content();
 
-							echo "<div>";
-							echo "<h4>fullname: $fullname</h4>";
-							echo "<p>bio: $bio</p>";
-							echo "<ul>";
-							echo "<li>email: $email</li>";
-							echo "<li>phone: $phone</li>";
-							echo "</ul></div>";
+							echo '<div class="bbg__contact-box">';
+							echo '<h4>$fullname</h4>';
+							echo '<p>$bio</p>';
+							echo '<ul>';
+							echo '<li>email: <a href="mailto:'.$email.'" title="Email '.$fullname.'">$email</a></li>';
+							echo '<li>phone: $phone</li>';
+							echo '</ul></div>';
 
 						endwhile;
 					endif;
