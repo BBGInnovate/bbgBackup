@@ -124,9 +124,7 @@ get_header();
 						'category__not_in' => (array(get_cat_id('Site Introduction'),
 													get_cat_id('Profile'),
 													get_cat_id("John's take"),
-													get_cat_id('Contact'),
-													get_cat_id('Project'),
-													get_cat_id('MobileApps Introduction')
+													get_cat_id('Contact')
 											))
 					);
 					query_posts($qParams);
@@ -147,83 +145,10 @@ get_header();
 						endwhile;
 						echo '</div><!-- .usa-grid-full -->';
 					endif;
+					wp_reset_query();
 				?>
 				</div>
 			</section><!-- Recent posts -->
-
-
-			<?php
-				/** in general settings we've entered featured categoryIDs as a comma separated list which should be ones that are specified as teams and have users that are specified as their heads */
-				$featuredCategoryIDsStr=get_option( 'featuredCategoryIDs' );
-				if ($featuredCategoryIDsStr != "") {
-			?>
-				<!-- Staff -->
-				<section id="teams" class="usa-section bbg-staff">
-					<div class="usa-grid">
-						<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'teams' ) ) ?>" title="A directory of the current ODDI staff.">Our teams</a></h6>
-
-						<div class="usa-intro">
-							<h3 class="usa-font-lead">ODDI’s teams of designers, developers and storytellers help drive USIM digital projects.</h3>
-						</div>
-
-						<div class="usa-grid-full">
-
-							<?php
-								/*
-								   we need a way to know which categories are owned by which user - create a quick data structure.
-								   there is likely a more efficient way to do that but with <100 users, no harm
-								*/
-
-								$categoryHeads=array();
-								$blogusers = get_users();
-								foreach ( $blogusers as $user ) {
-									if ($user->headOfTeam != "") {
-										$categoryHeads[$user->headOfTeam]=$user;
-									}
-								}
-
-
-								$featuredCategoryIDs = explode( ',', $featuredCategoryIDsStr );
-								array_walk( $featuredCategoryIDs, 'intval' );
-								$args = array( 'include' => $featuredCategoryIDs, 'orderby' => 'include', 'hide_empty' => false);
-
-								$categories = get_categories($args );
-								foreach ( $categories as $category ) {
-									$iconName = "bbg-team__icon__".$category->category_nicename;
-									//$categoryLink=get_category_link( $category->term_id );
-									$categoryLink= add_query_arg('category_id', $category->term_id, get_permalink( get_page_by_path( 'team' ) ));
-								?>
-								<article class="bbg-team bbg-grid--1-1-1-2">
-
-									<div class="bbg-avatar__container bbg-team__icon">
-										<a href="<?php echo $categoryLink; ?>" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image <?php echo $iconName ?>" style="background-image: url(<?php echo get_template_directory_uri() ?>/img/icon_team_<?php echo $category->category_nicename; ?>.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg-team__text">
-										<?php
-											$user=$categoryHeads[$category->term_id];
-											$authorPath = get_author_posts_url($user->ID);
-											echo "<h2 class='bbg-team__name'><a href='$categoryLink'>" . $category->name . "</a></h2>";
-											echo "<p class='bbg-team__text-description'>" . $category->description . "</p>";
-										?>
-									</div><!-- .bbg-team__text -->
-
-								</article>
-
-								<?php } ?>
-
-
-						</div>
-						<a href="<?php echo get_permalink( get_page_by_path( 'staff' ) ) ?>">Meet the full ODDI team »</a>
-					</div>
-				</section><!-- Staff -->
-			<?php
-				}
-			?>
-
-
 		</main>
 	</div><!-- #primary .content-area -->
 	<div id="secondary" class="widget-area" role="complementary">
