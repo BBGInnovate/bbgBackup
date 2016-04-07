@@ -185,13 +185,19 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 						while ( $custom_query->have_posts() ) : $custom_query->the_post();
 							//now let's get the custom fields associated with our related contact posts
 							$email = get_post_meta( get_the_ID(), 'email',true );
-							$fullname=get_post_meta( get_the_ID(), 'fullname',true );
-							$phone=get_post_meta( get_the_ID(), 'phone',true );
-							$bio=get_the_content();
+							$fullname = get_post_meta( get_the_ID(), 'fullname',true );
+							$phone = get_post_meta( get_the_ID(), 'phone',true );
+							$bio = get_the_content();
+							$office = get_post_meta( get_the_ID(), 'office',true );
+							$jobTitle = get_post_meta( get_the_ID(), 'job-title',true );
+
+							if ($jobTitle!=""){
+								$office = $jobTitle . ", " . $office;
+							}
 
 							echo '<div class="bbg__contact-box">';
-							echo '<h4>'.$fullname.'</h4>';
-							echo '<p>'.$bio.'</p>';
+							echo '<h4>Contact '.$fullname.'</h4>';
+							echo '<p>'.$office.'</p>';
 							echo '<ul>';
 							echo '<li>email: <a href="mailto:'.$email.'" title="Email '.$fullname.'">'.$email.'</a></li>';
 							echo '<li>phone: '.$phone.'</li>';
