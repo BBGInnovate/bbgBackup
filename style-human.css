@@ -5294,6 +5294,7 @@ ol li:before {
   .bbg__profile-photo {
     margin-top: -100px;
     margin-right: 3%;
+    min-height: 200px;
     width: 20%;
   }
 }

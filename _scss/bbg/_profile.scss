@@ -28,6 +28,7 @@
 	@include media($medium-large-screen) {
 		margin-top: $profile-photo-margin-large;
 		margin-right: 3%;
+		min-height: 200px;
 		width: 20%;
 	}
 
