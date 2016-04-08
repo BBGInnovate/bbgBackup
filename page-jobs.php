@@ -8,7 +8,10 @@
   template name: Jobs
  */
 
-
+$pageContent ="";
+while ( have_posts() ) : the_post();
+	$pageContent = get_the_content();
+endwhile;
 
 get_header(); ?>
 
@@ -29,16 +32,12 @@ get_header(); ?>
 				<section class="usa-section usa-grid">
 					<h6 class="bbg-label small">Jobs</h6>
 					<div class="bbg-grid__container">
+
 						<?php 
-							$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
-							//  Initiate curl
-							$ch = curl_init();
-							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-							curl_setopt($ch, CURLOPT_URL,$jobsUrl);
-							$result=curl_exec($ch);
-							curl_close($ch);
-							$jobs = json_decode($result, true);
+
+							echo $pageContent . "<BR><BR>";
+
+							$jobs=getJobs();
 
 							for ($i=0; $i < count($jobs); $i++) {
 								$j=$jobs[$i];
