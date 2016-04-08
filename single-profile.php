@@ -166,21 +166,23 @@ get_header(); ?>
 					<div class="bbg__article-sidebar">
 						<?php 
 							if ( $relatedLinksTag != "" ) {
-								echo '<h3 class="bbg__sidebar-label">Related posts  <!--(tag "$relatedLinksTag")--></h3>';
 								$qParams2=array(
 									'post_type' => array('post'),
 									'posts_per_page' => 5,
 									'tag' => $relatedLinksTag
 								);
 								$custom_query = new WP_Query( $qParams2 );
-								echo '<ul class="bbg__profile__related-link__list">';
-								while ( $custom_query -> have_posts() )  {
-									$custom_query->the_post();
-									$link = get_the_permalink();
-									$title = get_the_title();
-									echo '<li class="bbg__profile__related-link"><a href="' . $link . '">' . $title . '</a></li>';
+								if ($custom_query -> have_posts()) {
+									echo '<h3 class="bbg__sidebar-label">Related posts  <!--(tag "$relatedLinksTag")--></h3>';
+									echo '<ul class="bbg__profile__related-link__list">';
+									while ( $custom_query -> have_posts() )  {
+										$custom_query->the_post();
+										$link = get_the_permalink();
+										$title = get_the_title();
+										echo '<li class="bbg__profile__related-link"><a href="' . $link . '">' . $title . '</a></li>';
+									}
+									echo "</ul>";
 								}
-								echo "</ul>";
 								wp_reset_postdata();
 							}
 						?>
