@@ -3476,21 +3476,25 @@ object {
   }
 }
 
+.bbg__contact__icon.email,
 .bbg__article-share__icon.email {
   background-color: #757575;
   background-image: url(img/social-icons/png-white/social-icons_email.png);
 }
 
+.bbg__contact__icon.facebook,
 .bbg__article-share__icon.facebook {
   background-color: #3d5a98;
   background-image: url(img/social-icons/png-white/social-icons_facebook.png);
 }
 
+.bbg__contact__icon.twitter,
 .bbg__article-share__icon.twitter {
   background-color: #55acee;
   background-image: url(img/social-icons/png-white/social-icons_twitter.png);
 }
 
+.bbg__contact__icon.phone,
 .bbg__article-share__icon.phone {
   background-color: #3d5a98;
   background-image: url(img/social-icons/png-white/social-icons_phone.png);
@@ -3814,6 +3818,60 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   }
   .bbg__article-author .bbg__author-contact .bbg__author-contact__website:before {
     content: " | ";
+  }
+}
+
+/* BBG Contact cards for press releases */
+.bbg__contact-box {
+  border-top: 1px solid #CCC;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  /* Contact card share links */
+  /* Article share links: icons */
+  /* Article share links: text */
+}
+.bbg__contact-box li.bbg__contact__link {
+  display: inline-block;
+  margin: 0 2rem 0 0;
+}
+.bbg__contact-box li.bbg__contact__link a:hover,
+.bbg__contact-box li.bbg__contact__link a:focus {
+  background: none;
+  text-decoration: none;
+}
+@media screen and (min-width: 900px) {
+  .bbg__contact-box li.bbg__contact__link {
+    display: block;
+  }
+}
+.bbg__contact-box .bbg__contact__link:before {
+  content: "";
+}
+.bbg__contact-box .bbg__contact__icon {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0.3rem;
+  display: inline-block;
+  height: 40px;
+  margin-right: .5rem;
+  vertical-align: middle;
+  width: 40px;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-box .bbg__contact__icon {
+    border-radius: 0;
+    height: 20px;
+    width: 20px;
+  }
+}
+.bbg__contact-box .bbg__contact__text:hover, .bbg__contact-box .bbg__contact__text:focus {
+  background: none;
+  text-decoration: underline;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-box .bbg__contact__text {
+    display: inline-block;
   }
 }
 

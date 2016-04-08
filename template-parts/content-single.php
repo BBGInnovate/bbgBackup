@@ -171,7 +171,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<!-- old nav location -->
 
-			<div class="usa-grid-full">
+			<div class="usa-grid-full bbg__contact-box">
 			<?php
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
@@ -181,7 +181,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					);
 					$custom_query = new WP_Query( $qParamsContactCard );
 					if ( $custom_query->have_posts() ) :
-						echo "<h3>Find out more</h3>";
+						echo '<h3 class="bbg__contact-box__title">### Find out more</h3>';
 						while ( $custom_query->have_posts() ) : $custom_query->the_post();
 							//now let's get the custom fields associated with our related contact posts
 							$email = get_post_meta( get_the_ID(), 'email',true );
@@ -195,12 +195,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 								$office = $jobTitle . ", " . $office;
 							}
 
-							echo '<div class="bbg__contact-box">';
+							echo '<div class="bbg__contact__card">';
 							echo '<p>Contact '.$fullname.'<br/>';
 							echo $office.'</p>';
-							echo '<ul class="bbg__contact-box__contact-list">';
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>';
+							echo '<ul class="bbg__contact__card-list">';
+							echo '<li class="bbg__contact__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__contact__icon email"></span><span class="bbg__contact__text">'.$email.'</span></a></li>';
+							echo '<li class="bbg__contact__link phone"><span class="bbg__contact__icon phone"></span><span class="bbg__contact__text">'.$phone.'</span></li>';
 							echo '</ul></div>';
 
 						endwhile;

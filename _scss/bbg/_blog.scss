@@ -116,6 +116,7 @@
 	}
 }
 
+.bbg__contact__icon.email,
 .bbg__article-share__icon.email {
 	background: {
 		color: $color-gray-medium;
@@ -123,6 +124,7 @@
 	}
 }
 
+.bbg__contact__icon.facebook,
 .bbg__article-share__icon.facebook {
 	background: {
 		color: $color-share-facebook;
@@ -130,6 +132,7 @@
 	}
 }
 
+.bbg__contact__icon.twitter,
 .bbg__article-share__icon.twitter {
 	background: {
 		color: $color-share-twitter;
@@ -137,6 +140,7 @@
 	}
 }
 
+.bbg__contact__icon.phone,
 .bbg__article-share__icon.phone {
 	background: {
 		color: $color-share-facebook;
@@ -587,6 +591,74 @@ ul.bbg__article-content__list--inline {
 		}
 	}
 }
+
+/* BBG Contact cards for press releases */
+.bbg__contact-box {
+	border-top: 1px solid #CCC;
+	margin-top: $site-margins;
+	padding-top: $site-margins;
+
+
+	/* Contact card share links */
+	li.bbg__contact__link {
+		display: inline-block;
+		margin: 0 2rem 0 0;
+
+		a:hover,
+		a:focus {
+			background: none;
+			text-decoration: none;
+		}
+		@include media($medium-large-screen) {
+			display: block;
+		}
+	}
+
+	.bbg__contact__link:before {
+		content: "";
+	}
+
+
+	/* Article share links: icons */
+	.bbg__contact__icon {
+		@include backgroundCover();
+		border-radius: $border-radius;
+		display: inline-block;
+		height: $share-icon-large;
+		margin-right: .5rem;
+		vertical-align: middle;
+		width: $share-icon-large;
+		@include media($medium-screen) {
+			border-radius: 0;
+			height: $share-icon-small;
+			width: $share-icon-small;
+		}
+	}
+
+
+	/* Article share links: text */
+	.bbg__contact__text {
+		&:hover,
+		&:focus {
+			background: none;
+			text-decoration: underline;
+		}
+		@include media($medium-screen) {
+			display: inline-block;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /** BBG tagline */
