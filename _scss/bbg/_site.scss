@@ -375,7 +375,18 @@ article {
 		right: -3rem;
 		left: -3rem;
 	}
-	width: calc(100% - 3em);
+	max-width: none;
+	width: 100%;
+	width: calc(100% + 6rem);
+
+	@include media($medium-large-screen) {
+		margin: {
+			right: auto;
+			left: auto;
+		}
+		max-width: $article-max-width;
+		width: 100%;
+	}
 }
 
 
