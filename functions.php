@@ -946,14 +946,20 @@ function acf_load_color_field_choices( $field ) {
 add_filter('acf/load_field/name=contact_post_id', 'acf_load_color_field_choices');
 
 function getJobs() {
-	$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
-	//  Initiate curl
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_URL,$jobsUrl);
-	$result=curl_exec($ch);
-	curl_close($ch);
+	$jobsFilepath = get_template_directory() . "/jobcache.json";
+	if (! file_exists($jobsFilepath)) {
+		$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL,$jobsUrl);
+		$result=curl_exec($ch);
+		curl_close($ch);
+		file_put_contents($jobsFilepath, $result);
+	} else {
+		echo "reading the file <BR>";
+		$result=file_get_contents($jobsFilepath);
+	}
 	$jobs = json_decode($result, true);
 
 	return $jobs;
