@@ -10,3 +10,10 @@
 	content: "";
 }
 */
+
+#acf-first_name,
+#acf-last_name {
+	border-top: none;
+	display: inline-block;
+	width: 45%;
+}
