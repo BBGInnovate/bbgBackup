@@ -4526,6 +4526,13 @@ article {
   display: block !important;
 }
 
+/****************************/
+.bbg__iframe__timelinejs {
+  margin-right: -3rem;
+  margin-left: -3rem;
+  width: calc(100% - 3em);
+}
+
 /*****************************/
 .bbg__excerpt-meta {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
