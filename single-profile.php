@@ -34,6 +34,11 @@ if ( have_posts() ) {
 	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
 	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
 
+	$active = get_post_meta( get_the_ID(), 'active', true );
+	if (!$active){
+		$occupation = "(Former) " . $occupation;
+	}
+
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
 	$profilePhoto = "";
 

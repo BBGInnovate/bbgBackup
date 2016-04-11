@@ -372,12 +372,12 @@ article {
 
 .bbg__iframe__timelinejs {
 	margin: {
-		right: -3rem;
-		left: -3rem;
+		right: -$site-margins;
+		left: -$site-margins;
 	}
 	max-width: none;
 	width: 100%;
-	width: calc(100% + 6rem);
+	width: calc(100% + 2*$site-margins);
 
 	@include media($medium-large-screen) {
 		margin: {
