@@ -23,7 +23,8 @@ wp_reset_postdata();
 wp_reset_query();
 
 
-$boardPage=get_page_by_title('The Board')
+$boardPage=get_page_by_title('The Board');
+$thePostID=$boardPage->ID;
 
 $qParams=array(
 	'post_type' => array('page')
