@@ -57,7 +57,7 @@ if ( have_posts() ) {
 }
 
 get_header(); ?>
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area bbg__profile">
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
