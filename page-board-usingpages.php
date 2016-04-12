@@ -30,15 +30,18 @@ $qParams=array(
 	'post_type' => array('page')
 	,'post_status' => array('publish')
 	,'post_parent' => $thePostID
+	,'orderby' => 'title'
 );
 $custom_query = new WP_Query($qParams);
 
-$b="";
+$boardStr="";
+$chairpersonStr="";
 while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
 	if ($active){
+		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
 		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 		$email=get_post_meta( get_the_ID(), 'email', true );
 		$phone=get_post_meta( get_the_ID(), 'phone', true );
@@ -50,7 +53,7 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 			$profilePhoto = $profilePhoto[0];
 		}
-		$b.=  '<div class="bbg__board-member__profile">';
+		$b =  '<div class="bbg__board-member__profile">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__board-member__photo-container">';
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
@@ -62,10 +65,15 @@ while ( $custom_query->have_posts() )  {
 			$b.= get_the_excerpt();
 		$b.=  '</div><!-- .bbg__board-member__profile -->';
 
-		
+		if ($isChairperson) {
+			$chairpersonStr=$b;
+		} else {
+			$boardStr.=$b;
+		}
 	}
 }
-$pageContent=str_replace("[board list]", $b, $pageContent);
+$boardStr=$chairpersonStr . $boardStr;
+$pageContent=str_replace("[board list]", $boardStr, $pageContent);
 
 
 get_header(); ?>
