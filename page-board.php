@@ -29,6 +29,36 @@ $qParams=array(
 );
 $custom_query = new WP_Query($qParams);
 
+$b="";
+while ( $custom_query->have_posts() )  {
+	$custom_query->the_post();
+
+	$active=get_post_meta( get_the_ID(), 'active', true );
+	if ($active){
+		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
+		$email=get_post_meta( get_the_ID(), 'email', true );
+		$phone=get_post_meta( get_the_ID(), 'phone', true );
+		$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
+		$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
+		$profilePhoto = "";
+
+		if ($profilePhotoID) {
+			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+			$profilePhoto = $profilePhoto[0];
+		}
+		$b.= '<div class="bbg__board-member__excerpt">';
+		$b.= '<div class="bbg__profile-photo">';
+			$b.= '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
+		$b.= '</div>';
+		$b.= '<div>';
+		$b.= '<h3>' . get_the_title() . '</h3>';
+		$b.=get_the_excerpt();
+		$b.= '</div>';
+		$b.= '</div>';
+	}
+}
+$pageContent=str_replace("[board list]", $b, $pageContent);
+
 
 get_header(); ?>
 
@@ -41,45 +71,13 @@ get_header(); ?>
 					</h6>
 				</header><!-- .page-header -->
 			</div>
-			<?php 
-				if ($pageContent != "") {
-					echo '<section id="mobileAppsIntro" class=" usa-grid">';
-					echo $pageContent;
-					echo '</section>';
-				}
-			?>
 			<div class="usa-grid-full">
 				<div class="usa-grid">
 				<?php
-					while ( $custom_query->have_posts() )  {
-						$custom_query->the_post();
-
-						$active=get_post_meta( get_the_ID(), 'active', true );
-						if ($active){
-							$occupation=get_post_meta( get_the_ID(), 'occupation', true );
-							$email=get_post_meta( get_the_ID(), 'email', true );
-							$phone=get_post_meta( get_the_ID(), 'phone', true );
-							$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-							$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
-							$profilePhoto = "";
-
-							if ($profilePhotoID) {
-								$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-								$profilePhoto = $profilePhoto[0];
-							}
-							echo '<div class="bbg__board-member__profile">';
-								echo '<a href="#link-to-profile-here">';
-									echo '<div class="bbg__board-member__photo-container">';
-										echo '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
-									echo '</div>';
-									echo '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
-									the_excerpt();
-								echo '</a>';
-							echo '</div><!-- .bbg__board-member__profile -->';
-						}
+					if ($pageContent != "") {
+						echo $pageContent;
 					}
 				?>
-
 				</div><!-- .usa-grid -->
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
