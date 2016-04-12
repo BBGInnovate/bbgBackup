@@ -30,8 +30,10 @@ $qParams=array(
 	'post_type' => array('page')
 	,'post_status' => array('publish')
 	,'post_parent' => $thePostID
-	,'orderby' => 'title'
-	,'order' => 'asc'
+	,'orderby' => 'meta_value'
+	,'meta_key' => 'last_name'
+	,'order' => 'ASC'
+	,'posts_per_page' => 100
 );
 $custom_query = new WP_Query($qParams);
 
