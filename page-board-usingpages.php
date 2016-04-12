@@ -31,6 +31,7 @@ $qParams=array(
 	,'post_status' => array('publish')
 	,'post_parent' => $thePostID
 	,'orderby' => 'title'
+	,'order' => 'asc'
 );
 $custom_query = new WP_Query($qParams);
 
