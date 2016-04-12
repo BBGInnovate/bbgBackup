@@ -67,12 +67,14 @@ get_header(); ?>
 								$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 								$profilePhoto = $profilePhoto[0];
 							}
-							echo '<div>' . get_the_title() . '</div>';
-							//echo '<div class="bbg__profile-photo">';
+							echo '<div class="bbg__board-member__excerpt">';
+							echo '<div class="bbg__profile-photo">';
 								echo '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
-							//echo '</div>';
+							echo '</div>';
 							echo '<div>';
+							echo '<h3>' . get_the_title() . '</h3>';
 							the_excerpt();
+							echo '</div>';
 							echo '</div>';
 						}
 					}
