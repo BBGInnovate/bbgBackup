@@ -5432,3 +5432,21 @@ ol li:before {
     width: 20%;
   }
 }
+
+.bbg__board-member__profile:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.bbg__board-member__photo-container {
+  float: left;
+  margin-right: 1rem;
+  max-width: 200px;
+}
+
+.bbg__board-member__name {
+  clear: none;
+}

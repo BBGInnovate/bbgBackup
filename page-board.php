@@ -67,15 +67,13 @@ get_header(); ?>
 								$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 								$profilePhoto = $profilePhoto[0];
 							}
-							echo '<div class="bbg__board-member__excerpt">';
-							echo '<div class="bbg__profile-photo">';
-								echo '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
-							echo '</div>';
-							echo '<div>';
-							echo '<h3>' . get_the_title() . '</h3>';
-							the_excerpt();
-							echo '</div>';
-							echo '</div>';
+							echo '<div class="bbg__board-member__profile">';
+								echo '<div class="bbg__board-member__photo-container">';
+									echo '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+								echo '</div>';
+								echo '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
+								the_excerpt();
+							echo '</div><!-- .bbg__board-member__profile -->';
 						}
 					}
 				?>

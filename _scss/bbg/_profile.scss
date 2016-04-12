@@ -146,3 +146,17 @@
 	}
 }
 
+
+.bbg__board-member__profile {
+	@include clearfix();
+}
+
+.bbg__board-member__photo-container {
+	float: left;
+	margin-right: $site-margins-small;
+	max-width: 200px;
+}
+
+.bbg__board-member__name {
+	clear: none;
+}
