@@ -46,15 +46,17 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 			$profilePhoto = $profilePhoto[0];
 		}
-		$b.= '<div class="bbg__board-member__excerpt">';
-		$b.= '<div class="bbg__profile-photo">';
-			$b.= '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
-		$b.= '</div>';
-		$b.= '<div>';
-		$b.= '<h3>' . get_the_title() . '</h3>';
-		$b.=get_the_excerpt();
-		$b.= '</div>';
-		$b.= '</div>';
+		$b.=  '<div class="bbg__board-member__profile">';
+		$b.=  '<a href="' . get_the_permalink() . '">';
+			$b.=  '<div class="bbg__board-member__photo-container">';
+				$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+			$b.=  '</div>';
+			$b.=  '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
+			$b.= get_the_excerpt();
+		$b.=  '</a>';
+		$b.=  '</div><!-- .bbg__board-member__profile -->';
+
+		
 	}
 }
 $pageContent=str_replace("[board list]", $b, $pageContent);
