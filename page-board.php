@@ -68,11 +68,13 @@ get_header(); ?>
 								$profilePhoto = $profilePhoto[0];
 							}
 							echo '<div class="bbg__board-member__profile">';
-								echo '<div class="bbg__board-member__photo-container">';
-									echo '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
-								echo '</div>';
-								echo '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
-								the_excerpt();
+								echo '<a href="#link-to-profile-here">';
+									echo '<div class="bbg__board-member__photo-container">';
+										echo '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+									echo '</div>';
+									echo '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
+									the_excerpt();
+								echo '</a>';
 							echo '</div><!-- .bbg__board-member__profile -->';
 						}
 					}
