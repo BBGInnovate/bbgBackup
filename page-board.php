@@ -54,24 +54,27 @@ get_header(); ?>
 					while ( $custom_query->have_posts() )  {
 						$custom_query->the_post();
 
-						$occupation=get_post_meta( get_the_ID(), 'occupation', true );
-						$email=get_post_meta( get_the_ID(), 'email', true );
-						$phone=get_post_meta( get_the_ID(), 'phone', true );
-						$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-						$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
-						$profilePhoto = "";
+						$active=get_post_meta( get_the_ID(), 'active', true );
+						if ($active){
+							$occupation=get_post_meta( get_the_ID(), 'occupation', true );
+							$email=get_post_meta( get_the_ID(), 'email', true );
+							$phone=get_post_meta( get_the_ID(), 'phone', true );
+							$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
+							$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
+							$profilePhoto = "";
 
-						if ($profilePhotoID) {
-							$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-							$profilePhoto = $profilePhoto[0];
+							if ($profilePhotoID) {
+								$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+								$profilePhoto = $profilePhoto[0];
+							}
+							echo '<div>' . get_the_title() . '</div>';
+							//echo '<div class="bbg__profile-photo">';
+								echo '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
+							//echo '</div>';
+							echo '<div>';
+							the_excerpt();
+							echo '</div>';
 						}
-						echo '<div>' . get_the_title() . '</div>';
-						//echo '<div class="bbg__profile-photo">';
-							echo '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
-						//echo '</div>';
-						echo '<div>';
-						the_excerpt();
-						echo '</div>';
 					}
 				?>
 
