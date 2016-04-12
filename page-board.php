@@ -71,7 +71,7 @@ get_header(); ?>
 						//echo '</div>';
 						echo '<div>';
 						the_excerpt();
-						echo '</div>'
+						echo '</div>';
 					}
 				?>
 
