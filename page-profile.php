@@ -5,6 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package bbgRedesign
+  template name: Profile
+
  */
 /* we go through the loop once and reset it in order to get some vars for our og tags */
 if ( have_posts() ) {
