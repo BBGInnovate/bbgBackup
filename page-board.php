@@ -69,6 +69,9 @@ get_header(); ?>
 						//echo '<div class="bbg__profile-photo">';
 							echo '<img src="' . $profilePhoto . '" class="bbg__profile-photo__image"/>';
 						//echo '</div>';
+						echo '<div>';
+						the_excerpt();
+						echo '</div>'
 					}
 				?>
 
