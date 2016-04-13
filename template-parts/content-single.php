@@ -171,7 +171,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<!-- old nav location -->
 
-			<div class="usa-grid-full bbg__contact-box">
 			<?php
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
@@ -181,7 +180,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					);
 					$custom_query = new WP_Query( $qParamsContactCard );
 					if ( $custom_query->have_posts() ) :
-						echo '<h3 class="bbg__contact-box__title">### Find out more</h3>';
+						echo '<div class="usa-grid-full bbg__contact-box">';
+						echo '<h3 class="bbg__contact-box__title">Find out more</h3>';
 						while ( $custom_query->have_posts() ) : $custom_query->the_post();
 							//now let's get the custom fields associated with our related contact posts
 							$email = get_post_meta( get_the_ID(), 'email',true );
@@ -204,13 +204,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 							echo '</ul></div>';
 
 						endwhile;
+						echo '</div>';
 					endif;
 					wp_reset_postdata();
 					wp_reset_query();
 				}
 				/* END CONTACT CARDS */
 			?>
-			</div>
+
 
 
 		</div><!-- .entry-content -->
