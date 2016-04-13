@@ -56,9 +56,15 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 			$profilePhoto = $profilePhoto[0];
 		}
+
+		$profileName = get_the_title();
+		if ($isChairperson) {
+			$profileName.=  ', Chairperson of the Board';
+		}
+
 		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
+			$b.=  '<h3 class="bbg__board-member__name">' . $profileName . '</h3>';
 			$b.=  '</a>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__board-member__photo-container">';
