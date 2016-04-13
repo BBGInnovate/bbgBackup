@@ -75,7 +75,7 @@ while ( $custom_query->have_posts() )  {
 		}
 	}
 }
-$boardStr = '<div class="usa-grid">' . $chairpersonStr . $boardStr . '</div>';
+$boardStr = $chairpersonStr . $boardStr;
 $pageContent = str_replace("[board list]", $boardStr, $pageContent);
 
 
