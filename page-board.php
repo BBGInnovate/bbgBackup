@@ -5,7 +5,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-  template name: Board
+  template name: Board using pages
  */
 
 /***** BEGIN PROJECT PAGINATION LOGIC 
@@ -22,19 +22,31 @@ endif;
 wp_reset_postdata();
 wp_reset_query();
 
+
+$boardPage=get_page_by_title('The Board');
+$thePostID=$boardPage->ID;
+
 $qParams=array(
-	'post_type' => array('post')
-	,'cat' => get_cat_id('Board Member')
+	'post_type' => array('page')
 	,'post_status' => array('publish')
+	,'post_parent' => $thePostID
+	,'orderby' => 'meta_value'
+	,'meta_key' => 'last_name'
+	,'order' => 'ASC'
+	,'posts_per_page' => 100
 );
 $custom_query = new WP_Query($qParams);
 
-$b="";
+$boardStr="";
+$chairpersonStr="";
+$secretaryStr="";
 while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
 	if ($active){
+		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
+		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
 		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 		$email=get_post_meta( get_the_ID(), 'email', true );
 		$phone=get_post_meta( get_the_ID(), 'phone', true );
@@ -46,9 +58,17 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 			$profilePhoto = $profilePhoto[0];
 		}
-		$b.=  '<div class="bbg__board-member__profile">';
+
+		$profileName = get_the_title();
+		if ($isChairperson) {
+			$profileName.=  ', Chairperson of the Board';
+		} else if ($isSecretary) {
+			$profileName.=  ', ex officio board member';
+		}
+
+		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__board-member__name">' . get_the_title() . '</h3>';
+			$b.=  '<h3 class="bbg__board-member__name">' . $profileName . '</h3>';
 			$b.=  '</a>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__board-member__photo-container">';
@@ -58,10 +78,17 @@ while ( $custom_query->have_posts() )  {
 			$b.= get_the_excerpt();
 		$b.=  '</div><!-- .bbg__board-member__profile -->';
 
-		
+		if ($isChairperson) {
+			$chairpersonStr=$b;
+		} else if ($isSecretary) {
+			$secretaryStr=$b;
+		} else {
+			$boardStr.=$b;
+		}
 	}
 }
-$pageContent=str_replace("[board list]", $b, $pageContent);
+$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>';
+$pageContent = str_replace("[board list]", $boardStr, $pageContent);
 
 
 get_header(); ?>
