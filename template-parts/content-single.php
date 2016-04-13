@@ -176,7 +176,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				if (is_array($contactPostIDs) && count($contactPostIDs) > 0) {
 					$qParamsContactCard=array(
-						'post__in' => $contactPostIDs
+						'post__in' => $contactPostIDs,
+						'ignore_sticky_posts' => true
 					);
 					$custom_query = new WP_Query( $qParamsContactCard );
 					if ( $custom_query->have_posts() ) :
