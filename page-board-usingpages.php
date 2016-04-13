@@ -39,12 +39,14 @@ $custom_query = new WP_Query($qParams);
 
 $boardStr="";
 $chairpersonStr="";
+$secretaryStr="";
 while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
 	if ($active){
 		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
+		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
 		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 		$email=get_post_meta( get_the_ID(), 'email', true );
 		$phone=get_post_meta( get_the_ID(), 'phone', true );
@@ -60,6 +62,8 @@ while ( $custom_query->have_posts() )  {
 		$profileName = get_the_title();
 		if ($isChairperson) {
 			$profileName.=  ', Chairperson of the Board';
+		} else if ($isSecretary) {
+			$profileName.=  ', ex officio board member';
 		}
 
 		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
@@ -76,12 +80,14 @@ while ( $custom_query->have_posts() )  {
 
 		if ($isChairperson) {
 			$chairpersonStr=$b;
+		} else if ($isSecretary) {
+			$secretaryStr=$b;
 		} else {
 			$boardStr.=$b;
 		}
 	}
 }
-$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . '</div>';
+$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>';
 $pageContent = str_replace("[board list]", $boardStr, $pageContent);
 
 
