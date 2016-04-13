@@ -5442,6 +5442,9 @@ ol li:before {
   }
 }
 
+.bbg__board-member__profile {
+  margin-bottom: 3rem;
+}
 .bbg__board-member__profile:after {
   content: ".";
   display: block;
@@ -5455,8 +5458,4 @@ ol li:before {
   margin-right: 1rem;
   max-width: 150px;
   width: 30%;
-}
-
-.bbg__board-member__name {
-  clear: none;
 }
