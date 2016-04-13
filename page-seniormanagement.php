@@ -81,13 +81,13 @@ while ( $custom_query->have_posts() )  {
 		if ($isChairperson) {
 			$chairpersonStr=$b;
 		} else if ($isSecretary) {
-			$secretaryStr=$b;
+			$secretaryStr.=$b;
 		} else {
 			$boardStr.=$b;
 		}
 	}
 }
-$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>';
+$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . "<h1>Grantee Leadership</h1>" . $secretaryStr . '</div>';
 $pageContent = str_replace("[management list]", $boardStr, $pageContent);
 
 
