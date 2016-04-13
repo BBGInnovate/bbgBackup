@@ -75,8 +75,8 @@ while ( $custom_query->have_posts() )  {
 		}
 	}
 }
-$boardStr=$chairpersonStr . $boardStr;
-$pageContent=str_replace("[board list]", $boardStr, $pageContent);
+$boardStr = '<div class="bbg-grid--1-2-2">' . $chairpersonStr . $boardStr . '</div>';
+$pageContent = str_replace("[board list]", $boardStr, $pageContent);
 
 
 get_header(); ?>
