@@ -5,7 +5,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-  template name: Board using pages
+  template name: Board
  */
 
 /***** BEGIN PROJECT PAGINATION LOGIC 
