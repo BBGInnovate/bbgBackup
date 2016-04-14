@@ -40,18 +40,20 @@ $custom_query = new WP_Query($qParams);
 $boardStr="";
 $ceoStr="";
 $granteeStr="";
+$id=get_the_ID();
+
 while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
-	$active=get_post_meta( get_the_ID(), 'active', true );
+	$active=get_post_meta( $id, 'active', true );
 	if ($active){
-		$isCEO=get_post_meta( get_the_ID(), 'ceo', true );
-		$isGrantee=get_post_meta( get_the_ID(), 'grantee_leadership', true );
-		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
-		$email=get_post_meta( get_the_ID(), 'email', true );
-		$phone=get_post_meta( get_the_ID(), 'phone', true );
-		$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-		$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
+		$isCEO=get_post_meta( $id, 'ceo', true );
+		$isGrantee=get_post_meta( $id, 'grantee_leadership', true );
+		$occupation=get_post_meta( $id, 'occupation', true );
+		$email=get_post_meta( $id, 'email', true );
+		$phone=get_post_meta( $id, 'phone', true );
+		$twitterProfileHandle=get_post_meta( $id, 'twitter_handle', true );
+		$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
 		$profilePhoto = "";
 
 		if ($profilePhotoID) {
