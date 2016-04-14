@@ -75,7 +75,7 @@ while ( $custom_query->have_posts() )  {
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
-			$b.= get_the_excerpt();
+			$b.= '<p>' . get_the_excerpt() . '</p>';
 		$b.=  '</div><!-- .bbg__profile-excerpt -->';
 
 		if ($isChairperson) {

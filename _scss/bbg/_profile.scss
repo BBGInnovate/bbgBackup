@@ -149,13 +149,11 @@
 
 
 
-.bbg__board-member__profile,
 .bbg__profile-excerpt {
 	@include clearfix();
 	margin-bottom: $site-margins;
 }
 
-.bbg__board-member__photo-container,
 .bbg__profile-excerpt__photo-container {
 	float: left;
 	margin-right: $site-margins-small;
@@ -163,11 +161,11 @@
 	width: 30%;
 }
 
-.bbg__board-member__name,
 .bbg__profile-excerpt__name {
 	//clear: none;
 }
 
 .bbg__profile-excerpt__occupation {
-	
+	display: block;
+	font-style: italic;
 }
