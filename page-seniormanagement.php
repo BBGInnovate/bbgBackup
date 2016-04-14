@@ -62,15 +62,15 @@ while ( $custom_query->have_posts() )  {
 		$profileName = get_the_title(); // . ', ' . $occupation;
 
 		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__profile-excerpt__name">' . $profileName . '</h3>';
-			$b.=  '</a>';
+			$b.=  '<h3 class="bbg__profile-excerpt__name">'; 
+				$b.=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
+			$b.=  '</h3>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__profile-excerpt__photo-container">';
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
-			$b.=  '<p class="bbg__profile-excerpt__text">'
+			$b.=  '<p class="bbg__profile-excerpt__text">';
 				$b.=  '<span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
 				$b.=  get_the_excerpt();
 			$b.=  '</p>'

@@ -67,7 +67,7 @@ while ( $custom_query->have_posts() )  {
 		}
 
 		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-			$b.=  '<h3 class="bbg__profile-excerpt__name">'; 
+			$b.=  '<h3 class="bbg__profile-excerpt__name">';
 				$b.=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
 			$b.=  '</h3>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
