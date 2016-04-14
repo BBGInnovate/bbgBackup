@@ -47,7 +47,7 @@ while ( $custom_query->have_posts() )  {
 	if ($active){
 		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
 		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
-		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
+		//$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 		$email=get_post_meta( get_the_ID(), 'email', true );
 		$phone=get_post_meta( get_the_ID(), 'phone', true );
 		$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
@@ -60,11 +60,13 @@ while ( $custom_query->have_posts() )  {
 		}
 
 		$profileName = get_the_title();
+		$occupation = "";
 		if ($isChairperson) {
-			$profileName.=  ', Chairperson of the Board';
+			$occupation =  '<span class="bbg__profile-excerpt__occupation">Chairperson of the Board</span>';
 		} else if ($isSecretary) {
-			$profileName.=  ', ex officio board member';
+			$occupation =  '<span class="bbg__profile-excerpt__occupation">Ex officio board member</span>';
 		}
+
 
 		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
 			$b.=  '<h3 class="bbg__profile-excerpt__name">';
@@ -75,7 +77,7 @@ while ( $custom_query->have_posts() )  {
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
-			$b.= '<p>' . get_the_excerpt() . '</p>';
+			$b.= '<p>' . $occupation . get_the_excerpt() . '</p>';
 		$b.=  '</div><!-- .bbg__profile-excerpt -->';
 
 		if ($isChairperson) {
