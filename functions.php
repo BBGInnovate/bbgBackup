@@ -966,9 +966,50 @@ function getJobs() {
 	
 }
 
+/**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/
 add_action( 'init', 'my_add_excerpts_to_pages' );
 function my_add_excerpts_to_pages() {
      add_post_type_support( 'page', 'excerpt' );
 }
+
+function renderContactCard($postIDs) {
+	if (is_array($postIDs) && count($postIDs) > 0) {
+		$qParamsContactCard=array(
+			'post__in' => $postIDs,
+			'ignore_sticky_posts' => true
+		);
+		$custom_query = new WP_Query( $qParamsContactCard );
+		if ( $custom_query->have_posts() ) :
+			echo '<div class="usa-grid-full bbg__contact-box">';
+			echo '<h3 class="bbg__contact-box__title">Find out more</h3>';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				//now let's get the custom fields associated with our related contact posts
+				$id=get_the_ID();
+				$email = get_post_meta( $id, 'email',true );
+				$fullname = get_post_meta( $id, 'fullname',true );
+				$phone = get_post_meta( $id, 'phone',true );
+				$bio = get_the_content($id);
+				$office = get_post_meta( $id, 'office',true );
+				$jobTitle = get_post_meta( $id, 'job_title',true );
+
+				if ($jobTitle!=""){
+					$office = $jobTitle . ", " . $office;
+				}
+
+				echo '<div class="bbg__contact__card">';
+				echo '<p>Contact '.$fullname.'<br/>';
+				echo $office.'</p>';
+				echo '<ul class="bbg__contact__card-list">';
+				echo '<li class="bbg__contact__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__contact__icon email"></span><span class="bbg__contact__text">'.$email.'</span></a></li>';
+				echo '<li class="bbg__contact__link phone"><span class="bbg__contact__icon phone"></span><span class="bbg__contact__text">'.$phone.'</span></li>';
+				echo '</ul></div>';
+
+			endwhile;
+			echo '</div>';
+		endif;
+		wp_reset_postdata();
+	}
+}
+
 
 ?>
