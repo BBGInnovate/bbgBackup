@@ -5462,5 +5462,8 @@ ol li:before {
 
 .bbg__profile-excerpt__occupation {
   display: block;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-style: italic;
+  line-height: 0;
+  margin-bottom: 1.5rem;
 }

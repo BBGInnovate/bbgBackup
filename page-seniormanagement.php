@@ -70,9 +70,11 @@ while ( $custom_query->have_posts() )  {
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
-			$b.=  '<p><span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
-			$b.= get_the_excerpt();
-		$b.=  '</p></div><!-- .bbg__profile-excerpt__profile -->';
+			$b.=  '<p class="bbg__profile-excerpt__text">'
+				$b.=  '<span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
+				$b.=  get_the_excerpt();
+			$b.=  '</p>'
+		$b.=  '</div><!-- .bbg__profile-excerpt__profile -->';
 
 		if ($isCEO) {
 			$ceoStr=$b;

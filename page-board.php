@@ -67,9 +67,9 @@ while ( $custom_query->have_posts() )  {
 		}
 
 		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__profile-excerpt__name">' . $profileName . '</h3>';
-			$b.=  '</a>';
+			$b.=  '<h3 class="bbg__profile-excerpt__name">'; 
+				$b.=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
+			$b.=  '</h3>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__profile-excerpt__photo-container">';
 					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';

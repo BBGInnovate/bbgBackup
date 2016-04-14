@@ -167,5 +167,10 @@
 
 .bbg__profile-excerpt__occupation {
 	display: block;
-	font-style: italic;
+	font: {
+		family: $font-serif;
+		style: italic;
+	}
+	line-height: 0;
+	margin-bottom: $site-margins-medium;
 }
