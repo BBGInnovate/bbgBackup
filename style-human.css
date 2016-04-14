@@ -5455,6 +5455,7 @@ ol li:before {
 
 .bbg__profile-excerpt__photo-container {
   float: left;
+  margin-top: 1rem;
   margin-right: 1rem;
   max-width: 150px;
   width: 30%;
@@ -5464,6 +5465,5 @@ ol li:before {
   display: block;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-style: italic;
-  line-height: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }

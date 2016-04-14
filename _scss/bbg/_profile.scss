@@ -156,13 +156,16 @@
 
 .bbg__profile-excerpt__photo-container {
 	float: left;
-	margin-right: $site-margins-small;
+	margin: {
+		top: $site-margins-small;
+		right: $site-margins-small;
+	}
 	max-width: 150px;
 	width: 30%;
 }
 
-.bbg__profile-excerpt__name {
-	//clear: none;
+.bbg__profile-excerpt__text {
+	//margin-top: 0;
 }
 
 .bbg__profile-excerpt__occupation {
@@ -171,6 +174,5 @@
 		family: $font-serif;
 		style: italic;
 	}
-	line-height: 0;
-	margin-bottom: $site-margins-medium;
+	margin-bottom: 2rem;
 }
