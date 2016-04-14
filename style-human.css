@@ -4532,7 +4532,7 @@ article {
   margin-left: -3rem;
   max-width: none;
   width: 100%;
-  width: calc(100% + 2*$site-margins);
+  width: calc(100% + 6rem);
 }
 @media screen and (min-width: 900px) {
   .bbg__iframe__timelinejs {

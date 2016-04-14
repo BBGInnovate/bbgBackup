@@ -377,7 +377,7 @@ article {
 	}
 	max-width: none;
 	width: 100%;
-	width: calc(100% + 2*$site-margins);
+	width: calc(100% + 6rem);
 
 	@include media($medium-large-screen) {
 		margin: {
