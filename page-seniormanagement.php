@@ -73,7 +73,7 @@ while ( $custom_query->have_posts() )  {
 			$b.=  '<p class="bbg__profile-excerpt__text">';
 				$b.=  '<span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
 				$b.=  get_the_excerpt();
-			$b.=  '</p>'
+			$b.=  '</p>';
 		$b.=  '</div><!-- .bbg__profile-excerpt__profile -->';
 
 		if ($isCEO) {
