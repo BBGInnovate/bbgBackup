@@ -66,17 +66,17 @@ while ( $custom_query->have_posts() )  {
 			$profileName.=  ', ex officio board member';
 		}
 
-		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
+		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__board-member__name">' . $profileName . '</h3>';
+			$b.=  '<h3 class="bbg__profile-excerpt__name">' . $profileName . '</h3>';
 			$b.=  '</a>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-				$b.=  '<div class="bbg__board-member__photo-container">';
-					$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+				$b.=  '<div class="bbg__profile-excerpt__photo-container">';
+					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
 			$b.= get_the_excerpt();
-		$b.=  '</div><!-- .bbg__board-member__profile -->';
+		$b.=  '</div><!-- .bbg__profile-excerpt -->';
 
 		if ($isChairperson) {
 			$chairpersonStr=$b;

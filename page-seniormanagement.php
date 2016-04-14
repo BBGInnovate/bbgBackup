@@ -59,26 +59,32 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = $profilePhoto[0];
 		}
 
-		$profileName = get_the_title() . ', ' . $occupation;
+		$profileName = get_the_title(); // . ', ' . $occupation;
 		/*
 		if ($isChairperson) {
 			$profileName.=  ', Chairperson of the Board';
 		} else if ($isSecretary) {
 			$profileName.=  ', ex officio board member';
 		}
+
+		.bbg__board-member__profile    -> bbg__profile-excerpt
+		.bbg__board-member__name       -> bbg__profile-excerpt__name
+		.bbg__board-member__occupation -> bbg__profile-excerpt__occupation
+
 		*/
 
-		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
+		$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-			$b.=  '<h3 class="bbg__board-member__name">' . $profileName . '</h3>';
+			$b.=  '<h3 class="bbg__profile-excerpt__name">xxx' . $profileName . '</h3>';
 			$b.=  '</a>';
+			$b.=  '<p class="bbg__profile-excerpt__occupation">xxx'. $occupation . '</p>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
-				$b.=  '<div class="bbg__board-member__photo-container">';
-					$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of '. $profileName .'"/>';
+				$b.=  '<div class="bbg__profile-excerpt__photo-container">';
+					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
 			$b.= get_the_excerpt();
-		$b.=  '</div><!-- .bbg__board-member__profile -->';
+		$b.=  '</div><!-- .bbg__profile-excerpt__profile -->';
 
 		if ($isCEO) {
 			$ceoStr=$b;

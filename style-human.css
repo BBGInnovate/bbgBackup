@@ -5442,10 +5442,12 @@ ol li:before {
   }
 }
 
-.bbg__board-member__profile {
+.bbg__board-member__profile,
+.bbg__profile-excerpt {
   margin-bottom: 3rem;
 }
-.bbg__board-member__profile:after {
+.bbg__board-member__profile:after,
+.bbg__profile-excerpt:after {
   content: ".";
   display: block;
   height: 0;
@@ -5453,7 +5455,8 @@ ol li:before {
   visibility: hidden;
 }
 
-.bbg__board-member__photo-container {
+.bbg__board-member__photo-container,
+.bbg__profile-excerpt__photo-container {
   float: left;
   margin-right: 1rem;
   max-width: 150px;
