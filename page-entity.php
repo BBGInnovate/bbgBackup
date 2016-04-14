@@ -47,7 +47,7 @@ get_header();
 				<?php 
 					echo "<img src='$entityLogo' />";
 					echo "<a href='$siteUrl'>$fullName ($abbreviation)</a> <BR>";
-					echo "$description <BR>";
+					echo "<strong>$description</strong><BR><BR>";
 					echo $pageContent;
 				?>
 
