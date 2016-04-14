@@ -168,6 +168,14 @@ get_header(); ?>
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
 						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
+
+						<?php if($post->post_parent) {
+							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent_link = get_permalink($post->post_parent);
+						?>
+						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?></a>
+						<?php } ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
