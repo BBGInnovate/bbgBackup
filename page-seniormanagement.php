@@ -38,15 +38,15 @@ $qParams=array(
 $custom_query = new WP_Query($qParams);
 
 $boardStr="";
-$chairpersonStr="";
-$secretaryStr="";
+$ceoStr="";
+$granteeStr="";
 while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
 	if ($active){
-		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
-		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
+		$isCEO=get_post_meta( get_the_ID(), 'ceo', true );
+		$isGrantee=get_post_meta( get_the_ID(), 'grantee_leadership', true );
 		$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 		$email=get_post_meta( get_the_ID(), 'email', true );
 		$phone=get_post_meta( get_the_ID(), 'phone', true );
@@ -59,12 +59,14 @@ while ( $custom_query->have_posts() )  {
 			$profilePhoto = $profilePhoto[0];
 		}
 
-		$profileName = get_the_title();
+		$profileName = get_the_title() . ', ' . $occupation;
+		/*
 		if ($isChairperson) {
 			$profileName.=  ', Chairperson of the Board';
 		} else if ($isSecretary) {
 			$profileName.=  ', ex officio board member';
 		}
+		*/
 
 		$b =  '<div class="bbg__board-member__profile bbg-grid--1-2-2">';
 			$b.=  '<a href="' . get_the_permalink() . '">';
@@ -72,22 +74,22 @@ while ( $custom_query->have_posts() )  {
 			$b.=  '</a>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__board-member__photo-container">';
-					$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+					$b.=  '<img src="' . $profilePhoto . '" class="bbg__board-member__photo" alt="Photo of '. $profileName .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
 			$b.= get_the_excerpt();
 		$b.=  '</div><!-- .bbg__board-member__profile -->';
 
-		if ($isChairperson) {
-			$chairpersonStr=$b;
-		} else if ($isSecretary) {
-			$secretaryStr.=$b;
+		if ($isCEO) {
+			$ceoStr=$b;
+		} else if ($isGrantee) {
+			$granteeStr.=$b;
 		} else {
 			$boardStr.=$b;
 		}
 	}
 }
-$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . "<h1>Grantee Leadership</h1>" . $secretaryStr . '</div>';
+$boardStr = '<div class="usa-grid-full">' . $ceoStr . $boardStr . "<h1>Grantee Leadership</h1>" . $granteeStr . '</div>';
 $pageContent = str_replace("[management list]", $boardStr, $pageContent);
 
 
