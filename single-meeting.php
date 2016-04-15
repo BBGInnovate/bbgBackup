@@ -150,9 +150,12 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h3 class="bbg__sidebar-label">Related posts </h3>
+						<h3 class="bbg__sidebar-label">Documents + Downloads</h3>
 						<ul class="bbg__profile__related-link__list">
-							<li class="bbg__profile__related-link"><a href="#">Sample title</a></li>
+							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Minutes-of-Dec-16-2015.pdf" title="Download the BBG board meeting minutes from Feb. 26, 2016.">Board meeting minutes</a></li>
+							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Record-of-Decisions-2-26-2016.pdf">Record of Decisions</a></li>
+							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-Honoring-Almigdad-Mojalli.pdf">Resolution Honoring Almigdad Mojalli</a></li>
+							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-VOA-Creole-30th-Anniversary.pdf">Resolution VOA Creole 30th Anniversary</a></li>
 						</ul>";
 
 					</div><!-- .bbg__article-sidebar -->

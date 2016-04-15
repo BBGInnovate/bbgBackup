@@ -5382,7 +5382,8 @@ ol li:before {
 }
 
 .bbg__profile .bbg__profile-header__banner,
-.category-profile .bbg__profile-header__banner {
+.category-profile .bbg__profile-header__banner,
+.category-board-meeting .bbg__profile-header__banner {
   background-size: cover;
   background-position: center center;
   height: 250px;
@@ -5391,16 +5392,19 @@ ol li:before {
 }
 @media screen and (min-width: 900px) {
   .bbg__profile .bbg__profile-header__banner,
-  .category-profile .bbg__profile-header__banner {
+  .category-profile .bbg__profile-header__banner,
+  .category-board-meeting .bbg__profile-header__banner {
     height: 400px;
   }
 }
 .bbg__profile .bbg__article-header,
-.category-profile .bbg__article-header {
+.category-profile .bbg__article-header,
+.category-board-meeting .bbg__article-header {
   margin-bottom: 3rem;
 }
 .bbg__profile .bbg__article-header:after,
-.category-profile .bbg__article-header:after {
+.category-profile .bbg__article-header:after,
+.category-board-meeting .bbg__article-header:after {
   content: ".";
   display: block;
   height: 0;
@@ -5408,13 +5412,15 @@ ol li:before {
   visibility: hidden;
 }
 .bbg__profile .bbg__article-sidebar,
-.category-profile .bbg__article-sidebar {
+.category-profile .bbg__article-sidebar,
+.category-board-meeting .bbg__article-sidebar {
   margin: 0 auto;
   max-width: 600px;
 }
 @media screen and (min-width: 900px) {
   .bbg__profile .bbg__article-content,
-  .category-profile .bbg__article-content {
+  .category-profile .bbg__article-content,
+  .category-board-meeting .bbg__article-content {
     float: left;
     margin-top: 0;
     margin-right: auto;
@@ -5423,17 +5429,20 @@ ol li:before {
     width: 56%;
   }
   .bbg__profile .bbg__article-content.bbg__article--no-featured-image,
-  .category-profile .bbg__article-content.bbg__article--no-featured-image {
+  .category-profile .bbg__article-content.bbg__article--no-featured-image,
+  .category-board-meeting .bbg__article-content.bbg__article--no-featured-image {
     margin-top: -100px;
   }
   .bbg__profile .bbg__article-sidebar,
-  .category-profile .bbg__article-sidebar {
+  .category-profile .bbg__article-sidebar,
+  .category-board-meeting .bbg__article-sidebar {
     float: right;
     max-width: 17rem;
     width: 18%;
   }
   .bbg__profile .bbg__article-share,
-  .category-profile .bbg__article-share {
+  .category-profile .bbg__article-share,
+  .category-board-meeting .bbg__article-share {
     display: inline-block;
     float: left;
     margin-top: 0;
