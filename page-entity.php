@@ -55,13 +55,18 @@ get_header();
 					echo "<strong>$description</strong><BR><BR>";
 					echo "<h1>Latest Items</h1>";
 					$entityJson=getFeed($rssFeed,$id);
+					$counter=0;
+					$maxItems=3;
 					foreach ($entityJson->channel->item as $e) {
-						$title=$e->title;
-						$url=$e->link;
-						$description=$e->description;
-						$enc = ($e->enclosure);
-						//having a hard time accessing enclosure attributes <img src='$thumb' />
-						echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
+						$counter++;
+						if ($counter <= $maxItems) {
+							$title=$e->title;
+							$url=$e->link;
+							$description=$e->description;
+							$enc = ($e->enclosure);
+							//having a hard time accessing enclosure attributes <img src='$thumb' />
+							echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
+						}
 					}
 					echo $pageContent;
 
