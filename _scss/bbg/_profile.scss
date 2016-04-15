@@ -153,8 +153,7 @@
 
 .bbg__profile-excerpt {
 	@include clearfix();
-	color: $color-gray-medium;
-	margin-bottom: $site-margins-small;
+	margin-bottom: $site-margins;
 }
 
 .bbg__profile-excerpt__photo-container {
@@ -172,10 +171,11 @@
 }
 
 .bbg__profile-excerpt__occupation {
+	color: $color-gray-medium;
 	display: block;
 	font: {
 		family: $font-serif;
 		style: italic;
 	}
-	margin-bottom: 2rem;
+	margin-bottom: $site-margins-small;
 }

@@ -5443,8 +5443,7 @@ ol li:before {
 }
 
 .bbg__profile-excerpt {
-  color: #757575;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 .bbg__profile-excerpt:after {
   content: ".";
@@ -5467,8 +5466,9 @@ ol li:before {
 }
 
 .bbg__profile-excerpt__occupation {
+  color: #757575;
   display: block;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-style: italic;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
