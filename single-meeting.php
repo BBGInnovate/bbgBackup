@@ -32,27 +32,6 @@ if ( have_posts() ) {
 	$meetingDate=get_post_meta( get_the_ID(), 'board_meeting_date', true );
 	$meetingLocation=get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
-/*
-	$occupation=get_post_meta( get_the_ID(), 'occupation', true );
-	$email=get_post_meta( get_the_ID(), 'email', true );
-	$phone=get_post_meta( get_the_ID(), 'phone', true );
-	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
-
-	$active = get_post_meta( get_the_ID(), 'active', true );
-	if (!$active){
-		$occupation = "(Former) " . $occupation;
-	}
-
-	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
-	$profilePhoto = "";
-
-	if ($profilePhotoID) {
-		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-		$profilePhoto = $profilePhoto[0];
-	}
-*/
-
 
 
 	$ogDescription = get_the_excerpt();
@@ -102,30 +81,30 @@ get_header(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 
 
-		<?php
-			$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-			if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-				echo '<div class="usa-grid-full">';
-				$featuredImageClass = "";
-				$featuredImageCutline="";
-				$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-				if ($thumbnail_image && isset($thumbnail_image[0])) {
-					$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-				}
-				echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-				//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-				echo the_post_thumbnail( 'large-thumb' );
+				<?php
+					$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
+					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+						echo '<div class="usa-grid-full">';
+						$featuredImageClass = "";
+						$featuredImageCutline="";
+						$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+						if ($thumbnail_image && isset($thumbnail_image[0])) {
+							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+						}
+						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+						//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+						echo the_post_thumbnail( 'large-thumb' );
 
-				echo '</div>';
-				echo '</div> <!-- usa-grid-full -->';
+						echo '</div>';
+						echo '</div> <!-- usa-grid-full -->';
 
-				if ($featuredImageCutline != "") {
-					echo '<div class="usa-grid">';
-						echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-					echo '</div> <!-- usa-grid -->';
-				}
-			}
-		?><!-- .bbg__article-header__thumbnail -->
+						if ($featuredImageCutline != "") {
+							echo '<div class="usa-grid">';
+								echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+							echo '</div> <!-- usa-grid -->';
+						}
+					}
+				?><!-- .bbg__article-header__thumbnail -->
 
 
 
@@ -150,7 +129,7 @@ get_header(); ?>
 
 					<div class="bbg__article-sidebar--left">
 						<h3>February 26, 2016 <?php echo "<!--" . $meetingDate . "-->"; ?></h3>
-						<h5>Location: BBG Headquarters<br/>Washington, DC</h5>
+						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div>
 
