@@ -53,8 +53,7 @@ get_header();
 					echo "<img src='$entityLogo' />";
 					echo "<a href='$siteUrl'>$fullName ($abbreviation)</a> <BR>";
 					echo "<strong>$description</strong><BR><BR>";
-					echo $pageContent;
-
+					echo "<h1>Latest Items</h1>";
 					$entityJson=getFeed($rssFeed,$id);
 					foreach ($entityJson->channel->item as $e) {
 						$title=$e->title;
@@ -64,6 +63,8 @@ get_header();
 						//having a hard time accessing enclosure attributes <img src='$thumb' />
 						echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
 					}
+					echo $pageContent;
+
 				?>
 
 				<div class="bbg-post-footer">
