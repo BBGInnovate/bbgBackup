@@ -945,25 +945,44 @@ function acf_load_color_field_choices( $field ) {
 
 add_filter('acf/load_field/name=contact_post_id', 'acf_load_color_field_choices');
 
+function fetchUrl($url) {
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_URL,$url);
+	$result=curl_exec($ch);
+	curl_close($ch);
+	return $result;
+}
+
 function getJobs() {
 	$jobsFilepath = get_template_directory() . "/jobcache.json";
 	if (! file_exists($jobsFilepath)) {
 		$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$jobsUrl);
-		$result=curl_exec($ch);
-		curl_close($ch);
+		$result=fetchUrl($jobsUrl);
 		file_put_contents($jobsFilepath, $result);
 	} else {
-		echo "reading the file <BR>";
 		$result=file_get_contents($jobsFilepath);
 	}
 	$jobs = json_decode($result, true);
 
 	return $jobs;
 	
+}
+
+function getFeed($url,$id) {
+	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
+	if (! file_exists($feedFilepath)) {
+		$feedStr=fetchUrl($url);
+		file_put_contents($feedFilepath, $feedStr);
+	} else {
+		$feedStr=file_get_contents($feedFilepath);
+	}
+	//$feed = implode(file($feedStr));
+	$xml = simplexml_load_string($feedStr);
+	$json = json_encode($xml,JSON_PRETTY_PRINT);
+	$json=json_decode($json);
+	return $json;
 }
 
 /**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/

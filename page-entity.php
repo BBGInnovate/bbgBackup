@@ -38,6 +38,9 @@ if ($entityLogoID) {
 	$entityLogo = $entityLogoObj[0];
 } 
 
+
+//echo "<pre>FEED $rssFeed $entityItems</pre>";	
+
 get_header(); 
 ?>
 
@@ -51,6 +54,16 @@ get_header();
 					echo "<a href='$siteUrl'>$fullName ($abbreviation)</a> <BR>";
 					echo "<strong>$description</strong><BR><BR>";
 					echo $pageContent;
+
+					$entityJson=getFeed($rssFeed,$id);
+					foreach ($entityJson->channel->item as $e) {
+						$title=$e->title;
+						$url=$e->link;
+						$description=$e->description;
+						$enc = ($e->enclosure);
+						//having a hard time accessing enclosure attributes <img src='$thumb' />
+						echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
+					}
 				?>
 
 				<div class="bbg-post-footer">
