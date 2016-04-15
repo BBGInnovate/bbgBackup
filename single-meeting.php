@@ -131,7 +131,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg-label">Board meeting: <?php echo "dogs".$meetingDate; ?></h5><!-- .bbg-label -->
+							<h5 class="entry-category bbg-label">Board meeting: <?php echo $meetingDate; ?></h5><!-- .bbg-label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -140,9 +140,8 @@ get_header(); ?>
 
 					<div class="bbg__article-sidebar--left">
 						<h3>February 26, 2016</h3>
-						<h5>BBG Headquarters</h5>
-						<p>Washington, DC</p>
-						<p>For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+						<h5>BBG Headquarters<br/>Washington, DC</h5>
+						<p class="bbg-tagline">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
