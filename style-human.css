@@ -5440,9 +5440,9 @@ ol li:before {
     max-width: 17rem;
     width: 18%;
   }
-  .bbg__profile .bbg__article-share,
-  .category-profile .bbg__article-share,
-  .category-board-meeting .bbg__article-share {
+  .bbg__profile .bbg__article-sidebar--left,
+  .category-profile .bbg__article-sidebar--left,
+  .category-board-meeting .bbg__article-sidebar--left {
     display: inline-block;
     float: left;
     margin-top: 0;

@@ -131,32 +131,32 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
+							<h5 class="entry-category bbg-label">Board meeting: <?php echo "dogs".$meetingDate; ?></h5><!-- .bbg-label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
-
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg-label">Board meeting</h5><!-- .bbg-label -->
 
 						</div>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-
-						<ul class="bbg__article-share ">
-						&nbsp;
-						</ul>
+						<h3>February 26, 2016</h3>
+						<h5>BBG Headquarters</h5>
+						<p>Washington, DC</p>
+						<p>For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+					</div>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h3 class="bbg__sidebar-label">Documents + Downloads</h3>
+						<h3 class="bbg__sidebar-label">Download</h3>
 						<ul class="bbg__profile__related-link__list">
 							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Minutes-of-Dec-16-2015.pdf" title="Download the BBG board meeting minutes from Feb. 26, 2016.">Board meeting minutes</a></li>
 							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Record-of-Decisions-2-26-2016.pdf">Record of Decisions</a></li>
 							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-Honoring-Almigdad-Mojalli.pdf">Resolution Honoring Almigdad Mojalli</a></li>
 							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-VOA-Creole-30th-Anniversary.pdf">Resolution VOA Creole 30th Anniversary</a></li>
-						</ul>";
+						</ul>
 
 					</div><!-- .bbg__article-sidebar -->
 

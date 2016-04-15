@@ -162,6 +162,7 @@ get_header(); ?>
 						?>
 						&nbsp;
 						</ul>
+					</div>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
