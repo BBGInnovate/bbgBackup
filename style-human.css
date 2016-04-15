@@ -5451,6 +5451,24 @@ ol li:before {
   }
 }
 
+.category-board-meeting .bbg__article-header {
+  margin-bottom: 0;
+}
+.category-board-meeting .bbg-tagline.bbg-tagline--main {
+  display: none;
+}
+.category-board-meeting .bbg-tagline.bbg-tagline--secondary {
+  display: block;
+}
+@media screen and (min-width: 900px) {
+  .category-board-meeting .bbg-tagline.bbg-tagline--main {
+    display: block;
+  }
+  .category-board-meeting .bbg-tagline.bbg-tagline--secondary {
+    display: none;
+  }
+}
+
 .bbg__profile-excerpt {
   margin-bottom: 3rem;
 }

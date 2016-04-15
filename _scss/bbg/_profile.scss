@@ -154,6 +154,28 @@
 }
 
 
+.category-board-meeting {
+	.bbg__article-header {
+		margin-bottom: 0;
+	}
+
+	.bbg-tagline.bbg-tagline--main {
+		display: none;
+	}
+	.bbg-tagline.bbg-tagline--secondary {
+		display: block;
+	}
+
+	@include media($medium-large-screen) {
+		.bbg-tagline.bbg-tagline--main {
+			display: block;
+		}
+		.bbg-tagline.bbg-tagline--secondary {
+			display: none;
+		}
+	}
+}
+
 .bbg__profile-excerpt {
 	@include clearfix();
 	margin-bottom: $site-margins;

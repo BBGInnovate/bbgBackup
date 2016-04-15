@@ -100,24 +100,34 @@ get_header(); ?>
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
-				<?php
-					$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-						echo '<div class="usa-grid-full">';
-						$featuredImageClass = "";
-						$featuredImageCutline="";
-						$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-						if ($thumbnail_image && isset($thumbnail_image[0])) {
-							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-						}
 
-						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
-						echo '</div>';
-						echo '</div> <!-- usa-grid-full -->';
-					}
-				?><!-- .bbg__article-header__thumbnail -->
+		<?php
+			$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
+			if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+				echo '<div class="usa-grid-full">';
+				$featuredImageClass = "";
+				$featuredImageCutline="";
+				$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+				if ($thumbnail_image && isset($thumbnail_image[0])) {
+					$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+				}
+				echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+				//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+				echo the_post_thumbnail( 'large-thumb' );
+
+				echo '</div>';
+				echo '</div> <!-- usa-grid-full -->';
+
+				if ($featuredImageCutline != "") {
+					echo '<div class="usa-grid">';
+						echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+					echo '</div> <!-- usa-grid -->';
+				}
+			}
+		?><!-- .bbg__article-header__thumbnail -->
+
+
 
 				<div class="bbg__article__nav">
 					<?php echo $prevLink; ?>
@@ -131,7 +141,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg-label">Board meeting: <?php echo $meetingDate; ?></h5><!-- .bbg-label -->
+							<h5 class="entry-category bbg-label">Board meeting</h5><!-- .bbg-label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -139,13 +149,14 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-						<h3>February 26, 2016</h3>
-						<h5>BBG Headquarters<br/>Washington, DC</h5>
-						<p class="bbg-tagline">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+						<h3>February 26, 2016 <?php echo "<!--" . $meetingDate . "-->"; ?></h3>
+						<h5>Location: BBG Headquarters<br/>Washington, DC</h5>
+						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div>
 
-					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
+						<p class="bbg-tagline bbg-tagline--secondary">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
