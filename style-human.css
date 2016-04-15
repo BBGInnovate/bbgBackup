@@ -5443,7 +5443,8 @@ ol li:before {
 }
 
 .bbg__profile-excerpt {
-  margin-bottom: 3rem;
+  color: #757575;
+  margin-bottom: 1rem;
 }
 .bbg__profile-excerpt:after {
   content: ".";
@@ -5459,6 +5460,10 @@ ol li:before {
   margin-right: 1rem;
   max-width: 150px;
   width: 30%;
+}
+
+.bbg__profile-excerpt__text {
+  line-height: 1.5;
 }
 
 .bbg__profile-excerpt__occupation {

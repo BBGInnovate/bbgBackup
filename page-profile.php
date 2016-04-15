@@ -167,7 +167,7 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
-						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
+						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
 						<?php if($post->post_parent) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
