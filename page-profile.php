@@ -164,6 +164,7 @@ get_header(); ?>
 						?>
 						&nbsp;
 						</ul>
+					</div><!-- .bbg__article-sidebar--left -->
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
