@@ -204,3 +204,9 @@
 	}
 	margin-bottom: $site-margins-small;
 }
+
+
+
+.page-template-page-board .content-area .usa-grid > p:first-of-type {
+	@extend .readin;
+}

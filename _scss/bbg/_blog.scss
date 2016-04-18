@@ -174,6 +174,10 @@
 
 .single-post .bbg__article-content > p:first-of-type {
 	@extend .readin;
+
+	@include media($medium-screen) {
+		font-size: 1.6rem;
+	}
 }
 
 .bbg__article-content {

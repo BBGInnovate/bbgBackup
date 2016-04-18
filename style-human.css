@@ -807,7 +807,7 @@ body {
   content: " | ";
 }
 
-.readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description {
+.readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.6rem;
   font-weight: 300;
@@ -816,7 +816,7 @@ body {
   margin-bottom: 3rem;
 }
 @media screen and (min-width: 600px) {
-  .readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description {
+  .readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
     font-size: 2rem;
   }
 }
@@ -3519,6 +3519,12 @@ object {
   margin-right: auto;
   margin-left: auto;
   max-width: 600px;
+}
+
+@media screen and (min-width: 600px) {
+  .single-post .bbg__article-content > p:first-of-type {
+    font-size: 1.6rem;
+  }
 }
 
 .bbg__article-content > h3 {
