@@ -3,7 +3,7 @@
  * The Template for displaying all single posts.
  *
  * @package bbgRedesign 
-  template name: Trending
+  template name: Around the BBG
 
  */
 
