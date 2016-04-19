@@ -38,6 +38,26 @@ if ($entityLogoID) {
 	$entityLogo = $entityLogoObj[0];
 } 
 
+//Entity fast facts / by-the-numbers
+$budget = get_post_meta( $id, 'entity_budget', true );
+$employees = get_post_meta( $id, 'entity_employees', true );
+$languages = get_post_meta( $id, 'entity_languages', true );
+$appLink = get_post_meta( $id, 'entity_mobile_apps_link', true );
+
+if ($budget != "") {
+	$budget = '<li><span class="bbg__sidebar-label">Annual budget: </span>'. $budget . '</li>';
+}
+if ($employees != "") {
+	$employees = number_format( floatval( $employees ), 0, '.', ',' ); 
+	$employees = '<li><span>Employees: </span>'. $employees . '</li>';
+}
+if ($languages != "") {
+	$languages = '<li><span>Languages supported: </span>'. $languages . '</li>';
+}
+if ($appLink != "") {
+	$appLink = '<li><span>Download the app: </span>'. $appLink . '</li>';
+}
+
 
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
@@ -125,9 +145,16 @@ get_header();
 
 
 					<div class="bbg__article-sidebar--left">
-						<p><strong>We could include the contact info here</strong>, or the app download links, the summary of the entity, by the numbers, social links for the entity etc </p>
-
+						<!--<p><strong>We could include the contact info here</strong>, or the app download links, the summary of the entity, by the numbers, social links for the entity etc </p>-->
+						<h3 class="bbg__sidebar-label">Fast Facts</h3>
 						<ul class="bbg__article-share ">
+							<?php 
+								echo $budget;
+								echo $employees;
+								echo $languages;
+								echo $appLink;
+
+							?>
 						&nbsp;
 						</ul>
 					</div><!-- .bbg__article-sidebar--left -->
