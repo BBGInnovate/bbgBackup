@@ -69,7 +69,10 @@ get_header();
 							$title=$e->title;
 							$url=$e->link;
 							$description=$e->description;
-							$enc = ($e->enclosure);
+							if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'), 'url'){
+
+							}
+							$enc = ($e->enclosure->{'@attributes'}->url);
 							//having a hard time accessing enclosure attributes <img src='$thumb' />
 							echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
 						}

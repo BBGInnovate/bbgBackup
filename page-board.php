@@ -20,7 +20,6 @@ if ( have_posts() ) :
 	endwhile;
 endif;
 wp_reset_postdata();
-wp_reset_query();
 
 
 $boardPage=get_page_by_title('The Board');
@@ -94,7 +93,7 @@ while ( $custom_query->have_posts() )  {
 }
 $boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>';
 $pageContent = str_replace("[board list]", $boardStr, $pageContent);
-
+wp_reset_postdata();
 
 get_header(); ?>
 
