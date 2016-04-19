@@ -3150,10 +3150,12 @@ object {
   }
 }
 
+.bbg__entity,
 .bbg-team {
   margin-bottom: 3rem;
 }
 
+.bbg__entity__name,
 .bbg-team__name {
   clear: none;
   font-size: 3rem;
@@ -3162,11 +3164,19 @@ object {
   text-transform: uppercase;
 }
 @media screen and (min-width: 481px) {
+  .bbg__entity__name,
   .bbg-team__name {
     text-align: left;
   }
 }
 
+.bbg__entity__name {
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: none;
+}
+
+.bbg__entity__icon,
 .bbg-team__icon {
   border-radius: 50%;
   height: 100px;
@@ -3174,17 +3184,20 @@ object {
   width: 100px;
 }
 @media screen and (min-width: 481px) {
+  .bbg__entity__icon,
   .bbg-team__icon {
     margin-bottom: 0;
   }
 }
 
 @media screen and (min-width: 481px) {
+  .bbg__entity__text,
   .bbg-team__text {
     padding-left: 110px;
   }
 }
 
+.bbg__entity__icon__image,
 .bbg-team__icon__image {
   background-size: cover;
   background-repeat: no-repeat;
@@ -3194,10 +3207,15 @@ object {
   width: 100%;
 }
 
+.bbg__entity__text-description,
 .bbg-team__text-description {
   clear: none;
   margin-top: 0;
   max-width: 600px;
+}
+
+.usa-intro.bbg__broadcasters__intro {
+  margin-bottom: 3rem;
 }
 
 .bbg-staff__author {

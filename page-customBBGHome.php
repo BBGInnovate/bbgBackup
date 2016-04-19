@@ -155,84 +155,84 @@ get_header();
 					<div class="usa-grid">
 						<h6 class="bbg-label"><a href="https://innovation.bbg.gov/teams/" title="A directory of the current ODDI staff.">Our broadcasters</a></h6>
 
-						<div class="usa-intro">
+						<div class="usa-intro bbg__broadcasters__intro">
 							<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
 						</div>
 
 						<div class="usa-grid-full">
 
-								<article class="bbg-team bbg-grid--1-1-1-2">
+								<article class="bbg__entity bbg-grid--1-1-1-2">
 
-									<div class="bbg-avatar__container bbg-team__icon">
+									<div class="bbg-avatar__container bbg__entity__icon">
 										<a href="/broadcasters/voa/" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image bbg-team__icon__mobile-apps" style="background-image: url(https://innovation.bbg.gov/wp-content/themes/bbginnovate/img/icon_team_mobile-apps.png);"></div>
+										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_voa--circle-200.png);"></div>
 										</a>
 									</div>
 
-									<div class="bbg-team__text">
-										<h2 class="bbg-team__name"><a href="/broadcasters/voa/">Voice of America</a></h2>
-										<p class="bbg-team__text-description">VOA produces popular news, information and cultural programs in 45 languages and reaches more than 164 million people around the world every week on television, radio, web and mobile platforms. VOA attracts 80 percent of the total U.S. international media audience.</p>	
-									</div><!-- .bbg-team__text -->
+									<div class="bbg__entity__text">
+										<h2 class="bbg__entity__name"><a href="/broadcasters/voa/">Voice of America</a></h2>
+										<p class="bbg__entity__text-description">VOA produces popular news, information and cultural programs in 45 languages and reaches more than 164 million people around the world every week on television, radio, web and mobile platforms. VOA attracts 80 percent of the total U.S. international media audience.</p>	
+									</div><!-- .bbg__entity__text -->
 
 								</article>
 
-								<article class="bbg-team bbg-grid--1-1-1-2">
+								<article class="bbg__entity bbg-grid--1-1-1-2">
 
-									<div class="bbg-avatar__container bbg-team__icon">
+									<div class="bbg-avatar__container bbg__entity__icon">
 										<a href="/broadcasters/rferl/" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image bbg-team__icon__storytelling" style="background-image: url(https://innovation.bbg.gov/wp-content/themes/bbginnovate/img/icon_team_storytelling.png);"></div>
+										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png);"></div>
 										</a>
 									</div>
 
-									<div class="bbg-team__text">
-										<h2 class="bbg-team__name"><a href="/broadcasters/rferl/">Radio Free Europe / Radio Liberty</a></h2>
-										<p class="bbg-team__text-description">RFE/RL journalists provide what many people cannot get locally: uncensored news, responsible discussion, and open debate. Its programming focuses on local and regional developments in places where the media are not free or threats to civil society and democracy remain.</p>
-									</div><!-- .bbg-team__text -->
+									<div class="bbg__entity__text">
+										<h2 class="bbg__entity__name"><a href="/broadcasters/rferl/">Radio Free Europe / Radio Liberty</a></h2>
+										<p class="bbg__entity__text-description">RFE/RL journalists provide what many people cannot get locally: uncensored news, responsible discussion, and open debate. Its programming focuses on local and regional developments in places where the media are not free or threats to civil society and democracy remain.</p>
+									</div><!-- .bbg__entity__text -->
 
 								</article>
 
-								<article class="bbg-team bbg-grid--1-1-1-2">
+								<article class="bbg__entity bbg-grid--1-1-1-2">
 
-									<div class="bbg-avatar__container bbg-team__icon">
+									<div class="bbg-avatar__container bbg__entity__icon">
 										<a href="/broadcasters/rfa/" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image bbg-team__icon__devops" style="background-image: url(https://innovation.bbg.gov/wp-content/themes/bbginnovate/img/icon_team_devops.png);"></div>
+										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rfa--circle-200.png);"></div>
 										</a>
 									</div>
 
-									<div class="bbg-team__text">
-										<h2 class="bbg-team__name"><a href="/broadcasters/rfa/">Radio Free Asia</a></h2>
-										<p class="bbg-team__text-description">RFA journalists provide uncensored, fact-based news to citizens of these countries, among the world’s worst media environments. RFA is funded by a grant from the BBG.</p>
-									</div><!-- .bbg-team__text -->
+									<div class="bbg__entity__text">
+										<h2 class="bbg__entity__name"><a href="/broadcasters/rfa/">Radio Free Asia</a></h2>
+										<p class="bbg__entity__text-description">RFA journalists provide uncensored, fact-based news to citizens of these countries, among the world’s worst media environments. RFA is funded by a grant from the BBG.</p>
+									</div><!-- .bbg__entity__text -->
 
 								</article>
 
-								<article class="bbg-team bbg-grid--1-1-1-2">
+								<article class="bbg__entity bbg-grid--1-1-1-2">
 
-									<div class="bbg-avatar__container bbg-team__icon">
+									<div class="bbg-avatar__container bbg__entity__icon">
 										<a href="/broadcasters/ocb/" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image bbg-team__icon__audio-video" style="background-image: url(https://innovation.bbg.gov/wp-content/themes/bbginnovate/img/icon_team_audio-video.png);"></div>
+										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_marti_noticias--circle-200.png);"></div>
 										</a>
 									</div>
 
-									<div class="bbg-team__text">
-										<h2 class="bbg-team__name"><a href="/broadcasters/ocb/">Office of Cuban Broadcasting</a></h2>
-										<p class="bbg-team__text-description">OCB oversees Radio and Television Martí at its headquarters in Miami, Florida. The Martís are a multimedia hub of news, information and analysis that provide the people of Cuba with interactive programs seven days a week</p>
-									</div><!-- .bbg-team__text -->
+									<div class="bbg__entity__text">
+										<h2 class="bbg__entity__name"><a href="/broadcasters/ocb/">Office of Cuban Broadcasting</a></h2>
+										<p class="bbg__entity__text-description">OCB oversees Radio and Television Martí at its headquarters in Miami, Florida. The Martís are a multimedia hub of news, information and analysis that provide the people of Cuba with interactive programs seven days a week</p>
+									</div><!-- .bbg__entity__text -->
 
 								</article>
 
-								<article class="bbg-team bbg-grid--1-1-1-2">
+								<article class="bbg__entity bbg-grid--1-1-1-2">
 
-									<div class="bbg-avatar__container bbg-team__icon">
+									<div class="bbg-avatar__container bbg__entity__icon">
 										<a href="/broadcasters/mbn/" tabindex="-1">
-										<div class="bbg-avatar bbg-team__icon__image bbg-team__icon__project-rize" style="background-image: url(https://innovation.bbg.gov/wp-content/themes/bbginnovate/img/icon_team_project-rize.png);"></div>
+										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_alhurra--circle-200.png);"></div>
 										</a>
 									</div>
 
-									<div class="bbg-team__text">
-										<h2 class="bbg-team__name"><a href="/broadcasters/mbn/">Middle East Broadcasting Network</a></h2>
-										<p class="bbg-team__text-description">MBN is the non-profit news organization that operates Alhurra Television, Radio Sawa and MBN Digital reaching audiences in 22 countries across the Middle East.</p>
-									</div><!-- .bbg-team__text -->
+									<div class="bbg__entity__text">
+										<h2 class="bbg__entity__name"><a href="/broadcasters/mbn/">Middle East Broadcasting Network</a></h2>
+										<p class="bbg__entity__text-description">MBN is the non-profit news organization that operates Alhurra Television, Radio Sawa and MBN Digital reaching audiences in 22 countries across the Middle East.</p>
+									</div><!-- .bbg__entity__text -->
 
 								</article>
 

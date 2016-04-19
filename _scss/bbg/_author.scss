@@ -34,10 +34,12 @@
 
 
 //Styles for the team icons
+.bbg__entity,
 .bbg-team {
 	margin-bottom: $site-margins;
 }
 
+.bbg__entity__name,
 .bbg-team__name {
 	clear: none;
 	font-size: 3rem;
@@ -50,6 +52,13 @@
 	}
 }
 
+.bbg__entity__name {
+	line-height: 1.1;
+	margin-bottom: 1rem;
+	text-transform: none;
+}
+
+.bbg__entity__icon,
 .bbg-team__icon {
 	border-radius: 50%;
 	height: $bbg-team__icon-width;
@@ -61,12 +70,14 @@
 	}
 }
 
+.bbg__entity__text,
 .bbg-team__text {
 	@include media($small-screen) {
 		padding-left: $bbg-team__icon-width + 10px;
 	}
 }
 
+.bbg__entity__icon__image,
 .bbg-team__icon__image {
 	@include backgroundCover;
 	display: block;
@@ -74,10 +85,15 @@
 	width: 100%;
 }
 
+.bbg__entity__text-description,
 .bbg-team__text-description {
 	clear: none;
 	margin-top: 0;
 	max-width: $article-max-width;
+}
+
+.usa-intro.bbg__broadcasters__intro {
+	margin-bottom: $site-margins;
 }
 
 
