@@ -10,7 +10,9 @@
 
 $pageContent ="";
 while ( have_posts() ) : the_post();
-	$pageContent = get_the_content();
+	$pageContent=get_the_content();
+	$pageContent = apply_filters('the_content', $pageContent);
+	$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 endwhile;
 
 get_header(); ?>
