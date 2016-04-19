@@ -74,33 +74,6 @@ get_header();
 		<main id="main" class="site-main" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php 
-					/*
-					echo "<img src='$entityLogo' />";
-					echo "<a href='$siteUrl'>$fullName ($abbreviation)</a> <BR>";
-					echo "<strong>$description</strong><BR><BR>";
-					echo "<h1>Latest Items</h1>";
-					$entityJson=getFeed($rssFeed,$id);
-					$counter=0;
-					$maxItems=3;
-					foreach ($entityJson->channel->item as $e) {
-						$counter++;
-						if ($counter <= $maxItems) {
-							$title=$e->title;
-							$url=$e->link;
-							$description=$e->description;
-							if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'), 'url'){
-
-							}
-							$enc = ($e->enclosure->{'@attributes'}->url);
-							//having a hard time accessing enclosure attributes <img src='$thumb' />
-							echo "<a href='$url'>$title</a><BR>" . substr($description,0,100) . "<BR><BR>";
-						}
-					}
-					*/
-					?>
-
-
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 				<?php
 					$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
@@ -190,7 +163,13 @@ get_header();
 									$title=$e->title;
 									$url=$e->link;
 									$description=$e->description;
-									$enc = ($e->enclosure);
+									$enclosureUrl="";
+									if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'}, 'url') ) {
+										$enclosureUrl=($e->enclosure->{'@attributes'}->url);
+										//enclosure url contains the thumbnail.  there are some attributes we could grab if needed. length, mime type are avail
+										//echo "<img src='" . $enclosureUrl . "'>";
+
+									}
 									//having a hard time accessing enclosure attributes <img src='$thumb' />
 									echo '<li class="bbg__profile__related-link"><a href="' . $url . '">' . $title . '</a></li>';
 								}
