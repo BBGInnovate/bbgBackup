@@ -185,7 +185,9 @@ get_header(); ?>
 								$qParams2=array(
 									'post_type' => array('post'),
 									'posts_per_page' => 5,
-									'tag' => $relatedLinksTag
+									'tag' => $relatedLinksTag,
+									'orderby' => 'modified',
+									'order' => 'DESC'
 								);
 								$custom_query = new WP_Query( $qParams2 );
 								if ($custom_query -> have_posts()) {
