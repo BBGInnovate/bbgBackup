@@ -89,6 +89,7 @@ while ( $custom_query->have_posts() )  {
 }
 $boardStr = '<div class="usa-grid-full">' . $ceoStr . $boardStr . '</div><h1>Grantee Leadership</h1><div class="usa-grid-full">' . $granteeStr . '</div>';
 $pageContent = str_replace("[management list]", $boardStr, $pageContent);
+wp_reset_postdata();
 
 
 get_header(); ?>
