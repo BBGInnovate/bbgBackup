@@ -64,6 +64,29 @@ $featuredImageClass = " bbg__article--no-featured-image";
 $bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
 
 
+/**** BEGIN CREATING rssItems array *****/
+$entityJson=getFeed($rssFeed,$id);
+$rssItems=array();
+$itemContainer=false;
+if (property_exists($entityJson, 'channel') && property_exists($entityJson->channel,'item')) {
+	$itemContainer=$entityJson->channel;
+} else {
+	$itemContainer=$entityJson;
+}
+if ($itemContainer) {
+	foreach ($itemContainer->item as $e) {
+		$title=$e->title;
+		$url=$e->link;
+		$description=$e->description;
+		$enclosureUrl="";
+		if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'}, 'url') ) {
+			$enclosureUrl=($e->enclosure->{'@attributes'}->url);
+		}
+		$rssItems[]=array( 'title'=>$title, 'url'=>$url, 'description'=>$description, 'image'=>$enclosureUrl );
+	}
+}
+/**** DONE CREATING rssItems array *****/
+
 
 //echo "<pre>FEED $rssFeed $entityItems</pre>";	
 
@@ -150,32 +173,22 @@ get_header();
 
 					<div class="bbg__article-sidebar">
 						<?php 
-							echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $abbreviation. '</h3>';
-							echo '<ul class="bbg__profile__related-link__list">';
-
-							$entityJson=getFeed($rssFeed,$id);
-							$counter=0;
-							$maxItems=3;
-
-							foreach ($entityJson->channel->item as $e) {
-								$counter++;
-								if ($counter <= $maxItems) {
-									$title=$e->title;
-									$url=$e->link;
-									$description=$e->description;
-									$enclosureUrl="";
-									if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'}, 'url') ) {
-										$enclosureUrl=($e->enclosure->{'@attributes'}->url);
-										//enclosure url contains the thumbnail.  there are some attributes we could grab if needed. length, mime type are avail
-										//echo "<img src='" . $enclosureUrl . "'>";
-
+							if (count($rssItems)) {
+								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $abbreviation. '</h3>';
+								echo '<ul class="bbg__profile__related-link__list">';
+								//loop through items here
+								$maxRelatedStories=3;
+								for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
+									$o=$rssItems[$i];
+									echo '<li class="bbg__profile__related-link">';
+									if ($o['image'] != "") {
+										echo "<img src='". $o['image'] . "'/>";
 									}
-									//having a hard time accessing enclosure attributes <img src='$thumb' />
-									echo '<li class="bbg__profile__related-link"><a href="' . $url . '">' . $title . '</a></li>';
+									echo '<a href="' . $o['url'] . '">' . $o['title'] . '</a>';
+									echo '</li>';
 								}
+								echo '</ul>';
 							}
-							echo '</ul>';
-
 						?>
 
 					</div><!-- .bbg__article-sidebar -->
