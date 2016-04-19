@@ -5405,6 +5405,7 @@ ol li:before {
   }
 }
 
+.page-template-page-entity .bbg__profile-header__banner,
 .bbg__profile .bbg__profile-header__banner,
 .category-profile .bbg__profile-header__banner,
 .category-board-meeting .bbg__profile-header__banner {
@@ -5415,17 +5416,20 @@ ol li:before {
   width: 100%;
 }
 @media screen and (min-width: 900px) {
+  .page-template-page-entity .bbg__profile-header__banner,
   .bbg__profile .bbg__profile-header__banner,
   .category-profile .bbg__profile-header__banner,
   .category-board-meeting .bbg__profile-header__banner {
     height: 400px;
   }
 }
+.page-template-page-entity .bbg__article-header,
 .bbg__profile .bbg__article-header,
 .category-profile .bbg__article-header,
 .category-board-meeting .bbg__article-header {
   margin-bottom: 3rem;
 }
+.page-template-page-entity .bbg__article-header:after,
 .bbg__profile .bbg__article-header:after,
 .category-profile .bbg__article-header:after,
 .category-board-meeting .bbg__article-header:after {
@@ -5435,6 +5439,7 @@ ol li:before {
   clear: both;
   visibility: hidden;
 }
+.page-template-page-entity .bbg__article-sidebar,
 .bbg__profile .bbg__article-sidebar,
 .category-profile .bbg__article-sidebar,
 .category-board-meeting .bbg__article-sidebar {
@@ -5442,6 +5447,7 @@ ol li:before {
   max-width: 600px;
 }
 @media screen and (min-width: 900px) {
+  .page-template-page-entity .bbg__article-content,
   .bbg__profile .bbg__article-content,
   .category-profile .bbg__article-content,
   .category-board-meeting .bbg__article-content {
@@ -5452,11 +5458,13 @@ ol li:before {
     margin-left: auto;
     width: 56%;
   }
+  .page-template-page-entity .bbg__article-content.bbg__article--no-featured-image,
   .bbg__profile .bbg__article-content.bbg__article--no-featured-image,
   .category-profile .bbg__article-content.bbg__article--no-featured-image,
   .category-board-meeting .bbg__article-content.bbg__article--no-featured-image {
     margin-top: -100px;
   }
+  .page-template-page-entity .bbg__article-sidebar,
   .bbg__profile .bbg__article-sidebar,
   .category-profile .bbg__article-sidebar,
   .category-board-meeting .bbg__article-sidebar {
@@ -5464,6 +5472,7 @@ ol li:before {
     max-width: 17rem;
     width: 18%;
   }
+  .page-template-page-entity .bbg__article-sidebar--left,
   .bbg__profile .bbg__article-sidebar--left,
   .category-profile .bbg__article-sidebar--left,
   .category-board-meeting .bbg__article-sidebar--left {

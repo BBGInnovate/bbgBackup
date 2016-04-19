@@ -153,7 +153,7 @@ get_header();
 
 <section id="teams" class="usa-section bbg-staff">
 					<div class="usa-grid">
-						<h6 class="bbg-label"><a href="https://innovation.bbg.gov/teams/" title="A directory of the current ODDI staff.">Our broadcasters</a></h6>
+						<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/broadcasters/" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
 
 						<div class="usa-intro bbg__broadcasters__intro">
 							<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
@@ -239,7 +239,7 @@ get_header();
 								
 
 						</div>
-						<a href="https://innovation.bbg.gov/staff/">Meet the full ODDI team »</a>
+						<a href="https://bbgredesign.voanews.com/about-the-agency/history/">Learn more about the history of USIM »</a>
 					</div>
 				</section>
 

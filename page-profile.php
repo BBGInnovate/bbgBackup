@@ -143,25 +143,6 @@ get_header(); ?>
 					<div class="bbg__article-sidebar--left">
 
 						<ul class="bbg__article-share ">
-						<?php 
-						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
-						?>
-						<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
-						<?php } ?>
-
-
-						<?php 
-						if ($email!=""){
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
-						}
-						if ($twitterProfileHandle!=""){
-							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
-						}
-
-						if ($phone!=""){
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
-						}
-						?>
 						&nbsp;
 						</ul>
 					</div><!-- .bbg__article-sidebar--left -->
