@@ -179,8 +179,8 @@ get_header();
 												$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
 												$abbreviation=str_replace("/", "",$abbreviation);
 												$description=get_post_meta( $id, 'entity_description', true );
-												$link="/broadcasters/voa/";
-												$imgSrc='https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_'.$abbreviation.'--circle-200.png';
+												get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) )
+												$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 
 												echo '<article class="bbg__entity bbg-grid--1-1-1-2">';
 												echo '<div class="bbg-avatar__container bbg__entity__icon">';
