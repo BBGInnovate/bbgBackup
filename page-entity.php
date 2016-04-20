@@ -55,7 +55,7 @@ if ($languages != "") {
 	$languages = '<li><span>Languages supported: </span>'. $languages . '</li>';
 }
 if ($appLink != "") {
-	$appLink = '<li><span>Download the app: </span>'. $appLink . '</li>';
+	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/">Download the apps: </a>'. $appLink . '</li>';
 }
 
 
@@ -149,7 +149,11 @@ get_header();
 
 					<div class="bbg__article-sidebar--left">
 						<!--<p><strong>We could include the contact info here</strong>, or the app download links, the summary of the entity, by the numbers, social links for the entity etc </p>-->
-						<h3 class="bbg__sidebar-label">Fast Facts</h3>
+						<?php 
+						if ($budget != "" || $employees != "" || $languages != "" || $appLink != "") {
+							echo '<h3 class="bbg__sidebar-label">Fast Facts</h3>';
+						} ?>
+
 						<ul class="bbg__article-share ">
 							<?php 
 								echo $budget;
