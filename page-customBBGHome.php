@@ -31,10 +31,14 @@ get_header();
 					</a>
 					<div class="bbg-banner-box">
 						<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-						<?php $description = get_bloginfo( 'description', 'display' );
+						<?php 
+						/*
+						$description = get_bloginfo( 'description', 'display' );
 						if ( $description || is_customize_preview() ) : ?>
 							<h3 class="bbg-banner-site-description usa-heading-site-description"><?php echo $description; ?></h3>
-						<?php endif; ?>
+						<?php endif; 
+						*/
+						?>
 
 					</div>
 

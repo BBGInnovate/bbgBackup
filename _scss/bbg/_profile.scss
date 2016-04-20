@@ -70,6 +70,10 @@
 	.bbg__profile__related-link {
 		margin-bottom: $site-margins;
 	}
+
+	&.rtl {
+		direction: rtl;
+	}
 }
 
 

@@ -68,12 +68,19 @@ $bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
 $entityJson=getFeed($rssFeed,$id);
 $rssItems=array();
 $itemContainer=false;
+$languageDirection="";
+
 if (property_exists($entityJson, 'channel') && property_exists($entityJson->channel,'item')) {
 	$itemContainer=$entityJson->channel;
 } else {
 	$itemContainer=$entityJson;
 }
 if ($itemContainer) {
+	if (property_exists($itemContainer, 'language')) {
+		if ($itemContainer->language=="ar"){
+			$languageDirection=" rtl";
+		}
+	}
 	foreach ($itemContainer->item as $e) {
 		$title=$e->title;
 		$url=$e->link;
@@ -175,8 +182,7 @@ get_header();
 						<?php 
 							if (count($rssItems)) {
 								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $abbreviation. '</h3>';
-								echo '<ul class="bbg__profile__related-link__list">';
-								//loop through items here
+								echo '<ul class="bbg__profile__related-link__list'. $languageDirection .'">';
 								$maxRelatedStories=3;
 								for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
 									$o=$rssItems[$i];
