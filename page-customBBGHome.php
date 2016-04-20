@@ -161,83 +161,40 @@ get_header();
 
 						<div class="usa-grid-full">
 
-								<article class="bbg__entity bbg-grid--1-1-1-2">
+								<?php
+									$entityParentPage = get_page_by_path('broadcasters');
+									$qParams=array(
+										'post_type' => array('page'),
+										'posts_per_page' => -1,
+										'post_parent' => $entityParentPage->ID
+										
+									);
+									$custom_query = new WP_Query($qParams);
+									if ($custom_query -> have_posts()) {
+										while ( $custom_query -> have_posts() )  {
+											$custom_query->the_post();
+											$id=get_the_ID();
+											$fullName=get_post_meta( $id, 'entity_full_name', true );
+											$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
+											$abbreviation=str_replace("/", "",$abbreviation);
+											$description=get_post_meta( $id, 'entity_description', true );
+											$link="/broadcasters/voa/";
+											$imgSrc='https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_'.$abbreviation.'--circle-200.png';
 
-									<div class="bbg-avatar__container bbg__entity__icon">
-										<a href="/broadcasters/voa/" tabindex="-1">
-										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_voa--circle-200.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg__entity__text">
-										<h2 class="bbg__entity__name"><a href="/broadcasters/voa/">Voice of America</a></h2>
-										<p class="bbg__entity__text-description">VOA produces popular news, information and cultural programs in 45 languages and reaches more than 164 million people around the world every week on television, radio, web and mobile platforms. VOA attracts 80 percent of the total U.S. international media audience.</p>	
-									</div><!-- .bbg__entity__text -->
-
-								</article>
-
-								<article class="bbg__entity bbg-grid--1-1-1-2">
-
-									<div class="bbg-avatar__container bbg__entity__icon">
-										<a href="/broadcasters/rferl/" tabindex="-1">
-										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg__entity__text">
-										<h2 class="bbg__entity__name"><a href="/broadcasters/rferl/">Radio Free Europe / Radio Liberty</a></h2>
-										<p class="bbg__entity__text-description">RFE/RL journalists provide what many people cannot get locally: uncensored news, responsible discussion, and open debate. Its programming focuses on local and regional developments in places where the media are not free or threats to civil society and democracy remain.</p>
-									</div><!-- .bbg__entity__text -->
-
-								</article>
-
-								<article class="bbg__entity bbg-grid--1-1-1-2">
-
-									<div class="bbg-avatar__container bbg__entity__icon">
-										<a href="/broadcasters/rfa/" tabindex="-1">
-										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rfa--circle-200.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg__entity__text">
-										<h2 class="bbg__entity__name"><a href="/broadcasters/rfa/">Radio Free Asia</a></h2>
-										<p class="bbg__entity__text-description">RFA journalists provide uncensored, fact-based news to citizens of these countries, among the world’s worst media environments. RFA is funded by a grant from the BBG.</p>
-									</div><!-- .bbg__entity__text -->
-
-								</article>
-
-								<article class="bbg__entity bbg-grid--1-1-1-2">
-
-									<div class="bbg-avatar__container bbg__entity__icon">
-										<a href="/broadcasters/ocb/" tabindex="-1">
-										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_marti_noticias--circle-200.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg__entity__text">
-										<h2 class="bbg__entity__name"><a href="/broadcasters/ocb/">Office of Cuban Broadcasting</a></h2>
-										<p class="bbg__entity__text-description">OCB oversees Radio and Television Martí at its headquarters in Miami, Florida. The Martís are a multimedia hub of news, information and analysis that provide the people of Cuba with interactive programs seven days a week</p>
-									</div><!-- .bbg__entity__text -->
-
-								</article>
-
-								<article class="bbg__entity bbg-grid--1-1-1-2">
-
-									<div class="bbg-avatar__container bbg__entity__icon">
-										<a href="/broadcasters/mbn/" tabindex="-1">
-										<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_alhurra--circle-200.png);"></div>
-										</a>
-									</div>
-
-									<div class="bbg__entity__text">
-										<h2 class="bbg__entity__name"><a href="/broadcasters/mbn/">Middle East Broadcasting Network</a></h2>
-										<p class="bbg__entity__text-description">MBN is the non-profit news organization that operates Alhurra Television, Radio Sawa and MBN Digital reaching audiences in 22 countries across the Middle East.</p>
-									</div><!-- .bbg__entity__text -->
-
-								</article>
-
-								
-
+											echo '<article class="bbg__entity bbg-grid--1-1-1-2">';
+											echo '<div class="bbg-avatar__container bbg__entity__icon">';
+											echo '<a href="'.$link.'" tabindex="-1">';
+											echo '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
+											echo '</a></div>';
+											echo '<div class="bbg__entity__text">';
+											echo '<h2 class="bbg__entity__name"><a href="'.$link.'">'.$fullName.'</a></h2>';
+											echo '<p class="bbg__entity__text-description">'.$description.'</p>';
+											echo '</div>';
+											echo '</article>';
+										}
+									}
+									wp_reset_postdata();
+								?>
 						</div>
 						<a href="https://bbgredesign.voanews.com/about-the-agency/history/">Learn more about the history of USIM »</a>
 					</div>
