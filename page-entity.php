@@ -181,10 +181,11 @@ get_header();
 								for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
 									$o=$rssItems[$i];
 									echo '<li class="bbg__profile__related-link">';
+									echo '<a href="' . $o['url'] . '">';
 									if ($o['image'] != "") {
 										echo "<img src='". $o['image'] . "'/>";
 									}
-									echo '<a href="' . $o['url'] . '">' . $o['title'] . '</a>';
+									echo $o['title'] . '</a>';
 									echo '</li>';
 								}
 								echo '</ul>';

@@ -65,9 +65,10 @@
 
 .bbg__profile__related-link__list {
 	@include unstyled-list;
+	margin-bottom: $site-margins-medium;
 
 	.bbg__profile__related-link {
-		margin-bottom: $site-margins-medium;
+		margin-bottom: $site-margins;
 	}
 }
 
