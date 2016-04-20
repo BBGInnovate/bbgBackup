@@ -175,23 +175,26 @@ get_header();
 											$custom_query->the_post();
 											$id=get_the_ID();
 											$fullName=get_post_meta( $id, 'entity_full_name', true );
-											$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
-											$abbreviation=str_replace("/", "",$abbreviation);
-											$description=get_post_meta( $id, 'entity_description', true );
-											$link="/broadcasters/voa/";
-											$imgSrc='https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_'.$abbreviation.'--circle-200.png';
+											if ($fullName != "") {
+												$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
+												$abbreviation=str_replace("/", "",$abbreviation);
+												$description=get_post_meta( $id, 'entity_description', true );
+												$link="/broadcasters/voa/";
+												$imgSrc='https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_'.$abbreviation.'--circle-200.png';
 
-											echo '<article class="bbg__entity bbg-grid--1-1-1-2">';
-											echo '<div class="bbg-avatar__container bbg__entity__icon">';
-											echo '<a href="'.$link.'" tabindex="-1">';
-											echo '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
-											echo '</a></div>';
-											echo '<div class="bbg__entity__text">';
-											echo '<h2 class="bbg__entity__name"><a href="'.$link.'">'.$fullName.'</a></h2>';
-											echo '<p class="bbg__entity__text-description">'.$description.'</p>';
-											echo '</div>';
-											echo '</article>';
-										}
+												echo '<article class="bbg__entity bbg-grid--1-1-1-2">';
+												echo '<div class="bbg-avatar__container bbg__entity__icon">';
+												echo '<a href="'.$link.'" tabindex="-1">';
+												echo '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
+												echo '</a></div>';
+												echo '<div class="bbg__entity__text">';
+												echo '<h2 class="bbg__entity__name"><a href="'.$link.'">'.$fullName.'</a></h2>';
+												echo '<p class="bbg__entity__text-description">'.$description.'</p>';
+												echo '</div>';
+												echo '</article>';
+											}
+											}
+											
 									}
 									wp_reset_postdata();
 								?>
