@@ -17,11 +17,39 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
-
-
 			<?php
-				if ( get_header_image() != "") {
-					/* Check if there's an image set. Ideally we'd tweak the design accorgingly. */
+				$data = get_theme_mod('header_image_data');
+				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
+				if($attachment_id) {
+					$tempSources= bbgredesign_get_image_size_links($attachment_id);
+					//sources aren't automatically in numeric order.  ksort does the trick.
+					ksort($tempSources);
+					$counter=0;
+					$prevWidth=0;
+					// Let's prevent any images with width > 1200px from being an output as part of responsive post cover
+					foreach( $tempSources as $key => $tempSource ) {
+						if ($key > 1900) {
+							unset($tempSources[$key]);
+						}
+					}
+					echo "<style>";
+					foreach( $tempSources as $key => $tempSourceObj ) {
+						$counter++;
+						$tempSource=$tempSourceObj['src'];
+						if ($counter == 1) {
+							echo "\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+						} elseif ($counter < count($tempSources)) {
+							echo "\t@media (min-width: " . ($prevWidth+1) . "px) and (max-width: " . $key . "px) {\n";
+							echo "\t\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+							echo "\t}\n";
+						} else {
+							echo "\t@media (min-width: " . ($prevWidth+1) . "px) {\n";
+							echo "\t\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+							echo "\t}\n";
+						}
+						$prevWidth=$key;
+					}
+					echo "</style>";
 				}
 			?>
 			<section class="bbg-banner" style="background-image:url(<?php echo get_header_image(); ?>)">

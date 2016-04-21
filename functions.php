@@ -46,7 +46,8 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 		add_image_size( 'large-thumb', 1040, 624, true );
 		add_image_size( 'medium-thumb', 600, 360, true );
 		add_image_size( 'small-thumb', 300, 180, true );
-
+		//add_image_size( 'largest', 1200, 9999 ); // new size at our max breaking point
+		add_image_size( 'gigantic', 1900, 9999 ); // for some huge monitors
 		add_image_size( 'mugshot', 200, 200, true );  
 
 		function my_custom_sizes( $sizes ) {
@@ -1030,5 +1031,28 @@ function renderContactCard($postIDs) {
 	}
 }
 
-
+function bbgredesign_get_image_size_links($imgID) {
+	//http://justintadlock.com/archives/2011/01/28/linking-to-all-image-sizes-in-wordpress
+	$links = array();
+	if ( wp_attachment_is_image( $imgID ) ) {
+		$sizes = get_intermediate_image_sizes();
+		$sizes[] = 'full';
+		foreach ( $sizes as $size ) {
+			$image = wp_get_attachment_image_src( $imgID, $size );
+			/* Add the link to the array if there's an image and if $is_intermediate (4th array value) is true or full size. */
+			if ( !empty( $image ) && ( true == $image[3] || 'full' == $size ) ) {
+				$src=$image[0];
+				$w=$image[1];
+				$h=$image[2];
+				if (false && $size=='full') {
+					$key='full';
+				} else {
+					$key=$image[1];
+				}
+				$links[$key] = array('src'=>$src, 'width'=>$w,'height'=>$h, 'size'=>$size );
+			}
+		}
+	}
+	return $links;
+}
 ?>
