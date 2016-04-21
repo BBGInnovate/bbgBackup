@@ -37,14 +37,14 @@ get_header();
 						$counter++;
 						$tempSource=$tempSourceObj['src'];
 						if ($counter == 1) {
-							echo "\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+							echo "\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 						} elseif ($counter < count($tempSources)) {
 							echo "\t@media (min-width: " . ($prevWidth+1) . "px) and (max-width: " . $key . "px) {\n";
-							echo "\t\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
 						} else {
 							echo "\t@media (min-width: " . ($prevWidth+1) . "px) {\n";
-							echo "\t\t.postCoverResponsive { background-image: url($tempSource) !important; }\n";
+							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
 						}
 						$prevWidth=$key;
