@@ -5464,6 +5464,47 @@ ol li:before {
   margin: 0 auto;
   max-width: 600px;
 }
+.page-template-page-entity .bbg__article-sidebar__list--labeled,
+.bbg__profile .bbg__article-sidebar__list--labeled,
+.category-profile .bbg__article-sidebar__list--labeled,
+.category-board-meeting .bbg__article-sidebar__list--labeled {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 3rem;
+}
+.page-template-page-entity .bbg__article-sidebar__list--labeled li,
+.bbg__profile .bbg__article-sidebar__list--labeled li,
+.category-profile .bbg__article-sidebar__list--labeled li,
+.category-board-meeting .bbg__article-sidebar__list--labeled li {
+  display: list-item;
+  margin: 0;
+}
+.page-template-page-entity .bbg__article-sidebar__list--labeled li:before,
+.bbg__profile .bbg__article-sidebar__list--labeled li:before,
+.category-profile .bbg__article-sidebar__list--labeled li:before,
+.category-board-meeting .bbg__article-sidebar__list--labeled li:before {
+  display: none;
+}
+.page-template-page-entity .bbg__article-sidebar__list--labeled li:after,
+.bbg__profile .bbg__article-sidebar__list--labeled li:after,
+.category-profile .bbg__article-sidebar__list--labeled li:after,
+.category-board-meeting .bbg__article-sidebar__list--labeled li:after {
+  display: none;
+}
+.page-template-page-entity .bbg__article-sidebar__list--labeled li,
+.bbg__profile .bbg__article-sidebar__list--labeled li,
+.category-profile .bbg__article-sidebar__list--labeled li,
+.category-board-meeting .bbg__article-sidebar__list--labeled li {
+  margin-bottom: 1rem;
+}
+.page-template-page-entity .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
+.bbg__profile .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
+.category-profile .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
+.category-board-meeting .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label {
+  font-weight: bold;
+}
 @media screen and (min-width: 900px) {
   .page-template-page-entity .bbg__article-content,
   .bbg__profile .bbg__article-content,

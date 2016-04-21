@@ -123,6 +123,20 @@
 		max-width: 600px;
 	}
 
+	.bbg__article-sidebar__list--labeled {
+		@include unstyled-list;
+
+		margin-bottom: $site-margins;
+
+		li {
+			margin-bottom: 1rem;
+		}
+
+		.bbg__article-sidebar__list-label {
+			font-weight: bold;
+		}
+	}
+
 
 
 	@include media($medium-large-screen) {

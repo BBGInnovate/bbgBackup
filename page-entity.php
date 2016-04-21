@@ -45,17 +45,17 @@ $languages = get_post_meta( $id, 'entity_languages', true );
 $appLink = get_post_meta( $id, 'entity_mobile_apps_link', true );
 
 if ($budget != "") {
-	$budget = '<li><span class="bbg__sidebar-label">Annual budget: </span>'. $budget . '</li>';
+	$budget = '<li><span class="bbg__article-sidebar__list-label">Annual budget: </span>'. $budget . '</li>';
 }
 if ($employees != "") {
 	$employees = number_format( floatval( $employees ), 0, '.', ',' ); 
-	$employees = '<li><span>Employees: </span>'. $employees . '</li>';
+	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>'. $employees . '</li>';
 }
 if ($languages != "") {
-	$languages = '<li><span>Languages supported: </span>'. $languages . '</li>';
+	$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
 }
 if ($appLink != "") {
-	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/">Download the apps: </a>'. $appLink . '</li>';
+	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps: </a>'. $appLink . '</li>';
 }
 
 //Social + contact links
@@ -161,7 +161,7 @@ get_header();
 							echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
 						} ?>
 
-						<ul>
+						<ul class="bbg__article-sidebar__list--labeled">
 							<?php 
 								echo $budget;
 								echo $employees;
