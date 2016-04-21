@@ -58,6 +58,13 @@ if ($appLink != "") {
 	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/">Download the apps: </a>'. $appLink . '</li>';
 }
 
+//Social + contact links
+$email=get_post_meta( get_the_ID(), 'entity_email', true );
+$phone=get_post_meta( get_the_ID(), 'entity_phone', true );
+$twitterProfileHandle=get_post_meta( get_the_ID(), 'entity_twitter_handle', true );
+$facebook=get_post_meta( get_the_ID(), 'entity_facebook', true );
+
+
 
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
@@ -148,22 +155,38 @@ get_header();
 
 
 					<div class="bbg__article-sidebar--left">
-						<!--<p><strong>We could include the contact info here</strong>, or the app download links, the summary of the entity, by the numbers, social links for the entity etc </p>-->
 						<?php 
 						if ($budget != "" || $employees != "" || $languages != "" || $appLink != "") {
 							echo '<h3 class="bbg__sidebar-label">Fast Facts</h3>';
 						} ?>
 
-						<ul class="bbg__article-share ">
+						<ul>
 							<?php 
 								echo $budget;
 								echo $employees;
 								echo $languages;
 								echo $appLink;
-
 							?>
-						&nbsp;
 						</ul>
+
+						<ul class="bbg__article-share ">
+							<?php
+								if ($twitterProfileHandle!=""){
+									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+								}
+								if ($facebook!=""){
+									echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>'; 
+								}
+								if ($email!=""){
+									echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
+								}
+								if ($phone!=""){
+									echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
+								}
+							?>
+							&nbsp;
+						</ul>
+
 					</div><!-- .bbg__article-sidebar--left -->
 
 

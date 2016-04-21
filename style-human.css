@@ -5484,6 +5484,15 @@ ol li:before {
     max-width: 17rem;
     width: 18%;
   }
+}
+.page-template-page-entity .bbg__article-sidebar--left,
+.bbg__profile .bbg__article-sidebar--left,
+.category-profile .bbg__article-sidebar--left,
+.category-board-meeting .bbg__article-sidebar--left {
+  margin: 0 auto;
+  max-width: 600px;
+}
+@media screen and (min-width: 900px) {
   .page-template-page-entity .bbg__article-sidebar--left,
   .bbg__profile .bbg__article-sidebar--left,
   .category-profile .bbg__article-sidebar--left,
