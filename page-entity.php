@@ -59,10 +59,11 @@ if ($appLink != "") {
 }
 
 //Social + contact links
-$email=get_post_meta( get_the_ID(), 'entity_email', true );
-$phone=get_post_meta( get_the_ID(), 'entity_phone', true );
 $twitterProfileHandle=get_post_meta( get_the_ID(), 'entity_twitter_handle', true );
 $facebook=get_post_meta( get_the_ID(), 'entity_facebook', true );
+$instagram=get_post_meta( get_the_ID(), 'entity_instagram', true );
+//$email=get_post_meta( get_the_ID(), 'entity_email', true );
+//$phone=get_post_meta( get_the_ID(), 'entity_phone', true );
 
 
 
@@ -171,18 +172,24 @@ get_header();
 
 						<ul class="bbg__article-share ">
 							<?php
-								if ($twitterProfileHandle!=""){
-									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
-								}
 								if ($facebook!=""){
 									echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>'; 
 								}
+								if ($twitterProfileHandle!=""){
+									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+								}
+								if ($instagram!=""){
+									echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>'; 
+								}
+
+								/*
 								if ($email!=""){
 									echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
 								}
 								if ($phone!=""){
 									echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 								}
+								*/
 							?>
 							&nbsp;
 						</ul>

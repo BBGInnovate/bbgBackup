@@ -3518,6 +3518,12 @@ object {
   background-image: url(img/social-icons/png-white/social-icons_phone.png);
 }
 
+.bbg__contact__icon.instagram,
+.bbg__article-share__icon.instagram {
+  background-color: #507ea3;
+  background-image: url(img/social-icons/png-white/social-icons_instagram.png);
+}
+
 /* Article share links: text */
 .bbg__article-share__text {
   display: none;
