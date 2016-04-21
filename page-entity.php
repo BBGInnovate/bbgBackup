@@ -59,9 +59,9 @@ if ($appLink != "") {
 }
 
 //Social + contact links
-$twitterProfileHandle=get_post_meta( get_the_ID(), 'entity_twitter_handle', true );
-$facebook=get_post_meta( get_the_ID(), 'entity_facebook', true );
-$instagram=get_post_meta( get_the_ID(), 'entity_instagram', true );
+$twitterProfileHandle=get_post_meta( $id, 'entity_twitter_handle', true );
+$facebook=get_post_meta( $id, 'entity_facebook', true );
+$instagram=get_post_meta( $id, 'entity_instagram', true );
 //$email=get_post_meta( get_the_ID(), 'entity_email', true );
 //$phone=get_post_meta( get_the_ID(), 'entity_phone', true );
 
@@ -69,7 +69,7 @@ $instagram=get_post_meta( get_the_ID(), 'entity_instagram', true );
 
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
-$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
+$bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
 
 
 /**** BEGIN CREATING rssItems array *****/
@@ -102,8 +102,28 @@ if ($itemContainer) {
 }
 /**** DONE CREATING rssItems array *****/
 
-
-//echo "<pre>FEED $rssFeed $entityItems</pre>";	
+/**** FETCH related press releases ****/
+$prCategoryName=get_post_meta( $id, 'entity_pr_category', true );
+$pressReleases=array();
+if ($prCategoryName != "") {
+	$qParams=array(
+		'post_type' => array('post'),
+		'posts_per_page' => 5,
+		'category__in' => array(get_cat_id('Press Release'),
+								get_cat_id($prCategoryName)
+						  )
+	);
+	$custom_query = new WP_Query($qParams);
+	if ($custom_query -> have_posts()) {
+		while ( $custom_query -> have_posts() )  {
+			$custom_query->the_post();
+			$id=get_the_ID();
+			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id));
+		}
+	}
+	
+	wp_reset_postdata();
+}
 
 get_header(); 
 ?>
@@ -205,6 +225,19 @@ get_header();
 
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+						
+						<?php
+							if (count($pressReleases)) {
+								echo "<h1>Entity PR</h1><ul>";
+								foreach ($pressReleases as $pr) {
+									$url=$pr['url'];
+									$title=$pr['title'];
+									echo "<li><a href='$url'>$title</a></li>";
+								}
+								echo "</ul>";
+							}
+						?>
+
 						<?php echo $pageContent; ?>
 
 						<?php if($post->post_parent) {
