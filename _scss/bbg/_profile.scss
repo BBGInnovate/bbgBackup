@@ -95,6 +95,7 @@
 	}
 }
 
+.page-template-default,
 .page-template-page-entity,
 .bbg__profile,
 .category-profile,
@@ -153,6 +154,10 @@
 
 			&.bbg__article--no-featured-image{
 				margin-top: $profile-photo-margin-large;
+			}
+
+			p {
+				font-family: $font-serif;
 			}
 		}
 
