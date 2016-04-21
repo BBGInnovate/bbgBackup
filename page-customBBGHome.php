@@ -51,8 +51,9 @@ get_header();
 					}
 					echo "</style>";
 				}
+				//style="background-image:url(<?php echo get_header_image(); ?>)"
 			?>
-			<section class="bbg-banner" style="background-image:url(<?php echo get_header_image(); ?>)">
+			<section class="bbg-banner"> 
 				<div class="usa-grid bbg-banner__container">
 					<a href="<?php echo site_url(); ?>">
 						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
