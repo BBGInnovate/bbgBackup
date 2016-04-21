@@ -685,3 +685,11 @@ ul.bbg__article-content__list--inline {
 		font-size: $base-font-size;
 	}
 }
+
+/** Read more tagline **/
+.bbg__read-more {
+	color: $color-primary;
+	font-family: $font-sans;
+	font-size: 80%;
+	font-weight: bold;
+}

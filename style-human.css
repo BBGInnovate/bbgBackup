@@ -3922,6 +3922,14 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   }
 }
 
+/** Read more tagline **/
+.bbg__read-more {
+  color: #0071bc;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 80%;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;

@@ -67,7 +67,7 @@ get_header();
 						echo '<h3 id="site-intro" class="usa-font-lead">';
 						/* echo '<h2>' . $siteIntroTitle . '</h2>'; */
 						echo get_the_content();
-						echo '</h3>';
+						echo ' <a href="about-the-agency/" class="bbg__read-more">LEARN MORE »</a></h3>';
 					endwhile;
 				endif;
 				wp_reset_query();
