@@ -51,7 +51,7 @@ get_header();
 					}
 					echo "</style>";
 				}
-				//style="background-image:url(<?php echo get_header_image(); ?>)"
+				//style="background-image:url(<?php echo get_header_image();
 			?>
 			<section class="bbg-banner"> 
 				<div class="usa-grid bbg-banner__container">
