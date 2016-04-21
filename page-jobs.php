@@ -14,6 +14,28 @@ while ( have_posts() ) : the_post();
 	$pageContent = apply_filters('the_content', $pageContent);
 	$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 endwhile;
+$jobs=getJobs();
+$s="";
+for ($i=0; $i < count($jobs); $i++) {
+	$j=$jobs[$i];
+	//var_dump($j); 
+	$url = $j['url'];
+	$title=$j['position_title'];
+	$startDate=$j['start_date'];
+	$endDate=$j['end_date'];
+	$locations=$j['locations'];
+
+	$s.= "<a href='$url'>$title</a><BR>";
+	$s.= "Starts: $startDate<BR>";
+	$s.= "Ends: $endDate<BR>";
+	$s.= "Locations: <BR>";
+	for ($k=0; $k<count($locations); $k++) {
+		$loc = $locations[$k];
+		$s.= "&nbsp;&nbsp;&nbsp; $loc<BR>";
+	}
+	$s.= "<BR>";
+}
+$pageContent = str_replace("[jobs list]", $s, $pageContent);
 
 get_header(); ?>
 
@@ -34,33 +56,8 @@ get_header(); ?>
 				<section class="usa-section usa-grid">
 					<h6 class="bbg-label small">Jobs</h6>
 					<div class="bbg-grid__container">
-
 						<?php 
-
-							echo $pageContent . "<BR><BR>";
-
-							$jobs=getJobs();
-
-							for ($i=0; $i < count($jobs); $i++) {
-								$j=$jobs[$i];
-								//var_dump($j); 
-								$url = $j['url'];
-								$title=$j['position_title'];
-								$startDate=$j['start_date'];
-								$endDate=$j['end_date'];
-								$locations=$j['locations'];
-
-								echo "<a href='$url'>$title</a><BR>";
-								echo "Starts: $startDate<BR>";
-								echo "Ends: $endDate<BR>";
-								echo "Locations: <BR>";
-								for ($k=0; $k<count($locations); $k++) {
-									$loc = $locations[$k];
-									echo "&nbsp;&nbsp;&nbsp; $loc<BR>";
-								}
-
-								echo "<BR>";
-							}
+							echo $pageContent;
 						?>
 					</div><!-- .bbg-grid__container -->
 				</section>
