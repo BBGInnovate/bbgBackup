@@ -96,11 +96,17 @@
 	}
 }
 
+/* Can this just be the default page style ? */
 .page-template-default,
 .page-template-page-entity,
 .bbg__profile,
 .category-profile,
 .category-board-meeting {
+
+	p {
+		font-family: $font-serif;
+	}
+
 	.bbg__profile-header__banner {
 		background: {
 			size: cover;
@@ -140,7 +146,6 @@
 	}
 
 
-
 	@include media($medium-large-screen) {
 
 		.bbg__article-content{
@@ -157,9 +162,6 @@
 				margin-top: $profile-photo-margin-large;
 			}
 
-			p {
-				font-family: $font-serif;
-			}
 		}
 
 

@@ -5433,6 +5433,14 @@ ol li:before {
   }
 }
 
+/* Can this just be the default page style ? */
+.page-template-default p,
+.page-template-page-entity p,
+.bbg__profile p,
+.category-profile p,
+.category-board-meeting p {
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+}
 .page-template-default .bbg__profile-header__banner,
 .page-template-page-entity .bbg__profile-header__banner,
 .bbg__profile .bbg__profile-header__banner,
@@ -5545,13 +5553,6 @@ ol li:before {
   .category-profile .bbg__article-content.bbg__article--no-featured-image,
   .category-board-meeting .bbg__article-content.bbg__article--no-featured-image {
     margin-top: -100px;
-  }
-  .page-template-default .bbg__article-content p,
-  .page-template-page-entity .bbg__article-content p,
-  .bbg__profile .bbg__article-content p,
-  .category-profile .bbg__article-content p,
-  .category-board-meeting .bbg__article-content p {
-    font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   }
   .page-template-default .bbg__article-sidebar,
   .page-template-page-entity .bbg__article-sidebar,
