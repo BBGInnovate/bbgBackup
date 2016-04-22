@@ -225,10 +225,12 @@ get_header();
 
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-						
+
+						<?php echo $pageContent; ?>
+
 						<?php
 							if (count($pressReleases)) {
-								echo "<h1>Entity PR</h1><ul>";
+								echo '<h3>Recent '. $abbreviation .' press releases</h3><ul>';
 								foreach ($pressReleases as $pr) {
 									$url=$pr['url'];
 									$title=$pr['title'];
@@ -237,8 +239,6 @@ get_header();
 								echo "</ul>";
 							}
 						?>
-
-						<?php echo $pageContent; ?>
 
 						<?php if($post->post_parent) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
