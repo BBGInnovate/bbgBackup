@@ -109,7 +109,7 @@ if ($prCategoryName != "") {
 	$qParams=array(
 		'post_type' => array('post'),
 		'posts_per_page' => 5,
-		'category__in' => array(get_cat_id('Press Release'),
+		'category__and' => array(get_cat_id('Press Release'),
 								get_cat_id($prCategoryName)
 						  )
 	);
