@@ -220,18 +220,53 @@ if ($custom_query -> have_posts()) {
 	while ( $custom_query -> have_posts() )  {
 		$custom_query->the_post();
 		$id=get_the_ID();
-		$awards[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
+		
+		$yearTerms = get_the_terms( $id, 'awardyear' );
+		$awardYears=array();
+		foreach ( $yearTerms as $term ) {
+	        $awardYears[] = $term->name;
+	    }
+
+		$orgTerms = get_the_terms( $id, 'organizations' );
+	    $organizations=array();
+	    foreach ( $orgTerms as $term ) {
+	        $organizations[] = $term->name;
+	    }
+		
+		$recipients=array();
+		$recipientTerms = get_the_terms( $id, 'recipients' );
+		foreach ( $recipientTerms as $term ) {
+	        $recipients[] = $term->name;
+	    }
+		
+		$awards[]=array( 
+			'id'=>$id,
+			'url'=>get_permalink($id), 
+			'title'=> get_the_title($id), 
+			'excerpt'=> get_the_excerpt(), 
+			'awardYears'=> $awardYears,
+			'organizations'=> $organizations,
+			'recipients'=> $recipients
+		);
 	}
 }
+echo "here come the awards <BR><BR>";
+var_dump($awards);
 wp_reset_postdata();
 $s="";
 if (count($awards)) {
 	$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
 	foreach ($awards as $a) {
+		
+		$id=$a['id'];
 		$url=$a['url'];
 		$title=$a['title'];
+
 		$s.= '<div class="bbg__post-excerpt">';
 		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+		$s.= '<strong>years - ' . join($awardYears) . '</strong><BR>';
+		$s.= '<strong>orgs - ' . join($organizations) . '</strong><BR>';
+		$s.= '<strong>recipients - ' . join($recipients) . '</strong><BR>';
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
 	}
