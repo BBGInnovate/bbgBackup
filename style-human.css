@@ -3456,12 +3456,17 @@ object {
 /* Article share links */
 .bbg__article-share__link {
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 3px;
 }
 .bbg__article-share__link a:hover,
 .bbg__article-share__link a:focus {
   background: none;
   text-decoration: none;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-share__link {
+    margin-right: 2rem;
+  }
 }
 @media screen and (min-width: 900px) {
   .bbg__article-share__link {
@@ -5573,6 +5578,13 @@ ol li:before {
     margin-right: 3rem;
     width: 20%;
   }
+}
+
+.bbg__contact-card {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
 }
 
 .category-board-meeting .bbg__article-header {

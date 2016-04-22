@@ -26,17 +26,20 @@ wp_reset_postdata();
 wp_reset_query();
 
 $id=$post->ID;
-$fullName=get_post_meta( $id, 'entity_full_name', true );
-$abbreviation=get_post_meta( $id, 'entity_abbreviation', true );
-$description=get_post_meta( $id, 'entity_description', true );
-$siteUrl=get_post_meta( $id, 'entity_site_url', true );
-$rssFeed=get_post_meta( $id, 'entity_rss_feed', true );
+
+$fullName = get_post_meta( $id, 'entity_full_name', true );
+$abbreviation = get_post_meta( $id, 'entity_abbreviation', true );
+$description = get_post_meta( $id, 'entity_description', true );
+$siteUrl = get_post_meta( $id, 'entity_site_url', true );
+$rssFeed = get_post_meta( $id, 'entity_rss_feed', true );
 $entityLogoID = get_post_meta( $id, 'entity_logo',true );
-$entityLogo="";
+$entityLogo = "";
 if ($entityLogoID) {
 	$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
 	$entityLogo = $entityLogoObj[0];
 } 
+
+
 
 //Entity fast facts / by-the-numbers
 $budget = get_post_meta( $id, 'entity_budget', true );
@@ -58,12 +61,44 @@ if ($appLink != "") {
 	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps: </a>'. $appLink . '</li>';
 }
 
+
+
+
 //Social + contact links
-$twitterProfileHandle=get_post_meta( $id, 'entity_twitter_handle', true );
-$facebook=get_post_meta( $id, 'entity_facebook', true );
-$instagram=get_post_meta( $id, 'entity_instagram', true );
-//$email=get_post_meta( get_the_ID(), 'entity_email', true );
-//$phone=get_post_meta( get_the_ID(), 'entity_phone', true );
+$twitterProfileHandle = get_post_meta( $id, 'entity_twitter_handle', true );
+$facebook = get_post_meta( $id, 'entity_facebook', true );
+$instagram = get_post_meta( $id, 'entity_instagram', true );
+
+
+
+
+//Contact information
+$email = get_post_meta( get_the_ID(), 'entity_email', true );
+$phone = get_post_meta( get_the_ID(), 'entity_phone', true );
+$street = get_post_meta( get_the_ID(), 'entity_street', true );
+$city = get_post_meta( get_the_ID(), 'entity_city', true );
+$state = get_post_meta( get_the_ID(), 'entity_state', true );
+$zip = get_post_meta( get_the_ID(), 'entity_zip', true );
+$learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
+$address = "";
+
+if ($email != "") {
+	$email = '<li><span class="bbg__list-label">Email: </span>'. $email . '</li>';
+}
+
+if ($phone != "") {
+	$phone = '<li><span class="bbg__list-label">Tel: </span>'. $phone . '</li>';
+}
+
+if ($street != "" && $city!= "" && $state != "" && $zip != "") {
+	$address = '<p>'. $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
+}
+
+if ($learnMore != "") {
+	$learnMore = '<p><a href="'. $learnMore .'">Learn more</a> about '. $abbreviation . '</p>';
+}
+
+
 
 
 
@@ -240,15 +275,27 @@ get_header();
 							}
 						?>
 
+						<div class="bbg__contact-card">
+							<h3>Contact information</h3>
+							<?php 
+							echo $address;
+							echo "<ul>";
+							echo $phone;
+							echo $email;
+							echo $learnMore;
+							echo "</ul>";
+							?>
+						</div>
+
+
 						<?php if($post->post_parent) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?></a>
+						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?> »</a>
 						<?php } ?>
 					</div><!-- .entry-content -->
-
 
 
 					<div class="bbg__article-sidebar">

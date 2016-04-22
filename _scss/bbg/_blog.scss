@@ -83,12 +83,16 @@
 /* Article share links */
 .bbg__article-share__link {
 	display: inline-block;
-	margin-right: 1rem;
+	margin-right: 3px;
 	a:hover,
 	a:focus {
 		background: none;
 		text-decoration: none;
 	}
+	@include media($medium-large-screen) {
+		margin-right: 2rem;
+	}
+
 	@include media($medium-large-screen) {
 		display: block;
 	}
