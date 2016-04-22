@@ -83,7 +83,7 @@ $learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
 $address = "";
 
 if ($email != "") {
-	$email = '<li><span class="bbg__list-label">Email: </span>'. $email . '</li>';
+	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email '. $abbreviation . '">'. $email . '</a></li>';
 }
 
 if ($phone != "") {
@@ -282,8 +282,8 @@ get_header();
 							echo "<ul>";
 							echo $phone;
 							echo $email;
-							echo $learnMore;
 							echo "</ul>";
+							echo $learnMore;
 							?>
 						</div>
 

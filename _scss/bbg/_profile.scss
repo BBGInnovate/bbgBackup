@@ -191,6 +191,10 @@
 	border-radius: $border-radius;
 	margin-bottom: $site-margins;
 	padding: $site-margins-medium;
+
+	p, a, ul, li {
+		font-family: $font-sans;
+	}
 }
 
 

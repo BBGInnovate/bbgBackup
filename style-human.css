@@ -5586,6 +5586,9 @@ ol li:before {
   margin-bottom: 3rem;
   padding: 1.5rem;
 }
+.bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
 
 .category-board-meeting .bbg__article-header {
   margin-bottom: 0;
