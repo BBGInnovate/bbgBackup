@@ -154,7 +154,9 @@ if ($prCategorySlug != "") {
 		'posts_per_page' => 5,
 		'category__and' => array(
 								$prCategoryID
-						  )
+						  ),
+		'orderby', 'date',
+		'order', 'DESC'
 	);
 	$custom_query = new WP_Query($qParams);
 	if ($custom_query -> have_posts()) {
