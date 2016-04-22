@@ -37,8 +37,10 @@ if ( have_posts() ) {
 	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
 
 	$active = get_post_meta( get_the_ID(), 'active', true );
+	$formerCSS="";
 	if (!$active){
 		$occupation = "(Former) " . $occupation;
+		$formerCSS=" bbg__former-member";
 	}
 
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
@@ -126,7 +128,7 @@ get_header(); ?>
 					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
 						<div class="bbg__profile-photo">
-							<img src="<?php echo $profilePhoto; ?>" class="bbg__profile-photo__image"/>
+							<img src="<?php echo $profilePhoto; ?>" class="bbg__profile-photo__image<?php echo $formerCSS; ?>"/>
 						</div>
 						<div class="bbg__profile-title">
 

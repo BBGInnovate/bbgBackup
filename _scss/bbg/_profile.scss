@@ -41,6 +41,7 @@
 }
 
 
+
 .bbg__profile-title {
 	text-align: center;
 
@@ -221,6 +222,11 @@
 	}
 	max-width: 150px;
 	width: 30%;
+}
+
+.bbg__former-member {
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1);
 }
 
 .bbg__profile-excerpt__text {

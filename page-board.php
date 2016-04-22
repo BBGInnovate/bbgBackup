@@ -20,7 +20,7 @@ if ( have_posts() ) :
 		$pageContent=get_the_content();
 		$pageTitle=get_the_title();
 		$pageContent = apply_filters('the_content', $pageContent);
-   		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
 endif;
 wp_reset_postdata();
@@ -30,8 +30,10 @@ $thePostID=$boardPage->ID;
 
 
 $boardLabel="Board Members";
+$formerCSS="";
 if ($pageTitle=="Former Governors") {
 	$boardLabel="Former Governors";
+	$formerCSS=" bbg__former-member";
 }
 
 $qParams=array(
@@ -85,7 +87,7 @@ while ( $custom_query->have_posts() )  {
 			$b.=  '</h3>';
 			$b.=  '<a href="' . get_the_permalink() . '">';
 				$b.=  '<div class="bbg__profile-excerpt__photo-container">';
-					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of BBG Governor '. get_the_title() .'"/>';
+					$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo' . $formerCSS . '" alt="Photo of BBG Governor '. get_the_title() .'"/>';
 				$b.=  '</div>';
 			$b.=  '</a>';
 			$b.= '<p>' . $occupation . get_the_excerpt() . '</p>';

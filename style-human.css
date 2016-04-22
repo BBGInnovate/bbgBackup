@@ -5612,6 +5612,11 @@ ol li:before {
   width: 30%;
 }
 
+.bbg__former-member {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
 .bbg__profile-excerpt__text {
   line-height: 1.5;
 }
