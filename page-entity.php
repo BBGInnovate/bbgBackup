@@ -83,6 +83,7 @@ $learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
 $address = "";
 $map = "";
 $includeContactBox = FALSE;
+
 if ($email != "") {
 	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email '. $abbreviation . '">'. $email . '</a></li>';
 }
@@ -90,6 +91,11 @@ if ($email != "") {
 if ($phone != "") {
 	$phone = '<li><span class="bbg__list-label">Tel: </span>'. $phone . '</li>';
 }
+
+if ($learnMore != "") {
+	$learnMore = '<li><a href="'. $learnMore . '">Learn more</a> about '. $abbreviation . '</li>';
+}
+
 
 if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$address = '<p>'. $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
