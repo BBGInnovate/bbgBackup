@@ -153,7 +153,6 @@ get_header();
 						'orderby' => 'post_date',
 						'order' => 'desc',
 						'category__not_in' => (array(get_cat_id('Site Introduction'),
-													get_cat_id('Profile'),
 													get_cat_id("John's take"),
 													get_cat_id('Contact')
 											))
