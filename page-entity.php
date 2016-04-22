@@ -73,13 +73,13 @@ $instagram = get_post_meta( $id, 'entity_instagram', true );
 
 
 //Contact information
-$email = get_post_meta( get_the_ID(), 'entity_email', true );
-$phone = get_post_meta( get_the_ID(), 'entity_phone', true );
-$street = get_post_meta( get_the_ID(), 'entity_street', true );
-$city = get_post_meta( get_the_ID(), 'entity_city', true );
-$state = get_post_meta( get_the_ID(), 'entity_state', true );
-$zip = get_post_meta( get_the_ID(), 'entity_zip', true );
-$learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
+$email = get_post_meta( $id, 'entity_email', true );
+$phone = get_post_meta( $id, 'entity_phone', true );
+$street = get_post_meta( $id, 'entity_street', true );
+$city = get_post_meta( $id, 'entity_city', true );
+$state = get_post_meta( $id, 'entity_state', true );
+$zip = get_post_meta( $id, 'entity_zip', true );
+$learnMore = get_post_meta( $id, 'entity_learn_more', true );
 $address = "";
 $map = "";
 $mapLink = "";
@@ -157,44 +157,79 @@ if ($itemContainer) {
 }
 /**** DONE CREATING rssItems array *****/
 
-/**** FETCH related press releases ****/
+/**** START FETCH related press releases ****/
 $prCategorySlug=get_post_meta( $id, 'entity_pr_category', true );
 $pressReleases=array();
 if ($prCategorySlug != "") {
 	$prCategoryObj=get_category_by_slug($prCategorySlug);
-	$prCategoryID=$prCategoryObj->term_id;
-	$qParams=array(
-		'post_type' => array('post'),
-		'posts_per_page' => 5,
-		'category__and' => array(
-								$prCategoryID
-						  ),
-		'orderby', 'date',
-		'order', 'DESC'
-	);
-	$custom_query = new WP_Query($qParams);
-	if ($custom_query -> have_posts()) {
-		while ( $custom_query -> have_posts() )  {
-			$custom_query->the_post();
-			$id=get_the_ID();
-			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
+	if (is_object($prCategoryID)) {
+		$prCategoryID=$prCategoryObj->term_id;
+		$qParams=array(
+			'post_type' => array('post'),
+			'posts_per_page' => 5,
+			'category__and' => array(
+									$prCategoryID
+							  ),
+			'orderby', 'date',
+			'order', 'DESC'
+		);
+		$custom_query = new WP_Query($qParams);
+		if ($custom_query -> have_posts()) {
+			while ( $custom_query -> have_posts() )  {
+				$custom_query->the_post();
+				$id=get_the_ID();
+				$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
+			}
 		}
+		wp_reset_postdata();
 	}
-	wp_reset_postdata();
 }
-	$s="";
-	if (count($pressReleases)) {
-		$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
-		foreach ($pressReleases as $pr) {
-			$url=$pr['url'];
-			$title=$pr['title'];
-			$s.= '<div class="bbg__post-excerpt">';
-			$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
-			$s.= '<p>'.$pr['excerpt'].'</p>';
-			$s.= '</div>';
-		}
+$s="";
+if (count($pressReleases)) {
+	$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
+	foreach ($pressReleases as $pr) {
+		$url=$pr['url'];
+		$title=$pr['title'];
+		$s.= '<div class="bbg__post-excerpt">';
+		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+		$s.= '<p>'.$pr['excerpt'].'</p>';
+		$s.= '</div>';
 	}
-	$pageContent = str_replace("[press releases]", $s, $pageContent);
+}
+$pageContent = str_replace("[press releases]", $s, $pageContent);
+/**** END FETCH related press releases ****/
+
+/**** START FETCH AWARDS ****/
+$awards=array();
+$qParams=array(
+	'post_type' => array('awards'),
+	'posts_per_page' => 5,
+	'orderby', 'date',
+	'order', 'DESC'
+);
+$custom_query = new WP_Query($qParams);
+if ($custom_query -> have_posts()) {
+	while ( $custom_query -> have_posts() )  {
+		$custom_query->the_post();
+		$id=get_the_ID();
+		$awards[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
+	}
+}
+wp_reset_postdata();
+$s="";
+if (count($awards)) {
+	$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
+	foreach ($awards as $a) {
+		$url=$a['url'];
+		$title=$a['title'];
+		$s.= '<div class="bbg__post-excerpt">';
+		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+		$s.= '<p>'.$a['excerpt'].'</p>';
+		$s.= '</div>';
+	}
+}
+$pageContent = str_replace("[awards]", $s, $pageContent);
+/**** END FETCH AWARDS ****/
 
 
 get_header(); 
