@@ -305,8 +305,8 @@ get_header();
 							echo '<ul class="usa-unstyled-list">';
 							echo $phone;
 							echo $email;
-							echo '</ul>';
 							echo $learnMore;
+							echo '</ul>';
 							?>
 							</div>
 						</div>
