@@ -274,7 +274,6 @@ if (count($awards)) {
 		$s.= '</div>';
 	}
 }
-$pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
 
