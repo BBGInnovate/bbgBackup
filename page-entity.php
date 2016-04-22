@@ -170,10 +170,10 @@ if ($prCategoryName != "") {
 		foreach ($pressReleases as $pr) {
 			$url=$pr['url'];
 			$title=$pr['title'];
-			$s.=echo '<div class="bbg__post-excerpt">';
-			$s.=echo '<h3><a href="'.$url.'">'.$title.'</a></h3>';
-			$s.=echo '<p>'.$pr['excerpt'].'</p>';
-			$s.=echo '</div>';
+			$s.= '<div class="bbg__post-excerpt">';
+			$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+			$s.= '<p>'.$pr['excerpt'].'</p>';
+			$s.= '</div>';
 		}
 	}
 	$pageContent = str_replace("[press releases]", $s, $pageContent);
