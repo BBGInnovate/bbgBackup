@@ -162,7 +162,7 @@ $prCategorySlug=get_post_meta( $id, 'entity_pr_category', true );
 $pressReleases=array();
 if ($prCategorySlug != "") {
 	$prCategoryObj=get_category_by_slug($prCategorySlug);
-	if (is_object($prCategoryID)) {
+	if (is_object($prCategoryObj)) {
 		$prCategoryID=$prCategoryObj->term_id;
 		$qParams=array(
 			'post_type' => array('post'),
@@ -201,11 +201,19 @@ $pageContent = str_replace("[press releases]", $s, $pageContent);
 
 /**** START FETCH AWARDS ****/
 $awards=array();
+$awardSlug=get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
 $qParams=array(
 	'post_type' => array('awards'),
 	'posts_per_page' => 5,
 	'orderby', 'date',
-	'order', 'DESC'
+	'order', 'DESC',
+	'tax_query' => array(
+	    array(
+            'taxonomy' => 'recipients',
+            'terms' => $awardSlug,
+            'field' => 'slug'
+	    )
+	)
 );
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
@@ -218,7 +226,7 @@ if ($custom_query -> have_posts()) {
 wp_reset_postdata();
 $s="";
 if (count($awards)) {
-	$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
+	$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
 	foreach ($awards as $a) {
 		$url=$a['url'];
 		$title=$a['title'];
