@@ -250,8 +250,6 @@ if ($custom_query -> have_posts()) {
 		);
 	}
 }
-echo "here come the awards <BR><BR>";
-var_dump($awards);
 wp_reset_postdata();
 $s="";
 if (count($awards)) {
@@ -274,6 +272,7 @@ if (count($awards)) {
 		$s.= '</div>';
 	}
 }
+$pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
 
