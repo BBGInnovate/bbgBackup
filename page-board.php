@@ -31,9 +31,12 @@ $thePostID=$boardPage->ID;
 
 $boardLabel="Board Members";
 $formerCSS="";
+$formerGovernorsLink = "";
+
 if ($pageTitle=="Former Governors") {
 	$boardLabel="Former Governors";
 	$formerCSS=" bbg__former-member";
+	$formerGovernorsLink = '<a href="https://bbgredesign.voanews.com/about-the-agency/history/former-governors/">Explore the list of former Governors »</a>';
 }
 
 $qParams=array(
@@ -102,7 +105,10 @@ while ( $custom_query->have_posts() )  {
 		}
 	}
 }
-$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>';
+
+
+
+$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>' . $formerGovernorsLink;
 $pageContent = str_replace("[board list]", $boardStr, $pageContent);
 wp_reset_postdata();
 
