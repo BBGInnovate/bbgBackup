@@ -82,6 +82,7 @@ $zip = get_post_meta( get_the_ID(), 'entity_zip', true );
 $learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
 $address = "";
 $map = "";
+$includeContactBox = FALSE;
 if ($email != "") {
 	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email '. $abbreviation . '">'. $email . '</a></li>';
 }
@@ -95,13 +96,16 @@ if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 
 	//Strip spaces for url-encoding.
 	$street = str_replace(" ", "+", $street);
+	$city = str_replace(" ", "+", $city);
+	$state = str_replace(" ", "+", $state);
 	$size = 400;
 	$zoom = 13;
 	$map = "http://maps.googleapis.com/maps/api/staticmap?center=".$street . ',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
+	$includeMap = "bbg__contact-card--include-map";
 }
 
-if ($learnMore != "") {
-	$learnMore = '<p><a href="'. $learnMore .'">Learn more</a> about '. $abbreviation . '</p>';
+if ($address != "" || $phone != "" || $email != ""){
+	$includeContactBox = TRUE;
 }
 
 
@@ -282,8 +286,12 @@ get_header();
 
 						
 
-						<div class="bbg__contact-card">
+						<?php if ($includeContactBox){ ?>
+						<div class="bbg__contact-card <?php echo $includeMap; ?>">
+							<?php if ($includeMap!=""){ ?>
 							<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
+							<?php } ?>
+
 							<div class="bbg__contact-card__text">
 							<h3>Contact information</h3>
 							<?php 
@@ -296,6 +304,7 @@ get_header();
 							?>
 							</div>
 						</div>
+						<?php } ?>
 
 
 						<?php if($post->post_parent) {

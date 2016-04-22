@@ -193,38 +193,42 @@
 			top: $site-margins;
 			bottom: $site-margins;
 		}
-		padding: 0;
+		padding: $site-margins;
 		position: relative;
 
 		p, a, ul, li {
 			font-family: $font-sans;
 		}
 
-		.bbg__contact-card__text {
-			padding: $site-margins-medium;
-			width: 100%;
+		&.bbg__contact-card--include-map {
+			padding: 0;
 
-			@include media($medium-screen) {
-				margin: {
-					right: 0; 
-					left: auto; 
+			.bbg__contact-card__text {
+				padding: $site-margins-medium;
+				width: 100%;
+
+				@include media($medium-screen) {
+					margin: {
+						right: 0; 
+						left: auto; 
+					}
+					width: 50%; 
 				}
-				width: 50%; 
 			}
-		}
 
-		.bbg__contact-card__map {
-			background-color: #999;
-			background-position: center;
-			background-size: cover;
+			.bbg__contact-card__map {
+				background-color: #999;
+				background-position: center;
+				background-size: cover;
 
-			height: 200px;
-			width: 100%;
+				height: 200px;
+				width: 100%;
 
-			@include media($medium-screen) {
-				height: 100%;
-				position: absolute;
-				width: 50%; 
+				@include media($medium-screen) {
+					height: 100%;
+					position: absolute;
+					width: 50%; 
+				}
 			}
 		}
 	}
