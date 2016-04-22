@@ -25,14 +25,8 @@ if ( have_posts() ) :
 endif;
 wp_reset_postdata();
 
-if ($pageTitle=="Former Governors") {
-	$formerPage=get_page_by_title('Former Governors');
-	$thePostID=$formerPage->ID;
-} else {
-	$boardPage=get_page_by_title('The Board');
-	$thePostID=$boardPage->ID;
-}
-
+$boardPage=get_page_by_title('The Board');
+$thePostID=$boardPage->ID;
 
 $qParams=array(
 	'post_type' => array('page')
@@ -55,7 +49,7 @@ while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
-	if ( $active  ) {
+	if ( ($pageTitle=="The Board" && $active) || ($pageTitle=="Former Governors" && (!isset('active') || $active=="" || !$active ))  ) {
 		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
 		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
 		//$occupation=get_post_meta( get_the_ID(), 'occupation', true );
