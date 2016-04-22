@@ -14,18 +14,25 @@ http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 ****/
 
 $pageContent="";
+$pageTitle="";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent=get_the_content();
+		$pageTitle=get_the_title();
 		$pageContent = apply_filters('the_content', $pageContent);
    		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
 endif;
 wp_reset_postdata();
 
+if ($pageTitle=="Former Governors") {
+	$formerPage=get_page_by_title('Former Governors');
+	$thePostID=$formerPage->ID;
+} else {
+	$boardPage=get_page_by_title('The Board');
+	$thePostID=$boardPage->ID;
+}
 
-$boardPage=get_page_by_title('The Board');
-$thePostID=$boardPage->ID;
 
 $qParams=array(
 	'post_type' => array('page')
@@ -48,7 +55,7 @@ while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
-	if ($active){
+	if ( ($active && $whichPage=="board") || (  (!isset($active) || $active=="" || !$active) && $whichPage=="former_governor")    ) {
 		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
 		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
 		//$occupation=get_post_meta( get_the_ID(), 'occupation', true );
