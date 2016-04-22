@@ -144,14 +144,16 @@ if ($itemContainer) {
 /**** DONE CREATING rssItems array *****/
 
 /**** FETCH related press releases ****/
-$prCategoryName=get_post_meta( $id, 'entity_pr_category', true );
+$prCategorySlug=get_post_meta( $id, 'entity_pr_category', true );
 $pressReleases=array();
-if ($prCategoryName != "") {
+if ($prCategorySlug != "") {
+	$prCategoryObj=get_category_by_slug($prCategorySlug);
+	$prCategoryID=$prCategorySlug->term_id;
 	$qParams=array(
 		'post_type' => array('post'),
 		'posts_per_page' => 5,
 		'category__and' => array(get_cat_id('Press Release'),
-								get_cat_id($prCategoryName)
+								$prCategoryID
 						  )
 	);
 	$custom_query = new WP_Query($qParams);
