@@ -159,11 +159,25 @@ if ($prCategoryName != "") {
 		while ( $custom_query -> have_posts() )  {
 			$custom_query->the_post();
 			$id=get_the_ID();
-			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt($id));
+			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
 		}
 	}
 	wp_reset_postdata();
 }
+	$s="";
+	if (count($pressReleases)) {
+		$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
+		foreach ($pressReleases as $pr) {
+			$url=$pr['url'];
+			$title=$pr['title'];
+			$s.=echo '<div class="bbg__post-excerpt">';
+			$s.=echo '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+			$s.=echo '<p>'.$pr['excerpt'].'</p>';
+			$s.=echo '</div>';
+		}
+	}
+	$pageContent = str_replace("[press releases]", $s, $pageContent);
+
 
 get_header(); 
 ?>
@@ -262,19 +276,7 @@ get_header();
 
 						<?php echo $pageContent; ?>
 
-						<?php
-							if (count($pressReleases)) {
-								echo '<h2>Recent '. $abbreviation .' press releases</h2>';
-								foreach ($pressReleases as $pr) {
-									$url=$pr['url'];
-									$title=$pr['title'];
-									echo '<div class="bbg__post-excerpt">';
-									echo '<h3><a href="'.$url.'">'.$title.'</a></h3>';
-									echo '<p>'.$pr['excerpt'].'</p>';
-									echo '</div>';
-								}
-							}
-						?>
+						
 
 						<div class="bbg__contact-card">
 							<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
