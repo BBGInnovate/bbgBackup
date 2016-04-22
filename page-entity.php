@@ -159,10 +159,9 @@ if ($prCategoryName != "") {
 		while ( $custom_query -> have_posts() )  {
 			$custom_query->the_post();
 			$id=get_the_ID();
-			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id));
+			$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt($id));
 		}
 	}
-	
 	wp_reset_postdata();
 }
 
@@ -265,13 +264,15 @@ get_header();
 
 						<?php
 							if (count($pressReleases)) {
-								echo '<h3>Recent '. $abbreviation .' press releases</h3><ul>';
+								echo '<h2>Recent '. $abbreviation .' press releases</h2>';
 								foreach ($pressReleases as $pr) {
 									$url=$pr['url'];
 									$title=$pr['title'];
-									echo "<li><a href='$url'>$title</a></li>";
+									echo '<div class="bbg__post-excerpt">';
+									echo '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+									echo '<p>'.$pr['excerpt'].'</p>';
+									echo '</div>';
 								}
-								echo "</ul>";
 							}
 						?>
 
