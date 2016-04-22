@@ -3463,7 +3463,7 @@ object {
   background: none;
   text-decoration: none;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 600px) {
   .bbg__article-share__link {
     margin-right: 2rem;
   }
