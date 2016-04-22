@@ -58,7 +58,7 @@ if ($languages != "") {
 	$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
 }
 if ($appLink != "") {
-	$appLink = '<li><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps: </a>'. $appLink . '</li>';
+	$appLink = '<h3><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
 }
 
 
@@ -81,7 +81,7 @@ $state = get_post_meta( get_the_ID(), 'entity_state', true );
 $zip = get_post_meta( get_the_ID(), 'entity_zip', true );
 $learnMore = get_post_meta( get_the_ID(), 'entity_learn_more', true );
 $address = "";
-
+$map = "";
 if ($email != "") {
 	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email '. $abbreviation . '">'. $email . '</a></li>';
 }
@@ -92,6 +92,12 @@ if ($phone != "") {
 
 if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$address = '<p>'. $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
+
+	//Strip spaces for url-encoding.
+	$street = str_replace(" ", "+", $street);
+	$size = 400;
+	$zoom = 13;
+	$map = "http://maps.googleapis.com/maps/api/staticmap?center=".$street . ',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
 }
 
 if ($learnMore != "") {
@@ -221,16 +227,14 @@ get_header();
 								echo $budget;
 								echo $employees;
 								echo $languages;
-								echo $appLink;
 							?>
 						</ul>
 
-						<ul class="bbg__article-share ">
 												<?php 
 						if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 						?>
+						<ul class="bbg__article-share " style="margin-bottom: 3rem;">
 						<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-						<?php } ?>
 
 							<?php
 								if ($facebook!=""){
@@ -242,20 +246,16 @@ get_header();
 								if ($instagram!=""){
 									echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>'; 
 								}
-
-								/*
-								if ($email!=""){
-									echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
-								}
-								if ($phone!=""){
-									echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
-								}
-								*/
 							?>
 							&nbsp;
 						</ul>
+						<?php } ?>
+
+						<?php echo $appLink; ?>
 
 					</div><!-- .bbg__article-sidebar--left -->
+
+
 
 
 
@@ -276,6 +276,8 @@ get_header();
 						?>
 
 						<div class="bbg__contact-card">
+							<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
+							<div class="bbg__contact-card__text">
 							<h3>Contact information</h3>
 							<?php 
 							echo $address;
@@ -285,6 +287,7 @@ get_header();
 							echo '</ul>';
 							echo $learnMore;
 							?>
+							</div>
 						</div>
 
 

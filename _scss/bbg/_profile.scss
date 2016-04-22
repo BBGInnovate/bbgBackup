@@ -189,11 +189,43 @@
 	.bbg__contact-card {
 		background-color: $color-gray-lightest;
 		border-radius: $border-radius;
-		margin-bottom: $site-margins;
-		padding: $site-margins-medium;
+		margin: {
+			top: $site-margins;
+			bottom: $site-margins;
+		}
+		padding: 0;
+		position: relative;
 
 		p, a, ul, li {
 			font-family: $font-sans;
+		}
+
+		.bbg__contact-card__text {
+			padding: $site-margins-medium;
+			width: 100%;
+
+			@include media($medium-screen) {
+				margin: {
+					right: 0; 
+					left: auto; 
+				}
+				width: 50%; 
+			}
+		}
+
+		.bbg__contact-card__map {
+			background-color: #999;
+			background-position: center;
+			background-size: cover;
+
+			height: 200px;
+			width: 100%;
+
+			@include media($medium-screen) {
+				height: 100%;
+				position: absolute;
+				width: 50%; 
+			}
 		}
 	}
 

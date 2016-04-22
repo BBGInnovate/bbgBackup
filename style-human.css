@@ -5592,8 +5592,10 @@ ol li:before {
 .category-board-meeting .bbg__contact-card {
   background-color: #f1f1f1;
   border-radius: 0.3rem;
+  margin-top: 3rem;
   margin-bottom: 3rem;
-  padding: 1.5rem;
+  padding: 0;
+  position: relative;
 }
 .page-template-default .bbg__contact-card p, .page-template-default .bbg__contact-card a, .page-template-default .bbg__contact-card ul, .page-template-default .bbg__contact-card li,
 .page-template-page-entity .bbg__contact-card p,
@@ -5613,6 +5615,47 @@ ol li:before {
 .category-board-meeting .bbg__contact-card ul,
 .category-board-meeting .bbg__contact-card li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+.page-template-default .bbg__contact-card .bbg__contact-card__text,
+.page-template-page-entity .bbg__contact-card .bbg__contact-card__text,
+.bbg__profile .bbg__contact-card .bbg__contact-card__text,
+.category-profile .bbg__contact-card .bbg__contact-card__text,
+.category-board-meeting .bbg__contact-card .bbg__contact-card__text {
+  padding: 1.5rem;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .page-template-default .bbg__contact-card .bbg__contact-card__text,
+  .page-template-page-entity .bbg__contact-card .bbg__contact-card__text,
+  .bbg__profile .bbg__contact-card .bbg__contact-card__text,
+  .category-profile .bbg__contact-card .bbg__contact-card__text,
+  .category-board-meeting .bbg__contact-card .bbg__contact-card__text {
+    margin-right: 0;
+    margin-left: auto;
+    width: 50%;
+  }
+}
+.page-template-default .bbg__contact-card .bbg__contact-card__map,
+.page-template-page-entity .bbg__contact-card .bbg__contact-card__map,
+.bbg__profile .bbg__contact-card .bbg__contact-card__map,
+.category-profile .bbg__contact-card .bbg__contact-card__map,
+.category-board-meeting .bbg__contact-card .bbg__contact-card__map {
+  background-color: #999;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .page-template-default .bbg__contact-card .bbg__contact-card__map,
+  .page-template-page-entity .bbg__contact-card .bbg__contact-card__map,
+  .bbg__profile .bbg__contact-card .bbg__contact-card__map,
+  .category-profile .bbg__contact-card .bbg__contact-card__map,
+  .category-board-meeting .bbg__contact-card .bbg__contact-card__map {
+    height: 100%;
+    position: absolute;
+    width: 50%;
+  }
 }
 
 .category-board-meeting .bbg__article-header {
