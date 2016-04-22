@@ -28,6 +28,12 @@ wp_reset_postdata();
 $boardPage=get_page_by_title('The Board');
 $thePostID=$boardPage->ID;
 
+
+$boardLabel="Board Members";
+if ($pageTitle=="Former Governors") {
+	$boardLabel="Former Governors";
+}
+
 $qParams=array(
 	'post_type' => array('page')
 	,'post_status' => array('publish')
@@ -137,7 +143,7 @@ get_header(); ?>
 				<div class="usa-grid">
 					<header class="page-header">
 						<h6 class="bbg-label--mobile large">
-							Board Members
+							<?php echo $boardLabel; ?>
 						</h6>
 					</header><!-- .page-header -->
 				</div>
