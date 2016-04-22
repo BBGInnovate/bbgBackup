@@ -3556,6 +3556,14 @@ object {
   }
 }
 
+.bbg__article-content {
+  /*
+  //Why?
+  	li {
+  		margin-bottom: 3.5em;
+  	}
+  */
+}
 .bbg__article-content > h3 {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: 2em;
@@ -3617,9 +3625,6 @@ object {
 }
 .bbg__article-content ul {
   width: 100%;
-}
-.bbg__article-content li {
-  margin-bottom: 3.5em;
 }
 .bbg__article-content blockquote {
   margin-top: 0;
