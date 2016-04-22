@@ -184,17 +184,17 @@
 		}
 	}
 
-}
+	.bbg__contact-card {
+		background-color: $color-gray-lightest;
+		border-radius: $border-radius;
+		margin-bottom: $site-margins;
+		padding: $site-margins-medium;
 
-.bbg__contact-card {
-	background-color: $color-gray-lightest;
-	border-radius: $border-radius;
-	margin-bottom: $site-margins;
-	padding: $site-margins-medium;
-
-	p, a, ul, li {
-		font-family: $font-sans;
+		p, a, ul, li {
+			font-family: $font-sans;
+		}
 	}
+
 }
 
 

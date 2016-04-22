@@ -279,10 +279,10 @@ get_header();
 							<h3>Contact information</h3>
 							<?php 
 							echo $address;
-							echo "<ul>";
+							echo '<ul class="usa-unstyled-list">';
 							echo $phone;
 							echo $email;
-							echo "</ul>";
+							echo '</ul>';
 							echo $learnMore;
 							?>
 						</div>

@@ -5579,14 +5579,33 @@ ol li:before {
     width: 20%;
   }
 }
-
-.bbg__contact-card {
+.page-template-default .bbg__contact-card,
+.page-template-page-entity .bbg__contact-card,
+.bbg__profile .bbg__contact-card,
+.category-profile .bbg__contact-card,
+.category-board-meeting .bbg__contact-card {
   background-color: #f1f1f1;
   border-radius: 0.3rem;
   margin-bottom: 3rem;
   padding: 1.5rem;
 }
-.bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
+.page-template-default .bbg__contact-card p, .page-template-default .bbg__contact-card a, .page-template-default .bbg__contact-card ul, .page-template-default .bbg__contact-card li,
+.page-template-page-entity .bbg__contact-card p,
+.page-template-page-entity .bbg__contact-card a,
+.page-template-page-entity .bbg__contact-card ul,
+.page-template-page-entity .bbg__contact-card li,
+.bbg__profile .bbg__contact-card p,
+.bbg__profile .bbg__contact-card a,
+.bbg__profile .bbg__contact-card ul,
+.bbg__profile .bbg__contact-card li,
+.category-profile .bbg__contact-card p,
+.category-profile .bbg__contact-card a,
+.category-profile .bbg__contact-card ul,
+.category-profile .bbg__contact-card li,
+.category-board-meeting .bbg__contact-card p,
+.category-board-meeting .bbg__contact-card a,
+.category-board-meeting .bbg__contact-card ul,
+.category-board-meeting .bbg__contact-card li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
 
