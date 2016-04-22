@@ -261,6 +261,9 @@ if (count($awards)) {
 		$id=$a['id'];
 		$url=$a['url'];
 		$title=$a['title'];
+		$awardYears=$a['awardYears'];
+		$organizations=$a['organizations'];
+		$recipients=$a['recipients'];
 
 		$s.= '<div class="bbg__post-excerpt">';
 		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
