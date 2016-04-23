@@ -174,14 +174,16 @@
 	}
 
 	.bbg__article-sidebar--left {
-		margin: 0 auto;
+		border-bottom: $border-solid;
+		margin: 0 auto 3rem auto;
 		max-width: 600px;
+		padding-bottom: $site-margins;
 
 		@include media($medium-large-screen) {
 			display: inline-block;
 			float: left;
 			margin-top: 0;
-			margin-right: 3rem;
+			margin-right: $site-margins;
 			width: 20%;
 		}
 	}

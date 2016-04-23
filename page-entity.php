@@ -186,7 +186,7 @@ if ($prCategorySlug != "") {
 }
 $s="";
 if (count($pressReleases)) {
-	$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
+	//$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
 	foreach ($pressReleases as $pr) {
 		$url=$pr['url'];
 		$title=$pr['title'];
@@ -253,7 +253,7 @@ if ($custom_query -> have_posts()) {
 wp_reset_postdata();
 $s="";
 if (count($awards)) {
-	$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
+	//$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
 	foreach ($awards as $a) {
 		
 		$id=$a['id'];
@@ -265,9 +265,9 @@ if (count($awards)) {
 
 		$s.= '<div class="bbg__post-excerpt">';
 		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
-		$s.= '<strong>years - ' . join($awardYears) . '</strong><BR>';
-		$s.= '<strong>orgs - ' . join($organizations) . '</strong><BR>';
-		$s.= '<strong>recipients - ' . join($recipients) . '</strong><BR>';
+		//$s.= '<strong>years - ' . join($awardYears) . '</strong><BR>';
+		$s.= '<strong>' . join($organizations) . '</strong>, ' . join($awardYears) .'<BR>';
+		//$s.= '<strong>recipients - ' . join($recipients) . '</strong><BR>';
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
 	}

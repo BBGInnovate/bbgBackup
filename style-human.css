@@ -5569,8 +5569,10 @@ ol li:before {
 .bbg__profile .bbg__article-sidebar--left,
 .category-profile .bbg__article-sidebar--left,
 .category-board-meeting .bbg__article-sidebar--left {
-  margin: 0 auto;
+  border-bottom: 1px solid #CCC;
+  margin: 0 auto 3rem auto;
   max-width: 600px;
+  padding-bottom: 3rem;
 }
 @media screen and (min-width: 900px) {
   .page-template-default .bbg__article-sidebar--left,
