@@ -33,6 +33,7 @@ $description = get_post_meta( $id, 'entity_description', true );
 $siteUrl = get_post_meta( $id, 'entity_site_url', true );
 $rssFeed = get_post_meta( $id, 'entity_rss_feed', true );
 $entityLogoID = get_post_meta( $id, 'entity_logo',true );
+$websiteName = get_post_meta( $id, 'entity_website_name', true );
 $entityLogo = "";
 if ($entityLogoID) {
 	$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
@@ -315,11 +316,11 @@ get_header();
 						</div>
 						<div class="bbg__profile-title">
 
-							<?php echo '<h1 class="entry-title bbg__article-header__title">' . $abbreviation . '</h1>'; ?>
+							<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
 
 							<!-- .bbg__article-header__title -->
 							<h5 class="entry-category bbg-label">
-								<?php echo $fullName; ?>
+								<a href="<?php echo $siteUrl; ?>"><?php echo $websiteName; ?></a>
 							</h5><!-- .bbg-label -->
 
 						</div>
