@@ -320,7 +320,7 @@ get_header();
 
 							<!-- .bbg__article-header__title -->
 							<h5 class="entry-category bbg-label">
-								<a href="<?php echo $siteUrl; ?>"><?php echo $websiteName; ?></a>
+								<?php echo $websiteName; ?>
 							</h5><!-- .bbg-label -->
 
 						</div>
@@ -412,7 +412,7 @@ get_header();
 					<div class="bbg__article-sidebar">
 						<?php 
 							if (count($rssItems)) {
-								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $abbreviation. '</h3>';
+								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
 								echo '<ul class="bbg__profile__related-link__list'. $languageDirection .'">';
 								$maxRelatedStories=3;
 								for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
