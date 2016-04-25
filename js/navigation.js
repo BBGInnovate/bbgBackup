@@ -64,6 +64,9 @@
 		jQuery("li.menu-item-has-children ul a").click(function(e) {
 			e.stopPropagation(); //we do this so that the preventDefault() below doesn't affect subnav items
 		});
+		jQuery("li.menu-item-has-children ul a").keydown(function(e) {
+			e.stopPropagation(); //same as above
+		});
 
 		/* clicking any top level nav item with children should show its children and hide all others */
 		// see http://stackoverflow.com/questions/7394796/jquery-click-event-how-to-tell-if-mouse-was-clicked-or-enter-key-was-pressed
