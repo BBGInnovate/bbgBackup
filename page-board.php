@@ -89,6 +89,8 @@ while ( $custom_query->have_posts() )  {
 			$b.=  '<h3 class="bbg__profile-excerpt__name">';
 				$b.=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
 			$b.=  '</h3>';
+
+			//Only show a profile photo if it's set.
 			if ($profilePhoto!=""){
 				$b.=  '<a href="' . get_the_permalink() . '">';
 					$b.=  '<div class="bbg__profile-excerpt__photo-container">';
@@ -96,6 +98,7 @@ while ( $custom_query->have_posts() )  {
 					$b.=  '</div>';
 				$b.=  '</a>';
 			}
+
 			$b.= '<p>' . $occupation . get_the_excerpt() . '</p>';
 		$b.=  '</div><!-- .bbg__profile-excerpt -->';
 
