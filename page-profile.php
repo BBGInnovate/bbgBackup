@@ -188,7 +188,7 @@ get_header(); ?>
 									'post_type' => array('post'),
 									'posts_per_page' => 5,
 									'tag' => $relatedLinksTag,
-									'orderby' => 'modified',
+									'orderby' => 'date',
 									'order' => 'DESC'
 								);
 								$custom_query = new WP_Query( $qParams2 );
