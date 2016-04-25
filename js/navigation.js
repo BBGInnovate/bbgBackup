@@ -30,7 +30,7 @@
 		menu.className += ' nav-menu';
 	}
 
-	jQuery('#site-navigation').hover( function() {
+	button.onclick = function() {
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
 			container.className = container.className.replace( ' toggled', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
@@ -40,7 +40,7 @@
 			button.setAttribute( 'aria-expanded', 'true' );
 			menu.setAttribute( 'aria-expanded', 'true' );
 		}
-	});
+	};
 
 	// Get all the link elements within the menu.
 	links    = menu.getElementsByTagName( 'a' );
@@ -94,7 +94,6 @@
 		    e.preventDefault();
 		  }
 		});
-
 		
 		/* clicking on the body should hide all subnav items */
 		jQuery(document).on('hover', function(e){
