@@ -179,7 +179,13 @@
 		max-width: 600px;
 		padding-bottom: $site-margins;
 
+		&.bbg__article-sidebar--collapse {
+			line-height: 0;
+			padding: 0;
+		}
+
 		@include media($medium-large-screen) {
+			border-bottom: none;
 			display: inline-block;
 			float: left;
 			margin-top: 0;

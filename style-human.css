@@ -5580,6 +5580,7 @@ ol li:before {
   .bbg__profile .bbg__article-sidebar--left,
   .category-profile .bbg__article-sidebar--left,
   .category-board-meeting .bbg__article-sidebar--left {
+    border-bottom: none;
     display: inline-block;
     float: left;
     margin-top: 0;

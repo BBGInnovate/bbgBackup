@@ -36,12 +36,20 @@ if ( have_posts() ) {
 	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
 	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
 
+	//Collapse the left column on mobile if it's empty.
+	$collapseColumnCSS = "";
+	if ($email=="" && $twitterProfileHandle=="" && $phone==""){
+		$collapseColumnCSS = "bbg__article-sidebar--collapse";
+	}
+
 	$active = get_post_meta( get_the_ID(), 'active', true );
 	$formerCSS="";
 	if (!$active){
 		$occupation = "(Former) " . $occupation;
 		$formerCSS=" bbg__former-member";
 	}
+
+
 
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
 	$profilePhoto = "";
@@ -142,7 +150,7 @@ get_header(); ?>
 						</div>
 					</header><!-- .bbg__article-header -->
 
-					<div class="bbg__article-sidebar--left">
+					<div class="bbg__article-sidebar--left <?php echo $collapseColumnCSS; ?>">
 
 						<ul class="bbg__article-share ">
 						<?php 
