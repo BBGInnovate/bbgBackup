@@ -70,13 +70,15 @@
 
 		/* clicking any top level nav item with children should show its children and hide all others */
 		// see http://stackoverflow.com/questions/7394796/jquery-click-event-how-to-tell-if-mouse-was-clicked-or-enter-key-was-pressed
-		jQuery("li.menu-item-has-children").on('hover', function(e, enterKeyPressed) {
+		jQuery("li.menu-item-has-children").on('hover', function(e) {
 			if (window.innerWidth >=600) {
 				if (jQuery(this).find("ul").hasClass('showChildren')) {
 					
 					//without this line, if you click a parent nav item 2x, it stays focused.
-					if (!enterKeyPressed) {
+					if (!window.enterPressHover) {
 						jQuery(this).find("a").blur();  
+					} else {
+						window.enterPressHover=false;
 					}
 					
 					jQuery(this).addClass("hidden");
@@ -93,8 +95,11 @@
 		});
 		jQuery("li.menu-item-has-children").keydown(function(e) {
 		  if(e.keyCode == 13) {
+		    window.enterPressHover=true;
 		    jQuery(this).mouseover();
-		    e.preventDefault();
+		    if (jQuery(this).find("ul").hasClass('showChildren')) {
+		   		e.preventDefault();
+		    }
 		  }
 		});
 		
