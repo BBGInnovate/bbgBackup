@@ -180,6 +180,7 @@
 		padding-bottom: $site-margins;
 
 		&.bbg__article-sidebar--collapse {
+			height: 0;
 			line-height: 0;
 			padding: 0;
 		}

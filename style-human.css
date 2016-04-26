@@ -5574,6 +5574,15 @@ ol li:before {
   max-width: 600px;
   padding-bottom: 3rem;
 }
+.page-template-default .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
+.page-template-page-entity .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
+.bbg__profile .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
+.category-profile .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
+.category-board-meeting .bbg__article-sidebar--left.bbg__article-sidebar--collapse {
+  height: 0;
+  line-height: 0;
+  padding: 0;
+}
 @media screen and (min-width: 900px) {
   .page-template-default .bbg__article-sidebar--left,
   .page-template-page-entity .bbg__article-sidebar--left,
