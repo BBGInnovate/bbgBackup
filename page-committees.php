@@ -5,7 +5,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-  template name: Broadcasters
+  template name: Committees
  */
 
 $pageContent ="";
