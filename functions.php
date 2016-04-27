@@ -916,9 +916,10 @@ function getCommittee($committeeID) {
 			$minority[]=$m;
 		}
 	}
-	$s="<div class='usa-grid'>";
+	$s="<section class='usa-grid-full'>";
 	$s.= "<div class='bbg-grid--1-1-1-2'>";
 	$s.= "<h3>Majority</h3>";
+	$s.= "<ul class='usa-unstyled-list'>";
 	foreach ($majority as $m) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
@@ -927,11 +928,13 @@ function getCommittee($committeeID) {
 		if (isset($m['title'])) {
 			$title='<em>----'.$m['title'].'</em>';
 		}
-		$s.= "$firstName $lastName - $state $title<BR>";
+		$s.= "<li>$firstName $lastName - $state $title</li>";
 	}
+	$s.= "</ul>";
 	$s.= "</div><!-- .bbg-grid -->";
 	$s.= "<div class='bbg-grid--1-1-1-2'>";
 	$s.=  "<h3>Minority</h3>";
+	$s.= "<ul class='usa-unstyled-list'>";
 	foreach ($minority as $m) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
@@ -940,10 +943,11 @@ function getCommittee($committeeID) {
 		if (isset($m['title'])) {
 			$title='<em>----'.$m['title'].'</em>';
 		}
-		$s.= "$firstName $lastName - $state $title<BR>";
+		$s.= "<li>$firstName $lastName - $state $title</li>";
 	}
+	$s.= "</ul>";
 	$s.= "</div><!-- .bbg-grid -->";
-	$s.= "</div><!-- .usa-grid -->";
+	$s.= "</section><!-- .usa-grid -->";
 	return $s;
 }
 
