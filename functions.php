@@ -931,10 +931,10 @@ function getCommittee($committeeID, $committeeTitle) {
 $s='<div class="usa-accordion">';
 $s.='<ul class="usa-unstyled-list">';
 $s.='<li>';
-$s.='<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-0">';
+$s.='<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-'.$committeeID.'">';
 $s.=$committeeTitle;
 $s.='</button>';
-$s.='<div id="collapsible-0" aria-hidden="true" class="usa-accordion-content">';
+$s.='<div id="collapsible-'.$committeeID.'" aria-hidden="true" class="usa-accordion-content">';
 
 
 
