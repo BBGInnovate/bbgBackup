@@ -916,7 +916,8 @@ function getCommittee($committeeID) {
 			$minority[]=$m;
 		}
 	}
-	$s="";
+	$s="<div class='usa-grid'>";
+	$s.= "<div class='bbg-grid--1-1-1-2'>";
 	$s.= "<h3>Majority</h3>";
 	foreach ($majority as $m) {
 		$firstName=$m['legislator']['first_name'];
@@ -928,6 +929,8 @@ function getCommittee($committeeID) {
 		}
 		$s.= "$firstName $lastName - $state $title<BR>";
 	}
+	$s.= "</div><!-- .bbg-grid -->";
+	$s.= "<div class='bbg-grid--1-1-1-2'>";
 	$s.=  "<h3>Minority</h3>";
 	foreach ($minority as $m) {
 		$firstName=$m['legislator']['first_name'];
@@ -939,6 +942,8 @@ function getCommittee($committeeID) {
 		}
 		$s.= "$firstName $lastName - $state $title<BR>";
 	}
+	$s.= "</div><!-- .bbg-grid -->";
+	$s.= "</div><!-- .usa-grid -->";
 	return $s;
 }
 
