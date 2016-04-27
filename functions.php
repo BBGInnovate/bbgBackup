@@ -922,14 +922,22 @@ function getCommittee($committeeID) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
 		$state=$m['legislator']['state_name'];
-		$s.= "$firstName $lastName - $state <BR>";
+		$title='';
+		if (isset($m['title'])) {
+			$title='<em>----'.$m['title'].'</em>';
+		}
+		$s.= "$firstName $lastName - $state $title<BR>";
 	}
 	$s.=  "<h3>Minority</h3>";
 	foreach ($minority as $m) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
 		$state=$m['legislator']['state_name'];
-		$s.=  "$firstName $lastName - $state <BR>";
+		$title='';
+		if (isset($m['title'])) {
+			$title='<em>----'.$m['title'].'</em>';
+		}
+		$s.= "$firstName $lastName - $state $title<BR>";
 	}
 	return $s;
 }
