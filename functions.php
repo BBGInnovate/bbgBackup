@@ -189,6 +189,7 @@ function bbginnovate_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	wp_enqueue_script( 'bbginnovate-accordion', get_template_directory_uri() . '/js/components/accordion.js', array(), '20160223', true );
 	wp_enqueue_script( 'bbginnovate-18f', get_template_directory_uri() . '/js/18f.js', array(), '20160223', true );
 
 	wp_enqueue_script( 'bbginnovate-bbginnovate', get_template_directory_uri() . '/js/bbginnovate.js', array(), '20160223', true );
@@ -888,6 +889,7 @@ function search_excerpt_footer() {
 
 endif;
 
+
 // Add shortcode reference to Innovation Series on old posts and pages
 function innovation_series_shortcode() {
 	return '<p class="bbg-tagline">This post originally appeared on <a href="http://www.innovation-series.com/" target="_blank">Innovation Series</a>.</p>';
@@ -896,12 +898,14 @@ add_shortcode('tagline', 'innovation_series_shortcode');
 
 // Add shortcode reference for the number of supported languages
 function languages_shortcode() {
-	return ' 61 languages ';
+	$number_of_languages = 61;
+	return $number_of_languages . " languages";
 }
 add_shortcode('languages', 'languages_shortcode');
 
 
-function getCommittee($committeeID) {
+//Grab the list of congressional committee members from the Sunlight Foundation's API
+function getCommittee($committeeID, $committeeTitle) {
 	$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
 	if (!file_exists($committeeFilepath)) {
 		//use http://tryit.sunlightfoundation.com/congress to try out the api
@@ -923,7 +927,19 @@ function getCommittee($committeeID) {
 			$minority[]=$m;
 		}
 	}
-	$s="<section class='usa-grid-full'>";
+
+$s='<div class="usa-accordion">';
+$s.='<ul class="usa-unstyled-list">';
+$s.='<li>';
+$s.='<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-0">';
+$s.=$committeeTitle;
+$s.='</button>';
+$s.='<div id="collapsible-0" aria-hidden="true" class="usa-accordion-content">';
+
+
+
+
+	$s.="<section class='usa-grid-full'>";
 	$s.= "<div class='bbg-grid--1-1-1-2'>";
 	$s.= "<strong>MAJORITY</strong> (".$majority[0]['legislator']['party'].")";
 	$s.= "<ul class='usa-unstyled-list'>";
@@ -955,12 +971,16 @@ function getCommittee($committeeID) {
 	$s.= "</ul>";
 	$s.= "</div><!-- .bbg-grid -->";
 	$s.= "</section><!-- .usa-grid -->";
+
+
+$s.= '</div>';
+$s.= '</li>';
 	return $s;
 }
 
 // Add shortcode reference to Innovation Series on old posts and pages
 function committee_shortcode($atts) {
-	return getCommittee($atts['id']);    
+	return getCommittee($atts['id'], $atts['title']);    
 }
 add_shortcode('committee', 'committee_shortcode');
 

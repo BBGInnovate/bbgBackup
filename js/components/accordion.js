@@ -9,11 +9,11 @@ function Accordion($el) {
   var self = this;
   this.$root = $el;
   this.$root.on('click', 'button', function(ev) {
-    var expanded = JSON.parse($(this).attr('aria-expanded'));
+    var expanded = JSON.parse(jQuery(this).attr('aria-expanded'));
     ev.preventDefault();
     self.hideAll();
     if (!expanded) {
-      self.show($(this));
+      self.show(jQuery(this));
     }
   });
 }
@@ -41,8 +41,6 @@ Accordion.prototype.show = function($button) {
 Accordion.prototype.hideAll = function() {
   var self = this;
   this.$('button').each(function() {
-    self.hide($(this));
+    self.hide(jQuery(this));
   });
 };
-
-module.exports = Accordion;

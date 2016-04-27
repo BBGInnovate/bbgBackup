@@ -24,5 +24,10 @@ jQuery(document).ready(function() {
 
   footerAccordion();
 
+  jQuery('[class^=usa-accordion]').each(function() {
+    new Accordion(jQuery(this));
+  });
+
+
   jQuery(window).resize(footerAccordion);
 });
