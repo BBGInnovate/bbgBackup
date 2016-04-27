@@ -975,6 +975,9 @@ $s.='<div id="collapsible-'.$committeeID.'" aria-hidden="true" class="usa-accord
 
 $s.= '</div>';
 $s.= '</li>';
+$s.= '</ul>';
+$s.= '</div>';
+
 	return $s;
 }
 
