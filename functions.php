@@ -918,7 +918,7 @@ function getCommittee($committeeID) {
 	}
 	$s="<section class='usa-grid-full'>";
 	$s.= "<div class='bbg-grid--1-1-1-2'>";
-	$s.= "<strong>MAJORITY</strong>";
+	$s.= "<strong>MAJORITY</strong>(".$majority[0]['legislator']['party'].")";
 	$s.= "<ul class='usa-unstyled-list'>";
 	foreach ($majority as $m) {
 		$firstName=$m['legislator']['first_name'];
@@ -938,7 +938,7 @@ function getCommittee($committeeID) {
 	foreach ($minority as $m) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
-		$state=$m['legislator']['state_name'];
+		$state=$m['legislator']['state'];
 		$title='';
 		if (isset($m['title'])) {
 			$title=' <em>— '.$m['title'].'</em>';
