@@ -889,10 +889,17 @@ function search_excerpt_footer() {
 endif;
 
 // Add shortcode reference to Innovation Series on old posts and pages
-  function innovation_series_shortcode() {
-    return '<p class="bbg-tagline">This post originally appeared on <a href="http://www.innovation-series.com/" target="_blank">Innovation Series</a>.</p>';
+function innovation_series_shortcode() {
+	return '<p class="bbg-tagline">This post originally appeared on <a href="http://www.innovation-series.com/" target="_blank">Innovation Series</a>.</p>';
 }
 add_shortcode('tagline', 'innovation_series_shortcode');
+
+// Add shortcode reference for the number of supported languages
+function languages_shortcode() {
+	return ' 61 languages ';
+}
+add_shortcode('languages', 'languages_shortcode');
+
 
 function getCommittee($committeeID) {
 	$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
