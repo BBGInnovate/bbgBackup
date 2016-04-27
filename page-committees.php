@@ -15,9 +15,6 @@ while ( have_posts() ) : the_post();
 	$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 endwhile;
 
-$committeeStr = '<div class="usa-grid-full">committees will go here</div>';
-$pageContent = str_replace("[committees]", $committeeStr, $pageContent);
-
 get_header(); ?>
 
 

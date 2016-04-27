@@ -894,6 +894,52 @@ endif;
 }
 add_shortcode('tagline', 'innovation_series_shortcode');
 
+function getCommittee($committeeID) {
+	$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
+	if (!file_exists($committeeFilepath)) {
+		//use http://tryit.sunlightfoundation.com/congress to try out the api
+		$url="https://congress.api.sunlightfoundation.com/committees?apikey=".SUNLIGHT_API_KEY . "&committee_id=$committeeID&fields=members";
+		$result=fetchUrl($url);
+		file_put_contents($committeeFilepath, $result);
+	} else {
+		$result=file_get_contents($committeeFilepath);
+	}
+	$c2 = json_decode($result, true);
+	$members=$c2["results"][0]["members"];
+
+	$minority=array();
+	$majority=array();
+	foreach($members as $m) {
+		if ($m['side']=='majority') {
+			$majority[]=$m;
+		} else {
+			$minority[]=$m;
+		}
+	}
+	$s="";
+	$s.= "<h3>Majority</h3>";
+	foreach ($majority as $m) {
+		$firstName=$m['legislator']['first_name'];
+		$lastName=$m['legislator']['last_name'];
+		$state=$m['legislator']['state_name'];
+		$s.= "$firstName $lastName - $state <BR>";
+	}
+	$s.=  "<h3>Minority</h3>";
+	foreach ($minority as $m) {
+		$firstName=$m['legislator']['first_name'];
+		$lastName=$m['legislator']['last_name'];
+		$state=$m['legislator']['state_name'];
+		$s.=  "$firstName $lastName - $state <BR>";
+	}
+	return $s;
+}
+
+// Add shortcode reference to Innovation Series on old posts and pages
+function committee_shortcode($atts) {
+	return getCommittee($atts['id']);    
+}
+add_shortcode('committee', 'committee_shortcode');
+
 
 /* ODDI CUSTOM: Clear FB Cache when someone updates or publishes a post */
 function clearFBCache( $post_ID, $post) {
