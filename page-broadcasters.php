@@ -49,7 +49,7 @@ get_header(); ?>
 
 
 				<section class="usa-section usa-grid">
-					<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/broadcasters/" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
 					<div class="bbg-grid__container">
 
 						<?php 

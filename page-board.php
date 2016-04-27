@@ -37,7 +37,7 @@ if ($pageTitle=="Former Governors") {
 	$boardLabel="Former Governors";
 	$formerCSS=" bbg__former-member";
 } else {
-	$formerGovernorsLink = '<a href="https://bbgredesign.voanews.com/about-the-agency/history/former-governors/">Explore the list of former Governors »</a>';
+	$formerGovernorsLink = '<a href="' .  get_permalink( get_page_by_path( 'about-the-agency/history/former-governors/' ) ) .'">Explore the list of former Governors »</a>';
 }
 
 $qParams=array(
