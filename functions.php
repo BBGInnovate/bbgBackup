@@ -923,7 +923,7 @@ function getCommittee($committeeID) {
 	foreach ($majority as $m) {
 		$firstName=$m['legislator']['first_name'];
 		$lastName=$m['legislator']['last_name'];
-		$state=$m['legislator']['state_name'];
+		$state=$m['legislator']['state'];
 		$title='';
 		if (isset($m['title'])) {
 			$title=' <em>— '.$m['title'].'</em>';
