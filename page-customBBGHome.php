@@ -229,7 +229,7 @@ get_header();
 								wp_reset_postdata();
 							?>
 					</div>
-					<a href="https://bbgredesign.voanews.com/about-the-agency/history/">Learn more about the history of USIM »</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a>
 				</div>
 			</section>
 
