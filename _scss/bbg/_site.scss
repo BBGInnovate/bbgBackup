@@ -521,3 +521,9 @@ article {
 	}
 }
 
+
+
+//Fixing spacing 
+.bbg__committee-list + .bbg__committee-list {
+	margin-top: 0;
+}

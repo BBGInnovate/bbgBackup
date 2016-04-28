@@ -1949,16 +1949,16 @@ p a,
 }
 .usa-accordion button[aria-expanded=false],
 .usa-accordion-bordered button[aria-expanded=false] {
-  background-image: url("../img/plus.png");
-  background-image: url("../img/plus.svg");
+  background-image: url("img/plus.png");
+  background-image: url("img//plus.svg");
   background-repeat: no-repeat;
   background-size: 1.3rem;
 }
 .usa-accordion button,
 .usa-accordion-bordered button {
   background-color: #f1f1f1;
-  background-image: url("../img/minus.png");
-  background-image: url("../img/minus.svg");
+  background-image: url("img/minus.png");
+  background-image: url("img/minus.svg");
   background-position: right 3rem center;
   background-repeat: no-repeat;
   background-size: 13px;
@@ -4719,6 +4719,10 @@ article {
 .type-post .usa-table-borderless.bbg-full-width {
   min-width: 100%;
   max-width: auto;
+}
+
+.bbg__committee-list + .bbg__committee-list {
+  margin-top: 0;
 }
 
 @media screen and (min-width: 900px) {
