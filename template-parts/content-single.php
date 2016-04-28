@@ -15,7 +15,38 @@ $nextLink = "";
 
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
-	
+
+$entityCategories=['voa','rfa','mbn','ocb','rferl'];
+$entityLogo="";
+if (in_category('Press Release') && in_category($entityCategories)) {
+	foreach ($entityCategories as $eCat) {
+		if ($entityLogo=="" && in_category($eCat)) {
+			$broadcastersPage=get_page_by_title('Our Broadcasters');
+			$args = array( 
+				'post_type'=> 'page',
+				'posts_per_page' => 1,
+				'post_parent' => $broadcastersPage->ID,
+				'name' => $eCat
+			);
+			$custom_query = new WP_Query($args);
+			if ($custom_query -> have_posts()) {
+				while ( $custom_query -> have_posts() )  {
+					$custom_query->the_post();
+					$id=get_the_ID();
+					$entityLogoID = get_post_meta( $id, 'entity_logo',true );
+					$entityLogo="";
+					if ($entityLogoID) {
+						$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
+						$entityLogo = $entityLogoObj[0];
+					}
+				}
+			}
+			wp_reset_postdata();
+			wp_reset_query();
+		}
+	}
+}
+echo 'PR logo is ' . $entityLogo . '<BR>';
 if ($isProject) {
 	//$categories=get_the_category();
 	$post_id = $post->ID; // current post ID
@@ -72,6 +103,8 @@ if ($isProject) {
 	}
 }
 /**** END CREATING NEXT/PREV LINKS ****/
+
+
 
 //the title/headline field, followed by the URL and the author's twitter handle
 $twitterText = "";
