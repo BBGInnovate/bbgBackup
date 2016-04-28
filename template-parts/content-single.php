@@ -16,7 +16,7 @@ $nextLink = "";
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
 
-$entityCategories=['voa','rfa','mbn','ocb','rferl'];
+$entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
 $entityLogo="";
 if (in_category('Press Release') && in_category($entityCategories)) {
 	foreach ($entityCategories as $eCat) {
@@ -26,7 +26,7 @@ if (in_category('Press Release') && in_category($entityCategories)) {
 				'post_type'=> 'page',
 				'posts_per_page' => 1,
 				'post_parent' => $broadcastersPage->ID,
-				'name' => $eCat
+				'name' => str_replace('-press-release', '', $eCat)
 			);
 			$custom_query = new WP_Query($args);
 			if ($custom_query -> have_posts()) {
