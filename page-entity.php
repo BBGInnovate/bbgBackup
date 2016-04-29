@@ -43,7 +43,7 @@ if ($entityLogoID) {
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $subgroups=getEntityLinks($entityApiID);
 
-$siteSelect="<select name='entity_sites' id='entity_sites'>";
+$siteSelect="<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
 $siteSelect.="<option>Select a URL</option>";
 foreach ($subgroups as $s) {
 	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
@@ -69,6 +69,7 @@ if ($languages != "") {
 if ($appLink != "") {
 	$appLink = '<h3><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
 }
+
 
 
 
