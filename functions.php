@@ -1083,6 +1083,7 @@ function acf_load_committee_member_choices( $field ) {
 }
 
 add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_choices');
+add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_choices');
 
 function fetchUrl($url) {
 	$ch = curl_init();
