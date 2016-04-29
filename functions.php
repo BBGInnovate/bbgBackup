@@ -1240,7 +1240,7 @@ function outputCommittees() {
 }
 
 function committee_list_shortcode($atts) {
-	echo outputCommittees();    
+	return outputCommittees();    
 }
 add_shortcode('committee_list', 'committee_list_shortcode');
 
