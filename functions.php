@@ -1214,4 +1214,34 @@ function bbgredesign_get_image_size_links($imgID) {
 	}
 	return $links;
 }
+
+function outputCommittees() {
+	$committeesPage=get_page_by_title('Committees');
+	$thePostID=$committeesPage->ID;
+	$qParams=array(
+		'post_type' => array('page')
+		,'post_status' => array('publish')
+		,'post_parent' => $thePostID
+	//	,'orderby' => 'meta_value'
+	//	,'meta_key' => 'last_name'
+		,'order' => 'ASC'
+		,'posts_per_page' => 100
+	);
+	$custom_query = new WP_Query($qParams);
+	$s="";
+	$s.="<ul>";
+	while ( $custom_query->have_posts() )  {
+		$custom_query->the_post();
+		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . '</a></li>';
+	}
+	$s.="</ul>";
+	wp_reset_postdata();
+	return $s;
+}
+
+function committee_list_shortcode($atts) {
+	echo outputCommittees();    
+}
+add_shortcode('committee_list', 'committee_list_shortcode');
+
 ?>
