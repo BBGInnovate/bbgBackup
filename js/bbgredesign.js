@@ -59,9 +59,10 @@ jQuery(document).ready(function() {
         return !!popup;
     }
 
-    if (jQuery('#entity_sites').length) {
-        jQuery('#entity_sites').change(function() {
-            url=this.value;
+    if (jQuery('#entityUrlGo').length && jQuery('#entity_sites').length) {
+        jQuery('#entityUrlGo').click(function() {
+            url=jQuery('#entity_sites').val();
+            console.log('url will be ' + url);
             window.open(url,'_blank');
         });
     }

@@ -48,7 +48,7 @@ $siteSelect.="<option>Select a URL</option>";
 foreach ($subgroups as $s) {
 	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
 }
-$siteSelect.="</select>";
+$siteSelect.="</select><button class='usa-button' id='entityUrlGo'>Go</button>";
 
 //Entity fast facts / by-the-numbers
 $budget = get_post_meta( $id, 'entity_budget', true );
