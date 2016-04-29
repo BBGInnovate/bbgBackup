@@ -1007,7 +1007,7 @@ function sortByTitle($a, $b) {
     return strcmp($a["title"], $b["title"]);
 }
 
-function acf_load_color_field_choices( $field ) {
+function acf_load_contact_card_choices( $field ) {
     //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
     //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
 
@@ -1038,7 +1038,51 @@ function acf_load_color_field_choices( $field ) {
 	return $field;
 }
 
-add_filter('acf/load_field/name=contact_post_id', 'acf_load_color_field_choices');
+add_filter('acf/load_field/name=contact_post_id', 'acf_load_contact_card_choices');
+
+function acf_load_committee_member_choices( $field ) {
+    //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
+    //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
+
+	global $post;
+	$post_original=$post;
+    $field['choices'] = array();
+
+
+    $boardPage=get_page_by_title('The Board');
+
+	$qParams=array(
+		'post_type' => array('page')
+		,'post_status' => array('publish')
+		,'post_parent' => $boardPage->ID
+		,'orderby' => 'meta_value'
+		,'meta_key' => 'last_name'
+		,'order' => 'ASC'
+		,'posts_per_page' => 100
+	);
+	$custom_query = new WP_Query($qParams);
+
+	$choices = array();
+	while ( $custom_query -> have_posts() )  {
+		$custom_query->the_post();
+		if (get_the_title() != 'Committees') {
+			$choices[] = array(
+				"post_id"=>get_the_ID(),
+				"title"=>get_the_title()
+			);
+		}
+	}
+	usort($choices, 'sortByTitle');
+	foreach ($choices as $choice) {
+		$field['choices'][ $choice["post_id"]] = $choice["title"];	
+	}
+
+	$post=$post_original;
+	// return the field
+	return $field;
+}
+
+add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_choices');
 
 function fetchUrl($url) {
 	$ch = curl_init();

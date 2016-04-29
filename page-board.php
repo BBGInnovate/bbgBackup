@@ -61,7 +61,7 @@ while ( $custom_query->have_posts() )  {
 	$custom_query->the_post();
 
 	$active=get_post_meta( get_the_ID(), 'active', true );
-	if ( ($pageTitle=="The Board" && $active) || ($pageTitle=="Former Governors" && (!isset($active) || $active=="" || !$active ))  ) {
+	if (  (get_the_title() != "Committees") && ($pageTitle=="The Board" && $active) || ($pageTitle=="Former Governors" && (!isset($active) || $active=="" || !$active ))  ) {
 		$isChairperson=get_post_meta( get_the_ID(), 'chairperson', true );
 		$isSecretary=get_post_meta( get_the_ID(), 'secretary_of_state', true );
 		//$occupation=get_post_meta( get_the_ID(), 'occupation', true );
