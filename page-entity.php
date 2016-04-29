@@ -38,9 +38,17 @@ $entityLogo = "";
 if ($entityLogoID) {
 	$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
 	$entityLogo = $entityLogoObj[0];
-} 
+}
 
+$entityApiID = get_post_meta( $id, 'entity_api_id', true );
+$subgroups=getEntityLinks($entityApiID);
 
+$siteSelect="<select name='entity_sites' id='entity_sites'>";
+$siteSelect.="<option>Select a URL</option>";
+foreach ($subgroups as $s) {
+	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
+}
+$siteSelect.="</select>";
 
 //Entity fast facts / by-the-numbers
 $budget = get_post_meta( $id, 'entity_budget', true );
@@ -362,7 +370,11 @@ get_header();
 						</ul>
 						<?php } ?>
 
-						<?php echo $appLink; ?>
+						<?php 
+							echo $appLink; 
+							echo $siteSelect; 
+						?>
+
 
 					</div><!-- .bbg__article-sidebar--left -->
 

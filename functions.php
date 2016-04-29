@@ -193,6 +193,7 @@ function bbginnovate_scripts() {
 	wp_enqueue_script( 'bbginnovate-18f', get_template_directory_uri() . '/js/18f.js', array(), '20160223', true );
 
 	wp_enqueue_script( 'bbginnovate-bbginnovate', get_template_directory_uri() . '/js/bbginnovate.js', array(), '20160223', true );
+	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array(), '20160223', true );
 }
 add_action( 'wp_enqueue_scripts', 'bbginnovate_scripts' );
 
@@ -1076,6 +1077,26 @@ function getFeed($url,$id) {
 	$json = json_encode($xml,JSON_PRETTY_PRINT);
 	$json=json_decode($json);
 	return $json;
+}
+
+function getEntityLinks($entityID) {
+	$url="http://api.bbg.gov/api/groups";
+	$feedFilepath = get_template_directory() . "/groupscache.json";
+	if (! file_exists($feedFilepath)) {
+		$feedStr=fetchUrl($url);
+		file_put_contents($feedFilepath, $feedStr);
+	} else {
+		$feedStr=file_get_contents($feedFilepath);
+	}
+	$json=json_decode($feedStr);
+	
+	$g=false;
+	foreach ($json as $group) {
+		if ($group->id ==$entityID) {
+			$g=$group->subgroups;
+		}
+	}
+	return $g;
 }
 
 /**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/
