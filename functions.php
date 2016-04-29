@@ -1232,7 +1232,7 @@ function outputCommittees() {
 	$s.="<ul>";
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
-		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . '</a></li>';
+		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . '</a>' . get_the_excerpt() . '</li>';
 	}
 	$s.="</ul>";
 	wp_reset_postdata();
