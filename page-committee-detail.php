@@ -122,7 +122,7 @@ get_header(); ?>
 							foreach ($members as $m) {
 								echo "<li>";
 								if ($m['profilePhoto']) {
-									echo "<img src='".$m['profilePhoto']."'/>";
+									//echo "<img src='".$m['profilePhoto']."'/>";
 								}
 								echo "<a href='".$m['url']."'>".$m['name']."</a>";
 								if ($m['chair']) {
