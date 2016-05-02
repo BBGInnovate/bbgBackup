@@ -108,10 +108,14 @@ get_header(); ?>
 								echo "<h3>Committee Docs</h3>";
 								echo "<ul>";
 								if ($committeeResolution) {
-									echo "<li><a href='" . $committeeResolution['url'] . "'>Committee Formation</a></li>";  //$committeeResolution['title']
+									$url=$committeeResolution['url'];
+									$title=$committeeResolution['title'];
+									echo "<li><a href='$url'>$title</a></li>";  
 								}
 								if ($committeeReport) {
-									echo "<li><a href='" . $committeeReportLink['url'] . "'>Committee Report</a></li>"; //$committeeReportLink['title']
+									$url=$committeeReport['url'];
+									$title=$committeeReport['title'];
+									echo "<li><a href='$url'>$title</a></li>"; 
 								}
 								echo "</ul>";
 							}
