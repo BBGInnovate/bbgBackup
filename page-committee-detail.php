@@ -13,12 +13,27 @@
    template name: Committee Detail
  */
 
-$committeeReportID = get_post_meta( get_the_ID(), "committee_report", true );
-$committeeResolutionID= get_post_meta( get_the_ID(), "committee_establishment_resolution", true ); 
+$committeeReportID = get_post_meta( 12345, "committee_report", true );
+$committeeResolutionID = get_post_meta( get_the_ID(), "committee_establishment_resolution", true ); 
 
-$committeeReportLink= wp_get_attachment_url( $committeeReportID);
-$committeeResolutionLink= wp_get_attachment_url( $committeeResolutionID);
+$committeeReport=false;
+if ($committeeReportID != "") {
+	$committeeReportPost=get_post($committeeReportID);
+	$committeeReport=array('title'=>$committeeReportPost->post_title, 'url'=>$committeeReportPost->guid);
+}
 
+$committeeResolution=false;
+if ($committeeResolutionID != "") {
+	$committeeResolutionPost=get_post($committeeResolutionID);
+	$committeeResolution=array('title'=>$committeeResolutionPost->post_title, 'url'=>$committeeResolutionPost->guid);
+}
+
+$committeeMemberIDs = get_post_meta( get_the_ID(), "committee_members", true );
+$members=array();
+foreach ($committeeMemberIDs as $memberID) {
+	$member = get_post($memberID);
+	$members[] = array( 'name' => $member->post_title, 'url' => get_permalink($member->ID));
+}
 
 
 get_header(); ?>
@@ -80,18 +95,23 @@ get_header(); ?>
 							the_content();
 
 							echo "<h3>Committee Members</h3>";
-							echo "<ul><li>member1</li><li>member2</li></ul>";
+							echo "<ul>";
+							foreach ($members as $m) {
+								echo "<li><a href='".$m['url']."'>".$m['name']."</a></li>";
+								//<li>member1</li><li>member2</li></ul>";
+							}
+							echo "</ul>";
 
 
-							if ($committeeResolutionLink || $committeeReportLink) {
+							if ($committeeResolution|| $committeeReport) {
 
 								echo "<h3>Committee Docs</h3>";
 								echo "<ul>";
-								if ($committeeResolutionLink) {
-									echo "<li><a href='" . $committeeResolutionLink . "'>Committee Formation</a></li>";	
+								if ($committeeResolution) {
+									echo "<li><a href='" . $committeeResolution['url'] . "'>Committee Formation</a></li>";  //$committeeResolution['title']
 								}
-								if ($committeeReportLink) {
-									echo "<li><a href='" . $committeeReportLink . "'>Committee Report</a></li>";	
+								if ($committeeReport) {
+									echo "<li><a href='" . $committeeReportLink['url'] . "'>Committee Report</a></li>"; //$committeeReportLink['title']
 								}
 								echo "</ul>";
 							}
