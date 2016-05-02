@@ -913,7 +913,7 @@ function fileExpired($filepath, $minutesToExpire) {
 		$secondsDiff=time() - filemtime($filepath);
 		$minutesDiff=$secondsDiff/60;
 		if ($minutesDiff > 30) {
-			$expiured=true;
+			$expired=true;
 		}
 	}
 	return  $expired;
