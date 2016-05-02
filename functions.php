@@ -48,7 +48,7 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 		add_image_size( 'small-thumb', 300, 180, true );
 		//add_image_size( 'largest', 1200, 9999 ); // new size at our max breaking point
 		add_image_size( 'gigantic', 1900, 9999 ); // for some huge monitors
-		add_image_size( 'mugshot', 200, 200, true );  
+		add_image_size( 'mugshot', 200, 200, true );
 
 		function my_custom_sizes( $sizes ) {
 			/*  NOTE: the $sizes array here is simply an associative array.  It doesn't provide actual dimensions.
@@ -985,7 +985,7 @@ $s.= '</div>';
 
 // Add shortcode reference to Innovation Series on old posts and pages
 function committee_shortcode($atts) {
-	return getCommittee($atts['id'], $atts['title']);    
+	return getCommittee($atts['id'], $atts['title']);
 }
 add_shortcode('committee', 'committee_shortcode');
 
@@ -1030,7 +1030,7 @@ function acf_load_contact_card_choices( $field ) {
 	}
 	usort($choices, 'sortByTitle');
 	foreach ($choices as $choice) {
-		$field['choices'][ $choice["post_id"]] = $choice["title"];	
+		$field['choices'][ $choice["post_id"]] = $choice["title"];
 	}
 
 	$post=$post_original;
@@ -1074,7 +1074,7 @@ function acf_load_committee_member_choices( $field ) {
 	}
 	usort($choices, 'sortByTitle');
 	foreach ($choices as $choice) {
-		$field['choices'][ $choice["post_id"]] = $choice["title"];	
+		$field['choices'][ $choice["post_id"]] = $choice["title"];
 	}
 
 	$post=$post_original;
@@ -1107,7 +1107,7 @@ function getJobs() {
 	$jobs = json_decode($result, true);
 
 	return $jobs;
-	
+
 }
 
 function getFeed($url,$id) {
@@ -1135,7 +1135,7 @@ function getEntityLinks($entityID) {
 		$feedStr=file_get_contents($feedFilepath);
 	}
 	$json=json_decode($feedStr);
-	
+
 	$g=false;
 	foreach ($json as $group) {
 		if ($group->id ==$entityID) {
@@ -1215,8 +1215,9 @@ function bbgredesign_get_image_size_links($imgID) {
 	return $links;
 }
 
+/* Output Board Committees */
 function outputCommittees() {
-	$committeesPage=get_page_by_title('Committees');
+	$committeesPage=get_page_by_title('Special Committees');
 	$thePostID=$committeesPage->ID;
 	$qParams=array(
 		'post_type' => array('page')
@@ -1229,10 +1230,10 @@ function outputCommittees() {
 	);
 	$custom_query = new WP_Query($qParams);
 	$s="";
-	$s.="<ul>";
+	$s.="<ul class='bbg__board__committee-list'>";
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
-		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . '</a> - ' . get_the_excerpt() . '</li>';
+		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '</li>';
 	}
 	$s.="</ul>";
 	wp_reset_postdata();
@@ -1240,7 +1241,7 @@ function outputCommittees() {
 }
 
 function committee_list_shortcode($atts) {
-	return outputCommittees();    
+	return outputCommittees();
 }
 add_shortcode('committee_list', 'committee_list_shortcode');
 

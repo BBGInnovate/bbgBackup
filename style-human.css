@@ -1675,7 +1675,7 @@ ul li, ol li {
   margin-top: 0.75em;
 }
 
-h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol, h4 + ul, h4 + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol, p + ul, p + ol {
+h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol, h4 + ul, .bbg__board__committee-list li a + ul, h4 + ol, .bbg__board__committee-list li a + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol, p + ul, p + ol {
   margin-top: 0;
 }
 
@@ -1791,7 +1791,7 @@ a:focus {
   outline: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, .bbg__board__committee-list li a, h5, h6 {
   clear: both;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   line-height: 1.3;
@@ -1814,7 +1814,7 @@ h3 {
   font-weight: 700;
 }
 
-h4 {
+h4, .bbg__board__committee-list li a {
   font-size: 1.7rem;
   font-weight: 700;
 }
@@ -1979,11 +1979,13 @@ p a,
   background-color: #d6d7d9;
   color: #212121;
 }
-.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button h4, .usa-accordion button h5, .usa-accordion button h6,
+.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button h4, .usa-accordion button .bbg__board__committee-list li a, .bbg__board__committee-list li .usa-accordion button a, .usa-accordion button h5, .usa-accordion button h6,
 .usa-accordion-bordered button h1,
 .usa-accordion-bordered button h2,
 .usa-accordion-bordered button h3,
 .usa-accordion-bordered button h4,
+.usa-accordion-bordered button .bbg__board__committee-list li a,
+.bbg__board__committee-list li .usa-accordion-bordered button a,
 .usa-accordion-bordered button h5,
 .usa-accordion-bordered button h6 {
   margin: 0;
@@ -3569,7 +3571,7 @@ object {
   margin-top: 2em;
   text-transform: uppercase;
 }
-.bbg__article-content > h4 {
+.bbg__article-content > h4, .bbg__board__committee-list li .bbg__article-content > a {
   clear: none;
 }
 .bbg__article-content h1 + ul,
@@ -3579,7 +3581,11 @@ object {
 .bbg__article-content h3 + ul,
 .bbg__article-content h3 + ol,
 .bbg__article-content h4 + ul,
+.bbg__article-content .bbg__board__committee-list li a + ul,
+.bbg__board__committee-list li .bbg__article-content a + ul,
 .bbg__article-content h4 + ol,
+.bbg__article-content .bbg__board__committee-list li a + ol,
+.bbg__board__committee-list li .bbg__article-content a + ol,
 .bbg__article-content h5 + ul,
 .bbg__article-content h5 + ol,
 .bbg__article-content h6 + ul,
@@ -4229,6 +4235,7 @@ h1,
 h2,
 h3,
 h4,
+.bbg__board__committee-list li a,
 h5,
 h6 {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
@@ -4239,12 +4246,14 @@ h1,
 h2,
 h3,
 h4,
+.bbg__board__committee-list li a,
 h5,
 h6,
 h1 a,
 h2 a,
 h3 a,
-h4 a {
+h4 a,
+.bbg__board__committee-list li a a {
   color: #112e51;
 }
 
@@ -4723,6 +4732,26 @@ article {
 
 .bbg__committee-list + .bbg__committee-list {
   margin-top: 0;
+}
+
+.bbg__board__committee-list {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.bbg__board__committee-list li {
+  display: list-item;
+  margin: 0;
+}
+.bbg__board__committee-list li:before {
+  display: none;
+}
+.bbg__board__committee-list li:after {
+  display: none;
+}
+.bbg__board__committee-list li {
+  margin-bottom: 1.5rem;
 }
 
 @media screen and (min-width: 900px) {

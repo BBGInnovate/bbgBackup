@@ -522,8 +522,20 @@ article {
 }
 
 
-
-//Fixing spacing 
+//Fixing spacing on accordions
 .bbg__committee-list + .bbg__committee-list {
 	margin-top: 0;
+}
+
+// Board committees
+.bbg__board__committee-list {
+	@include unstyled-list;
+
+	li {
+		margin-bottom: $site-margins-medium;
+
+		a {
+			@extend h4;
+		}
+	}
 }
