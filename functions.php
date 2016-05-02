@@ -907,7 +907,7 @@ add_shortcode('languages', 'languages_shortcode');
 
 
 //Grab the list of congressional committee members from the Sunlight Foundation's API
-function getCommittee($committeeID, $committeeTitle) {
+function getCongressionalCommittee($committeeID, $committeeTitle) {
 	$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
 	if (!file_exists($committeeFilepath)) {
 		//use http://tryit.sunlightfoundation.com/congress to try out the api
@@ -984,10 +984,10 @@ $s.= '</div>';
 }
 
 // Add shortcode reference to Innovation Series on old posts and pages
-function committee_shortcode($atts) {
-	return getCommittee($atts['id'], $atts['title']);
+function congressional_committee_shortcode($atts) {
+	return getCongressionalCommittee($atts['id'], $atts['title']);
 }
-add_shortcode('committee', 'committee_shortcode');
+add_shortcode('congressional_committee', 'congressional_committee_shortcode');
 
 
 /* ODDI CUSTOM: Clear FB Cache when someone updates or publishes a post */
@@ -1055,8 +1055,8 @@ function acf_load_committee_member_choices( $field ) {
 		'post_type' => array('page')
 		,'post_status' => array('publish')
 		,'post_parent' => $boardPage->ID
-		,'orderby' => 'meta_value'
-		,'meta_key' => 'last_name'
+		//,'orderby' => 'meta_value'
+		//,'meta_key' => 'last_name'
 		,'order' => 'ASC'
 		,'posts_per_page' => 100
 	);
@@ -1216,15 +1216,15 @@ function bbgredesign_get_image_size_links($imgID) {
 }
 
 /* Output Board Committees */
-function outputCommittees() {
+function outputSpecialCommittees($active) {
 	$committeesPage=get_page_by_title('Special Committees');
 	$thePostID=$committeesPage->ID;
 	$qParams=array(
 		'post_type' => array('page')
 		,'post_status' => array('publish')
 		,'post_parent' => $thePostID
-	//	,'orderby' => 'meta_value'
-	//	,'meta_key' => 'last_name'
+		,'orderby' => 'meta_value'
+		,'meta_key' => 'last_name'
 		,'order' => 'ASC'
 		,'posts_per_page' => 100
 	);
@@ -1233,6 +1233,7 @@ function outputCommittees() {
 	$s.="<ul class='bbg__board__committee-list'>";
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
+		$committeeActive=get_post_meta( get_the_ID(), "committee_report", true );
 		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '</li>';
 	}
 	$s.="</ul>";
@@ -1240,9 +1241,9 @@ function outputCommittees() {
 	return $s;
 }
 
-function committee_list_shortcode($atts) {
-	return outputCommittees();
+function special_committee_list_shortcode($atts) {
+	return outputSpecialCommittees($atts['active']);
 }
-add_shortcode('committee_list', 'committee_list_shortcode');
+add_shortcode('special_committee_list', 'special_committee_list_shortcode');
 
 ?>
