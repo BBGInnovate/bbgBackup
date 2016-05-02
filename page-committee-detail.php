@@ -28,11 +28,34 @@ if ($committeeResolutionID != "") {
 	$committeeResolution=array('title'=>$committeeResolutionPost->post_title, 'url'=>$committeeResolutionPost->guid);
 }
 
-$committeeMemberIDs = get_post_meta( get_the_ID(), "committee_members", true );
 $members=array();
+
+/* chair comes first */
+$committeeChairID = get_post_meta( get_the_ID(), "committee_chair", true );
+$chair=get_post($committeeChairID);
+if ($chair) {
+	$profilePhotoID=get_post_meta($committeeChairID, 'profile_photo', true );
+	$profilePhoto = "";
+	if ($profilePhotoID) {
+		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+		$profilePhoto = $profilePhoto[0];
+	}
+	$members[] = array( 'name' => $chair->post_title, 'url' => get_permalink($chair->ID), 'chair'=>true, 'profilePhoto' => $profilePhoto);
+}
+
+/* add all non-chair members */
+$committeeMemberIDs = get_post_meta( get_the_ID(), "committee_members", true );
 foreach ($committeeMemberIDs as $memberID) {
-	$member = get_post($memberID);
-	$members[] = array( 'name' => $member->post_title, 'url' => get_permalink($member->ID));
+	if ($memberID != $committeeChairID) {
+		$member = get_post($memberID);
+		$profilePhotoID=get_post_meta( $memberID, 'profile_photo', true );
+		$profilePhoto = "";
+		if ($profilePhotoID) {
+			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+			$profilePhoto = $profilePhoto[0];
+		}
+		$members[] = array( 'name' => $member->post_title, 'url' => get_permalink($member->ID), 'chair'=>false, 'profilePhoto' => $profilePhoto);
+	}
 }
 
 
@@ -97,7 +120,16 @@ get_header(); ?>
 							echo "<h3>Committee Members</h3>";
 							echo "<ul>";
 							foreach ($members as $m) {
-								echo "<li><a href='".$m['url']."'>".$m['name']."</a></li>";
+								echo "<li>";
+								if ($m['profilePhoto']) {
+									echo "<img src='".$m['profilePhoto.']."'/>";
+								}
+								echo "<a href='".$m['url']."'>".$m['name']."</a>";
+								if ($m['chair']) {
+									echo "<em> (Committee Chair)</em>";
+								}
+
+								echo "</li>";
 								//<li>member1</li><li>member2</li></ul>";
 							}
 							echo "</ul>";

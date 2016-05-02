@@ -1233,8 +1233,10 @@ function outputSpecialCommittees($active) {
 	$s.="<ul class='bbg__board__committee-list'>";
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
-		$committeeActive=get_post_meta( get_the_ID(), "committee_report", true );
-		$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '</li>';
+		$committeeActive=get_post_meta( get_the_ID(), "committee_active", true );
+		if ($committeeActive==$active) {
+			$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '</li>';
+		}
 	}
 	$s.="</ul>";
 	wp_reset_postdata();
