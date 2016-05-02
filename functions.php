@@ -905,13 +905,26 @@ function languages_shortcode() {
 }
 add_shortcode('languages', 'languages_shortcode');
 
+function fileExpired($filepath, $minutesToExpire) {
+	$expired=false;
+	if (!file_exists($filepath)) {
+		$expired=true;
+	} else {
+		$secondsDiff=time() - filemtime($filepath);
+		$minutesDiff=$secondsDiff/60;
+		if ($minutesDiff > 30) {
+			$expiured=true;
+		}
+	}
+	return  $expired;
+}
 
 //Grab the list of congressional committee members from the Sunlight Foundation's API
 function getCongressionalCommittee($committeeID, $committeeTitle) {
 	$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
-	if (!file_exists($committeeFilepath)) {
+	if ( fileExpired($committeeFilepath, 1440) ) { 	//1440 min = 1 day
 		//use http://tryit.sunlightfoundation.com/congress to try out the api
-		$url="https://congress.api.sunlightfoundation.com/committees?apikey=".SUNLIGHT_API_KEY . "&committee_id=$committeeID&fields=members";
+		$url="https://congress.api.sunlightfoundation.com/committees?apikey=" . SUNLIGHT_API_KEY . "&committee_id=$committeeID&fields=members";
 		$result=fetchUrl($url);
 		file_put_contents($committeeFilepath, $result);
 	} else {
@@ -1097,7 +1110,7 @@ function fetchUrl($url) {
 
 function getJobs() {
 	$jobsFilepath = get_template_directory() . "/jobcache.json";
-	if (! file_exists($jobsFilepath)) {
+	if ( fileExpired($jobsFilepath, 1440)  ) {  //1440 min = 1 day
 		$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
 		$result=fetchUrl($jobsUrl);
 		file_put_contents($jobsFilepath, $result);
@@ -1112,7 +1125,7 @@ function getJobs() {
 
 function getFeed($url,$id) {
 	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
-	if (! file_exists($feedFilepath)) {
+	if ( fileExpired($feedFilepath,60)) { //one hour expiration
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
 	} else {
@@ -1128,7 +1141,7 @@ function getFeed($url,$id) {
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/groups";
 	$feedFilepath = get_template_directory() . "/groupscache.json";
-	if (! file_exists($feedFilepath)) {
+	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day 
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
 	} else {
@@ -1190,7 +1203,7 @@ function renderContactCard($postIDs) {
 	}
 }
 
-function bbgredesign_get_image_size_links($imgID) {
+function bbgredesign_get_image_size_links($imgID) { 
 	//http://justintadlock.com/archives/2011/01/28/linking-to-all-image-sizes-in-wordpress
 	$links = array();
 	if ( wp_attachment_is_image( $imgID ) ) {
