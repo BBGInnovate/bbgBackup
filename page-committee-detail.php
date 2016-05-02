@@ -13,7 +13,7 @@
    template name: Committee Detail
  */
 
-$committeeReportID = get_post_meta( 12345, "committee_report", true );
+$committeeReportID = get_post_meta( get_the_ID(), "committee_report", true );
 $committeeResolutionID = get_post_meta( get_the_ID(), "committee_establishment_resolution", true ); 
 
 $committeeReport=false;
