@@ -1147,7 +1147,7 @@ function getFeed($url,$id) {
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/groups";
 	$feedFilepath = get_template_directory() . "/groupscache.json";
-	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day 
+	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
 	} else {
@@ -1209,7 +1209,7 @@ function renderContactCard($postIDs) {
 	}
 }
 
-function bbgredesign_get_image_size_links($imgID) { 
+function bbgredesign_get_image_size_links($imgID) {
 	//http://justintadlock.com/archives/2011/01/28/linking-to-all-image-sizes-in-wordpress
 	$links = array();
 	if ( wp_attachment_is_image( $imgID ) ) {
@@ -1251,8 +1251,13 @@ function outputSpecialCommittees($active) {
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
 		$committeeActive=get_post_meta( get_the_ID(), "committee_active", true );
+		$committeeChairID = get_post_meta( get_the_ID(), "committee_chair", true );
+
 		if ($committeeActive==$active) {
-			$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '</li>';
+
+			$chair=get_post($committeeChairID);
+
+			$s.="<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . ' &raquo;</a><br />' . get_the_excerpt() . '<br />Chair: <a href="' . get_permalink($chair->ID) . '">' . $chair->post_title . '</a></li>';
 		}
 	}
 	$s.="</ul>";

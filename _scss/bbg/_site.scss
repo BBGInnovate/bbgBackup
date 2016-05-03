@@ -399,10 +399,10 @@ article {
 
 				@include media($medium-screen) {
 					margin: {
-						right: 0; 
-						left: auto; 
+						right: 0;
+						left: auto;
 					}
-					width: 50%; 
+					width: 50%;
 				}
 			}
 
@@ -417,7 +417,7 @@ article {
 				@include media($medium-screen) {
 					height: 100%;
 					position: absolute;
-					width: 50%; 
+					width: 50%;
 				}
 			}
 		}
