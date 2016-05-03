@@ -493,6 +493,7 @@ function oddi_settings_api_init() {
 add_action( 'admin_init', 'oddi_settings_api_init' );
 
 function enqueueAdminStyles() {
+	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array('jquery'), '20160223', true );
 	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
 }
 
@@ -1264,5 +1265,12 @@ function special_committee_list_shortcode($atts) {
 	return outputSpecialCommittees($atts['active']);
 }
 add_shortcode('special_committee_list', 'special_committee_list_shortcode');
+
+function enqueue_chosen_js() {
+ 	wp_enqueue_script( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.jquery.min.js', array('jquery')); 
+	wp_enqueue_style( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.min.css');
+}
+add_action('admin_enqueue_scripts', 'enqueue_chosen_js', 2000);
+/***** END CHOSEN JS - enhanced UI for multiselects  ****/
 
 ?>
