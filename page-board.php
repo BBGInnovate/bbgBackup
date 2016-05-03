@@ -156,9 +156,9 @@ get_header(); ?>
 
 				<div class="usa-grid">
 					<header class="page-header">
-						<h6 class="bbg-label--mobile large">
+						<h5 class="bbg-label">
 							<?php echo $boardLabel; ?>
-						</h6>
+						</h5>
 					</header><!-- .page-header -->
 				</div>
 				<div class="usa-grid-full">

@@ -94,7 +94,7 @@ while ( $custom_query->have_posts() )  {
 		}
 	}
 }
-$boardStr = '<div class="usa-grid-full">' . $ceoStr . $boardStr . '</div><h1>Broadcaster Leadership</h1><div class="usa-grid-full">' . $granteeStr . '</div>';
+$boardStr = '<div class="usa-grid-full">' . $ceoStr . $boardStr . '</div><h2>Broadcaster management</h2><div class="usa-grid-full">' . $granteeStr . '</div>';
 $pageContent = str_replace("[management list]", $boardStr, $pageContent);
 wp_reset_postdata();
 
@@ -136,10 +136,11 @@ get_header(); ?>
 
 				<div class="usa-grid">
 					<header class="page-header">
-						<h6 class="bbg-label--mobile large">
+						<h5 class="bbg-label">
 							Senior BBG Leadership
-						</h6>
+						</h5>
 					</header><!-- .page-header -->
+					<h1>IBB management</h1>
 				</div>
 				<div class="usa-grid-full">
 					<div class="usa-grid">
