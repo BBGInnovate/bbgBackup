@@ -46,7 +46,8 @@ if (in_category('Press Release') && in_category($entityCategories)) {
 		}
 	}
 }
-echo 'PR logo is ' . $entityLogo . '<BR>';
+//echo 'PR logo is ' . $entityLogo . '<BR>';
+
 if ($isProject) {
 	//$categories=get_the_category();
 	$post_id = $post->ID; // current post ID
@@ -181,28 +182,41 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				<?php bbginnovate_posted_on(); ?>
 			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
-		<div class="container" style="position: relative;">
-		<ul class="bbg__article-share">
-			<li class="bbg__article-share__link facebook">
-				<a href="<?php echo $fbUrl; ?>">
-					<span class="bbg__article-share__icon facebook"></span>
-					<span class="bbg__article-share__text">Share</span>
-				</a>
-			</li>
-			<li class="bbg__article-share__link twitter">
-				<a href="<?php echo $twitterURL; ?>">
-					<span class="bbg__article-share__icon twitter"></span>
-					<span class="bbg__article-share__text">Tweet</span>
-				</a>
-			</li>
-		</ul>
 
-		<div class="entry-content bbg__article-content">
+
+
+
+<!-- new -->
+
+		<div class="bbg__article-sidebar--left">
+			<?php 
+				if ($entityLogo!=""){
+					echo '<img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/>';
+				}
+			?>
+
+			<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+			<ul class="bbg__article-share">
+				<li class="bbg__article-share__link facebook">
+					<a href="<?php echo $fbUrl; ?>">
+						<span class="bbg__article-share__icon facebook"></span>
+						<span class="bbg__article-share__text">Share</span>
+					</a>
+				</li>
+				<li class="bbg__article-share__link twitter">
+					<a href="<?php echo $twitterURL; ?>">
+						<span class="bbg__article-share__icon twitter"></span>
+						<span class="bbg__article-share__text">Tweet</span>
+					</a>
+				</li>
+			</ul>
+
+		</div><!-- .bbg__article-sidebar--left -->
+
+
+
+		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 			<?php the_content(); ?>
-
-
-
-		<!-- old nav location -->
 
 			<?php
 				/* START CONTACT CARDS */
@@ -210,41 +224,15 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				renderContactCard($contactPostIDs);
 				
 				/* END CONTACT CARDS */
-			?>
-
-
-
+			?>			
 		</div><!-- .entry-content -->
 
+
+
 		<div class="bbg__article-sidebar">
-			<?php
-				$usersInProjectStr = get_post_meta( get_the_ID(), 'users_in_project', true );
+			<p></p>
+		</div><!-- .bbg__article-sidebar -->
 
-				if(!in_category('project')) {
-					bbg_post_author_bottom_card(get_the_author_meta('ID'));
-				} elseif ( $usersInProjectStr != "" ) {
-					$userIDs = explode( ',', $usersInProjectStr );
-					array_walk( $userIDs, 'intval' );
-					$args = array( 'include' => $userIDs, 'orderby' => 'include' );
-
-					$blogusers = get_users( $args );
-					// Loop through the users to create the staff profiles
-					if ( $blogusers ) {
-						echo "<div class='bbg__portfolio-members'><h3 class='bbg__portfolio-members__title'>ODDI Team</h3> <ul class='bbg__portfolio-members__list'>";
-						foreach ( $blogusers as $user ) {
-							$authorName = esc_html( $user -> display_name );
-							$authorUrl = get_author_posts_url( $user -> ID, $user -> user_nicename );
-							$authorOccupation = esc_html( $user -> occupation );
-							echo "<li class='bbg__portfolio-members__member-name'><a href='$authorUrl'>$authorName</a><br/><span class='bbg__portfolio-members__member-job'>$authorOccupation</span></li>";
-						}
-						echo "</ul></div>";
-					}
-
-				}
-			?>
-		</div> <!-- .bbg__article-sidebar -->
-		
-		</div><!-- container -->
 	</div><!-- .usa-grid -->
 
 	<!-- <footer class="entry-footer bbg__article-footer">

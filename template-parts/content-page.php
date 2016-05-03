@@ -46,23 +46,25 @@
 		</header><!-- .entry-header -->
 
 
-					<div class="bbg__article-sidebar--left">
-						<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-						<p>Social share links could go here and here and here and here.</p>
-						&nbsp;
-					</div><!-- .bbg__article-sidebar--left -->
+
+
+		<div class="bbg__article-sidebar--left">
+			<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
+			<p>Social share links could go here and here and here and here.</p>
+			&nbsp;
+		</div><!-- .bbg__article-sidebar--left -->
 
 
 
-					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-						<?php the_content(); ?>
-					</div><!-- .entry-content -->
+		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+			<?php the_content(); ?>
+		</div><!-- .entry-content -->
 
 
 
-					<div class="bbg__article-sidebar">
-						<p>Sidebar info or widgets here?</p>
-					</div><!-- .bbg__article-sidebar -->
+		<div class="bbg__article-sidebar">
+			<p>Sidebar info or widgets here?</p>
+		</div><!-- .bbg__article-sidebar -->
 
 
 
