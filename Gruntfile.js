@@ -41,12 +41,20 @@ module.exports = function (grunt){
 			}
 		},
 
-
 		/* watch task */
 		watch: {
 			css: {
 				files: '**/*.scss',
-				tasks: ['sass', 'autoprefixer']
+				tasks: ['sass', 'autoprefixer'],
+				options: {
+					livereload: 35729
+				}
+			},
+			php: {
+				files: ['**/*.php'],
+				options: {
+					livereload: 35729
+				}
 			}
 		}
 

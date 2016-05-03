@@ -195,6 +195,12 @@ function bbginnovate_scripts() {
 	wp_enqueue_script( 'bbginnovate-18f', get_template_directory_uri() . '/js/18f.js', array(), '20160223', true );
 
 	wp_enqueue_script( 'bbginnovate-bbginnovate', get_template_directory_uri() . '/js/bbginnovate.js', array(), '20160223', true );
+
+	if (defined('USE_LIVE_RELOAD') && USE_LIVE_RELOAD) {
+		wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
+		wp_enqueue_script('livereload');
+	}
+
 }
 add_action( 'wp_enqueue_scripts', 'bbginnovate_scripts' );
 
