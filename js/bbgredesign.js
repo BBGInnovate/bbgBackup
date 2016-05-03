@@ -66,5 +66,12 @@ jQuery(document).ready(function() {
             window.open(url,'_blank');
         });
     }
+
+    jQuery(document).on("acf/setup_fields", function(e, div){
+        if (jQuery("#acf-field-committee_members").length) {
+            jQuery("#acf-field-committee_members").chosen();    
+        }
+    });
+  
     
 });

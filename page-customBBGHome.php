@@ -196,8 +196,10 @@ get_header();
 								$qParams=array(
 									'post_type' => array('page'),
 									'posts_per_page' => -1,
-									'post_parent' => $entityParentPage->ID
-									
+									'post_parent' => $entityParentPage->ID,
+									'orderby' => 'meta_value_num',
+									'meta_key' => 'entity_year_established',
+									'order' => 'ASC'
 								);
 								$custom_query = new WP_Query($qParams);
 								if ($custom_query -> have_posts()) {
