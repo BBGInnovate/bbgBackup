@@ -277,7 +277,7 @@ if (count($awards)) {
 		$s.= '<h3 class="bbg__award-excerpt__title"><a href="'.$url.'">'.$title.'</a></h3>';
 		$s.= '<p class="bbg__award-excerpt__source">';
 		$s.= '<span class="bbg__award-excerpt__org">' . join($organizations) . '</span>, ';
-		$s.= $awardYears;
+		$s.= join($awardYears);
 		$s.= '</p>';
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
