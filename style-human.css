@@ -4746,6 +4746,10 @@ p {
   margin: 3rem auto;
 }
 
+.bbg-embed-shell.bbg__featured-video {
+  max-width: 1040px;
+}
+
 .embed-container {
   height: 0;
   max-width: 100%;
