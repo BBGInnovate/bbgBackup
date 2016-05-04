@@ -4511,20 +4511,19 @@ article {
 /***************************************/
 /*    Basic 3-column page structure    */
 /* Can this just be the default page style ? */
-.single-post p,
-.page-template-default p,
-.page-template-page-entity p,
-.bbg__profile p,
-.category-profile p,
-.category-board-meeting p {
+/*
+.single-post,
+.page-template-default,
+.page-template-page-entity,
+.bbg__profile,
+.category-profile,
+.category-board-meeting {
+*/
+p {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
-.single-post .bbg__profile-header__banner,
-.page-template-default .bbg__profile-header__banner,
-.page-template-page-entity .bbg__profile-header__banner,
-.bbg__profile .bbg__profile-header__banner,
-.category-profile .bbg__profile-header__banner,
-.category-board-meeting .bbg__profile-header__banner {
+
+.bbg__profile-header__banner {
   background-size: cover;
   background-position: center center;
   height: 250px;
@@ -4532,104 +4531,53 @@ article {
   width: 100%;
 }
 @media screen and (min-width: 900px) {
-  .single-post .bbg__profile-header__banner,
-  .page-template-default .bbg__profile-header__banner,
-  .page-template-page-entity .bbg__profile-header__banner,
-  .bbg__profile .bbg__profile-header__banner,
-  .category-profile .bbg__profile-header__banner,
-  .category-board-meeting .bbg__profile-header__banner {
+  .bbg__profile-header__banner {
     height: 400px;
   }
 }
-.single-post .bbg__article-header,
-.page-template-default .bbg__article-header,
-.page-template-page-entity .bbg__article-header,
-.bbg__profile .bbg__article-header,
-.category-profile .bbg__article-header,
-.category-board-meeting .bbg__article-header {
+
+.bbg__article-header {
   margin-bottom: 3rem;
 }
-.single-post .bbg__article-header:after,
-.page-template-default .bbg__article-header:after,
-.page-template-page-entity .bbg__article-header:after,
-.bbg__profile .bbg__article-header:after,
-.category-profile .bbg__article-header:after,
-.category-board-meeting .bbg__article-header:after {
+.bbg__article-header:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.single-post .bbg__article-sidebar,
-.page-template-default .bbg__article-sidebar,
-.page-template-page-entity .bbg__article-sidebar,
-.bbg__profile .bbg__article-sidebar,
-.category-profile .bbg__article-sidebar,
-.category-board-meeting .bbg__article-sidebar {
+
+.bbg__article-sidebar {
   margin: 0 auto;
   max-width: 600px;
 }
-.single-post .bbg__article-sidebar__list--labeled,
-.page-template-default .bbg__article-sidebar__list--labeled,
-.page-template-page-entity .bbg__article-sidebar__list--labeled,
-.bbg__profile .bbg__article-sidebar__list--labeled,
-.category-profile .bbg__article-sidebar__list--labeled,
-.category-board-meeting .bbg__article-sidebar__list--labeled {
+
+.bbg__article-sidebar__list--labeled {
   display: block;
   list-style-type: none;
   margin: 0;
   padding: 0;
   margin-bottom: 3rem;
 }
-.single-post .bbg__article-sidebar__list--labeled li,
-.page-template-default .bbg__article-sidebar__list--labeled li,
-.page-template-page-entity .bbg__article-sidebar__list--labeled li,
-.bbg__profile .bbg__article-sidebar__list--labeled li,
-.category-profile .bbg__article-sidebar__list--labeled li,
-.category-board-meeting .bbg__article-sidebar__list--labeled li {
+.bbg__article-sidebar__list--labeled li {
   display: list-item;
   margin: 0;
 }
-.single-post .bbg__article-sidebar__list--labeled li:before,
-.page-template-default .bbg__article-sidebar__list--labeled li:before,
-.page-template-page-entity .bbg__article-sidebar__list--labeled li:before,
-.bbg__profile .bbg__article-sidebar__list--labeled li:before,
-.category-profile .bbg__article-sidebar__list--labeled li:before,
-.category-board-meeting .bbg__article-sidebar__list--labeled li:before {
+.bbg__article-sidebar__list--labeled li:before {
   display: none;
 }
-.single-post .bbg__article-sidebar__list--labeled li:after,
-.page-template-default .bbg__article-sidebar__list--labeled li:after,
-.page-template-page-entity .bbg__article-sidebar__list--labeled li:after,
-.bbg__profile .bbg__article-sidebar__list--labeled li:after,
-.category-profile .bbg__article-sidebar__list--labeled li:after,
-.category-board-meeting .bbg__article-sidebar__list--labeled li:after {
+.bbg__article-sidebar__list--labeled li:after {
   display: none;
 }
-.single-post .bbg__article-sidebar__list--labeled li,
-.page-template-default .bbg__article-sidebar__list--labeled li,
-.page-template-page-entity .bbg__article-sidebar__list--labeled li,
-.bbg__profile .bbg__article-sidebar__list--labeled li,
-.category-profile .bbg__article-sidebar__list--labeled li,
-.category-board-meeting .bbg__article-sidebar__list--labeled li {
+.bbg__article-sidebar__list--labeled li {
   margin-bottom: 1rem;
 }
-.single-post .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
-.page-template-default .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
-.page-template-page-entity .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
-.bbg__profile .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
-.category-profile .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label,
-.category-board-meeting .bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label {
+.bbg__article-sidebar__list--labeled .bbg__article-sidebar__list-label {
   font-weight: bold;
 }
+
 @media screen and (min-width: 900px) {
-  .single-post .bbg__article-content,
-  .page-template-default .bbg__article-content,
-  .page-template-page-entity .bbg__article-content,
-  .bbg__profile .bbg__article-content,
-  .category-profile .bbg__article-content,
-  .category-board-meeting .bbg__article-content {
+  .bbg__article-content {
     float: left;
     margin-top: 0;
     margin-right: auto;
@@ -4637,53 +4585,29 @@ article {
     margin-left: auto;
     width: 56%;
   }
-  .single-post .bbg__article-content.bbg__article--no-featured-image,
-  .page-template-default .bbg__article-content.bbg__article--no-featured-image,
-  .page-template-page-entity .bbg__article-content.bbg__article--no-featured-image,
-  .bbg__profile .bbg__article-content.bbg__article--no-featured-image,
-  .category-profile .bbg__article-content.bbg__article--no-featured-image,
-  .category-board-meeting .bbg__article-content.bbg__article--no-featured-image {
+  .bbg__article-content.bbg__article--no-featured-image {
     margin-top: -100px;
   }
-  .single-post .bbg__article-sidebar,
-  .page-template-default .bbg__article-sidebar,
-  .page-template-page-entity .bbg__article-sidebar,
-  .bbg__profile .bbg__article-sidebar,
-  .category-profile .bbg__article-sidebar,
-  .category-board-meeting .bbg__article-sidebar {
+
+  .bbg__article-sidebar {
     float: right;
     max-width: 17rem;
     width: 18%;
   }
 }
-.single-post .bbg__article-sidebar--left,
-.page-template-default .bbg__article-sidebar--left,
-.page-template-page-entity .bbg__article-sidebar--left,
-.bbg__profile .bbg__article-sidebar--left,
-.category-profile .bbg__article-sidebar--left,
-.category-board-meeting .bbg__article-sidebar--left {
+.bbg__article-sidebar--left {
   border-bottom: 1px solid #CCC;
   margin: 0 auto 3rem auto;
   max-width: 600px;
   padding-bottom: 3rem;
 }
-.single-post .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
-.page-template-default .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
-.page-template-page-entity .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
-.bbg__profile .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
-.category-profile .bbg__article-sidebar--left.bbg__article-sidebar--collapse,
-.category-board-meeting .bbg__article-sidebar--left.bbg__article-sidebar--collapse {
+.bbg__article-sidebar--left.bbg__article-sidebar--collapse {
   height: 0;
   line-height: 0;
   padding: 0;
 }
 @media screen and (min-width: 900px) {
-  .single-post .bbg__article-sidebar--left,
-  .page-template-default .bbg__article-sidebar--left,
-  .page-template-page-entity .bbg__article-sidebar--left,
-  .bbg__profile .bbg__article-sidebar--left,
-  .category-profile .bbg__article-sidebar--left,
-  .category-board-meeting .bbg__article-sidebar--left {
+  .bbg__article-sidebar--left {
     border-bottom: none;
     display: inline-block;
     float: left;
@@ -4692,12 +4616,8 @@ article {
     width: 20%;
   }
 }
-.single-post .bbg__contact-card,
-.page-template-default .bbg__contact-card,
-.page-template-page-entity .bbg__contact-card,
-.bbg__profile .bbg__contact-card,
-.category-profile .bbg__contact-card,
-.category-board-meeting .bbg__contact-card {
+
+.bbg__contact-card {
   background-color: #f1f1f1;
   border-radius: 0.3rem;
   margin-top: 3rem;
@@ -4705,64 +4625,24 @@ article {
   padding: 3rem;
   position: relative;
 }
-.single-post .bbg__contact-card p, .single-post .bbg__contact-card a, .single-post .bbg__contact-card ul, .single-post .bbg__contact-card li,
-.page-template-default .bbg__contact-card p,
-.page-template-default .bbg__contact-card a,
-.page-template-default .bbg__contact-card ul,
-.page-template-default .bbg__contact-card li,
-.page-template-page-entity .bbg__contact-card p,
-.page-template-page-entity .bbg__contact-card a,
-.page-template-page-entity .bbg__contact-card ul,
-.page-template-page-entity .bbg__contact-card li,
-.bbg__profile .bbg__contact-card p,
-.bbg__profile .bbg__contact-card a,
-.bbg__profile .bbg__contact-card ul,
-.bbg__profile .bbg__contact-card li,
-.category-profile .bbg__contact-card p,
-.category-profile .bbg__contact-card a,
-.category-profile .bbg__contact-card ul,
-.category-profile .bbg__contact-card li,
-.category-board-meeting .bbg__contact-card p,
-.category-board-meeting .bbg__contact-card a,
-.category-board-meeting .bbg__contact-card ul,
-.category-board-meeting .bbg__contact-card li {
+.bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
-.single-post .bbg__contact-card.bbg__contact-card--include-map,
-.page-template-default .bbg__contact-card.bbg__contact-card--include-map,
-.page-template-page-entity .bbg__contact-card.bbg__contact-card--include-map,
-.bbg__profile .bbg__contact-card.bbg__contact-card--include-map,
-.category-profile .bbg__contact-card.bbg__contact-card--include-map,
-.category-board-meeting .bbg__contact-card.bbg__contact-card--include-map {
+.bbg__contact-card.bbg__contact-card--include-map {
   padding: 0;
 }
-.single-post .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-.page-template-default .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-.page-template-page-entity .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-.bbg__profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-.category-profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-.category-board-meeting .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
   padding: 1.5rem;
   width: 100%;
 }
 @media screen and (min-width: 600px) {
-  .single-post .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-  .page-template-default .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-  .page-template-page-entity .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-  .bbg__profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-  .category-profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text,
-  .category-board-meeting .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
     margin-right: 0;
     margin-left: auto;
     width: 50%;
   }
 }
-.single-post .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-.page-template-default .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-.page-template-page-entity .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-.bbg__profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-.category-profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-.category-board-meeting .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
   background-color: #999;
   background-position: center;
   background-size: cover;
@@ -4770,18 +4650,14 @@ article {
   width: 100%;
 }
 @media screen and (min-width: 600px) {
-  .single-post .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-  .page-template-default .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-  .page-template-page-entity .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-  .bbg__profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-  .category-profile .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map,
-  .category-board-meeting .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
     height: 100%;
     position: absolute;
     width: 50%;
   }
 }
 
+/*}*/
 .bbg__entity-logo__press-release {
   float: right;
   max-width: 80px;

@@ -278,13 +278,14 @@ article {
 /*    Basic 3-column page structure    */
 
 /* Can this just be the default page style ? */
+/*
 .single-post,
 .page-template-default,
 .page-template-page-entity,
 .bbg__profile,
 .category-profile,
 .category-board-meeting {
-
+*/
 	p {
 		font-family: $font-serif;
 	}
@@ -425,7 +426,7 @@ article {
 			}
 		}
 	}
-}
+/*}*/
 
 
 .bbg__entity-logo__press-release {
