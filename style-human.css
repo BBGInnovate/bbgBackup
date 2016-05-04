@@ -3555,6 +3555,7 @@ object {
 @media screen and (min-width: 600px) {
   .single-post .bbg__article-content > p:first-of-type {
     font-size: 1.6rem;
+    margin: 0;
   }
 }
 
@@ -4248,13 +4249,16 @@ h3,
 h4,
 .bbg__board__committee-list li a,
 h5,
-h6,
+h6 {
+  color: #112e51;
+}
+
 h1 a,
 h2 a,
 h3 a,
 h4 a,
 .bbg__board__committee-list li a a {
-  color: #112e51;
+  color: #205493;
 }
 
 a:focus {
@@ -4789,6 +4793,11 @@ article {
     max-width: 100%;
     width: 100%;
   }
+}
+
+.bbg__award-excerpt__source {
+  color: #757575;
+  margin-bottom: 1rem 0;
 }
 
 /*****************************/

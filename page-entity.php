@@ -273,10 +273,10 @@ if (count($awards)) {
 		$organizations=$a['organizations'];
 		$recipients=$a['recipients'];
 
-		$s.= '<div class="bbg__post-excerpt">';
-		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
+		$s.= '<div class="bbg__post-excerpt bbg__award__excerpt">';
+		$s.= '<h3 class="bbg__award-excerpt__title"><a href="'.$url.'">'.$title.'</a></h3>';
 		//$s.= '<strong>years - ' . join($awardYears) . '</strong><BR>';
-		$s.= '<strong>' . join($organizations) . '</strong>, ' . join($awardYears) .'<BR>';
+		$s.= '<p class="bbg__award-excerpt__source"><span class="bbg__award-excerpt__org">' . join($organizations) . '</span>, ' . join($awardYears) .'</p>';
 		//$s.= '<strong>recipients - ' . join($recipients) . '</strong><BR>';
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
