@@ -54,6 +54,9 @@ $custom_query = new WP_Query($qParams);
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
 
+//Add featured video
+$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
 $boardStr="";
 $chairpersonStr="";
 $secretaryStr="";

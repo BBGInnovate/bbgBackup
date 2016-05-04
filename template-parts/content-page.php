@@ -7,6 +7,10 @@
  * @package bbginnovate
  */
 
+
+//Add featured video
+$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
