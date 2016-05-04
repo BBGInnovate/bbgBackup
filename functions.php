@@ -591,6 +591,13 @@ function custom_youtube_settings($code){
 add_filter('embed_handler_html', 'custom_youtube_settings');
 add_filter('embed_oembed_html', 'custom_youtube_settings');
 
+function featured_video ($url) {
+	$return="<div class='bbg-embed-shell'><div class='embed-container'>";
+	$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
+	$return.="</div></div>";
+	return $return;
+}
+
 
 	/*
 	add_filter( 'pre_update_option_blogname', 'blogname_with_html', 10, 2 );
