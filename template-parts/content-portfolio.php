@@ -57,7 +57,7 @@ if (isset($_GET['category_id'])) {
 
 	</header><!-- .entry-header -->
 
-	<div class="entry-content bbg-portfolio__excerpt-content">
+	<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">
 		<?php the_excerpt(); ?>
 
 		<?php

@@ -4862,6 +4862,10 @@ p {
   width: 50%;
 }
 
+.bbg-blog__excerpt-content p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+
 @media screen and (min-width: 600px) {
   .secondary-stories .bbg-blog__excerpt-title--list {
     font-size: 3rem;
