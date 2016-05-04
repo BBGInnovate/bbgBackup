@@ -1302,6 +1302,8 @@ function outputBoardMembers($showActive) {
 		,'post_status' => array('publish')
 		,'post_parent' => $thePostID
 		,'order' => 'ASC'
+		,'orderby' => 'meta_value'
+		,'meta_key' => 'last_name'
 		,'posts_per_page' => 100
 	);
 	$custom_query = new WP_Query($qParams);
