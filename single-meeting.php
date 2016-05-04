@@ -39,6 +39,10 @@ if ( have_posts() ) {
 	rewind_posts();
 }
 
+//Add featured video
+$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
+
 get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -79,6 +83,14 @@ get_header(); ?>
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
+
+				<?php
+					$hideFeaturedImage = FALSE;
+					if ($videoUrl!="") {
+						echo featured_video($videoUrl);
+						 $hideFeaturedImage = TRUE;
+					}
+				?>
 
 
 				<?php
