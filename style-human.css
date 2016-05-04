@@ -4795,9 +4795,15 @@ article {
   }
 }
 
+.bbg__award-excerpt__title {
+  margin-bottom: 3px;
+}
+
 .bbg__award-excerpt__source {
   color: #757575;
-  margin-bottom: 1rem 0;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 /*****************************/
