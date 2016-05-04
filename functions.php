@@ -592,7 +592,8 @@ add_filter('embed_handler_html', 'custom_youtube_settings');
 add_filter('embed_oembed_html', 'custom_youtube_settings');
 
 function featured_video ($url) {
-	$return="<div class='bbg-embed-shell'><div class='embed-container'>";
+	$url = str_replace($url, "watch", "embed");
+	$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container'>";
 	$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
 	$return.="</div></div>";
 	return $return;

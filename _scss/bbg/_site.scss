@@ -540,6 +540,10 @@ article {
 	margin: $site-margins auto;
 }
 
+.bbg-embed-shell.bbg__featured-video {
+	max-width: $site-max-width;
+}
+
 .embed-container {
 	height: 0;
 	max-width: 100%;
