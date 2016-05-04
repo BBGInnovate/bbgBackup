@@ -124,10 +124,16 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 
-
+			<?php
+				$hideFeaturedImage = FALSE;
+				if ($videoUrl!="") {
+					echo featured_video($videoUrl);
+					 $hideFeaturedImage = TRUE;
+				}
+			?>
 
 			<?php
-				$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
+				//$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
 				if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 					echo '<div class="usa-grid-full">';
 					$featuredImageClass = "";
