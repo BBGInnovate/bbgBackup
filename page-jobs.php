@@ -36,10 +36,10 @@ for ($i=0; $i < count($jobs); $i++) {
 		$locationStr = "Locations";
 	}
 
-	$s.= $locationStr.": <BR>";
+	$s.= $locationStr.": ";
 	for ($k=0; $k<count($locations); $k++) {
 		$loc = $locations[$k];
-		$s.= "&nbsp;&nbsp;&nbsp; $loc<BR>";
+		$s.= "$loc<BR>";
 	}
 	$s.= "<BR>";
 }
