@@ -1082,8 +1082,8 @@ function acf_load_committee_member_choices( $field ) {
 		'post_type' => array('page')
 		,'post_status' => array('publish')
 		,'post_parent' => $boardPage->ID
-		//,'orderby' => 'meta_value'
-		//,'meta_key' => 'last_name'
+		,'orderby' => 'meta_value'
+		,'meta_key' => 'last_name'
 		,'order' => 'ASC'
 		,'posts_per_page' => 100
 	);
