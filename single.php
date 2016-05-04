@@ -11,8 +11,6 @@
 $includeFile="single-standard.php";
 if ( in_category('Profile')) {
 	$includeFile="single-profile.php";
-} else if (in_category('Project')) {
-	$includeFile="single-project.php";
 } else if (in_category('Board Meetings')) {
 	$includeFile="single-meeting.php";
 }
