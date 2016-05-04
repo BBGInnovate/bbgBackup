@@ -1400,11 +1400,10 @@ function outputSeniorManagement($type) {
 	$boardStr="";
 	$ceoStr="";
 	$granteeStr="";
-	$id=get_the_ID();
-
+	
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
-
+		$id=get_the_ID();
 		$active=get_post_meta( $id, 'active', true );
 		if ($active){
 			$isCEO=get_post_meta( $id, 'ceo', true );
