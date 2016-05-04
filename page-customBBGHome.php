@@ -189,48 +189,8 @@ get_header();
 						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
 					</div>
 
-					<div class="usa-grid-full">
-
-							<?php
-								$entityParentPage = get_page_by_path('broadcasters');
-								$qParams=array(
-									'post_type' => array('page'),
-									'posts_per_page' => -1,
-									'post_parent' => $entityParentPage->ID,
-									'orderby' => 'meta_value_num',
-									'meta_key' => 'entity_year_established',
-									'order' => 'ASC'
-								);
-								$custom_query = new WP_Query($qParams);
-								if ($custom_query -> have_posts()) {
-									while ( $custom_query -> have_posts() )  {
-										$custom_query->the_post();
-										$id=get_the_ID();
-										$fullName=get_post_meta( $id, 'entity_full_name', true );
-										if ($fullName != "") {
-											$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
-											$abbreviation=str_replace("/", "",$abbreviation);
-											$description=get_post_meta( $id, 'entity_description', true );
-											$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
-											$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
-
-											echo '<article class="bbg__entity bbg-grid--1-1-1-2">';
-											echo '<div class="bbg-avatar__container bbg__entity__icon">';
-											echo '<a href="'.$link.'" tabindex="-1">';
-											echo '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
-											echo '</a></div>';
-											echo '<div class="bbg__entity__text">';
-											echo '<h2 class="bbg__entity__name"><a href="'.$link.'">'.$fullName.'</a></h2>';
-											echo '<p class="bbg__entity__text-description">'.$description.'</p>';
-											echo '</div>';
-											echo '</article>';
-										}
-										}
-										
-								}
-								wp_reset_postdata();
-							?>
-					</div>
+					<?php echo outputBroadcasters(); ?>
+					
 					<a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a>
 				</div>
 			</section>
