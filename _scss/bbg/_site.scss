@@ -344,7 +344,7 @@ article {
 			&.bbg__article--no-featured-image{
 				//this causes problems on post pages with no featured image.
 				//only needed for profile pages.
-				margin-top: $profile-photo-margin-large;
+				//margin-top: $profile-photo-margin-large;
 			}
 
 		}
@@ -427,6 +427,18 @@ article {
 		}
 	}
 /*}*/
+
+.bbg__profile,
+.category-profile {
+	@include media($medium-large-screen) {
+
+		.bbg__article-content.bbg__article--no-featured-image{
+				//this causes problems on post pages with no featured image.
+				//only needed for profile pages.
+				margin-top: $profile-photo-margin-large;
+		}
+	}
+}
 
 
 .bbg__entity-logo__press-release {

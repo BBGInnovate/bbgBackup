@@ -4586,9 +4586,6 @@ p {
     margin-left: auto;
     width: 56%;
   }
-  .bbg__article-content.bbg__article--no-featured-image {
-    margin-top: -100px;
-  }
 
   .bbg__article-sidebar {
     float: right;
@@ -4659,6 +4656,13 @@ p {
 }
 
 /*}*/
+@media screen and (min-width: 900px) {
+  .bbg__profile .bbg__article-content.bbg__article--no-featured-image,
+  .category-profile .bbg__article-content.bbg__article--no-featured-image {
+    margin-top: -100px;
+  }
+}
+
 .bbg__entity-logo__press-release {
   float: right;
   max-width: 80px;
