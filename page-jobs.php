@@ -16,6 +16,7 @@ while ( have_posts() ) : the_post();
 endwhile;
 $jobs=getJobs();
 $s="";
+$locationStr = "Location";
 for ($i=0; $i < count($jobs); $i++) {
 	$j=$jobs[$i];
 	//var_dump($j); 
@@ -26,9 +27,16 @@ for ($i=0; $i < count($jobs); $i++) {
 	$locations=$j['locations'];
 
 	$s.= "<a href='$url'>$title</a><BR>";
+	/*
 	$s.= "Starts: $startDate<BR>";
 	$s.= "Ends: $endDate<BR>";
-	$s.= "Locations: <BR>";
+	*/
+
+	if (count($locations)>1){
+		$locationStr = "Locations";
+	}
+
+	$s.= $locationStr.": <BR>";
 	for ($k=0; $k<count($locations); $k++) {
 		$loc = $locations[$k];
 		$s.= "&nbsp;&nbsp;&nbsp; $loc<BR>";
