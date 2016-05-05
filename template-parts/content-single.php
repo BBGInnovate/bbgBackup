@@ -32,7 +32,11 @@ $pageContent = apply_filters('the_content', $pageContent);
 $pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 if ($dateline != "") {
 	//place dateline immediately inside first paragraph tag
-	$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
+	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
+	$pos = strpos($pageContent, '<p>');
+	if ($pos !== false) {
+	    $newstring = substr_replace($haystack, '<p>'.$dateline, $pos, strlen($needle));
+	}
 }
 
 
