@@ -3923,6 +3923,11 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   }
 }
 
+.bbg__article-dateline {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  text-transform: uppercase;
+}
+
 /** BBG tagline */
 .bbg-tagline,
 .bbg-tagline a {

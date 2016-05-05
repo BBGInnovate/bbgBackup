@@ -333,10 +333,10 @@ ul.bbg__article-content__list--inline {
 			margin: 0;
 		}
 
-	    &:before,
-	    &:after {
-	      display: none;
-	    }
+		&:before,
+		&:after {
+			display: none;
+		}
 	}
 }
 
@@ -676,7 +676,10 @@ ul.bbg__article-content__list--inline {
 
 
 
-
+.bbg__article-dateline {
+	font-family: $font-sans;
+	text-transform: uppercase;
+}
 
 
 
