@@ -392,7 +392,9 @@ get_header();
 						<h6 class="bbg-label">Recent Quote</h6>
 						<?php
 							$q=getRandomQuote($entityCategorySlug);
-							outputQuote($q);
+							if ($q) {
+								outputQuote($q);	
+							}
 						?>
 
 						<?php if ($includeContactBox){ ?>

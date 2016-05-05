@@ -1582,8 +1582,12 @@ function getAllQuotes($entity) {
 function getRandomQuote($entity) {
 	//	allEntities or rfa, rferl, voa, mbn, ocb
 	$allQuotes=getAllQuotes($entity);
-	$randKey=array_rand($allQuotes);
-	return $allQuotes[$randKey];
+	$returnVal=false;
+	if (count($allQuotes)) {
+		$randKey = array_rand($allQuotes);	
+		$returnVal = $allQuotes[$randKey];
+	}
+	return $returnVal;
 }
 
 function outputQuote($q) { 

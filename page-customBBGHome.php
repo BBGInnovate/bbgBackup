@@ -189,7 +189,9 @@ get_header();
 					<h6 class="bbg-label">Recent Quote</h6>
 					<?php
 						$q=getRandomQuote('allEntities');
-						outputQuote($q);
+						if ($q) {
+							outputQuote($q);
+						}
 					?>
 				</div>
 			
