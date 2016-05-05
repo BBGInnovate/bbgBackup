@@ -11,6 +11,32 @@
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
+
+//Experimenting with adding the social share code to Pages
+//the title/headline field, followed by the URL and the author's twitter handle
+$twitterText = "";
+$twitterText .= html_entity_decode( get_the_title() );
+$twitterHandle = get_the_author_meta( 'twitterHandle' );
+$twitterHandle = str_replace( "@", "", $twitterHandle );
+if ( $twitterHandle && $twitterHandle != '' ) {
+	$twitterText .= " by @" . $twitterHandle;
+} else {
+	$authorDisplayName = get_the_author();
+	if ( $authorDisplayName && $authorDisplayName!='' ) {
+		$twitterText .= " by " . $authorDisplayName;
+	}
+}
+$twitterText .= " " . get_permalink();
+$hashtags="";
+//$hashtags="testhashtag1,testhashtag2";
+
+///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
+$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
+$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+
+
+
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
@@ -60,9 +86,21 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
 
 		<div class="bbg__article-sidebar--left">
-			<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-			<p>Social share links could go here and here and here and here.</p>
-			&nbsp;
+			<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+			<ul class="bbg__article-share">
+				<li class="bbg__article-share__link facebook">
+					<a href="<?php echo $fbUrl; ?>">
+						<span class="bbg__article-share__icon facebook"></span>
+						<span class="bbg__article-share__text">Share</span>
+					</a>
+				</li>
+				<li class="bbg__article-share__link twitter">
+					<a href="<?php echo $twitterURL; ?>">
+						<span class="bbg__article-share__icon twitter"></span>
+						<span class="bbg__article-share__text">Tweet</span>
+					</a>
+				</li>
+			</ul>
 		</div><!-- .bbg__article-sidebar--left -->
 
 
@@ -74,7 +112,7 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
 
 		<div class="bbg__article-sidebar">
-			<p>Sidebar info or widgets here?</p>
+			<p>Sidebar info or widgets here? Maybe just display HTML text from an ACF custom field? Pullquotes?</p>
 		</div><!-- .bbg__article-sidebar -->
 
 

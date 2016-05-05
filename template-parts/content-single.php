@@ -46,7 +46,7 @@ if (in_category('Press Release') && in_category($entityCategories)) {
 		}
 	}
 }
-//echo 'PR logo is ' . $entityLogo . '<BR>';
+
 
 if ($isProject) {
 	//$categories=get_the_category();
