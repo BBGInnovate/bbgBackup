@@ -246,7 +246,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-			<?php echo $dateline; ?>
 			<?php echo $pageContent; ?>
 
 			<?php
