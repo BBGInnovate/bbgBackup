@@ -136,14 +136,13 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-						<h3>February 26, 2016 <?php echo "<!--" . $meetingDate . "-->"; ?></h3>
+						<h3><?php echo $meetingDate; ?></h3>
 						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div>
 
 					<div class="entry-content bbg__article-content">
 						<?php the_content(); ?>
-						<p class="bbg-tagline bbg-tagline--secondary">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
