@@ -35,7 +35,7 @@ if ($dateline != "") {
 	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
 	$pos = strpos($pageContent, '<p>');
 	if ($pos !== false) {
-	    $newstring = substr_replace($haystack, '<p>'.$dateline, $pos, strlen($needle));
+	    $pageContent = substr_replace($haystack, '<p>'.$dateline, $pos, strlen($needle));
 	}
 }
 
