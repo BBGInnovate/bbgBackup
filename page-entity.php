@@ -41,6 +41,7 @@ if ($entityLogoID) {
 }
 
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
+$entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
 $subgroups=getEntityLinks($entityApiID);
 
 $siteSelect="<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
@@ -388,7 +389,11 @@ get_header();
 
 						<?php echo $pageContent; ?>
 
-						
+						<h6 class="bbg-label">Recent Quote</h6>
+						<?php
+							$q=getRandomQuote($entityCategorySlug);
+							outputQuote($q);
+						?>
 
 						<?php if ($includeContactBox){ ?>
 						<div class="bbg__contact-card <?php echo $includeMap; ?>">
