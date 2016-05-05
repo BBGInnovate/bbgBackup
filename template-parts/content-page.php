@@ -46,12 +46,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		if ($videoUrl!="") {
 			echo featured_video($videoUrl);
 			 $hideFeaturedImage = TRUE;
-		}
-	?>
-
-	<?php
-		//$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-		if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";
 			$featuredImageCutline="";
