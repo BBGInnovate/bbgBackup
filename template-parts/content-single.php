@@ -33,9 +33,11 @@ $pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 if ($dateline != "") {
 	//place dateline immediately inside first paragraph tag
 	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
-	$pos = strpos($pageContent, '<p>');
+	$needle="<p>";
+	$replaceNeedle="<p>".$dateline;
+	$pos = strpos($pageContent, $needle);
 	if ($pos !== false) {
-	    $pageContent = substr_replace($pageContent, '<p>'.$dateline, $pos, strlen($needle+3));
+	    $pageContent = substr_replace($pageContent, $replaceNeedle, $pos, strlen($needle));
 	}
 }
 
