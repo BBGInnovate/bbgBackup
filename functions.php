@@ -1518,6 +1518,16 @@ function broadcasters_list_shortcode($atts) {
 }
 add_shortcode('broadcasters_list', 'broadcasters_list_shortcode');
 
-
+add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
+function toolbar_link_to_mypage( $wp_admin_bar ) {
+	$page = get_page_by_title('Author Guide');
+	$args = array(
+		'id'    => 'authorguide',
+		'title' => 'Author Guide',
+		'href'  => get_permalink($page->ID),
+		'meta'  => array( 'class' => 'authorguide-toolbar-page' )
+	);
+	$wp_admin_bar->add_node( $args );
+}
 
 ?>
