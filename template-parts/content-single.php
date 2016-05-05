@@ -227,7 +227,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<div class="bbg__article-sidebar--left">
 			<?php 
 				if ($entityLogo!=""){
-					echo '<img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/>';
+					echo '<a href="#" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/></a>';
 				}
 			?>
 
