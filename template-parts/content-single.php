@@ -19,6 +19,14 @@ $featuredImageClass = " bbg__article--no-featured-image";
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
+$dateline = "";
+$includeDateline = get_post_meta( get_the_ID(), 'include_dateline', true );
+if ( in_category('Press Release') && $includeDateline ){
+	$dateline = get_post_meta( get_the_ID(), 'dateline_location', true );
+	$dateline .= " — ";
+}
+
+
 
 $entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
 $entityLogo="";
@@ -187,9 +195,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
 
-			<div class="entry-meta bbg__article-meta">
-				<?php bbginnovate_posted_on(); ?>
-			</div><!-- .bbg__article-meta -->
+			<?php 
+			// Exclude bylines on press releases
+			if (!in_category('Press Release')) { 
+			?>
+				<div class="entry-meta bbg__article-meta">
+					<?php bbginnovate_posted_on(); ?>
+				</div><!-- .bbg__article-meta -->
+			<?php } ?>
 		</header><!-- .bbg__article-header -->
 
 
@@ -225,13 +238,13 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+			<?php echo $dateline; ?>
 			<?php the_content(); ?>
 
 			<?php
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				renderContactCard($contactPostIDs);
-				
 				/* END CONTACT CARDS */
 			?>			
 		</div><!-- .entry-content -->
