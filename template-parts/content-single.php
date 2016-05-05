@@ -22,8 +22,9 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 $dateline = "";
 $includeDateline = get_post_meta( get_the_ID(), 'include_dateline', true );
 if ( in_category('Press Release') && $includeDateline ){
+	$dateline = '<span class="bbg__article-dateline">';
 	$dateline = get_post_meta( get_the_ID(), 'dateline_location', true );
-	$dateline .= " — ";
+	$dateline .= " — </span>";
 }
 
 
