@@ -27,6 +27,17 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
+$pageContent=get_the_content();
+$pageContent = apply_filters('the_content', $pageContent);
+$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+if ($dateline != "") {
+	//place dateline immediately inside first paragraph tag
+	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
+	$pos = strpos($pageContent, '<p>');
+	if ($pos !== false) {
+	    $pageContent = substr_replace($pageContent, '<p>'.$dateline, $pos, strlen($needle));
+	}
+}
 
 
 $entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
@@ -239,8 +250,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-			<?php echo $dateline; ?>
-			<?php the_content(); ?>
+			<?php echo $pageContent; ?>
 
 			<?php
 				/* START CONTACT CARDS */
