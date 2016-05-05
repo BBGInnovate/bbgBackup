@@ -16,16 +16,13 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 	<?php
+		//If a featured video is set, include it.
+		//ELSE if a featured image is set, include it.
 		$hideFeaturedImage = FALSE;
 		if ($videoUrl!="") {
 			echo featured_video($videoUrl);
-			 $hideFeaturedImage = TRUE;
-		}
-	?>
-
-	<?php
-		//$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-		if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+			$hideFeaturedImage = TRUE;
+		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";
 			$featuredImageCutline="";

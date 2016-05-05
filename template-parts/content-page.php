@@ -42,10 +42,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 	<?php
+		//If a featured video is set, include it.
+		//ELSE if a featured image is set, include it.
 		$hideFeaturedImage = FALSE;
 		if ($videoUrl!="") {
 			echo featured_video($videoUrl);
-			 $hideFeaturedImage = TRUE;
+			$hideFeaturedImage = TRUE;
 		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";

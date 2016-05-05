@@ -16,6 +16,10 @@ $nextLink = "";
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
 
+//Add featured video
+$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
+
 $entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
 $entityLogo="";
 if (in_category('Press Release') && in_category($entityCategories)) {
@@ -128,11 +132,6 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
-
-//Add featured video
-$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
-
-
 ?>
 
 <style>
@@ -142,38 +141,35 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 <article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 	
 
-<?php
-	$hideFeaturedImage = FALSE;
-	if ($videoUrl!="") {
-		echo featured_video($videoUrl);
-		 $hideFeaturedImage = TRUE;
-	}
-?>
-
-		<?php
-			//$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-			if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-				echo '<div class="usa-grid-full">';
-				$featuredImageClass = "";
-				$featuredImageCutline="";
-				$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-				if ($thumbnail_image && isset($thumbnail_image[0])) {
-					$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-				}
-				echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-				//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-				echo the_post_thumbnail( 'large-thumb' );
-
-				echo '</div>';
-				echo '</div> <!-- usa-grid-full -->';
-
-				if ($featuredImageCutline != "") {
-					echo '<div class="usa-grid">';
-						echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-					echo '</div> <!-- usa-grid -->';
-				}
+	<?php
+		//If a featured video is set, include it.
+		//ELSE if a featured image is set, include it.
+		$hideFeaturedImage = FALSE;
+		if ($videoUrl!="") {
+			echo featured_video($videoUrl);
+			$hideFeaturedImage = TRUE;
+		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+			echo '<div class="usa-grid-full">';
+			$featuredImageClass = "";
+			$featuredImageCutline="";
+			$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+			if ($thumbnail_image && isset($thumbnail_image[0])) {
+				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 			}
-		?><!-- .bbg__article-header__thumbnail -->
+			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+			echo the_post_thumbnail( 'large-thumb' );
+
+			echo '</div>';
+			echo '</div> <!-- usa-grid-full -->';
+
+			if ($featuredImageCutline != "") {
+				echo '<div class="usa-grid">';
+					echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+				echo '</div> <!-- usa-grid -->';
+			}
+		}
+	?><!-- .bbg__article-header__thumbnail -->
 
 	<div class="bbg__article__nav">
 		<?php echo $prevLink; ?>
