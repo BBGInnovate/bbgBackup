@@ -78,6 +78,8 @@ get_header();
 				</div>
 			</section>
 
+			
+
 
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
@@ -100,6 +102,7 @@ get_header();
 				wp_reset_query();
 			?>
 			</section><!-- Site introduction -->
+
 
 
 			<!-- Portfolio -->
@@ -180,6 +183,17 @@ get_header();
 				</div>
 			</section><!-- Recent posts -->
 
+			<!-- Site introduction -->
+			<section class="usa-section ">
+				<div class="usa-grid">
+					<h6 class="bbg-label">Recent Quote</h6>
+					<?php
+						$q=getRandomQuote('allEntities');
+						outputQuote($q);
+					?>
+				</div>
+			
+			</section><!-- Site introduction -->
 
 			<section id="teams" class="usa-section bbg-staff">
 				<div class="usa-grid">

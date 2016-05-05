@@ -1530,4 +1530,70 @@ function toolbar_link_to_mypage( $wp_admin_bar ) {
 	$wp_admin_bar->add_node( $args );
 }
 
+function getAllQuotes($entity) {
+	//	allEntities or rfa, rferl, voa, mbn, ocb
+	if ($entity=='allEntities') {
+		$qParams = array(
+			'post_type'=> 'post',
+			'post_status' => 'publish',
+			'order' => 'DESC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => array( 'post-format-quote' )
+				)
+			)
+		);
+	} else {
+		$qParams = array(
+			'post_type'=> 'post',
+			'post_status' => 'publish',
+			'order' => 'DESC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => array( 'post-format-quote' )
+				)
+			),
+			'cat' => get_cat_id($entity)
+		);
+	}
+	
+	$quotes=array();
+	$custom_query = new WP_Query($qParams);
+	while ( $custom_query -> have_posts() )  {
+		$custom_query->the_post();
+		$id = get_the_ID();
+		$speaker = get_post_meta( $id, 'quotation_speaker', true );
+		$quoteDate = get_post_meta( $id, 'quotation_date', true );
+		$quotes[] = array(
+			'ID' => $id,
+			'url' => get_permalink($id),
+			'quoteDate' => $quoteDate,
+			'speaker' => $speaker,
+			'quoteText' => get_the_content()
+		);
+	}
+	wp_reset_postdata();
+	return $quotes;
+}
+function getRandomQuote($entity) {
+	//	allEntities or rfa, rferl, voa, mbn, ocb
+	$allQuotes=getAllQuotes($entity);
+	$randKey=array_rand($allQuotes);
+	return $allQuotes[$randKey];
+}
+
+function outputQuote($q) { 
+	$quoteDate=$q['quoteDate'];
+	$ID=$q['ID'];
+	$url=$q['url'];
+	$speaker=$q['speaker'];
+	$quoteText=$q['quoteText'];
+	echo "<div>$quoteText</div><div>--$speaker</div>";
+	echo "<a href='$url'>View Quote Detail</a><BR>";
+}
+
 ?>
