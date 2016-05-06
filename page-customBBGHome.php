@@ -158,8 +158,19 @@ get_header();
 						'category__not_in' => (array(get_cat_id('Site Introduction'),
 													get_cat_id("John's take"),
 													get_cat_id('Contact')
-											))
+											)),
+						/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
+						'tax_query' => array(
+							//'relation' => 'AND',
+							array(
+								'taxonomy' => 'post_format',
+								'field' => 'slug',
+								'terms' => 'post-format-quote',
+								'operator' => 'NOT IN'
+							)
+						)
 					);
+					
 					query_posts($qParams);
 
 					if ( have_posts() ) :
