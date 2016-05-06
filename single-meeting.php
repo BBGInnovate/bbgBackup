@@ -155,7 +155,8 @@ get_header(); ?>
 							 	echo '<ul class="bbg__profile__related-link__list">';
 							    while ( have_rows('board_meeting_related_documents') ) : the_row();
 							        echo '<li class="bbg__profile__related-link">';
-							        the_sub_field('board_meeting_related_document');
+							        $dl = get_sub_field('board_meeting_related_document');
+							        echo "<a href='" . $dl['url'] . "'>" . $dl['title'] . "</a>";
 							        echo '</li>';
 							    endwhile;
 							    echo '</ul>';
