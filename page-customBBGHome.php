@@ -193,7 +193,7 @@ get_header();
 
 					<?php echo outputBroadcasters(); ?>
 					
-					<a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a>
+					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
 			</section>
 
