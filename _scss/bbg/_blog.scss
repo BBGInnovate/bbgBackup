@@ -675,7 +675,7 @@ ul.bbg__article-content__list--inline {
 
 
 
-/* Dateline for press releases */
+/** Dateline for press releases **/
 .bbg__article-dateline {
 	font-family: $font-sans;
 	text-transform: uppercase;
@@ -683,7 +683,7 @@ ul.bbg__article-content__list--inline {
 
 
 
-/* Featured quotations */
+/** Featured quotations **/
 .bbg__quotation {
 	.bbg__quotation-text--large {
 		font-size: 2.5rem;
@@ -696,6 +696,7 @@ ul.bbg__article-content__list--inline {
 	}
 
 	.bbg__quotation-attribution {
+		font-family: $font-sans;
 		margin-top: $site-margins-medium;
 		text-align: center;
 	}
