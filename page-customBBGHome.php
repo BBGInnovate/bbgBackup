@@ -183,20 +183,6 @@ get_header();
 				</div>
 			</section><!-- Recent posts -->
 
-			<!-- Site introduction -->
-			<section class="usa-section ">
-				<div class="usa-grid">
-					<h6 class="bbg-label">Recent Quote</h6>
-					<?php
-						$q=getRandomQuote('allEntities');
-						if ($q) {
-							outputQuote($q);
-						}
-					?>
-				</div>
-			
-			</section><!-- Site introduction -->
-
 			<section id="teams" class="usa-section bbg-staff">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
@@ -211,6 +197,18 @@ get_header();
 				</div>
 			</section>
 
+			<section class="usa-section ">
+				<div class="usa-grid">
+					<h6 class="bbg-label">Recent Quote</h6>
+					<?php
+						$q=getRandomQuote('allEntities');
+						if ($q) {
+							outputQuote($q);
+						}
+					?>
+				</div>
+			
+			</section><!-- Site introduction -->
 
 		</main>
 	</div><!-- #primary .content-area -->
