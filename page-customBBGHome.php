@@ -199,7 +199,7 @@ get_header();
 
 			<section class="usa-section ">
 				<div class="usa-grid">
-					<h6 class="bbg-label">Recent Quote</h6>
+					<!--<h6 class="bbg-label">Recent Quote</h6>-->
 					<?php
 						$q=getRandomQuote('allEntities');
 						if ($q) {
