@@ -62,16 +62,23 @@ jQuery(document).ready(function() {
     if (jQuery('#entityUrlGo').length && jQuery('#entity_sites').length) {
         jQuery('#entityUrlGo').click(function() {
             url=jQuery('#entity_sites').val();
-            console.log('url will be ' + url);
             window.open(url,'_blank');
         });
     }
 
-    jQuery(document).on("acf/setup_fields", function(e, div){
-        if (jQuery("#acf-field-committee_members").length) {
-            jQuery("#acf-field-committee_members").chosen();    
-        }
-    });
+    if (jQuery("div[data-name='committee_members'] select").length) {
+        console.log('found the field');
+        jQuery("div[data-name='committee_members'] select").chosen();    
+    }
+
+    /*
+    if( typeof acf.add_action !== 'undefined' ) {
+        acf.add_action('load', function( $el ){
+            console.log('ACF loaded ');
+        });
+    }
+    */
+
   
     
 });
