@@ -35,7 +35,6 @@ if ( have_posts() ) {
 
 
 
-	?>
 
 	$ogDescription = get_the_excerpt();
 
