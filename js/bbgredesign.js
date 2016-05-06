@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
 
     if (jQuery("div[data-name='committee_members'] select").length) {
         console.log('found the field');
-        jQuery("div[data-name='committee_members'] select").chosen();    
+        //jQuery("div[data-name='committee_members'] select").chosen();    
     }
 
     /*
