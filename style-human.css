@@ -3923,9 +3923,26 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   }
 }
 
+/* Dateline for press releases */
 .bbg__article-dateline {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   text-transform: uppercase;
+}
+
+/* Featured quotations */
+.bbg__quotation .bbg__quotation-text--large {
+  font-size: 2.5rem;
+  font-weight: 100;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .bbg__quotation .bbg__quotation-text--large {
+    font-size: 3rem;
+  }
+}
+.bbg__quotation .bbg__quotation-attribution {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 /** BBG tagline */

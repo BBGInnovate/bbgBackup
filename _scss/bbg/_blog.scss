@@ -675,12 +675,31 @@ ul.bbg__article-content__list--inline {
 
 
 
-
+/* Dateline for press releases */
 .bbg__article-dateline {
 	font-family: $font-sans;
 	text-transform: uppercase;
 }
 
+
+
+/* Featured quotations */
+.bbg__quotation {
+	.bbg__quotation-text--large {
+		font-size: 2.5rem;
+		font-weight: 100;
+		text-align: center;
+
+		@include media($medium-screen) {
+			font-size: 3rem;
+		}
+	}
+
+	.bbg__quotation-attribution {
+		margin-top: $site-margins-medium;
+		text-align: center;
+	}
+}
 
 
 

@@ -1596,7 +1596,7 @@ function outputQuote($q) {
 	$url=$q['url'];
 	$speaker=$q['speaker'];
 	$quoteText=$q['quoteText'];
-	echo "<div class='bbg__quotation'><h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2><span class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a></span></div>";
+	echo "<div class='bbg__quotation'><h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2><p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a></p></div>";
 	//echo "<a href='$url'>View Quote Detail</a><BR>";
 }
 
