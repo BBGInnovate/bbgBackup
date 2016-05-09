@@ -412,15 +412,6 @@ get_header();
 						</div>
 						<?php } ?>
 
-						<?php
-							$q=getRandomQuote($entityCategorySlug);
-							if ($q) {
-								echo '<div class="bbg__entity__pullquote">';
-								outputQuote($q);	
-								echo '</div>';
-							}
-						?>
-
 
 						<?php if($post->post_parent) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
@@ -429,6 +420,15 @@ get_header();
 						?>
 						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?> »</a>
 						<?php } ?>
+
+						<?php
+							$q=getRandomQuote($entityCategorySlug);
+							if ($q) {
+								echo '<div class="bbg__entity__pullquote">';
+								outputQuote($q);	
+								echo '</div>';
+							}
+						?>
 					</div><!-- .entry-content -->
 
 
