@@ -389,13 +389,6 @@ get_header();
 
 						<?php echo $pageContent; ?>
 
-						<h6 class="bbg-label">Recent Quote</h6>
-						<?php
-							$q=getRandomQuote($entityCategorySlug);
-							if ($q) {
-								outputQuote($q);	
-							}
-						?>
 
 						<?php if ($includeContactBox){ ?>
 						<div class="bbg__contact-card <?php echo $includeMap; ?>">
@@ -418,6 +411,15 @@ get_header();
 							</div>
 						</div>
 						<?php } ?>
+
+						<?php
+							$q=getRandomQuote($entityCategorySlug);
+							if ($q) {
+								echo '<div class="bbg__entity__pullquote">';
+								outputQuote($q);	
+								echo '</div>';
+							}
+						?>
 
 
 						<?php if($post->post_parent) {

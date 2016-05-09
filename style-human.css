@@ -3946,6 +3946,10 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   text-align: center;
 }
 
+.bbg__entity__pullquote {
+  margin-top: 6rem;
+}
+
 /** BBG tagline */
 .bbg-tagline,
 .bbg-tagline a {
