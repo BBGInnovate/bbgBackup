@@ -1568,7 +1568,8 @@ function getAllQuotes($entity) {
 		$id = get_the_ID();
 		$speaker = get_post_meta( $id, 'quotation_speaker', true );
 		$quoteTagline = get_post_meta( $id, 'quotation_tagline', true );
-		$quoteDate = get_post_meta( $id, 'quotation_date', true );
+		//$quoteDate = get_post_meta( $id, 'quotation_date', true );
+		$quoteDate = get_field( 'quotation_date', $id, true );
 		$quotes[] = array(
 			'ID' => $id,
 			'url' => get_permalink($id),
