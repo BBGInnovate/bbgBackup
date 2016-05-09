@@ -1598,7 +1598,7 @@ function outputQuote($q) {
 	$url = $q['url'];
 	$speaker = $q['speaker'];
 	$quoteText = $q['quoteText'];
-	$tagline = $q['quoteTagline']
+	$tagline = $q['quoteTagline'];
 	if ($tagline != "") {
 		$tagline = ", " . $tagline;
 	}
