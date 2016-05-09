@@ -1591,12 +1591,19 @@ function getRandomQuote($entity) {
 }
 
 function outputQuote($q) { 
-	$quoteDate=$q['quoteDate'];
-	$ID=$q['ID'];
-	$url=$q['url'];
-	$speaker=$q['speaker'];
-	$quoteText=$q['quoteText'];
-	echo "<div class='bbg__quotation'><h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2><p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a></p></div>";
+	$quoteDate = $q['quoteDate'];
+	$ID = $q['ID'];
+	$url = $q['url'];
+	$speaker = $q['speaker'];
+	$quoteText = $q['quoteText'];
+
+	$quote = "";
+	$quote .= "<div class='bbg__quotation'>";
+	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
+	$quote .= "<p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a></p>";
+	$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
+	$quote .= "</div>";
+	echo $quote;
 }
 
 ?>
