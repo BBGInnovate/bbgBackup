@@ -555,7 +555,8 @@ function bbginnovate_query_offset(&$query) {
 				'terms' => array(
 					get_cat_id('Site Introduction'),
 					get_cat_id("John's take"),
-					get_cat_id('Contact')
+					get_cat_id('Contact'),
+					get_cat_id('Quotation')
 				),
 				'operator' => 'NOT IN',
 			)
@@ -1525,7 +1526,7 @@ function toolbar_link_to_mypage( $wp_admin_bar ) {
 		'id'    => 'authorguide',
 		'title' => 'Author Guide',
 		'href'  => get_permalink($page->ID),
-		'meta'  => array( 'class' => 'authorguide-toolbar-page' )
+		'meta'  => array( 'class' => 'authorguide-toolbar-page', 'target' => '_blank' )
 	);
 	$wp_admin_bar->add_node( $args );
 }
