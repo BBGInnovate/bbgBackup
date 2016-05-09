@@ -1153,8 +1153,8 @@ function getFeed($url,$id) {
 }
 
 function getEntityLinks($entityID) {
-	$url="http://api.bbg.gov/api/groups";
-	$feedFilepath = get_template_directory() . "/groupscache.json";
+	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
+	$feedFilepath = get_template_directory() . "/subgroupscache_".$entityID.".json";
 	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
@@ -1164,9 +1164,9 @@ function getEntityLinks($entityID) {
 	$json=json_decode($feedStr);
 
 	$g=false;
-	foreach ($json as $group) {
-		if ($group->id ==$entityID) {
-			$g=$group->subgroups;
+	foreach ($json->subgroups as $subgroup) {
+		if ($subgroup->group_id ==$entityID) {
+			$g[]=$subgroup;
 		}
 	}
 	return $g;
