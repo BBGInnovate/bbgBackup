@@ -421,14 +421,6 @@ get_header();
 						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?> »</a>
 						<?php } ?>
 
-						<?php
-							$q=getRandomQuote($entityCategorySlug);
-							if ($q) {
-								echo '<div class="bbg__entity__pullquote">';
-								outputQuote($q);	
-								echo '</div>';
-							}
-						?>
 					</div><!-- .entry-content -->
 
 
@@ -453,6 +445,15 @@ get_header();
 						?>
 
 					</div><!-- .bbg__article-sidebar -->
+
+					<?php
+						$q=getRandomQuote($entityCategorySlug);
+						if ($q) {
+							echo '<div class="bbg__entity__pullquote">';
+							outputQuote($q);	
+							echo '</div>';
+						}
+					?>
 
 				</div><!-- .usa-grid -->
 
