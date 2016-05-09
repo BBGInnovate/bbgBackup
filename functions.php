@@ -1567,13 +1567,15 @@ function getAllQuotes($entity) {
 		$custom_query->the_post();
 		$id = get_the_ID();
 		$speaker = get_post_meta( $id, 'quotation_speaker', true );
+		$quoteTagline = get_post_meta( $id, 'quotation_tagline', true );
 		$quoteDate = get_post_meta( $id, 'quotation_date', true );
 		$quotes[] = array(
 			'ID' => $id,
 			'url' => get_permalink($id),
 			'quoteDate' => $quoteDate,
 			'speaker' => $speaker,
-			'quoteText' => get_the_content()
+			'quoteText' => get_the_content(),
+			'quoteTagline' => $quoteTagline
 		);
 	}
 	wp_reset_postdata();
@@ -1596,11 +1598,15 @@ function outputQuote($q) {
 	$url = $q['url'];
 	$speaker = $q['speaker'];
 	$quoteText = $q['quoteText'];
+	$tagline = $q['quoteTagline']
+	if ($tagline != "") {
+		$tagline = ", " . $tagline;
+	}
 
 	$quote = "";
 	$quote .= "<div class='bbg__quotation'>";
 	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
-	$quote .= "<p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a></p>";
+	$quote .= "<p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a>$tagline</p>";
 	$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
 	$quote .= "</div>";
 	echo $quote;
