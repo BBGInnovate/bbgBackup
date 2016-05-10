@@ -695,6 +695,15 @@ ul.bbg__article-content__list--inline {
 		}
 	}
 
+	.bbg__quotation-attribution__mugshot {
+		border-radius: 50%;
+		display: inline-block;
+		height: auto;
+		margin-right: $site-margins-small;
+		vertical-align: middle;
+		width: 50px;
+	}
+
 	.bbg__quotation-attribution {
 		font-family: $font-sans;
 		margin-top: $site-margins-medium;

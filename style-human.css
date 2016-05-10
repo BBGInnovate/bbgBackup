@@ -3940,6 +3940,14 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
     font-size: 3rem;
   }
 }
+.bbg__quotation .bbg__quotation-attribution__mugshot {
+  border-radius: 50%;
+  display: inline-block;
+  height: auto;
+  margin-right: 1rem;
+  vertical-align: middle;
+  width: 50px;
+}
 .bbg__quotation .bbg__quotation-attribution {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: 1.5rem;

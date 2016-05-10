@@ -1571,13 +1571,25 @@ function getAllQuotes($entity) {
 		$quoteTagline = get_post_meta( $id, 'quotation_tagline', true );
 		//$quoteDate = get_post_meta( $id, 'quotation_date', true );
 		$quoteDate = get_field( 'quotation_date', $id, true );
+
+
+		$quoteMugshotID=get_post_meta( get_the_ID(), 'quotation_mugshot', true );
+		$quoteMugshot = "";
+
+		if ($quoteMugshotID) {
+			$quoteMugshot = wp_get_attachment_image_src( $quoteMugshotID , 'mugshot');
+			$quoteMugshot = $quoteMugshot[0];
+		}
+
+
 		$quotes[] = array(
 			'ID' => $id,
 			'url' => get_permalink($id),
 			'quoteDate' => $quoteDate,
 			'speaker' => $speaker,
 			'quoteText' => get_the_content(),
-			'quoteTagline' => $quoteTagline
+			'quoteTagline' => $quoteTagline,
+			'quoteMugshot' => $quoteMugshot
 		);
 	}
 	wp_reset_postdata();
@@ -1585,8 +1597,8 @@ function getAllQuotes($entity) {
 }
 function getRandomQuote($entity) {
 	//	allEntities or rfa, rferl, voa, mbn, ocb
-	$allQuotes=getAllQuotes($entity);
-	$returnVal=false;
+	$allQuotes = getAllQuotes($entity);
+	$returnVal = false;
 	if (count($allQuotes)) {
 		$randKey = array_rand($allQuotes);	
 		$returnVal = $allQuotes[$randKey];
@@ -1604,12 +1616,22 @@ function outputQuote($q) {
 	if ($tagline != "") {
 		$tagline = ", " . $tagline;
 	}
+	$mugshot = $q['quoteMugshot'];
 
 	$quote = "";
 	$quote .= "<div class='bbg__quotation'>";
 	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
-	$quote .= "<p class='bbg__quotation-attribution'>—<a href='$url'>$speaker</a>$tagline</p>";
-	$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
+	$quote .= "<p class='bbg__quotation-attribution'>";
+
+	if ($mugshot != "") {
+		$quote .= "<img src='$mugshot' class='bbg__quotation-attribution__mugshot'/><span>";
+	}
+
+	$quote .= $speaker;
+	$quote .= $tagline;
+	$quote .= "</span></p>";
+	//$quote .= "<a href='$url'>$speaker</a>$tagline</p>";
+	//$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
 	$quote .= "</div>";
 	echo $quote;
 }
