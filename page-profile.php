@@ -12,29 +12,30 @@
 if ( have_posts() ) {
 	the_post();
 
-
 	$metaAuthor = get_the_author();
 	$metaAuthorTwitter = get_the_author_meta( 'twitterHandle' );
 	$ogTitle = get_the_title();
 
 	$metaKeywords = strip_tags(get_the_tag_list('',', ',''));
 
-	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'Full' );
+	$id = get_the_ID();
+
+	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'Full' );
 	$ogImage = $thumb['0'];
 
-	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
+	$socialImageID = get_post_meta( $id, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
 
-	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
+	$bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
 
-	$occupation=get_post_meta( get_the_ID(), 'occupation', true );
-	$email=get_post_meta( get_the_ID(), 'email', true );
-	$phone=get_post_meta( get_the_ID(), 'phone', true );
-	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
-	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
+	$occupation=get_post_meta( $id, 'occupation', true );
+	$email=get_post_meta( $id, 'email', true );
+	$phone=get_post_meta( $id, 'phone', true );
+	$twitterProfileHandle=get_post_meta( $id, 'twitter_handle', true );
+	$relatedLinksTag=get_post_meta( $id, 'related_links_tag', true );
 
 	//Collapse the left column on mobile if it's empty.
 	$collapseColumnCSS = "";
@@ -42,7 +43,7 @@ if ( have_posts() ) {
 		$collapseColumnCSS = "bbg__article-sidebar--collapse";
 	}
 
-	$active = get_post_meta( get_the_ID(), 'active', true );
+	$active = get_post_meta( $id, 'active', true );
 	$formerCSS="";
 	if (!$active){
 		$occupation = "(Former) " . $occupation;
@@ -50,7 +51,7 @@ if ( have_posts() ) {
 	}
 
 
-	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
+	$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
 	$profilePhoto = "";
 
 	if ($profilePhotoID) {
@@ -58,11 +59,20 @@ if ( have_posts() ) {
 		$profilePhoto = $profilePhoto[0];
 	}
 
-	$timelineUrl=get_post_meta( get_the_ID(), 'timelinejs_url', true );
+	$timelineUrl=get_post_meta( $id, 'timelinejs_url', true );
 	if ($timelineUrl!=""){
 		$timelineUrl = '<iframe src="' . $timelineUrl . '" height="800" width="600" frameborder="0" class="bbg__iframe__timelinejs"></iframe>';
 	}
 
+	$latestTweetsStr="";
+	if ($twitterProfileHandle != "") {
+		$showLatestTweets=get_post_meta( $id, 'show_latest_tweets', true );
+		if ($showLatestTweets) {
+			$widgetID="730138164040507394";	//change this to bbg acct
+			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'">Tweets by @'.$twitterProfileHandle.'</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?''http'':''https'';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+		}	
+	}
 
 	$ogDescription = get_the_excerpt();
 
@@ -110,12 +120,12 @@ get_header(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 				<?php
-					$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
+					$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
 					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 						echo '<div class="usa-grid-full">';
 						$featuredImageClass = "";
 						$featuredImageCutline="";
-						$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+						$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
 						if ($thumbnail_image && isset($thumbnail_image[0])) {
 							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 						}
@@ -181,6 +191,7 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
+						<?php echo $latestTweetsStr; ?>
 						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
 						<?php if($post->post_parent) {
