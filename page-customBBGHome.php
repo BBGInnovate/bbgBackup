@@ -117,12 +117,14 @@ get_header();
 
 					$ceoContent="";
 					if ( have_posts() ) :
-						$ceoContent .= '<section id="mission" class="usa-section usa-grid">';
+						$ceoContent .= '<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">';
 						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
 						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
 						while ( have_posts() ) : the_post();
 							$ceoPostPermalink=get_the_permalink();
+
 							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
+							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
 							$ceoContent .=  get_the_excerpt();
 							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">LEARN MORE »</a></h3>';
 						endwhile;
@@ -132,7 +134,7 @@ get_header();
 				}
 				
 			?>
-			</section><!-- Site introduction -->
+			</section><!-- CEO Posts -->
 
 
 
@@ -239,9 +241,10 @@ get_header();
 				</div>
 			</section>
 
+
+			<!-- Random Quote -->
 			<section class="usa-section ">
 				<div class="usa-grid">
-					<!--<h6 class="bbg-label">Recent Quote</h6>-->
 					<?php
 						$q=getRandomQuote('allEntities');
 						if ($q) {
@@ -250,7 +253,7 @@ get_header();
 					?>
 				</div>
 			
-			</section><!-- Site introduction -->
+			</section><!-- Random Quote -->
 
 		</main>
 	</div><!-- #primary .content-area -->
