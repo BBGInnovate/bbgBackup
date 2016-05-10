@@ -188,7 +188,7 @@ get_header(); ?>
 							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?></a>
+						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
 						<?php } ?>
 					</div><!-- .entry-content -->
 

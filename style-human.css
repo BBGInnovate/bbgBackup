@@ -3966,6 +3966,10 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   margin-bottom: 3rem;
 }
 
+.bbg__tagline-link {
+  max-width: 600px;
+}
+
 .bbg__article-footer {
   margin-top: 6rem;
 }
@@ -4822,7 +4826,6 @@ p {
   .bbg__iframe__timelinejs {
     margin-right: auto;
     margin-left: auto;
-    max-width: 600px;
     width: 100%;
   }
 }

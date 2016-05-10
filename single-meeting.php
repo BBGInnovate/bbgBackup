@@ -29,7 +29,7 @@ if ( have_posts() ) {
 	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
 
 	$meetingTime=get_post_meta( get_the_ID(), 'board_meeting_time', true );
-	$meetingDate=get_post_meta( get_the_ID(), 'board_meeting_date', true );
+	//$meetingDate=get_post_meta( get_the_ID(), 'board_meeting_date', true );
 	$meetingLocation=get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
@@ -138,7 +138,7 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-						<h3><?php echo $meetingDate; ?></h3>
+						<h3><?php the_date(); ?></h3>
 						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 					</div>
