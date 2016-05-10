@@ -189,7 +189,7 @@
 
 	@include media($medium-screen) {
 		font-size: 1.6rem;
-		margin: 0;
+		margin: 0 auto;
 	}
 }
 
@@ -685,10 +685,14 @@ ul.bbg__article-content__list--inline {
 
 /** Featured quotations **/
 .bbg__quotation {
+	text-align: left;
+	@include media($small-screen) {
+		text-align: center;
+	}
+
 	.bbg__quotation-text--large {
 		font-size: 2.5rem;
 		font-weight: 100;
-		text-align: center;
 
 		@include media($medium-screen) {
 			font-size: 3rem;
@@ -697,17 +701,20 @@ ul.bbg__article-content__list--inline {
 
 	.bbg__quotation-attribution__mugshot {
 		border-radius: 50%;
-		display: inline-block;
+		float: left;
 		height: auto;
 		margin-right: $site-margins-small;
-		vertical-align: middle;
 		width: 50px;
+		@include media($small-screen) {
+			display: inline-block;
+			float: none;
+			vertical-align: middle;
+		}
 	}
 
 	.bbg__quotation-attribution {
 		font-family: $font-sans;
 		margin-top: $site-margins-medium;
-		text-align: center;
 	}
 }
 
