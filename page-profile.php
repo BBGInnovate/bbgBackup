@@ -50,7 +50,6 @@ if ( have_posts() ) {
 	}
 
 
-
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
 	$profilePhoto = "";
 
@@ -59,6 +58,10 @@ if ( have_posts() ) {
 		$profilePhoto = $profilePhoto[0];
 	}
 
+	$timelineUrl=get_post_meta( get_the_ID(), 'timelinejs_url', true );
+	if ($timelineUrl!=""){
+		$timelineUrl = '<iframe src="' . $timelineUrl . '" height="800" width="600" frameborder="0" class="bbg__iframe__timelinejs"></iframe>';
+	}
 
 
 	$ogDescription = get_the_excerpt();
@@ -216,6 +219,8 @@ get_header(); ?>
 						?>
 
 					</div><!-- .bbg__article-sidebar -->
+
+				<?php echo $timelineUrl; ?>
 
 				</div><!-- .usa-grid -->
 
