@@ -118,7 +118,7 @@ get_header();
 					$ceoContent="";
 					if ( have_posts() ) :
 						$ceoContent .= '<section id="mission" class="usa-section usa-grid">';
-						$ceoLandingPermalink=get_permalink( get_page_by_path( 'blog/category/johns-take/' ) );
+						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
 						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
 						while ( have_posts() ) : the_post();
 							$ceoPostPermalink=get_the_permalink();
