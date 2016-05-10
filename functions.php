@@ -1614,22 +1614,23 @@ function outputQuote($q) {
 	$quoteText = $q['quoteText'];
 	$tagline = $q['quoteTagline'];
 	if ($tagline != "") {
-		$tagline = ", " . $tagline;
+		$tagline = "" . $tagline;
 	}
 	$mugshot = $q['quoteMugshot'];
 
 	$quote = "";
 	$quote .= "<div class='bbg__quotation'>";
 	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
+	$quote .= "<div class='bbg__quotation-attribution__container'>";
 	$quote .= "<p class='bbg__quotation-attribution'>";
 
 	if ($mugshot != "") {
-		$quote .= "<img src='$mugshot' class='bbg__quotation-attribution__mugshot'/><span>";
+		$quote .= "<img src='$mugshot' class='bbg__quotation-attribution__mugshot'/>";
 	}
-
-	$quote .= $speaker;
-	$quote .= $tagline;
-	$quote .= "</span></p>";
+	$quote .= "<span class='bbg__quotation-attribution__text'>";
+	$quote .= "<span class='bbg__quotation-attribution__name'>$speaker</span>";
+	$quote .= "<span class='bbg__quotation-attribution__credit'>$tagline</span>";
+	$quote .= "</span></p></div>";
 	//$quote .= "<a href='$url'>$speaker</a>$tagline</p>";
 	//$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
 	$quote .= "</div>";

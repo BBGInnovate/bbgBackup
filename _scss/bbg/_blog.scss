@@ -685,7 +685,6 @@ ul.bbg__article-content__list--inline {
 
 /** Featured quotations **/
 .bbg__quotation {
-	text-align: left;
 	@include media($small-screen) {
 		text-align: center;
 	}
@@ -701,20 +700,54 @@ ul.bbg__article-content__list--inline {
 
 	.bbg__quotation-attribution__mugshot {
 		border-radius: 50%;
-		float: left;
 		height: auto;
 		margin-right: $site-margins-small;
+		min-width: 50px;
 		width: 50px;
-		@include media($small-screen) {
-			display: inline-block;
-			float: none;
-			vertical-align: middle;
+		display: table-cell;
+
+		@include media($medium-large-screen) {
+			min-width: 75px;
+			width: 75px;
 		}
 	}
 
+	.bbg__quotation-attribution__container {
+		display: inline;
+		margin: 0 auto;
+	}
 	.bbg__quotation-attribution {
 		font-family: $font-sans;
 		margin-top: $site-margins-medium;
+		display: table-row;
+
+		@include media($medium-large-screen) {
+			margin: {
+				right: auto;
+				left: auto;
+			};
+			max-width: 33%;
+		}
+	}
+
+	.bbg__quotation-attribution__text {
+		display: table-cell;
+		max-width: 200px;
+		text-align: left;
+		vertical-align: middle;
+
+		.bbg__quotation-attribution__name {
+			display: block;
+			font-size: 1.9rem;
+		}
+
+		.bbg__quotation-attribution__credit {
+			display: block;
+			font-size: 1.3rem;
+			line-height: 1.5;
+			text-transform: uppercase;
+		}
+
 	}
 }
 
