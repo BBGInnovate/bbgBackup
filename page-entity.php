@@ -182,7 +182,14 @@ if ($prCategorySlug != "") {
 									$prCategoryID
 							  ),
 			'orderby', 'date',
-			'order', 'DESC'
+			'order', 'DESC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => array( 'post-format-standard' )
+				)
+			)
 		);
 		$custom_query = new WP_Query($qParams);
 		if ($custom_query -> have_posts()) {
