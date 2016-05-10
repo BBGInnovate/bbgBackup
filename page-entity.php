@@ -187,7 +187,9 @@ if ($prCategorySlug != "") {
 				array(
 					'taxonomy' => 'post_format',
 					'field' => 'slug',
-					'terms' => array( 'post-format-standard' )
+					'terms' => 'post-format-quote',
+					'operator' => 'NOT IN' 
+
 				)
 			)
 		);
