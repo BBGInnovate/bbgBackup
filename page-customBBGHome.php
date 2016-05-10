@@ -118,12 +118,13 @@ get_header();
 					$ceoContent="";
 					if ( have_posts() ) :
 						$ceoContent .= '<section id="mission" class="usa-section usa-grid">';
-						$ceoPermalink=get_permalink( get_page_by_path( '/blog/ceo_blog_post/' ) );
+						$ceoLandingPermalink=get_permalink( get_page_by_path( 'blog/category/johns-take/' ) );
 						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoPermalink.'">FROM THE CEO</a></h6>';
 						while ( have_posts() ) : the_post();
+							$ceoPostPermalink=get_the_permalink();
 							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
-							$ceoContent .=  get_the_content();
-							$ceoContent .= ' <a href="about-the-agency/" class="bbg__read-more">LEARN MORE »</a></h3>';
+							$ceoContent .=  get_the_excerpt();
+							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">LEARN MORE »</a></h3>';
 						endwhile;
 					endif;
 					echo $ceoContent;
