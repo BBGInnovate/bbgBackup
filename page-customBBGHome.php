@@ -103,6 +103,36 @@ get_header();
 			?>
 			</section><!-- Site introduction -->
 
+			<!-- CEO Posts -->
+			
+			<?php
+				$ceoCategory = get_category_by_slug('johns-take');
+				if ($ceoCategory) {
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => 1,
+						'cat' => $ceoCategory->term_id
+					);
+					query_posts($qParams);
+
+					$ceoContent="";
+					if ( have_posts() ) :
+						$ceoContent .= '<section id="mission" class="usa-section usa-grid">';
+						$ceoPermalink=get_permalink( get_page_by_path( '/blog/ceo_blog_post/' ) );
+						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoPermalink.'">FROM THE CEO</a></h6>';
+						while ( have_posts() ) : the_post();
+							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
+							$ceoContent .=  get_the_content();
+							$ceoContent .= ' <a href="about-the-agency/" class="bbg__read-more">LEARN MORE »</a></h3>';
+						endwhile;
+					endif;
+					echo $ceoContent;
+					wp_reset_query();
+				}
+				
+			?>
+			</section><!-- Site introduction -->
+
 
 
 			<!-- Portfolio -->
