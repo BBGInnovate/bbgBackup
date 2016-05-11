@@ -262,7 +262,18 @@ get_header();
 				if ($soap) {
 					$s = "";
 					$id=$soap->ID;
-					$soapCategory=wp_get_post_categories();
+					$soapCategory=wp_get_post_categories($id);
+
+					$isCEOPost=false;
+					$isSpeech=false;
+					foreach ($soapCategory as $c) {
+						 $cat = get_category( $c );
+						if ($cat->slug=="johns-take") {
+							$isCEOPost=true;
+						} else if ($cat->slug=="speech") {
+							$isSpeech=true;
+						}
+					}
 					$ceoLandingPermalink=get_category_link($soap->term_id);
 					$ceoPostPermalink=get_the_permalink($id);
 
@@ -273,8 +284,10 @@ get_header();
 					$s .= '</a></h2>';
 
 					$s .= '<p class="">';
-					$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
-					//$s .=  apply_filters('the_excerpt', get_post_field('post_excerpt', $id));
+
+					if ($isCEOPost) {
+						$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
+					}
 					$s .= my_excerpt($id);
 					$s .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 					$s .= '</div>';
