@@ -5002,6 +5002,10 @@ p {
   }
 }
 
+.bbg__mugshot__caption {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+
 .type-post .usa-table,
 .type-post .usa-table-borderless {
   margin: 0 auto;

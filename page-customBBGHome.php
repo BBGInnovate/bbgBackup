@@ -115,7 +115,7 @@ get_header();
 					<?php
 						$qParams=array(
 							'post_type' => array('post'),
-							'posts_per_page' => 3,
+							'posts_per_page' => 2,
 							'orderby' => 'post_date',
 							'order' => 'desc',
 							'cat' => get_cat_id('Press Release')
@@ -131,6 +131,17 @@ get_header();
 						wp_reset_query();
 
 					?>
+
+			<!-- Quotation -->
+					<?php
+						$q=getRandomQuote('allEntities');
+						if ($q) {
+							outputQuote($q);
+						}
+					?>
+<!-- Quotation -->
+
+
 					</div><!-- .usa-grid-full -->
 
 					<a href="/blog/category/press-release/">View all press releases »</a>
@@ -270,7 +281,7 @@ get_header();
 							$ceoContent .= '</h2>';
 
 							$ceoContent .= '<p class="">';
-							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
+							$ceoContent .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
 							$ceoContent .=  get_the_excerpt();
 							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 							$ceoContent .= '</div>';

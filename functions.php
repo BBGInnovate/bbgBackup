@@ -1618,7 +1618,7 @@ function outputQuote($q) {
 	$mugshot = $q['quoteMugshot'];
 
 	$quote = "";
-	$quote .= "<div class='bbg__quotation'>";
+	$quote .= "<div class='bbg__quotation bbg-grid--1-3-3'>";
 	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
 	$quote .= "<div class='bbg__quotation-attribution__container'>";
 	$quote .= "<p class='bbg__quotation-attribution'>";
