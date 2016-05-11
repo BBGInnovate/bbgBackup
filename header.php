@@ -54,6 +54,9 @@ $ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription);
 $ogDescription = str_replace("[&hellip;]", "...", $ogDescription); 
 $ogDescription = str_replace('"','&qout;',$ogDescription);
 
+$sitewideAlertText = get_field('sitewide_alert_text', 'option');
+$sitewideAlertLink = get_field('sitewide_alert_link', 'option');
+
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -147,6 +150,7 @@ $ogDescription = str_replace('"','&qout;',$ogDescription);
 
 	<header id="masthead" class="site-header bbg-header" role="banner">
 
+
 		<div class="usa-disclaimer">
 			<div class="usa-grid">
 				<span class="usa-disclaimer-official">
@@ -156,6 +160,18 @@ $ogDescription = str_replace('"','&qout;',$ogDescription);
 				<span class="usa-disclaimer-stage">This site is an alpha version of the USWDS. <a href="https://playbook.cio.gov/designstandards/">Learn more.</a></span>
 			</div>
 		</div>
+
+		<?php if ($sitewideAlertText != "") {
+			echo '<div class="usa-grid usa-site-alert">';
+			if ($sitewideAlertLink != "") {
+				echo "<a href='$sitewideAlertLink'>$sitewideAlertText</a>";
+			} else {
+				echo "$sitewideAlertText";
+			}
+			echo '</div>';
+		}
+		?>
+
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
