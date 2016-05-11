@@ -275,10 +275,10 @@ get_header();
 						while ( have_posts() ) : the_post();
 							$ceoPostPermalink=get_the_permalink();
 
-							$ceoContent .= '<h2 class="bbg-blog__excerpt-title">';
+							$ceoContent .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $ceoPostPermalink. '">';
 							$ceoContent .= get_the_title();
 
-							$ceoContent .= '</h2>';
+							$ceoContent .= '</a></h2>';
 
 							$ceoContent .= '<p class="">';
 							$ceoContent .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
