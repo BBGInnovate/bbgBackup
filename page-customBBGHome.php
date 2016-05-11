@@ -258,39 +258,35 @@ get_header();
 
 
 			<?php
-				$ceoCategory = get_category_by_slug('johns-take');
-				if ($ceoCategory) {
-					$qParams=array(
-						'post_type' => array('post'),
-						'posts_per_page' => 1,
-						'cat' => $ceoCategory->term_id
-					);
-					query_posts($qParams);
+				$soap = get_field('homepage_soapbox_post', 'option');
+				if ($soap) {
+					$s = "";
+					$id=$soap->ID;
+					$soapCategory=wp_get_post_categories();
+					$ceoLandingPermalink=get_category_link($soap->term_id);
+					$ceoPostPermalink=get_the_permalink($id);
 
-					$ceoContent="";
-					if ( have_posts() ) :
-						$ceoContent .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
-						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
-						$ceoContent .= '<h6 class="bbg-label small"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
-						while ( have_posts() ) : the_post();
-							$ceoPostPermalink=get_the_permalink();
+					$s .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
+					$s .= '<h6 class="bbg-label small"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
+					$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $ceoPostPermalink. '">';
+					$s .= get_the_title($id);
+					$s .= '</a></h2>';
 
-							$ceoContent .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $ceoPostPermalink. '">';
-							$ceoContent .= get_the_title();
-
-							$ceoContent .= '</a></h2>';
-
-							$ceoContent .= '<p class="">';
-							$ceoContent .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
-							$ceoContent .=  get_the_excerpt();
-							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
-							$ceoContent .= '</div>';
-						endwhile;
-					endif;
-					echo $ceoContent;
-					wp_reset_query();
+					$s .= '<p class="">';
+					$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
+					$s .=  get_the_excerpt($id);
+					$s .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
+					$s .= '</div>';
+				} else {
+					$s = "";
+					
+					$someHeadlinesPermalink="http://google.com";
+					$s .= '<div class="bbg-grid--1-2-2 ">';
+					$s .= '<h6 class="bbg-label small"><a href="'.$someHeadlinesPermalink.'">SOME HEADLINES</a></h6>';
+					$s .= '<p>Some headlines will go here</p>';
+					$s .= '</div>';
 				}
-				
+				echo $s;
 			?>
 
 

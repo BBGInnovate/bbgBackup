@@ -1643,4 +1643,16 @@ function outputQuote($q, $class="") {
 	echo $quote;
 }
 
+if ( function_exists ('acf_add_options_page') ) {
+	acf_add_options_page (array(
+		'page_title' => 'Homepage Options',
+		'menu_title' => 'Homepage Options',
+		'menu_slug' => 'homepage-options',
+		'capability' => 'edit_posts',
+		'parent_slug' => '',
+		'position' => false,
+		'icon_url' => false
+	));
+}
+
 ?>
