@@ -1131,7 +1131,7 @@ function fetchUrl($url) {
 
 function getJobs() {
 	$jobsFilepath = get_template_directory() . "/jobcache.json";
-	if ( fileExpired($jobsFilepath, 1440)  ) {  //1440 min = 1 day
+	if ( fileExpired($jobsFilepath, 90)  ) {  //1440 min = 1 day
 		$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
 		$result=fetchUrl($jobsUrl);
 		file_put_contents($jobsFilepath, $result);
