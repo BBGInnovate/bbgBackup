@@ -3947,7 +3947,8 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 .bbg__quotation.bbg-grid--1-3-3 {
   background-color: #f1f1f1;
   border-radius: 0.3rem;
-  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
 }
 .bbg__quotation.bbg-grid--1-3-3 .bbg__quotation-text--large {
   font-weight: 500;
@@ -5017,7 +5018,11 @@ p {
 }
 
 .bbg__mugshot__caption {
+  display: block;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -.8rem;
 }
 
 .type-post .usa-table,

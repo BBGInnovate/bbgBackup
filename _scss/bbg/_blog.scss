@@ -701,7 +701,8 @@ ul.bbg__article-content__list--inline {
 	&.bbg-grid--1-3-3 {
 		background-color: $color-gray-lightest;
 		border-radius: $border-radius;
-		padding: $site-margins-medium;
+		margin-bottom: $site-margins-medium;
+		padding: 2rem;
 
 		.bbg__quotation-text--large {
 			font-weight: 500;

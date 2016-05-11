@@ -729,7 +729,11 @@ article {
 	}
 }
 .bbg__mugshot__caption {
+	display: block;
 	font-family: $font-sans;
+	font-weight: bold;
+	line-height: 1;
+	margin-top: -.8rem;
 }
 
 

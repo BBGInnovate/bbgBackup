@@ -19,6 +19,9 @@ if (isset($_GET['category_id'])) {
 	$postPermalink=add_query_arg('category_id', $_GET['category_id'], $postPermalink);
 }
 
+//Add featured video
+$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg-blog__excerpt--featured usa-grid-full"); ?>>
@@ -28,6 +31,36 @@ if (isset($_GET['category_id'])) {
 			$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
 			$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
 			$linkH2 = '<h2 class="entry-title bbg-blog__excerpt-title--featured">'.$link;
+
+
+
+
+		//If a featured video is set, include it.
+		//ELSE if a featured image is set, include it.
+		$hideFeaturedImage = FALSE;
+		if ($videoUrl!="") {
+			echo featured_video($videoUrl);
+			$hideFeaturedImage = TRUE;
+		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+			$featuredImageClass = "";
+			$featuredImageCutline="";
+			$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+			if ($thumbnail_image && isset($thumbnail_image[0])) {
+				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+			}
+			echo $linkImage;
+
+			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+			echo the_post_thumbnail( 'large-thumb' );
+			echo "</a>";
+
+			echo '</div>';
+
+		}
+
+
+			/*
 			echo $linkImage;
 
 			if (has_post_thumbnail()) {
@@ -35,8 +68,9 @@ if (isset($_GET['category_id'])) {
 				echo the_post_thumbnail('large-thumb');
 				echo '</div>';
 			}
+			*/
 		?>
-		</a>
+		<!--</a>-->
 <div class="usa-grid">
 		<?php the_title( sprintf( $linkH2, $postPermalink ), '</a></h2>' ); ?>
 

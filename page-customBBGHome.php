@@ -340,9 +340,6 @@ get_header();
 
 
 
-
-
-
 			<!-- Entity list -->
 			<section id="teams" class="usa-section bbg-staff">
 				<div class="usa-grid">
