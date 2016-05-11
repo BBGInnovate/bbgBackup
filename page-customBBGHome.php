@@ -138,18 +138,6 @@ get_header();
 				</div><!-- .usa-grid -->
 			</section><!-- .bbg-portfolio -->
 
-			<!-- Quotation -->
-			<section class="usa-section ">
-				<div class="usa-grid">
-					<?php
-						$q=getRandomQuote('allEntities');
-						if ($q) {
-							outputQuote($q);
-						}
-					?>
-				</div>
-			</section><!-- Quotation -->
-
 
 			<!-- Recent posts -->
 			<section id="recent-posts" class="usa-section">
@@ -361,6 +349,17 @@ get_header();
 
 
 
+			<!-- Quotation -->
+			<section class="usa-section ">
+				<div class="usa-grid">
+					<?php
+						$q=getRandomQuote('allEntities');
+						if ($q) {
+							outputQuote($q);
+						}
+					?>
+				</div>
+			</section><!-- Quotation -->
 
 		</main>
 	</div><!-- #primary .content-area -->
