@@ -109,7 +109,7 @@ get_header();
 			<!-- Portfolio -->
 			<section id="projects" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="/blog/category/press-release/">Around the BBG</a></h6>
+					<h6 class="bbg-label"><a href="/blog/category/press-release/">Impact stories</a></h6>
 
 					<div class="usa-grid-full">
 					<?php
