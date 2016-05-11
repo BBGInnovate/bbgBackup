@@ -4988,6 +4988,10 @@ p {
   margin-bottom: 0;
 }
 
+.bbg__ceo--featured p {
+  line-height: 2.2;
+}
+
 .type-post .usa-table,
 .type-post .usa-table-borderless {
   margin: 0 auto;

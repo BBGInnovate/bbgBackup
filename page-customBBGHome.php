@@ -258,7 +258,7 @@ get_header();
 
 					$ceoContent="";
 					if ( have_posts() ) :
-						$ceoContent .= '<div class="bbg-grid--1-2-2">';
+						$ceoContent .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
 						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
 						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
 						while ( have_posts() ) : the_post();
@@ -269,7 +269,7 @@ get_header();
 
 							$ceoContent .= '</h2>';
 
-							$ceoContent .= '<p id="note-from-ceo" class="">';
+							$ceoContent .= '<p class="">';
 							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
 							$ceoContent .=  get_the_excerpt();
 							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
