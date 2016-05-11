@@ -103,38 +103,6 @@ get_header();
 			?>
 			</section><!-- Site introduction -->
 
-			<!-- CEO Posts -->
-			
-			<?php
-				$ceoCategory = get_category_by_slug('johns-take');
-				if ($ceoCategory) {
-					$qParams=array(
-						'post_type' => array('post'),
-						'posts_per_page' => 1,
-						'cat' => $ceoCategory->term_id
-					);
-					query_posts($qParams);
-
-					$ceoContent="";
-					if ( have_posts() ) :
-						$ceoContent .= '<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">';
-						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
-						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
-						while ( have_posts() ) : the_post();
-							$ceoPostPermalink=get_the_permalink();
-
-							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
-							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
-							$ceoContent .=  get_the_excerpt();
-							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">LEARN MORE »</a></h3>';
-						endwhile;
-					endif;
-					echo $ceoContent;
-					wp_reset_query();
-				}
-				
-			?>
-			</section><!-- CEO Posts -->
 
 
 
@@ -217,7 +185,7 @@ get_header();
 							else if ($counter <= $maxPostsToShow) {
 								$gridClass = "bbg-grid--1-2-2";
 								$includeImage = FALSE;
-								get_template_part( 'template-parts/content-excerpt', get_post_format() );
+								//get_template_part( 'template-parts/content-excerpt', get_post_format() );
 							}
 						endwhile;
 						echo '</div><!-- .usa-grid-full -->';
@@ -227,6 +195,144 @@ get_header();
 				</div>
 			</section><!-- Recent posts -->
 
+
+			<!-- CEO Post -->
+			<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">
+
+				<div class="bbg-grid--1-2-2">
+					<!--<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">Recent posts</a></h6>-->
+
+
+				<?php
+					/* NOTE: if there is a sticky post, we may wind up with an extra item.
+					So we hardcode the display code to ignore anything after the 3rd item */
+					$maxPostsToShow=2;
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => $maxPostsToShow,
+						'orderby' => 'post_date',
+						'order' => 'desc',
+						'category__not_in' => (array(get_cat_id('Site Introduction'),
+													get_cat_id("John's take"),
+													get_cat_id('Contact')
+											)),
+						/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
+						'tax_query' => array(
+							//'relation' => 'AND',
+							array(
+								'taxonomy' => 'post_format',
+								'field' => 'slug',
+								'terms' => 'post-format-quote',
+								'operator' => 'NOT IN'
+							)
+						)
+					);
+					
+					query_posts($qParams);
+
+					if ( have_posts() ) :
+						$counter=0;
+						while ( have_posts() ) : the_post();
+								$gridClass = "bbg-grid--1-2-2xxx";
+								$includeImage = FALSE;
+								get_template_part( 'template-parts/content-excerpt', get_post_format() );
+						endwhile;
+						//echo '</div><!-- .usa-grid-full -->';
+					endif;
+					wp_reset_query();
+				?>
+				</div>
+
+
+
+
+			<?php
+				$ceoCategory = get_category_by_slug('johns-take');
+				if ($ceoCategory) {
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => 1,
+						'cat' => $ceoCategory->term_id
+					);
+					query_posts($qParams);
+
+					$ceoContent="";
+					if ( have_posts() ) :
+						$ceoContent .= '<div class="bbg-grid--1-2-2">';
+						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
+						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
+						while ( have_posts() ) : the_post();
+							$ceoPostPermalink=get_the_permalink();
+
+							$ceoContent .= '<h2 class="bbg-blog__excerpt-title">';
+							$ceoContent .= get_the_title();
+
+							$ceoContent .= '</h2>';
+
+							$ceoContent .= '<p id="note-from-ceo" class="">';
+							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
+							$ceoContent .=  get_the_excerpt();
+							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
+							$ceoContent .= '</div>';
+						endwhile;
+					endif;
+					echo $ceoContent;
+					wp_reset_query();
+				}
+				
+			?>
+
+
+
+			</section><!-- ceo post experiment -->
+
+
+
+			<?php
+			/*
+				$ceoCategory = get_category_by_slug('johns-take');
+				if ($ceoCategory) {
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => 1,
+						'cat' => $ceoCategory->term_id
+					);
+					query_posts($qParams);
+
+					$ceoContent="";
+					if ( have_posts() ) :
+						$ceoContent .= '<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">';
+						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
+						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
+						while ( have_posts() ) : the_post();
+							$ceoPostPermalink=get_the_permalink();
+
+							$ceoContent .= '<h2 class="bbg-blog__excerpt-title">';
+							$ceoContent .= get_the_title();
+
+							$ceoContent .= '</h2>';
+
+							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
+							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
+							$ceoContent .=  get_the_excerpt();
+							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></h3>';
+							$ceoContent .= '</section><!-- CEO Post -->';
+						endwhile;
+					endif;
+					echo $ceoContent;
+					wp_reset_query();
+				}
+				*/
+			?>
+
+
+
+
+
+
+
+
+			<!-- Entity list -->
 			<section id="teams" class="usa-section bbg-staff">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
@@ -239,10 +345,11 @@ get_header();
 					
 					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
-			</section>
+			</section><!-- entity list -->
 
 
-			<!-- Random Quote -->
+
+			<!-- Quotation -->
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<?php
@@ -253,7 +360,7 @@ get_header();
 					?>
 				</div>
 			
-			</section><!-- Random Quote -->
+			</section><!-- Quotation -->
 
 		</main>
 	</div><!-- #primary .content-area -->
