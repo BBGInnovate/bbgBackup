@@ -4988,8 +4988,18 @@ p {
   margin-bottom: 0;
 }
 
-.bbg__ceo--featured p {
-  line-height: 2.2;
+.bbg__ceo--featured {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+}
+@media screen and (min-width: 900px) {
+  .bbg__ceo--featured {
+    padding: 3rem;
+  }
+  .bbg__ceo--featured p {
+    line-height: 2.2;
+  }
 }
 
 .type-post .usa-table,

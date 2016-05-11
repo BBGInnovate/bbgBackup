@@ -260,7 +260,7 @@ get_header();
 					if ( have_posts() ) :
 						$ceoContent .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
 						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
-						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
+						$ceoContent .= '<h6 class="bbg-label small"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
 						while ( have_posts() ) : the_post();
 							$ceoPostPermalink=get_the_permalink();
 
