@@ -1655,4 +1655,17 @@ if ( function_exists ('acf_add_options_page') ) {
 	));
 }
 
+function my_excerpt($post_id) {
+	$post = get_post($post_id);
+	if ($post->post_excerpt) {
+		// excerpt set, return it
+		return apply_filters('the_excerpt', $the_post->post_excerpt);
+	} else {
+		setup_postdata( $post );
+		$excerpt = get_the_excerpt();
+		wp_reset_postdata();
+		return $excerpt;
+	}
+}
+
 ?>

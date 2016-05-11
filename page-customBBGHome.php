@@ -274,7 +274,8 @@ get_header();
 
 					$s .= '<p class="">';
 					$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
-					$s .=  get_the_excerpt($id);
+					//$s .=  apply_filters('the_excerpt', get_post_field('post_excerpt', $id));
+					$s .= my_excerpt($id);
 					$s .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 					$s .= '</div>';
 				} else {
