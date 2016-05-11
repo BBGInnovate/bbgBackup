@@ -1605,7 +1605,7 @@ function getRandomQuote($entity) {
 	return $returnVal;
 }
 
-function outputQuote($q) { 
+function outputQuote($q, $class="") { 
 	$quoteDate = $q['quoteDate'];
 	$ID = $q['ID'];
 	$url = $q['url'];
@@ -1618,7 +1618,7 @@ function outputQuote($q) {
 	$mugshot = $q['quoteMugshot'];
 
 	$quote = "";
-	$quote .= "<div class='bbg__quotation bbg-grid--1-3-3'>";
+	$quote .= "<div class='bbg__quotation $class'>";
 	$quote .= "<h2 class='bbg__quotation-text--large'>&ldquo;$quoteText&rdquo;</h2>";
 	$quote .= "<div class='bbg__quotation-attribution__container'>";
 	$quote .= "<p class='bbg__quotation-attribution'>";

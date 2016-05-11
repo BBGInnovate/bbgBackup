@@ -136,7 +136,7 @@ get_header();
 					<?php
 						$q=getRandomQuote('allEntities');
 						if ($q) {
-							outputQuote($q);
+							outputQuote($q, "bbg-grid--1-3-3");
 						}
 					?>
 <!-- Quotation -->
