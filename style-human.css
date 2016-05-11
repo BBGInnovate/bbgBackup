@@ -4696,11 +4696,18 @@ p {
     margin-left: auto;
     width: 56%;
   }
+  .bbg__article-content.large {
+    width: 63%;
+  }
 
   .bbg__article-sidebar {
     float: right;
     max-width: 17rem;
     width: 18%;
+  }
+  .bbg__article-sidebar.large {
+    max-width: none;
+    width: 33%;
   }
 }
 .bbg__article-sidebar--left {
