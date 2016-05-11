@@ -44,6 +44,7 @@ if ($dateline != "") {
 
 $entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
 $entityLogo="";
+$entityLink="";
 if (in_category('Press Release') && in_category($entityCategories)) {
 	foreach ($entityCategories as $eCat) {
 		if ($entityLogo=="" && in_category($eCat)) {
@@ -61,6 +62,7 @@ if (in_category('Press Release') && in_category($entityCategories)) {
 					$id=get_the_ID();
 					$entityLogoID = get_post_meta( $id, 'entity_logo',true );
 					$entityLogo="";
+					$entityLink=get_the_permalink($id);
 					if ($entityLogoID) {
 						$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
 						$entityLogo = $entityLogoObj[0];
@@ -227,7 +229,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<div class="bbg__article-sidebar--left">
 			<?php 
 				if ($entityLogo!=""){
-					echo '<a href="#" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/></a>';
+					echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/></a>';
 				}
 			?>
 
