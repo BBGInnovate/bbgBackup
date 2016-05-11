@@ -144,7 +144,7 @@ get_header();
 
 					</div><!-- .usa-grid-full -->
 
-					<a href="/blog/category/press-release/">View all press releases »</a>
+					<a href="/blog/category/press-release/">View all impact stories »</a>
 
 				</div><!-- .usa-grid -->
 			</section><!-- .bbg-portfolio -->
