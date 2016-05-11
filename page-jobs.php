@@ -8,7 +8,7 @@
   template name: Jobs
  */
 
-$pageContent ="";
+$pageContent = "";
 while ( have_posts() ) : the_post();
 	$pageContent=get_the_content();
 	$pageContent = apply_filters('the_content', $pageContent);
@@ -16,32 +16,41 @@ while ( have_posts() ) : the_post();
 endwhile;
 $jobs=getJobs();
 $s="";
-$locationStr = "Location";
-for ($i=0; $i < count($jobs); $i++) {
-	$j=$jobs[$i];
-	//var_dump($j); 
-	$url = $j['url'];
-	$title=$j['position_title'];
-	$startDate=$j['start_date'];
-	$endDate=$j['end_date'];
-	$locations=$j['locations'];
 
-	$s.= "<a href='$url'>$title</a><BR>";
-	/*
-	$s.= "Starts: $startDate<BR>";
-	$s.= "Ends: $endDate<BR>";
-	*/
+if (count($jobs)==0) {
+	$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
+} else {
+	$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
+	
+	for ($i=0; $i < count($jobs); $i++) {
+		$j=$jobs[$i];
+		//var_dump($j); 
+		$url = $j['url'];
+		$title=$j['position_title'];
+		$startDate=$j['start_date'];
+		$endDate=$j['end_date'];
+		$locations=$j['locations'];
 
-	if (count($locations)>1){
-		$locationStr = "Locations";
+		$s.= "<a href='$url'>$title</a><BR>";
+		/*
+		$s.= "Starts: $startDate<BR>";
+		$s.= "Ends: $endDate<BR>";
+		*/
+		$locationStr = "Location";
+		if (count($locations)>1){
+			$locationStr = "Locations";
+		}
+
+		$s.= $locationStr.": ";
+		for ($k=0; $k<count($locations); $k++) {
+			$loc = $locations[$k];
+			$s.= "$loc<BR>";
+		}
+		//if ($i < (count($jobs)-1)) {
+			$s .= "<BR>";
+		//}
 	}
-
-	$s.= $locationStr.": ";
-	for ($k=0; $k<count($locations); $k++) {
-		$loc = $locations[$k];
-		$s.= "$loc<BR>";
-	}
-	$s.= "<BR>";
+	$s .= "All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a><BR>";
 }
 $pageContent = str_replace("[jobs list]", $s, $pageContent);
 
