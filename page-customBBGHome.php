@@ -266,20 +266,26 @@ get_header();
 
 					$isCEOPost=false;
 					$isSpeech=false;
+					$soapHeaderPermalink="";
+					$soapHeaderText="";
+					$soapPostPermalink=get_the_permalink($id);
 					foreach ($soapCategory as $c) {
-						 $cat = get_category( $c );
+						$cat = get_category( $c );
 						if ($cat->slug=="johns-take") {
 							$isCEOPost=true;
+							$soapHeaderText="From the CEO";
+							$soapHeaderPermalink=get_category_link($cat->term_id);
 						} else if ($cat->slug=="speech") {
 							$isSpeech=true;
 						}
 					}
-					$ceoLandingPermalink=get_category_link($soap->term_id);
-					$ceoPostPermalink=get_the_permalink($id);
 
 					$s .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
-					$s .= '<h6 class="bbg-label small"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
-					$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $ceoPostPermalink. '">';
+					if ($soapHeaderPermalink != "") {
+						$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
+					}
+					
+					$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
 					$s .= get_the_title($id);
 					$s .= '</a></h2>';
 
@@ -289,7 +295,7 @@ get_header();
 						$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
 					}
 					$s .= my_excerpt($id);
-					$s .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
+					$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 					$s .= '</div>';
 				} else {
 					$s = "";
