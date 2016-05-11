@@ -118,7 +118,7 @@ get_header();
 							'posts_per_page' => 2,
 							'orderby' => 'post_date',
 							'order' => 'desc',
-							'cat' => get_cat_id('Press Release')
+							'cat' => get_cat_id('Impact')
 						);
 						query_posts($qParams);
 
