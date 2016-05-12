@@ -793,10 +793,13 @@ article {
 	background-color: $color-gray-dark; //#333;
 	max-width: none;
 	padding: .4rem $site-margins;
-	position: fixed;
-		top: 0;
 	width: 100%;
 	z-index: 9999;
+
+	@include media($medium-screen) {
+		position: fixed;
+			top: 0;
+	}
 
 	a {
 		color: $color-gray-lightest; //#CCC;

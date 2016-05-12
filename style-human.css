@@ -2951,12 +2951,12 @@ object {
 .menu-toggle {
   display: block;
   right: 0;
-  z-index: 9999;
+  z-index: 9998;
 }
 
 .main-navigation.toggled ul {
   display: block;
-  z-index: 9999;
+  z-index: 9998;
 }
 
 @media screen and (min-width: 600px) {
@@ -2969,7 +2969,7 @@ object {
     display: block;
     position: absolute;
     right: 0;
-    z-index: 9999;
+    z-index: 9998;
     /* drop down navigation */
   }
   .main-navigation ul ul {
@@ -5098,10 +5098,14 @@ p {
   background-color: #323a45;
   max-width: none;
   padding: 0.4rem 3rem;
-  position: fixed;
-  top: 0;
   width: 100%;
   z-index: 9999;
+}
+@media screen and (min-width: 600px) {
+  .bbg__site-alert {
+    position: fixed;
+    top: 0;
+  }
 }
 .bbg__site-alert a {
   color: #f1f1f1;

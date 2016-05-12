@@ -117,12 +117,12 @@ body:not(.home) .menu-all-pages-container {
 .menu-toggle {
 	display: block;
 	right: 0;
-	z-index: 9999;
+	z-index: 9998;
 }
 
 .main-navigation.toggled ul {
 	display: block;
-	z-index: 9999;
+	z-index: 9998;
 }
 
 
@@ -135,7 +135,7 @@ body:not(.home) .menu-all-pages-container {
 		display: block;
 		position: absolute;
 		right: 0;
-		z-index: 9999;
+		z-index: 9998;
 
 		/* drop down navigation */
 		ul {
