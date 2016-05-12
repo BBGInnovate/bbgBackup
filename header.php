@@ -57,7 +57,7 @@ $ogDescription = str_replace('"','&qout;',$ogDescription);
 $sitewideAlert = get_field('sitewide_alert', 'option');
 $sitewideAlertText = get_field('sitewide_alert_text', 'option');
 $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
-
+$moveUSAbannerBecauseOfAlert = '';
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -151,8 +151,20 @@ $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
 
 	<header id="masthead" class="site-header bbg-header" role="banner">
 
+		<?php if ($sitewideAlert && $sitewideAlertText != "") {
+			$moveUSAbannerBecauseOfAlert = " bbg__site-alert--active";
+			echo '<div class="bbg__site-alert">';
+			if ($sitewideAlertLink != "") {
+				echo "<span class='bbg__site-alert__text'><a href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
+			} else {
+				echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
+			}
+			echo '</div>';
+		}
+		?>
 
-		<div class="usa-disclaimer">
+
+		<div class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
 			<div class="usa-grid">
 				<span class="usa-disclaimer-official">
 					<img class="usa-flag_icon" alt="U.S. flag signifying that this is a United States federal government website" src="<?php echo get_template_directory_uri() ?>/img/us_flag_small.png">
@@ -162,16 +174,6 @@ $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
 			</div>
 		</div>
 
-		<?php if ($sitewideAlert && $sitewideAlertText != "") {
-			echo '<div class="usa-grid usa-site-alert bbg__site-alert">';
-			if ($sitewideAlertLink != "") {
-				echo "<span class='bbg__site-alert__text'><a href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
-			} else {
-				echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
-			}
-			echo '</div>';
-		}
-		?>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
