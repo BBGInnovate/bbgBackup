@@ -3090,6 +3090,56 @@ object {
   background-image: url("img/arrow-next-hover.svg");
 }
 
+/** POST AUTHOR Previous/next links on project posts */
+.bbg__article__nav {
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
+  position: fixed;
+  bottom: 100px;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.bbg__article__nav .bbg__article__nav-link {
+  height: 45px;
+  pointer-events: initial;
+  width: 30px;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article__nav .bbg__article__nav-link {
+    width: 60px;
+    height: 90px;
+  }
+}
+.bbg__article__nav .bbg__article__nav-icon {
+  display: block;
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}
+.bbg__article__nav .bbg__article__nav-icon.left-arrow {
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(img/arrow_left.png);
+}
+.bbg__article__nav .bbg__article__nav-icon.right-arrow {
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(img/arrow_right.png);
+}
+.bbg__article__nav .bbg__article__nav-text {
+  display: none;
+}
+.bbg__article__nav .bbg__article__nav-previous {
+  float: left;
+}
+.bbg__article__nav .bbg__article__nav-next {
+  float: right;
+}
+
 /*
  * Theme Name: bbginnovate
  *
@@ -5328,13 +5378,13 @@ p {
   margin: 0 auto;
 }
 
-.bbg__comments-title, .category-project .bbg__portfolio-members .bbg__portfolio-members__title {
+.bbg__comments-title {
   border-bottom: 1px dotted #981b1e;
   color: #981b1e;
   font-size: 2rem;
 }
 @media screen and (min-width: 600px) {
-  .bbg__comments-title, .category-project .bbg__portfolio-members .bbg__portfolio-members__title {
+  .bbg__comments-title {
     font-size: 3rem;
   }
 }
@@ -5519,150 +5569,7 @@ ol li:before {
   width: 1.2rem;
 }
 
-/**
- *  Changing styles on content-single for portfolio posts
- *
- */
-.category-project {
-  /* Hide article meta (author and date) */
-  	/**
-   	 * Style content of section listing project team members
-   	 */
-  /**
-   * Change layout of main elements for different breakpoints
-   */
-}
-.category-project .bbg__article-meta {
-  display: none;
-}
-.category-project .bbg__portfolio-members {
-  margin-top: 4rem;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 600px;
-}
-@media screen and (min-width: 600px) {
-  .category-project .bbg__portfolio-members {
-    margin-top: 1.5rem;
-  }
-}
-@media screen and (min-width: 900px) {
-  .category-project .bbg__portfolio-members {
-    margin-top: 0;
-  }
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__title {
-  font-size: 1.7rem;
-  text-transform: uppercase;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list {
-  display: block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list li {
-  display: list-item;
-  margin: 0;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list li:before {
-  display: none;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list li:after {
-  display: none;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list .bbg__portfolio-members__member-name {
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 2.2rem;
-}
-.category-project .bbg__portfolio-members .bbg__portfolio-members__list .bbg__portfolio-members__member-job {
-  color: #323a45;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.3rem;
-  font-style: italic;
-  font-weight: 300;
-}
-@media screen and (min-width: 600px) {
-  .category-project .bbg__article-content {
-    margin-top: 0;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    margin-left: auto;
-    max-width: 600px;
-  }
-}
-@media screen and (min-width: 900px) {
-  .category-project .bbg__article-content {
-    float: left;
-    margin-top: 0;
-    margin-bottom: 3rem;
-    width: 68%;
-  }
-  .category-project .bbg__article-share {
-    display: inline-block;
-    float: left;
-    margin-top: 0;
-    margin-right: 3rem;
-    width: 15%;
-  }
-  .category-project .bbg__article-sidebar {
-    float: right;
-    max-width: 17rem;
-    width: 12%;
-  }
-}
-
-/** POST AUTHOR Previous/next links on project posts */
-.bbg__article__nav {
-  display: block;
-  margin: 0 auto;
-  pointer-events: none;
-  position: fixed;
-  bottom: 100px;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-.bbg__article__nav .bbg__article__nav-link {
-  height: 45px;
-  pointer-events: initial;
-  width: 30px;
-}
-@media screen and (min-width: 900px) {
-  .bbg__article__nav .bbg__article__nav-link {
-    width: 60px;
-    height: 90px;
-  }
-}
-.bbg__article__nav .bbg__article__nav-icon {
-  display: block;
-  height: 100%;
-  padding: 0;
-  width: 100%;
-}
-.bbg__article__nav .bbg__article__nav-icon.left-arrow {
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(img/arrow_left.png);
-}
-.bbg__article__nav .bbg__article__nav-icon.right-arrow {
-  background-position: right top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(img/arrow_right.png);
-}
-.bbg__article__nav .bbg__article__nav-text {
-  display: none;
-}
-.bbg__article__nav .bbg__article__nav-previous {
-  float: left;
-}
-.bbg__article__nav .bbg__article__nav-next {
-  float: right;
-}
-
+/*@import 'bbg/project-single';*/
 .bbg-search-results--list {
   margin-bottom: 3.75rem;
 }
