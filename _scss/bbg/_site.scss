@@ -790,9 +790,9 @@ article {
 
 //Site wide alert
 .bbg__site-alert {
-	background-color: $color-gray-dark; //#333;
+	background-color: $color-gray-dark;
 	max-width: none;
-	padding: .4rem $site-margins;
+	padding: .5rem $site-margins;
 	width: 100%;
 	z-index: 9999;
 
@@ -802,7 +802,7 @@ article {
 	}
 
 	a {
-		color: $color-gray-lightest; //#CCC;
+		color: $color-gray-lightest;
 		display: block;
 		margin: 0 auto;
 		max-width: $site-max-width;
