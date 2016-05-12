@@ -109,12 +109,6 @@ get_header();
 
 				$pages = get_pages($qParams);
 
-				/*foreach( $pages as $page ) {
-					echo "<p>" . $page->post_title . "<br/>";
-					echo $page->introduction . "</p>";
-				}
-				// echo count($pages);
-				die();*/
 			?>
 
 			<!-- Page introduction -->
@@ -147,8 +141,9 @@ get_header();
 						// Loop through the child pages
 						foreach( $pages as $page ) {
 							$introSection = $page->introduction;
+							$umbrellaSection = $page->umbrella_category;
 
-							if (!$introSection) {
+							if (!$introSection && $umbrellaSection) {
 								$excerpt = $page->post_excerpt;
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
@@ -167,6 +162,44 @@ get_header();
 												<?php echo $excerpt; ?>
 											</h3>
 										</div>
+									</div>
+									<!-- Grandchild pages -->
+									<?php
+										$childPageID = $page->ID;
+
+										echo $childPageID;
+
+										/*$gParams = array(
+											'sort_column' => 'menu_order',
+											'hierarchical' => 1,
+											// 'meta_key' => 'show_in_parent_page',
+											// 'meta_value' => '1',
+											'child_of' => $childPageID,
+											'post_type' => 'page',
+											'post_status' => 'publish'
+										);
+
+										$pages = get_pages($gParams);*/
+									?>
+								</article>
+						<?php
+							} else if (!$introSection) {
+								$excerpt = $page->post_excerpt;
+								$excerpt = apply_filters( 'the_content', $excerpt );
+								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+							?>
+								<article class="bbg__entity bbg-grid--1-3-3">
+									<div class="">
+										<!-- Child page title -->
+										<h6 class="bbg-label">
+											<a href="<?php echo get_page_link( $page->ID ); ?>">
+												<?php echo $page->post_title; ?>
+											</a>
+										</h6>
+										<!-- Child page excerpt -->
+										<p class="bbg__entity__text-description">
+											<?php echo $excerpt; ?>
+										</p>
 									</div>
 								</article>
 						<?php
