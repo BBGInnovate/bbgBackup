@@ -4711,6 +4711,12 @@ p {
     margin-right: 0;
     margin-left: 0;
   }
+  .bbg__article-content.large p:first-of-type {
+    font-size: 1.7rem;
+    font-weight: 100;
+    line-height: 2.5;
+    margin-bottom: 3rem;
+  }
 
   .bbg__article-sidebar {
     float: right;

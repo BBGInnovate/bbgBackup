@@ -346,14 +346,25 @@ article {
 				margin-left: 0;
 				padding-right: 2%;
 				width: 65%;
+
 				>* {
 					max-width: none;
 				}
+
 				p {
 					margin: {
 						right: 0;
 						left: 0;
 					}
+				}
+
+				p:first-of-type {
+					font: {
+						size: 1.7rem;
+						weight: 100;
+					};
+					line-height: 2.5;
+					margin-bottom: $site-margins;
 				}
 			}
 
