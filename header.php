@@ -162,7 +162,7 @@ $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
 		</div>
 
 		<?php if ($sitewideAlertText != "") {
-			echo '<div class="usa-grid usa-site-alert">';
+			echo '<div class="usa-grid usa-site-alert bbg__site-alert">';
 			if ($sitewideAlertLink != "") {
 				echo "<a href='$sitewideAlertLink'>$sitewideAlertText</a>";
 			} else {

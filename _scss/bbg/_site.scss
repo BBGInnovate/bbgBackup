@@ -626,6 +626,12 @@ article {
 	margin-bottom: $site-margins-medium;
 }
 
+.bbg-blog__excerpt {
+	@include media($medium-screen) {
+		margin-bottom: $site-margins;
+	}
+}
+
 .bbg-blog__excerpt-title--featured {
 	margin: {
 		top: $site-margins-medium;
@@ -723,6 +729,7 @@ article {
 	}
 }
 
+
 //CEO post on the homepage
 .bbg__ceo--featured {
 	background-color: $color-gray-lightest;
@@ -778,5 +785,25 @@ article {
 		a {
 			@extend h4;
 		}
+	}
+}
+
+//Site wide alert
+.bbg__site-alert {
+	background-color: $color-gray-dark; //#333;
+	max-width: none;
+	padding: .4rem $site-margins;
+	position: fixed;
+		top: 0;
+	width: 100%;
+	z-index: 9999;
+
+	a {
+		color: $color-gray-lightest; //#CCC;
+		display: block;
+		margin: 0 auto;
+		max-width: $site-max-width;
+		padding: 0 $site-margins;
+		text-align: center;
 	}
 }

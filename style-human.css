@@ -4926,6 +4926,12 @@ p {
   margin-bottom: 1.5rem;
 }
 
+@media screen and (min-width: 600px) {
+  .bbg-blog__excerpt {
+    margin-bottom: 3rem;
+  }
+}
+
 .bbg-blog__excerpt-title--featured {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
@@ -5086,6 +5092,24 @@ p {
 }
 .bbg__board__committee-list li {
   margin-bottom: 1.5rem;
+}
+
+.bbg__site-alert {
+  background-color: #323a45;
+  max-width: none;
+  padding: 0.4rem 3rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.bbg__site-alert a {
+  color: #f1f1f1;
+  display: block;
+  margin: 0 auto;
+  max-width: 1040px;
+  padding: 0 3rem;
+  text-align: center;
 }
 
 @media screen and (min-width: 900px) {
