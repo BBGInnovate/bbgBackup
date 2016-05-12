@@ -69,7 +69,7 @@ if ( have_posts() ) {
 		$showLatestTweets=get_post_meta( $id, 'show_latest_tweets', true );
 		if ($showLatestTweets) {
 			$widgetID="730138164040507394";	//change this to bbg acct
-			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'"  data-screen-name="'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'">Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'" data-screen-name="'.$twitterProfileHandle.'" >Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 		}	
 	}
 
