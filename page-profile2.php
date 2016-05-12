@@ -165,6 +165,7 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
+
 						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
 						<?php if($post->post_parent) {
@@ -174,6 +175,33 @@ get_header(); ?>
 						?>
 						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
 						<?php } ?>
+
+
+
+						<?php 
+							//Add blog posts below the main content
+							if ( $relatedLinksTag != "" ) {
+								$qParams2=array(
+									'post_type' => array('post'),
+									'posts_per_page' => 2,
+									'cat' => get_cat_id("John's take"),
+									'orderby' => 'date',
+									'order' => 'DESC'
+								);
+								$custom_query = new WP_Query( $qParams2 );
+								if ($custom_query -> have_posts()) {
+									echo '<h6 class="bbg-label"><a href="/blog/category/press-release/">John’s Blog</a></h6>';
+									echo '<div class="usa-grid-full">';
+									while ( $custom_query -> have_posts() )  {
+										$custom_query->the_post();
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									}
+									echo '</div>';
+								}
+								wp_reset_postdata();
+							}
+						?>
+
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar large">

@@ -816,6 +816,8 @@ ul.bbg__article-content__list--inline {
 }
 
 .bbg__tagline-link {
+	display: block;
+	margin: 0 auto $site-margins auto;
 	max-width: $article-max-width;
 }
 
