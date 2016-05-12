@@ -211,8 +211,6 @@ get_header();
 			<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">
 
 				<div class="bbg-grid--1-2-2">
-					<!--<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">Recent posts</a></h6>-->
-
 
 				<?php
 					/* NOTE: if there is a sticky post, we may wind up with an extra item.
@@ -244,11 +242,10 @@ get_header();
 					if ( have_posts() ) :
 						$counter=0;
 						while ( have_posts() ) : the_post();
-								$gridClass = "bbg-grid--1-2-2xxx";
+								$gridClass = "bbg-grid--full-width";
 								$includeImage = FALSE;
-								get_template_part( 'template-parts/content-excerpt', get_post_format() );
+								get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 						endwhile;
-						//echo '</div><!-- .usa-grid-full -->';
 					endif;
 					wp_reset_query();
 				?>
@@ -266,21 +263,27 @@ get_header();
 
 					$isCEOPost=false;
 					$isSpeech=false;
+					$isBBG360=false;
 					$soapHeaderPermalink="";
 					$soapHeaderText="";
 					$soapPostPermalink=get_the_permalink($id);
+					$mugshot = "";
+					$mugshotName = "";
+
 					foreach ($soapCategory as $c) {
 						$cat = get_category( $c );
 						if ($cat->slug=="johns-take") {
 							$isCEOPost=true;
 							$soapHeaderText="From the CEO";
 							$soapHeaderPermalink=get_category_link($cat->term_id);
+							$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
 						} else if ($cat->slug=="speech") {
 							$isSpeech=true;
+							$mugshot = get_post_meta( $id, 'profile_photo', true );
 						}
 					}
 
-					$s .= '<div class="bbg-grid--1-2-2 bbg__ceo--featured">';
+					$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
 					if ($soapHeaderPermalink != "") {
 						$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
 					}
@@ -291,9 +294,17 @@ get_header();
 
 					$s .= '<p class="">';
 
-					if ($isCEOPost) {
-						$s .= '<span class="" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" /><span class="bbg__mugshot__caption">John Lansing</span></span>';
+					//if ($isCEOPost) {
+					if ($mugshot != "") {
+						$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
+						if ($mugshotName != "") {
+							$s .= '<span class="bbg__mugshot__caption">Name Name</span>';
+						} else {
+							$s .= '<span class="bbg__mugshot__caption">John Lansing</span>';
+						}
+						$s .= '</span>';
 					}
+
 					$s .= my_excerpt($id);
 					$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 					$s .= '</div>';
