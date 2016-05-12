@@ -263,7 +263,6 @@ get_header();
 
 					$isCEOPost=false;
 					$isSpeech=false;
-					$isBBG360=false;
 					$soapHeaderPermalink="";
 					$soapHeaderText="";
 					$soapPostPermalink=get_the_permalink($id);
@@ -277,11 +276,11 @@ get_header();
 							$soapHeaderText="From the CEO";
 							$soapHeaderPermalink=get_category_link($cat->term_id);
 							$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
-						} else if ($cat->slug=="speech") {
-							$isSpeech=true;
-							$mugshotID = get_post_meta( $id, 'profile_photo', true );
-
-							$mugshot = "";
+							$mugshotName = "John Lansing";
+						} else if ($cat->slug == "speech") {
+							$isSpeech = true;
+							$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
+							$mugshotName = get_post_meta( $id, 'mugshot_name', true );
 
 							if ($mugshotID) {
 								$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
@@ -305,10 +304,8 @@ get_header();
 					if ($mugshot != "") {
 						$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
 						if ($mugshotName != "") {
-							$s .= '<span class="bbg__mugshot__caption">Name Name</span>';
-						} else {
-							$s .= '<span class="bbg__mugshot__caption">John Lansing</span>';
-						}
+							$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
+						} 
 						$s .= '</span>';
 					}
 
