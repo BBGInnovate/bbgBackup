@@ -130,7 +130,7 @@ get_header();
 							$introContent = str_replace(']]>', ']]&gt;', $introContent);
 						?>
 
-						<div class="bbg-grid__container">
+						<div class="">
 							<?php echo $introContent; ?>
 						</div>
 						<?php
@@ -153,18 +153,20 @@ get_header();
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 							?>
-								<article class="bbg__entity bbg-grid--1-2-2">
-									<div class="bbg__entity__text">
+								<article class="bbg__entity">
+									<div>
 										<!-- Child page title -->
-										<h2 class="bbg__entity__name">
+										<h6 class="bbg-label">
 											<a href="<?php echo get_page_link( $page->ID ); ?>">
 												<?php echo $page->post_title; ?>
 											</a>
-										</h2>
+										</h6>
 										<!-- Child page excerpt -->
-										<p class="bbg__entity__text-description">
-											<?php echo $excerpt; ?>
-										</p>
+										<div class="usa-intro bbg__broadcasters__intro">
+											<h3 class="usa-font-lead">
+												<?php echo $excerpt; ?>
+											</h3>
+										</div>
 									</div>
 								</article>
 						<?php
