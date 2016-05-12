@@ -279,7 +279,15 @@ get_header();
 							$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
 						} else if ($cat->slug=="speech") {
 							$isSpeech=true;
-							$mugshot = get_post_meta( $id, 'profile_photo', true );
+							$mugshotID = get_post_meta( $id, 'profile_photo', true );
+
+							$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
+							$mugshot = "";
+
+							if ($mugshotID) {
+								$mugshot = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+								$mugshot = $profilePhoto[0];
+							}
 						}
 					}
 
