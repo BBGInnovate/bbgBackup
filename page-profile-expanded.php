@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package bbgRedesign
-  template name: Profile
+  template name: Profile (Expanded)
 
  */
 /* we go through the loop once and reset it in order to get some vars for our og tags */
@@ -69,7 +69,7 @@ if ( have_posts() ) {
 		$showLatestTweets=get_post_meta( $id, 'show_latest_tweets', true );
 		if ($showLatestTweets) {
 			$widgetID="730138164040507394";	//change this to bbg acct
-			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'">Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'" data-screen-name="'.$twitterProfileHandle.'" >Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 		}	
 	}
 
@@ -162,8 +162,51 @@ get_header(); ?>
 						</div>
 					</header><!-- .bbg__article-header -->
 
-					<div class="bbg__article-sidebar--left <?php echo $collapseColumnCSS; ?>">
 
+					<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+						<div class="bbg__profile__content">
+						<?php the_content(); ?>
+
+						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
+
+						<?php if($post->post_parent) {
+							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent_link = get_permalink($post->post_parent);
+						?>
+						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
+						<?php } ?>
+						</div>
+
+
+
+						<?php 
+							//Add blog posts below the main content
+							if ( $relatedLinksTag != "" ) {
+								$qParams2=array(
+									'post_type' => array('post'),
+									'posts_per_page' => 2,
+									'cat' => get_cat_id("John's take"),
+									'orderby' => 'date',
+									'order' => 'DESC'
+								);
+								$custom_query = new WP_Query( $qParams2 );
+								if ($custom_query -> have_posts()) {
+									echo '<h6 class="bbg-label"><a href="/blog/category/press-release/">John’s Blog</a></h6>';
+									echo '<div class="usa-grid-full">';
+									while ( $custom_query -> have_posts() )  {
+										$custom_query->the_post();
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									}
+									echo '</div>';
+								}
+								wp_reset_postdata();
+							}
+						?>
+
+					</div><!-- .entry-content -->
+
+					<div class="bbg__article-sidebar large">
 						<ul class="bbg__article-share ">
 						<?php 
 						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
@@ -186,24 +229,10 @@ get_header(); ?>
 						?>
 						&nbsp;
 						</ul>
-					</div><!-- .bbg__article-sidebar--left -->
-
-					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-						<?php the_content(); ?>
 						<?php echo $latestTweetsStr; ?>
-						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
-						<?php } ?>
-					</div><!-- .entry-content -->
-
-					<div class="bbg__article-sidebar">
 						<?php 
+
 							if ( $relatedLinksTag != "" ) {
 								$qParams2=array(
 									'post_type' => array('post'),
