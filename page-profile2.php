@@ -164,6 +164,7 @@ get_header(); ?>
 
 
 					<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+						<div class="bbg__profile__content">
 						<?php the_content(); ?>
 
 						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
@@ -175,6 +176,7 @@ get_header(); ?>
 						?>
 						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
 						<?php } ?>
+						</div>
 
 
 
