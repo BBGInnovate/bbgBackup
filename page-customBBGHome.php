@@ -281,12 +281,11 @@ get_header();
 							$isSpeech=true;
 							$mugshotID = get_post_meta( $id, 'profile_photo', true );
 
-							$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
 							$mugshot = "";
 
 							if ($mugshotID) {
-								$mugshot = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-								$mugshot = $profilePhoto[0];
+								$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
+								$mugshot = $mugshot[0];
 							}
 						}
 					}
