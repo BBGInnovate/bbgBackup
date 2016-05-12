@@ -284,3 +284,68 @@ body:not(.home) .menu-all-pages-container {
 		}
 	}
 }
+
+
+
+
+/** POST AUTHOR Previous/next links on project posts */
+.bbg__article__nav {
+	display: block;
+	margin: 0 auto;
+	pointer-events: none;
+	position: fixed;
+		bottom: 100px;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+
+
+	.bbg__article__nav-link {
+		height: 45px;
+		pointer-events: initial;
+		width: 30px;
+
+		@include media($medium-large-screen) {
+			width: 60px;
+			height: 90px;
+		}
+	}
+
+	.bbg__article__nav-icon {
+		display: block;
+		height: 100%;
+		padding: 0;
+		width: 100%;
+
+		&.left-arrow{
+			background: {
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_left.png);
+			}
+		}
+
+		&.right-arrow{
+			background: {
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_right.png);
+			}
+		}
+
+	}
+
+	.bbg__article__nav-text {
+		display: none;
+	}
+
+	.bbg__article__nav-previous {
+		float: left;
+	}
+
+	.bbg__article__nav-next {
+		float: right;
+	}
+}
