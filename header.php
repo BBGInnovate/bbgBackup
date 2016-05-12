@@ -54,6 +54,7 @@ $ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription);
 $ogDescription = str_replace("[&hellip;]", "...", $ogDescription); 
 $ogDescription = str_replace('"','&qout;',$ogDescription);
 
+$sitewideAlert = get_field('sitewide_alert', 'option');
 $sitewideAlertText = get_field('sitewide_alert_text', 'option');
 $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
 
@@ -161,12 +162,12 @@ $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
 			</div>
 		</div>
 
-		<?php if ($sitewideAlertText != "") {
+		<?php if ($sitewideAlert && $sitewideAlertText != "") {
 			echo '<div class="usa-grid usa-site-alert bbg__site-alert">';
 			if ($sitewideAlertLink != "") {
-				echo "<a href='$sitewideAlertLink'>$sitewideAlertText</a>";
+				echo "<span class='bbg__site-alert__text'><a href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
 			} else {
-				echo "$sitewideAlertText";
+				echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
 			}
 			echo '</div>';
 		}
