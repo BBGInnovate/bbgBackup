@@ -140,8 +140,8 @@ get_header();
 			</section>
 
 			<!-- Child pages content -->
-			<section id="page-children" class="usa-section bbg-staff">
-				<div class="usa-grid usa-grid-full">
+			<section id="page-children" class="usa-section usa-grid ">
+				<div class="usa-grid-full">
 
 					<?php
 						// Loop through the child pages
