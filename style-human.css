@@ -3224,6 +3224,18 @@ fieldset {
   max-width: 600px;
 }
 
+.bbg__article-sidebar.large .bbg__entity__icon,
+.bbg__article-sidebar.large .bbg-team__icon {
+  height: 70px;
+  width: 70px;
+}
+@media screen and (min-width: 481px) {
+  .bbg__article-sidebar.large .bbg__entity__text,
+  .bbg__article-sidebar.large .bbg-team__text {
+    padding-left: 80px;
+  }
+}
+
 .usa-intro.bbg__broadcasters__intro {
   margin-bottom: 3rem;
 }

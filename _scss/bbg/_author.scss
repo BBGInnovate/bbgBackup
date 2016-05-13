@@ -70,6 +70,7 @@
 	}
 }
 
+
 .bbg__entity__text,
 .bbg-team__text {
 	@include media($small-screen) {
@@ -92,6 +93,23 @@
 	margin-top: 0;
 	max-width: $article-max-width;
 }
+
+// Entities in the sidebar
+.bbg__article-sidebar.large {
+	.bbg__entity__icon,
+	.bbg-team__icon {
+		height: 70px;
+		width: 70px;
+	}
+
+	.bbg__entity__text,
+	.bbg-team__text {
+		@include media($small-screen) {
+			padding-left: 70px + 10px;
+		}
+	}
+}
+
 
 .usa-intro.bbg__broadcasters__intro {
 	margin-bottom: $site-margins;
