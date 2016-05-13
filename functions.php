@@ -1141,8 +1141,61 @@ function getJobs() {
 	$jobs = json_decode($result, true);
 
 	return $jobs;
-
 }
+
+function outputJoblist() {
+	$jobs=getJobs();
+	$s="";
+
+	if (count($jobs)==0) {
+		$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
+	} else {
+		$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
+		
+		for ($i=0; $i < count($jobs); $i++) {
+			$j=$jobs[$i];
+			//var_dump($j); 
+			$url = $j['url'];
+			$title=$j['position_title'];
+			$startDate=$j['start_date'];
+			$endDate=$j['end_date'];
+			$locations=$j['locations'];
+
+			$s.= "<a href='$url'>$title</a><BR>";
+			/*
+			$s.= "Starts: $startDate<BR>";
+			$s.= "Ends: $endDate<BR>";
+			*/
+			$locationStr = "Location";
+			if (count($locations)>1){
+				$locationStr = "Locations";
+			}
+
+			$s.= $locationStr.": ";
+			for ($k=0; $k<count($locations); $k++) {
+				$loc = $locations[$k];
+				$s.= "$loc<BR>";
+			}
+			//if ($i < (count($jobs)-1)) {
+				$s .= "<BR>";
+			//}
+		}
+		$s .= "All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a><BR>";
+	}
+	return $s;
+}
+
+// Add shortcode to output the jobs list
+function jobs_shortcode() {
+	return outputJoblist();
+}
+add_shortcode('jobslist', 'jobs_shortcode');
+
+
+
+
+
+
 
 function getFeed($url,$id) {
 	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
@@ -1528,6 +1581,14 @@ function broadcasters_list_shortcode($atts) {
 	return outputBroadcasters($atts['cols']); 
 }
 add_shortcode('broadcasters_list', 'broadcasters_list_shortcode');
+
+
+
+
+
+
+
+
 
 add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
 function toolbar_link_to_mypage( $wp_admin_bar ) {
