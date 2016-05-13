@@ -67,7 +67,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 // WordPress -------------- //
 
-@import '_wp/media/media';
+@import '_wp/media/galleries';
 @import '_wp/modules/alignments';
 @import '_wp/layouts/sidebar-content';
 
@@ -85,7 +85,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import 'bbg/pages/page-fuego';
 @import 'bbg/pages/page-search-results';
 @import 'bbg/pages/page-profile';
-@import 'bbg/comments';
-@import 'bbg/tables-forms';
-@import 'bbg/sharing';
-@import 'bbg/embeds';
+@import 'bbg/components/comments';
+@import 'bbg/components/sharing';
+@import 'bbg/elements/tables-forms';
+@import 'bbg/media/media';

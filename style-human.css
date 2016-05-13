@@ -2719,86 +2719,6 @@ fieldset {
   top: 0;
 }
 
-.page-content .wp-smiley,
-.entry-content .wp-smiley,
-.comment-content .wp-smiley {
-  border: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
-}
-
-/* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
-object {
-  max-width: 100%;
-}
-
-.size-medium {
-  width: 100%;
-}
-@media screen and (min-width: 481px) {
-  .size-medium {
-    width: 50%;
-  }
-}
-
-/*--------------------------------------------------------------
-## Captions
---------------------------------------------------------------*/
-.wp-caption {
-  margin-bottom: 1.5em;
-  max-width: 100%;
-}
-.wp-caption img[class*="wp-image-"] {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.wp-caption .size-large {
-  max-width: 600px;
-  width: 100%;
-}
-.wp-caption .size-large + .wp-caption-text, .wp-caption .size-large + .bbg__article-header__caption {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 600px;
-}
-.wp-caption .wp-caption-text, .wp-caption .bbg__article-header__caption {
-  margin: 0.8075em 0;
-}
-
-.wp-caption-text, .bbg__article-header__caption {
-  color: #323a45;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.7;
-  margin-top: 1rem;
-  text-align: left;
-}
-
-/* Mugshot used in the Soapbox on the homepage */
-.bbg__mugshot {
-  float: left;
-  margin-right: 2rem;
-  min-width: 100px;
-  width: 20%;
-}
-
-.bbg__mugshot__caption {
-  display: block;
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-weight: bold;
-  line-height: 1;
-  margin-top: -.8rem;
-}
-
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
 .gallery {
   margin-bottom: 1.5em;
 }
@@ -5606,81 +5526,6 @@ article {
   padding: .25rem 1rem;
 }
 
-/** ---------------
- * TABLES
- ------------------ */
-.type-post .usa-table,
-.type-post .usa-table-borderless {
-  margin: 0 auto;
-  min-width: auto;
-  max-width: 600px;
-  width: 100%;
-}
-.type-post .usa-table.bbg-full-width,
-.type-post .usa-table-borderless.bbg-full-width {
-  min-width: 100%;
-  max-width: auto;
-}
-
-.usa-table,
-.usa-table-borderless,
-.bbg__table-plain,
-.bbg__article__form--inline {
-  font-size: 1.3rem;
-}
-@media screen and (min-width: 481px) {
-  .usa-table,
-  .usa-table-borderless,
-  .bbg__table-plain,
-  .bbg__article__form--inline {
-    font-size: 1.6rem;
-  }
-}
-
-.bbg__table-plain, .bbg__article__form--inline {
-  display: block;
-  margin: 0 auto;
-  min-width: auto;
-  max-width: 600px;
-  width: 100%;
-}
-.bbg__table-plain th, .bbg__article__form--inline th,
-.bbg__table-plain td,
-.bbg__article__form--inline td {
-  border: none;
-  padding: 0 1.5rem;
-}
-
-/** ---------------
- * FORMS
- ------------------ */
-.bbg__article__form {
-  display: none;
-}
-.bbg__article__form .bbg__article__form-select--sub {
-  display: none;
-}
-
-.usa-fieldset-inputs .bbg__article__form-radio__label,
-.bbg__article__form-select--main label {
-  color: #757575;
-  font-size: 80%;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.bbg__article__form--inline fieldset {
-  display: table-row;
-}
-.bbg__article__form--inline legend {
-  display: table-caption;
-}
-.bbg__article__form--inline div {
-  display: table-cell;
-  padding-right: 6rem;
-}
-
 /** ARTICLE SHARE AREA */
 .bbg__article-share {
   margin-top: 0;
@@ -5790,9 +5635,175 @@ article {
   }
 }
 
+/** ---------------
+ * TABLES
+ ------------------ */
+.type-post .usa-table,
+.type-post .usa-table-borderless {
+  margin: 0 auto;
+  min-width: auto;
+  max-width: 600px;
+  width: 100%;
+}
+.type-post .usa-table.bbg-full-width,
+.type-post .usa-table-borderless.bbg-full-width {
+  min-width: 100%;
+  max-width: auto;
+}
+
+.usa-table,
+.usa-table-borderless,
+.bbg__table-plain,
+.bbg__article__form--inline {
+  font-size: 1.3rem;
+}
+@media screen and (min-width: 481px) {
+  .usa-table,
+  .usa-table-borderless,
+  .bbg__table-plain,
+  .bbg__article__form--inline {
+    font-size: 1.6rem;
+  }
+}
+
+.bbg__table-plain, .bbg__article__form--inline {
+  display: block;
+  margin: 0 auto;
+  min-width: auto;
+  max-width: 600px;
+  width: 100%;
+}
+.bbg__table-plain th, .bbg__article__form--inline th,
+.bbg__table-plain td,
+.bbg__article__form--inline td {
+  border: none;
+  padding: 0 1.5rem;
+}
+
+/** ---------------
+ * FORMS
+ ------------------ */
+.bbg__article__form {
+  display: none;
+}
+.bbg__article__form .bbg__article__form-select--sub {
+  display: none;
+}
+
+.usa-fieldset-inputs .bbg__article__form-radio__label,
+.bbg__article__form-select--main label {
+  color: #757575;
+  font-size: 80%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.bbg__article__form--inline fieldset {
+  display: table-row;
+}
+.bbg__article__form--inline legend {
+  display: table-caption;
+}
+.bbg__article__form--inline div {
+  display: table-cell;
+  padding-right: 6rem;
+}
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+.size-medium {
+  width: 100%;
+}
+@media screen and (min-width: 481px) {
+  .size-medium {
+    width: 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-caption .size-large {
+  max-width: 600px;
+  width: 100%;
+}
+.wp-caption .size-large + .wp-caption-text, .wp-caption .size-large + .bbg__article-header__caption {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+}
+.wp-caption .wp-caption-text, .wp-caption .bbg__article-header__caption {
+  margin: 0.8075em 0;
+}
+
+.wp-caption-text, .bbg__article-header__caption {
+  color: #323a45;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* Mugshot used in the Soapbox on the homepage */
+.bbg__mugshot {
+  float: left;
+  margin-right: 2rem;
+  min-width: 100px;
+  width: 20%;
+}
+@media screen and (min-width: 481px) {
+  .bbg__mugshot {
+    margin-top: 1rem;
+  }
+}
+
+.bbg__mugshot__caption {
+  display: block;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
 /*****************************/
 .bbg-embed-shell {
   max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.single .bbg-embed-shell {
   margin: 3rem auto;
 }
 
