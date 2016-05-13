@@ -2719,6 +2719,27 @@ fieldset {
   top: 0;
 }
 
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+.size-medium {
+  width: 100%;
+}
+@media screen and (min-width: 481px) {
+  .size-medium {
+    width: 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
 .gallery {
   margin-bottom: 1.5em;
 }
@@ -5227,43 +5248,6 @@ article {
   word-wrap: break-word;
 }
 
-.bbg-search-results--list {
-  margin-bottom: 3.75rem;
-}
-.bbg-search-results--list:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-@media screen and (min-width: 600px) {
-  .bbg-search-results--list {
-    font-size: 2.4rem;
-  }
-}
-.bbg-search-results--list:last-of-type {
-  margin-bottom: 0rem;
-}
-
-.bbg-search-results__title--list {
-  clear: none;
-}
-@media screen and (min-width: 600px) {
-  .bbg-search-results__title--list {
-    font-size: 3rem;
-  }
-}
-
-.bbg-search-results__excerpt-content {
-  font-size: 1.6rem;
-}
-
-.bbg-search-results__excerpt-categories {
-  color: #5b616b;
-  font-size: 1.3rem;
-}
-
 .bbg__article--no-featured-image .bbg__profile-photo {
   margin: 0 auto;
 }
@@ -5428,6 +5412,43 @@ article {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-style: italic;
   margin-bottom: 1rem;
+}
+
+.bbg-search-results--list {
+  margin-bottom: 3.75rem;
+}
+.bbg-search-results--list:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media screen and (min-width: 600px) {
+  .bbg-search-results--list {
+    font-size: 2.4rem;
+  }
+}
+.bbg-search-results--list:last-of-type {
+  margin-bottom: 0rem;
+}
+
+.bbg-search-results__title--list {
+  clear: none;
+}
+@media screen and (min-width: 600px) {
+  .bbg-search-results__title--list {
+    font-size: 3rem;
+  }
+}
+
+.bbg-search-results__excerpt-content {
+  font-size: 1.6rem;
+}
+
+.bbg-search-results__excerpt-categories {
+  color: #5b616b;
+  font-size: 1.3rem;
 }
 
 .comments-area {
@@ -5710,31 +5731,6 @@ article {
   padding-right: 6rem;
 }
 
-.page-content .wp-smiley,
-.entry-content .wp-smiley,
-.comment-content .wp-smiley {
-  border: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
-}
-
-/* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
-object {
-  max-width: 100%;
-}
-
-.size-medium {
-  width: 100%;
-}
-@media screen and (min-width: 481px) {
-  .size-medium {
-    width: 50%;
-  }
-}
-
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
@@ -5796,11 +5792,26 @@ object {
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
-/*****************************/
+/**
+ * CH01 - General iframes + embeds
+ * CH02 - YouTube video embeds
+ * CH03 - Facebook video embeds
+ * CH04 - TimelineJS iframe embeds
+**/
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+/****************************************/
+/*   RESPONSIVE YOUTUBE EMBEDS          */
+/*   used on homepage, posts and pages  */
 .bbg-embed-shell {
-  max-width: 600px;
   margin-right: auto;
   margin-left: auto;
+  max-width: 600px;
 }
 
 .single .bbg-embed-shell {
@@ -5829,6 +5840,9 @@ object {
   width: 100%;
 }
 
+/****************************************/
+/*   RESPONSIVE FACEBOOK EMBEDS         */
+/*   used on homepage, posts and pages  */
 .fb_iframe_widget_fluid_desktop,
 .fb_iframe_widget_fluid_desktop span,
 .fb_iframe_widget_fluid_desktop iframe {
@@ -5836,7 +5850,9 @@ object {
   display: block !important;
 }
 
-/****************************/
+/*********************************/
+/*   IFRAMES FOR TIMELINEJS      */
+/*   used on posts and pages     */
 .bbg__iframe__timelinejs {
   margin-right: -3rem;
   margin-left: -3rem;

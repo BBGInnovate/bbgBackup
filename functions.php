@@ -1476,7 +1476,7 @@ function senior_management_list_shortcode($atts) {
 add_shortcode('senior_management_list', 'senior_management_list_shortcode');
 
 
-function outputBroadcasters() {
+function outputBroadcasters($cols) {
 	$entityParentPage = get_page_by_path('broadcasters');
 	$qParams=array(
 		'post_type' => array('page'),
@@ -1521,7 +1521,7 @@ function outputBroadcasters() {
 }
 
 function broadcasters_list_shortcode($atts) {
-	return outputBroadcasters(); 
+	return outputBroadcasters($atts['cols']); 
 }
 add_shortcode('broadcasters_list', 'broadcasters_list_shortcode');
 
