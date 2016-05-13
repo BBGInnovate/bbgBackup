@@ -22,16 +22,26 @@ get_header(); ?>
 					$templates =  wp_get_theme()->get_page_templates();
 					foreach ( $templates as $template_filename => $template_name ) {
 						echo "<h3>$template_name ($template_filename)</h3>";
-						$pages=get_posts(array(
-						        'post_type' => 'page',
-							'meta_key' => '_wp_page_template',
-							'meta_value' => $template_filename
-						));
-						echo "<ul style='margin-left:20px'>";
-						foreach($pages as $page){
-							echo "<li><a target='_blank' href='" . get_permalink($page->ID) . "'>$page->post_title</a></li>";
+						$args = array(
+					        'post_type' => 'page',
+					        'posts_per_page' => 9999,
+					        'meta_query' => array(
+					            array(
+					                'key' => '_wp_page_template',
+					                'value' => $template_filename, // template name as stored in the dB
+					            )
+					        ),
+					    );
+						$custom_query = new WP_Query($args);
+						if ($custom_query -> have_posts()) {
+							echo "<ul style='margin-left:20px'>";
+							while ( $custom_query -> have_posts() )  {
+								$custom_query -> the_post();
+								echo "<li><a target='_blank' href='" . get_permalink(get_the_id()) . "'>".get_the_title()."</a></li>";
+							}
+							echo "</ul>";
 						}
-						echo "</ul>";
+						wp_reset_postdata();
 					}
 				 ?>
 			</div><!-- .usa-grid-full -->
