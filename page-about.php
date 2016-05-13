@@ -100,14 +100,25 @@ get_header();
 				$qParams = array(
 					'sort_column' => 'menu_order',
 					'hierarchical' => 1,
-					'meta_key' => 'show_in_parent_page',
-					'meta_value' => '1',
+					// 'meta_key' => 'show_in_parent_page', // limits query results to those with this key and the value below
+					// 'meta_value' => '1',
 					'child_of' => $currentPageID,
 					'post_type' => 'page',
 					'post_status' => 'publish'
 				);
 
 				$pages = get_pages($qParams);
+
+				/*print_array($pages);
+
+				function print_array($aArray) {
+				// Print a nicely formatted array representation:
+				  echo '<pre>';
+				  print_r($aArray);
+				  echo '</pre>';
+				}
+
+				die();*/
 
 			?>
 
@@ -139,12 +150,14 @@ get_header();
 
 					<?php
 						// Loop through the child pages
-						foreach( $pages as $page ) {
-							$introSection = $page->introduction;
-							$umbrellaSection = $page->umbrella_category;
+						foreach( $pages as $child ) {
+							$introSection = $child->introduction;
+							$umbrellaSection = $child->umbrella_category;
 
+							// If the section is an umbrella category with subcategories beneath it
 							if (!$introSection && $umbrellaSection) {
-								$excerpt = $page->post_excerpt;
+
+								$excerpt = $child->post_excerpt;
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 							?>
@@ -153,7 +166,7 @@ get_header();
 										<!-- Child page title -->
 										<h6 class="bbg-label">
 											<a href="<?php echo get_page_link( $page->ID ); ?>">
-												<?php echo $page->post_title; ?>
+												<?php echo $child->post_title; ?>
 											</a>
 										</h6>
 										<!-- Child page excerpt -->
@@ -165,39 +178,54 @@ get_header();
 									</div>
 									<!-- Grandchild pages -->
 									<?php
-										$childPageID = $page->ID;
+										$childPageID = $child->ID;
+										// echo $childPageID;
 
-										echo $childPageID;
+										foreach( $pages as $grandchild ) {
+											if ($grandchild->post_parent == $childPageID) {
+												/*echo $grandchild->post_title;
+												die();*/
 
-										/*$gParams = array(
-											'sort_column' => 'menu_order',
-											'hierarchical' => 1,
-											// 'meta_key' => 'show_in_parent_page',
-											// 'meta_value' => '1',
-											'child_of' => $childPageID,
-											'post_type' => 'page',
-											'post_status' => 'publish'
-										);
-
-										$pages = get_pages($gParams);*/
+												$excerpt = $grandchild->post_excerpt;
+												$excerpt = apply_filters( 'the_content', $excerpt );
+												$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+											?>
+												<article class="bbg-grid--1-2-2">
+													<div class="">
+														<!-- Child page title -->
+														<h6 class="bbg-label">
+															<a href="<?php echo get_page_link( $page->ID ); ?>">
+																<?php echo $grandchild->post_title; ?>
+															</a>
+														</h6>
+														<!-- Child page excerpt -->
+														<p class="">
+															<?php echo $excerpt; ?>
+														</p>
+													</div>
+												</article>
+										<?php
+											}
+										}
 									?>
 								</article>
 						<?php
+							// If the section is stand-alone without subcategories beneath it
 							} else if (!$introSection) {
-								$excerpt = $page->post_excerpt;
+								$excerpt = $child->post_excerpt;
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 							?>
-								<article class="bbg__entity bbg-grid--1-3-3">
+								<article class="bbg-grid--1-3-3">
 									<div class="">
 										<!-- Child page title -->
 										<h6 class="bbg-label">
 											<a href="<?php echo get_page_link( $page->ID ); ?>">
-												<?php echo $page->post_title; ?>
+												<?php echo $child->post_title; ?>
 											</a>
 										</h6>
 										<!-- Child page excerpt -->
-										<p class="bbg__entity__text-description">
+										<p class="">
 											<?php echo $excerpt; ?>
 										</p>
 									</div>
