@@ -99,18 +99,18 @@
 	@include media($medium-large-screen) {
 		.bbg__entity__icon,
 		.bbg-team__icon {
-			height: $bbg-avatar-medium;
-			width: $bbg-avatar-medium;
+			height: $bbg-avatar-small;
+			width: $bbg-avatar-small;
 		}
 
 		.bbg__entity__text,
 		.bbg-team__text {
-			padding-left: $bbg-avatar-medium + 10px;
+			padding-left: $bbg-avatar-small + 10px;
 		}
 
 		.bbg__entity__name,
 		.bbg-team__name {
-			font-size: 2.5rem;
+			font-size: 2.3rem;
 		}
 
 

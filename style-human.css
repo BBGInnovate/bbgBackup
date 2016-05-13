@@ -3227,16 +3227,16 @@ fieldset {
 @media screen and (min-width: 900px) {
   .bbg__article-sidebar.large .bbg__entity__icon,
   .bbg__article-sidebar.large .bbg-team__icon {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
   }
   .bbg__article-sidebar.large .bbg__entity__text,
   .bbg__article-sidebar.large .bbg-team__text {
-    padding-left: 80px;
+    padding-left: 60px;
   }
   .bbg__article-sidebar.large .bbg__entity__name,
   .bbg__article-sidebar.large .bbg-team__name {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
 }
 
