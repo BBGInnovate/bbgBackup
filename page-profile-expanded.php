@@ -182,17 +182,20 @@ get_header(); ?>
 
 						<?php 
 							//Add blog posts below the main content
-							if ( $relatedLinksTag != "" ) {
+							$relatedCategory=get_field('profile_related_category', $id);
+							
+							if ( $relatedCategory != "" ) {
 								$qParams2=array(
 									'post_type' => array('post'),
 									'posts_per_page' => 2,
-									'cat' => get_cat_id("John's take"),
+									'cat' => $relatedCategory->term_id,
 									'orderby' => 'date',
 									'order' => 'DESC'
 								);
+								$categoryUrl = get_category_link($relatedCategory->term_id);
 								$custom_query = new WP_Query( $qParams2 );
 								if ($custom_query -> have_posts()) {
-									echo '<h6 class="bbg-label"><a href="/blog/category/press-release/">John’s Blog</a></h6>';
+									echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$category->name.'</a></h6>';
 									echo '<div class="usa-grid-full">';
 									while ( $custom_query -> have_posts() )  {
 										$custom_query->the_post();
