@@ -190,5 +190,19 @@
 
 	}
 
+}
 
+//voicebox / soapbox / ceo box on the homepage
+.bbg__voice--featured {
+	background-color: $color-gray-lightest;
+	border-radius: $border-radius;
+	padding: $site-margins-medium;
+
+	@include media($medium-large-screen) {
+		padding: $site-margins;
+
+		p {
+			line-height: 2.2;
+		}
+	}
 }

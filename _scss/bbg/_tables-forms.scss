@@ -1,6 +1,19 @@
 /** ---------------
  * TABLES
  ------------------ */
+.type-post .usa-table,
+.type-post .usa-table-borderless {
+	margin: 0 auto;
+	min-width: auto;
+	max-width: $article-max-width;
+	width: 100%;
+
+	&.bbg-full-width {
+		min-width: 100%;
+		max-width: auto;
+	}
+}
+
 .usa-table,
 .usa-table-borderless,
 .bbg__table-plain {
@@ -65,3 +78,6 @@
 		}
 	}
 }
+
+
+
