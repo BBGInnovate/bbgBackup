@@ -96,16 +96,16 @@
 
 // Entities in the sidebar
 .bbg__article-sidebar.large {
-	.bbg__entity__icon,
-	.bbg-team__icon {
-		height: 70px;
-		width: 70px;
-	}
+	@include media($medium-large-screen) {
+		.bbg__entity__icon,
+		.bbg-team__icon {
+			height: $bbg-avatar-medium;
+			width: $bbg-avatar-medium;
+		}
 
-	.bbg__entity__text,
-	.bbg-team__text {
-		@include media($small-screen) {
-			padding-left: 70px + 10px;
+		.bbg__entity__text,
+		.bbg-team__text {
+			padding-left: $bbg-avatar-medium + 10px;
 		}
 	}
 }
