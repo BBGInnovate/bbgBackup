@@ -9,10 +9,10 @@
 
 $templateName = "customBBGHome";
 
-$siteIntroContent=get_field('site_setting_mission_statement','options','false');
-$siteIntroLink=get_field('site_setting_mission_statement_link', 'options', 'false');
-$impactCat=get_category_by_slug('impact');
-$impactPermalink=get_category_link($impactCat->term_id);		
+$siteIntroContent = get_field('site_setting_mission_statement','options','false');
+$siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
+$impactCat = get_category_by_slug('impact');
+$impactPermalink = get_category_link($impactCat->term_id);
 
 get_header();
 
@@ -65,14 +65,6 @@ get_header();
 					</a>
 					<div class="bbg-banner-box">
 						<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-						<?php 
-						/*
-						$description = get_bloginfo( 'description', 'display' );
-						if ( $description || is_customize_preview() ) : ?>
-							<h3 class="bbg-banner-site-description usa-heading-site-description"><?php echo $description; ?></h3>
-						<?php endif; 
-						*/
-						?>
 
 					</div>
 
@@ -89,17 +81,19 @@ get_header();
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
 			<?php
-				
 				echo '<h3 id="site-intro" class="usa-font-lead">';
 				echo $siteIntroContent;
 				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
 
-			<!-- Impact Stories -->
+
+
+
+			<!-- Portfolio -->
 			<section id="projects" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
+					<h6 class="bbg-label"><a href="/blog/category/impact/">Impact stories</a></h6>
 
 					<div class="usa-grid-full">
 					<?php
@@ -143,7 +137,7 @@ get_header();
 			<!-- Recent posts -->
 			<section id="recent-posts" class="usa-section">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">Recent posts</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">BBG News</a></h6>
 				</div>
 
 				<div class="usa-grid-full">
@@ -193,130 +187,129 @@ get_header();
 					endif;
 					wp_reset_query();
 				?>
-				</div>
-			</section><!-- Recent posts -->
+				</div><!-- Featured post -->
 
 
-			<!-- CEO Post -->
-			<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">
+				<!-- Headlines -->
+				<div class="usa-grid bbg__ceo-post">
 
-				<div class="bbg-grid--1-2-2">
+					<div class="bbg-grid--1-2-2">
+
+					<?php
+						/* NOTE: if there is a sticky post, we may wind up with an extra item.
+						So we hardcode the display code to ignore anything after the 3rd item */
+						$maxPostsToShow=2;
+						$qParams=array(
+							'post_type' => array('post'),
+							'posts_per_page' => $maxPostsToShow,
+							'orderby' => 'post_date',
+							'order' => 'desc',
+							'category__not_in' => (array(get_cat_id('Site Introduction'),
+														get_cat_id("John's take"),
+														get_cat_id('Contact')
+												)),
+							/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
+							'tax_query' => array(
+								//'relation' => 'AND',
+								array(
+									'taxonomy' => 'post_format',
+									'field' => 'slug',
+									'terms' => 'post-format-quote',
+									'operator' => 'NOT IN'
+								)
+							)
+						);
+						
+						query_posts($qParams);
+
+						if ( have_posts() ) :
+							$counter=0;
+							while ( have_posts() ) : the_post();
+									$gridClass = "bbg-grid--full-width";
+									$includeImage = FALSE;
+									get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+							endwhile;
+						endif;
+						wp_reset_query();
+					?>
+					</div>
+
 
 				<?php
-					/* NOTE: if there is a sticky post, we may wind up with an extra item.
-					So we hardcode the display code to ignore anything after the 3rd item */
-					$maxPostsToShow=2;
-					$qParams=array(
-						'post_type' => array('post'),
-						'posts_per_page' => $maxPostsToShow,
-						'orderby' => 'post_date',
-						'order' => 'desc',
-						'category__not_in' => (array(get_cat_id('Site Introduction'),
-													get_cat_id("John's take"),
-													get_cat_id('Contact')
-											)),
-						/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
-						'tax_query' => array(
-							//'relation' => 'AND',
-							array(
-								'taxonomy' => 'post_format',
-								'field' => 'slug',
-								'terms' => 'post-format-quote',
-								'operator' => 'NOT IN'
-							)
-						)
-					);
-					
-					query_posts($qParams);
+					$soap = get_field('homepage_soapbox_post', 'option');
+					if ($soap) {
+						$s = "";
+						$id=$soap->ID;
+						$soapCategory=wp_get_post_categories($id);
 
-					if ( have_posts() ) :
-						$counter=0;
-						while ( have_posts() ) : the_post();
-								$gridClass = "bbg-grid--full-width";
-								$includeImage = FALSE;
-								get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-						endwhile;
-					endif;
-					wp_reset_query();
-				?>
-				</div>
+						$isCEOPost=false;
+						$isSpeech=false;
+						$soapHeaderPermalink="";
+						$soapHeaderText="";
+						$soapPostPermalink=get_the_permalink($id);
+						$mugshot = "";
+						$mugshotName = "";
 
+						foreach ($soapCategory as $c) {
+							$cat = get_category( $c );
+							if ($cat->slug=="johns-take") {
+								$isCEOPost=true;
+								$soapHeaderText="From the CEO";
+								$soapHeaderPermalink=get_category_link($cat->term_id);
+								$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
+								$mugshotName = "John Lansing";
+							} else if ($cat->slug == "speech") {
+								$isSpeech = true;
+								$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
+								$mugshotName = get_post_meta( $id, 'mugshot_name', true );
 
-
-
-			<?php
-				$soap = get_field('homepage_soapbox_post', 'option');
-				if ($soap) {
-					$s = "";
-					$id=$soap->ID;
-					$soapCategory=wp_get_post_categories($id);
-
-					$isCEOPost=false;
-					$isSpeech=false;
-					$soapHeaderPermalink="";
-					$soapHeaderText="";
-					$soapPostPermalink=get_the_permalink($id);
-					$mugshot = "";
-					$mugshotName = "";
-
-					foreach ($soapCategory as $c) {
-						$cat = get_category( $c );
-						if ($cat->slug=="johns-take") {
-							$isCEOPost=true;
-							$soapHeaderText="From the CEO";
-							$soapHeaderPermalink=get_category_link($cat->term_id);
-							$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
-							$mugshotName = "John Lansing";
-						} else if ($cat->slug == "speech") {
-							$isSpeech = true;
-							$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
-							$mugshotName = get_post_meta( $id, 'mugshot_name', true );
-
-							if ($mugshotID) {
-								$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
-								$mugshot = $mugshot[0];
+								if ($mugshotID) {
+									$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
+									$mugshot = $mugshot[0];
+								}
 							}
 						}
+
+						$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
+						if ($soapHeaderPermalink != "") {
+							$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
+						}
+						
+						$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
+						$s .= get_the_title($id);
+						$s .= '</a></h2>';
+
+						$s .= '<p class="">';
+
+						//if ($isCEOPost) {
+						if ($mugshot != "") {
+							$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
+							if ($mugshotName != "") {
+								$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
+							} 
+							$s .= '</span>';
+						}
+
+						$s .= my_excerpt($id);
+						$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
+						$s .= '</div>';
+					} else {
+						$s = "";
+						
+						$someHeadlinesPermalink="http://google.com";
+						$s .= '<div class="bbg-grid--1-2-2 ">';
+						$s .= '<h6 class="bbg-label small"><a href="'.$someHeadlinesPermalink.'">SOME HEADLINES</a></h6>';
+						$s .= '<p>Some headlines will go here</p>';
+						$s .= '</div>';
 					}
-
-					$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
-					if ($soapHeaderPermalink != "") {
-						$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
-					}
-					
-					$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
-					$s .= get_the_title($id);
-					$s .= '</a></h2>';
-
-					$s .= '<p class="">';
-
-					//if ($isCEOPost) {
-					if ($mugshot != "") {
-						$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
-						if ($mugshotName != "") {
-							$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
-						} 
-						$s .= '</span>';
-					}
-
-					$s .= my_excerpt($id);
-					$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
-					$s .= '</div>';
-				} else {
-					$s = "";
-					
-					$someHeadlinesPermalink="http://google.com";
-					$s .= '<div class="bbg-grid--1-2-2 ">';
-					$s .= '<h6 class="bbg-label small"><a href="'.$someHeadlinesPermalink.'">SOME HEADLINES</a></h6>';
-					$s .= '<p>Some headlines will go here</p>';
-					$s .= '</div>';
-				}
-				echo $s;
-			?>
+					echo $s;
+				?>
+				</div><!-- headlines -->
+			</section><!-- .BBG News -->
 
 
 
-			</section><!-- ceo post experiment -->
+
 
 
 			<!-- Entity list -->
@@ -333,6 +326,8 @@ get_header();
 					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
 			</section><!-- entity list -->
+
+
 
 			<!-- Quotation -->
 			<section class="usa-section ">
