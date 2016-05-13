@@ -13,6 +13,10 @@
    template name: Full-width
  */
 
+$bannerPosition = get_field( 'adjust_the_banner_image', '', true);
+$videoUrl = get_field( 'featured_video_url', '', true );
+$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -21,7 +25,7 @@ get_header(); ?>
 			<div class="usa-grid-full">
 
 				<?php while ( have_posts() ) : the_post(); 
-					$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 

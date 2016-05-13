@@ -14,6 +14,7 @@
  */
 
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
+$videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 //$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
 
@@ -26,7 +27,7 @@ get_header(); ?>
 			<div class="usa-grid-full">
 
 				<?php while ( have_posts() ) : the_post(); 
-					$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
@@ -65,8 +66,11 @@ get_header(); ?>
 
 
 						<?php
-							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
-							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+							$hideFeaturedImage = FALSE;
+							if ($videoUrl!="") {
+								echo featured_video($videoUrl);
+								$hideFeaturedImage = TRUE;
+							} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 								echo '<div class="usa-grid-full">';
 								$featuredImageClass = "";
 								$featuredImageCutline="";
