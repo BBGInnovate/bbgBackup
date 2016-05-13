@@ -73,6 +73,9 @@ if ( have_posts() ) {
 		}	
 	}
 
+	$resolution=get_field('board_resolution_of_honor');
+
+
 	$ogDescription = get_the_excerpt();
 
 	rewind_posts();
@@ -114,6 +117,7 @@ get_header(); ?>
 			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+
 
 			?>
 
@@ -204,6 +208,12 @@ get_header(); ?>
 
 					<div class="bbg__article-sidebar">
 						<?php 
+							
+							if ($resolution) {
+								echo '<h3 class="bbg__sidebar-label">Resolution of Honor</h3>';
+								echo "<a href='" . $resolution['url'] ."'>" . $resolution['title'] .'</a><BR><BR>';
+							}
+
 							if ( $relatedLinksTag != "" ) {
 								$qParams2=array(
 									'post_type' => array('post'),
