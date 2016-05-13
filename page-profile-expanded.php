@@ -195,7 +195,7 @@ get_header(); ?>
 								$categoryUrl = get_category_link($relatedCategory->term_id);
 								$custom_query = new WP_Query( $qParams2 );
 								if ($custom_query -> have_posts()) {
-									echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$category->name.'</a></h6>';
+									echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
 									echo '<div class="usa-grid-full">';
 									while ( $custom_query -> have_posts() )  {
 										$custom_query->the_post();
