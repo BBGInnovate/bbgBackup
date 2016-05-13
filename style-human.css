@@ -4426,6 +4426,7 @@ article {
 
   .bbg__article-sidebar {
     float: right;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
     max-width: 17rem;
     width: 18%;
   }

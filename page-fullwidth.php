@@ -26,6 +26,7 @@ get_header(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 						<?php
+							/*
 							//If a featured video is set, include it.
 							//ELSE if a featured image is set, include it.
 							$hideFeaturedImage = FALSE;
@@ -52,6 +53,25 @@ get_header(); ?>
 										echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
 									echo '</div> <!-- usa-grid -->';
 								}
+							}
+							*/
+						?><!-- .bbg__article-header__thumbnail -->
+						<?php
+							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
+							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+								echo '<div class="usa-grid-full">';
+								$featuredImageClass = "";
+								$featuredImageCutline="";
+								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+								if ($thumbnail_image && isset($thumbnail_image[0])) {
+									$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+								}
+
+								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '</div>';
+								echo '</div> <!-- usa-grid-full -->';
 							}
 						?><!-- .bbg__article-header__thumbnail -->
 
