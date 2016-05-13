@@ -93,13 +93,16 @@ get_header();
 			?>
 			</section><!-- Site introduction -->
 
+			<!-- Impact Stories -->
+			<?php 
 
+				$impactCat=get_category_by_slug('impact');
+				$impactPermalink=get_category_link($impactCat->term_id);
 
-
-			<!-- Portfolio -->
+			?>
 			<section id="projects" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="/blog/category/press-release/">Impact stories</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
 
 					<div class="usa-grid-full">
 					<?php
@@ -317,48 +320,6 @@ get_header();
 
 
 			</section><!-- ceo post experiment -->
-
-
-
-			<?php
-			/*
-				$ceoCategory = get_category_by_slug('johns-take');
-				if ($ceoCategory) {
-					$qParams=array(
-						'post_type' => array('post'),
-						'posts_per_page' => 1,
-						'cat' => $ceoCategory->term_id
-					);
-					query_posts($qParams);
-
-					$ceoContent="";
-					if ( have_posts() ) :
-						$ceoContent .= '<section id="ceo-post" class="usa-section usa-grid bbg__ceo-post">';
-						$ceoLandingPermalink=get_category_link($ceoCategory->term_id);
-						$ceoContent .= '<h6 class="bbg-label"><a href="'.$ceoLandingPermalink.'">FROM THE CEO</a></h6>';
-						while ( have_posts() ) : the_post();
-							$ceoPostPermalink=get_the_permalink();
-
-							$ceoContent .= '<h2 class="bbg-blog__excerpt-title">';
-							$ceoContent .= get_the_title();
-
-							$ceoContent .= '</h2>';
-
-							$ceoContent .= '<h3 id="site-intro" class="usa-font-lead">';
-							$ceoContent .= '<img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg" class="bbg__ceo-post__mugshot" style="float: left; width: 20%; margin-right: 2rem; min-width: 100px;"/>';
-							$ceoContent .=  get_the_excerpt();
-							$ceoContent .= ' <a href="' . $ceoPostPermalink. '" class="bbg__read-more">READ MORE »</a></h3>';
-							$ceoContent .= '</section><!-- CEO Post -->';
-						endwhile;
-					endif;
-					echo $ceoContent;
-					wp_reset_query();
-				}
-				*/
-			?>
-
-
-
 
 
 			<!-- Entity list -->
