@@ -84,22 +84,12 @@ get_header();
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
 			<?php
-				$qParams=array(
-					'post_type' => array('post'),
-					'posts_per_page' => 1,
-					'cat' => get_cat_id('Site Introduction')
-				);
-				query_posts($qParams);
-
-				$siteIntroContent="";
-				if ( have_posts() ) :
-					while ( have_posts() ) : the_post();
-						echo '<h3 id="site-intro" class="usa-font-lead">';
-						echo get_the_content();
-						echo ' <a href="about-the-agency/" class="bbg__read-more">LEARN MORE »</a></h3>';
-					endwhile;
-				endif;
-				wp_reset_query();
+				
+				$siteIntroContent=get_field('site_setting_mission_statement','options','false');
+				$siteIntroLink=get_field('site_setting_mission_statement_link', 'options', 'false');
+				echo '<h3 id="site-intro" class="usa-font-lead">';
+				echo $siteIntroContent;
+				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
 
