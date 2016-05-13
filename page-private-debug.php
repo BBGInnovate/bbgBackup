@@ -22,7 +22,7 @@ get_header(); ?>
 					$templates =  wp_get_theme()->get_page_templates();
 					foreach ( $templates as $template_filename => $template_name ) {
 						echo "<h3>$template_name ($template_filename)</h3>";
-						get_posts(array(
+						$pages=get_posts(array(
 						        'post_type' => 'page',
 							'meta_key' => '_wp_page_template',
 							'meta_value' => $template_filename
