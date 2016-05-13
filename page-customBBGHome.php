@@ -9,6 +9,11 @@
 
 $templateName = "customBBGHome";
 
+$siteIntroContent=get_field('site_setting_mission_statement','options','false');
+$siteIntroLink=get_field('site_setting_mission_statement_link', 'options', 'false');
+$impactCat=get_category_by_slug('impact');
+$impactPermalink=get_category_link($impactCat->term_id);		
+
 get_header();
 
 ?>
@@ -85,8 +90,6 @@ get_header();
 			<section id="mission" class="usa-section usa-grid">
 			<?php
 				
-				$siteIntroContent=get_field('site_setting_mission_statement','options','false');
-				$siteIntroLink=get_field('site_setting_mission_statement_link', 'options', 'false');
 				echo '<h3 id="site-intro" class="usa-font-lead">';
 				echo $siteIntroContent;
 				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
@@ -94,12 +97,6 @@ get_header();
 			</section><!-- Site introduction -->
 
 			<!-- Impact Stories -->
-			<?php 
-
-				$impactCat=get_category_by_slug('impact');
-				$impactPermalink=get_category_link($impactCat->term_id);
-
-			?>
 			<section id="projects" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
@@ -125,19 +122,19 @@ get_header();
 
 					?>
 
-			<!-- Quotation -->
+					<!-- Quotation -->
 					<?php
 						$q=getRandomQuote('allEntities');
 						if ($q) {
 							outputQuote($q, "bbg-grid--1-3-3");
 						}
 					?>
-<!-- Quotation -->
+					<!-- Quotation -->
 
 
 					</div><!-- .usa-grid-full -->
 
-					<a href="/blog/category/press-release/">View all impact stories »</a>
+					<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
 
 				</div><!-- .usa-grid -->
 			</section><!-- .bbg-portfolio -->
@@ -336,8 +333,6 @@ get_header();
 					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
 			</section><!-- entity list -->
-
-
 
 			<!-- Quotation -->
 			<section class="usa-section ">
