@@ -81,11 +81,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import 'bbg/grid';
 @import 'bbg/patch';
 @import 'bbg/site';
+
 @import 'bbg/pages/page-home';
 @import 'bbg/pages/page-fuego';
-@import 'bbg/pages/page-search-results';
 @import 'bbg/pages/page-profile';
-@import 'bbg/comments';
-@import 'bbg/tables-forms';
-@import 'bbg/sharing';
-@import 'bbg/embeds';
+@import 'bbg/pages/page-search-results';
+
+@import 'bbg/components/comments';
+@import 'bbg/components/sharing';
+@import 'bbg/elements/tables-forms';
+@import 'bbg/media/media';

@@ -2728,13 +2728,6 @@ fieldset {
   padding: 0;
 }
 
-/* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
-object {
-  max-width: 100%;
-}
-
 .size-medium {
   width: 100%;
 }
@@ -2742,58 +2735,6 @@ object {
   .size-medium {
     width: 50%;
   }
-}
-
-/*--------------------------------------------------------------
-## Captions
---------------------------------------------------------------*/
-.wp-caption {
-  margin-bottom: 1.5em;
-  max-width: 100%;
-}
-.wp-caption img[class*="wp-image-"] {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.wp-caption .size-large {
-  max-width: 600px;
-  width: 100%;
-}
-.wp-caption .size-large + .wp-caption-text, .wp-caption .size-large + .bbg__article-header__caption {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 600px;
-}
-.wp-caption .wp-caption-text, .wp-caption .bbg__article-header__caption {
-  margin: 0.8075em 0;
-}
-
-.wp-caption-text, .bbg__article-header__caption {
-  color: #323a45;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.7;
-  margin-top: 1rem;
-  text-align: left;
-}
-
-/* Mugshot used in the Soapbox on the homepage */
-.bbg__mugshot {
-  float: left;
-  margin-right: 2rem;
-  min-width: 100px;
-  width: 20%;
-}
-
-.bbg__mugshot__caption {
-  display: block;
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-weight: bold;
-  line-height: 1;
-  margin-top: -.8rem;
 }
 
 /*--------------------------------------------------------------
@@ -5307,43 +5248,6 @@ article {
   word-wrap: break-word;
 }
 
-.bbg-search-results--list {
-  margin-bottom: 3.75rem;
-}
-.bbg-search-results--list:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-@media screen and (min-width: 600px) {
-  .bbg-search-results--list {
-    font-size: 2.4rem;
-  }
-}
-.bbg-search-results--list:last-of-type {
-  margin-bottom: 0rem;
-}
-
-.bbg-search-results__title--list {
-  clear: none;
-}
-@media screen and (min-width: 600px) {
-  .bbg-search-results__title--list {
-    font-size: 3rem;
-  }
-}
-
-.bbg-search-results__excerpt-content {
-  font-size: 1.6rem;
-}
-
-.bbg-search-results__excerpt-categories {
-  color: #5b616b;
-  font-size: 1.3rem;
-}
-
 .bbg__article--no-featured-image .bbg__profile-photo {
   margin: 0 auto;
 }
@@ -5510,6 +5414,43 @@ article {
   margin-bottom: 1rem;
 }
 
+.bbg-search-results--list {
+  margin-bottom: 3.75rem;
+}
+.bbg-search-results--list:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media screen and (min-width: 600px) {
+  .bbg-search-results--list {
+    font-size: 2.4rem;
+  }
+}
+.bbg-search-results--list:last-of-type {
+  margin-bottom: 0rem;
+}
+
+.bbg-search-results__title--list {
+  clear: none;
+}
+@media screen and (min-width: 600px) {
+  .bbg-search-results__title--list {
+    font-size: 3rem;
+  }
+}
+
+.bbg-search-results__excerpt-content {
+  font-size: 1.6rem;
+}
+
+.bbg-search-results__excerpt-categories {
+  color: #5b616b;
+  font-size: 1.3rem;
+}
+
 .comments-area {
   max-width: 600px;
   margin: 0 auto;
@@ -5604,81 +5545,6 @@ article {
   float: right;
   font-size: 1.3rem;
   padding: .25rem 1rem;
-}
-
-/** ---------------
- * TABLES
- ------------------ */
-.type-post .usa-table,
-.type-post .usa-table-borderless {
-  margin: 0 auto;
-  min-width: auto;
-  max-width: 600px;
-  width: 100%;
-}
-.type-post .usa-table.bbg-full-width,
-.type-post .usa-table-borderless.bbg-full-width {
-  min-width: 100%;
-  max-width: auto;
-}
-
-.usa-table,
-.usa-table-borderless,
-.bbg__table-plain,
-.bbg__article__form--inline {
-  font-size: 1.3rem;
-}
-@media screen and (min-width: 481px) {
-  .usa-table,
-  .usa-table-borderless,
-  .bbg__table-plain,
-  .bbg__article__form--inline {
-    font-size: 1.6rem;
-  }
-}
-
-.bbg__table-plain, .bbg__article__form--inline {
-  display: block;
-  margin: 0 auto;
-  min-width: auto;
-  max-width: 600px;
-  width: 100%;
-}
-.bbg__table-plain th, .bbg__article__form--inline th,
-.bbg__table-plain td,
-.bbg__article__form--inline td {
-  border: none;
-  padding: 0 1.5rem;
-}
-
-/** ---------------
- * FORMS
- ------------------ */
-.bbg__article__form {
-  display: none;
-}
-.bbg__article__form .bbg__article__form-select--sub {
-  display: none;
-}
-
-.usa-fieldset-inputs .bbg__article__form-radio__label,
-.bbg__article__form-select--main label {
-  color: #757575;
-  font-size: 80%;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.bbg__article__form--inline fieldset {
-  display: table-row;
-}
-.bbg__article__form--inline legend {
-  display: table-caption;
-}
-.bbg__article__form--inline div {
-  display: table-cell;
-  padding-right: 6rem;
 }
 
 /** ARTICLE SHARE AREA */
@@ -5790,9 +5656,165 @@ article {
   }
 }
 
-/*****************************/
-.bbg-embed-shell {
+/** ---------------
+ * TABLES
+ ------------------ */
+.type-post .usa-table,
+.type-post .usa-table-borderless {
+  margin: 0 auto;
+  min-width: auto;
   max-width: 600px;
+  width: 100%;
+}
+.type-post .usa-table.bbg-full-width,
+.type-post .usa-table-borderless.bbg-full-width {
+  min-width: 100%;
+  max-width: auto;
+}
+
+.usa-table,
+.usa-table-borderless,
+.bbg__table-plain,
+.bbg__article__form--inline {
+  font-size: 1.3rem;
+}
+@media screen and (min-width: 481px) {
+  .usa-table,
+  .usa-table-borderless,
+  .bbg__table-plain,
+  .bbg__article__form--inline {
+    font-size: 1.6rem;
+  }
+}
+
+.bbg__table-plain, .bbg__article__form--inline {
+  display: block;
+  margin: 0 auto;
+  min-width: auto;
+  max-width: 600px;
+  width: 100%;
+}
+.bbg__table-plain th, .bbg__article__form--inline th,
+.bbg__table-plain td,
+.bbg__article__form--inline td {
+  border: none;
+  padding: 0 1.5rem;
+}
+
+/** ---------------
+ * FORMS
+ ------------------ */
+.bbg__article__form {
+  display: none;
+}
+.bbg__article__form .bbg__article__form-select--sub {
+  display: none;
+}
+
+.usa-fieldset-inputs .bbg__article__form-radio__label,
+.bbg__article__form-select--main label {
+  color: #757575;
+  font-size: 80%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.bbg__article__form--inline fieldset {
+  display: table-row;
+}
+.bbg__article__form--inline legend {
+  display: table-caption;
+}
+.bbg__article__form--inline div {
+  display: table-cell;
+  padding-right: 6rem;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-caption .size-large {
+  max-width: 600px;
+  width: 100%;
+}
+.wp-caption .size-large + .wp-caption-text, .wp-caption .size-large + .bbg__article-header__caption {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+}
+.wp-caption .wp-caption-text, .wp-caption .bbg__article-header__caption {
+  margin: 0.8075em 0;
+}
+
+.wp-caption-text, .bbg__article-header__caption {
+  color: #323a45;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* Mugshot used in the Soapbox on the homepage */
+.bbg__mugshot {
+  float: left;
+  margin-right: 2rem;
+  min-width: 100px;
+  width: 20%;
+}
+@media screen and (min-width: 481px) {
+  .bbg__mugshot {
+    margin-top: 1rem;
+  }
+}
+
+.bbg__mugshot__caption {
+  display: block;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+/**
+ * CH01 - General iframes + embeds
+ * CH02 - YouTube video embeds
+ * CH03 - Facebook video embeds
+ * CH04 - TimelineJS iframe embeds
+**/
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+/****************************************/
+/*   RESPONSIVE YOUTUBE EMBEDS          */
+/*   used on homepage, posts and pages  */
+.bbg-embed-shell {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+}
+
+.single .bbg-embed-shell {
   margin: 3rem auto;
 }
 
@@ -5818,6 +5840,9 @@ article {
   width: 100%;
 }
 
+/****************************************/
+/*   RESPONSIVE FACEBOOK EMBEDS         */
+/*   used on homepage, posts and pages  */
 .fb_iframe_widget_fluid_desktop,
 .fb_iframe_widget_fluid_desktop span,
 .fb_iframe_widget_fluid_desktop iframe {
@@ -5825,7 +5850,9 @@ article {
   display: block !important;
 }
 
-/****************************/
+/*********************************/
+/*   IFRAMES FOR TIMELINEJS      */
+/*   used on posts and pages     */
 .bbg__iframe__timelinejs {
   margin-right: -3rem;
   margin-left: -3rem;
