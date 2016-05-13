@@ -1,13 +1,31 @@
+/**
+ * CH01 - General iframes + embeds
+ * CH02 - YouTube video embeds
+ * CH03 - Facebook video embeds
+ * CH04 - TimelineJS iframe embeds
+**/
 
-/*****************************/
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+
+
+/****************************************/
+/*   RESPONSIVE YOUTUBE EMBEDS          */
+/*   used on homepage, posts and pages  */
 
 // Responsive YouTube embeds
 .bbg-embed-shell {
-	max-width: $article-max-width;
 	margin: {
 		right: auto;
 		left: auto;
 	}
+	max-width: $article-max-width;
 }
 
 .single .bbg-embed-shell {
@@ -31,12 +49,17 @@
 .embed-container embed {
 	height: 100%;
 	position: absolute;
-	top: 0;
-	left: 0;
+		top: 0;
+		left: 0;
 	width: 100%;
 }
 
-// Facebook video embed
+
+
+/****************************************/
+/*   RESPONSIVE FACEBOOK EMBEDS         */
+/*   used on homepage, posts and pages  */
+
 .fb_iframe_widget_fluid_desktop,
 .fb_iframe_widget_fluid_desktop span,
 .fb_iframe_widget_fluid_desktop iframe {
@@ -45,8 +68,10 @@
 }
 
 
-/****************************/
-// Iframe for timelineJS
+
+/*********************************/
+/*   IFRAMES FOR TIMELINEJS      */
+/*   used on posts and pages     */
 
 .bbg__iframe__timelinejs {
 	margin: {
@@ -62,7 +87,6 @@
 			right: auto;
 			left: auto;
 		}
-		//max-width: $article-max-width;
 		width: 100%;
 	}
 }
