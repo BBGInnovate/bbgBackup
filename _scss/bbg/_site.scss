@@ -626,6 +626,136 @@ article {
 
 
 
+/******************************/
+/*   FEATURED QUOTATIONS      */
+/*   used on the homepage     */
+/*   and on the entity pages  */
+
+.bbg__quotation {
+	@include media($small-screen) {
+		text-align: center;
+	}
+
+	.bbg__quotation-text--large {
+		font-size: 2.5rem;
+		font-weight: 100;
+
+		@include media($medium-screen) {
+			font-size: 3rem;
+		}
+	}
+
+
+	.bbg__quotation-attribution__mugshot {
+		//border-radius: $border-radius;
+		border-radius: 50%;
+		height: auto;
+		margin-right: $site-margins-small;
+		min-width: 50px;
+		width: 50px;
+		display: table-cell;
+
+		@include media($medium-large-screen) {
+			min-width: 75px;
+			width: 75px;
+		}
+	}
+
+	.bbg__quotation-attribution__container {
+		display: inline;
+		margin: 0 auto;
+	}
+	.bbg__quotation-attribution {
+		font-family: $font-sans;
+		margin-top: $site-margins-medium;
+		display: table-row;
+
+		@include media($medium-large-screen) {
+			margin: {
+				right: auto;
+				left: auto;
+			};
+			max-width: 33%;
+		}
+	}
+
+	.bbg__quotation-attribution__text {
+		display: table-cell;
+		max-width: 200px;
+		text-align: left;
+		vertical-align: middle;
+
+		.bbg__quotation-attribution__name {
+			display: block;
+			font-size: 1.9rem;
+		}
+
+		.bbg__quotation-attribution__credit {
+			display: block;
+			font-size: 1.3rem;
+			line-height: 1.5;
+			text-transform: uppercase;
+		}
+	}
+
+
+	//Quotes inside the 3-column grid on the homepage.
+	&.bbg-grid--1-3-3 {
+		background-color: $color-gray-lightest;
+		border-radius: $border-radius;
+		margin-bottom: $site-margins-medium;
+		padding: 2rem;
+
+		.bbg__quotation-text--large {
+			font-weight: 500;
+			text-align: left;
+		}
+
+		@include media($medium-screen) {
+			.bbg__quotation-text--large {
+				font-size: 1.8rem;
+				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__text {
+				.bbg__quotation-attribution__name {
+					font-size: 1.6rem;
+				}
+
+				.bbg__quotation-attribution__credit {
+					font-size: 1.2rem;
+				}
+			}
+		}
+
+		@include media($medium-large-screen) {
+			.bbg__quotation-text--large {
+				font-size: 2.5rem;
+				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__text {
+				.bbg__quotation-attribution__name {
+					font-size: 1.9rem;
+				}
+
+				.bbg__quotation-attribution__credit {
+					font-size: 1.3rem;
+				}
+			}
+		}
+
+	}
+}
+
+.bbg__entity__pullquote {
+	margin-top: $site-margins-large;
+}
+
+
+
+
+
 /****************************************************/
 /* PAGE HEADER STYLES                               */
 /* We used these on innovation.bbg.gov              */

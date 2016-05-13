@@ -66,25 +66,26 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 
 // WordPress -------------- //
+
 @import '_wp/media/media';
 @import '_wp/modules/alignments';
-/*@import '_wp/navigation/menus';*/
 @import '_wp/layouts/sidebar-content';
 
 
 // BBG -------------- //
+
 /*@import 'bbg/variables-bbg'; MOVED ABOVE TO UPDATE FONTS */
 @import 'bbg/navigation/menus';
 @import 'bbg/author';
 @import 'bbg/blog';
 @import 'bbg/grid';
+@import 'bbg/patch';
 @import 'bbg/site';
 @import 'bbg/pages/page-home';
 @import 'bbg/pages/page-fuego';
-@import 'bbg/comments';
-@import 'bbg/patch';
-@import 'bbg/search-results';
-@import 'bbg/tables-forms';
-@import 'bbg/embeds';
-
+@import 'bbg/pages/page-search-results';
 @import 'bbg/pages/page-profile';
+@import 'bbg/comments';
+@import 'bbg/tables-forms';
+@import 'bbg/sharing';
+@import 'bbg/embeds';

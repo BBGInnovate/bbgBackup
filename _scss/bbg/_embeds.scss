@@ -1,0 +1,61 @@
+
+/*****************************/
+
+// Responsive YouTube embeds
+.bbg-embed-shell {
+	max-width: $article-max-width;
+	margin: $site-margins auto;
+}
+
+.bbg-embed-shell.bbg__featured-video {
+	max-width: $site-max-width;
+}
+
+.embed-container {
+	height: 0;
+	max-width: 100%;
+	position: relative;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+// Facebook video embed
+.fb_iframe_widget_fluid_desktop,
+.fb_iframe_widget_fluid_desktop span,
+.fb_iframe_widget_fluid_desktop iframe {
+	margin: 0 auto;
+	display: block !important;
+}
+
+
+/****************************/
+// Iframe for timelineJS
+
+.bbg__iframe__timelinejs {
+	margin: {
+		right: -$site-margins;
+		left: -$site-margins;
+	}
+	max-width: none;
+	width: 100%;
+	width: calc(100% + 6rem);
+
+	@include media($medium-large-screen) {
+		margin: {
+			right: auto;
+			left: auto;
+		}
+		//max-width: $article-max-width;
+		width: 100%;
+	}
+}

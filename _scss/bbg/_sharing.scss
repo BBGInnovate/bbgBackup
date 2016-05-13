@@ -1,0 +1,114 @@
+
+/** ARTICLE SHARE AREA */
+.bbg__article-share {
+	margin: {
+		top: 0;
+		bottom: 1rem;
+	}
+	@include media ($medium-screen) {
+		margin: {
+			top: 0;
+			bottom: 0;
+		}
+	}
+	@include media($medium-large-screen) {
+		float: left;
+		margin-top: -1%;
+		/* Added to overwrite the existing margin-top applied to all UL tags by USDS :: GIGI */
+	}
+}
+
+
+/* Article share links */
+.bbg__article-share__link {
+	display: inline-block;
+	margin-right: 3px;
+	a:hover,
+	a:focus {
+		background: none;
+		text-decoration: none;
+	}
+	@include media($medium-screen) {
+		margin-right: 2rem;
+	}
+
+	@include media($medium-large-screen) {
+		display: block;
+	}
+}
+
+.bbg__article-share__link:before {
+	content: "";
+}
+
+
+/* Article share links: icons */
+.bbg__article-share__icon {
+	background-color: $color-gray-lightest;
+	@include backgroundCover();
+	border-radius: $border-radius;
+	display: inline-block;
+	height: $share-icon-large;
+	margin-right: .5rem;
+	vertical-align: middle;
+	width: $share-icon-large;
+	@include media($medium-screen) {
+		border-radius: 0;
+		height: $share-icon-small;
+		width: $share-icon-small;
+	}
+}
+
+.bbg__contact__icon.email,
+.bbg__article-share__icon.email {
+	background: {
+		color: $color-gray-medium;
+		image: url(img/social-icons/png-white/social-icons_email.png);
+	}
+}
+
+.bbg__contact__icon.facebook,
+.bbg__article-share__icon.facebook {
+	background: {
+		color: $color-share-facebook;
+		image: url(img/social-icons/png-white/social-icons_facebook.png);
+	}
+}
+
+.bbg__contact__icon.twitter,
+.bbg__article-share__icon.twitter {
+	background: {
+		color: $color-share-twitter;
+		image: url(img/social-icons/png-white/social-icons_twitter.png);
+	}
+}
+
+.bbg__contact__icon.phone,
+.bbg__article-share__icon.phone {
+	background: {
+		color: $color-share-facebook;
+		image: url(img/social-icons/png-white/social-icons_phone.png);
+	}
+}
+
+.bbg__contact__icon.instagram,
+.bbg__article-share__icon.instagram {
+	background: {
+		color: $color-share-instagram;
+		image: url(img/social-icons/png-white/social-icons_instagram.png);
+	}
+}
+
+
+/* Article share links: text */
+.bbg__article-share__text {
+	display: none;
+	&:hover,
+	&:focus {
+		background: none;
+		text-decoration: underline;
+	}
+	@include media($medium-screen) {
+		display: inline-block;
+	}
+}
