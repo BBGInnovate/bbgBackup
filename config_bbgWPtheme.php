@@ -1,11 +1,38 @@
 <?php
+$fields = get_fields('options');
+if( $fields )
+{
+	foreach( $fields as $field_name => $value )
+	{
+		switch ($field_name) {
+			case "site_setting_default_og_description":
+				define("DEFAULT_DESCRIPTION", $value);
+			break;
+			case "site_setting_default_og_image":
+				$defaultImage = wp_get_attachment_image_src( $value , 'Full');
+				$defaultImageUrl = $defaultImage[0];
+				define("DEFAULT_IMAGE", $defaultImageUrl);
+			break;
+			case "site_setting_site_title_markup":
+				define("SITE_TITLE_MARKUP", $value);
+			break;
 
+		}
+	}
+}
 //this file is called in header.php.  These are used for various og/twitter/social media tags
-define("DEFAULT_DESCRIPTION", "The Broadcasting Board of Governors' mission is to inform, engage and connect people around the world in support of freedom and democracy.");
-define("DEFAULT_IMAGE", site_url() . "/wp-content/themes/bbginnovate/img/logo-agency-square.png");
+
+if (!defined('DEFAULT_DESCRIPTION')) {
+	define('DEFAULT_DESCRIPTION','');
+}
+if (!defined('DEFAULT_IMAGE')) {
+	define('DEFAULT_IMAGE','');
+}
+if (!defined('SITE_TITLE_MARKUP')) {
+	define('SITE_TITLE_MARKUP','');
+}
+
 define("DEFAULT_TITLE",get_bloginfo('name'));
 define("DEFAULT_AUTHOR","");
 define("DEFAULT_KEYWORDS","");
-//define("SITE_TITLE_MARKUP","Office of Digital <span class='bbg-header__site-title--breakline'>& Design Innovation</span>");
-define("SITE_TITLE_MARKUP","Broadcasting <span class='bbg-header__site-title--breakline'>Board of Governors</span>");
 ?>
