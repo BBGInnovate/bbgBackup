@@ -3234,6 +3234,10 @@ fieldset {
   .bbg__article-sidebar.large .bbg-team__text {
     padding-left: 80px;
   }
+  .bbg__article-sidebar.large .bbg__entity__name,
+  .bbg__article-sidebar.large .bbg-team__name {
+    font-size: 2.5rem;
+  }
 }
 
 .usa-intro.bbg__broadcasters__intro {
