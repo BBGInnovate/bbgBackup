@@ -13,7 +13,7 @@
    template name: 2-column
  */
 
-$secondaryColumnContent = get_field( 'secondary_column_content', $id, true );
+$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 //$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
 
 
