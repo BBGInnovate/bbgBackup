@@ -1653,6 +1653,15 @@ if ( function_exists ('acf_add_options_page') ) {
 		'position' => false,
 		'icon_url' => false
 	));
+	acf_add_options_page (array(
+		'page_title' => 'Site Settings',
+		'menu_title' => 'Site Settings',
+		'menu_slug' => 'site-settings',
+		'capability' => 'edit_posts',
+		'parent_slug' => '',
+		'position' => false,
+		'icon_url' => false
+	));
 }
 
 function my_excerpt($post_id) {
