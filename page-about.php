@@ -91,55 +91,35 @@ get_header();
 				</header>
 			</div>
 
-			<!-- Query the about pages by parent title -->
-			<?php
-				// Set variables for page title and id
-				$currentPageTitle = get_the_title();
-				$currentPageID = get_the_ID();
-
-				$qParams = array(
-					'sort_column' => 'menu_order',
-					'hierarchical' => 1,
-					// 'meta_key' => 'show_in_parent_page', // limits query results to those with this key and the value below
-					// 'meta_value' => '1',
-					'child_of' => $currentPageID,
-					'post_type' => 'page',
-					'post_status' => 'publish'
-				);
-
-				$pages = get_pages($qParams);
-
-				/*print_array($pages);
-
-				function print_array($aArray) {
-				// Print a nicely formatted array representation:
-				  echo '<pre>';
-				  print_r($aArray);
-				  echo '</pre>';
-				}
-
-				die();*/
-
-			?>
-
 			<!-- Page introduction -->
 			<section id="page-intro" class="usa-section usa-grid">
 				<?php
+					// Set variables for page title and id
+					$currentPageTitle = get_the_title();
+					$currentPageID = get_the_ID();
+
+					$introParams = array(
+						'meta_key' => 'introduction', // limits query results to those with this key + the value below
+						'meta_value' => '1',
+						'number' => '1',
+						'parent' => $currentPageID,
+						'post_type' => 'page',
+						'post_status' => 'publish',
+						'sort_column' => 'menu_order'
+					);
+
+					$introSection = get_pages($introParams);
+
 					// Loop through the child pages
-					foreach( $pages as $page ) {
-						$introSection = $page->introduction;
-
-						if ($introSection) {
-							$introContent = $page->post_content;
-							$introContent = apply_filters('the_content', $introContent);
-							$introContent = str_replace(']]>', ']]&gt;', $introContent);
-						?>
-
+					foreach( $introSection as $introText ) {
+						$introContent = $introText->post_content;
+						$introContent = apply_filters('the_content', $introContent);
+						$introContent = str_replace(']]>', ']]&gt;', $introContent);
+					?>
 						<div class="">
 							<?php echo $introContent; ?>
 						</div>
-						<?php
-						}
+					<?php
 					}
 				?>
 			</section>
@@ -147,71 +127,88 @@ get_header();
 			<!-- Child pages content -->
 			<section id="page-children" class="usa-section usa-grid ">
 				<div class="usa-grid-full">
-
 					<?php
+						$childrenParams = array(
+							'meta_key' => 'introduction',
+							'meta_value' => '0',
+							'parent' => $currentPageID,
+							'post_type' => 'page',
+							'post_status' => 'publish',
+							'sort_column' => 'menu_order'
+						);
+
+						$children = get_pages($childrenParams);
+
 						// Loop through the child pages
-						foreach( $pages as $child ) {
-							$introSection = $child->introduction;
-							$umbrellaSection = $child->umbrella_category;
+						foreach( $children as $child ) {
+							$showInParent = $child->show_in_parent_page;
+							$umbrella = $child->umbrella_category;
+							$childPageID = $child->ID;
 
 							// If the section is an umbrella category with subcategories beneath it
-							if (!$introSection && $umbrellaSection) {
+							if ($showInParent && $umbrella) {
 
 								$excerpt = $child->post_excerpt;
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 							?>
-								<article class="bbg__entity">
-									<div>
-										<!-- Child page title -->
-										<h6 class="bbg-label">
-											<a href="<?php echo get_page_link( $page->ID ); ?>">
-												<?php echo $child->post_title; ?>
-											</a>
-										</h6>
-										<!-- Child page excerpt -->
-										<div class="usa-intro bbg__broadcasters__intro">
-											<h3 class="usa-font-lead">
-												<?php echo $excerpt; ?>
-											</h3>
-										</div>
+							<article class="bbg__entity">
+								<div>
+									<!-- Child page title -->
+									<h6 class="bbg-label">
+										<a href="<?php echo get_page_link( $child->ID ); ?>">
+											<?php echo $child->post_title; ?>
+										</a>
+									</h6>
+									<!-- Child page excerpt -->
+									<div class="usa-intro bbg__broadcasters__intro">
+										<h3 class="usa-font-lead">
+											<?php echo $excerpt; ?>
+										</h3>
 									</div>
-									<!-- Grandchild pages -->
-									<?php
-										$childPageID = $child->ID;
-										// echo $childPageID;
+								</div>
+							</article>
 
-										foreach( $pages as $grandchild ) {
-											if ($grandchild->post_parent == $childPageID) {
-												/*echo $grandchild->post_title;
-												die();*/
+							<!-- Grandchild pages -->
+							<?php
+								$grandchildrenParams = array(
+									'sort_column' => 'menu_order',
+									'child_of' => $childPageID,
+									'parent' => $childPageID,
+									'post_type' => 'page',
+									'post_status' => 'publish'
+								);
 
-												$excerpt = $grandchild->post_excerpt;
-												$excerpt = apply_filters( 'the_content', $excerpt );
-												$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-											?>
-												<article class="bbg-grid--1-2-2">
-													<div class="">
-														<!-- Child page title -->
-														<h6 class="bbg-label">
-															<a href="<?php echo get_page_link( $page->ID ); ?>">
-																<?php echo $grandchild->post_title; ?>
-															</a>
-														</h6>
-														<!-- Child page excerpt -->
-														<p class="">
-															<?php echo $excerpt; ?>
-														</p>
-													</div>
-												</article>
-										<?php
-											}
-										}
+								$grandchildren = get_pages($grandchildrenParams);
+
+								foreach( $grandchildren as $grandchild ) {
+									$excerpt = $grandchild->post_excerpt;
+									$excerpt = apply_filters( 'the_content', $excerpt );
+									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 									?>
-								</article>
+
+									<article class="bbg-grid--1-2-2">
+										<div class="">
+											<!-- Child page title -->
+											<h3>
+												<a href="<?php echo get_page_link( $grandchild->ID ); ?>">
+													<?php echo $grandchild->post_title; ?>
+												</a>
+											</h3>
+											<!-- Child page excerpt -->
+											<p class="">
+												<?php
+													echo $excerpt;
+												?>
+											</p>
+										</div>
+									</article>
+								<?php
+								}
+							?>
 						<?php
 							// If the section is stand-alone without subcategories beneath it
-							} else if (!$introSection) {
+							} else if ($showInParent) {
 								$excerpt = $child->post_excerpt;
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
@@ -220,7 +217,7 @@ get_header();
 									<div class="">
 										<!-- Child page title -->
 										<h6 class="bbg-label">
-											<a href="<?php echo get_page_link( $page->ID ); ?>">
+											<a href="<?php echo get_page_link( $child->ID ); ?>">
 												<?php echo $child->post_title; ?>
 											</a>
 										</h6>
@@ -234,10 +231,10 @@ get_header();
 							}
 						}
 					?>
-
-					<?php wp_reset_postdata(); ?>
 				</div>
 			</section>
+
+			<?php wp_reset_postdata(); ?>
 
 		</main>
 	</div><!-- #primary .content-area -->
