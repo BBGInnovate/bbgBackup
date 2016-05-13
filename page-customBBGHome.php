@@ -223,7 +223,7 @@ get_header();
 						query_posts($qParams);
 
 						if ( have_posts() ) :
-							$counter=0;
+							$counter = 0;
 							while ( have_posts() ) : the_post();
 									$gridClass = "bbg-grid--full-width";
 									$includeImage = FALSE;
@@ -239,23 +239,23 @@ get_header();
 					$soap = get_field('homepage_soapbox_post', 'option');
 					if ($soap) {
 						$s = "";
-						$id=$soap->ID;
-						$soapCategory=wp_get_post_categories($id);
+						$id = $soap->ID;
+						$soapCategory = wp_get_post_categories($id);
 
-						$isCEOPost=false;
-						$isSpeech=false;
-						$soapHeaderPermalink="";
-						$soapHeaderText="";
-						$soapPostPermalink=get_the_permalink($id);
+						$isCEOPost = FALSE;
+						$isSpeech = FALSE;
+						$soapHeaderPermalink = "";
+						$soapHeaderText = "";
+						$soapPostPermalink = get_the_permalink($id);
 						$mugshot = "";
 						$mugshotName = "";
 
 						foreach ($soapCategory as $c) {
 							$cat = get_category( $c );
-							if ($cat->slug=="johns-take") {
-								$isCEOPost=true;
-								$soapHeaderText="From the CEO";
-								$soapHeaderPermalink=get_category_link($cat->term_id);
+							if ($cat->slug == "johns-take") {
+								$isCEOPost = TRUE;
+								$soapHeaderText = "From the CEO";
+								$soapHeaderPermalink = get_category_link($cat->term_id);
 								$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
 								$mugshotName = "John Lansing";
 							} else if ($cat->slug == "speech") {
@@ -333,7 +333,7 @@ get_header();
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<?php
-						$q=getRandomQuote('allEntities');
+						$q = getRandomQuote('allEntities');
 						if ($q) {
 							outputQuote($q);
 						}

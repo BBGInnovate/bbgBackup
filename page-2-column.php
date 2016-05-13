@@ -10,8 +10,12 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Full-width
+   template name: 2-column
  */
+
+$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+//$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
+
 
 get_header(); ?>
 
@@ -72,13 +76,60 @@ get_header(); ?>
 							<header class="entry-header">
 								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 							</header><!-- .entry-header -->
+
+
+
+
+
+
+
+							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+								<div class="bbg__profile__content">
+								<?php the_content(); ?>
+								</div>
+
+
+
+								<?php 
+									//Add blog posts below the main content
+									$relatedCategory=get_field('profile_related_category', $id);
+									
+									if ( $relatedCategory != "" ) {
+										$qParams2=array(
+											'post_type' => array('post'),
+											'posts_per_page' => 2,
+											'cat' => $relatedCategory->term_id,
+											'orderby' => 'date',
+											'order' => 'DESC'
+										);
+										$categoryUrl = get_category_link($relatedCategory->term_id);
+										$custom_query = new WP_Query( $qParams2 );
+										if ($custom_query -> have_posts()) {
+											echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
+											echo '<div class="usa-grid-full">';
+											while ( $custom_query -> have_posts() )  {
+												$custom_query->the_post();
+												get_template_part( 'template-parts/content-portfolio', get_post_format() );
+											}
+											echo '</div>';
+										}
+										wp_reset_postdata();
+									}
+								?>
+
+							</div><!-- .entry-content -->
+
+							<div class="bbg__article-sidebar large">
+
+								<?php 
+									if ( $secondaryColumnContent != "" ) {
+										echo $secondaryColumnContent;
+									}
+								?>
+
+							</div><!-- .bbg__article-sidebar -->
+
 						</div>
-
-
-
-						<div class="usa-grid">
-							<?php the_content(); ?>
-						</div><!-- .usa-grid -->
 
 
 
@@ -97,8 +148,10 @@ get_header(); ?>
 								?>
 							</footer><!-- .entry-footer -->
 						</div><!-- .usa-grid -->
+
+
 					</article><!-- #post-## -->
-	
+
 
 					<div class="bbg-post-footer">
 					<?php

@@ -70,6 +70,7 @@
 	}
 }
 
+
 .bbg__entity__text,
 .bbg-team__text {
 	@include media($small-screen) {
@@ -92,6 +93,30 @@
 	margin-top: 0;
 	max-width: $article-max-width;
 }
+
+// Entities in the sidebar
+.bbg__article-sidebar.large {
+	@include media($medium-large-screen) {
+		.bbg__entity__icon,
+		.bbg-team__icon {
+			height: $bbg-avatar-medium;
+			width: $bbg-avatar-medium;
+		}
+
+		.bbg__entity__text,
+		.bbg-team__text {
+			padding-left: $bbg-avatar-medium + 10px;
+		}
+
+		.bbg__entity__name,
+		.bbg-team__name {
+			font-size: 2.5rem;
+		}
+
+
+	}
+}
+
 
 .usa-intro.bbg__broadcasters__intro {
 	margin-bottom: $site-margins;

@@ -1486,6 +1486,10 @@ function outputBroadcasters($cols) {
 		'meta_key' => 'entity_year_established',
 		'order' => 'ASC'
 	);
+	$columnsClass = "";
+	if ($cols == 2){
+		$columnsClass = " bbg-grid--1-1-1-2";
+	}
 
 	$s = '';
 	$s .= '<div class="usa-grid-full">';
@@ -1502,7 +1506,7 @@ function outputBroadcasters($cols) {
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 
-				$s .= '<article class="bbg__entity bbg-grid--1-1-1-2">';
+				$s .= '<article class="bbg__entity'. $columnsClass .'">';
 				$s .=  '<div class="bbg-avatar__container bbg__entity__icon">';
 				$s .=  '<a href="'.$link.'" tabindex="-1">';
 				$s .=  '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
