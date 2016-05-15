@@ -126,7 +126,7 @@ body:not(.home) .menu-all-pages-container {
 }
 
 
-@include media($medium-screen) {
+@include media($medium-large-screen) {
 /*@media screen and (min-width: 37.5em) {*/
 	.menu-toggle {
 		display: none;

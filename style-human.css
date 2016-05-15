@@ -2943,7 +2943,7 @@ fieldset {
   z-index: 9998;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   /*@media screen and (min-width: 37.5em) {*/
   .menu-toggle {
     display: none;
