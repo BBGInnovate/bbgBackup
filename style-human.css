@@ -3404,7 +3404,6 @@ fieldset {
 /* Featured image */
 .bbg__article-header__thumbnail--large {
   line-height: 0;
-  margin-top: 3rem;
   margin-bottom: 3rem;
   max-height: 624px;
   overflow: hidden;
@@ -4228,7 +4227,6 @@ img > a:focus,
   }
 }
 .bbg-label--mobile.large, .bbg-label.large {
-  margin-top: 3rem;
   margin-bottom: 0;
 }
 @media screen and (min-width: 481px) {
@@ -4262,18 +4260,23 @@ article {
 /******************************/
 /* SITE TITLE AND HEADER      */
 /* used on all internal pages */
-.bbg-header__container {
+.bbg-header__container, .bbg-header__container--home {
+  margin-bottom: 3rem;
   padding-right: 6rem;
 }
-.bbg-header__container:after {
+.bbg-header__container:after, .bbg-header__container--home:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.bbg-header__container:focus {
+.bbg-header__container:focus, .bbg-header__container--home:focus {
   background: none;
+}
+
+.bbg-header__container--home {
+  margin-bottom: 0;
 }
 
 .bbg-header__link {
@@ -4342,19 +4345,6 @@ article {
 /*    2- and 3-COLUMN PAGE STRUCTURE               */
 /*    3-column: used on most posts and many pages  */
 /*    2-column: used on expanded profiles e.g. CEO */
-.bbg__profile-header__banner {
-  background-size: cover;
-  background-position: center center;
-  height: 250px;
-  margin-bottom: 0;
-  width: 100%;
-}
-@media screen and (min-width: 900px) {
-  .bbg__profile-header__banner {
-    height: 400px;
-  }
-}
-
 .bbg__article-header {
   margin-bottom: 3rem;
 }
@@ -4364,6 +4354,22 @@ article {
   height: 0;
   clear: both;
   visibility: hidden;
+}
+
+.bbg__article-header__banner, .bbg__article-header__banner--profile {
+  background-size: cover;
+  background-position: center center;
+  height: 250px;
+  width: 100%;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-header__banner, .bbg__article-header__banner--profile {
+    height: 400px;
+  }
+}
+
+.bbg__article-header__banner--profile {
+  margin-bottom: 0;
 }
 
 .bbg__article-sidebar {

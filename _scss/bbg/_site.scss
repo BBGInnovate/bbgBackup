@@ -151,7 +151,7 @@ img,
 	&--mobile.large,
 	&.large {
 		margin: {
-			top: $site-margins;
+			//top: $site-margins;
 			bottom: 0;
 		}
 
@@ -191,11 +191,19 @@ article {
 
 .bbg-header__container {
 	@include clearfix();
+	margin-bottom: $site-margins;
 	padding-right: $site-margins-large; // bump down at small widths so it doesn't hit the navigation dropdown button
+
 	&:focus {
 		background: none;
 	}
 }
+
+.bbg-header__container--home {
+	@extend .bbg-header__container;
+	margin-bottom: 0;
+}
+
 
 .bbg-header__link {
 	padding: 0;
@@ -262,13 +270,18 @@ article {
 /*    3-column: used on most posts and many pages  */
 /*    2-column: used on expanded profiles e.g. CEO */
 
-.bbg__profile-header__banner {
+
+.bbg__article-header {
+	@include clearfix();
+	margin-bottom: $site-margins;
+}
+
+.bbg__article-header__banner {
 	background: {
 		size: cover;
 		position: center center; //default positioning, maybe be set in post.
 	}
 	height: 250px;
-	margin-bottom: 0;
 	width: 100%;
 
 	@include media($medium-large-screen) {
@@ -276,10 +289,11 @@ article {
 	}
 }
 
-.bbg__article-header {
-	@include clearfix();
-	margin-bottom: $site-margins;
+.bbg__article-header__banner--profile {
+	@extend .bbg__article-header__banner;
+	margin-bottom: 0;
 }
+
 
 .bbg__article-sidebar {
 	margin: 0 auto;

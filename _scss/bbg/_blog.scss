@@ -4,12 +4,13 @@
 .bbg__article-header__thumbnail--large {
 	line-height: 0;
 	margin: {
-		top: $site-margins;
+		//top: $site-margins;
 		bottom: $site-margins;
 	}
 	max-height: 624px;
 	overflow: hidden;
 	position: relative;
+
 	img {
 		width: 100%;
 	}

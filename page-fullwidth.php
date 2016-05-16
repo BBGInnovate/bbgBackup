@@ -73,7 +73,7 @@ get_header(); ?>
 
 								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
 								echo '</div>';
 								echo '</div> <!-- usa-grid-full -->';
 							}
@@ -82,8 +82,6 @@ get_header(); ?>
 						<div class="usa-grid">
 							<header class="entry-header">
 
-								<?php /* echo bbginnovate_post_categories(); */ ?>
-								<!-- .bbg-label -->
 								<?php if($post->post_parent) {
 									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
