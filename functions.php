@@ -594,7 +594,7 @@ add_filter('embed_oembed_html', 'custom_youtube_settings');
 function featured_video ($url) {
 	if(strpos($url, 'facebook.com')) {
 		echo apply_filters('the_content',$url);
-	} else { 
+	} else {
 		//if(strpos($code, 'youtu.be') !== false || strpos($code, 'youtube.com') !== false)
 		$url = str_replace("watch?v=", "embed/", $url);
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container'>";
@@ -602,7 +602,7 @@ function featured_video ($url) {
 		$return.="</div></div>";
 	}
 
-	
+
 	return $return;
 }
 
@@ -914,10 +914,22 @@ endif;
 
 
 // Add shortcode reference to Innovation Series on old posts and pages
-function innovation_series_shortcode() {
-	return '<p class="bbg-tagline">This post originally appeared on <a href="http://www.innovation-series.com/" target="_blank">Innovation Series</a>.</p>';
+// function innovation_series_shortcode() {
+// 	return '<p class="bbg-tagline">This post originally appeared on <a href="http://www.innovation-series.com/" target="_blank">Innovation Series</a>.</p>';
+// }
+// add_shortcode('tagline', 'innovation_series_shortcode');
+
+// Add shortcode reference for the BBG mission
+function mission_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'org' => 'Broadcasting Board of Governors',
+    ), $atts );
+
+    return "The mission of the {$a['org']} is to inform, engage, and connect people around the world in support of freedom and democracy.";
 }
-add_shortcode('tagline', 'innovation_series_shortcode');
+
+add_shortcode( 'mission', 'mission_shortcode' );
+
 
 // Add shortcode reference for the number of supported languages
 function languages_shortcode() {
@@ -1151,10 +1163,10 @@ function outputJoblist() {
 		$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 	} else {
 		$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
-		
+
 		for ($i=0; $i < count($jobs); $i++) {
 			$j=$jobs[$i];
-			//var_dump($j); 
+			//var_dump($j);
 			$url = $j['url'];
 			$title=$j['position_title'];
 			$startDate=$j['start_date'];
@@ -1190,11 +1202,6 @@ function jobs_shortcode() {
 	return outputJoblist();
 }
 add_shortcode('jobslist', 'jobs_shortcode');
-
-
-
-
-
 
 
 function getFeed($url,$id) {
@@ -1339,7 +1346,7 @@ function special_committee_list_shortcode($atts) {
 add_shortcode('special_committee_list', 'special_committee_list_shortcode');
 
 function enqueue_chosen_js() {
- 	wp_enqueue_script( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.jquery.min.js', array('jquery')); 
+ 	wp_enqueue_script( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.jquery.min.js', array('jquery'));
 	wp_enqueue_style( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.min.css');
 }
 add_action('admin_enqueue_scripts', 'enqueue_chosen_js', 2000);
@@ -1433,7 +1440,7 @@ function outputBoardMembers($showActive) {
 		}
 	}
 	$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>' . $formerGovernorsLink;
-	
+
 	return $boardStr;
 }
 function board_member_list_shortcode($atts) {
@@ -1460,7 +1467,7 @@ function outputSeniorManagement($type) {
 	$boardStr="";
 	$ceoStr="";
 	$granteeStr="";
-	
+
 	while ( $custom_query->have_posts() )  {
 		$custom_query->the_post();
 		$id=get_the_ID();
@@ -1483,7 +1490,7 @@ function outputSeniorManagement($type) {
 			$profileName = get_the_title(); // . ', ' . $occupation;
 
 			$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-				$b.=  '<h3 class="bbg__profile-excerpt__name">'; 
+				$b.=  '<h3 class="bbg__profile-excerpt__name">';
 					$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
 				$b.=  '</h3>';
 
@@ -1524,7 +1531,7 @@ function outputSeniorManagement($type) {
 }
 
 function senior_management_list_shortcode($atts) {
-	return outputSeniorManagement($atts['type']); 
+	return outputSeniorManagement($atts['type']);
 }
 add_shortcode('senior_management_list', 'senior_management_list_shortcode');
 
@@ -1578,16 +1585,9 @@ function outputBroadcasters($cols) {
 }
 
 function broadcasters_list_shortcode($atts) {
-	return outputBroadcasters($atts['cols']); 
+	return outputBroadcasters($atts['cols']);
 }
 add_shortcode('broadcasters_list', 'broadcasters_list_shortcode');
-
-
-
-
-
-
-
 
 
 add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
@@ -1632,7 +1632,7 @@ function getAllQuotes($entity) {
 			'cat' => get_cat_id($entity)
 		);
 	}
-	
+
 	$quotes=array();
 	$custom_query = new WP_Query($qParams);
 	while ( $custom_query -> have_posts() )  {
@@ -1671,13 +1671,13 @@ function getRandomQuote($entity) {
 	$allQuotes = getAllQuotes($entity);
 	$returnVal = false;
 	if (count($allQuotes)) {
-		$randKey = array_rand($allQuotes);	
+		$randKey = array_rand($allQuotes);
 		$returnVal = $allQuotes[$randKey];
 	}
 	return $returnVal;
 }
 
-function outputQuote($q, $class="") { 
+function outputQuote($q, $class="") {
 	$quoteDate = $q['quoteDate'];
 	$ID = $q['ID'];
 	$url = $q['url'];
