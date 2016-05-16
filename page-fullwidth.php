@@ -65,10 +65,10 @@ get_header(); ?>
 							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 								echo '<div class="usa-grid-full">';
 								$featuredImageClass = "";
-								$featuredImageCutline="";
+								$featuredImageCutline = "";
 								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
 								if ($thumbnail_image && isset($thumbnail_image[0])) {
-									$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+									$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
 								}
 
 								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
@@ -80,20 +80,20 @@ get_header(); ?>
 						?><!-- .bbg__article-header__thumbnail -->
 
 						<div class="usa-grid">
-
-						<?php /* echo bbginnovate_post_categories(); */ ?>
-						<!-- .bbg-label -->
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-
-						<?php } ?>
-
-
 							<header class="entry-header">
+
+								<?php /* echo bbginnovate_post_categories(); */ ?>
+								<!-- .bbg-label -->
+								<?php if($post->post_parent) {
+									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+									$parent_link = get_permalink($post->post_parent);
+								?>
+								<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+
+								<?php } ?>
+
+
 								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 							</header><!-- .entry-header -->
 						</div>
