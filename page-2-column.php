@@ -17,6 +17,7 @@ $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 $headline = get_field( 'headline', '', true );
+$headlineStr = "";
 //$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
 
 
@@ -66,13 +67,13 @@ get_header(); ?>
 									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 									$parent_link = get_permalink($post->post_parent);
-								?>
-								<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+									?>
+									<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 								<?php } else{ ?>
-								<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>
-								<h1><?php echo $headline; ?></h1>
+									<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>
+									<?php $headlineStr = "<h1>" . $headline . "</h1>"; ?>
 								<?php } ?>
 
 							</header><!-- .entry-header -->
@@ -85,6 +86,8 @@ get_header(); ?>
 
 							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
 								<div class="bbg__profile__content">
+								<?php echo $headlineStr; ?>
+
 								<?php the_content(); ?>
 								</div>
 
