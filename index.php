@@ -16,14 +16,14 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="usa-grid-full" style="margin-top: 3rem;">
+			<div class="usa-grid-full">
 
 			<?php if ( have_posts() ) : ?>
 
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h6 class="bbg-label--mobile large">Blog</h6>
+					<h6 class="bbg-label--mobile large">News and information</h6>
 				</header><!-- .page-header -->
 			</div>
 
