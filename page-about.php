@@ -59,117 +59,79 @@ get_header();
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 				</header>
 			</div>
-
-			<!-- Child pages content -->
 			<section id="page-children" class="usa-section usa-grid ">
-				<div class="usa-grid-full">
-					<?php
-						$childrenParams = array(
-							'meta_key' => 'introduction',
-							'meta_value' => '0',
-							'parent' => $currentPageID,
-							'post_type' => 'page',
-							'post_status' => 'publish',
-							'sort_column' => 'menu_order'
-						);
-
-						$children = get_pages($childrenParams);
-
-						// Loop through the child pages
-						foreach( $children as $child ) {
-							$showInParent = $child->show_in_parent_page;
-							$umbrella = $child->umbrella_category;
-							$childPageID = $child->ID;
-
-							// If the section is an umbrella category with subcategories beneath it
-							if ($showInParent && $umbrella) {
-
-								$excerpt = $child->post_excerpt;
-								$excerpt = apply_filters( 'the_content', $excerpt );
-								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-							?>
-							<article class="bbg__entity">
-								<div>
-									<!-- Child page title -->
-									<h6 class="bbg-label">
-										<a href="<?php echo get_page_link( $child->ID ); ?>">
-											<?php echo $child->post_title; ?>
-										</a>
-									</h6>
-									<!-- Child page excerpt -->
-									<div class="usa-intro bbg__broadcasters__intro">
-										<h3 class="usa-font-lead">
-											<?php echo $excerpt; ?>
-										</h3>
-									</div>
-								</div>
-							</article>
-
-							<!-- Grandchild pages -->
-							<?php
-								$grandchildrenParams = array(
-									'sort_column' => 'menu_order',
-									'child_of' => $childPageID,
-									'parent' => $childPageID,
-									'post_type' => 'page',
-									'post_status' => 'publish'
-								);
-
-								$grandchildren = get_pages($grandchildrenParams);
-
-								foreach( $grandchildren as $grandchild ) {
-									$excerpt = $grandchild->post_excerpt;
-									$excerpt = apply_filters( 'the_content', $excerpt );
-									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-									?>
-
-									<article class="bbg-grid--1-2-2">
-										<div class="">
-											<!-- Child page title -->
-											<h3>
-												<a href="<?php echo get_page_link( $grandchild->ID ); ?>">
-													<?php echo $grandchild->post_title; ?>
-												</a>
-											</h3>
-											<!-- Child page excerpt -->
-											<p class="">
-												<?php
-													echo $excerpt;
-												?>
-											</p>
-										</div>
-									</article>
-								<?php
-								}
-							?>
-						<?php
-							// If the section is stand-alone without subcategories beneath it
-							} else if ($showInParent) {
-								$excerpt = $child->post_excerpt;
-								$excerpt = apply_filters( 'the_content', $excerpt );
-								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-							?>
-								<article class="bbg-grid--1-3-3">
-									<div class="">
-										<!-- Child page title -->
-										<h6 class="bbg-label">
-											<a href="<?php echo get_page_link( $child->ID ); ?>">
-												<?php echo $child->post_title; ?>
-											</a>
-										</h6>
-										<!-- Child page excerpt -->
-										<p class="">
-											<?php echo $excerpt; ?>
-										</p>
-									</div>
-								</article>
-						<?php
+			<?php
+				// check if the flexible content field has rows of data
+				if( have_rows('about_flexible_page_rows') ):
+					while ( have_rows('about_flexible_page_rows') ) : the_row();
+						
+						//we wrap a  usa-grid container around every row.
+						echo '<div class="usa-grid-full">';	
+						
+						if( get_row_layout() == 'about_multicolumn' ):
+							
+							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
+							$relatedPages=get_sub_field('about_muliticolumn_related_pages');
+							$containerClass="bbg__entity";
+							if (count($relatedPages) == 2) {
+								$containerClass='bbg-grid--1-2-2';
+							} else if (count($relatedPages)==3) {
+								$containerClass='bbg-grid--1-3-3';
 							}
-						}
-					?>
-				</div>
-			</section>
+							foreach ($relatedPages as $rp) {
+								echo "<article class='$containerClass'>";
+								$excerpt = my_excerpt($rp->ID);
+								$excerpt = apply_filters('the_content', $excerpt);
+								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+								$title = get_the_title($rp->ID);
+								$url = get_the_permalink($rp->ID);
+								echo "<h6 class='bbg-label'><a href='$url'>$title</a></h6>";
+								echo $excerpt;
+								echo "</article>";
+							}
+							/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
+						elseif( get_row_layout() == 'about_umbrella_page' ): 
+							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
+							$relatedPages=get_sub_field('about_umbrella_related_pages');
+							$containerClass="bbg__entity";
+							if (count($relatedPages) == 2) {
+								$containerClass='bbg-grid--1-2-2';
+							} else if (count($relatedPages)==3) {
+								$containerClass='bbg-grid--1-3-3';
+							}
+							$labelText=get_sub_field('about_umbrella_label');
+							$labelLink=get_sub_field('about_umbrella_label_link');
+							$introText=get_sub_field('about_umbrella_intro_text');
 
+							//allow shortcodes in intro text
+							$introText = apply_filters('the_content', $introText);
+							$introText = str_replace(']]>', ']]&gt;', $introText);
+							
+							if ($labelLink) {
+								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
+							} else {
+								echo "<h6 class='bbg-label'>$labelText</h6>";
+							}
+							echo "<article class='bbg__entity'>$introText</h6>";
+							foreach ($relatedPages as $rp) {
+								echo "<article class='$containerClass'>";
+								$excerpt = my_excerpt($rp->ID);
+								$excerpt = apply_filters('the_content', $excerpt);
+								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+								$title = get_the_title($rp->ID);
+								$url = get_the_permalink($rp->ID);
+								echo "<h3 ><a href='$url'>$title</a></h3>";
+								echo $excerpt;
+								echo "</article>";
+							}
+							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+						endif;
+						echo '</div>';	//usa-grid-full
+					endwhile;
+					echo '</section>';
+				endif;
+			?>
+			</section>
 			<?php wp_reset_postdata(); ?>
 
 		</main>
