@@ -16,6 +16,7 @@
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+$headline = get_field( 'headline', '', true );
 //$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
 
 
@@ -32,51 +33,17 @@ get_header(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 						<?php
-							//If a featured video is set, include it.
-							//ELSE if a featured image is set, include it.
-							
-							/*
 							$hideFeaturedImage = FALSE;
-							if ($videoUrl!="") {
+							if ($videoUrl != "") {
 								echo featured_video($videoUrl);
 								$hideFeaturedImage = TRUE;
 							} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 								echo '<div class="usa-grid-full">';
 								$featuredImageClass = "";
-								$featuredImageCutline="";
-								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-								if ($thumbnail_image && isset($thumbnail_image[0])) {
-									$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-								}
-								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-								//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-								echo the_post_thumbnail( 'large-thumb' );
-
-								echo '</div>';
-								echo '</div> <!-- usa-grid-full -->';
-
-								if ($featuredImageCutline != "") {
-									echo '<div class="usa-grid">';
-										echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-									echo '</div> <!-- usa-grid -->';
-								}
-							}
-							*/
-						?><!-- .bbg__article-header__thumbnail -->
-
-
-						<?php
-							$hideFeaturedImage = FALSE;
-							if ($videoUrl!="") {
-								echo featured_video($videoUrl);
-								$hideFeaturedImage = TRUE;
-							} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-								echo '<div class="usa-grid-full">';
-								$featuredImageClass = "";
-								$featuredImageCutline="";
+								$featuredImageCutline = "";
 								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
 								if ($thumbnail_image && isset($thumbnail_image[0])) {
-									$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+									$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
 								}
 
 								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
@@ -94,7 +61,6 @@ get_header(); ?>
 						<div class="usa-grid">
 
 							<header class="entry-header">
-								<?php /* echo bbginnovate_post_categories(); */ ?>
 								<!-- .bbg-label -->
 								<?php if($post->post_parent) {
 									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
@@ -106,6 +72,7 @@ get_header(); ?>
 
 								<?php } else{ ?>
 								<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>
+								<h1><?php echo $headline; ?></h1>
 								<?php } ?>
 
 							</header><!-- .entry-header -->
