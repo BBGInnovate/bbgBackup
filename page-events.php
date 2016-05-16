@@ -67,9 +67,9 @@ get_header(); ?>
 				<header class="page-header">
 					<h6 class="bbg-label--mobile large">
 						<?php if ($hasTeamFilter) {
-							echo "" . $teamCategory->cat_name. " projects";
+							echo "" . $teamCategory->cat_name. " events";
 						} else {
-							echo 'Projects';
+							echo 'Events';
 						}
 
 						?>
@@ -115,8 +115,8 @@ get_header(); ?>
 					echo '<nav class="navigation posts-navigation" role="navigation">';
 					echo '<h2 class="screen-reader-text">Event navigation</h2>';
 					echo '<div class="nav-links">';
-					$nextLink=get_next_posts_link('Older Posts', $totalPages);
-					$prevLink=get_previous_posts_link('Newer Posts');
+					$nextLink=get_next_posts_link('Older Events', $totalPages);
+					$prevLink=get_previous_posts_link('Newer Events');
 					if ($nextLink != "") {
 						echo '<div class="nav-previous">';
 						echo $nextLink;
