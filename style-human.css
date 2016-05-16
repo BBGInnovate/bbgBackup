@@ -5838,7 +5838,7 @@ object {
 }
 
 .single .bbg-embed-shell {
-  margin: 3rem auto;
+  margin: 0 auto 3rem auto;
 }
 
 .bbg-embed-shell.bbg__featured-video {

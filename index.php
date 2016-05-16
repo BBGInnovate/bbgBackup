@@ -23,7 +23,7 @@ get_header(); ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h6 class="bbg-label--mobile large">News and information</h6>
+					<h6 class="bbg-label--mobile large">News + information</h6>
 				</header><!-- .page-header -->
 			</div>
 
