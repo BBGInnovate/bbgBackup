@@ -11,6 +11,9 @@
 
 $templateName = "about";
 
+$bannerPosition = get_field( 'adjust_the_banner_image', '', true);
+$videoUrl = get_field( 'featured_video_url', '', true );
+
 get_header();
 
 ?>
@@ -18,62 +21,28 @@ get_header();
 <div id="main" class="site-main">
 
 	<div id="primary" class="content-area">
-		<main id="bbg-home" class="site-content bbg-home-main" role="main">
+		<main id="main" class="site-main" role="main">
 			<?php
-				$data = get_theme_mod('header_image_data');
-				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
-
-				if ($attachment_id) {
-					$tempSources = bbgredesign_get_image_size_links($attachment_id);
-					//sources aren't automatically in numeric order.  ksort does the trick.
-
-					ksort($tempSources);
-					$counter = 0;
-					$prevWidth = 0;
-
-					// Let's prevent any images with width > 1200px from being an output as part of responsive post cover
-					foreach ( $tempSources as $key => $tempSource ) {
-						if ($key > 1900) {
-							unset($tempSources[$key]);
-						}
-					}
-					echo "<style>";
-
-					foreach ( $tempSources as $key => $tempSourceObj ) {
-						$counter++;
-						$tempSource = $tempSourceObj['src'];
-						if ($counter == 1) {
-							echo "\t.bbg-banner { background-image: url($tempSource) !important; }\n";
-						} elseif ($counter < count($tempSources)) {
-							echo "\t@media (min-width: " . ($prevWidth+1) . "px) and (max-width: " . $key . "px) {\n";
-							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
-							echo "\t}\n";
-						} else {
-							echo "\t@media (min-width: " . ($prevWidth+1) . "px) {\n";
-							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
-							echo "\t}\n";
-						}
-						$prevWidth = $key;
+				$hideFeaturedImage = FALSE;
+				if ($videoUrl != "") {
+					echo featured_video($videoUrl);
+					$hideFeaturedImage = TRUE;
+				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+					echo '<div class="usa-grid-full">';
+					$featuredImageClass = "";
+					$featuredImageCutline = "";
+					$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+					if ($thumbnail_image && isset($thumbnail_image[0])) {
+						$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
 					}
 
-					echo "</style>";
+					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+
+					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+					echo '</div>';
+					echo '</div> <!-- usa-grid-full -->';
 				}
-			?>
-			<section class="bbg-banner">
-				<div class="usa-grid bbg-banner__container">
-					<a href="<?php echo site_url(); ?>">
-						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-					</a>
-					<div class="bbg-banner-box">
-						<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-					</div>
-
-					<div class="bbg-social__container">
-						<div class="bbg-social">
-						</div>
-					</div>
-				</div>
-			</section>
+			?><!-- .bbg__article-header__thumbnail -->
 
 			<!-- Page header -->
 			<div class="usa-grid">
