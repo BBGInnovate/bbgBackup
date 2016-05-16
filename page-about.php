@@ -18,7 +18,8 @@ get_header();
 <div id="main" class="site-main">
 
 	<div id="primary" class="content-area">
-		<main id="bbg-home" class="site-content bbg-home-main" role="main">
+		<main id="main" class="site-main" role="main">
+
 			<?php
 				$data = get_theme_mod('header_image_data');
 				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
@@ -60,18 +61,27 @@ get_header();
 				}
 			?>
 			<section class="bbg-banner">
-				<div class="usa-grid bbg-banner__container">
-					<a href="<?php echo site_url(); ?>">
-						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-					</a>
-					<div class="bbg-banner-box">
-						<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-					</div>
+				<div class="usa-grid-full">
 
-					<div class="bbg-social__container">
-						<div class="bbg-social">
-						</div>
-					</div>
+						<?php
+							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
+							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+								echo '<div class="usa-grid-full">';
+								$featuredImageClass = "";
+								$featuredImageCutline = "";
+								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+								if ($thumbnail_image && isset($thumbnail_image[0])) {
+									$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+								}
+
+								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '</div>';
+								echo '</div> <!-- usa-grid-full -->';
+							}
+						?><!-- .bbg__article-header__thumbnail -->
+
 				</div>
 			</section>
 
