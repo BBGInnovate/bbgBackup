@@ -60,39 +60,6 @@ get_header();
 				</header>
 			</div>
 
-			<!-- Page introduction -->
-			<section id="page-intro" class="usa-section usa-grid">
-				<?php
-					// Set variables for page title and id
-					$currentPageTitle = get_the_title();
-					$currentPageID = get_the_ID();
-
-					$introParams = array(
-						'meta_key' => 'introduction', // limits query results to those with this key + the value below
-						'meta_value' => '1',
-						'number' => '1',
-						'parent' => $currentPageID,
-						'post_type' => 'page',
-						'post_status' => 'publish',
-						'sort_column' => 'menu_order'
-					);
-
-					$introSection = get_pages($introParams);
-
-					// Loop through the child pages
-					foreach( $introSection as $introText ) {
-						$introContent = $introText->post_content;
-						$introContent = apply_filters('the_content', $introContent);
-						$introContent = str_replace(']]>', ']]&gt;', $introContent);
-					?>
-						<div class="">
-							<?php echo $introContent; ?>
-						</div>
-					<?php
-					}
-				?>
-			</section>
-
 			<!-- Child pages content -->
 			<section id="page-children" class="usa-section usa-grid ">
 				<div class="usa-grid-full">
