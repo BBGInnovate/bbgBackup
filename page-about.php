@@ -136,16 +136,18 @@ get_header();
 							}
 							echo "<article class='bbg__about__child'>$introText</h6>";
 
-							foreach ($relatedPages as $rp) {
-								echo "<article class='$containerClass bbg__about__grandchild'>";
-								$excerpt = my_excerpt($rp->ID);
-								$excerpt = apply_filters('the_content', $excerpt);
-								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-								$title = get_the_title($rp->ID);
-								$url = get_the_permalink($rp->ID);
-								echo "<h3><a href='$url'>$title</a></h3>";
-								echo $excerpt;
-								echo "</article>";
+							if ( $relatedPages ) {
+								foreach ($relatedPages as $rp) {
+									echo "<article class='$containerClass bbg__about__grandchild'>";
+									$excerpt = my_excerpt($rp->ID);
+									$excerpt = apply_filters('the_content', $excerpt);
+									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+									$title = get_the_title($rp->ID);
+									$url = get_the_permalink($rp->ID);
+									echo "<h3><a href='$url'>$title</a></h3>";
+									echo $excerpt;
+									echo "</article>";
+								}
 							}
 							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 						endif;
