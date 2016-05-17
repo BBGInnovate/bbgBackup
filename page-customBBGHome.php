@@ -16,7 +16,14 @@ $impactPermalink = get_category_link($impactCat->term_id);
 $soap = get_field('homepage_soapbox_post', 'option');
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
 
-$defaultBoardMeetingImage='https://bbgredesign.voanews.com/wp-content/media/2016/04/BOARD-MEETING-3-4-20-16-300x180.jpg';
+$defaultBoardMeetingImage="";
+$defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meeting_image', 'option');
+if ($defaultBoardMeetingImageObj) {
+	if (  isset($defaultBoardMeetingImageObj['sizes']) && 
+		  isset($defaultBoardMeetingImageObj['sizes']['medium-thumb'])) {
+		$defaultBoardMeetingImage=$defaultBoardMeetingImageObj['sizes']['medium-thumb'];		
+	}
+}
 
 get_header();
 
