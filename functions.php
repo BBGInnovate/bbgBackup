@@ -446,7 +446,6 @@ function enqueueAdminStyles() {
 }
 
 add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
-add_action( 'admin_init', 'oddi_settings_api_init' );
 
 
 
