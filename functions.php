@@ -305,8 +305,8 @@ class themeslug_walker_nav_menu extends Walker_Nav_Menu {
  * Reference: http://www.paulund.co.uk/how-to-display-author-bio-with-wordpress
  */
 function bbg_extendAuthorContacts( $c ) {
-$c['twitterHandle'] = 'Twitter Handle';
-return $c;
+	$c['twitterHandle'] = 'Twitter Handle';
+	return $c;
 }
 add_filter( 'user_contactmethods', 'bbg_extendAuthorContacts', 10, 1 );
 
@@ -440,58 +440,6 @@ function pippin_show_user_id_column_content($value, $column_name, $user_id) {
     return $value;
 }
 
-function admin_css() {
-   echo '<style type="text/css">
-           th#user_id {width:50px;}
-           th#isActive {width:100px;}
-           .adminYes {color:green;}
-           .adminNo {color:red;}
-         </style>';
-}
-
-add_action('admin_head', 'admin_css');
-
-// add a custom field to the 'GENERAL' section of wordpress with our list of featured userIDs
-function featuredUserIDs_callback( $args ) {
-	$val = get_option( 'featuredUserIDs' );
-	if (! $val ) {
-		$val = '';
-	}
-	$html = '<input type="text" id="featuredUserIDs" name="featuredUserIDs" value="' . $val . '" size="35" class="regular-text" />';
-	$html .= '<p class="description" >(comma separated list of id\'s for users on homepage - get them from <a target="_blank" href="users.php">Users</a></label>)';
-	echo $html;
-}
-function featuredCategoryIDs_callback( $args ) {
-	$val = get_option( 'featuredCategoryIDs' );
-	if (! $val ) {
-		$val = '';
-	}
-	$html = '<input type="text" id="featuredCategoryIDs" name="featuredCategoryIDs" value="' . $val . '" size="35" class="regular-text" />';
-	$html .= '<p class="description" >(comma separated list of id\'s for categories on homepage - get them from term_id in query strings on <a target="_blank" href="edit-tags.php?taxonomy=category">Categories</a></label>)';
-	echo $html;
-}
-
-function oddi_settings_api_init() {
-	/*
-	add_settings_field(
-		'featuredUserIDs',
-		'Featured User IDs',
-		'featuredUserIDs_callback',
-		'general'
-	);
-	register_setting('general','featuredUserIDs');
-	*/
-	add_settings_field(
-		'featuredCategoryIDs',
-		'Featured Category IDs',
-		'featuredCategoryIDs_callback',
-		'general'
-	);
-	register_setting('general','featuredCategoryIDs');
-}
-
-add_action( 'admin_init', 'oddi_settings_api_init' );
-
 function enqueueAdminStyles() {
 	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array('jquery'), '20160223', true );
 	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
@@ -500,41 +448,6 @@ function enqueueAdminStyles() {
 add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
 add_action( 'admin_init', 'oddi_settings_api_init' );
 
-
-
-/*===================================================================================
- * ADD CATEGORY METADATA - http://php.quicoto.com/add-metadata-categories-wordpress/
- * We needed the ability to
- * =================================================================================*/
-
-
-function xg_edit_featured_category_field( $term ){
-    $term_id = $term->term_id;
-    $term_meta = get_option( "taxonomy_$term_id" );
-?>
-    <tr class="form-field">
-        <th scope="row">
-            <label for="term_meta[isTeamName]"><?php echo _e('Is Team Name') ?></label>
-            <td>
-            	<select name="term_meta[isTeamName]" id="term_meta[isTeamName]">
-                	<option value="0" <?=($term_meta['isTeamName'] == 0) ? 'selected': ''?>><?php echo _e('No'); ?></option>
-                	<option value="1" <?=($term_meta['isTeamName'] == 1) ? 'selected': ''?>><?php echo _e('Yes'); ?></option>
-            	</select>
-            </td>
-        </th>
-    </tr>
-<?php
-}
-function xg_save_tax_meta( $term_id ){
-    if ( isset( $_POST['term_meta'] ) ) {
-		$term_meta = array();
-		$term_meta['isTeamName'] = isset ( $_POST['term_meta']['isTeamName'] ) ? intval( $_POST['term_meta']['isTeamName'] ) : '';
-		update_option( "taxonomy_$term_id", $term_meta );
-	}
-} // save_tax_meta
-
-add_action( 'category_edit_form_fields', 'xg_edit_featured_category_field' );
-add_action( 'edited_category', 'xg_save_tax_meta', 10, 2 );
 
 
 /*===================================================================================
@@ -697,22 +610,8 @@ if ( ! function_exists( 'bbg_first_sentence_excerpt' ) ):
 			$endIndex=strpos($text, "</p>")+4;
 			$strLength=$endIndex-$startIndex;
 			$text = substr($text, $startIndex, $strLength);
-			//$text ='<p>' . strip_tags($text) . '</p>';
 			$text = strip_tags($text);
-			/*** ODDI CUSTOM - REMOVE ONE SENTENCE LOGIC
-			$text           = wp_trim_words( $text, $excerpt_length, $excerpt_more ); // See wp_trim_words() in wp-includes/formatting.php
-
-			// Get the first sentence
-			// This looks for three punctuation characters: . (period), ! (exclamation), or ? (question mark), followed by a space
-			$strings = preg_split( '/(\.|!|\?)\s/', strip_tags( $text ), 2, PREG_SPLIT_DELIM_CAPTURE );
-
-			// $strings[0] is the first sentence and $strings[1] is the punctuation character at the end
-			if ( ! empty( $strings[0] ) && ! empty( $strings[1] ) ) {
-				$text = $strings[0] . $strings[1];
-			}
-
-			$text = wpautop( $text );
-			****/
+			
 		}
 
 		return $text;
@@ -1174,10 +1073,6 @@ function outputJoblist() {
 			$locations=$j['locations'];
 
 			$s.= "<a href='$url'>$title</a><BR>";
-			/*
-			$s.= "Starts: $startDate<BR>";
-			$s.= "Ends: $endDate<BR>";
-			*/
 			$locationStr = "Location";
 			if (count($locations)>1){
 				$locationStr = "Locations";
@@ -1188,9 +1083,7 @@ function outputJoblist() {
 				$loc = $locations[$k];
 				$s.= "$loc<BR>";
 			}
-			//if ($i < (count($jobs)-1)) {
-				$s .= "<BR>";
-			//}
+			$s .= "<BR>";
 		}
 		$s .= "All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a><BR>";
 	}
@@ -1212,7 +1105,6 @@ function getFeed($url,$id) {
 	} else {
 		$feedStr=file_get_contents($feedFilepath);
 	}
-	//$feed = implode(file($feedStr));
 	$xml = simplexml_load_string($feedStr);
 	$json = json_encode($xml,JSON_PRETTY_PRINT);
 	$json=json_decode($json);
@@ -1344,13 +1236,6 @@ function special_committee_list_shortcode($atts) {
 	return outputSpecialCommittees($atts['active']);
 }
 add_shortcode('special_committee_list', 'special_committee_list_shortcode');
-
-function enqueue_chosen_js() {
- 	wp_enqueue_script( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.jquery.min.js', array('jquery'));
-	wp_enqueue_style( 'chosen_js', get_template_directory_uri() . '/js/vendor/chosen.min.css');
-}
-add_action('admin_enqueue_scripts', 'enqueue_chosen_js', 2000);
-/***** END CHOSEN JS - enhanced UI for multiselects  ****/
 
 function outputBoardMembers($showActive) {
 	//$showActive should be a 0 or 1 passed in a 'active' in the shortcode
@@ -1702,8 +1587,6 @@ function outputQuote($q, $class="") {
 	$quote .= "<span class='bbg__quotation-attribution__name'>$speaker</span>";
 	$quote .= "<span class='bbg__quotation-attribution__credit'>$tagline</span>";
 	$quote .= "</span></p></div>";
-	//$quote .= "<a href='$url'>$speaker</a>$tagline</p>";
-	//$quote .= "<p class='bbg__quotation-attribution'>$quoteDate</p>";
 	$quote .= "</div>";
 	echo $quote;
 }
