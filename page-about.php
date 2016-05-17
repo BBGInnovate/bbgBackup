@@ -56,7 +56,7 @@ get_header();
 			?><!-- .bbg__article-header__thumbnail -->
 
 			<!-- Page header -->
-			<div class="usa-grid">
+			<div id="page-header" class="usa-grid">
 				<!-- Parent title -->
 				<?php if ($post->post_parent) {
 					$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
@@ -69,11 +69,12 @@ get_header();
 				<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 				</header>
-
-				<section id="introText" class="usa-section usa-grid usa-grid-full">
-					<?php echo $pageContent; ?>
-				</section>
 			</div>
+
+			<!-- Page introduction (content) -->
+			<section id="page-intro" class="usa-section usa-grid bbg__about__intro">
+				<?php echo $pageContent; ?>
+			</section>
 
 			<!-- Child pages -->
 			<section id="page-children" class="usa-section usa-grid">
@@ -92,7 +93,7 @@ get_header();
 							$containerClass="bbg__entity";
 							if (count($relatedPages) == 2) {
 								$containerClass='bbg-grid--1-2-2';
-							} else if (count($relatedPages)==3) {
+							} else if (count($relatedPages) == 3) {
 								$containerClass='bbg-grid--1-3-3';
 							}
 							foreach ($relatedPages as $rp) {
@@ -131,13 +132,13 @@ get_header();
 							}
 							echo "<article class='bbg__entity'>$introText</h6>";
 							foreach ($relatedPages as $rp) {
-								echo "<article class='$containerClass'>";
+								echo "<article class='$containerClass bbg__about__grandchild'>";
 								$excerpt = my_excerpt($rp->ID);
 								$excerpt = apply_filters('the_content', $excerpt);
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 								$title = get_the_title($rp->ID);
 								$url = get_the_permalink($rp->ID);
-								echo "<h3 ><a href='$url'>$title</a></h3>";
+								echo "<h3><a href='$url'>$title</a></h3>";
 								echo $excerpt;
 								echo "</article>";
 							}

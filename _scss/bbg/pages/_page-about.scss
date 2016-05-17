@@ -1,0 +1,17 @@
+/* Page content as introduction */
+.bbg__about__intro {
+
+	// First paragraph
+	p:first-child {
+		@extend .usa-font-lead;
+
+		font-size: $read-in-font-size;
+		margin-top: 0;
+	}
+}
+
+.bbg__about__grandchild {
+	p {
+		font-family: $font-sans;
+	}
+}

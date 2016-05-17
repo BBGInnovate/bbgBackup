@@ -1882,7 +1882,7 @@ p a,
   }
 }
 
-.usa-font-lead {
+.usa-font-lead, .bbg__about__intro p:first-child {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 2rem;
   line-height: 1.7;
@@ -4029,12 +4029,12 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.usa-font-lead {
+.usa-font-lead, .bbg__about__intro p:first-child {
   font-size: 1.6rem;
   font-weight: 300;
 }
 @media screen and (min-width: 600px) {
-  .usa-font-lead {
+  .usa-font-lead, .bbg__about__intro p:first-child {
     font-size: 2rem;
     line-height: 2.5;
   }
@@ -4167,7 +4167,7 @@ img > a:focus,
   text-decoration: none;
 }
 
-.usa-font-lead {
+.usa-font-lead, .bbg__about__intro p:first-child {
   color: #000;
 }
 
@@ -5137,6 +5137,16 @@ article {
 }
 .bbg__announcement p {
   color: #FFF;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+
+/* Page content as introduction */
+.bbg__about__intro p:first-child {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.bbg__about__grandchild p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
 

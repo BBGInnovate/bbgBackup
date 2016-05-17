@@ -608,7 +608,7 @@ if ( ! function_exists( 'bbg_first_sentence_excerpt' ) ):
 			$strLength=$endIndex-$startIndex;
 			$text = substr($text, $startIndex, $strLength);
 			$text = strip_tags($text);
-			
+
 		}
 
 		return $text;
@@ -821,7 +821,7 @@ function mission_shortcode( $atts ) {
         'org' => 'Broadcasting Board of Governors',
     ), $atts );
 
-    return "The mission of the {$a['org']} is to inform, engage, and connect people around the world in support of freedom and democracy.";
+    return "<p>The mission of the {$a['org']} is to inform, engage, and connect people around the world in support of freedom and democracy.</p>";
 }
 
 add_shortcode( 'mission', 'mission_shortcode' );
