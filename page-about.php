@@ -146,7 +146,7 @@ get_header();
 						endif;
 						echo '</div>';	//usa-grid-full
 					endwhile;
-					echo '</section>';
+					// echo '</section>';
 				endif;
 			?>
 			</section>
