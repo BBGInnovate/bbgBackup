@@ -13,6 +13,7 @@ $siteIntroContent = get_field('site_setting_mission_statement','options','false'
 $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
+$soap = get_field('homepage_soapbox_post', 'option');
 
 get_header();
 
@@ -224,9 +225,14 @@ get_header();
 
 						if ( have_posts() ) :
 							$counter = 0;
+							$includeThumbnails = FALSE;
+							if (!$soap) {
+								//If there's no soapbox post, show thumbnails in the left column
+								$includeThumbnails = TRUE;
+							}
 							while ( have_posts() ) : the_post();
 									$gridClass = "bbg-grid--full-width";
-									$includeImage = FALSE;
+									$includeImage = $includeThumbnails;
 									get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 							endwhile;
 						endif;
@@ -236,7 +242,7 @@ get_header();
 
 
 				<?php
-					$soap = get_field('homepage_soapbox_post', 'option');
+					//$soap = get_field('homepage_soapbox_post', 'option');
 					if ($soap) {
 						$s = "";
 						$id = $soap->ID;
