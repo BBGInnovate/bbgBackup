@@ -97,7 +97,7 @@ get_header();
 			<!-- Impact stories -->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="/blog/category/impact/">Impact stories</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
 
 					<div class="usa-grid-full">
 					<?php
