@@ -208,15 +208,21 @@
 }
 
 .bbg__announcement {
-	background-color: #323a45;
+	background-color: $color-gray-dark;
 	padding: 0 auto 2rem auto;
 	
 	.bbg-label {
-		background-color: #981b1e;
+		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;
 		font-size: 1.7rem;
 		padding: .5rem 1rem; 
+	}
+
+	.bbg__announcement__container{
+		@include media($medium-large-screen) {
+			display: inline;
+		}
 	}
 
 	.bbg__announcement__image {
@@ -233,10 +239,5 @@
 	p {
 		color: #FFF;
 		font-family: $font-sans;
-	}
-	@include media($medium-large-screen) {
-		.bbg__announcement__container{
-			display: inline;
-		}
 	}
 }

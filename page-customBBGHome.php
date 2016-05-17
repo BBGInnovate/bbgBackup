@@ -326,10 +326,10 @@ get_header();
 
 			<section id="announcement" class="usa-section bbg__announcement">
 				<div class="usa-grid">
-					<h6 class="bbg-label small">Board meeting this week</h6>
+					<h6 class="bbg-label small">This week</h6>
 					<div class="bbg__announcement__container">
 						<a href="#"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/BOARD-MEETING-3-4-20-16-300x180.jpg" class="bbg__announcement__image"/></a>
-						<h2 style="clear: none;"><a href="#" style="color: #9bdaf1;">Board to meet to discuss social media</a></h2>
+						<h2 style="clear: none;"><a href="#" style="color: #9bdaf1;">Board to discuss social media strategy</a></h2>
 						<p>The Broadcasting Board of Governors will meet to receive programming highlights from the BBG networks that advance the agency’s strategic priorities, and to discuss the BBG’s expansion into digital and social media.</p>
 					</div>
 				</div>
