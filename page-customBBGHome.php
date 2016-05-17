@@ -325,9 +325,10 @@ get_header();
 					$labelText='This Week';
 					$eventPermalink=get_the_permalink($id);
 					$imgSrc=$defaultBoardMeetingImage;
-					$featuredImageID = wp_get_attachment_url( get_post_thumbnail_id($id) );	
+					$featuredImageID = get_post_thumbnail_id($id);	
 					if ($featuredImageID) {
-						$imgSrc = wp_get_attachment_url('medium-thumb');
+						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
+						$imgSrc=$imgObj[0];
 					}
 					$eventTitle=$featuredBoardMeeting->post_title;
 					$excerpt = my_excerpt($id);
