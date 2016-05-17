@@ -5146,6 +5146,10 @@ article {
   margin-top: 0;
 }
 
+.bbg__about__children-row {
+  margin-bottom: 3rem;
+}
+
 .bbg__about__grandchild p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }

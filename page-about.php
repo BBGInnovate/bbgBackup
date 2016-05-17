@@ -77,20 +77,22 @@ get_header();
 			</section>
 
 			<!-- Child pages -->
-			<section id="page-children" class="usa-section usa-grid">
+			<section id="page-children" class="usa-section usa-grid bbg__about__children-row">
 			<?php
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 
 						//we wrap a  usa-grid container around every row.
+						echo '<!-- ROW -->';
 						echo '<div class="usa-grid-full">';
 
 						if( get_row_layout() == 'about_multicolumn' ):
 
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
-							$relatedPages=get_sub_field('about_muliticolumn_related_pages');
-							$containerClass="bbg__entity";
+							$relatedPages = get_sub_field( 'about_muliticolumn_related_pages' );
+							$containerClass = "bbg__about__child";
+
 							if (count($relatedPages) == 2) {
 								$containerClass='bbg-grid--1-2-2';
 							} else if (count($relatedPages) == 3) {
@@ -99,8 +101,8 @@ get_header();
 							foreach ($relatedPages as $rp) {
 								echo "<article class='$containerClass'>";
 								$excerpt = my_excerpt($rp->ID);
-								$excerpt = apply_filters('the_content', $excerpt);
-								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+								$excerpt = apply_filters( 'the_content', $excerpt );
+								$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 								$title = get_the_title($rp->ID);
 								$url = get_the_permalink($rp->ID);
 								echo "<h6 class='bbg-label'><a href='$url'>$title</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
@@ -110,16 +112,18 @@ get_header();
 							/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 						elseif( get_row_layout() == 'about_umbrella_page' ):
 							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
-							$relatedPages=get_sub_field('about_umbrella_related_pages');
-							$containerClass="bbg__entity";
-							if (count($relatedPages) == 2) {
-								$containerClass='bbg-grid--1-2-2';
-							} else if (count($relatedPages)==3) {
-								$containerClass='bbg-grid--1-3-3';
+							$relatedPages = get_sub_field('about_umbrella_related_pages');
+							$containerClass = "bbg__about__child";
+
+							if ( count( $relatedPages ) == 2 ) {
+								$containerClass = 'bbg-grid--1-2-2';
+							} else if ( count( $relatedPages ) ==3 ) {
+								$containerClass = 'bbg-grid--1-3-3';
 							}
-							$labelText=get_sub_field('about_umbrella_label');
-							$labelLink=get_sub_field('about_umbrella_label_link');
-							$introText=get_sub_field('about_umbrella_intro_text');
+
+							$labelText = get_sub_field('about_umbrella_label');
+							$labelLink = get_sub_field('about_umbrella_label_link');
+							$introText = get_sub_field('about_umbrella_intro_text');
 
 							//allow shortcodes in intro text
 							$introText = apply_filters('the_content', $introText);
@@ -130,7 +134,8 @@ get_header();
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
-							echo "<article class='bbg__entity'>$introText</h6>";
+							echo "<article class='bbg__about__child'>$introText</h6>";
+
 							foreach ($relatedPages as $rp) {
 								echo "<article class='$containerClass bbg__about__grandchild'>";
 								$excerpt = my_excerpt($rp->ID);
@@ -144,9 +149,10 @@ get_header();
 							}
 							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 						endif;
-						echo '</div>';	//usa-grid-full
+						echo '</article>';
 					endwhile;
-					// echo '</section>';
+					echo '<!-- END ROW -->';
+					echo '</div>'; //usa-grid-full
 				endif;
 			?>
 			</section>
