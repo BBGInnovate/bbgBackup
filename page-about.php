@@ -77,15 +77,17 @@ get_header();
 			</section>
 
 			<!-- Child pages -->
-			<section id="page-children" class="usa-section usa-grid bbg__about__children-row">
+			<section id="page-children" class="usa-section usa-grid bbg__about__children">
 			<?php
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
+					$counter = 0;
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
+						$counter++;
 
 						//we wrap a  usa-grid container around every row.
-						echo '<!-- ROW -->';
-						echo '<div class="usa-grid-full">';
+						echo '<!-- ROW ' . $counter . '-->';
+						echo '<div class="usa-grid-full bbg__about__children--row">';
 
 						if( get_row_layout() == 'about_multicolumn' ):
 
@@ -98,8 +100,9 @@ get_header();
 							} else if (count($relatedPages) == 3) {
 								$containerClass='bbg-grid--1-3-3';
 							}
+
 							foreach ($relatedPages as $rp) {
-								echo "<article class='$containerClass'>";
+								echo "<article class='$containerClass bbg__about__child'>";
 								$excerpt = my_excerpt($rp->ID);
 								$excerpt = apply_filters( 'the_content', $excerpt );
 								$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
@@ -109,9 +112,10 @@ get_header();
 								echo $excerpt;
 								echo "</article>";
 							}
-							/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
+						echo '</div>';
+						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 						elseif( get_row_layout() == 'about_umbrella_page' ):
-							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
+						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							$relatedPages = get_sub_field('about_umbrella_related_pages');
 							$containerClass = "bbg__about__child";
 
@@ -134,7 +138,7 @@ get_header();
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
-							echo "<article class='bbg__about__child'>$introText</h6>";
+							echo "<article class='bbg__about__child'>$introText</article>";
 
 							if ( $relatedPages ) {
 								foreach ($relatedPages as $rp) {
@@ -149,12 +153,12 @@ get_header();
 									echo "</article>";
 								}
 							}
-							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+						echo '</div>';
 						endif;
-						echo '</article>';
 					endwhile;
-					echo '<!-- END ROW -->';
-					echo '</div>'; //usa-grid-full
+					echo '<!-- END ROWS -->';
+					// echo '</div>'; //usa-grid-full
 				endif;
 			?>
 			</section>
