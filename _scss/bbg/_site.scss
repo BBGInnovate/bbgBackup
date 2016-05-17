@@ -618,8 +618,8 @@ article {
 		}
 	}
 
-
 	@include media($medium-screen) {
+		border-bottom: 1px solid #000;
 		position: fixed;
 			top: 0;
 

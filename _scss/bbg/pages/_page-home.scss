@@ -220,10 +220,14 @@
 	}
 
 	.bbg__announcement__image {
-		float: left; 
-		margin-right: 2rem;
-		min-width: 200px;
-		width: 33%;
+		width: 100%;
+
+		@include media($small-screen) {
+			float: left; 
+			margin-right: 2rem;
+			min-width: 200px;
+			width: 33%;
+		}
 	}
 
 	p {

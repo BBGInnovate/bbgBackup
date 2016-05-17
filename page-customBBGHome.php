@@ -324,7 +324,7 @@ get_header();
 
 
 
-			<section id="upcoming-meeting" class="usa-section bbg__announcement">
+			<section id="announcement" class="usa-section bbg__announcement">
 				<div class="usa-grid">
 					<h6 class="bbg-label small">Board meeting this week</h6>
 					<div class="bbg__announcement__container">
