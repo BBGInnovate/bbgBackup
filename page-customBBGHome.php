@@ -14,6 +14,9 @@ $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'fa
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
 $soap = get_field('homepage_soapbox_post', 'option');
+$featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
+
+$defaultBoardMeetingImage='https://bbgredesign.voanews.com/wp-content/media/2016/04/BOARD-MEETING-3-4-20-16-300x180.jpg';
 
 get_header();
 
@@ -316,18 +319,33 @@ get_header();
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
 
+			<?php
+				if ($featuredBoardMeeting) {
+					$id=$featuredBoardMeeting->ID;
+					$labelText='This Week';
+					$eventPermalink=get_the_permalink($id);
+					$imgSrc=$defaultBoardMeetingImage;
+					$featuredImageID = wp_get_attachment_url( get_post_thumbnail_id($id) );	
+					if ($featuredImageID) {
+						$imgSrc = wp_get_attachment_url('medium-thumb');
+					}
+					$eventTitle=$featuredBoardMeeting->post_title;
+					$excerpt = my_excerpt($id);
+					echo '<section id="announcement" class="usa-section bbg__announcement">';
+						echo '<div class="usa-grid">';
+							echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
+							echo '<div class="bbg__announcement__container">';
+								echo '<a href="' . $eventPermalink.'"><img src="' . $imgSrc . '" class="bbg__announcement__image"/></a>';
+								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
+								echo '<p>' . $excerpt . '</p>';
+							echo '</div>';
+						echo '</div>';
+					echo '</section>';
+				}
+			?>
 
 
-			<section id="announcement" class="usa-section bbg__announcement">
-				<div class="usa-grid">
-					<h6 class="bbg-label small">This week</h6>
-					<div class="bbg__announcement__container">
-						<a href="#"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/BOARD-MEETING-3-4-20-16-300x180.jpg" class="bbg__announcement__image"/></a>
-						<h2 style="clear: none;"><a href="#" style="color: #9bdaf1;">Board to discuss social media strategy</a></h2>
-						<p>The Broadcasting Board of Governors will meet to receive programming highlights from the BBG networks that advance the agency’s strategic priorities, and to discuss the BBG’s expansion into digital and social media.</p>
-					</div>
-				</div>
-			</section>
+			
 
 
 
