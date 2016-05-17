@@ -56,10 +56,11 @@ a {
 			}
 		}
 	}
+}
 
-	.bbg__links--right-angle-quote {
-		font-size: calc(100% * 1.3);
-	}
+// add class for right-angle quotes after links
+.bbg__links--right-angle-quote {
+	font-size: calc(100% * 1.3);
 }
 
 p {

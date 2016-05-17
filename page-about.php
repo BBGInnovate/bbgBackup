@@ -102,7 +102,7 @@ get_header();
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 								$title = get_the_title($rp->ID);
 								$url = get_the_permalink($rp->ID);
-								echo "<h6 class='bbg-label'><a href='$url'>$title <span class='bbg__links--right-angle-quote'>&raquo;</span></a></h6>";
+								echo "<h6 class='bbg-label'><a href='$url'>$title</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
 								echo $excerpt;
 								echo "</article>";
 							}
@@ -125,7 +125,7 @@ get_header();
 							$introText = str_replace(']]>', ']]&gt;', $introText);
 
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText <span class='bbg__links--right-angle-quote'>&raquo;</span></a></h6>";
+								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}

@@ -4140,7 +4140,8 @@ a:focus *[style*="background-image"] > a:focus {
   background-color: transparent;
   text-decoration: none;
 }
-a .bbg__links--right-angle-quote {
+
+.bbg__links--right-angle-quote {
   font-size: calc(100% * 1.3);
 }
 
