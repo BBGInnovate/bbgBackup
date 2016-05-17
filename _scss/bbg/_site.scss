@@ -5,7 +5,7 @@
  * CH04 - FOOTER STYLES
  * CH05 - EXCERPT STYLES
  * CH06 - SITEWIDE ALERT STYLES
- * CH07 - Misc post/page styles 
+ * CH07 - Misc post/page styles
 **/
 
 
@@ -55,6 +55,10 @@ a {
 				text-decoration: none;
 			}
 		}
+	}
+
+	.bbg__links--right-angle-quote {
+		font-size: calc(100% * 1.3);
 	}
 }
 

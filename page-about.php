@@ -14,6 +14,17 @@ $templateName = "about";
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $videoUrl = get_field( 'featured_video_url', '', true );
 
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$pageContent = get_the_content();
+		$pageContent = apply_filters('the_content', $pageContent);
+   		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
+
+
 get_header();
 
 ?>
@@ -58,18 +69,24 @@ get_header();
 				<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 				</header>
+
+				<section id="introText" class="usa-section usa-grid usa-grid-full">
+					<?php echo $pageContent; ?>
+				</section>
 			</div>
-			<section id="page-children" class="usa-section usa-grid ">
+
+			<!-- Child pages -->
+			<section id="page-children" class="usa-section usa-grid">
 			<?php
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
-						
+
 						//we wrap a  usa-grid container around every row.
-						echo '<div class="usa-grid-full">';	
-						
+						echo '<div class="usa-grid-full">';
+
 						if( get_row_layout() == 'about_multicolumn' ):
-							
+
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 							$relatedPages=get_sub_field('about_muliticolumn_related_pages');
 							$containerClass="bbg__entity";
@@ -85,12 +102,12 @@ get_header();
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 								$title = get_the_title($rp->ID);
 								$url = get_the_permalink($rp->ID);
-								echo "<h6 class='bbg-label'><a href='$url'>$title</a></h6>";
+								echo "<h6 class='bbg-label'><a href='$url'>$title <span class='bbg__links--right-angle-quote'>&raquo;</span></a></h6>";
 								echo $excerpt;
 								echo "</article>";
 							}
 							/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
-						elseif( get_row_layout() == 'about_umbrella_page' ): 
+						elseif( get_row_layout() == 'about_umbrella_page' ):
 							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							$relatedPages=get_sub_field('about_umbrella_related_pages');
 							$containerClass="bbg__entity";
@@ -106,9 +123,9 @@ get_header();
 							//allow shortcodes in intro text
 							$introText = apply_filters('the_content', $introText);
 							$introText = str_replace(']]>', ']]&gt;', $introText);
-							
+
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
+								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText <span class='bbg__links--right-angle-quote'>&raquo;</span></a></h6>";
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}

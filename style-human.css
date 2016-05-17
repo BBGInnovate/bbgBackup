@@ -4079,7 +4079,7 @@ ol li:before {
  * CH04 - FOOTER STYLES
  * CH05 - EXCERPT STYLES
  * CH06 - SITEWIDE ALERT STYLES
- * CH07 - Misc post/page styles 
+ * CH07 - Misc post/page styles
 **/
 h1,
 h2,
@@ -4139,6 +4139,9 @@ a:focus *[style*="background-image"] > a:hover,
 a:focus *[style*="background-image"] > a:focus {
   background-color: transparent;
   text-decoration: none;
+}
+a .bbg__links--right-angle-quote {
+  font-size: calc(100% * 1.3);
 }
 
 p {
