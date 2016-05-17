@@ -5103,6 +5103,32 @@ article {
   }
 }
 
+.bbg__announcement {
+  background-color: #323a45;
+  padding: 0 auto 2rem auto;
+}
+.bbg__announcement .bbg-label {
+  background-color: #981b1e;
+  color: #FFF;
+  display: inline-block;
+  padding: .5rem 1rem;
+}
+.bbg__announcement .bbg__announcement__image {
+  float: left;
+  margin-right: 2rem;
+  min-width: 200px;
+  width: 33%;
+}
+.bbg__announcement p {
+  color: #FFF;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+@media screen and (min-width: 900px) {
+  .bbg__announcement .bbg__announcement__container {
+    display: inline;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .multicolumn {
     -webkit-column-count: 2;

@@ -206,3 +206,33 @@
 		}
 	}
 }
+
+.bbg__announcement {
+	background-color: #323a45;
+	padding: 0 auto 2rem auto;
+	
+	.bbg-label {
+		//@include clearfix();
+		background-color: #981b1e;
+		color: #FFF;
+		display: inline-block;
+		padding: .5rem 1rem; 
+	}
+
+	.bbg__announcement__image {
+		float: left; 
+		margin-right: 2rem;
+		min-width: 200px;
+		width: 33%;
+	}
+
+	p {
+		color: #FFF;
+		font-family: $font-sans;
+	}
+	@include media($medium-large-screen) {
+		.bbg__announcement__container{
+			display: inline;
+		}
+	}
+}

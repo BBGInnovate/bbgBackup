@@ -91,8 +91,8 @@ get_header();
 
 
 
-			<!-- Portfolio -->
-			<section id="projects" class="usa-section bbg-portfolio">
+			<!-- Impact stories -->
+			<section id="impact-stories" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="/blog/category/impact/">Impact stories</a></h6>
 
@@ -135,7 +135,10 @@ get_header();
 			</section><!-- .bbg-portfolio -->
 
 
-			<!-- Recent posts -->
+
+
+
+			<!-- Recent posts (Featured, headlines and soapbox) -->
 			<section id="recent-posts" class="usa-section">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">BBG News</a></h6>
@@ -302,13 +305,7 @@ get_header();
 					} else {
 						$s = "";
 						
-						/*
-						$someHeadlinesPermalink="http://google.com";
-						$s .= '<div class="bbg-grid--1-2-2 ">';
-						$s .= '<h6 class="bbg-label small"><a href="'.$someHeadlinesPermalink.'">SOME HEADLINES</a></h6>';
-						$s .= '<p>Some headlines will go here</p>';
-						*/
-
+						//Temporarily hardcoding some lingks here.
 						$s .='<div class="bbg-grid--1-2-2 tertiary-stories"><header class="page-header"><h6 class="page-title bbg-label small">More news</h6></header>';
 						$s .= '<article id="post-24099" class="bbg-blog__excerpt--list  post-24099 post type-post status-publish format-standard has-post-thumbnail hentry category-johns-take tag-john-lansing"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/31/expanding-audience-global-coverage-of-the-presidents-historic-visit-to-cuba/" rel="bookmark">Expanding Audience: Global coverage of the president’s historic visit to Cuba</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
 						$s .= '<article id="post-23765" class="bbg-blog__excerpt--list  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">U.S. lawmaker congratulates BBG on Russian-language TV program</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
@@ -317,7 +314,6 @@ get_header();
 						$s .= '<article id="post-23737" class="bbg-blog__excerpt--list  post-23737 post type-post status-publish format-standard hentry category-alhurra-press-release category-mbn-press-release category-press-release tag-al-youm tag-alhurra-television tag-alhurra-tv tag-brian-conniff tag-mbn tag-mbn-president-brian-conniff tag-middle-east-broadcasting-networks tag-sit-bmit-ragel"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/23/alhurra-tv-focuses-on-female-empowerment/" rel="bookmark">Alhurra TV focuses on female empowerment</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
 						$s .= '<article id="post-23728" class="bbg-blog__excerpt--list  post-23728 post type-post status-publish format-standard hentry category-highlight category-mbn tag-alhurra-television tag-alhurras-al-youm tag-broadcasting-board-of-governors tag-mbn tag-mbns-raise-your-voice tag-middle-east-broacasting-networks tag-radio-sawa tag-radio-sawas-sheno-rayek"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/22/alhurra-radio-sawa-take-investigative-look-into-countering-radicalization-through-education/" rel="bookmark">Alhurra, Radio Sawa take investigative look into countering radicalization through education</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
 						$s .= '<article id="post-23715" class="bbg-blog__excerpt--list  post-23715 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-khadija-ismayilova-investigative-journalism-fellowship tag-nenad-pejic tag-radio-free-europeradio-liberty tag-rferl tag-rferl-azerbaijani-service"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/21/in-azerbaijan-no-pardon-for-ismayilova/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-
 
 						$s .= '</div>';
 					}
@@ -328,11 +324,22 @@ get_header();
 
 
 
+			<section id="upcoming-meeting" class="usa-section bbg__announcement">
+				<div class="usa-grid">
+					<h6 class="bbg-label small">Board meeting this week</h6>
+					<div class="bbg__announcement__container">
+						<a href="#"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/04/BOARD-MEETING-3-4-20-16-300x180.jpg" class="bbg__announcement__image"/></a>
+						<h2 style="clear: none;"><a href="#" style="color: #9bdaf1;">Board to meet to discuss social media</a></h2>
+						<p>The Broadcasting Board of Governors will meet to receive programming highlights from the BBG networks that advance the agency’s strategic priorities, and to discuss the BBG’s expansion into digital and social media.</p>
+					</div>
+				</div>
+			</section>
+
 
 
 
 			<!-- Entity list -->
-			<section id="teams" class="usa-section bbg-staff">
+			<section id="entities" class="usa-section bbg-staff">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
 
@@ -345,6 +352,8 @@ get_header();
 					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
 			</section><!-- entity list -->
+
+
 
 
 
