@@ -35,4 +35,13 @@ if (!defined('SITE_TITLE_MARKUP')) {
 define("DEFAULT_TITLE",get_bloginfo('name'));
 define("DEFAULT_AUTHOR","");
 define("DEFAULT_KEYWORDS","");
+
+//can't 'DEFINE' an array, so we just set a var
+$STANDARD_POST_CATEGORY_EXCLUDES = array(
+	get_cat_id('Site Introduction'),
+	get_cat_id("John's take"),
+	get_cat_id('Contact'),
+	get_cat_id('Quotation')
+)
+
 ?>
