@@ -827,6 +827,33 @@ function mission_shortcode( $atts ) {
 add_shortcode( 'mission', 'mission_shortcode' );
 
 // Add shortcode reference for BBG-wide audience numbers
+function audience_shortcode( $atts ) {
+	global $post;
+	// $thisID = $post->ID;
+
+    // set variables based on custom fields
+    $total = get_field('site_setting_unduplicated_audience','options','false');
+	$tv = get_field('site_setting_tv_audience','options','false');
+	$radio = get_field('site_setting_radio_audience','options','false');
+	$internet = get_field('site_setting_internet_audience','options','false');
+
+    // set shortcode attributes to custom field values
+    $atts = shortcode_atts( array(
+        'total' => '226',
+        'tv' => '142',
+        'radio' => '102',
+        'internet' => '32',
+    ), array(
+        'total' => $total,
+        'tv' => $tv,
+        'radio' => $radio,
+        'internet' => $internet,
+    ), 'audience' );
+
+    return $split . " million";
+}
+
+add_shortcode( 'audience', 'audience_shortcode' );
 
 
 // Add shortcode reference for the number of supported languages
@@ -1148,7 +1175,7 @@ function renderContactCard($postIDs) {
 			echo '<h3 class="bbg__contact-box__title">Find out more</h3>';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				//now let's get the custom fields associated with our related contact posts
-				$id=get_the_ID();
+				$id = get_the_ID();
 				$email = get_post_meta( $id, 'email',true );
 				$fullname = get_post_meta( $id, 'fullname',true );
 				$phone = get_post_meta( $id, 'phone',true );
