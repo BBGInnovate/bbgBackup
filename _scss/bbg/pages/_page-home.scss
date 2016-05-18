@@ -209,7 +209,7 @@
 
 .bbg__announcement {
 	background-color: $color-gray-dark;
-	padding: 0 auto 2rem auto;
+	padding: 2rem auto;
 	
 	.bbg-label {
 		background-color: $color-secondary-darkest;
@@ -219,6 +219,7 @@
 		padding: .5rem 1rem; 
 	}
 
+	/*
 	.bbg__announcement__container{
 		@include media($medium-large-screen) {
 			display: inline;
@@ -235,9 +236,44 @@
 			width: 33%;
 		}
 	}
+	*/
 
 	p {
 		color: #FFF;
 		font-family: $font-sans;
+	}
+
+
+	.bbg__announcement__flexbox{
+		padding-top: $site-margins;
+
+		.bbg__announcement__photo {
+			background-color: #CCC;
+			background-size: cover;
+			display: block;
+			min-height: 200px;
+			width: 100%; 
+		}
+
+		@include media($small-screen) {
+			display: flex; 
+			min-height: 200px;
+			padding-top: 0;
+
+			.bbg__announcement__photo {
+				height: auto;
+				margin-top: 0;
+				margin-right: 2rem;
+				min-height: 125px;
+				min-width: 50%; 
+				width: auto;
+			}
+		}
+
+		@include media($medium-screen) {
+			.bbg__announcement__photo {
+				min-width: 33%; 
+			}
+		}
 	}
 }
