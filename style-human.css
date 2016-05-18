@@ -4863,14 +4863,14 @@ article {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .bbg__article-sidebar.large .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
     margin-right: 0;
     margin-left: 0;
     width: 100%;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .bbg__article-sidebar.large .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
     height: 200px;
     position: relative;

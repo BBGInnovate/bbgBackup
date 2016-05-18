@@ -875,7 +875,7 @@ article {
 	.bbg__contact-card {
 		&.bbg__contact-card--include-map {
 			.bbg__contact-card__text {
-				@include media($medium-screen) {
+				@include media($medium-large-screen) {
 					margin: {
 						right: 0;
 						left: 0;
@@ -885,7 +885,7 @@ article {
 			}
 
 			.bbg__contact-card__map {
-				@include media($medium-screen) {
+				@include media($medium-large-screen) {
 					height: 200px;
 					position: relative;
 					width: 100%;
