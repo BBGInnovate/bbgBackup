@@ -405,7 +405,7 @@ get_header(); ?>
 									<aside class="bbg__article-sidebar__aside">
 									<ul class="bbg__article-share">
 									<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-
+									<ul>
 										<?php
 											if ($facebook!=""){
 												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
@@ -450,7 +450,9 @@ get_header(); ?>
 											echo '</ul><!-- rss feed -->';
 											echo '</aside>';
 										}
+										echo '<aside class="bbg__article-sidebar__aside">';
 										echo $siteSelect;
+										echo '</aside>';
 									?>
 
 
