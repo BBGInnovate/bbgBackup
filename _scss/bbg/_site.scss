@@ -110,6 +110,7 @@ img,
 
 	a {
 		color: #FFF;
+		text-decoration: underline;
 	}
 
 	&--mobile {
@@ -349,7 +350,8 @@ article {
 				}
 			}
 
-			.bbg__profile__content p:first-of-type {
+			/*.bbg__profile__content p:first-of-type {*/
+			.bbg__profile__content p:first-child {
 				font: {
 					size: 1.7rem;
 					weight: 100;
@@ -865,6 +867,30 @@ article {
 				height: 100%;
 				position: absolute;
 				width: 50%;
+			}
+		}
+	}
+}
+
+.bbg__article-sidebar.large {
+	.bbg__contact-card {
+		&.bbg__contact-card--include-map {
+			.bbg__contact-card__text {
+				@include media($medium-large-screen) {
+					margin: {
+						right: 0;
+						left: 0;
+					}
+					width: 100%;
+				}
+			}
+
+			.bbg__contact-card__map {
+				@include media($medium-large-screen) {
+					height: 200px;
+					position: relative;
+					width: 100%;
+				}
 			}
 		}
 	}

@@ -89,6 +89,26 @@
 	}
 }
 
+.bbg__rss__list {
+	@include unstyled-list;
+	margin-bottom: $site-margins-large;
+
+	.bbg__rss__list-link {
+		margin-bottom: $site-margins;
+	}
+
+	&.rtl {
+		direction: rtl;
+	}
+}
+
+
+
+
+
+
+
+
 
 .bbg__contact-label{
 	display: inline;

@@ -10,8 +10,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Entity
-
+   template name: 2-column-entity
  */
 
 $pageContent="";
@@ -120,7 +119,7 @@ if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$city = str_replace(" ", "+", $city);
 	$state = str_replace(" ", "+", $state);
 	$size = 400;
-	$zoom = 13;
+	$zoom = 14;
 	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street.',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
 	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
 	$includeMap = "bbg__contact-card--include-map";
@@ -300,189 +299,225 @@ $pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
 
-get_header();
-?>
+get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<?php while ( have_posts() ) : the_post(); ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
-				<?php
-					$hideFeaturedImage = get_post_meta( get_the_ID(), "hide_featured_image", true );
-					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-						echo '<div class="usa-grid-full">';
-						$featuredImageClass = "";
-						$featuredImageCutline="";
-						$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-						if ($thumbnail_image && isset($thumbnail_image[0])) {
-							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-						}
+			<div class="usa-grid-full">
 
-						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
-
-						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
-						echo '</div>';
-						echo '</div> <!-- usa-grid-full -->';
-					}
-				?><!-- .bbg__article-header__thumbnail -->
-
-
-
-				<div class="usa-grid">
-
-
-					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
-
-						<div class="bbg__profile-photo">
-							<img src="<?php echo $entityLogo; ?>" class="bbg__profile-photo__image"/>
-						</div>
-						<div class="bbg__profile-title">
-
-							<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
-
-							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg-label">
-								<?php echo $websiteName; ?>
-							</h5><!-- .bbg-label -->
-
-						</div>
-					</header><!-- .bbg__article-header -->
-
-
-					<div class="bbg__article-sidebar--left">
-						<?php
-						if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
-							echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
-						} ?>
-
-						<ul class="bbg__article-sidebar__list--labeled">
-							<?php
-								echo $budget;
-								echo $employees;
-								echo $languages;
-								echo $audience;
-							?>
-						</ul>
-
-												<?php
-						if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
-						?>
-						<ul class="bbg__article-share " style="margin-bottom: 3rem;">
-						<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-
-							<?php
-								if ($facebook!=""){
-									echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
-								}
-								if ($twitterProfileHandle!=""){
-									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
-								}
-								if ($instagram!=""){
-									echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
-								}
-							?>
-							&nbsp;
-						</ul>
-						<?php } ?>
+				<?php while ( have_posts() ) : the_post(); 
+					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+				?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 						<?php
-							echo $appLink;
-							echo $siteSelect;
-						?>
-
-
-					</div><!-- .bbg__article-sidebar--left -->
-
-
-
-
-
-					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-
-						<?php echo $pageContent; ?>
-
-
-						<?php if ($includeContactBox){ ?>
-						<div class="bbg__contact-card <?php echo $includeMap; ?>">
-							<?php if ($includeMap!=""){ ?>
-							<a href="<?php echo $mapLink; ?>">
-							<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
-							</a>
-							<?php } ?>
-
-							<div class="bbg__contact-card__text">
-							<h3>Contact information</h3>
-							<?php
-							echo $address;
-							echo '<ul class="usa-unstyled-list">';
-							echo $phone;
-							echo $email;
-							echo $learnMore;
-							echo '</ul>';
-							?>
-							</div>
-						</div>
-						<?php } ?>
-
-
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<a href="<?php echo $parent_link; ?>">Back to <?php echo $parent->post_title; ?> »</a>
-						<?php } ?>
-
-					</div><!-- .entry-content -->
-
-
-					<div class="bbg__article-sidebar">
-						<?php
-							if (count($rssItems)) {
-								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
-								echo '<ul class="bbg__profile__related-link__list'. $languageDirection .'">';
-								$maxRelatedStories=3;
-								for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
-									$o=$rssItems[$i];
-									echo '<li class="bbg__profile__related-link">';
-									echo '<a href="' . $o['url'] . '">';
-									if ($o['image'] != "") {
-										echo "<img src='". $o['image'] . "'/>";
-									}
-									echo $o['title'] . '</a>';
-									echo '</li>';
+							$hideFeaturedImage = FALSE;
+							if ($videoUrl != "") {
+								echo featured_video($videoUrl);
+								$hideFeaturedImage = TRUE;
+							} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+								echo '<div class="usa-grid-full">';
+								$featuredImageClass = "";
+								$featuredImageCutline = "";
+								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+								if ($thumbnail_image && isset($thumbnail_image[0])) {
+									$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
 								}
-								echo '</ul>';
+
+								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '</div>';
+								echo '</div> <!-- usa-grid-full -->';
 							}
-						?>
+						?><!-- .bbg__article-header__thumbnail -->
 
-					</div><!-- .bbg__article-sidebar -->
 
-					<?php
-						$q=getRandomQuote($entityCategorySlug, array());
-						if ($q) {
-							echo '<div class="bbg__entity__pullquote">';
-							outputQuote($q);
-							echo '</div>';
-						}
-					?>
 
-				</div><!-- .usa-grid -->
 
-			</article>
 
-			<div class="bbg-post-footer">
+						<div class="usa-grid">
 
-			</div>
+							<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
-			<?php endwhile; // End of the loop. ?>
+								<div class="bbg__profile-photo">
+									<img src="<?php echo $entityLogo; ?>" class="bbg__profile-photo__image"/>
+								</div>
+								<div class="bbg__profile-title">
+
+									<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
+
+									<!-- .bbg__article-header__title -->
+									<h5 class="entry-category bbg-label">
+										<?php echo $websiteName; ?>
+									</h5><!-- .bbg-label -->
+
+								</div>
+
+							</header><!-- .entry-header ------------------------------------------------- -->
+
+
+
+
+
+
+
+							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+								<div class="bbg__profile__content">
+								<?php /*echo $headlineStr;*/ ?>
+
+								<?php /*the_content();*/ ?>
+								<?php echo $pageContent; ?>
+
+								</div>
+
+							</div><!-- .entry-content ------------------------------------------------- -->
+
+
+
+
+
+
+							<div class="bbg__article-sidebar large">
+
+
+									<?php
+									if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
+										echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
+									} ?>
+
+									<ul class="bbg__article-sidebar__list--labeled">
+										<?php
+											echo $budget;
+											echo $employees;
+											echo $languages;
+											echo $audience;
+										?>
+									</ul>
+
+															<?php
+									if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
+									?>
+									<ul class="bbg__article-share " style="margin-bottom: 3rem;">
+									<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
+
+										<?php
+											if ($facebook!=""){
+												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
+											}
+											if ($twitterProfileHandle!=""){
+												echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
+											}
+											if ($instagram!=""){
+												echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
+											}
+										?>
+										&nbsp;
+									</ul>
+									<?php } ?>
+
+									<?php
+										echo $appLink;
+									?>
+
+
+
+
+
+
+
+
+									<?php
+										if (count($rssItems)) {
+											echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
+											echo '<ul class="bbg__rss__list'. $languageDirection .'">';
+											$maxRelatedStories=3;
+											for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
+												$o=$rssItems[$i];
+												echo '<li class="bbg__rss__list-link">';
+												echo '<a href="' . $o['url'] . '">';
+												if ($o['image'] != "") {
+													echo "<img src='". $o['image'] . "'/>";
+												}
+												echo $o['title'] . '</a>';
+												echo '</li>';
+											}
+											echo '</ul><!-- rss feed -->';
+										}
+										echo $siteSelect;
+									?>
+
+
+								<?php if ($includeContactBox){ ?>
+								<div class="bbg__contact-card <?php echo $includeMap; ?>">
+									<?php if ($includeMap!=""){ ?>
+									<a href="<?php echo $mapLink; ?>">
+									<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
+									</a>
+									<?php } ?>
+
+									<div class="bbg__contact-card__text">
+									<h3>Contact information</h3>
+									<?php
+									echo $address;
+									echo '<ul class="usa-unstyled-list">';
+									echo $phone;
+									echo $email;
+									echo $learnMore;
+									echo '</ul>';
+									?>
+									</div>
+								</div>
+								<?php } ?>
+
+
+
+
+
+							</div><!-- .bbg__article-sidebar ------------------------------------------------- -->
+
+						</div>
+
+
+
+						<div class="usa-grid">
+							<footer class="entry-footer bbg-post-footer 1234">
+								<?php
+									edit_post_link(
+										sprintf(
+											/* translators: %s: Name of current post */
+											esc_html__( 'Edit %s', 'bbginnovate' ),
+											the_title( '<span class="screen-reader-text">"', '"</span>', false )
+										),
+										'<span class="edit-link">',
+										'</span>'
+									);
+								?>
+							</footer><!-- .entry-footer -->
+
+							<?php
+								$q=getRandomQuote($entityCategorySlug, array());
+								if ($q) {
+									echo '<div class="bbg__entity__pullquote">';
+									outputQuote($q);
+									echo '</div>';
+								}
+							?>
+
+						</div><!-- .usa-grid -->
+
+
+					</article><!-- #post-## -->
+
+
+					<div class="bbg-post-footer">
+					</div>
+
+				<?php endwhile; // End of the loop. ?>
+			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php /*get_sidebar();*/ ?>
 <?php get_footer(); ?>
-
-
-
-
