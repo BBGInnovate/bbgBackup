@@ -257,68 +257,17 @@ get_header();
 
 
 				<?php
-					//$soap = get_field('homepage_soapbox_post', 'option');
 					if ($soap) {
-						$s = "";
-						$id = $soap->ID;
-						$soapCategory = wp_get_post_categories($id);
-
-						$isCEOPost = FALSE;
-						$isSpeech = FALSE;
-						$soapHeaderPermalink = "";
-						$soapHeaderText = "";
-						$soapPostPermalink = get_the_permalink($id);
-						$mugshot = "";
-						$mugshotName = "";
-
-						foreach ($soapCategory as $c) {
-							$cat = get_category( $c );
-							if ($cat->slug == "johns-take") {
-								$isCEOPost = TRUE;
-								$soapHeaderText = "From the CEO";
-								$soapHeaderPermalink = get_category_link($cat->term_id);
-								$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
-								$mugshotName = "John Lansing";
-							} else if ($cat->slug == "speech") {
-								$isSpeech = true;
-								$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
-								$mugshotName = get_post_meta( $id, 'mugshot_name', true );
-
-								if ($mugshotID) {
-									$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
-									$mugshot = $mugshot[0];
-								}
-							}
-						}
-
-						$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
-						if ($soapHeaderPermalink != "") {
-							$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
-						}
-						
-						$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
-						$s .= get_the_title($id);
-						$s .= '</a></h2>';
-
-						$s .= '<p class="">';
-
-						//if ($isCEOPost) {
-						if ($mugshot != "") {
-							$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
-							if ($mugshotName != "") {
-								$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
-							} 
-							$s .= '</span>';
-						}
-
-						$s .= my_excerpt($id);
-						$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
-						$s .= '</div>';
+						$s = getSoapboxStr($soap);
 					} else {
 						$s = "";
 						
 						//Temporarily hardcoding some lingks here.
 						$s .='<div class="bbg-grid--1-2-2 tertiary-stories"><header class="page-header"><h6 class="page-title bbg-label small">More news</h6></header>';
+
+						//$articleID=0;
+						//<article id="post-<?php echo $$articleID; ?>" <?php post_class("bbg-blog__excerpt--featured usa-grid-full"); ?>>
+
 						$s .= '<article id="post-24099" class="bbg-blog__excerpt--list  post-24099 post type-post status-publish format-standard has-post-thumbnail hentry category-johns-take tag-john-lansing"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/31/expanding-audience-global-coverage-of-the-presidents-historic-visit-to-cuba/" rel="bookmark">Expanding Audience: Global coverage of the president’s historic visit to Cuba</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
 						$s .= '<article id="post-23765" class="bbg-blog__excerpt--list  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">U.S. lawmaker congratulates BBG on Russian-language TV program</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
 						$s .= '<article id="post-23755" class="bbg-blog__excerpt--list  post-23755 post type-post status-publish format-standard has-post-thumbnail hentry category-highlight category-mbn tag-alhurra-television tag-alhurra-com tag-alhurras-al-youm tag-benjamin-netanyahu tag-francois-hollande tag-mbn tag-mbns-raise-your-voice tag-middle-east-broadcasting-networks tag-radio-sawa"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/24/alhurra-radio-sawas-breaking-news-coverage-of-the-bombings-in-brussels/" rel="bookmark">Alhurra’s, Radio Sawa’s breaking news coverage of the Brussels bombings</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
@@ -334,6 +283,7 @@ get_header();
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
 
+			<!-- Featured Board Meeting -->
 			<?php
 				if ($featuredBoardMeeting) {
 					$id=$featuredBoardMeeting->ID;
