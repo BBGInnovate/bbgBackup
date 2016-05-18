@@ -827,6 +827,21 @@ function mission_shortcode( $atts ) {
 add_shortcode( 'mission', 'mission_shortcode' );
 
 
+// Add shortcode reference for BBG-wide audience numbers
+function audience_shortcode( $pairs, $atts ) {
+    $audience = shortcode_atts( array(
+        'total' => get_field('site_setting_unduplicated_audience','options','false');,
+        'tv' => get_field('site_setting_tv_audience','options','false');,
+        'radio' => get_field('site_setting_radio_audience','options','false');,
+        'internet' => get_field('site_setting_internet_audience','options','false');,
+    ), $atts );
+
+    return $audience['total'];
+}
+
+add_shortcode( 'audience', 'audience_shortcode' );
+
+
 // Add shortcode reference for the number of supported languages
 function languages_shortcode() {
 	$number_of_languages = 61;
@@ -835,7 +850,7 @@ function languages_shortcode() {
 add_shortcode('languages', 'languages_shortcode');
 
 function fileExpired($filepath, $minutesToExpire) {
-	$expired=false;
+	$expired = false;
 	if (!file_exists($filepath)) {
 		$expired=true;
 	} else {
