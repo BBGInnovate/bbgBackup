@@ -223,6 +223,7 @@ get_header();
 								}
 								while ( have_posts() ) : the_post();
 									$counter++;
+									$postIDsUsed[] = get_the_ID();
 									$gridClass = "bbg-grid--full-width";
 									$includeImage = $includeThumbnails;
 									if ($counter > 2) {
