@@ -204,7 +204,7 @@ get_header();
 				</div><!-- . usa-grid-full Featured post -->
 
 				<!-- Headlines -->
-				<div class="usa-grid bbg__ceo-post">
+				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
 						<?php
 							/* BEWARE: sticky posts add a record */
@@ -217,17 +217,16 @@ get_header();
 							if ( have_posts() ) {
 								$counter = 0;
 								//If there's no soapbox post, show thumbnails in the left column
-								$includeThumbnails = FALSE;
+								$includeImage = FALSE;
 								if (!$soap) {
-									$includeThumbnails = TRUE;
+									$includeImage = TRUE;
 								}
 								while ( have_posts() ) : the_post();
 									$counter++;
 									$postIDsUsed[] = get_the_ID();
 									$gridClass = "bbg-grid--full-width";
-									$includeImage = $includeThumbnails;
 									if ($counter > 2) {
-										$includeThumbnails = false;
+										$includeImage = false;
 										$includeMeta=false;
 										$includeExcerpt=false;
 										if ($counter==3) {
