@@ -431,11 +431,11 @@ get_header(); ?>
 									<?php
 										if (count($rssItems)) {
 											echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
-											echo '<ul class="bbg__profile__related-link__list'. $languageDirection .'">';
+											echo '<ul class="bbg__rss__list'. $languageDirection .'">';
 											$maxRelatedStories=3;
 											for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
 												$o=$rssItems[$i];
-												echo '<li class="bbg__profile__related-link bbg__rss__list-link">';
+												echo '<li class="bbg__rss__list-link">';
 												echo '<a href="' . $o['url'] . '">';
 												if ($o['image'] != "") {
 													echo "<img src='". $o['image'] . "'/>";

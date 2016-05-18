@@ -3668,10 +3668,6 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   padding-left: 6.2rem;
 }
 
-.bbg__rss__list-link {
-  margin-bottom: 3rem;
-}
-
 /****************************************/
 /*   AUTHOR CARDS                       */
 /*   Added to the end of posts          */
@@ -5453,6 +5449,30 @@ article {
   margin-bottom: 1rem;
 }
 .bbg__profile__related-link__list.rtl {
+  direction: rtl;
+}
+
+.bbg__rss__list {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 6rem;
+}
+.bbg__rss__list li {
+  display: list-item;
+  margin: 0;
+}
+.bbg__rss__list li:before {
+  display: none;
+}
+.bbg__rss__list li:after {
+  display: none;
+}
+.bbg__rss__list .bbg__rss__list-link {
+  margin-bottom: 3rem;
+}
+.bbg__rss__list.rtl {
   direction: rtl;
 }
 
