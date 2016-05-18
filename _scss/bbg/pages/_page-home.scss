@@ -248,8 +248,11 @@
 		padding-top: $site-margins;
 
 		.bbg__announcement__photo {
-			background-color: #CCC;
-			background-size: cover;
+			background: {
+				color: #CCC;
+				position: center center;
+				size: cover;
+			}
 			display: block;
 			min-height: 200px;
 			width: 100%; 

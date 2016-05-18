@@ -10,15 +10,22 @@
 
 
 
+global $includePortfolioDescription;
 global $gridClass;
-if (! isset ($gridClass)) {
-	$gridClass="bbg-grid--1-2-2";
-}
-$classNames="bbg-portfolio__excerpt ".$gridClass;
 
-$postPermalink=esc_url( get_permalink() );
+$includeDescription = TRUE;
+if ( isset ($includePortfolioDescription) && $includePortfolioDescription==FALSE ) {
+	$includeDescription = FALSE;
+}
+
+if (! isset ($gridClass)) {
+	$gridClass = "bbg-grid--1-2-2";
+}
+$classNames = "bbg-portfolio__excerpt ".$gridClass;
+
+$postPermalink = esc_url( get_permalink() );
 if (isset($_GET['category_id'])) {
-	$postPermalink=add_query_arg('category_id', $_GET['category_id'], $postPermalink);
+	$postPermalink = add_query_arg('category_id', $_GET['category_id'], $postPermalink);
 }
 
 ?>
@@ -57,6 +64,9 @@ if (isset($_GET['category_id'])) {
 
 	</header><!-- .entry-header -->
 
+
+	<?php if ($includeDescription) { ?>
+
 	<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">
 		<?php the_excerpt(); ?>
 
@@ -67,5 +77,6 @@ if (isset($_GET['category_id'])) {
 			) );
 		?>
 	</div><!-- .bbg-portfolio__excerpt-title -->
+	<?php } ?>
 
 </article><!-- .bbg-portfolio__excerpt -->

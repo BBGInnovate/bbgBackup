@@ -127,6 +127,7 @@ get_header();
 						if ( have_posts() ) :
 							while ( have_posts() ) : the_post();
 								$gridClass = "bbg-grid--1-3-3";
+								$includePortfolioDescription = FALSE;
 								$postIDsUsed[] = get_the_ID();
 								get_template_part( 'template-parts/content-portfolio', get_post_format() );
 							endwhile;

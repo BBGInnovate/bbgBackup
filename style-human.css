@@ -5146,6 +5146,7 @@ article {
 }
 .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
   background-color: #CCC;
+  background-position: center center;
   background-size: cover;
   display: block;
   min-height: 200px;
