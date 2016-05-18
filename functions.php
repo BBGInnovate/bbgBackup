@@ -826,20 +826,7 @@ function mission_shortcode( $atts ) {
 
 add_shortcode( 'mission', 'mission_shortcode' );
 
-
 // Add shortcode reference for BBG-wide audience numbers
-function audience_shortcode( $pairs, $atts ) {
-    $audience = shortcode_atts( array(
-        'total' => get_field('site_setting_unduplicated_audience','options','false');,
-        'tv' => get_field('site_setting_tv_audience','options','false');,
-        'radio' => get_field('site_setting_radio_audience','options','false');,
-        'internet' => get_field('site_setting_internet_audience','options','false');,
-    ), $atts );
-
-    return $audience['total'];
-}
-
-add_shortcode( 'audience', 'audience_shortcode' );
 
 
 // Add shortcode reference for the number of supported languages
@@ -850,7 +837,7 @@ function languages_shortcode() {
 add_shortcode('languages', 'languages_shortcode');
 
 function fileExpired($filepath, $minutesToExpire) {
-	$expired = false;
+	$expired=false;
 	if (!file_exists($filepath)) {
 		$expired=true;
 	} else {
@@ -860,8 +847,6 @@ function fileExpired($filepath, $minutesToExpire) {
 			$expired=true;
 		}
 	}
-	//On local, you may need to return FALSE in order for some pages to display
-	//return FALSE;
 	return  $expired;
 }
 
@@ -1639,64 +1624,6 @@ function my_excerpt($post_id) {
 		wp_reset_postdata();
 		return $excerpt;
 	}
-}
-
-function getSoapboxStr($soap) {
-	//takes a soap post object and returns the markup
-	$s = "";
-	$id = $soap->ID;
-	$soapCategory = wp_get_post_categories($id);
-
-	$isCEOPost = FALSE;
-	$isSpeech = FALSE;
-	$soapHeaderPermalink = "";
-	$soapHeaderText = "";
-	$soapPostPermalink = get_the_permalink($id);
-	$mugshot = "";
-	$mugshotName = "";
-
-	foreach ($soapCategory as $c) {
-		$cat = get_category( $c );
-		if ($cat->slug == "johns-take") {
-			$isCEOPost = TRUE;
-			$soapHeaderText = "From the CEO";
-			$soapHeaderPermalink = get_category_link($cat->term_id);
-			$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
-			$mugshotName = "John Lansing";
-		} else if ($cat->slug == "speech") {
-			$isSpeech = true;
-			$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
-			$mugshotName = get_post_meta( $id, 'mugshot_name', true );
-
-			if ($mugshotID) {
-				$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
-				$mugshot = $mugshot[0];
-			}
-		}
-	}
-
-	$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
-	if ($soapHeaderPermalink != "") {
-		$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
-	}
-	
-	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
-	$s .= $soap->post_title;
-	$s .= '</a></h2>';
-
-	$s .= '<p class="">';
-
-	if ($mugshot != "") {
-		$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
-		if ($mugshotName != "") {
-			$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
-		} 
-		$s .= '</span>';
-	}
-
-	$s .= my_excerpt($id);
-	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
-	$s .= '</div>';
 }
 
 ?>
