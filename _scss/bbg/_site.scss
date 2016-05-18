@@ -350,7 +350,8 @@ article {
 				}
 			}
 
-			.bbg__profile__content p:first-of-type {
+			/*.bbg__profile__content p:first-of-type {*/
+			.bbg__profile__content:first-child {
 				font: {
 					size: 1.7rem;
 					weight: 100;
