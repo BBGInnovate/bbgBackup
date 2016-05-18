@@ -3668,6 +3668,10 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   padding-left: 6.2rem;
 }
 
+.bbg__rss__list-link {
+  margin-bottom: 3rem;
+}
+
 /****************************************/
 /*   AUTHOR CARDS                       */
 /*   Added to the end of posts          */
