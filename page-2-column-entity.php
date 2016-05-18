@@ -41,6 +41,7 @@ if ($entityLogoID) {
 
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
+$entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
 
 $siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
@@ -380,6 +381,13 @@ get_header(); ?>
 
 
 							<div class="bbg__article-sidebar large">
+									<?php if ($entityMission!=""){ ?>
+									<aside class="">
+										<h3 class="bbg__sidebar-label"><?php echo $abbreviation; ?> Mission</h3>
+										<p><?php echo $entityMission; ?></p>
+									</aside>
+									<?php } ?>
+
 
 									<aside class="bbg__article-sidebar__aside">
 									<?php
