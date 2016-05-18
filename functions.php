@@ -1682,6 +1682,7 @@ function getSoapboxStr($soap) {
 	$s .= my_excerpt($id);
 	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 	$s .= '</div>';
+	return $s;
 }
 
 
