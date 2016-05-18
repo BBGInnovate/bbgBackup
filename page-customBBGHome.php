@@ -346,18 +346,6 @@ get_header();
 					}
 					$eventTitle=$featuredBoardMeeting->post_title;
 					$excerpt = my_excerpt($id);
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid">';
-							echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-							echo '<div class="bbg__announcement__container">';
-								echo '<a href="' . $eventPermalink.'"><img src="' . $imgSrc . '" class="bbg__announcement__image"/></a>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-
-
 
 					/*
 					echo '<section id="announcement" class="usa-section bbg__announcement">';
@@ -370,10 +358,8 @@ get_header();
 							echo '</div>';
 						echo '</div>';
 					echo '</section>';
-
-
-
 					*/
+
 					echo '<section id="announcement" class="usa-section bbg__announcement">';
 						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
 							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
@@ -386,9 +372,6 @@ get_header();
 					echo '</section>';
 				}
 			?>
-
-
-			
 
 
 
