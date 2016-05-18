@@ -382,7 +382,7 @@ get_header(); ?>
 
 							<div class="bbg__article-sidebar large">
 									<?php if ($entityMission!=""){ ?>
-									<aside class="">
+									<aside class="bbg__article-sidebar__aside">
 										<h3 class="bbg__sidebar-label"><?php echo $abbreviation; ?> Mission</h3>
 										<p><?php echo $entityMission; ?></p>
 									</aside>
