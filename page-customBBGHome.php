@@ -171,7 +171,7 @@ get_header();
 						'orderby' => 'post_date',
 						'order' => 'desc',
 						'category__not_in' => $STANDARD_POST_CATEGORY_EXCLUDES,
-						'post__not_in' => $postIDsUsed
+						'post__not_in' => $postIDsUsed,
 						/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
 						'tax_query' => array(
 							//'relation' => 'AND',
