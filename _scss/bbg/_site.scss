@@ -305,6 +305,11 @@ article {
 	font-family: $font-sans;
 	margin: 0 auto;
 	max-width: 600px;
+
+	p {
+		font-family: $font-sans;
+		line-height: 1.5;
+	}
 }
 
 .bbg__article-sidebar__list--labeled {

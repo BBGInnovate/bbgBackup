@@ -4382,6 +4382,10 @@ article {
   margin: 0 auto;
   max-width: 600px;
 }
+.bbg__article-sidebar p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+}
 
 .bbg__article-sidebar__list--labeled {
   display: block;
