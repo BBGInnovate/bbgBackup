@@ -4194,6 +4194,7 @@ img > a:focus,
 }
 .bbg-label a {
   color: #FFF;
+  text-decoration: underline;
 }
 .bbg-label--mobile {
   background-color: transparent;
