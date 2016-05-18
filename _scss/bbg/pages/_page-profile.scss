@@ -91,7 +91,7 @@
 
 .bbg__rss__list {
 	@include unstyled-list;
-	margin-bottom: $site-margins-large;
+	//margin-bottom: $site-margins-large;
 
 	.bbg__rss__list-link {
 		margin-bottom: $site-margins;
@@ -102,7 +102,9 @@
 	}
 }
 
-
+.bbg__article-sidebar__aside {
+	margin-bottom: $site-margins-large;
+}
 
 
 

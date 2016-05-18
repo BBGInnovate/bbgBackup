@@ -5457,7 +5457,6 @@ article {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 6rem;
 }
 .bbg__rss__list li {
   display: list-item;
@@ -5474,6 +5473,10 @@ article {
 }
 .bbg__rss__list.rtl {
   direction: rtl;
+}
+
+.bbg__article-sidebar__aside {
+  margin-bottom: 6rem;
 }
 
 .bbg__contact-label {
