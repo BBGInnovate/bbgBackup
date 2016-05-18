@@ -41,6 +41,7 @@ if ($entityLogoID) {
 
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
+$entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
 
 $siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
@@ -380,8 +381,15 @@ get_header(); ?>
 
 
 							<div class="bbg__article-sidebar large">
+									<?php if ($entityMission!=""){ ?>
+									<aside class="bbg__article-sidebar__aside">
+										<!--<h3 class="bbg__sidebar-label"><?php echo $abbreviation; ?> Mission</h3>-->
+										<p><?php echo $entityMission; ?></p>
+									</aside>
+									<?php } ?>
 
 
+									<aside class="bbg__article-sidebar__aside">
 									<?php
 									if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
 										echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
@@ -395,13 +403,17 @@ get_header(); ?>
 											echo $audience;
 										?>
 									</ul>
+									</aside>
 
-															<?php
+
+
+									<?php
 									if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 									?>
-									<ul class="bbg__article-share " style="margin-bottom: 3rem;">
+									<aside class="bbg__article-sidebar__aside">
+									<ul class="bbg__article-share">
 									<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
-
+									<ul>
 										<?php
 											if ($facebook!=""){
 												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
@@ -413,23 +425,23 @@ get_header(); ?>
 												echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
 											}
 										?>
-										&nbsp;
 									</ul>
+									</aside>
 									<?php } ?>
 
+
+
+									<aside class="bbg__article-sidebar__aside">
 									<?php
 										echo $appLink;
 									?>
-
-
-
-
-
+									</aside>
 
 
 
 									<?php
 										if (count($rssItems)) {
+											echo '<aside class="bbg__article-sidebar__aside">';
 											echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
 											echo '<ul class="bbg__rss__list'. $languageDirection .'">';
 											$maxRelatedStories=3;
@@ -444,12 +456,16 @@ get_header(); ?>
 												echo '</li>';
 											}
 											echo '</ul><!-- rss feed -->';
+											echo '</aside>';
 										}
+										echo '<aside class="bbg__article-sidebar__aside">';
 										echo $siteSelect;
+										echo '</aside>';
 									?>
 
 
 								<?php if ($includeContactBox){ ?>
+								<aside class="bbg__article-sidebar__aside">
 								<div class="bbg__contact-card <?php echo $includeMap; ?>">
 									<?php if ($includeMap!=""){ ?>
 									<a href="<?php echo $mapLink; ?>">
@@ -469,6 +485,7 @@ get_header(); ?>
 									?>
 									</div>
 								</div>
+								</aside>
 								<?php } ?>
 
 

@@ -4378,8 +4378,13 @@ article {
 }
 
 .bbg__article-sidebar {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin: 0 auto;
   max-width: 600px;
+}
+.bbg__article-sidebar p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
 }
 
 .bbg__article-sidebar__list--labeled {
@@ -5139,6 +5144,7 @@ article {
 .bbg__announcement p {
   color: #FFF;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  padding-bottom: 3rem;
 }
 .bbg__announcement .bbg__announcement__flexbox {
   padding-top: 3rem;
@@ -5457,7 +5463,6 @@ article {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 6rem;
 }
 .bbg__rss__list li {
   display: list-item;
@@ -5474,6 +5479,10 @@ article {
 }
 .bbg__rss__list.rtl {
   direction: rtl;
+}
+
+.bbg__article-sidebar__aside {
+  margin-bottom: 6rem;
 }
 
 .bbg__contact-label {
