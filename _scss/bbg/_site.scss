@@ -845,7 +845,6 @@ article {
 			padding: $site-margins-medium;
 			width: 100%;
 
-			/*
 			@include media($medium-screen) {
 				margin: {
 					right: 0;
@@ -853,7 +852,6 @@ article {
 				}
 				width: 50%;
 			}
-			*/
 		}
 
 		.bbg__contact-card__map {
@@ -864,13 +862,35 @@ article {
 			height: 200px;
 			width: 100%;
 
-			/*
 			@include media($medium-screen) {
 				height: 100%;
 				position: absolute;
 				width: 50%;
 			}
-			*/
+		}
+	}
+}
+
+.bbg__article-sidebar.large {
+	.bbg__contact-card {
+		&.bbg__contact-card--include-map {
+			.bbg__contact-card__text {
+				@include media($medium-screen) {
+					margin: {
+						right: 0;
+						left: 0;
+					}
+					width: 100%;
+				}
+			}
+
+			.bbg__contact-card__map {
+				@include media($medium-screen) {
+					height: 200px;
+					position: relative;
+					width: 100%;
+				}
+			}
 		}
 	}
 }

@@ -119,7 +119,7 @@ if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$city = str_replace(" ", "+", $city);
 	$state = str_replace(" ", "+", $state);
 	$size = 400;
-	$zoom = 13;
+	$zoom = 14;
 	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street.',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
 	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
 	$includeMap = "bbg__contact-card--include-map";
@@ -419,7 +419,6 @@ get_header(); ?>
 
 									<?php
 										echo $appLink;
-										echo $siteSelect;
 									?>
 
 
@@ -446,6 +445,7 @@ get_header(); ?>
 											}
 											echo '</ul><!-- rss feed -->';
 										}
+										echo $siteSelect;
 									?>
 
 
