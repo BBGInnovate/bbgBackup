@@ -845,6 +845,8 @@ function fileExpired($filepath, $minutesToExpire) {
 			$expired=true;
 		}
 	}
+	//On local, you may need to return FALSE in order for some pages to display
+	//return FALSE;
 	return  $expired;
 }
 

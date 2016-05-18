@@ -4840,13 +4840,15 @@ article {
 .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
   padding: 1.5rem;
   width: 100%;
-}
-@media screen and (min-width: 600px) {
-  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
-    margin-right: 0;
-    margin-left: auto;
-    width: 50%;
+  /*
+  @include media($medium-screen) {
+  	margin: {
+  		right: 0;
+  		left: auto;
+  	}
+  	width: 50%;
   }
+  */
 }
 .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
   background-color: #999;
@@ -4854,13 +4856,13 @@ article {
   background-size: cover;
   height: 200px;
   width: 100%;
-}
-@media screen and (min-width: 600px) {
-  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
-    height: 100%;
-    position: absolute;
-    width: 50%;
+  /*
+  @include media($medium-screen) {
+  	height: 100%;
+  	position: absolute;
+  	width: 50%;
   }
+  */
 }
 
 .bbg__entity-logo__press-release {

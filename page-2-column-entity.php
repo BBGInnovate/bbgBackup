@@ -370,31 +370,6 @@ get_header(); ?>
 								<?php /*the_content();*/ ?>
 								<?php echo $pageContent; ?>
 
-
-								<?php if ($includeContactBox){ ?>
-								<div class="bbg__contact-card <?php echo $includeMap; ?>">
-									<?php if ($includeMap!=""){ ?>
-									<a href="<?php echo $mapLink; ?>">
-									<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
-									</a>
-									<?php } ?>
-
-									<div class="bbg__contact-card__text">
-									<h3>Contact information</h3>
-									<?php
-									echo $address;
-									echo '<ul class="usa-unstyled-list">';
-									echo $phone;
-									echo $email;
-									echo $learnMore;
-									echo '</ul>';
-									?>
-									</div>
-								</div>
-								<?php } ?>
-
-
-
 								</div>
 
 							</div><!-- .entry-content ------------------------------------------------- -->
@@ -474,6 +449,27 @@ get_header(); ?>
 									?>
 
 
+								<?php if ($includeContactBox){ ?>
+								<div class="bbg__contact-card <?php echo $includeMap; ?>">
+									<?php if ($includeMap!=""){ ?>
+									<a href="<?php echo $mapLink; ?>">
+									<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
+									</a>
+									<?php } ?>
+
+									<div class="bbg__contact-card__text">
+									<h3>Contact information</h3>
+									<?php
+									echo $address;
+									echo '<ul class="usa-unstyled-list">';
+									echo $phone;
+									echo $email;
+									echo $learnMore;
+									echo '</ul>';
+									?>
+									</div>
+								</div>
+								<?php } ?>
 
 
 

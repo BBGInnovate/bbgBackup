@@ -845,6 +845,7 @@ article {
 			padding: $site-margins-medium;
 			width: 100%;
 
+			/*
 			@include media($medium-screen) {
 				margin: {
 					right: 0;
@@ -852,6 +853,7 @@ article {
 				}
 				width: 50%;
 			}
+			*/
 		}
 
 		.bbg__contact-card__map {
@@ -862,11 +864,13 @@ article {
 			height: 200px;
 			width: 100%;
 
+			/*
 			@include media($medium-screen) {
 				height: 100%;
 				position: absolute;
 				width: 50%;
 			}
+			*/
 		}
 	}
 }
