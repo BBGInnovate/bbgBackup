@@ -11,10 +11,23 @@ $templateName = "customBBGHome";
 
 $siteIntroContent = get_field('site_setting_mission_statement','options','false');
 $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
-$impactCat = get_category_by_slug('impact');
-$impactPermalink = get_category_link($impactCat->term_id);
 $soap = get_field('homepage_soapbox_post', 'option');
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
+$featuredPost = get_field('homepage_featured_post', 'option');
+
+$impactCat = get_category_by_slug('impact');
+$impactPermalink = get_category_link($impactCat->term_id);
+
+$postIDsUsed=array();
+if ($featuredPost) {
+	$postIDsUsed[]=$featuredPost->ID;
+}
+if ($featuredBoardMeeting) {
+	$postIDsUsed[]=$featuredBoardMeeting->ID;
+}
+if ($soap) {
+	$postIDsUsed[]=$soap->ID;
+}
 
 $defaultBoardMeetingImage="";
 $defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meeting_image', 'option');
@@ -30,7 +43,6 @@ get_header();
 ?>
 
 <div id="main" class="site-main">
-
 	<div id="primary" class="content-area">
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
 			<?php
@@ -86,9 +98,6 @@ get_header();
 				</div>
 			</section>
 
-			
-
-
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
 			<?php
@@ -97,9 +106,6 @@ get_header();
 				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
-
-
-
 
 			<!-- Impact stories -->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
@@ -113,13 +119,15 @@ get_header();
 							'posts_per_page' => 2,
 							'orderby' => 'post_date',
 							'order' => 'desc',
-							'cat' => get_cat_id('Impact')
+							'cat' => get_cat_id('Impact'),
+							'post__not_in' => $postIDsUsed
 						);
 						query_posts($qParams);
 
 						if ( have_posts() ) :
 							while ( have_posts() ) : the_post();
 								$gridClass = "bbg-grid--1-3-3";
+								$postIDsUsed[] = get_the_ID();
 								get_template_part( 'template-parts/content-portfolio', get_post_format() );
 							endwhile;
 						endif;
@@ -129,8 +137,9 @@ get_header();
 
 					<!-- Quotation -->
 					<?php
-						$q=getRandomQuote('allEntities');
+						$q=getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
+							$postIDsUsed[] = $q["ID"];
 							outputQuote($q, "bbg-grid--1-3-3");
 						}
 					?>
@@ -143,10 +152,6 @@ get_header();
 
 				</div><!-- .usa-grid -->
 			</section><!-- .bbg-portfolio -->
-
-
-
-
 
 			<!-- Recent posts (Featured, headlines and soapbox) -->
 			<section id="recent-posts" class="usa-section">
@@ -166,6 +171,7 @@ get_header();
 						'orderby' => 'post_date',
 						'order' => 'desc',
 						'category__not_in' => $STANDARD_POST_CATEGORY_EXCLUDES,
+						'post__not_in' => $postIDsUsed
 						/*** NOTE - we could have also done this by requiring quotation category, but if we're using post formats, this is another way */
 						'tax_query' => array(
 							//'relation' => 'AND',
@@ -184,6 +190,7 @@ get_header();
 						$counter=0;
 						while ( have_posts() ) : the_post();
 							$counter++;
+							$postIDsUsed[] = get_the_ID();
 							if ($counter == 1) {
 								get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 								echo '<div class="usa-grid">';
@@ -381,8 +388,9 @@ get_header();
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<?php
-						$q = getRandomQuote('allEntities');
+						$q = getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
+							$postIDsUsed[] = $q["ID"];
 							outputQuote($q);
 						}
 					?>

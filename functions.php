@@ -1484,7 +1484,7 @@ function toolbar_link_to_mypage( $wp_admin_bar ) {
 	$wp_admin_bar->add_node( $args );
 }
 
-function getAllQuotes($entity) {
+function getAllQuotes($entity, $idsToExclude) {
 	//	allEntities or rfa, rferl, voa, mbn, ocb
 	if ($entity=='allEntities') {
 		$qParams = array(
@@ -1497,7 +1497,8 @@ function getAllQuotes($entity) {
 					'field' => 'slug',
 					'terms' => array( 'post-format-quote' )
 				)
-			)
+			),
+			'post__not_in' => $idsToExclude
 		);
 	} else {
 		$qParams = array(
@@ -1511,7 +1512,8 @@ function getAllQuotes($entity) {
 					'terms' => array( 'post-format-quote' )
 				)
 			),
-			'cat' => get_cat_id($entity)
+			'cat' => get_cat_id($entity),
+			'post__not_in' => $idsToExclude
 		);
 	}
 
@@ -1548,9 +1550,9 @@ function getAllQuotes($entity) {
 	wp_reset_postdata();
 	return $quotes;
 }
-function getRandomQuote($entity) {
+function getRandomQuote($entity, $idsToExclude) {
 	//	allEntities or rfa, rferl, voa, mbn, ocb
-	$allQuotes = getAllQuotes($entity);
+	$allQuotes = getAllQuotes($entity, $idsToExclude);
 	$returnVal = false;
 	if (count($allQuotes)) {
 		$randKey = array_rand($allQuotes);

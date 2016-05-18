@@ -456,7 +456,7 @@ get_header();
 					</div><!-- .bbg__article-sidebar -->
 
 					<?php
-						$q=getRandomQuote($entityCategorySlug);
+						$q=getRandomQuote($entityCategorySlug, array());
 						if ($q) {
 							echo '<div class="bbg__entity__pullquote">';
 							outputQuote($q);	
