@@ -733,7 +733,24 @@ article {
 
 		@include media($medium-screen) {
 			.bbg__quotation-text--large {
-				font-size: 1.8rem;
+				font-size: 1.7rem;
+				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__text {
+				.bbg__quotation-attribution__name {
+					font-size: 1.4rem;
+				}
+
+				.bbg__quotation-attribution__credit {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		@include media($medium-large-screen) {
+			.bbg__quotation-text--large {
+				font-size: 2.1rem;
 				font-weight: 100;
 			}
 
@@ -743,24 +760,7 @@ article {
 				}
 
 				.bbg__quotation-attribution__credit {
-					font-size: 1.2rem;
-				}
-			}
-		}
-
-		@include media($medium-large-screen) {
-			.bbg__quotation-text--large {
-				font-size: 2.5rem;
-				font-weight: 100;
-			}
-
-			.bbg__quotation-attribution__text {
-				.bbg__quotation-attribution__name {
-					font-size: 1.9rem;
-				}
-
-				.bbg__quotation-attribution__credit {
-					font-size: 1.3rem;
+					font-size: 1rem;
 				}
 			}
 		}
