@@ -5112,24 +5112,6 @@ article {
 .bbg__announcement {
   background-color: #323a45;
   padding: 2rem auto;
-  	/*
-  	.bbg__announcement__container{
-  		@include media($medium-large-screen) {
-  			display: inline;
-  		}
-  	}
-  
-  	.bbg__announcement__image {
-  		width: 100%;
-  
-  		@include media($small-screen) {
-  			float: left; 
-  			margin-right: 2rem;
-  			min-width: 200px;
-  			width: 33%;
-  		}
-  	}
-  	*/
 }
 .bbg__announcement .bbg-label {
   background-color: #981b1e;
@@ -5154,6 +5136,11 @@ article {
   width: 100%;
 }
 @media screen and (min-width: 481px) {
+  .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
+    min-height: 275px;
+  }
+}
+@media screen and (min-width: 600px) {
   .bbg__announcement .bbg__announcement__flexbox {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -5170,7 +5157,7 @@ article {
     width: auto;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
     min-width: 33%;
   }
