@@ -17,7 +17,7 @@
 $pageContent="";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
-		$pageContent=get_the_content();
+		$pageContent = get_the_content();
 		$pageContent = apply_filters('the_content', $pageContent);
    		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
@@ -25,7 +25,7 @@ endif;
 wp_reset_postdata();
 wp_reset_query();
 
-$id=$post->ID;
+$id = $post->ID;
 
 $fullName = get_post_meta( $id, 'entity_full_name', true );
 $abbreviation = get_post_meta( $id, 'entity_abbreviation', true );
@@ -42,10 +42,10 @@ if ($entityLogoID) {
 
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
-$subgroups=getEntityLinks($entityApiID);
+$subgroups = getEntityLinks($entityApiID);
 
-$siteSelect="<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
-$siteSelect.="<option>Select a URL</option>";
+$siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
+$siteSelect .= "<option>Select a URL</option>";
 foreach ($subgroups as $s) {
 	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
 }
@@ -55,22 +55,25 @@ $siteSelect.="</select><button class='usa-button' id='entityUrlGo'>Go</button>";
 $budget = get_post_meta( $id, 'entity_budget', true );
 $employees = get_post_meta( $id, 'entity_employees', true );
 $languages = get_post_meta( $id, 'entity_languages', true );
+$audience = get_post_meta( $id, 'entity_audience', true );
 $appLink = get_post_meta( $id, 'entity_mobile_apps_link', true );
 
 if ($budget != "") {
 	$budget = '<li><span class="bbg__article-sidebar__list-label">Annual budget: </span>'. $budget . '</li>';
 }
 if ($employees != "") {
-	$employees = number_format( floatval( $employees ), 0, '.', ',' ); 
+	$employees = number_format( floatval( $employees ), 0, '.', ',' );
 	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>'. $employees . '</li>';
 }
 if ($languages != "") {
 	$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
 }
+if ($audience != "") {
+	$audience = '<li><span class="bbg__article-sidebar__list-label">Audience reach: </span>'. $audience . '</li>';
+}
 if ($appLink != "") {
 	$appLink = '<h3><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
 }
-
 
 
 
@@ -118,8 +121,8 @@ if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$state = str_replace(" ", "+", $state);
 	$size = 400;
 	$zoom = 13;
-	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street . ',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
-	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city.',+' . $state . '+' . $zip . '/';
+	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street.',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
+	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
 	$includeMap = "bbg__contact-card--include-map";
 
 	$address = '<p><a href="'. $mapLink . '">' . $address . '</a></p>';
@@ -139,31 +142,31 @@ $bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
 
 
 /**** BEGIN CREATING rssItems array *****/
-$entityJson=getFeed($rssFeed,$id);
-$rssItems=array();
-$itemContainer=false;
-$languageDirection="";
+$entityJson = getFeed($rssFeed,$id);
+$rssItems = array();
+$itemContainer = false;
+$languageDirection = "";
 
 if (property_exists($entityJson, 'channel') && property_exists($entityJson->channel,'item')) {
-	$itemContainer=$entityJson->channel;
+	$itemContainer = $entityJson->channel;
 } else {
-	$itemContainer=$entityJson;
+	$itemContainer = $entityJson;
 }
 if ($itemContainer) {
 	if (property_exists($itemContainer, 'language')) {
-		if ($itemContainer->language=="ar"){
-			$languageDirection=" rtl";
+		if ($itemContainer->language == "ar"){
+			$languageDirection = " rtl";
 		}
 	}
 	foreach ($itemContainer->item as $e) {
-		$title=$e->title;
-		$url=$e->link;
-		$description=$e->description;
-		$enclosureUrl="";
+		$title = $e->title;
+		$url = $e->link;
+		$description = $e->description;
+		$enclosureUrl = "";
 		if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'}, 'url') ) {
-			$enclosureUrl=($e->enclosure->{'@attributes'}->url);
+			$enclosureUrl = ($e->enclosure->{'@attributes'}->url);
 		}
-		$rssItems[]=array( 'title'=>$title, 'url'=>$url, 'description'=>$description, 'image'=>$enclosureUrl );
+		$rssItems[] = array( 'title'=>$title, 'url'=>$url, 'description'=>$description, 'image'=>$enclosureUrl );
 	}
 }
 /**** DONE CREATING rssItems array *****/
@@ -188,7 +191,7 @@ if ($prCategorySlug != "") {
 					'taxonomy' => 'post_format',
 					'field' => 'slug',
 					'terms' => 'post-format-quote',
-					'operator' => 'NOT IN' 
+					'operator' => 'NOT IN'
 
 				)
 			)
@@ -240,7 +243,7 @@ if ($custom_query -> have_posts()) {
 	while ( $custom_query -> have_posts() )  {
 		$custom_query->the_post();
 		$id=get_the_ID();
-		
+
 		$yearTerms = get_the_terms( $id, 'awardyear' );
 		$awardYears=array();
 		foreach ( $yearTerms as $term ) {
@@ -252,18 +255,18 @@ if ($custom_query -> have_posts()) {
 	    foreach ( $orgTerms as $term ) {
 	        $organizations[] = $term->name;
 	    }
-		
+
 		$recipients=array();
 		$recipientTerms = get_the_terms( $id, 'recipients' );
 		foreach ( $recipientTerms as $term ) {
 	        $recipients[] = $term->name;
 	    }
-		
-		$awards[]=array( 
+
+		$awards[]=array(
 			'id'=>$id,
-			'url'=>get_permalink($id), 
-			'title'=> get_the_title($id), 
-			'excerpt'=> get_the_excerpt(), 
+			'url'=>get_permalink($id),
+			'title'=> get_the_title($id),
+			'excerpt'=> get_the_excerpt(),
 			'awardYears'=> $awardYears,
 			'organizations'=> $organizations,
 			'recipients'=> $recipients
@@ -275,7 +278,7 @@ $s="";
 if (count($awards)) {
 	//$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
 	foreach ($awards as $a) {
-		
+
 		$id=$a['id'];
 		$url=$a['url'];
 		$title=$a['title'];
@@ -297,7 +300,7 @@ $pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
 
-get_header(); 
+get_header();
 ?>
 
 	<div id="primary" class="content-area">
@@ -348,20 +351,21 @@ get_header();
 
 
 					<div class="bbg__article-sidebar--left">
-						<?php 
-						if ($budget != "" || $employees != "" || $languages != "" || $appLink != "") {
+						<?php
+						if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
 							echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
 						} ?>
 
 						<ul class="bbg__article-sidebar__list--labeled">
-							<?php 
+							<?php
 								echo $budget;
 								echo $employees;
 								echo $languages;
+								echo $audience;
 							?>
 						</ul>
 
-												<?php 
+												<?php
 						if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 						?>
 						<ul class="bbg__article-share " style="margin-bottom: 3rem;">
@@ -369,22 +373,22 @@ get_header();
 
 							<?php
 								if ($facebook!=""){
-									echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>'; 
+									echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
 								}
 								if ($twitterProfileHandle!=""){
-									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+									echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
 								}
 								if ($instagram!=""){
-									echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>'; 
+									echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
 								}
 							?>
 							&nbsp;
 						</ul>
 						<?php } ?>
 
-						<?php 
-							echo $appLink; 
-							echo $siteSelect; 
+						<?php
+							echo $appLink;
+							echo $siteSelect;
 						?>
 
 
@@ -409,7 +413,7 @@ get_header();
 
 							<div class="bbg__contact-card__text">
 							<h3>Contact information</h3>
-							<?php 
+							<?php
 							echo $address;
 							echo '<ul class="usa-unstyled-list">';
 							echo $phone;
@@ -434,7 +438,7 @@ get_header();
 
 
 					<div class="bbg__article-sidebar">
-						<?php 
+						<?php
 							if (count($rssItems)) {
 								echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
 								echo '<ul class="bbg__profile__related-link__list'. $languageDirection .'">';
@@ -459,7 +463,7 @@ get_header();
 						$q=getRandomQuote($entityCategorySlug, array());
 						if ($q) {
 							echo '<div class="bbg__entity__pullquote">';
-							outputQuote($q);	
+							outputQuote($q);
 							echo '</div>';
 						}
 					?>
@@ -469,7 +473,7 @@ get_header();
 			</article>
 
 			<div class="bbg-post-footer">
-			
+
 			</div>
 
 			<?php endwhile; // End of the loop. ?>
