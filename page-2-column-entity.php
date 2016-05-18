@@ -367,7 +367,9 @@ get_header(); ?>
 								<div class="bbg__profile__content">
 								<?php /*echo $headlineStr;*/ ?>
 
-								<?php the_content(); ?>
+								<?php /*the_content();*/ ?>
+								<?php echo $pageContent; ?>
+
 
 								<?php if ($includeContactBox){ ?>
 								<div class="bbg__contact-card <?php echo $includeMap; ?>">
