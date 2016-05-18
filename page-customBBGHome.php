@@ -43,6 +43,8 @@ $defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meet
 /*** get impact category ***/
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
+$threatsCat=get_category_by_slug('threats-to-journalism');
+$threatsPermalink = get_category_link($threatsCat->term_id);
 
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
 $postIDsUsed=array();
@@ -250,6 +252,10 @@ get_header();
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
 
+			
+
+
+
 			<!-- Featured Board Meeting -->
 			<?php
 				if ($featuredBoardMeeting) {
@@ -291,7 +297,44 @@ get_header();
 				}
 			?>
 
+			<!-- Threats to Journalism -->
+			<section id="threats-to-journalism" class="usa-section">
+				<div class="usa-grid">
+					<h6 class="bbg-label"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
+				</div>
+				<div class="usa-grid bbg__ceo-post"> 
+					<div class="bbg-grid--1-2-2">
+						<article id="post-23765" class="bbg-blog__excerpt--list bbg-grid--full-width  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke" >
+							<img src="http://placehold.it/500x250">
+							<header class="entry-header bbg-blog__excerpt-header">
+								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">U.S. lawmaker congratulates BBG on Russian-language TV program</a></h3>
+							</header><!-- .bbg-blog__excerpt-header -->
+							<div class="entry-meta bbg__excerpt-meta">
+								<span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://bbgredesign.voanews.com/blog/author/bbgadmin/">bbgadmin</a></span></span> <span class="u--seperator"> </span><span class="posted-on"><time class="entry-date published" datetime="2016-03-29T15:54:56+00:00">March 29, 2016</time></span>		</div><!-- .entry-meta -->
+								<div class="entry-content bbg-blog__excerpt-content">
+									<p>A U.S. lawmaker has congratulated two BBG networks for jointly creating and developing a Russian-language TV program that is now carried by 25 media outlets in nine countries mostly in the Russian periphery, including Ukraine.</p>
+								</div><!-- .bbg-blog__excerpt-content -->
+						</article><!-- #post-## -->
+					</div>
+					<?php 
+						$s = "";
+						
+						//Temporarily hardcoding some lingks here.
+						$s .='<div class="bbg-grid--1-2-2 tertiary-stories">';
 
+						$s .= '<article id="post-24099" class="bbg-blog__excerpt--list  post-24099 post type-post status-publish format-standard has-post-thumbnail hentry category-johns-take tag-john-lansing"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/31/expanding-audience-global-coverage-of-the-presidents-historic-visit-to-cuba/" rel="bookmark">Expanding Audience: Global coverage of the president’s historic visit to Cuba</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23765" class="bbg-blog__excerpt--list  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">U.S. lawmaker congratulates BBG on Russian-language TV program</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23755" class="bbg-blog__excerpt--list  post-23755 post type-post status-publish format-standard has-post-thumbnail hentry category-highlight category-mbn tag-alhurra-television tag-alhurra-com tag-alhurras-al-youm tag-benjamin-netanyahu tag-francois-hollande tag-mbn tag-mbns-raise-your-voice tag-middle-east-broadcasting-networks tag-radio-sawa"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/24/alhurra-radio-sawas-breaking-news-coverage-of-the-bombings-in-brussels/" rel="bookmark">Alhurra’s, Radio Sawa’s breaking news coverage of the Brussels bombings</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23742" class="bbg-blog__excerpt--list  post-23742 post type-post status-publish format-standard has-post-thumbnail hentry category-ocb-press-release category-press-release tag-alan-gross tag-barack-obama tag-cuba tag-estadio-latinoamericano tag-maria-malule-gonzalez tag-president-obama tag-the-martis tag-tv-and-radio-marti"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/23/martis-provide-cubans-non-stop-coverage-of-obamas-historic-trip-go-live-from-island-for-first-time/" rel="bookmark">Martís provide Cubans non-stop coverage of Obama’s historic trip,  go “LIVE” from island for first time</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23737" class="bbg-blog__excerpt--list  post-23737 post type-post status-publish format-standard hentry category-alhurra-press-release category-mbn-press-release category-press-release tag-al-youm tag-alhurra-television tag-alhurra-tv tag-brian-conniff tag-mbn tag-mbn-president-brian-conniff tag-middle-east-broadcasting-networks tag-sit-bmit-ragel"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/23/alhurra-tv-focuses-on-female-empowerment/" rel="bookmark">Alhurra TV focuses on female empowerment</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23728" class="bbg-blog__excerpt--list  post-23728 post type-post status-publish format-standard hentry category-highlight category-mbn tag-alhurra-television tag-alhurras-al-youm tag-broadcasting-board-of-governors tag-mbn tag-mbns-raise-your-voice tag-middle-east-broacasting-networks tag-radio-sawa tag-radio-sawas-sheno-rayek"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/22/alhurra-radio-sawa-take-investigative-look-into-countering-radicalization-through-education/" rel="bookmark">Alhurra, Radio Sawa take investigative look into countering radicalization through education</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23715" class="bbg-blog__excerpt--list  post-23715 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-khadija-ismayilova-investigative-journalism-fellowship tag-nenad-pejic tag-radio-free-europeradio-liberty tag-rferl tag-rferl-azerbaijani-service"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/21/in-azerbaijan-no-pardon-for-ismayilova/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+
+						$s .= '</div>';
+						echo $s;
+					?>
+				</div><!-- Threats to Journalism -->
+			</section>
 
 
 			<!-- Entity list -->
