@@ -252,7 +252,7 @@ get_header();
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
 
-			
+
 
 
 
@@ -305,14 +305,14 @@ get_header();
 				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
 						<article id="post-23765" class="bbg-blog__excerpt--list bbg-grid--full-width  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke" >
-							<img src="http://placehold.it/500x250">
+							<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
 							<header class="entry-header bbg-blog__excerpt-header">
-								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">U.S. lawmaker congratulates BBG on Russian-language TV program</a></h3>
+								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/29/u-s-lawmaker-congratulates-bbg-on-russian-language-tv-program/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="entry-meta bbg__excerpt-meta">
 								<span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://bbgredesign.voanews.com/blog/author/bbgadmin/">bbgadmin</a></span></span> <span class="u--seperator"> </span><span class="posted-on"><time class="entry-date published" datetime="2016-03-29T15:54:56+00:00">March 29, 2016</time></span>		</div><!-- .entry-meta -->
 								<div class="entry-content bbg-blog__excerpt-content">
-									<p>A U.S. lawmaker has congratulated two BBG networks for jointly creating and developing a Russian-language TV program that is now carried by 25 media outlets in nine countries mostly in the Russian periphery, including Ukraine.</p>
+									<p>Azerbaijan pardoned several political prisoners last week, but RFE/RL reacted with dismay that a leading contributor to its Azerbaijani Service, investigative reporter Khadija Ismayilova, was not among them.</p>
 								</div><!-- .bbg-blog__excerpt-content -->
 						</article><!-- #post-## -->
 					</div>
