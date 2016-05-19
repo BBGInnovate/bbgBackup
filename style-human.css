@@ -4174,11 +4174,6 @@ img > a:focus,
 .usa-disclaimer {
   text-align: center;
 }
-@media screen and (min-width: 1201px) {
-  .usa-disclaimer {
-    text-align: left;
-  }
-}
 
 .bbg-label {
   background-color: #981b1e;
