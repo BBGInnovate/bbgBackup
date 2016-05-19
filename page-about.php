@@ -101,18 +101,29 @@ get_header();
 								$containerClass='bbg-grid--1-3-3';
 							}
 
-							foreach ($relatedPages as $rp) {
-								echo "<article class='$containerClass bbg__about__child'>";
-								$excerpt = my_excerpt($rp->ID);
-								$excerpt = apply_filters( 'the_content', $excerpt );
-								$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
-								$title = get_the_title($rp->ID);
-								$url = get_the_permalink($rp->ID);
-								echo "<h6 class='bbg-label'><a href='$url'>$title</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
-								echo $excerpt;
-								echo "</article>";
+							foreach ($relatedPages as $rPage) {
+								echo "<div class='usa-grid-full bbg__about__children--row'>";
+
+								$qParams = array(
+									'post_type' => 'page',
+									'post_status' => 'publish',
+									'post__in' => array( $rPage->ID )
+								);
+
+								query_posts( $qParams );
+
+								if ( have_posts() ) {
+									while ( have_posts() ) {
+										the_post();
+										$gridClass = $containerClass;
+										$includePortfolioDescription = TRUE;
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									}
+								}
+								wp_reset_query();
 							}
-						echo '</div>';
+						echo "</div>";
+
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 						elseif( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
