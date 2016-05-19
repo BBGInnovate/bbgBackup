@@ -340,7 +340,7 @@ get_header();
 									echo '<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">';
 									echo '<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">';
 									echo '</a>';
-									echo '<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #981b1e; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>';
+									echo '<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #000; border: 1px solid #333; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>';
 									echo '</div>';
 									echo '<header class="entry-header bbg-blog__excerpt-header"><h2 class="entry-title bbg-blog__excerpt-title--list"><a href="'.get_the_permalink().'">' . get_the_title() . '</a></h2></header>';
 									echo '<div class="entry-content bbg-blog__excerpt-content"><p>';
