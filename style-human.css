@@ -4174,11 +4174,6 @@ img > a:focus,
 .usa-disclaimer {
   text-align: center;
 }
-@media screen and (min-width: 1201px) {
-  .usa-disclaimer {
-    text-align: left;
-  }
-}
 
 .bbg-label {
   background-color: #981b1e;
@@ -4438,6 +4433,7 @@ article {
     font-size: 1.7rem;
     font-weight: 100;
     line-height: 2.5;
+    margin-top: -.8rem;
     margin-bottom: 3rem;
   }
 
@@ -4450,6 +4446,9 @@ article {
   .bbg__article-sidebar.large {
     max-width: none;
     width: 33%;
+  }
+  .bbg__article-sidebar.large:first-child {
+    margin-top: -1rem;
   }
 }
 .bbg__article-sidebar--left {

@@ -88,7 +88,7 @@ img,
 .usa-disclaimer {
 	text-align: center;
 	@include media($large-screen) {
-		text-align: left;
+		//text-align: left;
 	}
 }
 
@@ -363,7 +363,10 @@ article {
 					weight: 100;
 				};
 				line-height: 2.5;
-				margin-bottom: $site-margins;
+				margin: {
+					top: -.8rem;
+					bottom: $site-margins;
+				}
 			}
 		}
 	}
@@ -378,6 +381,10 @@ article {
 		&.large{
 			max-width: none;
 			width: 33%;
+
+			&:first-child {
+				margin-top: -1rem;
+			}
 		}
 	}
 

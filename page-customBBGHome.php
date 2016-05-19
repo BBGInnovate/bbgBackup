@@ -43,6 +43,9 @@ $defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meet
 /*** get impact category ***/
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
+$threatsCat=get_category_by_slug('threats-to-journalism');
+//$threatsPermalink = get_category_link($threatsCat->term_id);
+$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
 
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
 $postIDsUsed=array();
@@ -174,6 +177,39 @@ get_header();
 				</div><!-- .usa-grid -->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
 
+
+
+			<!-- Featured Board Meeting -->
+			<?php
+				if ($featuredBoardMeeting) {
+					$id=$featuredBoardMeeting->ID;
+					$labelText='This Week';
+					$eventPermalink=get_the_permalink($id);
+					$imgSrc=$defaultBoardMeetingImage;
+					$featuredImageID = get_post_thumbnail_id($id);	
+					if ($featuredImageID) {
+						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
+						$imgSrc=$imgObj[0];
+					}
+					$eventTitle=$featuredBoardMeeting->post_title;
+					$excerpt = my_excerpt($id);
+
+					echo '<section id="announcement" class="usa-section bbg__announcement">';
+						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
+							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
+							echo '<div style="display: inline-block;">';
+								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
+								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
+								echo '<p>' . $excerpt . '</p>';
+							echo '</div>';
+						echo '</div>';
+					echo '</section>';
+				}
+			?><!-- featured board meeting -->
+
+
+
+
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section">
 				<div class="usa-grid">
@@ -250,48 +286,59 @@ get_header();
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
 
-			<!-- Featured Board Meeting -->
-			<?php
-				if ($featuredBoardMeeting) {
-					$id=$featuredBoardMeeting->ID;
-					$labelText='This Week';
-					$eventPermalink=get_the_permalink($id);
-					$imgSrc=$defaultBoardMeetingImage;
-					$featuredImageID = get_post_thumbnail_id($id);	
-					if ($featuredImageID) {
-						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
-						$imgSrc=$imgObj[0];
-					}
-					$eventTitle=$featuredBoardMeeting->post_title;
-					$excerpt = my_excerpt($id);
-
-					/*
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid">';
-							echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-							echo '<div class="bbg__announcement__container">';
-								echo '<a href="' . $eventPermalink.'"><img src="' . $imgSrc . '" class="bbg__announcement__image"/></a>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-					*/
-
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
-							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
-							echo '<div style="display: inline-block;">';
-								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-				}
-			?>
 
 
+
+
+
+
+
+
+			<!-- Threats to Journalism -->
+			<section id="threats-to-journalism" class="usa-section">
+				<div class="usa-grid">
+					<h6 class="bbg-label"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
+				</div>
+				<div class="usa-grid bbg__ceo-post"> 
+					<div class="bbg-grid--1-2-2">
+						<article id="post-23765" class="bbg-blog__excerpt--list bbg-grid--full-width  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke" >
+							<div style="position: relative;">
+								<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">
+									<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
+								</a>
+								<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #981b1e; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>
+							</div>
+
+							<header class="entry-header bbg-blog__excerpt-header">
+								<h2 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">BBG denounces sentencing of Azeri journalist Khadija Ismayilova</a></h2>
+								<!--<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/21/in-azerbaijan-no-pardon-for-ismayilova/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3>-->
+							</header><!-- .bbg-blog__excerpt-header -->
+
+							<div class="entry-content bbg-blog__excerpt-content">
+								<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7&frac12; years in prison in Azerbaijan.</p>
+								<!--<p>Investigative journalist and RFE/RL contributor Khadija Ismayilova was arrested and detained on Dec 5, 2014. On Sept 1, 2015 she was sentenced to 7 1/2 years in prison.</p>
+								<!--<p>Azerbaijan pardoned several political prisoners last week, but RFE/RL reacted with dismay that a leading contributor to its Azerbaijani Service, investigative reporter Khadija Ismayilova, was not among them.</p>-->
+							</div><!-- .bbg-blog__excerpt-content -->
+						</article><!-- #post-## -->
+					</div>
+					<?php 
+						$s = "";
+						
+						//Temporarily hardcoding some lingks here.
+						$s .='<div class="bbg-grid--1-2-2 tertiary-stories">';
+
+						$s .= '<article id="post-23213" class="bbg-blog__excerpt--list  post-23213 post type-post status-publish format-standard has-post-thumbnail hentry category-bbg-press-release category-press-release tag-amal-clooney tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova Confirms Clooney as Defense Counsel</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-23015" class="bbg-blog__excerpt--list  post-23015 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/12/04/one-year-on-imprisoned-azeri-journalist-remains-defiant-inspires-new-work/" rel="bookmark">One Year On, Imprisoned Azeri Journalist Remains Defiant, Inspires New Work</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-22620" class="bbg-blog__excerpt--list  post-22620 post type-post status-publish format-standard has-post-thumbnail hentry category-highlight category-rferl tag-azerbaijan tag-khadija-ismayilova tag-press-freedom tag-rferl tag-rferl-radio-free-europe tag-threats-to-journalism"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/rferlive-the-case-the-verdict-and-media-freedom-in-azerbaijan/" rel="bookmark">RFE/RLive: The Case, The Verdict, and Media Freedom in Azerbaijan</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-22571" class="bbg-blog__excerpt--list  post-22571 post type-post status-publish format-standard hentry category-bbg-press-release category-press-release tag-azerbaijan tag-bbg tag-broadcasting-board-of-governors tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/bbg-denounces-sentencing-of-azeri-journalist-khadija-ismayilova/" rel="bookmark">BBG Denounces Sentencing of Azeri Journalist Khadija Ismayilova</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-22612" class="bbg-blog__excerpt--list  post-22612 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/in-blow-to-independent-media-azerbaijan-sentences-ismayilova-to-7-12-years/" rel="bookmark">In Blow to Independent Media, Azerbaijan Sentences Ismayilova to 7 1/2 Years</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+						$s .= '<article id="post-22462" class="bbg-blog__excerpt--list  post-22462 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-national-press-club tag-rferl tag-rferl-radio-free-europe tag-threats-to-journalism"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/07/29/national-press-club-honors-azeri-journalist/" rel="bookmark">National Press Club Honors Azeri Journalist</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
+
+						$s .= '</div>';
+						echo $s;
+					?>
+				</div><!-- Threats to Journalism -->
+			</section>
 
 
 			<!-- Entity list -->

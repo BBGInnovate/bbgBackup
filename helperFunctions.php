@@ -9,17 +9,10 @@
 		$authorDescription = esc_html( $user->description );
 		$theauthorid = esc_html( $user->ID );
 		$twitterLink = "";
-		$teamLeader = $user->headOfTeam;
 
 
 		$authorEmailLink = '';
 		$addSeparator = FALSE;
-		if ( isset($teamLeader) && $teamLeader!="" ){
-			//$authorEmail = '<a href="mailto:'. $curauth->user_email .'">'. $curauth->user_email .'</a>';
-			$authorEmailLink = '<a href="mailto:' . $authorEmail . '" class="bbg-staff__author__contact-link email">'.$authorEmail . '</a>';
-
-			$addSeparator = TRUE;
-		}
 
 		//Disabling the website url for now
 		//$website = esc_html( $user->user_url );

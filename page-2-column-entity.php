@@ -57,6 +57,7 @@ $employees = get_post_meta( $id, 'entity_employees', true );
 $languages = get_post_meta( $id, 'entity_languages', true );
 $audience = get_post_meta( $id, 'entity_audience', true );
 $appLink = get_post_meta( $id, 'entity_mobile_apps_link', true );
+$primaryLanguage = get_post_meta( $id, 'entity_primary_language', true );
 
 if ($budget != "") {
 	$budget = '<li><span class="bbg__article-sidebar__list-label">Annual budget: </span>'. $budget . '</li>';
@@ -66,7 +67,11 @@ if ($employees != "") {
 	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>'. $employees . '</li>';
 }
 if ($languages != "") {
-	$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
+	if ($languages == "1"){
+		$languages = '<li><span class="bbg__article-sidebar__list-label">Language supported: </span>'. $primaryLanguage . '</li>';
+	} else {
+		$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
+	}
 }
 if ($audience != "") {
 	$audience = '<li><span class="bbg__article-sidebar__list-label">Audience reach: </span>'. $audience . '</li>';
