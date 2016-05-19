@@ -205,8 +205,18 @@ section.usa-section {
 	}
 
 	.tertiary-stories {
-		border-left: 1px solid #000;
+		border-top: 1px solid #000;
+		padding: {
+			top: $site-margins;
+			bottom: $site-margins;
+		}
+
+		@include media($medium-large-screen) {
+			border-top: none;
+			border-left: 1px solid #000;
+		}
 	}
+
 }
 
 

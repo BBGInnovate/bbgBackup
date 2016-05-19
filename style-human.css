@@ -4266,7 +4266,15 @@ section.usa-section {
   text-decoration: none;
 }
 .bbg__ribbon .tertiary-stories {
-  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+@media screen and (min-width: 900px) {
+  .bbg__ribbon .tertiary-stories {
+    border-top: none;
+    border-left: 1px solid #000;
+  }
 }
 
 article {
