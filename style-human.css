@@ -4253,6 +4253,21 @@ section.usa-section {
 .bbg__ribbon p {
   color: #FFF;
 }
+.bbg__ribbon .bbg-label {
+  background-color: #981b1e;
+  color: #FFF;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+}
+.bbg__ribbon .bbg-label a {
+  color: #FFF;
+  text-decoration: none;
+}
+.bbg__ribbon .tertiary-stories {
+  border-left: 1px solid #000;
+}
 
 article {
   margin-bottom: 3rem;

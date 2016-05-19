@@ -297,7 +297,7 @@ get_header();
 			<!-- Threats to Journalism -->
 			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
+					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
 				</div>
 				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
@@ -306,7 +306,7 @@ get_header();
 								<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">
 									<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
 								</a>
-								<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #981b1e; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>
+								<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #000; border: 1px solid #333; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>
 							</div>
 
 							<header class="entry-header bbg-blog__excerpt-header">
@@ -342,6 +342,7 @@ get_header();
 
 
 			<!-- Featured Board Meeting -->
+<!--
 <section id="announcement" class="usa-section bbg__announcement">
 	<div class="usa-grid bbg__announcement__flexbox" style="">
 		<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg);"></div>
@@ -352,6 +353,7 @@ get_header();
 		</div>
 	</div>
 </section>
+-->
 
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">

@@ -187,6 +187,26 @@ section.usa-section {
 	p {
 		color: #FFF;
 	}
+
+	.bbg-label {
+		background-color: $color-secondary-darkest;
+		color: #FFF;
+		display: inline-block;
+		margin: {
+			top: 0;
+			bottom: 2rem;
+		}
+		padding: .5rem $site-margins-small;
+
+		a {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+
+	.tertiary-stories {
+		border-left: 1px solid #000;
+	}
 }
 
 
