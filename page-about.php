@@ -142,18 +142,19 @@ get_header();
 
 							// show umbrella section image
 							if ($imageURL) {
-								$image = '<div class="usa-grid-full bbg__about__child__banner" style="background-image: url(' . $imageURL . ');">';
+								$image = '<div class="bbg__about__child__banner" style="background-image: url(' . $imageURL . ');">';
 
 								// echo '<div class="usa-grid-full">';
 								echo $image;
 								// echo '</div>';
-								echo '</div> <!-- usa-grid-full -->';
+								echo '</div>';
 							}
 
 							// show umbrella section intro text
-							echo "<article class='bbg__about__child'>$introText</article>";
+							echo "<div class='bbg__about__child'>$introText</div>";
 
 							if ( $relatedPages ) {
+								echo "<div class='usa-grid-full'>";
 								foreach ($relatedPages as $rp) {
 									echo "<article class='$containerClass bbg__about__grandchild'>";
 									$excerpt = my_excerpt($rp->ID);
@@ -165,6 +166,7 @@ get_header();
 									echo $excerpt;
 									echo "</article>";
 								}
+								echo "</div>";
 							}
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 						echo '</div>';
