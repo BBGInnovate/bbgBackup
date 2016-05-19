@@ -295,7 +295,7 @@ get_header();
 
 
 			<!-- Threats to Journalism -->
-			<section id="threats-to-journalism" class="usa-section">
+			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
 				</div>
@@ -340,6 +340,18 @@ get_header();
 				</div><!-- Threats to Journalism -->
 			</section>
 
+
+			<!-- Featured Board Meeting -->
+<section id="announcement" class="usa-section bbg__announcement">
+	<div class="usa-grid bbg__announcement__flexbox" style="">
+		<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg);"></div>
+		<div style="display: inline-block;">
+			<h6 class="bbg-label small">1 year 5 months 14 days in prison</h6>
+			<h2 style="clear: none;"><a href="http://localhost/wp-design_standards/redesign/2016/04/20/board-meeting-april-2016/" style="color: #9bdaf1;">BBG denounces sentencing of Azeri journalist</a></h2>
+			<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7&frac12; years in prison in Azerbaijan.</p>
+		</div>
+	</div>
+</section>
 
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
