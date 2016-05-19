@@ -272,19 +272,6 @@ get_header();
 					$eventTitle=$featuredBoardMeeting->post_title;
 					$excerpt = my_excerpt($id);
 
-					/*
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid">';
-							echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-							echo '<div class="bbg__announcement__container">';
-								echo '<a href="' . $eventPermalink.'"><img src="' . $imgSrc . '" class="bbg__announcement__image"/></a>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-					*/
-
 					echo '<section id="announcement" class="usa-section bbg__announcement">';
 						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
 							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
@@ -306,17 +293,20 @@ get_header();
 				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
 						<article id="post-23765" class="bbg-blog__excerpt--list bbg-grid--full-width  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke" >
-							<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">
-								<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
-							</a>
+							<div style="position: relative;">
+								<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">
+									<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
+								</a>
+								<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #981b1e; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>
+							</div>
+
 							<header class="entry-header bbg-blog__excerpt-header">
 								<h2 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">BBG denounces sentencing of Azeri journalist Khadija Ismayilova</a></h2>
 								<!--<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/21/in-azerbaijan-no-pardon-for-ismayilova/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3>-->
-								<h4>1 year 5 months 14 days in prison</h4>
 							</header><!-- .bbg-blog__excerpt-header -->
 
 							<div class="entry-content bbg-blog__excerpt-content">
-								<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7 1/2 years in prison in Azerbaijan.</p>
+								<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7&frac12; years in prison in Azerbaijan.</p>
 								<!--<p>Investigative journalist and RFE/RL contributor Khadija Ismayilova was arrested and detained on Dec 5, 2014. On Sept 1, 2015 she was sentenced to 7 1/2 years in prison.</p>
 								<!--<p>Azerbaijan pardoned several political prisoners last week, but RFE/RL reacted with dismay that a leading contributor to its Azerbaijani Service, investigative reporter Khadija Ismayilova, was not among them.</p>-->
 							</div><!-- .bbg-blog__excerpt-content -->
