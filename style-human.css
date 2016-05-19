@@ -5195,7 +5195,9 @@ article {
 }
 
 .bbg__about__child__banner {
+  background-position: center center;
   height: 200px;
+  margin-bottom: 2.25rem;
 }
 
 .bbg__about__grandchild p {

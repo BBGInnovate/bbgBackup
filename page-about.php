@@ -142,7 +142,7 @@ get_header();
 
 							// show umbrella section image
 							if ($imageURL) {
-								$image = '<div class="usa-grid-full bbg__about__child__banner" style="background-image: url(' . $imageURL . '); background-position: top center">';
+								$image = '<div class="usa-grid-full bbg__about__child__banner" style="background-image: url(' . $imageURL . ');">';
 
 								// echo '<div class="usa-grid-full">';
 								echo $image;
