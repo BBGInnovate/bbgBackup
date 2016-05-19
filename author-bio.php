@@ -18,13 +18,7 @@ $authorEmail = "";
 if ( $curauth->isActive=="on" ) {
 	//$authorEmail = '<a href="mailto:'. $curauth->user_email .'">'. $curauth->user_email .'</a>';
 }
-$teamLeader = $curauth->headOfTeam;
 $addSeparator = FALSE;
-if ( isset($teamLeader) && $teamLeader!="" ){
-	$authorEmail = '<a href="mailto:'. $curauth->user_email .'">'. $curauth->user_email .'</a>';
-	$addSeparator = TRUE;
-}
-
 
 $avatar = get_avatar( $theAuthorID , apply_filters( 'change_avatar_css', 100 ) );
 

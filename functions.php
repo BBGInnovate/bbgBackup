@@ -352,7 +352,6 @@ add_action( 'edit_user_profile', 'bbg_show_extra_profile_fields' );
 function bbg_show_extra_profile_fields( $user ) {
 	$isActive=esc_attr( get_the_author_meta( 'isActive', $user->ID ));
 	$isActiveChecked= ($isActive=="on") ? "checked" : "";
-	$headOfTeam=esc_attr( get_the_author_meta( 'headOfTeam', $user->ID ));
 
 
 ?>
@@ -377,27 +376,6 @@ function bbg_show_extra_profile_fields( $user ) {
 				<span class="description">User is active</span>
 			</td>
 		</tr>
-		<tr>
-			<th><label for="isActive">Head of Team</label></th>
-			<td><select name="headOfTeam"><option value="">None</option>
-				<?php
-					$categories = get_terms('category', 'hide_empty=0' );
-					foreach ( $categories as $category ) {
-						$optionSelected=($headOfTeam==$category->term_id) ? "selected" : "";
-						$term = get_option( "taxonomy_" . $category->term_id );
-						if ($term['isTeamName'] == 1 ) {
-							printf( '<option %1$s value="%2$s">%3$s</option>',
-								$optionSelected,
-								esc_attr( $category->term_id ),
-								esc_html( $category->name )
-						    );
-						}
-					}
-				?>
-				</select>
-			</td>
-		</tr>
-
 	</table>
 <?php }
 
@@ -411,7 +389,7 @@ function my_save_extra_profile_fields( $user_id ) {
 
 	update_usermeta( $user_id, 'occupation', $_POST['occupation'] );
 	update_usermeta( $user_id, 'isActive', $_POST['isActive'] );
-	update_usermeta( $user_id, 'headOfTeam', $_POST['headOfTeam'] );
+	
 }
 
 /*=========== ADD USERID TO USER LIST SO THAT IT'S EASY TO SET THE RANKING GENERAL SETTING *===========*/
@@ -640,12 +618,8 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 		//$authorEmail = $curauth -> user_email;
 		$authorEmail = "";
 
-		$teamLeader = $curauth->headOfTeam;
 		$addSeparator = FALSE;
-		if ( isset($teamLeader) && $teamLeader!="" ){
-			$authorEmail = '<a href="mailto:'. $curauth->user_email .'">'. $curauth->user_email .'</a>';
-			$addSeparator = TRUE;
-		}
+		
 
 
 
