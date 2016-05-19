@@ -297,7 +297,7 @@ get_header();
 			<!-- Threats to Journalism -->
 			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
-					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Journalism</a></h6>
+					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to press</a></h6>
 				</div>
 				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
