@@ -49,7 +49,7 @@ get_header();
 
 					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
 					echo '</div>';
 					echo '</div> <!-- usa-grid-full -->';
 				}
@@ -128,6 +128,7 @@ get_header();
 							$labelText = get_sub_field('about_umbrella_label');
 							$labelLink = get_sub_field('about_umbrella_label_link');
 							$introText = get_sub_field('about_umbrella_intro_text');
+							$imageURL = get_sub_field('about_umbrella_image');
 
 							//allow shortcodes in intro text
 							$introText = apply_filters('the_content', $introText);
@@ -138,6 +139,18 @@ get_header();
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
+
+							// show umbrella section image
+							if ($imageURL) {
+								$image = '<div class="usa-grid-full bbg__about__child__banner" style="background-image: url(' . $imageURL . '); background-position: top center">';
+
+								// echo '<div class="usa-grid-full">';
+								echo $image;
+								// echo '</div>';
+								echo '</div> <!-- usa-grid-full -->';
+							}
+
+							// show umbrella section intro text
 							echo "<article class='bbg__about__child'>$introText</article>";
 
 							if ( $relatedPages ) {
