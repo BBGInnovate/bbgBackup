@@ -29,6 +29,17 @@ function getRecentPostQueryParams($numPosts, $used, $catExclude) {
 	);
 	return $qParams;
 }
+function getThreatsPostQueryParams($numPosts, $used) {
+	$qParams=array(
+		'post_type' => array('post'),
+		'posts_per_page' => $numPosts,
+		'orderby' => 'post_date',
+		'order' => 'desc',
+		'cat' => get_cat_id('Threats to Press'),
+		'post__not_in' => $used
+	);
+	return $qParams;
+}
 
 $templateName = "customBBGHome";
 
@@ -39,13 +50,14 @@ $soap = get_field('homepage_soapbox_post', 'option');
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
 $defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meeting_image', 'option');
+$threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 
 /*** get impact category ***/
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
-$threatsCat=get_category_by_slug('threats-to-journalism');
-//$threatsPermalink = get_category_link($threatsCat->term_id);
-$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
+$threatsCat=get_category_by_slug('threats-to-press');
+$threatsPermalink = get_category_link($threatsCat->term_id);
+//$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
 
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
 $postIDsUsed=array();
@@ -57,6 +69,9 @@ if ($featuredBoardMeeting) {
 }
 if ($soap) {
 	$postIDsUsed[]=$soap->ID;
+}
+if ($threatsToPressPost) {
+	$postIDsUsed[]=$threatsToPressPost->ID;
 }
 
 /*** prepare a variable for our default board meeting image string ***/
@@ -287,59 +302,72 @@ get_header();
 			</section><!-- .BBG News -->
 
 
-
-
-
-
-
-
-
-			<!-- Threats to Journalism -->
+			<!-- Threats to Journalism.  -->
 			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
-					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to press</a></h6>
+					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
 				</div>
+				
+				<!-- Headlines -->
 				<div class="usa-grid bbg__ceo-post"> 
 					<div class="bbg-grid--1-2-2">
-						<article id="post-23765" class="bbg-blog__excerpt--list bbg-grid--full-width  post-23765 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release category-voa-press-release tag-current-time tag-radio-free-europeradio-liberty tag-u-s-congresswoman-yvette-clarke tag-voice-of-america tag-yvette-clarke" >
-							<div style="position: relative;">
-								<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">
-									<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">
-								</a>
-								<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #000; border: 1px solid #333; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>
-							</div>
 
-							<header class="entry-header bbg-blog__excerpt-header">
-								<h2 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">BBG denounces sentencing of Azeri journalist Khadija Ismayilova</a></h2>
-								<!--<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/03/21/in-azerbaijan-no-pardon-for-ismayilova/" rel="bookmark">In Azerbaijan, no pardon for Ismayilova</a></h3>-->
-							</header><!-- .bbg-blog__excerpt-header -->
-
-							<div class="entry-content bbg-blog__excerpt-content">
-								<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7&frac12; years in prison in Azerbaijan.</p>
-								<!--<p>Investigative journalist and RFE/RL contributor Khadija Ismayilova was arrested and detained on Dec 5, 2014. On Sept 1, 2015 she was sentenced to 7 1/2 years in prison.</p>
-								<!--<p>Azerbaijan pardoned several political prisoners last week, but RFE/RL reacted with dismay that a leading contributor to its Azerbaijani Service, investigative reporter Khadija Ismayilova, was not among them.</p>-->
-							</div><!-- .bbg-blog__excerpt-content -->
-						</article><!-- #post-## -->
+						<?php
+							/* let's get our featured post, which is either selected in homepage settings or is most recent post */
+							if ($threatsToPressPost) {
+								$qParams=array(
+									'post__in' => array($threatsToPressPost->ID)
+								);
+							} else {
+								$qParams=getThreatsPostQueryParams(1,$postIDsUsed);
+							}
+							query_posts($qParams);
+							if (have_posts()) {
+								while ( have_posts() ) : the_post();
+									$counter++;
+									$id = get_the_ID();
+									$postIDsUsed[] = $id;
+									//$title = get_the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
+									echo '<article id="post-' . $id . '" '; post_class(); echo '>';
+									echo '<div style="position: relative;">';
+									echo '<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">';
+									echo '<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">';
+									echo '</a>';
+									echo '<h4 style="position: absolute; bottom: 1rem; left: 0; background-color: #000; border: 1px solid #333; color: #FFF; padding: .5rem;">1 year 5 months 14 days in prison</h4>';
+									echo '</div>';
+									echo '<header class="entry-header bbg-blog__excerpt-header"><h2 class="entry-title bbg-blog__excerpt-title--list"><a href="'.get_the_permalink().'">' . get_the_title() . '</a></h2></header>';
+									echo '<div class="entry-content bbg-blog__excerpt-content"><p>';
+									echo get_the_excerpt();
+									echo '</p></div><!-- .bbg-blog__excerpt-content -->';
+									echo '</article><!-- #post-## -->';
+								endwhile;
+							}
+							wp_reset_query();
+						?>
 					</div>
-					<?php 
-						$s = "";
-						
-						//Temporarily hardcoding some lingks here.
-						$s .='<div class="bbg-grid--1-2-2 tertiary-stories">';
-
-						$s .= '<article id="post-23213" class="bbg-blog__excerpt--list  post-23213 post type-post status-publish format-standard has-post-thumbnail hentry category-bbg-press-release category-press-release tag-amal-clooney tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova Confirms Clooney as Defense Counsel</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-						$s .= '<article id="post-23015" class="bbg-blog__excerpt--list  post-23015 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/12/04/one-year-on-imprisoned-azeri-journalist-remains-defiant-inspires-new-work/" rel="bookmark">One Year On, Imprisoned Azeri Journalist Remains Defiant, Inspires New Work</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-						$s .= '<article id="post-22620" class="bbg-blog__excerpt--list  post-22620 post type-post status-publish format-standard has-post-thumbnail hentry category-highlight category-rferl tag-azerbaijan tag-khadija-ismayilova tag-press-freedom tag-rferl tag-rferl-radio-free-europe tag-threats-to-journalism"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/rferlive-the-case-the-verdict-and-media-freedom-in-azerbaijan/" rel="bookmark">RFE/RLive: The Case, The Verdict, and Media Freedom in Azerbaijan</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-						$s .= '<article id="post-22571" class="bbg-blog__excerpt--list  post-22571 post type-post status-publish format-standard hentry category-bbg-press-release category-press-release tag-azerbaijan tag-bbg tag-broadcasting-board-of-governors tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/bbg-denounces-sentencing-of-azeri-journalist-khadija-ismayilova/" rel="bookmark">BBG Denounces Sentencing of Azeri Journalist Khadija Ismayilova</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-						$s .= '<article id="post-22612" class="bbg-blog__excerpt--list  post-22612 post type-post status-publish format-standard hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-rferl tag-rferl-radio-free-europe"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/09/01/in-blow-to-independent-media-azerbaijan-sentences-ismayilova-to-7-12-years/" rel="bookmark">In Blow to Independent Media, Azerbaijan Sentences Ismayilova to 7 1/2 Years</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-						$s .= '<article id="post-22462" class="bbg-blog__excerpt--list  post-22462 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl-press-release tag-azerbaijan tag-khadija-ismayilova tag-national-press-club tag-rferl tag-rferl-radio-free-europe tag-threats-to-journalism"><header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2015/07/29/national-press-club-honors-azeri-journalist/" rel="bookmark">National Press Club Honors Azeri Journalist</a></h3></header><!-- .bbg-blog__excerpt-header --></article><!-- #post-## -->';
-
-						$s .= '</div>';
-						echo $s;
-					?>
-				</div><!-- Threats to Journalism -->
-			</section>
-
+					<div class="bbg-grid--1-2-2 tertiary-stories">
+						<?php
+							/* BEWARE: sticky posts add a record */
+							$maxPostsToShow=6;
+							$qParams=getThreatsPostQueryParams($maxPostsToShow,$postIDsUsed);
+							query_posts($qParams);
+							if ( have_posts() ) {
+								$counter = 0;
+								$includeImage = false;
+								$includeMeta=false;
+								$includeExcerpt=false;
+								while ( have_posts() ) : the_post();
+									$counter++;
+									$postIDsUsed[] = get_the_ID();
+									$gridClass = "bbg-grid--full-width";
+									get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+								endwhile;
+							}
+							wp_reset_query();
+						?>
+					</div>
+				</div><!-- headlines -->
+			</section><!-- .BBG News -->
 
 			<!-- Featured Board Meeting -->
 <!--
@@ -354,19 +382,14 @@ get_header();
 	</div>
 </section>
 -->
-
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
-
 					<div class="usa-intro bbg__broadcasters__intro">
 						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
 					</div>
-
 					<?php echo outputBroadcasters('2'); ?>
-					
-					<?php /* <a href="<?php echo get_permalink( get_page_by_path( 'about-the-agency/history/' ) ); ?>">Learn more about the history of USIM »</a> */ ?>
 				</div>
 			</section><!-- entity list -->
 
