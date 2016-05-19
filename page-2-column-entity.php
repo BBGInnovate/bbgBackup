@@ -67,7 +67,7 @@ if ($employees != "") {
 	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>'. $employees . '</li>';
 }
 if ($languages != "") {
-	if ($languages == "1")
+	if ($languages == "1"){
 		$languages = '<li><span class="bbg__article-sidebar__list-label">Language supported: </span>'. $primaryLanguage . '</li>';
 	} else {
 		$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
