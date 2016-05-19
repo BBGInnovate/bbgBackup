@@ -177,6 +177,39 @@ get_header();
 				</div><!-- .usa-grid -->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
 
+
+
+			<!-- Featured Board Meeting -->
+			<?php
+				if ($featuredBoardMeeting) {
+					$id=$featuredBoardMeeting->ID;
+					$labelText='This Week';
+					$eventPermalink=get_the_permalink($id);
+					$imgSrc=$defaultBoardMeetingImage;
+					$featuredImageID = get_post_thumbnail_id($id);	
+					if ($featuredImageID) {
+						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
+						$imgSrc=$imgObj[0];
+					}
+					$eventTitle=$featuredBoardMeeting->post_title;
+					$excerpt = my_excerpt($id);
+
+					echo '<section id="announcement" class="usa-section bbg__announcement">';
+						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
+							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
+							echo '<div style="display: inline-block;">';
+								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
+								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
+								echo '<p>' . $excerpt . '</p>';
+							echo '</div>';
+						echo '</div>';
+					echo '</section>';
+				}
+			?><!-- featured board meeting -->
+
+
+
+
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section">
 				<div class="usa-grid">
@@ -257,33 +290,9 @@ get_header();
 
 
 
-			<!-- Featured Board Meeting -->
-			<?php
-				if ($featuredBoardMeeting) {
-					$id=$featuredBoardMeeting->ID;
-					$labelText='This Week';
-					$eventPermalink=get_the_permalink($id);
-					$imgSrc=$defaultBoardMeetingImage;
-					$featuredImageID = get_post_thumbnail_id($id);	
-					if ($featuredImageID) {
-						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
-						$imgSrc=$imgObj[0];
-					}
-					$eventTitle=$featuredBoardMeeting->post_title;
-					$excerpt = my_excerpt($id);
 
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
-							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
-							echo '<div style="display: inline-block;">';
-								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-				}
-			?>
+
+
 
 			<!-- Threats to Journalism -->
 			<section id="threats-to-journalism" class="usa-section">
