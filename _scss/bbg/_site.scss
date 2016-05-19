@@ -176,6 +176,21 @@ section.usa-section {
 	margin-bottom: $site-margins-large;
 }
 
+.bbg__ribbon {
+	background-color: $color-gray-dark;
+	padding: 2rem auto;
+
+	a {
+		color: #9bdaf1;
+	}
+
+	p {
+		color: #FFF;
+	}
+}
+
+
+
 article {
 	margin-bottom: $site-margins;
 

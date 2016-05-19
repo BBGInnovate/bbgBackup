@@ -4243,6 +4243,17 @@ section.usa-section {
   margin-bottom: 6rem;
 }
 
+.bbg__ribbon {
+  background-color: #323a45;
+  padding: 2rem auto;
+}
+.bbg__ribbon a {
+  color: #9bdaf1;
+}
+.bbg__ribbon p {
+  color: #FFF;
+}
+
 article {
   margin-bottom: 3rem;
 }
