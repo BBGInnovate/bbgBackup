@@ -4274,6 +4274,7 @@ section.usa-section {
   .bbg__ribbon .tertiary-stories {
     border-top: none;
     border-left: 1px solid #000;
+    padding-top: 0;
   }
 }
 

@@ -214,6 +214,9 @@ section.usa-section {
 		@include media($medium-large-screen) {
 			border-top: none;
 			border-left: 1px solid #000;
+			padding: {
+				top: 0;
+			}
 		}
 	}
 
