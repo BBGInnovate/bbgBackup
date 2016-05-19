@@ -55,7 +55,7 @@ $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 /*** get impact category ***/
 $impactCat = get_category_by_slug('impact');
 $impactPermalink = get_category_link($impactCat->term_id);
-$threatsCat=get_category_by_slug('threats-to-journalism');
+$threatsCat=get_category_by_slug('threats-to-press');
 $threatsPermalink = get_category_link($threatsCat->term_id);
 //$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
 
