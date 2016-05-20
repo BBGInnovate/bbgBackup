@@ -218,6 +218,10 @@ get_header();
 					</article>
 					<style type="text/css">
 						/* temp */
+						.bbg__event-announcement__title {
+							font-size: 2.4rem;
+						}
+
 						@media screen and (min-width: 600px) { 
 							.bbg__event-announcement__excerpt {
 								display: none;

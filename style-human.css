@@ -4793,6 +4793,41 @@ article {
   }
 }
 
+.usa-grid-one-third .bbg__quotation {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+}
+.usa-grid-one-third .bbg__quotation .bbg__quotation-text--large {
+  font-weight: 500;
+  text-align: left;
+}
+@media screen and (min-width: 600px) {
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-text--large {
+    font-size: 1.7rem;
+    font-weight: 100;
+  }
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__name {
+    font-size: 1.4rem;
+  }
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__credit {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-text--large {
+    font-size: 2.1rem;
+    font-weight: 100;
+  }
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__name {
+    font-size: 1.6rem;
+  }
+  .usa-grid-one-third .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__credit {
+    font-size: 1rem;
+  }
+}
+
 .bbg__entity__pullquote {
   margin-top: 6rem;
 }
