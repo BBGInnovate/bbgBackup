@@ -5222,6 +5222,7 @@ article {
 /* Page content as introduction */
 .bbg__about__intro p:first-child {
   font-size: 2rem;
+  line-height: 2.5;
   margin-top: 0;
 }
 

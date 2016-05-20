@@ -6,6 +6,7 @@
 		@extend .usa-font-lead;
 
 		font-size: $read-in-font-size;
+		line-height: 2.5;
 		margin-top: 0;
 	}
 }
@@ -20,6 +21,9 @@
 	background-position: center center;
 	height: $banner-image-height * 0.5;
 	margin-bottom: $site-margins * 0.75;
+}
+
+.bbg__about__child {
 }
 
 .bbg__about__grandchild {

@@ -104,6 +104,8 @@ get_header();
 							foreach ($relatedPages as $rPage) {
 								echo "<div class='usa-grid-full bbg__about__children--row'>";
 
+								$rPageHeadline = $rPage->headline;
+
 								$qParams = array(
 									'post_type' => 'page',
 									'post_status' => 'publish',
@@ -116,8 +118,9 @@ get_header();
 									while ( have_posts() ) {
 										the_post();
 										$gridClass = $containerClass;
+										$headline = $rPageHeadline;
 										$includePortfolioDescription = TRUE;
-										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+										get_template_part( 'template-parts/content-about', get_post_format() );
 									}
 								}
 								wp_reset_query();
@@ -132,7 +135,7 @@ get_header();
 
 							if ( count( $relatedPages ) == 2 ) {
 								$containerClass = 'bbg-grid--1-2-2';
-							} else if ( count( $relatedPages ) ==3 ) {
+							} else if ( count( $relatedPages ) == 3 ) {
 								$containerClass = 'bbg-grid--1-3-3';
 							}
 
@@ -151,6 +154,7 @@ get_header();
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
 
+							// echo <div style=""
 							// show umbrella section image
 							if ($imageURL) {
 								$image = '<div class="bbg__about__child__banner" style="background-image: url(' . $imageURL . ');">';
@@ -162,7 +166,7 @@ get_header();
 							}
 
 							// show umbrella section intro text
-							echo "<div class='bbg__about__child'>$introText</div>";
+							echo "<div class='usa-font-lead bbg__about__child'>$introText</div>";
 
 							if ( $relatedPages ) {
 								echo "<div class='usa-grid-full'>";

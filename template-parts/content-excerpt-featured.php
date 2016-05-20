@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying a featured excerpt. 
+ * Template part for displaying a featured excerpt.
  * Large full width photo and large excerpt text.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
@@ -8,7 +8,7 @@
  * @package bbginnovate
  */
 
-//The byline meta info is displayed by default 
+//The byline meta info is displayed by default
 global $includeMetaFeatured;
 if (! isset ($includeMetaFeatured)) {
 	$includeMetaFeatured=TRUE;
@@ -27,7 +27,7 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg-blog__excerpt--featured usa-grid-full"); ?>>
 	<header class="entry-header bbg-blog__excerpt-header--featured usa-grid-full">
 
-		<?php 
+		<?php
 			$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
 			$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
 			$linkH2 = '<h2 class="entry-title bbg-blog__excerpt-title--featured">'.$link;
