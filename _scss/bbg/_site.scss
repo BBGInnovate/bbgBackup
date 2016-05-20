@@ -176,51 +176,6 @@ section.usa-section {
 	margin-bottom: $site-margins-large;
 }
 
-.bbg__ribbon {
-	background-color: $color-gray-dark;
-	padding: 2rem auto;
-
-	a {
-		color: #9bdaf1;
-	}
-
-	p {
-		color: #FFF;
-	}
-
-	.bbg-label {
-		background-color: $color-secondary-darkest;
-		color: #FFF;
-		display: inline-block;
-		margin: {
-			top: 0;
-			bottom: 2rem;
-		}
-		padding: .5rem $site-margins-small;
-
-		a {
-			color: #FFF;
-			text-decoration: none;
-		}
-	}
-
-	.tertiary-stories {
-		border-top: 1px solid #000;
-		padding: {
-			top: $site-margins;
-			bottom: $site-margins;
-		}
-
-		@include media($medium-large-screen) {
-			border-top: none;
-			border-left: 1px solid #000;
-			padding: {
-				top: 0;
-			}
-		}
-	}
-
-}
 
 
 
