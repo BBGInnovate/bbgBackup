@@ -210,7 +210,7 @@ get_header();
 								<h3 class="entry-title bbg-portfolio__excerpt-title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
 							</header><!-- .entry-header -->
 
-							<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content" style="">
+							<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt" style="">
 								<p><?php echo $excerpt; ?></p>
 							</div><!-- .bbg-portfolio__excerpt-title -->
 						</div>
@@ -219,19 +219,27 @@ get_header();
 						/* temp */
 						.bbg__event-announcement {
 							margin-top: 0;
-							//color: #FFF;
 						}
-
-						.bbg__event-announcement a {
-							//color: #9bdaf1;
-						}
-
 
 						@media screen and (min-width: 600px) { 
 							.bbg__event-announcement {
 								margin-top: -4rem;
 							}
+							.bbg__event-announcement__excerpt {
+								display: none;
+							}
 						}
+
+						@media screen and (min-width: 900px) { 
+							.bbg__event-announcement {
+								margin-top: -4rem;
+							}
+							.bbg__event-announcement__excerpt {
+								display: block;
+							}
+						}
+
+
 					</style>
 					<?php } else { 
 						$q=getRandomQuote('allEntities', $postIDsUsed);
@@ -246,39 +254,6 @@ get_header();
 					<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
 				</div><!-- .usa-grid -->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
-
-
-
-			<!-- Featured Board Meeting -->
-			<?php
-			/*
-				if ($featuredBoardMeeting) {
-					$id=$featuredBoardMeeting->ID;
-					$labelText='This Week';
-					$eventPermalink=get_the_permalink($id);
-					$imgSrc=$defaultBoardMeetingImage;
-					$featuredImageID = get_post_thumbnail_id($id);	
-					if ($featuredImageID) {
-						$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
-						$imgSrc=$imgObj[0];
-					}
-					$eventTitle=$featuredBoardMeeting->post_title;
-					$excerpt = my_excerpt($id);
-
-					echo '<section id="announcement" class="usa-section bbg__announcement usa-grid">';
-						echo '<div class="usa-grid-full bbg__announcement__flexbox" style="">';
-							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
-							echo '<div style="display: inline-block;">';
-								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="">' . $eventTitle . '</a></h2>';
-								echo '<p>' . $excerpt . '</p>';
-							echo '</div>';
-						echo '</div>';
-					echo '</section>';
-				}
-				*/
-			?><!-- featured board meeting -->
-
 
 
 
@@ -424,21 +399,11 @@ get_header();
 						?>
 					</div>
 				</div><!-- headlines -->
-			</section><!-- .BBG News -->
+			</section><!-- Threats to press section -->
 
-			<!-- Featured Board Meeting -->
-<!--
-<section id="announcement" class="usa-section bbg__announcement">
-	<div class="usa-grid bbg__announcement__flexbox" style="">
-		<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg);"></div>
-		<div style="display: inline-block;">
-			<h6 class="bbg-label small">1 year 5 months 14 days in prison</h6>
-			<h2 style="clear: none;"><a href="http://localhost/wp-design_standards/redesign/2016/04/20/board-meeting-april-2016/" style="color: #9bdaf1;">BBG denounces sentencing of Azeri journalist</a></h2>
-			<p>On Sept 1, 2015, investigative journalist and RFE/RL contributor Khadija Ismayilova was sentenced to 7&frac12; years in prison in Azerbaijan.</p>
-		</div>
-	</div>
-</section>
--->
+
+
+
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
 				<div class="usa-grid">
