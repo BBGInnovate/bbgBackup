@@ -156,38 +156,39 @@ get_header();
 			<!-- Impact stories + 1 Quotation-->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
-					<div class="usa-grid-full">
-					<?php
-						$qParams=array(
-							'post_type' => array('post'),
-							'posts_per_page' => 2,
-							'orderby' => 'post_date',
-							'order' => 'desc',
-							'cat' => get_cat_id('Impact'),
-							'post__not_in' => $postIDsUsed
-						);
-						query_posts($qParams);
-						if ( have_posts() ) :
-							while ( have_posts() ) : the_post();
-								$gridClass = "bbg-grid--1-3-3";
-								$includePortfolioDescription = FALSE;
-								$postIDsUsed[] = get_the_ID();
-								get_template_part( 'template-parts/content-portfolio', get_post_format() );
-							endwhile;
-						endif;
-						wp_reset_query();
-					?>
+
+					<div class="usa-width-two-thirds">
+
+						<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
+
+						<div class="usa-grid-full">
+						<?php
+							$qParams=array(
+								'post_type' => array('post'),
+								'posts_per_page' => 2,
+								'orderby' => 'post_date',
+								'order' => 'desc',
+								'cat' => get_cat_id('Impact'),
+								'post__not_in' => $postIDsUsed
+							);
+							query_posts($qParams);
+							if ( have_posts() ) :
+								while ( have_posts() ) : the_post();
+									///$gridClass = "bbg-grid--1-3-3";
+									$includePortfolioDescription = FALSE;
+									$postIDsUsed[] = get_the_ID();
+									get_template_part( 'template-parts/content-portfolio', get_post_format() );
+								endwhile;
+							endif;
+							wp_reset_query();
+						?>
+						</div>
+						<div class="usa-grid-full" style="margin-bottom: 3rem;">
+							<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
+						</div><!-- .usa-grid -->
+					</div>
 					<!-- Quotation -->
-					<?php
-						/*
-						$q=getRandomQuote('allEntities', $postIDsUsed);
-						if ($q) {
-							$postIDsUsed[] = $q["ID"];
-							outputQuote($q, "bbg-grid--1-3-3");
-						}
-						*/
-					?>
+					<div class="usa-width-one-third">
 					<?php 
 						if ($featuredBoardMeeting) { 
 
@@ -203,7 +204,7 @@ get_header();
 							$eventTitle=$featuredBoardMeeting->post_title;
 							$excerpt = my_excerpt($id);
 					?>
-					<article class="bbg-portfolio__excerpt bbg-grid--1-3-3 bbg__event-announcement" style="" >
+					<article class="bbg-portfolio__excerpt bbg__event-announcement" style="" >
 						<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;">This week</h6>
 						<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
 							<header class="entry-header bbg-portfolio__excerpt-header">
@@ -217,14 +218,7 @@ get_header();
 					</article>
 					<style type="text/css">
 						/* temp */
-						.bbg__event-announcement {
-							margin-top: 0;
-						}
-
 						@media screen and (min-width: 600px) { 
-							.bbg__event-announcement {
-								margin-top: -4rem;
-							}
 							.bbg__event-announcement__excerpt {
 								display: none;
 							}
@@ -234,9 +228,6 @@ get_header();
 						}
 
 						@media screen and (min-width: 900px) { 
-							.bbg__event-announcement {
-								margin-top: -4rem;
-							}
 							.bbg__event-announcement__excerpt {
 								display: block;
 							}
@@ -251,15 +242,14 @@ get_header();
 						$q=getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
 							$postIDsUsed[] = $q["ID"];
-							outputQuote($q, "bbg-grid--1-3-3");
+							outputQuote($q, "");
 						}
 
 					} ?>
-					<!-- Quotation -->
-					</div><!-- .usa-grid-full -->
-					<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
-				</div><!-- .usa-grid -->
+					</div><!-- usa-grid-one-third -->
+					</div><!-- .usa-grid-->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
+
 
 
 
