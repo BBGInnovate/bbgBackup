@@ -799,6 +799,8 @@ article {
 		}
 
 		@include media($medium-screen) {
+			margin-top: 4rem;
+
 			.bbg__quotation-text--large {
 				font-size: 1.7rem;
 				font-weight: 100;

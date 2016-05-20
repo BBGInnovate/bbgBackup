@@ -4804,6 +4804,9 @@ article {
   text-align: left;
 }
 @media screen and (min-width: 600px) {
+  .usa-width-one-third .bbg__quotation {
+    margin-top: 4rem;
+  }
   .usa-width-one-third .bbg__quotation .bbg__quotation-text--large {
     font-size: 1.7rem;
     font-weight: 100;
