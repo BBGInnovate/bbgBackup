@@ -184,7 +184,7 @@ get_header();
 							wp_reset_query();
 						?>
 						</div>
-						<div class="usa-grid-full" style="margin-bottom: 3rem;">
+						<div class="usa-grid-full u--space-below-mobile--large">
 							<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
 						</div><!-- .usa-grid -->
 					</div>
@@ -205,44 +205,20 @@ get_header();
 							$eventTitle=$featuredBoardMeeting->post_title;
 							$excerpt = my_excerpt($id);
 					?>
-					<article class="bbg-portfolio__excerpt bbg__event-announcement" style="" >
-						<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;">This week</h6>
-						<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
-							<header class="entry-header bbg-portfolio__excerpt-header">
-								<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
-							</header><!-- .entry-header -->
 
-							<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt" style="">
-								<p><?php echo $excerpt; ?></p>
-							</div><!-- .bbg-portfolio__excerpt-title -->
-						</div>
-					</article>
-					<style type="text/css">
-						/* temp */
-						.bbg__event-announcement__title {
-							font-size: 2.4rem;
-						}
+							<article class="bbg-portfolio__excerpt bbg__event-announcement" style="" >
+								<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;">This week</h6>
+								<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
+									<header class="entry-header bbg-portfolio__excerpt-header">
+										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
+									</header><!-- .entry-header -->
 
-						@media screen and (min-width: 600px) { 
-							.bbg__event-announcement__excerpt {
-								display: none;
-							}
-							.bbg__event-announcement__title {
-								font-size: 2.4rem;
-							}
-						}
+									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt" style="">
+										<p><?php echo $excerpt; ?></p>
+									</div><!-- .bbg-portfolio__excerpt-title -->
+								</div>
+							</article>
 
-						@media screen and (min-width: 900px) { 
-							.bbg__event-announcement__excerpt {
-								display: block;
-							}
-							.bbg__event-announcement__title {
-								font-size: 2rem;
-							}
-						}
-
-
-					</style>
 					<?php } else { 
 						$q=getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
@@ -342,7 +318,7 @@ get_header();
 				</div>
 				
 				<!-- Headlines -->
-				<div class="usa-grid bbg__ceo-post"> 
+				<div class="usa-grid"> 
 					<div class="bbg-grid--1-2-2">
 
 						<?php

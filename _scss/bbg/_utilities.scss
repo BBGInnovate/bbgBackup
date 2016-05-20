@@ -16,6 +16,14 @@
 	}
 }
 
+.u--space-below-mobile--large {
+	margin-bottom: $site-margins-large;
+
+	@include media($medium-screen) {
+		margin-bottom: 0;
+	}
+}
+
 //Used to consistently specifiy seperators throughout the site.
 .u--seperator:before {
 	content: " | ";

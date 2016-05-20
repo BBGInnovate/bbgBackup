@@ -803,6 +803,15 @@ body {
   }
 }
 
+.u--space-below-mobile--large {
+  margin-bottom: 6rem;
+}
+@media screen and (min-width: 600px) {
+  .u--space-below-mobile--large {
+    margin-bottom: 0;
+  }
+}
+
 .u--seperator:before {
   content: " | ";
 }
@@ -5173,60 +5182,23 @@ article {
   }
 }
 
-.bbg__announcement {
-  /*background-color: $color-gray-dark;*/
-  padding: 2rem auto;
-}
-.bbg__announcement .bbg-label {
-  background-color: #981b1e;
-  color: #FFF;
-  display: inline-block;
-  font-size: 1.7rem;
-  padding: .5rem 1rem;
-}
-.bbg__announcement p {
-  color: #000000;
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  padding-bottom: 3rem;
-}
-.bbg__announcement .bbg__announcement__flexbox {
-  background-color: #F1F1F1;
-  border-radius: 0.3rem;
-  padding-top: 3rem;
-}
-.bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
-  background-color: #CCC;
-  background-position: center center;
-  background-size: cover;
-  display: block;
-  min-height: 200px;
-  width: 100%;
-}
-@media screen and (min-width: 481px) {
-  .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
-    min-height: 275px;
-  }
+.bbg__event-announcement .bbg__event-announcement__title {
+  font-size: 2.4rem;
 }
 @media screen and (min-width: 600px) {
-  .bbg__announcement .bbg__announcement__flexbox {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    min-height: 200px;
-    padding-top: 0;
+  .bbg__event-announcement .bbg__event-announcement__excerpt {
+    display: none;
   }
-  .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
-    height: auto;
-    margin-top: 0;
-    margin-right: 2rem;
-    min-height: 125px;
-    min-width: 50%;
-    width: auto;
+  .bbg__event-announcement .bbg__event-announcement__title {
+    font-size: 2.4rem;
   }
 }
 @media screen and (min-width: 900px) {
-  .bbg__announcement .bbg__announcement__flexbox .bbg__announcement__photo {
-    min-width: 33%;
+  .bbg__event-announcement .bbg__event-announcement__excerpt {
+    display: block;
+  }
+  .bbg__event-announcement .bbg__event-announcement__title {
+    font-size: 2rem;
   }
 }
 
