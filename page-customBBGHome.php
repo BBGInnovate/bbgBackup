@@ -207,7 +207,7 @@ get_header();
 						<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;">This week</h6>
 						<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
 							<header class="entry-header bbg-portfolio__excerpt-header">
-								<h3 class="entry-title bbg-portfolio__excerpt-title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
+								<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
 							</header><!-- .entry-header -->
 
 							<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt" style="">
@@ -228,6 +228,9 @@ get_header();
 							.bbg__event-announcement__excerpt {
 								display: none;
 							}
+							.bbg__event-announcement__title {
+								font-size: 2.4rem;
+							}
 						}
 
 						@media screen and (min-width: 900px) { 
@@ -236,6 +239,9 @@ get_header();
 							}
 							.bbg__event-announcement__excerpt {
 								display: block;
+							}
+							.bbg__event-announcement__title {
+								font-size: 2rem;
 							}
 						}
 
