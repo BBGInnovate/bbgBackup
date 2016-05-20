@@ -49,6 +49,7 @@ $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'fa
 $soap = get_field('homepage_soapbox_post', 'option');
 
 $showFeaturedEvent = get_field('show_homepage_event', 'option');
+$featuredEventLabel = get_field('homepage_event_label', 'option');
 
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
@@ -196,16 +197,16 @@ get_header();
 					<?php 
 						if ($featuredBoardMeeting && $showFeaturedEvent) { 
 
-							$id=$featuredBoardMeeting->ID;
-							$labelText='This Week';
-							$eventPermalink=get_the_permalink($id);
-							$imgSrc=$defaultBoardMeetingImage;
+							$id = $featuredBoardMeeting->ID;
+							$labelText = $featuredEventLabel;
+							$eventPermalink = get_the_permalink($id);
+							$imgSrc = $defaultBoardMeetingImage;
 							$featuredImageID = get_post_thumbnail_id($id);	
 							if ($featuredImageID) {
 								$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
-								$imgSrc=$imgObj[0];
+								$imgSrc = $imgObj[0];
 							}
-							$eventTitle=$featuredBoardMeeting->post_title;
+							$eventTitle = $featuredBoardMeeting->post_title;
 							$excerpt = my_excerpt($id);
 					?>
 
@@ -387,7 +388,7 @@ get_header();
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our broadcasters</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 					<div class="usa-intro bbg__broadcasters__intro">
 						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
 					</div>
