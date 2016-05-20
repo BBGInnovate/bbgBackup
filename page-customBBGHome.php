@@ -47,6 +47,9 @@ $templateName = "customBBGHome";
 $siteIntroContent = get_field('site_setting_mission_statement','options','false');
 $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
 $soap = get_field('homepage_soapbox_post', 'option');
+
+$showFeaturedEvent = get_field('show_homepage_event', 'option');
+
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
 $defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meeting_image', 'option');
@@ -191,7 +194,7 @@ get_header();
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php 
-						if ($featuredBoardMeeting) { 
+						if ($featuredBoardMeeting && $showFeaturedEvent) { 
 
 							$id=$featuredBoardMeeting->ID;
 							$labelText='This Week';
