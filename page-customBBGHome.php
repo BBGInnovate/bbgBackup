@@ -190,7 +190,7 @@ get_header();
 					?>
 					<?php if ($featuredBoardMeeting) { ?>
 					<article id="post-24772" class="bbg-portfolio__excerpt bbg-grid--1-3-3 bbg__event-announcement" style="" >
-						<h6 class="bbg-label small" style="background-color: #900; color: #FFF; padding: .5rem 1rem; margin-bottom: 0; display: inline-block; margin-bottom: 0;">This week</h6>
+						<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;">This week</h6>
 						<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
 							<header class="entry-header bbg-portfolio__excerpt-header">
 								<h3 class="entry-title bbg-portfolio__excerpt-title"><a href="https://bbgredesign.voanews.com/blog/2016/04/20/board-meeting-april-2016/" rel="bookmark">Board to focus on importance of digital, social media</a></h3>		
