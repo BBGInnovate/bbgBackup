@@ -208,6 +208,69 @@
 }
 
 .bbg__announcement {
+	/*background-color: $color-gray-dark;*/
+	padding: 2rem auto;
+
+	.bbg-label {
+		background-color: $color-secondary-darkest;
+		color: #FFF;
+		display: inline-block;
+		font-size: 1.7rem;
+		padding: .5rem 1rem; 
+	}
+
+	p {
+		color: $color-black;
+		font-family: $font-sans;
+		padding-bottom: $site-margins;
+	}
+
+
+	.bbg__announcement__flexbox{
+		background-color: #F1F1F1;
+		border-radius: $border-radius;
+		padding-top: $site-margins;
+
+		.bbg__announcement__photo {
+			background: {
+				color: #CCC;
+				position: center center;
+				size: cover;
+			}
+			display: block;
+			min-height: 200px;
+			width: 100%; 
+
+			@include media($small-screen) {
+				min-height: 275px;
+			}
+		}
+		@include media($medium-screen) {
+			display: flex; 
+			min-height: 200px;
+			padding-top: 0;
+
+			.bbg__announcement__photo {
+				height: auto;
+				margin-top: 0;
+				margin-right: 2rem;
+				min-height: 125px;
+				min-width: 50%; 
+				width: auto;
+			}
+		}
+
+		@include media($medium-large-screen) {
+			.bbg__announcement__photo {
+				min-width: 33%; 
+			}
+		}
+	}
+}
+
+
+/* may remove this if you don't use it later */
+.bbg__ribbon--thin {
 	background-color: $color-gray-dark;
 	padding: 2rem auto;
 	
@@ -265,3 +328,53 @@
 		}
 	}
 }
+
+
+
+
+.bbg__ribbon {
+	background-color: $color-gray-dark;
+	padding: 2rem auto;
+
+	a {
+		color: #9bdaf1;
+	}
+
+	p {
+		color: #FFF;
+	}
+
+	.bbg-label {
+		background-color: $color-secondary-darkest;
+		color: #FFF;
+		display: inline-block;
+		margin: {
+			top: 0;
+			bottom: 2rem;
+		}
+		padding: .5rem $site-margins-small;
+
+		a {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+
+	.tertiary-stories {
+		border-top: 1px solid #000;
+		padding: {
+			top: $site-margins;
+			bottom: $site-margins;
+		}
+
+		@include media($medium-large-screen) {
+			border-top: none;
+			border-left: 1px solid #000;
+			padding: {
+				top: 0;
+			}
+		}
+	}
+
+}
+

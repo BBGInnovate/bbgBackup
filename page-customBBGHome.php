@@ -209,12 +209,12 @@ get_header();
 					$eventTitle=$featuredBoardMeeting->post_title;
 					$excerpt = my_excerpt($id);
 
-					echo '<section id="announcement" class="usa-section bbg__announcement">';
-						echo '<div class="usa-grid bbg__announcement__flexbox" style="">';
+					echo '<section id="announcement" class="usa-section bbg__announcement usa-grid">';
+						echo '<div class="usa-grid-full bbg__announcement__flexbox" style="">';
 							echo '<div class="bbg__announcement__photo" style="background-image: url('. $imgSrc .');"></div>';
 							echo '<div style="display: inline-block;">';
 								echo '<h6 class="bbg-label small">' . $labelText . '</h6>';
-								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="color: #9bdaf1;">' . $eventTitle . '</a></h2>';
+								echo '<h2 style="clear: none;"><a href="' . $eventPermalink . '" style="">' . $eventTitle . '</a></h2>';
 								echo '<p>' . $excerpt . '</p>';
 							echo '</div>';
 						echo '</div>';
@@ -348,7 +348,7 @@ get_header();
 					<div class="bbg-grid--1-2-2 tertiary-stories">
 						<?php
 							/* BEWARE: sticky posts add a record */
-							$maxPostsToShow=6;
+							$maxPostsToShow=7;
 							$qParams=getThreatsPostQueryParams($maxPostsToShow,$postIDsUsed);
 							query_posts($qParams);
 							if ( have_posts() ) {
