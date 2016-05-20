@@ -1661,7 +1661,7 @@ function getSoapboxStr($soap) {
 		}
 	}
 
-	$s .= '<div class="bbg-grid--1-2-2 bbg__voice--featured">';
+	$s .= '<div class="usa-width-one-half bbg__voice--featured">';
 	if ($soapHeaderPermalink != "") {
 		$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
 	}

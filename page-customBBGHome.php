@@ -289,7 +289,7 @@ get_header();
 
 				<!-- Headlines -->
 				<div class="usa-grid bbg__ceo-post"> 
-					<div class="bbg-grid--1-2-2">
+					<div class="usa-width-one-half">
 						<?php
 							/* BEWARE: sticky posts add a record */
 							$maxPostsToShow=9;
@@ -314,7 +314,7 @@ get_header();
 										$includeMeta=false;
 										$includeExcerpt=false;
 										if ($counter==3) {
-											echo '</div><div class="bbg-grid--1-2-2 tertiary-stories"><header class="page-header"><h6 class="page-title bbg-label small">More news</h6></header>';
+											echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg-label small">More news</h6></header>';
 										}
 									}
 									get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
