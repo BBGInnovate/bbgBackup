@@ -334,7 +334,7 @@
 
 .bbg__ribbon {
 	background-color: $color-gray-dark;
-	padding: 2rem auto;
+	padding-bottom: $site-margins;
 
 	a {
 		color: #9bdaf1;
@@ -364,15 +364,15 @@
 		border-top: 1px solid #000;
 		padding: {
 			top: $site-margins;
-			bottom: $site-margins;
 		}
-
-		@include media($medium-large-screen) {
+		@include media($medium-screen) {
+			padding-left: $site-margins-medium;
+		}
+		@include media($medium-screen) {
 			border-top: none;
 			border-left: 1px solid #000;
-			padding: {
-				top: 0;
-			}
+			padding-top: 0;
+			padding-left: $site-margins;
 		}
 	}
 

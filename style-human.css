@@ -5244,7 +5244,7 @@ article {
 
 .bbg__ribbon {
   background-color: #323a45;
-  padding: 2rem auto;
+  padding-bottom: 3rem;
 }
 .bbg__ribbon a {
   color: #9bdaf1;
@@ -5267,13 +5267,18 @@ article {
 .bbg__ribbon .tertiary-stories {
   border-top: 1px solid #000;
   padding-top: 3rem;
-  padding-bottom: 3rem;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 600px) {
+  .bbg__ribbon .tertiary-stories {
+    padding-left: 1.5rem;
+  }
+}
+@media screen and (min-width: 600px) {
   .bbg__ribbon .tertiary-stories {
     border-top: none;
     border-left: 1px solid #000;
     padding-top: 0;
+    padding-left: 3rem;
   }
 }
 
