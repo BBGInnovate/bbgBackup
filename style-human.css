@@ -4807,6 +4807,9 @@ article {
   .usa-width-one-third .bbg__quotation {
     margin-top: 4rem;
   }
+  .usa-width-one-third .bbg__quotation .bbg__quotation-attribution__mugshot {
+    display: none;
+  }
   .usa-width-one-third .bbg__quotation .bbg__quotation-text--large {
     font-size: 1.7rem;
     font-weight: 100;
@@ -4822,6 +4825,9 @@ article {
   .usa-width-one-third .bbg__quotation .bbg__quotation-text--large {
     font-size: 2.1rem;
     font-weight: 100;
+  }
+  .usa-width-one-third .bbg__quotation .bbg__quotation-attribution__mugshot {
+    display: block;
   }
   .usa-width-one-third .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__name {
     font-size: 1.6rem;

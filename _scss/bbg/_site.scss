@@ -799,6 +799,10 @@ article {
 		}
 
 		@include media($medium-screen) {
+			.bbg__quotation-attribution__mugshot {
+				display: none;
+			}
+
 			margin-top: 4rem;
 
 			.bbg__quotation-text--large {
@@ -821,6 +825,10 @@ article {
 			.bbg__quotation-text--large {
 				font-size: 2.1rem;
 				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__mugshot {
+				display: block;
 			}
 
 			.bbg__quotation-attribution__text {
