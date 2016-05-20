@@ -50,6 +50,9 @@ $soap = get_field('homepage_soapbox_post', 'option');
 
 $showFeaturedEvent = get_field('show_homepage_event', 'option');
 $featuredEventLabel = get_field('homepage_event_label', 'option');
+if ($featuredEventLabel == "") {
+	$featuredEventLabel = "This week";
+}
 
 $featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
