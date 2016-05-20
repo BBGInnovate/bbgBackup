@@ -1509,13 +1509,18 @@ function getAllQuotes($entity, $idsToExclude) {
 			'post_status' => 'publish',
 			'order' => 'DESC',
 			'tax_query' => array(
+				'relation' => 'AND',
+                array(
+			        'taxonomy' => 'post_format',
+			        'field'    => 'slug',
+			        'terms'    => array( 'post-format-quote' ),
+                ),
 				array(
-					'taxonomy' => 'post_format',
+					'taxonomy' => 'category',
 					'field' => 'slug',
-					'terms' => array( 'post-format-quote' )
-				)
+					'terms' => array( $entity )
+				),
 			),
-			'cat' => get_cat_id($entity),
 			'post__not_in' => $idsToExclude
 		);
 	}
