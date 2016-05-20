@@ -180,22 +180,81 @@ get_header();
 					?>
 					<!-- Quotation -->
 					<?php
+						/*
 						$q=getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
 							$postIDsUsed[] = $q["ID"];
 							outputQuote($q, "bbg-grid--1-3-3");
 						}
+						*/
 					?>
+					<?php if ($featuredBoardMeeting) { ?>
+					<article id="post-24772" class="bbg-portfolio__excerpt bbg-grid--1-3-3 bbg__event-announcement" style="" >
+						<h6 class="bbg-label small" style="background-color: #900; color: #FFF; padding: .5rem 1rem; margin-bottom: 0; display: inline-block; margin-bottom: 0;">This week</h6>
+						<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
+							<header class="entry-header bbg-portfolio__excerpt-header">
+								<h3 class="entry-title bbg-portfolio__excerpt-title"><a href="https://bbgredesign.voanews.com/blog/2016/04/20/board-meeting-april-2016/" rel="bookmark">Board to focus on importance of digital, social media</a></h3>		
+							</header><!-- .entry-header -->
+
+							<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content" style="">
+								<p>The Broadcasting Board of Governors will meet Thursday at its Washington, D.C., headquarters to receive programming highlights from the BBG networks to discuss the BBG’s expansion into digital and social media.</p>
+							</div><!-- .bbg-portfolio__excerpt-title -->
+						</div>
+					</article>
+					<style type="text/css">
+						/* temp */
+						.bbg__event-announcement {
+							margin-top: 0;
+							//color: #FFF;
+						}
+
+						.bbg__event-announcement a {
+							//color: #9bdaf1;
+						}
+
+
+						@media screen and (min-width: 600px) { 
+							.bbg__event-announcement {
+								margin-top: -4rem;
+							}
+						}
+					</style>
+					<?php } else { 
+						$q=getRandomQuote('allEntities', $postIDsUsed);
+						if ($q) {
+							$postIDsUsed[] = $q["ID"];
+							outputQuote($q, "bbg-grid--1-3-3");
+						}
+
+					} ?>
 					<!-- Quotation -->
 					</div><!-- .usa-grid-full -->
 					<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
 				</div><!-- .usa-grid -->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
 
+<?php 
+/*
+<article id="post-24772" class="bbg-portfolio__excerpt bbg-grid--1-3-3 post-24772 post type-post status-publish format-quote hentry category-voa-press-release post_format-post-format-quote" style="background-color: #F1F1F1;">
+	<header class="entry-header bbg-portfolio__excerpt-header">
+		<h6 class="bbg-label small" style="background-color: #900; color: #FFF; padding: 1rem 2rem; margin-bottom: 0; display: inline-block;">This week</h6>
+			<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
+			<a href="https://bbgredesign.voanews.com/blog/2016/04/20/board-meeting-april-2016/" rel="bookmark" tabindex="-1"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/bbgMtg-600x360.jpg" alt="This is a default image.">			</a>
+		</div>
+		<h3 class="entry-title bbg-portfolio__excerpt-title" style="padding: 0 2rem;"><a href="https://bbgredesign.voanews.com/blog/2016/04/20/board-meeting-april-2016/" rel="bookmark">Board focuses on importance of digital, social media; new VOA Director introduced</a></h3>		
+	</header><!-- .entry-header -->
 
+	<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content" style="padding: 0 2rem;">
+		<p>The Broadcasting Board of Governors met today at its Washington, D.C., headquarters to receive programming highlights from the BBG networks that advance the agency’s strategic priorities, and to discuss the BBG’s expansion into digital and social media.</p>
+	</div><!-- .bbg-portfolio__excerpt-title -->
+	
+</article>
+*/
+?>
 
 			<!-- Featured Board Meeting -->
 			<?php
+			/*
 				if ($featuredBoardMeeting) {
 					$id=$featuredBoardMeeting->ID;
 					$labelText='This Week';
@@ -220,6 +279,7 @@ get_header();
 						echo '</div>';
 					echo '</section>';
 				}
+				*/
 			?><!-- featured board meeting -->
 
 
