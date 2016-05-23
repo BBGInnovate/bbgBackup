@@ -23,7 +23,72 @@
 	margin-bottom: $site-margins * 0.75;
 }
 
-.bbg__about__child {
+.bbg__about__excerpt-content {
+	display: none;
+}
+
+// Style the mission differently
+.bbg__about__child--mission {
+	background-color: $color-gray-dark;
+	// background-color: $color-gray-lightest;
+	border-radius: $border-radius;
+	padding: {
+		top: 0;
+		right: $site-margins-small;
+		bottom: $site-margins-small;
+		left: $site-margins-small;
+	}
+
+	// Hide the post image
+	.single-post-thumbnail {
+		display: none;
+	}
+
+	// Show excerpt
+	.bbg__about__excerpt-content {
+		display: block;
+	}
+
+	p {
+		color: #FFF;
+		font: {
+			family: $font-serif;
+			size: 2rem;
+			weight: 500;
+		}
+		line-height: 2.1;
+		margin: 0;
+	}
+
+	a {
+		color: $color-primary-alt-light;
+	}
+
+	.bbg-label {
+		background-color: $color-secondary-darkest;
+		color: #FFF;
+		display: inline-block;
+		font-size: $lead-font-size;
+		padding: .5rem 1rem;
+
+		a {
+			color: #FFF;
+		}
+	}
+
+
+	@include media($medium-large-screen) {
+		padding: {
+			top: 0;
+			right: $site-margins;
+			bottom: $site-margins;
+			left: $site-margins;
+		}
+
+		/* p {
+			line-height: 2;
+		} */
+	}
 }
 
 .bbg__about__grandchild {

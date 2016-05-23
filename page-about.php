@@ -118,8 +118,8 @@ get_header();
 									while ( have_posts() ) {
 										the_post();
 										$gridClass = $containerClass;
-										$headline = $rPageHeadline;
-										$includePortfolioDescription = TRUE;
+										$headline = $rPageHeadline; // custom field for longer headline/page description
+										$includePageDescription = TRUE;
 										get_template_part( 'template-parts/content-about', get_post_format() );
 									}
 								}

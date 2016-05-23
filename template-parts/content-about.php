@@ -9,19 +9,19 @@
  */
 
 
-global $includePortfolioDescription;
+global $includePageDescription;
 global $gridClass;
 global $headline;
 
 $includeDescription = TRUE;
-if ( isset ( $includePortfolioDescription ) && $includePortfolioDescription == FALSE ) {
+if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
 	$includeDescription = FALSE;
 }
 
 if ( ! isset ($gridClass) ) {
 	$gridClass = "bbg-grid--1-2-2";
 }
-$classNames = "bbg__about__excerpt " . $gridClass;
+$classNames = "bbg__about__excerpt " . "bbg__about__child--" . strtolower(get_the_title()) . " " . $gridClass;
 
 $postPermalink = esc_url( get_permalink() );
 if ( isset( $_GET['category_id'] ) ) {
@@ -33,13 +33,16 @@ if ( isset( $_GET['category_id'] ) ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classNames); ?>>
 	<header class="entry-header bbg__about__excerpt-header">
-
 	<?php
 		$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
 		$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
 		$linkLabel = '<h6 class="bbg-label">' . $link;
 		// $linkH3 = '<h3 class="entry-title bbg__about__excerpt-title">' . $link;
 	?>
+		<!-- Child page title -->
+		<?php the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' ); ?>
+
+		<!-- Child page thumbnail -->
 		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
 			<?php
 				echo $linkImage;
@@ -54,32 +57,32 @@ if ( isset( $_GET['category_id'] ) ) {
 			?>
 			</a>
 		</div>
-		<?php the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' ); ?>
 
-		<h3><?php echo $headline; ?></h3>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-			<!--
-		<div class="entry-meta bbg__article-meta">
-			<?php bbginnovate_posted_on(); ?>
-		</div>-->
-		<?php endif; ?>
+		<!-- Child page headline text -->
+		<?php if ($headline) { ?>
+			<h3>
+				<?php
+					echo $link;
+					echo $headline;
+				?>
+			</a>
+			</h3>
+		<?php } ?>
 
 	</header><!-- .entry-header -->
 
-
+	<!-- Child page excerpt -->
 	<?php if ($includeDescription) { ?>
+		<div class="entry-content bbg__about__excerpt-content">
+			<?php the_excerpt(); ?>
 
-	<div class="entry-content bbg__about__excerpt-content bbg-blog__excerpt-content">
-		<?php the_excerpt(); ?>
-
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .bbg__about__excerpt-title -->
+			<?php
+				wp_link_pages( array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
+					'after'  => '</div>',
+				) );
+			?>
+		</div><!-- .bbg__about__excerpt-title -->
 	<?php } ?>
 
 </article><!-- .bbg__about__excerpt -->

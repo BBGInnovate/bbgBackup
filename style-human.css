@@ -5336,6 +5336,57 @@ article {
   margin-bottom: 2.25rem;
 }
 
+.bbg__about__excerpt-content {
+  display: none;
+}
+
+.bbg__about__child--mission {
+  background-color: #323a45;
+  border-radius: 0.3rem;
+  padding-top: 0;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+.bbg__about__child--mission .single-post-thumbnail {
+  display: none;
+}
+.bbg__about__child--mission .bbg__about__excerpt-content {
+  display: block;
+}
+.bbg__about__child--mission p {
+  color: #FFF;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.1;
+  margin: 0;
+}
+.bbg__about__child--mission a {
+  color: #9bdaf1;
+}
+.bbg__about__child--mission .bbg-label {
+  background-color: #981b1e;
+  color: #FFF;
+  display: inline-block;
+  font-size: 2rem;
+  padding: .5rem 1rem;
+}
+.bbg__about__child--mission .bbg-label a {
+  color: #FFF;
+}
+@media screen and (min-width: 900px) {
+  .bbg__about__child--mission {
+    padding-top: 0;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 3rem;
+    /* p {
+    	line-height: 2;
+    } */
+  }
+}
+
 .bbg__about__grandchild p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
