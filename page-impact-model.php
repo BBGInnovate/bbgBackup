@@ -212,17 +212,17 @@ get_header(); ?>
 									<h3>in support of freedom and democracy</h3>
 								</div>
 								<div class="usa-grid">
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
 										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>People</h3>
 										<p>Increased audience's understanding of current events</p>
 									</div>
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
 										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>Media</h3>
 										<p class="bbg__impact-model__optional">Drive the news agenda/high profile news pickups*</p>
 									</div>
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
 										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>Government</h3>
 										<p class="bbg__impact-model__optional">Attention from government officials*</p>
