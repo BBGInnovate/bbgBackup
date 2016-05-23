@@ -120,11 +120,16 @@ get_header(); ?>
 								</div>
 							</section>
 
-
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>IMPACT PILLARS & INDICATORS</h2>
 									<p class="usa-font-lead">Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
+								</div>
+							</section>
+
+							<section class="usa-section bbg__impact-model__section">
+								<div class="usa-grid">
+									<h2>INFORM</h2>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
@@ -154,7 +159,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>INFORM</h2>
+									<h2>ENGAGE / CONNECT</h2>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
@@ -190,7 +195,8 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>ENGAGE / CONNECT</h2>
+									<h2>BE INFLUENTIAL</h2>
+									<h3>in support of freedom and democracy</h3>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
@@ -208,16 +214,6 @@ get_header(); ?>
 								</div>
 							</section>
 
-
-							<section class="usa-section bbg__impact-model__section">
-								<div class="usa-grid">
-									<h2>BE INFLUENTIAL</h2>
-									<h3>in support of freedom and democracy</h3>
-								</div>
-							</section>
-
-							<style type="text/css">
-							</style>
 						</div><!-- .usa-grid-full -->
 
 
