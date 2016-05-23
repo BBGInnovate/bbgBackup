@@ -1891,7 +1891,7 @@ p a,
   }
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child {
+.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 2rem;
   line-height: 1.7;
@@ -4038,12 +4038,12 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child {
+.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
   font-size: 1.6rem;
   font-weight: 300;
 }
 @media screen and (min-width: 600px) {
-  .usa-font-lead, .bbg__about__intro p:first-child {
+  .usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
     font-size: 2rem;
     line-height: 2.5;
   }
@@ -4176,7 +4176,7 @@ img > a:focus,
   text-decoration: none;
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child {
+.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
   color: #000;
 }
 
@@ -5099,7 +5099,7 @@ article {
   }
 }
 
-.bbg-banner, .bbg__about__child__banner {
+.bbg-banner {
   background-color: #f1f1f1;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5111,48 +5111,48 @@ article {
   width: 100%;
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner, .bbg__about__child__banner {
+  .bbg-banner {
     height: 400px;
   }
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner, .bbg__about__child__banner {
+  .bbg-banner {
     height: 500px;
   }
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-banner__container.usa-grid, .bbg__about__child__banner .bbg-banner__container.usa-grid {
+  .bbg-banner .bbg-banner__container.usa-grid {
     padding-right: 0;
   }
 }
 @media screen and (min-width: 900px) {
-  .bbg-banner .bbg-banner__container, .bbg__about__child__banner .bbg-banner__container {
+  .bbg-banner .bbg-banner__container {
     border-left: 1px solid rgba(240, 240, 240, 0.4);
     border-right: 1px solid rgba(240, 240, 240, 0.4);
     height: 100%;
   }
 }
-.bbg-banner a:focus, .bbg__about__child__banner a:focus {
+.bbg-banner a:focus {
   box-shadow: none;
   background: none;
 }
-.bbg-banner .bbg-banner__site-logo, .bbg__about__child__banner .bbg-banner__site-logo {
+.bbg-banner .bbg-banner__site-logo {
   width: 100px;
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-banner__site-logo, .bbg__about__child__banner .bbg-banner__site-logo {
+  .bbg-banner .bbg-banner__site-logo {
     width: 150px;
   }
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-banner__site-logo, .bbg__about__child__banner .bbg-banner__site-logo {
+  .bbg-banner .bbg-banner__site-logo {
     width: 200px;
   }
 }
-.bbg-banner .bbg-banner__site-logo :focus, .bbg__about__child__banner .bbg-banner__site-logo :focus {
+.bbg-banner .bbg-banner__site-logo :focus {
   box-shadow: none;
 }
-.bbg-banner .bbg-banner-box, .bbg__about__child__banner .bbg-banner-box {
+.bbg-banner .bbg-banner-box {
   margin: 0 auto;
   max-width: 1040px;
   padding-bottom: 1.5rem;
@@ -5160,11 +5160,11 @@ article {
   bottom: 0;
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-banner-box, .bbg__about__child__banner .bbg-banner-box {
+  .bbg-banner .bbg-banner-box {
     padding-right: 3rem;
   }
 }
-.bbg-banner .bbg-banner-box .bbg-banner-site-title, .bbg__about__child__banner .bbg-banner-box .bbg-banner-site-title {
+.bbg-banner .bbg-banner-box .bbg-banner-site-title {
   color: #FFF;
   font-family: "Lato", "Helvetica", "Arial", sans-serif !important;
   font-size: 3.2rem;
@@ -5175,16 +5175,16 @@ article {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-banner-box .bbg-banner-site-title, .bbg__about__child__banner .bbg-banner-box .bbg-banner-site-title {
+  .bbg-banner .bbg-banner-box .bbg-banner-site-title {
     font-size: 4.8rem;
   }
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-banner-box .bbg-banner-site-title, .bbg__about__child__banner .bbg-banner-box .bbg-banner-site-title {
+  .bbg-banner .bbg-banner-box .bbg-banner-site-title {
     font-size: 6rem;
   }
 }
-.bbg-banner .bbg-banner-box .bbg-banner-site-description, .bbg__about__child__banner .bbg-banner-box .bbg-banner-site-description {
+.bbg-banner .bbg-banner-box .bbg-banner-site-description {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 0 0.3rem 0.3rem 0;
   color: #FFF;
@@ -5198,11 +5198,11 @@ article {
   text-transform: uppercase;
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-banner-box .bbg-banner-site-description, .bbg__about__child__banner .bbg-banner-box .bbg-banner-site-description {
+  .bbg-banner .bbg-banner-box .bbg-banner-site-description {
     font-size: 2rem;
   }
 }
-.bbg-banner .bbg-banner__gradient, .bbg__about__child__banner .bbg-banner__gradient {
+.bbg-banner .bbg-banner__gradient {
   background-image: linear-gradient(transparent 0%, #000 200%);
   height: 25%;
   position: absolute;
@@ -5210,12 +5210,12 @@ article {
   bottom: 0;
   left: 0;
 }
-.bbg-banner .bbg-social__container, .bbg__about__child__banner .bbg-social__container {
+.bbg-banner .bbg-social__container {
   max-width: 1200px;
   position: relative;
   width: 100%;
 }
-.bbg-banner .bbg-social, .bbg__about__child__banner .bbg-social {
+.bbg-banner .bbg-social {
   max-width: 100%;
   position: absolute;
   right: 1.5rem;
@@ -5223,45 +5223,45 @@ article {
   padding: 0;
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-social, .bbg__about__child__banner .bbg-social {
+  .bbg-banner .bbg-social {
     right: -50px;
   }
 }
-.bbg-banner .bbg-social__list, .bbg__about__child__banner .bbg-social__list {
+.bbg-banner .bbg-social__list {
   display: none;
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-social__list, .bbg__about__child__banner .bbg-social__list {
+  .bbg-banner .bbg-social__list {
     display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: block;
   }
-  .bbg-banner .bbg-social__list li, .bbg__about__child__banner .bbg-social__list li {
+  .bbg-banner .bbg-social__list li {
     display: list-item;
     margin: 0;
   }
-  .bbg-banner .bbg-social__list li:before, .bbg__about__child__banner .bbg-social__list li:before {
+  .bbg-banner .bbg-social__list li:before {
     display: none;
   }
-  .bbg-banner .bbg-social__list li:after, .bbg__about__child__banner .bbg-social__list li:after {
+  .bbg-banner .bbg-social__list li:after {
     display: none;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link {
+  .bbg-banner .bbg-social__list .bbg-social__list__link {
     background-color: #91C7DC;
     border-radius: 50%;
     margin-bottom: 1rem;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link :hover, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link :hover {
+  .bbg-banner .bbg-social__list .bbg-social__list__link :hover {
     background-color: #FFF;
     border-radius: 50%;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link :focus, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link :focus {
+  .bbg-banner .bbg-social__list .bbg-social__list__link :focus {
     background-color: #dce4ef;
     border-radius: 50%;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link a {
+  .bbg-banner .bbg-social__list .bbg-social__list__link a {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 45px;
@@ -5269,16 +5269,16 @@ article {
     display: block;
     width: 40px;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-github, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link a.bbg-icon-github {
+  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-github {
     background-image: url(img/social-icons/png/github-mark.png);
     background-image: url(img/social-icons/svg/github-mark.svg);
     background-size: 30px;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-youtube, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link a.bbg-icon-youtube {
+  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-youtube {
     background-image: url(img/social-icons/png/youtube15.png);
     background-image: url(img/social-icons/svg/youtube15.svg);
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter, .bbg__about__child__banner .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter {
+  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter {
     background-image: url(img/social-icons/png/twitter16.png);
     background-image: url(img/social-icons/svg/twitter16.svg);
   }
@@ -5342,12 +5342,9 @@ section.usa-section.bbg-banner__section {
   margin-bottom: 3rem;
 }
 
-.bbg__about__child__banner {
-  background-position: center center;
-  height: 200px;
-  margin-bottom: 2.25rem;
-}
-
+/*****
+	Multi-column child styles
+*****/
 .bbg__about__excerpt-content {
   display: none;
 }
@@ -5393,10 +5390,26 @@ section.usa-section.bbg-banner__section {
     padding-right: 3rem;
     padding-bottom: 3rem;
     padding-left: 3rem;
-    /* p {
-    	line-height: 2;
-    } */
   }
+}
+
+/*****
+	Umbrella child styles
+*****/
+.bbg__about__child__banner {
+  background-position: center center;
+  float: left;
+  min-height: 20rem;
+  height: 100%;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+  min-width: 100px;
+  width: 40%;
+}
+
+.bbg__about__child__intro p {
+  line-height: 1.9;
+  margin-top: -0.75rem;
 }
 
 .bbg__about__grandchild p {
@@ -5807,7 +5820,7 @@ section.usa-section.bbg-banner__section {
 .bbg__impact-model p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
-.bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-child, .bbg__about__intro .bbg__impact-model p:first-child {
+.bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-child, .bbg__about__intro .bbg__impact-model p:first-child, .bbg__impact-model p.bbg__about__child__intro {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
 .bbg__impact-model .bbg__impact-model__section {

@@ -126,8 +126,8 @@ get_header();
 								wp_reset_query();
 							}
 						echo "</div>";
-
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
+
 						elseif( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							$relatedPages = get_sub_field('about_umbrella_related_pages');
@@ -166,7 +166,7 @@ get_header();
 							}
 
 							// show umbrella section intro text
-							echo "<div class='usa-font-lead bbg__about__child'>$introText</div>";
+							echo "<div class='bbg__about__child__intro'>$introText</div>";
 
 							if ( $relatedPages ) {
 								echo "<div class='usa-grid-full'>";
