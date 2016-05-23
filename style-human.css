@@ -5750,17 +5750,31 @@ section.usa-section.bbg-banner__section {
   font-size: 1.3rem;
 }
 
+.bbg__impact-model .bbg__big-type {
+  font-size: 3rem;
+}
 .bbg__impact-model p {
   font-family: sans-serif;
 }
-
-.bbg__impact-model__section {
+.bbg__impact-model .bbg__impact-model__section {
   border-bottom: 1px dotted #999;
   padding-bottom: 6rem;
 }
-
-.bbg__impact-model__optional {
+.bbg__impact-model .bbg__impact-model__optional {
   color: #999;
+}
+@media screen and (min-width: 600px) {
+  .bbg__impact-model .bbg__big-type {
+    font-size: 4rem;
+  }
+  .bbg__impact-model .usa-grid .usa-width-one-half {
+    border-left: 1px dotted #999;
+    padding-left: 2.35765%;
+  }
+  .bbg__impact-model .usa-grid .usa-width-one-half:first-of-type {
+    border-left: none;
+    padding-left: 0;
+  }
 }
 
 .comments-area {

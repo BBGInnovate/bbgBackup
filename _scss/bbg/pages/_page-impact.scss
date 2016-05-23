@@ -1,12 +1,33 @@
-.bbg__impact-model p{
-	font-family: sans-serif;
-}
+.bbg__impact-model {
+	.bbg__big-type {
+		font-size: 3rem;
+	}
 
-.bbg__impact-model__section {
-	border-bottom: 1px dotted #999;
-	padding-bottom: 6rem;
-}
+	p{
+		font-family: sans-serif;
+	}
 
-.bbg__impact-model__optional {
-	color: #999;
+	.bbg__impact-model__section {
+		border-bottom: 1px dotted #999;
+		padding-bottom: 6rem;
+	}
+
+	.bbg__impact-model__optional {
+		color: #999;
+	}
+	@include media($medium-screen) {
+		.bbg__big-type {
+			font-size: 4rem;
+		}
+		.usa-grid {
+			.usa-width-one-half {
+				border-left: 1px dotted #999;
+				padding-left: $bbg-grid-gutter;
+			}
+			.usa-width-one-half:first-of-type {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
+	}
 }

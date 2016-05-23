@@ -84,7 +84,7 @@ get_header(); ?>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
-										<h2>6,233,903,487</h2>
+										<h3 class="bbg__big-type">6,233,903,487</h3>
 										<p>people live in countries that have a press that is not free or partly free</p>
 									</div>
 									<div class="usa-width-one-half">
@@ -97,8 +97,8 @@ get_header(); ?>
 											<li>RESTRICTIVE LAWS</li>
 										</ul>
 
-										<h3>6 out of every 7</h3>
-										<p>people live in countries without a free press</p>
+										<h3 class="bbg__big-type">6 out of 7 people</h3>
+										<p>live in countries without a free press</p>
 									</div>
 								</div>
 							</section>
