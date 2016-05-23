@@ -1,0 +1,220 @@
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package bbgRedesign
+   template name: Impact model
+ */
+
+$bannerPosition = get_field( 'adjust_the_banner_image', '', true);
+$videoUrl = get_field( 'featured_video_url', '', true );
+$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
+get_header(); ?>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			<div class="usa-grid-full">
+
+				<?php while ( have_posts() ) : the_post(); 
+					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+				?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
+						<?php
+							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
+							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+								echo '<div class="usa-grid-full">';
+								$featuredImageClass = "";
+								$featuredImageCutline = "";
+								$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+								if ($thumbnail_image && isset($thumbnail_image[0])) {
+									$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+								}
+
+								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '</div>';
+								echo '</div> <!-- usa-grid-full -->';
+							}
+						?><!-- .bbg__article-header__thumbnail -->
+
+						<div class="usa-grid">
+							<header class="entry-header">
+
+								<?php if($post->post_parent) {
+									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+									$parent_link = get_permalink($post->post_parent);
+								?>
+								<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+
+								<?php } ?>
+
+
+								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+							</header><!-- .entry-header -->
+						</div>
+
+
+
+						<div class="usa-grid-full">
+							<?php the_content(); ?>
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>“Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference, and impart information and ideas through any media regardless of frontiers.”</h2>
+									<h5>— The Universal Declaration of Human Rights</h5>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>Our challenges</h2>
+									<p>BBG networks operate in a competitive, diverse, fragmented global media environment undergoing revolutionary change. There is more information, more channels of distribution and Limited Freedom of the Press.</p>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-half">
+										<h3>6,233,903,487</h3>
+										<p>people live in countries that have a press that is not free or partly free</p>
+									</div>
+									<div class="usa-width-one-half">
+										<h4>More: </h4>
+										<ul>
+											<li>CENSORSHIP</li>
+											<li>PROPAGANDA</li>
+											<li>DISINFORMATION</li>
+											<li>THREATS TO JOURNALISTS</li>
+											<li>RESTRICTIVE LAWS</li>
+										</ul>
+
+										<h3>6 out of every 7</h3>
+										<p>people live in countries without a free press</p>
+									</div>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>HOW DO WE MEASURE IMPACT?</h2>
+									<p>We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-half">
+										<h3>5 Networks. </h3>
+										<h3>1 Mission. </h3>
+									</div>
+									<div class="usa-width-one-half">
+										<h3>To inform, engage and connect people around the world in support of freedom and democracy.</h3>
+									</div>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>IMPACT PILLARS & INDICATORS</h2>
+									<p>Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-half">
+										<h3>Reach Audiences</h3>
+										<ul></ul>
+									</div>
+									<div class="usa-width-one-half">
+										<h3>Provide Value</h3>
+										<ul></ul>
+									</div>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>INFORM</h2>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-third">
+										<h3>Engage Audiences</h3>
+										<ul></ul>
+									</div>
+									<div class="usa-width-one-third">
+										<h3>Engage Media</h3>
+										<ul></ul>
+									</div>
+									<div class="usa-width-one-third">
+										<h3>Create Loyalty</h3>
+										<ul></ul>
+									</div>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>ENGAGE / CONNECT</h2>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-third">
+										<h3>People</h3>
+										<ul></ul>
+									</div>
+									<div class="usa-width-one-third">
+										<h3>Media</h3>
+										<ul></ul>
+									</div>
+									<div class="usa-width-one-third">
+										<h3>Government</h3>
+										<ul></ul>
+									</div>
+								</div>
+							</section>
+
+						</div><!-- .usa-grid-full -->
+
+
+
+						<div class="usa-grid">
+							<footer class="entry-footer bbg-post-footer 1234">
+								<?php
+									edit_post_link(
+										sprintf(
+											/* translators: %s: Name of current post */
+											esc_html__( 'Edit %s', 'bbginnovate' ),
+											the_title( '<span class="screen-reader-text">"', '"</span>', false )
+										),
+										'<span class="edit-link">',
+										'</span>'
+									);
+								?>
+							</footer><!-- .entry-footer -->
+						</div><!-- .usa-grid -->
+					</article><!-- #post-## -->
+	
+
+					<div class="bbg-post-footer">
+					<?php
+						// If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) :
+							comments_template();
+						endif;
+					?>
+					</div>
+
+				<?php endwhile; // End of the loop. ?>
+			</div><!-- .usa-grid-full -->
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<?php /*get_sidebar();*/ ?>
+<?php get_footer(); ?>
