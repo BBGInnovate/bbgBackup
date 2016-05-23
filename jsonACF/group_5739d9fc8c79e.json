@@ -22,6 +22,27 @@
             "maxlength": "",
             "readonly": 0,
             "disabled": 0
+        },
+        {
+            "key": "field_57436f5bea2f7",
+            "label": "fake new field",
+            "name": "fake_new_field",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
         }
     ],
     "location": [
@@ -60,5 +81,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464035031
+    "modified": 1464037298
 }
