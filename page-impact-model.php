@@ -228,7 +228,11 @@ get_header(); ?>
 										<p class="bbg__impact-model__optional">Attention from government officials*</p>
 									</div>
 								</div>
+								<div class="usa-grid">
+									<h4><span style="font-size:8rem; vertical-align: -40%;">*</span> Optional indicator</h4>
+								</div>
 							</section>
+
 
 						</div><!-- .usa-grid-full -->
 
