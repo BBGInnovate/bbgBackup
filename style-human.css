@@ -4736,7 +4736,7 @@ article {
   }
 }
 .bbg__quotation .bbg__quotation-attribution__container {
-  display: inline;
+  display: inline-block;
   margin: 0 auto;
 }
 .bbg__quotation .bbg__quotation-attribution {
@@ -5214,10 +5214,16 @@ article {
   font-size: 1.7rem;
   padding: .5rem 1rem;
 }
+.bbg__ribbon--thin .bbg-label a {
+  color: #FFF;
+}
 .bbg__ribbon--thin p {
   color: #FFF;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   padding-bottom: 3rem;
+}
+.bbg__ribbon--thin a {
+  color: #9bdaf1;
 }
 .bbg__ribbon--thin .bbg__announcement__flexbox {
   padding-top: 3rem;

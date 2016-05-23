@@ -232,6 +232,8 @@
 }
 
 
+
+
 /* may remove this if you don't use it later */
 .bbg__ribbon--thin {
 	background-color: $color-gray-dark;
@@ -243,12 +245,20 @@
 		display: inline-block;
 		font-size: 1.7rem;
 		padding: .5rem 1rem; 
+
+		a {
+			color: #FFF;
+		}
 	}
 
 	p {
 		color: #FFF;
 		font-family: $font-sans;
 		padding-bottom: $site-margins;
+	}
+
+	a {
+		color: $color-primary-alt-light;
 	}
 
 
@@ -300,7 +310,7 @@
 	padding-bottom: $site-margins;
 
 	a {
-		color: #9bdaf1;
+		color: $color-primary-alt-light;
 	}
 
 	p {

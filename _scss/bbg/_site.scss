@@ -674,6 +674,8 @@ article {
 		text-align: center;
 	}
 
+
+
 	.bbg__quotation-text--large {
 		font-size: 2.5rem;
 		font-weight: 100;
@@ -685,7 +687,6 @@ article {
 
 
 	.bbg__quotation-attribution__mugshot {
-		//border-radius: $border-radius;
 		border-radius: 50%;
 		height: auto;
 		margin-right: $site-margins-small;
@@ -700,9 +701,10 @@ article {
 	}
 
 	.bbg__quotation-attribution__container {
-		display: inline;
+		display: inline-block;
 		margin: 0 auto;
 	}
+
 	.bbg__quotation-attribution {
 		font-family: $font-sans;
 		margin-top: $site-margins-medium;
