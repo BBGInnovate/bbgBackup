@@ -95,7 +95,7 @@ get_header(); ?>
 
 								<?php 
 									//Add blog posts below the main content
-									$relatedCategory=get_field('profile_related_category', $id);
+									$relatedCategory=get_field('related_category_posts', $id);
 									
 									if ( $relatedCategory != "" ) {
 										$qParams2=array(
@@ -119,6 +119,8 @@ get_header(); ?>
 										wp_reset_postdata();
 									}
 								?>
+
+
 
 							</div><!-- .entry-content -->
 

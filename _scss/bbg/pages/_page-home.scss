@@ -41,6 +41,7 @@
 		@include media($medium-screen) {
 			width: 150px;
 		}
+
 		@include media($large-screen) {
 			width: 200px;
 		}
