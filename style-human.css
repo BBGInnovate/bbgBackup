@@ -5754,7 +5754,10 @@ section.usa-section.bbg-banner__section {
   font-size: 3rem;
 }
 .bbg__impact-model p {
-  font-family: sans-serif;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+.bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-child, .bbg__about__intro .bbg__impact-model p:first-child {
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
 .bbg__impact-model .bbg__impact-model__section {
   border-bottom: 1px dotted #999;
@@ -5772,6 +5775,14 @@ section.usa-section.bbg-banner__section {
     padding-left: 2.35765%;
   }
   .bbg__impact-model .usa-grid .usa-width-one-half:first-of-type {
+    border-left: none;
+    padding-left: 0;
+  }
+  .bbg__impact-model .usa-grid .usa-width-one-third {
+    border-left: 1px dotted #999;
+    padding-left: 2.35765%;
+  }
+  .bbg__impact-model .usa-grid .usa-width-one-third:first-of-type {
     border-left: none;
     padding-left: 0;
   }

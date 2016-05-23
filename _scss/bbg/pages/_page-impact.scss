@@ -4,7 +4,10 @@
 	}
 
 	p{
-		font-family: sans-serif;
+		font-family: $font-sans;
+	}
+	p.usa-font-lead{
+		font-family: $font-serif;
 	}
 
 	.bbg__impact-model__section {
@@ -25,6 +28,15 @@
 				padding-left: $bbg-grid-gutter;
 			}
 			.usa-width-one-half:first-of-type {
+				border-left: none;
+				padding-left: 0;
+			}
+
+			.usa-width-one-third {
+				border-left: 1px dotted #999;
+				padding-left: $bbg-grid-gutter;
+			}
+			.usa-width-one-third:first-of-type {
 				border-left: none;
 				padding-left: 0;
 			}
