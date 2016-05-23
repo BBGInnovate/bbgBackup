@@ -5750,6 +5750,19 @@ section.usa-section.bbg-banner__section {
   font-size: 1.3rem;
 }
 
+.bbg__impact-model p {
+  font-family: sans-serif;
+}
+
+.bbg__impact-model__section {
+  border-bottom: 1px dotted #999;
+  padding-bottom: 6rem;
+}
+
+.bbg__impact-model__optional {
+  color: #999;
+}
+
 .comments-area {
   max-width: 600px;
   margin: 0 auto;

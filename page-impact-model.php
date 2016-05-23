@@ -27,7 +27,7 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); 
 					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article bbg__impact-model"); ?>>
 						<?php
 							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
 							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -69,7 +69,7 @@ get_header(); ?>
 						<div class="usa-grid-full">
 							<?php the_content(); ?>
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>“Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference, and impart information and ideas through any media regardless of frontiers.”</h2>
 									<h5>— The Universal Declaration of Human Rights</h5>
@@ -77,14 +77,14 @@ get_header(); ?>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>Our challenges</h2>
 									<p class="usa-font-lead">BBG networks operate in a competitive, diverse, fragmented global media environment undergoing revolutionary change. There is more information, more channels of distribution and Limited Freedom of the Press.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
-										<h3>6,233,903,487</h3>
+										<h2>6,233,903,487</h2>
 										<p>people live in countries that have a press that is not free or partly free</p>
 									</div>
 									<div class="usa-width-one-half">
@@ -104,7 +104,7 @@ get_header(); ?>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>HOW DO WE MEASURE IMPACT?</h2>
 									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
@@ -121,7 +121,7 @@ get_header(); ?>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>IMPACT PILLARS & INDICATORS</h2>
 									<p class="usa-font-lead">Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
@@ -136,7 +136,7 @@ get_header(); ?>
 											<h5>Weekly digital visits</h5>
 										</div>
 										<div>
-											<h5>Weekly reach of target segment*</h5>
+											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-half">
@@ -145,14 +145,14 @@ get_header(); ?>
 											<h5>Provide exceptional or unique information</h5>
 										</div>
 										<div>
-											<h5>Weekly reach of target segment*</h5>
+											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
 										</div>
 									</div>
 								</div>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>INFORM</h2>
 								</div>
@@ -163,16 +163,16 @@ get_header(); ?>
 											<h5>Digital engagement</h5>
 										</div>
 										<div>
-											<h5>Shared something or talked with someone as a result of reporting*</h5>
+											<h5 class="bbg__impact-model__optional">Shared something or talked with someone as a result of reporting*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Engage Media</h3>
 										<div>
-											<h5>Content co-creation with affiliates*</h5>
+											<h5 class="bbg__impact-model__optional">Content co-creation with affiliates*</h5>
 										</div>
 										<div>
-											<h5>Content downloaded by affiliates*</h5>
+											<h5 class="bbg__impact-model__optional">Content downloaded by affiliates*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-third">
@@ -181,14 +181,14 @@ get_header(); ?>
 											<h5>Audience is likely to continue to use</h5>
 										</div>
 										<div>
-											<h5>Appointment listening or viewing*</h5>
+											<h5 class="bbg__impact-model__optional">Appointment listening or viewing*</h5>
 										</div>
 									</div>
 								</div>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>ENGAGE / CONNECT</h2>
 								</div>
@@ -199,24 +199,25 @@ get_header(); ?>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Media</h3>
-										<p>Drive the news agenda/high profile news pickups*</p>
+										<p class="bbg__impact-model__optional">Drive the news agenda/high profile news pickups*</p>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Government</h3>
-										<p>Attention from government officials*</p>
+										<p class="bbg__impact-model__optional">Attention from government officials*</p>
 									</div>
 								</div>
 							</section>
 
 
-							<section class="usa-section bbg__impact-model">
+							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>BE INFLUENTIAL</h2>
 									<h3>in support of freedom and democracy</h3>
 								</div>
 							</section>
 
-
+							<style type="text/css">
+							</style>
 						</div><!-- .usa-grid-full -->
 
 
