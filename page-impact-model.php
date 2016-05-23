@@ -84,10 +84,14 @@ get_header(); ?>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
+										<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
 										<h3 class="bbg__big-type">6,233,903,487</h3>
 										<p>people live in countries that have a press that is not free or partly free</p>
 									</div>
 									<div class="usa-width-one-half">
+										<h3 class="">6 out of 7 people</h3>
+										<p>live in countries without a free press</p>
+										<br/>
 										<h4>More: </h4>
 										<ul>
 											<li>CENSORSHIP</li>
@@ -97,8 +101,6 @@ get_header(); ?>
 											<li>RESTRICTIVE LAWS</li>
 										</ul>
 
-										<h3 class="bbg__big-type">6 out of 7 people</h3>
-										<p>live in countries without a free press</p>
 									</div>
 								</div>
 							</section>
@@ -106,7 +108,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>HOW DO WE MEASURE IMPACT?</h2>
+									<h1 style="font-size: 6rem;">How do we measure impact?</h1>
 									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
 								</div>
 								<div class="usa-grid">
@@ -134,22 +136,27 @@ get_header(); ?>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
 										<h3>Reach Audiences</h3>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5>Weekly reach</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5>Weekly digital visits</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-half">
 										<h3>Provide Value</h3>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
 											<h5>Provide exceptional or unique information</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
 											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
 										</div>
 									</div>
@@ -164,28 +171,34 @@ get_header(); ?>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
 										<h3>Engage Audiences</h3>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5>Digital engagement</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5 class="bbg__impact-model__optional">Shared something or talked with someone as a result of reporting*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Engage Media</h3>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5 class="bbg__impact-model__optional">Content co-creation with affiliates*</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5 class="bbg__impact-model__optional">Content downloaded by affiliates*</h5>
 										</div>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Create Loyalty</h3>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5>Audience is likely to continue to use</h5>
 										</div>
-										<div>
+										<div class="bbg__impact-model__subsection">
+											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 											<h5 class="bbg__impact-model__optional">Appointment listening or viewing*</h5>
 										</div>
 									</div>
@@ -199,20 +212,27 @@ get_header(); ?>
 									<h3>in support of freedom and democracy</h3>
 								</div>
 								<div class="usa-grid">
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
+										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>People</h3>
 										<p>Increased audience's understanding of current events</p>
 									</div>
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
+										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>Media</h3>
 										<p class="bbg__impact-model__optional">Drive the news agenda/high profile news pickups*</p>
 									</div>
-									<div class="usa-width-one-third">
+									<div class="usa-width-one-third bbg__impact-model__subsection">
+										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
 										<h3>Government</h3>
 										<p class="bbg__impact-model__optional">Attention from government officials*</p>
 									</div>
 								</div>
+								<div class="usa-grid">
+									<h4><span style="font-size:8rem; vertical-align: -40%;">*</span> Optional indicator</h4>
+								</div>
 							</section>
+
 
 						</div><!-- .usa-grid-full -->
 

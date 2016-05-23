@@ -5827,8 +5827,38 @@ section.usa-section.bbg-banner__section {
   border-bottom: 1px dotted #999;
   padding-bottom: 6rem;
 }
+.bbg__impact-model .bbg__impact-model__section:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.bbg__impact-model .bbg__impact-model__subsection {
+  margin-bottom: 3rem;
+}
+.bbg__impact-model .bbg__impact-model__subsection h3,
+.bbg__impact-model .bbg__impact-model__subsection h4,
+.bbg__impact-model .bbg__impact-model__subsection .bbg__board__committee-list li a,
+.bbg__board__committee-list li .bbg__impact-model .bbg__impact-model__subsection a,
+.bbg__impact-model .bbg__impact-model__subsection h5,
+.bbg__impact-model .bbg__impact-model__subsection p {
+  margin: 0 auto;
+  max-width: 200px;
+  text-align: center;
+}
 .bbg__impact-model .bbg__impact-model__optional {
   color: #999;
+}
+.bbg__impact-model .bbg__impact-model__graphic {
+  border-radius: 50%;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 200px;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .bbg__impact-model .bbg__impact-model__graphic.large {
+    max-width: 300px;
+  }
 }
 @media screen and (min-width: 600px) {
   .bbg__impact-model .bbg__big-type {
