@@ -3477,8 +3477,8 @@ fieldset {
 
 @media screen and (min-width: 600px) {
   .single-post .bbg__article-content > p:first-of-type {
-    font-size: 1.6rem;
-    margin: 0 auto;
+    font-size: 1.8rem;
+    margin: 0 auto 3rem auto;
   }
 }
 
