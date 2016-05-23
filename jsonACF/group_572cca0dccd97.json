@@ -1,0 +1,108 @@
+{
+    "key": "group_572cca0dccd97",
+    "title": "Quotations",
+    "fields": [
+        {
+            "key": "field_572b9106a3e25",
+            "label": "Quotation speaker",
+            "name": "quotation_speaker",
+            "type": "text",
+            "instructions": "Speaker's name and title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "formatting": "html",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_5730b846f15d5",
+            "label": "Quotation tagline",
+            "name": "quotation_tagline",
+            "type": "text",
+            "instructions": "Optional short phrase appended after the speaker's name.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_57313b2710b4b",
+            "label": "Quotation mugshot",
+            "name": "quotation_mugshot",
+            "type": "image",
+            "instructions": "Speaker mugshots are 100 x 100 pixels square.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "uploadedTo",
+            "min_width": 50,
+            "min_height": 50,
+            "min_size": "",
+            "max_width": 250,
+            "max_height": 250,
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_572b916aa3e27",
+            "label": "Quotation date",
+            "name": "quotation_date",
+            "type": "date_picker",
+            "instructions": "NOTE: THIS ISN'T CURRENTLY BEING USED.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_format",
+                "operator": "==",
+                "value": "quote"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464028020
+}

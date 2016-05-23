@@ -1,0 +1,56 @@
+{
+    "key": "group_572cca0dd99b0",
+    "title": "Profile Fields (Senior Management)",
+    "fields": [
+        {
+            "key": "field_570ef6941e09f",
+            "label": "CEO",
+            "name": "ceo",
+            "type": "true_false",
+            "instructions": "Chief Executive Officer",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_570ef6c01e0a0",
+            "label": "Broadcast leadership",
+            "name": "grantee_leadership",
+            "type": "true_false",
+            "instructions": "Currently serving as the head of one of the broadcasters",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_parent",
+                "operator": "==",
+                "value": "624"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464028008
+}
