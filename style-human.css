@@ -4939,6 +4939,9 @@ article {
     width: 100%;
   }
 }
+.bbg__article-sidebar.large div {
+  margin-bottom: 6rem;
+}
 
 .bbg__entity-logo__press-release {
   float: right;
