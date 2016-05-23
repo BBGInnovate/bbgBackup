@@ -6,6 +6,7 @@
 	p{
 		font-family: $font-sans;
 	}
+
 	p.usa-font-lead{
 		font-family: $font-serif;
 	}
@@ -15,9 +16,42 @@
 		padding-bottom: 6rem;
 	}
 
+	.bbg__impact-model__section:last-of-type {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.bbg__impact-model__subsection{
+		margin-bottom: $site-margins;
+
+		h4,
+		h5,
+		p {
+			margin: 0 auto;
+			max-width: 200px;
+			text-align: center;
+		}
+	}
+
 	.bbg__impact-model__optional {
 		color: #999;
 	}
+
+	.bbg__impact-model__graphic {
+		border-radius: 50%;
+		display: block;
+		height: auto;
+		margin: 0 auto;
+		max-width: 200px;
+		width: 100%;
+
+		@include media($medium-screen) {
+			&.large{
+				max-width: 300px;
+			}
+		}
+	}
+
 	@include media($medium-screen) {
 		.bbg__big-type {
 			font-size: 4rem;
