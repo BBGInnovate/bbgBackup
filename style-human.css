@@ -4377,6 +4377,10 @@ article {
   }
 }
 
+.bbg__article-content li {
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+}
+
 .bbg__article-header__banner--profile {
   margin-bottom: 0;
 }

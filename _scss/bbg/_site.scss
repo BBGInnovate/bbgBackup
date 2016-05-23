@@ -298,6 +298,13 @@ article {
 	}
 }
 
+
+.bbg__article-content{
+	li {
+		font-family: $font-serif;
+	}
+}
+
 .bbg__article-header__banner--profile {
 	@extend .bbg__article-header__banner;
 	margin-bottom: 0;
