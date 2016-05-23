@@ -136,7 +136,7 @@ get_header();
 			?>
 
 			<!-- Responsive Banner -->
-			<section class="usa-section">
+			<section class="usa-section bbg-banner__section">
 				<div class="bbg-banner">
 					<div class="bbg-banner__gradient"></div>
 					<div class="usa-grid bbg-banner__container--home">

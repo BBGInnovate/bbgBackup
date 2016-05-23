@@ -195,13 +195,11 @@
 						}
 					}
 				}
-
 			}
 		}
-
 	}
-
 }
+
 .bbg-banner__cutline {
 	@extend .wp-caption-text;
 
@@ -210,6 +208,10 @@
 	@include media($medium-screen) {
 		text-align: right !important;
 	}
+}
+
+.bbg-banner__section {
+	margin-bottom: $site-margins;
 }
 
 
