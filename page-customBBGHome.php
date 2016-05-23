@@ -101,7 +101,14 @@ get_header();
 			<?php
 				/*** output our <style> node for use by the responsive banner ***/
 				$data = get_theme_mod('header_image_data');
+
 				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
+				$randomImg= getRandomEntityImage();
+				$bannerCutline="";
+				if ($randomImg) {
+					$attachment_id = $randomImg['imageID'];
+					$bannerCutline = $randomImg['imageCutline'];
+				}
 				if($attachment_id) {
 					$tempSources= bbgredesign_get_image_size_links($attachment_id);
 					//sources aren't automatically in numeric order.  ksort does the trick.
@@ -152,8 +159,9 @@ get_header();
 						</div>
 					</div>
 				</div>
+
 				<div class="bbg-banner__cutline usa-grid">
-					This is a small cutline for the banner photo. (Gigi Frias / Associated Press)
+					<?php echo $bannerCutline; ?>	
 				</div>
 			</section><!-- Responsive Banner -->
 
