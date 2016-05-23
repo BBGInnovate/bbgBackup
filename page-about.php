@@ -194,6 +194,20 @@ get_header();
 			</section>
 			<?php wp_reset_postdata(); ?>
 
+<?php /*experimenting with adding an annual report ribbon */ ?>
+<section class="usa-section bbg__ribbon--thin">
+	<div class="usa-grid">
+		<div class="bbg__announcement__flexbox">
+			<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2011/12/BBG-AR2014_cvr.jpg);"></div>
+			<div>
+				<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/who-we-are/annual-report/">Annual Reports</a></h6>
+				<h2><a href="http://www.bbg.gov/wp-content/media/2015/06/BBG-AR2014_FINAL-FILE_singlepgs1.pdf">Download the 2015 BBG Annual Report</a></h2>
+				<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 		</main>
 	</div><!-- #primary .content-area -->
 	<div id="secondary" class="widget-area" role="complementary">
