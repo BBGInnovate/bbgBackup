@@ -1,0 +1,97 @@
+{
+    "key": "group_57337fce3f81c",
+    "title": "Homepage: featured content",
+    "fields": [
+        {
+            "key": "field_57352af0dbbe8",
+            "label": "Homepage Featured Post",
+            "name": "homepage_featured_post",
+            "type": "post_object",
+            "instructions": "This will show up at the top of the recent posts on the homepage if selected.  ",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+
+            ],
+            "taxonomy": [
+
+            ],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5733808a36712",
+            "label": "Homepage Soapbox Post",
+            "name": "homepage_soapbox_post",
+            "type": "post_object",
+            "instructions": "Often, this is the latest CEO post, but it doesn't have to be.  If you exclude it altogether, recent headlines of type X will show in the same location.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+
+            ],
+            "taxonomy": [
+                "category:johns-take",
+                "category:speech"
+            ],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_573dd7980f094",
+            "label": "Homepage Threats to Press Post",
+            "name": "homepage_threats_to_press_post",
+            "type": "post_object",
+            "instructions": "This is could be an ongoing profile of a jailed journalist, a news update or may an anniversary post.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+
+            ],
+            "taxonomy": [
+
+            ],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "homepage-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464027983
+}

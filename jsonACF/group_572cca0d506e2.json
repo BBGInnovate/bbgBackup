@@ -1,0 +1,73 @@
+{
+    "key": "group_572cca0d506e2",
+    "title": "Contact Cards",
+    "fields": [
+        {
+            "key": "field_5705751e6b052",
+            "label": "Contacts",
+            "name": "contact_post_id",
+            "type": "select",
+            "instructions": "Select one or more contacts and their cards will appear at the bottom of the post.  Ctrl or Cmd + click to deselect.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "24202": "BBG \u2014\u00a0Laurie Moy",
+                "24270": "BBG \u2014\u00a0Public Affairs",
+                "24242": "MBN \u2014\u00a0Chams Eddin",
+                "24250": "MBN \u2014\u00a0Deirdre Kline",
+                "24238": "OCB \u2014 Emilio Vazquez",
+                "24262": "RFA \u2014\u00a0Rohit Mahajan",
+                "24220": "RFERL \u2014\u00a0Joanna Levison",
+                "24215": "RFERL \u2014\u00a0Martins Zvaners",
+                "24255": "VOA \u2014 Scot Riddlesberger"
+            },
+            "default_value": [
+
+            ],
+            "allow_null": 0,
+            "multiple": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:press-release"
+            }
+        ],
+        [
+            {
+                "param": "post_category",
+                "operator": "==",
+                "value": "category:highlight"
+            }
+        ],
+        [
+            {
+                "param": "page_parent",
+                "operator": "==",
+                "value": "11"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464027941
+}

@@ -1,0 +1,202 @@
+{
+    "key": "group_572cca0d21087",
+    "title": "Board committee fields",
+    "fields": [
+        {
+            "key": "field_5723c2da973c8",
+            "label": "Select the committee members",
+            "name": "committee_members",
+            "type": "select",
+            "instructions": "Select the members of this committee",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "24979": "Alberto Mora",
+                "20481": "Ambassador Karen Kornbluh",
+                "24983": "Bette Bao Lord",
+                "24909": "Blanquita Walsh Cullum",
+                "24967": "Carl Spielvogel",
+                "24973": "Cheryl Halpern",
+                "24919": "D. Jeffrey Hirschberg",
+                "508": "Dana Perino",
+                "24739": "David W. Burke",
+                "505": "Dennis Mulhaupt",
+                "20478": "Dr. Leon Aron",
+                "24753": "Edward E. Kaufman",
+                "449": "Hillary Rodham Clinton",
+                "24896": "James K. Glassman",
+                "15460": "Jeff Shell",
+                "24926": "Joaquin F. Blaya",
+                "12675": "John Forbes Kerry",
+                "16543": "Kenneth Weinstein",
+                "24938": "Kenneth Y. Tomlinson",
+                "24743": "Marc B. Nathanson",
+                "24902": "Mark McKinnon",
+                "15462": "Matt Armstrong",
+                "20476": "Michael Kempner",
+                "476": "Michael Lynton",
+                "498": "Michael P. Meehan",
+                "24961": "Norman J. Pattiz",
+                "24956": "Robert M. Ledbetter, Jr.",
+                "15464": "Ryan Crocker",
+                "515": "S. Enders Wimbush",
+                "25034": "Special Committees",
+                "24933": "Steven J. Simmons",
+                "491": "Susan McCue",
+                "24747": "Tom C. Korologos",
+                "24906": "Veronique Rodman",
+                "437": "Victor H. Ashe",
+                "24890": "Walter Isaacson"
+            },
+            "default_value": [
+
+            ],
+            "allow_null": 0,
+            "multiple": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_57225abac62e6",
+            "label": "Select the committee chair",
+            "name": "committee_chair",
+            "type": "select",
+            "instructions": "This list is auto generated based on the committee assignments in individual board member profiles.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "24979": "Alberto Mora",
+                "20481": "Ambassador Karen Kornbluh",
+                "24983": "Bette Bao Lord",
+                "24909": "Blanquita Walsh Cullum",
+                "24967": "Carl Spielvogel",
+                "24973": "Cheryl Halpern",
+                "24919": "D. Jeffrey Hirschberg",
+                "508": "Dana Perino",
+                "24739": "David W. Burke",
+                "505": "Dennis Mulhaupt",
+                "20478": "Dr. Leon Aron",
+                "24753": "Edward E. Kaufman",
+                "449": "Hillary Rodham Clinton",
+                "24896": "James K. Glassman",
+                "15460": "Jeff Shell",
+                "24926": "Joaquin F. Blaya",
+                "12675": "John Forbes Kerry",
+                "16543": "Kenneth Weinstein",
+                "24938": "Kenneth Y. Tomlinson",
+                "24743": "Marc B. Nathanson",
+                "24902": "Mark McKinnon",
+                "15462": "Matt Armstrong",
+                "20476": "Michael Kempner",
+                "476": "Michael Lynton",
+                "498": "Michael P. Meehan",
+                "24961": "Norman J. Pattiz",
+                "24956": "Robert M. Ledbetter, Jr.",
+                "15464": "Ryan Crocker",
+                "515": "S. Enders Wimbush",
+                "25034": "Special Committees",
+                "24933": "Steven J. Simmons",
+                "491": "Susan McCue",
+                "24747": "Tom C. Korologos",
+                "24906": "Veronique Rodman",
+                "437": "Victor H. Ashe",
+                "24890": "Walter Isaacson"
+            },
+            "default_value": [
+
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_57225a1cc62e5",
+            "label": "Current committee",
+            "name": "committee_active",
+            "type": "true_false",
+            "instructions": "Is this committee currently active?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Yes",
+            "default_value": 1
+        },
+        {
+            "key": "field_57225c12b73f8",
+            "label": "Committee report",
+            "name": "committee_report",
+            "type": "file",
+            "instructions": "Select the committee report from the media library.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "library": "all",
+            "return_format": "array",
+            "min_size": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_5723cef66938e",
+            "label": "Committee establishment resolution",
+            "name": "committee_establishment_resolution",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "library": "all",
+            "return_format": "array",
+            "min_size": 0,
+            "max_size": 0,
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_parent",
+                "operator": "==",
+                "value": "25034"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1464027919
+}

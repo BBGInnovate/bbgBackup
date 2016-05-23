@@ -2,14 +2,15 @@
 	background-color: $color-gray-lightest;
 	@include backgroundCover();
 	height: $banner-image-height * .75;
-	margin-bottom: $site-margins;
+	//margin-bottom: $site-margins;
+	margin-bottom: .5rem;
 	max-width: 9999px;
 	position: relative;
 	width: 100%;
 
 	@include media($medium-screen) {
 		height: $banner-image-height;
-		margin-bottom: $site-margins * 2;
+		//margin-bottom: $site-margins * 2;
 	}
 
 	@include media($large-screen) {
@@ -194,13 +195,25 @@
 						}
 					}
 				}
-
 			}
 		}
-
 	}
-
 }
+
+.bbg-banner__cutline {
+	@extend .wp-caption-text;
+
+	color: #999 !important;
+
+	@include media($medium-screen) {
+		text-align: right !important;
+	}
+}
+
+section.usa-section.bbg-banner__section {
+	margin-bottom: $site-margins;
+}
+
 
 //voicebox / soapbox / ceo box on the homepage
 .bbg__voice--featured {

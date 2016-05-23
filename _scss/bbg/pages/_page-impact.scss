@@ -1,0 +1,45 @@
+.bbg__impact-model {
+	.bbg__big-type {
+		font-size: 3rem;
+	}
+
+	p{
+		font-family: $font-sans;
+	}
+	p.usa-font-lead{
+		font-family: $font-serif;
+	}
+
+	.bbg__impact-model__section {
+		border-bottom: 1px dotted #999;
+		padding-bottom: 6rem;
+	}
+
+	.bbg__impact-model__optional {
+		color: #999;
+	}
+	@include media($medium-screen) {
+		.bbg__big-type {
+			font-size: 4rem;
+		}
+		.usa-grid {
+			.usa-width-one-half {
+				border-left: 1px dotted #999;
+				padding-left: $bbg-grid-gutter;
+			}
+			.usa-width-one-half:first-of-type {
+				border-left: none;
+				padding-left: 0;
+			}
+
+			.usa-width-one-third {
+				border-left: 1px dotted #999;
+				padding-left: $bbg-grid-gutter;
+			}
+			.usa-width-one-third:first-of-type {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
+	}
+}
