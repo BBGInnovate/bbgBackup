@@ -136,19 +136,24 @@ get_header();
 			?>
 
 			<!-- Responsive Banner -->
-			<section class="bbg-banner">
-				<div class="bbg-banner__gradient"></div>
-				<div class="usa-grid bbg-banner__container--home">
-					<a href="<?php echo site_url(); ?>">
-						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-					</a>
-					<div class="bbg-banner-box">
-						<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-					</div>
-					<div class="bbg-social__container">
-						<div class="bbg-social">
+			<section class="usa-section">
+				<div class="bbg-banner">
+					<div class="bbg-banner__gradient"></div>
+					<div class="usa-grid bbg-banner__container--home">
+						<a href="<?php echo site_url(); ?>">
+							<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
+						</a>
+						<div class="bbg-banner-box">
+							<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
+						</div>
+						<div class="bbg-social__container">
+							<div class="bbg-social">
+							</div>
 						</div>
 					</div>
+				</div>
+				<div class="bbg-banner__cutline usa-grid">
+					This is a small cutline for the banner photo. (Gigi Frias / Associated Press)
 				</div>
 			</section><!-- Responsive Banner -->
 
