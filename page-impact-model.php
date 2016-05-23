@@ -80,7 +80,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model">
 								<div class="usa-grid">
 									<h2>Our challenges</h2>
-									<p>BBG networks operate in a competitive, diverse, fragmented global media environment undergoing revolutionary change. There is more information, more channels of distribution and Limited Freedom of the Press.</p>
+									<p class="usa-font-lead">BBG networks operate in a competitive, diverse, fragmented global media environment undergoing revolutionary change. There is more information, more channels of distribution and Limited Freedom of the Press.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
@@ -107,7 +107,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model">
 								<div class="usa-grid">
 									<h2>HOW DO WE MEASURE IMPACT?</h2>
-									<p>We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
+									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
@@ -124,16 +124,29 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model">
 								<div class="usa-grid">
 									<h2>IMPACT PILLARS & INDICATORS</h2>
-									<p>Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
+									<p class="usa-font-lead">Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
 										<h3>Reach Audiences</h3>
-										<ul></ul>
+										<div>
+											<h5>Weekly reach</h5>
+										</div>
+										<div>
+											<h5>Weekly digital visits</h5>
+										</div>
+										<div>
+											<h5>Weekly reach of target segment*</h5>
+										</div>
 									</div>
 									<div class="usa-width-one-half">
 										<h3>Provide Value</h3>
-										<ul></ul>
+										<div>
+											<h5>Provide exceptional or unique information</h5>
+										</div>
+										<div>
+											<h5>Weekly reach of target segment*</h5>
+										</div>
 									</div>
 								</div>
 							</section>
@@ -146,15 +159,30 @@ get_header(); ?>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
 										<h3>Engage Audiences</h3>
-										<ul></ul>
+										<div>
+											<h5>Digital engagement</h5>
+										</div>
+										<div>
+											<h5>Shared something or talked with someone as a result of reporting*</h5>
+										</div>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Engage Media</h3>
-										<ul></ul>
+										<div>
+											<h5>Content co-creation with affiliates*</h5>
+										</div>
+										<div>
+											<h5>Content downloaded by affiliates*</h5>
+										</div>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Create Loyalty</h3>
-										<ul></ul>
+										<div>
+											<h5>Audience is likely to continue to use</h5>
+										</div>
+										<div>
+											<h5>Appointment listening or viewing*</h5>
+										</div>
 									</div>
 								</div>
 							</section>
@@ -167,18 +195,27 @@ get_header(); ?>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
 										<h3>People</h3>
-										<ul></ul>
+										<p>Increased audience's understanding of current events</p>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Media</h3>
-										<ul></ul>
+										<p>Drive the news agenda/high profile news pickups*</p>
 									</div>
 									<div class="usa-width-one-third">
 										<h3>Government</h3>
-										<ul></ul>
+										<p>Attention from government officials*</p>
 									</div>
 								</div>
 							</section>
+
+
+							<section class="usa-section bbg__impact-model">
+								<div class="usa-grid">
+									<h2>BE INFLUENTIAL</h2>
+									<h3>in support of freedom and democracy</h3>
+								</div>
+							</section>
+
 
 						</div><!-- .usa-grid-full -->
 
