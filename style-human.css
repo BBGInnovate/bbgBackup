@@ -5408,11 +5408,14 @@ section.usa-section.bbg-banner__section {
   background-repeat: no-repeat;
   background-position: center center;
   float: left;
-  min-height: 20rem;
-  height: 100%;
+  margin-top: 1rem;
   margin-right: 1rem;
-  min-width: 100px;
-  width: 40%;
+  max-height: 40rem;
+  max-width: 40rem;
+  min-height: 10rem;
+  min-width: 10rem;
+  height: 100%;
+  width: 25%;
 }
 .bbg__about__grandchild p {
   line-height: 2;

@@ -103,11 +103,20 @@
 		@include backgroundCover;
 
 		float: left;
-		min-height: 20rem;
+		margin: {
+			top:  $site-margins-small;
+			right: $site-margins-small;
+		}
+		max: {
+			height: 40rem;
+			width: 40rem;
+		}
+		min: {
+			height: 10rem;
+			width: 10rem;
+		}
 		height: 100%;
-		margin-right: $site-margins-small;
-		min-width: 100px;
-		width: 40%;
+		width: 25%;
 	}
 
 	p {
