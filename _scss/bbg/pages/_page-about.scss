@@ -95,7 +95,6 @@
 
 .bbg__about__grandchild {
 	.bbg__about__grandchild__title {
-		// font-size: 2.4rem;
 		text-transform: uppercase;
 	}
 
@@ -125,10 +124,8 @@
 	}
 
 	.bbg__about__grandchild__link {
-		// float: right;
 		font-family: $font-sans;
-		// margin-top: -1.5rem;
-		margin-left: 2rem;
+		margin-left: 1rem;
 		text: {
 			align: right;
 			decoration: none;
