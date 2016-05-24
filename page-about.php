@@ -102,8 +102,6 @@ get_header();
 							}
 
 							foreach ($relatedPages as $rPage) {
-								// echo "<div class='usa-grid-full'>";
-
 								$rPageHeadline = $rPage->headline;
 
 								$qParams = array(
@@ -179,19 +177,27 @@ get_header();
 									echo $excerpt;
 									echo "</article>";
 								}
-								// echo "</div>";
 							}
 							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
-							// echo '</div>';
 						echo '</section>';
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
-					// echo '</section>'; //usa-grid-full
 				endif;
 			?>
 			</section>
 			<?php wp_reset_postdata(); ?>
+
+			<!-- Entity list -->
+			<section id="entities" class="usa-section bbg-staff">
+				<div class="usa-grid">
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
+					<div class="usa-intro bbg__broadcasters__intro">
+						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
+					</div>
+					<?php echo outputBroadcasters('2'); ?>
+				</div>
+			</section><!-- entity list -->
 
 <?php /*experimenting with adding an annual report ribbon */ ?>
 <section class="usa-section bbg__ribbon--thin">
