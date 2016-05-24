@@ -77,7 +77,7 @@ get_header();
 			</section>
 
 			<!-- Child pages -->
-			<section id="page-children" class="usa-section usa-grid bbg__about__children">
+			<div id="page-children" class="usa-section usa-grid bbg__about__children">
 			<?php
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
@@ -185,7 +185,7 @@ get_header();
 					echo '<!-- END ROWS -->';
 				endif;
 			?>
-			</section>
+			</div>
 			<?php wp_reset_postdata(); ?>
 
 			<!-- Entity list -->
@@ -193,7 +193,7 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 					<div class="usa-intro bbg__broadcasters__intro">
-						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters</h3>
+						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters. The five BBG broadcasters produce more than 3,000 hours of original programming each week. Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto our programs.</h3>
 					</div>
 					<?php echo outputBroadcasters('2'); ?>
 				</div>
