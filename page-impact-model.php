@@ -27,7 +27,7 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); 
 					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article bbg__impact-model"); ?>>
+					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 						<?php
 							$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
 							if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -46,7 +46,7 @@ get_header(); ?>
 								echo '</div> <!-- usa-grid-full -->';
 							}
 						?><!-- .bbg__article-header__thumbnail -->
-
+						<div class="bbg__impact-model">
 						<div class="usa-grid">
 							<header class="entry-header">
 
@@ -263,6 +263,8 @@ get_header(); ?>
 								?>
 							</footer><!-- .entry-footer -->
 						</div><!-- .usa-grid -->
+
+						</div><!-- .bbg__impact-model-->
 					</article><!-- #post-## -->
 	
 
