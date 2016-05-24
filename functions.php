@@ -1267,6 +1267,14 @@ function getEntityData() {
 				if ($thumbnail_image && isset($thumbnail_image[0])) {
 					$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 				}
+				$bannerPosition = get_field( 'adjust_the_banner_image', $id, true);
+				$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', $id, true);
+				$bannerAdjustStr="";
+				if ($bannerPositionCSS) {
+					$bannerAdjustStr = $bannerPositionCSS;
+				} else if ($bannerPosition) {
+					$bannerAdjustStr = $bannerPosition;
+				}
 				/*
 				$src = wp_get_attachment_image_src( get_post_thumbnail_id($id), array( 1900,700 ), false, '' );
 				if (is_array($src)) {
@@ -1281,7 +1289,8 @@ function getEntityData() {
 					'imgSrc' => $imgSrc,
 					'entityLogo' => $entityLogo,
 					'featuredImageID' => $featuredImageID,
-					'featuredImageCutline' => $featuredImageCutline
+					'featuredImageCutline' => $featuredImageCutline,
+					'bannerAdjustStr' => $bannerAdjustStr
 				);
 			}
 		}
@@ -1299,7 +1308,11 @@ function getRandomEntityImage() {
 		$e = $eData[$randKey];
 		if ($e) {
 			//var_dump($e);
-			return array('imageID' => $e['featuredImageID'], 'imageCutline' => $e['featuredImageCutline']);
+			return array(
+				'imageID' => $e['featuredImageID'], 
+				'imageCutline' => $e['featuredImageCutline'], 
+				'bannerAdjustStr' => $e['bannerAdjustStr']
+			);
 			//die();
 		}
 
@@ -1766,13 +1779,11 @@ function getSoapboxStr($soap) {
 	return $s;
 }
 
-add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 function my_acf_json_save_point( $path ) {
     //change default folder for ACF json. see https://www.advancedcustomfields.com/resources/local-json/
     $path = get_stylesheet_directory() . '/jsonACF';
     return $path;
 }
-add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
 function my_acf_json_load_point( $paths ) {
     // remove original path (optional)
@@ -1782,6 +1793,8 @@ function my_acf_json_load_point( $paths ) {
     // return
     return $paths;
 }
+//add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+//add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
 
 

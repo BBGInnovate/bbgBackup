@@ -105,9 +105,11 @@ get_header();
 				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
 				$randomImg= getRandomEntityImage();
 				$bannerCutline="";
+				$bannerAdjustStr="";
 				if ($randomImg) {
 					$attachment_id = $randomImg['imageID'];
 					$bannerCutline = $randomImg['imageCutline'];
+					$bannerAdjustStr = $randomImg['bannerAdjustStr'];
 				}
 				if($attachment_id) {
 					$tempSources= bbgredesign_get_image_size_links($attachment_id);
@@ -122,6 +124,9 @@ get_header();
 						}
 					}
 					echo "<style>";
+					if ($bannerAdjustStr != "") {
+						echo "\t.bbg-banner { background-position: $bannerAdjustStr; }";
+					}
 					foreach( $tempSources as $key => $tempSourceObj ) {
 						$counter++;
 						$tempSource=$tempSourceObj['src'];
