@@ -166,7 +166,7 @@ get_header();
 									$title = get_the_title($rp->ID);
 									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) );
 									$thumbPosition = $rp->adjust_the_banner_image;
-									$excerpt = my_excerpt($rp->ID) . " <a href='$url' class='bbg__about__grandchild__link'>more »</a>";
+									$excerpt = my_excerpt($rp->ID) . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
 									$excerpt = apply_filters('the_content', $excerpt);
 									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 
