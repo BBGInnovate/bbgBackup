@@ -5419,9 +5419,8 @@ section.usa-section.bbg-banner__section {
   margin-top: 0;
 }
 .bbg__about__grandchild .bbg__about__grandchild__link {
-  float: right;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  margin-top: -1.5rem;
+  margin-left: 2rem;
   text-align: right;
   text-decoration: none;
 }
