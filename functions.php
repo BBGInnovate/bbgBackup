@@ -516,33 +516,31 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 		$categories = get_the_category();
 		$output     = '';
 		$selectedCategory=false;
+		$impact=false;
 		if ( $categories ) {
-
-			/* team categories take priority */
+						
+			/* impact is an exception */
 			foreach ( $categories as $category ) {
-				$term = get_option( "taxonomy_" . $category->term_id );
-				if ( $term['isTeamName'] == 1 ) {
+				if ( $category->name == "Impact" ) {
 					$selectedCategory=$category;
+					$impact=true;
 					break;
 				}
 			}
-			/* followed by any non-project category */
-			if ( !$selectedCategory ) {
-				foreach ( $categories as $category ) {
-					if ( $category->name != "Project" ) {
-						$selectedCategory = $category;
-						break;
-					}
-				}
-			}
-			/* followed by project ... probably don't need a loop here but it's fien */
+
 			if ( !$selectedCategory ) {
 				foreach ( $categories as $category ) {
 					$selectedCategory = $category;
 				}
 			}
-			if ($selectedCategory) {
-				$output .= '<h5 class="entry-category bbg-label"><a href="' . get_category_link( $selectedCategory->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
+			$link=false;
+			if ($impact) {
+				$link = get_permalink( get_page_by_path( "/our-work/impact-and-results/" ) );
+			} else if ($selectedCategory) {
+				$link = get_category_link( $selectedCategory->term_id );
+			}
+			if ($link) {
+				$output .= '<h5 class="entry-category bbg-label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
 			}
 		}
 		return $output;
