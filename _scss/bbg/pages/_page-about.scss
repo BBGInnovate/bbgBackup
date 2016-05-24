@@ -116,9 +116,10 @@
 	}
 
 	.bbg__about__grandchild__link {
-		float: right;
+		// float: right;
 		font-family: $font-sans;
-		margin-top: -1.5rem;
+		// margin-top: -1.5rem;
+		margin-left: 2rem;
 		text: {
 			align: right;
 			decoration: none;
