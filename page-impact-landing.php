@@ -133,6 +133,10 @@ get_header(); ?>
 
 			<?php endif; ?>
 
+
+			</div><!-- .usa-grid-full -->
+
+
 <?php /*experimenting with adding an annual report ribbon */ ?>
 <section class="usa-section bbg__ribbon--thin">
 	<div class="usa-grid">
@@ -147,7 +151,6 @@ get_header(); ?>
 	</div>
 </section>
 
-			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
