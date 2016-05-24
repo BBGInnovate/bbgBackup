@@ -46,7 +46,6 @@ get_header(); ?>
 								echo '</div> <!-- usa-grid-full -->';
 							}
 						?><!-- .bbg__article-header__thumbnail -->
-						<div class="bbg__impact-model">
 						<div class="usa-grid">
 							<header class="entry-header">
 
@@ -65,10 +64,8 @@ get_header(); ?>
 						</div>
 
 
-
-						<div class="usa-grid-full">
+						<div class="usa-grid-full bbg__impact-model">
 							<?php /*the_content();*/ ?>
-
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
@@ -264,7 +261,6 @@ get_header(); ?>
 							</footer><!-- .entry-footer -->
 						</div><!-- .usa-grid -->
 
-						</div><!-- .bbg__impact-model-->
 					</article><!-- #post-## -->
 	
 
