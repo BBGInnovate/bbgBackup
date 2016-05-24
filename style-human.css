@@ -5824,8 +5824,25 @@ section.usa-section.bbg-banner__section {
   font-size: 1.3rem;
 }
 
+@media screen and (min-width: 900px) {
+  .bbg__impact-model .bbg__impact-model__headline {
+    font-size: 6rem;
+  }
+}
+@media screen and (min-width: 481px) {
+  .bbg__impact-model .bbg-label {
+    background-color: #900;
+    color: #FFF;
+    display: inline-block;
+    padding: .5rem 1rem;
+  }
+}
 .bbg__impact-model .bbg__big-type {
   font-size: 3rem;
+  margin-bottom: 0;
+}
+.bbg__impact-model ul {
+  margin-bottom: 0;
 }
 .bbg__impact-model p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
@@ -5833,9 +5850,12 @@ section.usa-section.bbg-banner__section {
 .bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-child, .bbg__about__intro .bbg__impact-model p:first-child, .bbg__impact-model p.bbg__about__child__intro {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
+.bbg__impact-model p.bbg__infobox__tagline {
+  margin-top: 0;
+}
 .bbg__impact-model .bbg__impact-model__section {
-  border-bottom: 1px dotted #999;
-  padding-bottom: 6rem;
+  border-bottom: 1px dotted #CCC;
+  padding-bottom: 3rem;
 }
 .bbg__impact-model .bbg__impact-model__section:last-of-type {
   border-bottom: none;
@@ -5858,17 +5878,10 @@ section.usa-section.bbg-banner__section {
   color: #999;
 }
 .bbg__impact-model .bbg__impact-model__graphic {
-  border-radius: 50%;
   display: block;
   height: auto;
   margin: 0 auto;
-  max-width: 200px;
-  width: 100%;
-}
-@media screen and (min-width: 600px) {
-  .bbg__impact-model .bbg__impact-model__graphic.large {
-    max-width: 300px;
-  }
+  max-width: auto;
 }
 @media screen and (min-width: 600px) {
   .bbg__impact-model .bbg__big-type {

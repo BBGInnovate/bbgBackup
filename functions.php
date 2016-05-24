@@ -1232,6 +1232,81 @@ function outputSpecialCommittees($active) {
 	return $s;
 }
 
+function getEntityData() {
+	/*** Possible todo: leverage wordpress transient cache ***/
+	$entityParentPage = get_page_by_path('networks');
+	$qParams=array(
+		'post_type' => array('page'),
+		'posts_per_page' => -1,
+		'post_parent' => $entityParentPage->ID,
+		'orderby' => 'meta_value_num',
+		'meta_key' => 'entity_year_established',
+		'order' => 'ASC'
+	);
+	$entities = array();
+	$hp_query = new WP_Query($qParams);
+	if ($hp_query -> have_posts()) {
+		while ( $hp_query -> have_posts() )  {
+			$hp_query->the_post();
+			$id = get_the_ID();
+			$fullName = get_post_meta( $id, 'entity_full_name', true );
+			if ($fullName != "") {
+				$abbreviation = strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
+				$abbreviation = str_replace("/", "", $abbreviation);
+				$description = get_post_meta( $id, 'entity_description', true );
+				$link = get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
+				$imgSrc = get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
+				$entityLogoID = get_post_meta( $id, 'entity_logo',true );
+				$entityLogo = "";
+				if ($entityLogoID) {
+					$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
+					$entityLogo = $entityLogoObj[0];
+				}
+				$featuredImageCutline="";
+				$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
+				if ($thumbnail_image && isset($thumbnail_image[0])) {
+					$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
+				}
+				/*
+				$src = wp_get_attachment_image_src( get_post_thumbnail_id($id), array( 1900,700 ), false, '' );
+				if (is_array($src)) {
+					$src = $src[0];	
+				}
+				*/
+				$featuredImageID=get_post_thumbnail_id($id);
+				$entities[] = array( 
+					'abbreviation' => $abbreviation,
+					'description' => $description,
+					'link' => $link,
+					'imgSrc' => $imgSrc,
+					'entityLogo' => $entityLogo,
+					'featuredImageID' => $featuredImageID,
+					'featuredImageCutline' => $featuredImageCutline
+				);
+			}
+		}
+	}
+	wp_reset_postdata();
+	return $entities;
+}
+
+function getRandomEntityImage() {
+	//	allEntities or rfa, rferl, voa, mbn, ocb
+	$eData = getEntityData();
+	$returnVal = false;
+	if (count($eData)) {
+		$randKey = array_rand($eData);
+		$e = $eData[$randKey];
+		if ($e) {
+			//var_dump($e);
+			return array('imageID' => $e['featuredImageID'], 'imageCutline' => $e['featuredImageCutline']);
+			//die();
+		}
+
+	}
+	
+}
+
 function special_committee_list_shortcode($atts) {
 	return outputSpecialCommittees($atts['active']);
 }
