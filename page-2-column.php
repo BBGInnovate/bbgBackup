@@ -14,6 +14,14 @@
  */
 
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
+$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
+$bannerAdjustStr="";
+if ($bannerPositionCSS) {
+	$bannerAdjustStr = $bannerPositionCSS;
+} else if ($bannerPosition) {
+	$bannerAdjustStr = $bannerPosition;
+}
+
 $videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 $headline = get_field( 'headline', '', true );
@@ -49,7 +57,7 @@ get_header(); ?>
 
 								$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerAdjustStr.'">';
 								echo '</div>';
 								echo '</div> <!-- usa-grid-full -->';
 							}
