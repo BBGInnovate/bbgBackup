@@ -13,7 +13,7 @@
 
 // Child rows
 .bbg__about__children--row {
-	margin-bottom: $site-margins;
+	margin-bottom: $site-margins-large;
 }
 
 /*****
@@ -27,7 +27,6 @@
 // Style the mission differently
 .bbg__about__child--mission {
 	background-color: $color-gray-dark;
-	// background-color: $color-gray-lightest;
 	border-radius: $border-radius;
 	padding: {
 		top: 0;
@@ -86,29 +85,43 @@
 /*****
 	Umbrella child styles
 *****/
-.bbg__about__child__banner {
-	background-position: center center;
-	float: left;
-	min-height: 20rem;
-	height: 100%;
-	margin: {
-		right: $site-margins;
-		bottom: $site-margins-small;
-	}
-	min-width: 100px;
-	width: 40%;
-}
-
 .bbg__about__child__intro {
 	@extend .usa-font-lead;
+
 	p {
-		line-height: 1.9;
-		margin-top: -0.75rem;
+		line-height: 2.5;
 	}
 }
 
 .bbg__about__grandchild {
+	.bbg__about__grandchild__title {
+		// font-size: 2.4rem;
+		text-transform: uppercase;
+	}
+
+	.bbg__about__grandchild__thumb {
+		@include backgroundCover;
+
+		float: left;
+		min-height: 20rem;
+		height: 100%;
+		margin-right: $site-margins-small;
+		min-width: 100px;
+		width: 40%;
+	}
+
 	p {
+		line-height: 2;
+		margin-top: 0;
+	}
+
+	.bbg__about__grandchild__link {
+		float: right;
 		font-family: $font-sans;
+		margin-top: -1.5rem;
+		text: {
+			align: right;
+			decoration: none;
+		}
 	}
 }

@@ -87,7 +87,7 @@ get_header();
 
 						//we wrap a  usa-grid container around every row.
 						echo '<!-- ROW ' . $counter . '-->';
-						echo '<div class="usa-grid-full bbg__about__children--row">';
+						echo '<section class="usa-grid-full bbg__about__children--row">';
 
 						if( get_row_layout() == 'about_multicolumn' ):
 
@@ -102,7 +102,7 @@ get_header();
 							}
 
 							foreach ($relatedPages as $rPage) {
-								echo "<div class='usa-grid-full bbg__about__children--row'>";
+								// echo "<div class='usa-grid-full'>";
 
 								$rPageHeadline = $rPage->headline;
 
@@ -125,7 +125,7 @@ get_header();
 								}
 								wp_reset_query();
 							}
-						echo "</div>";
+						echo "</section>";
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 
 						elseif( get_row_layout() == 'about_umbrella_page' ):
@@ -154,41 +154,38 @@ get_header();
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
 
-							// echo <div style=""
-							// show umbrella section image
-							if ($imageURL) {
-								$image = '<div class="bbg__about__child__banner" style="background-image: url(' . $imageURL . ');">';
-
-								// echo '<div class="usa-grid-full">';
-								echo $image;
-								// echo '</div>';
-								echo '</div>';
-							}
-
 							// show umbrella section intro text
 							echo "<div class='bbg__about__child__intro'>$introText</div>";
 
+							// echo "<div class='usa-grid-full'>";
 							if ( $relatedPages ) {
-								echo "<div class='usa-grid-full'>";
+								// Loop through all the grandchild pages
 								foreach ($relatedPages as $rp) {
-									echo "<article class='$containerClass bbg__about__grandchild'>";
-									$excerpt = my_excerpt($rp->ID);
+									// Define all variables
+									$url = get_the_permalink($rp->ID);
+									$title = get_the_title($rp->ID);
+									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) );
+									$thumbPosition = $rp->adjust_the_banner_image;
+									$excerpt = my_excerpt($rp->ID) . " <a href='$url' class='bbg__about__grandchild__link'>more »</a>";
 									$excerpt = apply_filters('the_content', $excerpt);
 									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
-									$title = get_the_title($rp->ID);
-									$url = get_the_permalink($rp->ID);
-									echo "<h3><a href='$url'>$title</a></h3>";
+
+									// Output variables in HTML format
+									echo "<article class='$containerClass bbg__about__grandchild'>";
+									echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
+									echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
 									echo $excerpt;
 									echo "</article>";
 								}
-								echo "</div>";
+								// echo "</div>";
 							}
-						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
-						echo '</div>';
+							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+							// echo '</div>';
+						echo '</section>';
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
-					// echo '</div>'; //usa-grid-full
+					// echo '</section>'; //usa-grid-full
 				endif;
 			?>
 			</section>

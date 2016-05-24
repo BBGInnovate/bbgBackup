@@ -5339,7 +5339,7 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__about__children--row {
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
 /*****
@@ -5396,24 +5396,34 @@ section.usa-section.bbg-banner__section {
 /*****
 	Umbrella child styles
 *****/
-.bbg__about__child__banner {
+.bbg__about__child__intro p {
+  line-height: 2.5;
+}
+
+.bbg__about__grandchild .bbg__about__grandchild__title {
+  text-transform: uppercase;
+}
+.bbg__about__grandchild .bbg__about__grandchild__thumb {
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center center;
   float: left;
   min-height: 20rem;
   height: 100%;
-  margin-right: 3rem;
-  margin-bottom: 1rem;
+  margin-right: 1rem;
   min-width: 100px;
   width: 40%;
 }
-
-.bbg__about__child__intro p {
-  line-height: 1.9;
-  margin-top: -0.75rem;
-}
-
 .bbg__about__grandchild p {
+  line-height: 2;
+  margin-top: 0;
+}
+.bbg__about__grandchild .bbg__about__grandchild__link {
+  float: right;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  margin-top: -1.5rem;
+  text-align: right;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 900px) {
