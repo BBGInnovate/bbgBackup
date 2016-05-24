@@ -389,7 +389,7 @@ function my_save_extra_profile_fields( $user_id ) {
 
 	update_usermeta( $user_id, 'occupation', $_POST['occupation'] );
 	update_usermeta( $user_id, 'isActive', $_POST['isActive'] );
-	
+
 }
 
 /*=========== ADD USERID TO USER LIST SO THAT IT'S EASY TO SET THE RANKING GENERAL SETTING *===========*/
@@ -619,7 +619,7 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 		$authorEmail = "";
 
 		$addSeparator = FALSE;
-		
+
 
 
 
@@ -810,9 +810,14 @@ function audience_shortcode( $atts ) {
 	$tv = get_field('site_setting_tv_audience','options','false');
 	$radio = get_field('site_setting_radio_audience','options','false');
 	$internet = get_field('site_setting_internet_audience','options','false');
-
+	// set a default audience variable
+	$selectedAudienceType = 'total';
+	// change audience variable if passed from shortcode
+	if (isset($atts['type'])) {
+		$selectedAudienceType = $atts['type'];
+	}
     // set shortcode attributes to custom field values
-    $atts = shortcode_atts( array(
+    $split = shortcode_atts( array(
         'total' => '226',
         'tv' => '142',
         'radio' => '102',
@@ -824,7 +829,7 @@ function audience_shortcode( $atts ) {
         'internet' => $internet,
     ), 'audience' );
 
-    return $split . " million";
+    return $split[$selectedAudienceType] . " million";
 }
 
 add_shortcode( 'audience', 'audience_shortcode' );
@@ -1278,11 +1283,11 @@ function getEntityData() {
 				/*
 				$src = wp_get_attachment_image_src( get_post_thumbnail_id($id), array( 1900,700 ), false, '' );
 				if (is_array($src)) {
-					$src = $src[0];	
+					$src = $src[0];
 				}
 				*/
 				$featuredImageID=get_post_thumbnail_id($id);
-				$entities[] = array( 
+				$entities[] = array(
 					'abbreviation' => $abbreviation,
 					'description' => $description,
 					'link' => $link,
@@ -1309,15 +1314,15 @@ function getRandomEntityImage() {
 		if ($e) {
 			//var_dump($e);
 			return array(
-				'imageID' => $e['featuredImageID'], 
-				'imageCutline' => $e['featuredImageCutline'], 
+				'imageID' => $e['featuredImageID'],
+				'imageCutline' => $e['featuredImageCutline'],
 				'bannerAdjustStr' => $e['bannerAdjustStr']
 			);
 			//die();
 		}
 
 	}
-	
+
 }
 
 function special_committee_list_shortcode($atts) {
@@ -1758,7 +1763,7 @@ function getSoapboxStr($soap) {
 	if ($soapHeaderPermalink != "") {
 		$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
 	}
-	
+
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
 	$s .= $soap->post_title;
 	$s .= '</a></h2>';
@@ -1769,7 +1774,7 @@ function getSoapboxStr($soap) {
 		$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
 		if ($mugshotName != "") {
 			$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
-		} 
+		}
 		$s .= '</span>';
 	}
 
