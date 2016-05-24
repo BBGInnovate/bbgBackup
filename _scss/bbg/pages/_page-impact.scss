@@ -36,8 +36,8 @@
 	}
 
 	.bbg__impact-model__section {
-		border-bottom: 1px dotted #999;
-		padding-bottom: 6rem;
+		border-bottom: $border-dotted;
+		padding-bottom: $site-margins;
 	}
 
 	.bbg__impact-model__section:last-of-type {

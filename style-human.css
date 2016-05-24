@@ -5844,8 +5844,8 @@ section.usa-section.bbg-banner__section {
   margin-top: 0;
 }
 .bbg__impact-model .bbg__impact-model__section {
-  border-bottom: 1px dotted #999;
-  padding-bottom: 6rem;
+  border-bottom: 1px dotted #CCC;
+  padding-bottom: 3rem;
 }
 .bbg__impact-model .bbg__impact-model__section:last-of-type {
   border-bottom: none;

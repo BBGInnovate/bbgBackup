@@ -230,10 +230,6 @@ get_header(); ?>
 								<div class="usa-grid">
 									<h4 style="text-align: right;"><span style="font-size:8rem; vertical-align: -40%;">*</span> Optional indicator</h4>
 								</div>
-							</section>
-
-
-							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>“Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference, and impart information and ideas through any media regardless of frontiers.”</h2>
 									<h5>— The Universal Declaration of Human Rights</h5>
