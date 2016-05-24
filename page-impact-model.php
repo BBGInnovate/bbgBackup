@@ -67,14 +67,7 @@ get_header(); ?>
 
 
 						<div class="usa-grid-full">
-							<?php the_content(); ?>
-
-							<section class="usa-section bbg__impact-model__section">
-								<div class="usa-grid">
-									<h2>“Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference, and impart information and ideas through any media regardless of frontiers.”</h2>
-									<h5>— The Universal Declaration of Human Rights</h5>
-								</div>
-							</section>
+							<?php /*the_content();*/ ?>
 
 
 							<section class="usa-section bbg__impact-model__section">
@@ -84,15 +77,16 @@ get_header(); ?>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
-										<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
+										<img src="<?php echo get_template_directory_uri() ?>/img/impact/01_pie_free-press.png" alt="" class="bbg__impact-model__graphic large" >
 										<h3 class="bbg__big-type">6,233,903,487</h3>
-										<p>people live in countries that have a press that is not free or partly free</p>
+										<p class="bbg__infobox__tagline">people live in countries that have a press that is not free or partly free</p>
 									</div>
 									<div class="usa-width-one-half">
-										<h3 class="">6 out of 7 people</h3>
-										<p>live in countries without a free press</p>
+										<img src="<?php echo get_template_directory_uri() ?>/img/impact/02_pictograph_free-press.png" alt="" class="bbg__impact-model__graphic large" >
+										<h3 class="bbg__big-type">6 out of 7 people</h3>
+										<p class="bbg__infobox__tagline">live in countries without a free press</p>
 										<br/>
-										<h4>More: </h4>
+										<h3>They face more: </h3>
 										<ul>
 											<li>CENSORSHIP</li>
 											<li>PROPAGANDA</li>
@@ -108,98 +102,64 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h1 style="font-size: 6rem;">How do we measure impact?</h1>
+									<h1 class="bbg__impact-model__headline">How do we measure impact?</h1>
 									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
 								</div>
 								<div class="usa-grid">
-									<div class="usa-width-one-half">
-										<h3>5 Networks. </h3>
-										<h3>1 Mission. </h3>
+									<div class="usa-width-one-third">
+										<h2>5 Networks. </h2>
+										<h2>1 Mission. </h2>
 									</div>
-									<div class="usa-width-one-half">
-										<h3>To inform, engage and connect people around the world in support of freedom and democracy.</h3>
+									<div class="usa-width-two-thirds">
+										<h2>To inform, engage and connect people around the world in support of freedom and democracy.</h2>
 									</div>
 								</div>
 							</section>
 
+
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
+									<h2>IMPACT:</h2>
+									<p class="usa-font-lead">The guiding principle we use to drive our strategy, implemantation and review cycle.</p>
+									<img src="<?php echo get_template_directory_uri() ?>/img/impact/03_cycle_impact.png" alt="" class="bbg__impact-model__graphic full" >
+								</div>
+							</section>
+
+							<section class="usa-section bbg__impact-model__section">
+								<div class="usa-grid" style="margin-bottom: 6rem;">
 									<h2>IMPACT PILLARS & INDICATORS</h2>
 									<p class="usa-font-lead">Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
 								</div>
-							</section>
 
-							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>INFORM</h2>
+									<h6 class="bbg-label large">INFORM</h6>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
-										<h3>Reach Audiences</h3>
+										<h2>Reach Audiences</h2>
 										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5>Weekly reach</h5>
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/04a_inform_reach.png" alt="" class="bbg__impact-model__graphic" >
+											<h3>Weekly reach</h3>
 										</div>
 										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5>Weekly digital visits</h5>
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/04b_inform_visits.png" alt="" class="bbg__impact-model__graphic" >
+											<h3>Weekly digital visits</h3>
 										</div>
 										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/04c_inform_targeted.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Weekly reach of target segment*</h3>
 										</div>
 									</div>
 									<div class="usa-width-one-half">
-										<h3>Provide Value</h3>
+										<h2>Provide Value</h2>
 										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
-											<h5>Provide exceptional or unique information</h5>
+										
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/05a_inform_unique.png" alt="" class="bbg__impact-model__graphic" >
+											<h3>Provide exceptional or unique information</h3>
 										</div>
 										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/300x300" class="bbg__impact-model__graphic large" />
-											<h5 class="bbg__impact-model__optional">Weekly reach of target segment*</h5>
-										</div>
-									</div>
-								</div>
-							</section>
-
-
-							<section class="usa-section bbg__impact-model__section">
-								<div class="usa-grid">
-									<h2>ENGAGE / CONNECT</h2>
-								</div>
-								<div class="usa-grid">
-									<div class="usa-width-one-third">
-										<h3>Engage Audiences</h3>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5>Digital engagement</h5>
-										</div>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5 class="bbg__impact-model__optional">Shared something or talked with someone as a result of reporting*</h5>
-										</div>
-									</div>
-									<div class="usa-width-one-third">
-										<h3>Engage Media</h3>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5 class="bbg__impact-model__optional">Content co-creation with affiliates*</h5>
-										</div>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5 class="bbg__impact-model__optional">Content downloaded by affiliates*</h5>
-										</div>
-									</div>
-									<div class="usa-width-one-third">
-										<h3>Create Loyalty</h3>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5>Audience is likely to continue to use</h5>
-										</div>
-										<div class="bbg__impact-model__subsection">
-											<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
-											<h5 class="bbg__impact-model__optional">Appointment listening or viewing*</h5>
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/05b_inform_credibility.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Audience finds information or service trustworthy / credible.</h3>
 										</div>
 									</div>
 								</div>
@@ -208,28 +168,78 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>BE INFLUENTIAL</h2>
+									<h6 class="bbg-label large">ENGAGE / CONNECT</h6>
+								</div>
+								<div class="usa-grid">
+									<div class="usa-width-one-third">
+										<h2>Engage Audiences</h2>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/06a_engage_digital.png" alt="" class="bbg__impact-model__graphic" >
+											<h3>Digital engagement</h3>
+										</div>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/06b_engage_share.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Shared something or talked with someone as a result of reporting*</h3>
+										</div>
+									</div>
+									<div class="usa-width-one-third">
+										<h2>Engage Media</h2>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/07a_engage_cocreate.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Content co-creation with affiliates*</h3>
+										</div>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/07b_engage_downloaded.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Content downloaded by affiliates*</h3>
+										</div>
+									</div>
+									<div class="usa-width-one-third">
+										<h2>Create Loyalty</h2>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/08a_engage_loyalty.png" alt="" class="bbg__impact-model__graphic" >
+											<h3>Audience is likely to continue to use</h3>
+										</div>
+										<div class="bbg__impact-model__subsection">
+											<img src="<?php echo get_template_directory_uri() ?>/img/impact/08b_engage_appointment.png" alt="" class="bbg__impact-model__graphic" >
+											<h3 class="bbg__impact-model__optional">Appointment listening or viewing*</h3>
+										</div>
+									</div>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model__section">
+								<div class="usa-grid">
+									<h6 class="bbg-label large">BE INFLUENTIAL</h6>
 									<h3>in support of freedom and democracy</h3>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third bbg__impact-model__subsection">
-										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
+										<img src="<?php echo get_template_directory_uri() ?>/img/impact/09a_influence_people.png" alt="" class="bbg__impact-model__graphic" >
 										<h3>People</h3>
 										<p>Increased audience's understanding of current events</p>
 									</div>
 									<div class="usa-width-one-third bbg__impact-model__subsection">
-										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
+										<img src="<?php echo get_template_directory_uri() ?>/img/impact/09b_influence_media.png" alt="" class="bbg__impact-model__graphic" >
 										<h3>Media</h3>
 										<p class="bbg__impact-model__optional">Drive the news agenda/high profile news pickups*</p>
 									</div>
 									<div class="usa-width-one-third bbg__impact-model__subsection">
-										<img src="http://placehold.it/250x250" class="bbg__impact-model__graphic" />
+										<img src="<?php echo get_template_directory_uri() ?>/img/impact/09c_influence_government.png" alt="" class="bbg__impact-model__graphic" >
 										<h3>Government</h3>
 										<p class="bbg__impact-model__optional">Attention from government officials*</p>
 									</div>
 								</div>
 								<div class="usa-grid">
-									<h4><span style="font-size:8rem; vertical-align: -40%;">*</span> Optional indicator</h4>
+									<h4 style="text-align: right;"><span style="font-size:8rem; vertical-align: -40%;">*</span> Optional indicator</h4>
+								</div>
+							</section>
+
+
+							<section class="usa-section bbg__impact-model__section">
+								<div class="usa-grid">
+									<h2>“Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference, and impart information and ideas through any media regardless of frontiers.”</h2>
+									<h5>— The Universal Declaration of Human Rights</h5>
 								</div>
 							</section>
 

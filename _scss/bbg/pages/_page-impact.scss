@@ -1,6 +1,26 @@
 .bbg__impact-model {
+
+	@include media($medium-large-screen) {
+		.bbg__impact-model__headline {
+			font-size: 6rem;
+		}
+	}
+	@include media($small-screen) {
+		.bbg-label {
+			background-color: #900;
+			color: #FFF;
+			display: inline-block;
+			padding: .5rem 1rem;
+		}
+	}
 	.bbg__big-type {
 		font-size: 3rem;
+		margin-bottom: 0;
+	}
+
+
+	ul {
+		margin-bottom: 0; 
 	}
 
 	p{
@@ -9,6 +29,10 @@
 
 	p.usa-font-lead{
 		font-family: $font-serif;
+	}
+
+	p.bbg__infobox__tagline {
+		margin-top: 0;
 	}
 
 	.bbg__impact-model__section {
@@ -39,18 +63,10 @@
 	}
 
 	.bbg__impact-model__graphic {
-		border-radius: 50%;
 		display: block;
 		height: auto;
 		margin: 0 auto;
-		max-width: 200px;
-		width: 100%;
-
-		@include media($medium-screen) {
-			&.large{
-				max-width: 300px;
-			}
-		}
+		max-width: auto;
 	}
 
 	@include media($medium-screen) {
