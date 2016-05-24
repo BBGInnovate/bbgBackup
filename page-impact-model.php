@@ -117,7 +117,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h2>IMPACT:</h2>
-									<p class="usa-font-lead">The guiding principle we use to drive our strategy, implemantation and review cycle.</p>
+									<p class="usa-font-lead">The guiding principle we use to drive our strategy, implementation and review cycle.</p>
 									<img src="<?php echo get_template_directory_uri() ?>/img/impact/03_cycle_impact.png" alt="" class="bbg__impact-model__graphic full" >
 								</div>
 							</section>
