@@ -62,6 +62,19 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<div class="usa-grid">
 
+<section class="usa-section bbg__ribbon--thin">
+	<div class="usa-grid">
+		<div class="bbg__announcement__flexbox">
+			<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2011/12/BBG-AR2014_cvr.jpg);"></div>
+			<div>
+				<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">Defining impact</a></h6>
+				<h2><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">How do we measure BBG's impact?</a></h2>
+				<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 			<?php if ( $custom_query->have_posts() ) : ?>
 
 				<header class="page-header">
@@ -144,7 +157,7 @@ get_header(); ?>
 			<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2011/12/BBG-AR2014_cvr.jpg);"></div>
 			<div>
 				<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">Defining impact</a></h6>
-				<h2><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">How do we measure BBG's impact around the world</a></h2>
+				<h2><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">How do we measure BBG's impact?</a></h2>
 				<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
 			</div>
 		</div>
