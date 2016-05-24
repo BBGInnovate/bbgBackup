@@ -173,7 +173,9 @@ get_header();
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__about__grandchild'>";
 									echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
-									echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
+									if ($thumbSrc) {
+										echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
+									}
 									echo $excerpt;
 									echo "</article>";
 								}
