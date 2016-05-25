@@ -5621,7 +5621,7 @@ section.usa-section.bbg-banner__section {
   margin: -60px auto 0;
   position: relative;
   width: 120px;
-  z-index: 9999;
+  z-index: 9994;
 }
 @media screen and (min-width: 600px) {
   .bbg__profile-photo {

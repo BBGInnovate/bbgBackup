@@ -54,7 +54,6 @@ $teamCategoryID=$_GET["cat"];
 $teamCategory=get_category($teamCategoryID);
 $portfolioDescription=$teamCategory->description;
 */
-$portfolioDescription="some portfolio description could go here based on the category description?";
 
 get_header(); ?>
 
@@ -86,13 +85,7 @@ get_header(); ?>
 					<h6 class="bbg-label--mobile large">Impact Stories</h6>
 				</header><!-- .page-header -->
 			</div>
-			<?php
-				if ($mobileAppsPostContent != "") {
-					echo '<section id="mobileAppsIntro" class=" usa-grid">';
-					echo $mobileAppsPostContent;
-					echo '</section>';
-				}
-			?>
+
 			<div class="usa-grid-full">
 				<?php
 					$counter=0;
