@@ -96,9 +96,9 @@ get_header();
 							$containerClass = "bbg__about__child";
 
 							if (count($relatedPages) == 2) {
-								$containerClass='bbg-grid--1-2-2';
+								$containerClass .= ' bbg-grid--1-2-2';
 							} else if (count($relatedPages) == 3) {
-								$containerClass='bbg-grid--1-3-3';
+								$containerClass .= ' bbg-grid--1-3-3';
 							}
 
 							foreach ($relatedPages as $rPage) {
@@ -129,7 +129,7 @@ get_header();
 						elseif( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							$relatedPages = get_sub_field('about_umbrella_related_pages');
-							$containerClass = "bbg__about__child";
+							// $containerClass = "bbg__about__child";
 
 							if ( count( $relatedPages ) == 2 ) {
 								$containerClass = 'bbg-grid--1-2-2';
@@ -154,8 +154,8 @@ get_header();
 
 							// show umbrella section intro text
 							echo "<div class='bbg__about__child__intro'>$introText</div>";
+							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
 
-							// echo "<div class='usa-grid-full'>";
 							if ( $relatedPages ) {
 								// Loop through all the grandchild pages
 								foreach ($relatedPages as $rp) {
@@ -179,8 +179,48 @@ get_header();
 									echo "</article>";
 								}
 							}
-							/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+							echo '</div>';
 						echo '</section>';
+						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+
+						elseif( get_row_layout() == 'about_ribbon_page' ):
+						/*** BEGIN DISPLAY OF ENTIRE RIBBON ROW ***/
+							$labelText = get_sub_field('about_ribbon_label');
+							$labelLink = get_sub_field('about_ribbon_label_link');
+							$headlineText = get_sub_field('about_ribbon_headline');
+							$headlineLink = get_sub_field('about_ribbon_headline_link');
+							$summary = get_sub_field('about_ribbon_summary');
+							$imageURL = get_sub_field('about_ribbon_image');
+
+							//allow shortcodes in intro text
+							$summary = apply_filters('the_content', $introText);
+							$summary = str_replace(']]>', ']]&gt;', $introText);
+
+							echo "<div class='usa-grid bbg__ribbon--thin'>";
+								echo "<div class='bbg__announcement__flexbox'>";
+
+									if ($imageURL) {
+										echo "<div class='bbg__announcement__photo' style='background-image: url($imageURL);'></div>";
+									}
+
+									if ($labelLink) {
+										echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
+									} else {
+										echo "<h6 class='bbg-label'>$labelText</h6>";
+									}
+
+									if ($headlineLink) {
+										echo "<h2><a href='$headlineLink'>$headlineText</a></h2>";
+									} else {
+										echo "<h2>$headlineText</h2>";
+									}
+
+									echo $summary;
+
+								echo "</div>";
+							echo "</div>";
+						echo '</section>';
+						/*** END DISPLAY OF ENTIRE RIBBON ROW ***/
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
@@ -188,6 +228,19 @@ get_header();
 			?>
 			</div>
 			<?php wp_reset_postdata(); ?>
+
+<!-- 			<section class="usa-section bbg__ribbon--thin">
+				<div class="usa-grid">
+
+
+						<div>
+							<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/who-we-are/annual-report/">Annual Reports</a></h6>
+							<h2><a href="http://www.bbg.gov/wp-content/media/2015/06/BBG-AR2014_FINAL-FILE_singlepgs1.pdf">Download the 2015 BBG Annual Report</a></h2>
+							<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
+						</div>
+					</div>
+				</div>
+			</section> -->
 
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
@@ -199,20 +252,6 @@ get_header();
 					<?php echo outputBroadcasters('2'); ?>
 				</div>
 			</section><!-- entity list -->
-
-<?php /*experimenting with adding an annual report ribbon */ ?>
-<section class="usa-section bbg__ribbon--thin">
-	<div class="usa-grid">
-		<div class="bbg__announcement__flexbox">
-			<div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2011/12/BBG-AR2014_cvr.jpg);"></div>
-			<div>
-				<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/who-we-are/annual-report/">Annual Reports</a></h6>
-				<h2><a href="http://www.bbg.gov/wp-content/media/2015/06/BBG-AR2014_FINAL-FILE_singlepgs1.pdf">Download the 2015 BBG Annual Report</a></h2>
-				<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
-			</div>
-		</div>
-	</div>
-</section>
 
 		</main>
 	</div><!-- #primary .content-area -->
