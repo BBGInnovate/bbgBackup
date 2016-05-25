@@ -29,7 +29,7 @@
 	margin: -60px auto 0;
 	position: relative;
 	width: 120px;
-	z-index: 9999;
+	z-index: 9994;
 
 	@include media($medium-screen) {
 		float: left;
@@ -71,7 +71,6 @@
 			clear: none;
 			text-align: left;
 		}
-
 	}
 }
 
@@ -91,7 +90,6 @@
 
 .bbg__rss__list {
 	@include unstyled-list;
-	//margin-bottom: $site-margins-large;
 
 	.bbg__rss__list-link {
 		margin-bottom: $site-margins;
