@@ -2997,13 +2997,7 @@ fieldset {
     margin: 0;
     padding: 0;
   }
-  .main-navigation .menu-item-has-children.hidden > a {
-    background-image: url("img/arrow-right.png");
-    background-image: url("img/arrow-right.svg");
-  }
   .main-navigation .menu-item-has-children > a {
-    background-image: url("img/arrow-down.png");
-    background-image: url("img/arrow-down.svg");
     background-position: 1rem center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
@@ -3131,6 +3125,24 @@ fieldset {
 }
 .bbg__article__nav .bbg__article__nav-next {
   float: right;
+}
+
+.menu-item-has-children > a {
+  display: inline !important;
+}
+
+.main-navigation.toggled ul.sub-menu {
+  display: none;
+}
+
+.navToggler {
+  background-image: url("img/arrow-down.png");
+  background-image: url("img/arrow-down.svg");
+  background-position: 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.3rem;
+  padding-right: site-margins / 2;
+  padding-left: 3rem;
 }
 
 .bbg-avatar__container {

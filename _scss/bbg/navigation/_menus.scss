@@ -180,15 +180,15 @@ body:not(.home) .menu-all-pages-container {
 
 		.menu-item-has-children.hidden > a {
 			background: {
-				image: url('img/arrow-right.png');
-				image: url('img/arrow-right.svg');
+				//image: url('img/arrow-right.png');
+				//image: url('img/arrow-right.svg');
 			}
 		}
 
 		.menu-item-has-children > a {
 			background: {
-				image: url('img/arrow-down.png');
-				image: url('img/arrow-down.svg');
+				//image: url('img/arrow-down.png');
+				//image: url('img/arrow-down.svg');
 				position: 1rem center;
 				repeat: no-repeat;
 				size: 1.3rem;
@@ -348,4 +348,23 @@ body:not(.home) .menu-all-pages-container {
 	.bbg__article__nav-next {
 		float: right;
 	}
+}
+
+.menu-item-has-children > a {
+	display:inline !important; 
+}
+.main-navigation.toggled ul.sub-menu {
+	display:none;
+} 
+.navToggler {
+	background: {
+		image: url('img/arrow-down.png');
+		image: url('img/arrow-down.svg');
+		position: 1rem center;
+		repeat: no-repeat;
+		size: 1.3rem;
+	}
+
+	padding-right: site-margins / 2;
+	padding-left: $site-margins;
 }
