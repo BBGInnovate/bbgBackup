@@ -73,7 +73,7 @@
 		// see http://stackoverflow.com/questions/7394796/jquery-click-event-how-to-tell-if-mouse-was-clicked-or-enter-key-was-pressed
 		/* don't enable hover on mobile breakpoints */
 		jQuery("li.menu-item-has-children").on('hover', function(e) {
-			if (window.innerWidth >=600) {
+			if (window.innerWidth >=900) {
 				jQuery(this).find("ul.sub-menu").toggle();
 				e.stopPropagation();
 				e.preventDefault();
