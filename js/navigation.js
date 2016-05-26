@@ -93,7 +93,8 @@
 				e.preventDefault();
 			}
 		});
-		jQuery("li.menu-item-has-children").keydown(function(e) {
+		jQuery("li.menu-item-has-children span").keydown(function(e) {
+		 
 		  if(e.keyCode == 13) {
 		    window.enterPressHover=true;
 		    jQuery(this).mouseover();
