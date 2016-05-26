@@ -318,10 +318,7 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 
 		$output .= $indent . '<li' . $id . $class_names .'>';
 
-		if( in_array('menu-item-has-children', $classes)) {
-			//var_dump($item); die();
-			$output .= "<span tabindex='0'  class='navToggler'></span>";
-		}
+		
 
 		$atts = array();
 		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -344,6 +341,11 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
 
 		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+
+		if( in_array('menu-item-has-children', $classes)) {
+			//var_dump($item); die();
+			$output .= "<a tabindex='0' title='Expand " . $title . " menu' class='navToggler'></a>";
+		}
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
