@@ -68,6 +68,7 @@ body:not(.home) .menu-all-pages-container {
 	}
 	a:hover {
 		background-color: $color-light-gray;
+		//text-decoration: underline;
 	}
 	a:focus {
 		box-shadow: none;
@@ -227,9 +228,10 @@ body:not(.home) .menu-all-pages-container {
 			width: auto;
 
 		}
-		.menu-item-has-children > a:hover {
+		/*.menu-item-has-children > a:hover {
 			text-decoration: underline;
-		}
+			background-color: transparent;
+		}*/
 
 
 		.showChildren {
@@ -257,6 +259,11 @@ body:not(.home) .menu-all-pages-container {
 
 		a {
 			padding: 1rem 1.5rem .5rem 1.5rem;
+		}
+
+		a:hover {
+			background-color: transparent;
+			text-decoration: underline;
 		}
 	}
 

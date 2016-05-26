@@ -3014,6 +3014,12 @@ fieldset {
     border-radius: 0 0 0.3rem 0.3rem;
   }
 
+  .main-navigation {
+    /*.menu-item-has-children > a:hover {
+    	text-decoration: underline;
+    	background-color: transparent;
+    }*/
+  }
   .main-navigation li {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
@@ -3031,9 +3037,6 @@ fieldset {
     padding-right: 2.5rem;
     padding-left: 7px;
     width: auto;
-  }
-  .main-navigation .menu-item-has-children > a:hover {
-    text-decoration: underline;
   }
   .main-navigation .showChildren {
     left: auto !important;
@@ -3055,6 +3058,10 @@ fieldset {
   }
   .main-navigation a {
     padding: 1rem 1.5rem .5rem 1.5rem;
+  }
+  .main-navigation a:hover {
+    background-color: transparent;
+    text-decoration: underline;
   }
 
   .navToggler {
