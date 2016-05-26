@@ -204,7 +204,7 @@ get_header();
 									}
 
 									if ($labelLink) {
-										echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
+										echo "<h6 class='bbg-label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
 									} else {
 										echo "<h6 class='bbg-label'>$labelText</h6>";
 									}
