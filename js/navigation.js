@@ -116,7 +116,6 @@
 		/* tabbing off last child should hide it */
 		jQuery('li.menu-item-has-children ul li:last-child').keydown(function (e) {
 		    if (e.which == 9) {
-				console.log('hideit');
 				jQuery('.sub-menu').hide();
 		    }
 		});
