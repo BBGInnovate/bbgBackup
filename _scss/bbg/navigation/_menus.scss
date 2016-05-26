@@ -36,7 +36,7 @@ body:not(.home) .menu-all-pages-container {
 				}
 
 				a {
-					padding-left: 4rem;
+					padding-left: 6rem;
 				}
 
 				a:before {
@@ -129,134 +129,16 @@ body:not(.home) .menu-all-pages-container {
 
 
 
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-	.site-main & {
-		margin: 0 0 1.5em;
-		//overflow: hidden;//Disabling this because of post nav on portfolio page. 
-	}
-
-	.nav-previous {
-		float: left;
-		width: 50%;
-
-		a {
-			background: {
-				image: url('img/arrow-previous.png');
-				image: url('img/arrow-previous.svg');
-				position: left top;
-				repeat: no-repeat;
-				size: contain;
-			}
-			padding-left: 25px;
-		}
-
-		a:hover {
-			background: {
-				image: url('img/arrow-previous-hover.png');
-				image: url('img/arrow-previous-hover.svg');
-			}
-		}
-	}
-
-	.nav-next {
-		float: right;
-		text-align: right;
-		width: 50%;
-
-		a {
-			background: {
-				image: url('img/arrow-next.png');
-				image: url('img/arrow-next.svg');
-				position: right top;
-				repeat: no-repeat;
-				size: contain;
-			}
-			padding-right: 25px;
-		}
-
-
-		a:hover {
-			background: {
-				image: url('img/arrow-next-hover.png');
-				image: url('img/arrow-next-hover.svg');
-			}
-		}
-	}
-}
 
 
 
 
-/** POST AUTHOR Previous/next links on project posts */
-.bbg__article__nav {
-	display: block;
-	margin: 0 auto;
-	pointer-events: none;
-	position: fixed;
-		bottom: 100px;
-	text-align: center;
-	width: 100%;
-	z-index: 1;
-
-
-	.bbg__article__nav-link {
-		height: 45px;
-		pointer-events: initial;
-		width: 30px;
-
-		@include media($medium-large-screen) {
-			width: 60px;
-			height: 90px;
-		}
-	}
-
-	.bbg__article__nav-icon {
-		display: block;
-		height: 100%;
-		padding: 0;
-		width: 100%;
-
-		&.left-arrow{
-			background: {
-				position: left top;
-				repeat: no-repeat;
-				size: contain;
-				image: url(img/arrow_left.png);
-			}
-		}
-
-		&.right-arrow{
-			background: {
-				position: right top;
-				repeat: no-repeat;
-				size: contain;
-				image: url(img/arrow_right.png);
-			}
-		}
-
-	}
-
-	.bbg__article__nav-text {
-		display: none;
-	}
-
-	.bbg__article__nav-previous {
-		float: left;
-	}
-
-	.bbg__article__nav-next {
-		float: right;
-	}
-}
 
 .menu-item-has-children > a {
 	border-left: $border-dotted;
 	display:inline-block !important;
 	padding-left: 1rem;
-	width: 90%;
+	width: calc(100% - 5rem);
 }
 .main-navigation.toggled ul.sub-menu {
 	display:none;
@@ -265,15 +147,14 @@ body:not(.home) .menu-all-pages-container {
 	background: {
 		image: url('img/arrow-down.png');
 		image: url('img/arrow-down.svg');
-		position: 1rem center;
+		position: center;
 		repeat: no-repeat;
 		size: 1.3rem;
 	}
 	display: inline-block !important;
-	height: 2rem;
-	padding-right: site-margins / 2;
-	padding-left: $site-margins;
-	width: 5%;
+	height: 5rem;
+	vertical-align: top;
+	width: 5rem;
 }
 
 
@@ -388,8 +269,147 @@ body:not(.home) .menu-all-pages-container {
 			size: 1.3rem;
 		}
 		display: inline !important;
+		padding-left: $site-margins;
 		height: 1rem;
+		vertical-align: middle;
 		width: 5rem;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		//overflow: hidden;//Disabling this because of post nav on portfolio page. 
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+
+		a {
+			background: {
+				image: url('img/arrow-previous.png');
+				image: url('img/arrow-previous.svg');
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+			}
+			padding-left: 25px;
+		}
+
+		a:hover {
+			background: {
+				image: url('img/arrow-previous-hover.png');
+				image: url('img/arrow-previous-hover.svg');
+			}
+		}
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+
+		a {
+			background: {
+				image: url('img/arrow-next.png');
+				image: url('img/arrow-next.svg');
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+			}
+			padding-right: 25px;
+		}
+
+
+		a:hover {
+			background: {
+				image: url('img/arrow-next-hover.png');
+				image: url('img/arrow-next-hover.svg');
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+/** POST AUTHOR Previous/next links on project posts */
+.bbg__article__nav {
+	display: block;
+	margin: 0 auto;
+	pointer-events: none;
+	position: fixed;
+		bottom: 100px;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+
+
+	.bbg__article__nav-link {
+		height: 45px;
+		pointer-events: initial;
+		width: 30px;
+
+		@include media($medium-large-screen) {
+			width: 60px;
+			height: 90px;
+		}
+	}
+
+	.bbg__article__nav-icon {
+		display: block;
+		height: 100%;
+		padding: 0;
+		width: 100%;
+
+		&.left-arrow{
+			background: {
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_left.png);
+			}
+		}
+
+		&.right-arrow{
+			background: {
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_right.png);
+			}
+		}
+
+	}
+
+	.bbg__article__nav-text {
+		display: none;
+	}
+
+	.bbg__article__nav-previous {
+		float: left;
+	}
+
+	.bbg__article__nav-next {
+		float: right;
+	}
+}
+
