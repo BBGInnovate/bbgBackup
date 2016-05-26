@@ -88,7 +88,7 @@
 					jQuery(this).parent().find("ul.sub-menu").hide();	
 				} else {
 					jQuery("ul.sub-menu").hide();
-					jQuery(this).parent().find("ul.sub-menu").show();	
+					jQuery(this).parent().find("ul.sub-menu").css('display','block');	
 				}
 				e.stopPropagation();
 				e.preventDefault();
@@ -100,7 +100,7 @@
 				jQuery(this).parent().find("ul.sub-menu").hide();
 			} else {
 				jQuery("ul.sub-menu").hide();
-				jQuery(this).parent().find("ul.sub-menu").show();
+				jQuery(this).parent().find("ul.sub-menu").css('display','block');
 			}
 			e.stopPropagation();
 			e.preventDefault();
