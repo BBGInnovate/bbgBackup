@@ -86,6 +86,8 @@
 
 		/* enable the carat with the keyboard */
 		jQuery("li.menu-item-has-children span").keydown(function(e) {
+			
+			/**** enter key on caret toggles the menu at all viewports ****/
 			if(e.keyCode == 13) {
 				window.enterPressHover=true;
 				if (jQuery(this).parent().find("ul.sub-menu").is(':visible')) {
@@ -96,6 +98,13 @@
 				}
 				e.stopPropagation();
 				e.preventDefault();
+			} else {
+				/* tabbing key on caret going backwards hides all */
+				if (window.innerWidth >=900) {
+					if (e.which == 9 && e.shiftKey) {
+						jQuery('ul.sub-menu').hide();
+					}
+				}
 			}
 		});
 		jQuery("li.menu-item-has-children span").click(function(e) {
@@ -125,10 +134,12 @@
 				if (e.which == 9 && e.shiftKey) {
 					//they are going backwards from the last item in the list up. ... keep it.
 				} else if (e.which == 9) {
-					jQuery('.sub-menu').hide();
+					jQuery('ul.sub-menu').hide();
 				}
 			}
 		});
+
+		
 		
 	}
 	levelTwoNav();
