@@ -72,13 +72,15 @@
 
 		// see http://stackoverflow.com/questions/7394796/jquery-click-event-how-to-tell-if-mouse-was-clicked-or-enter-key-was-pressed
 		/* don't enable hover on mobile breakpoints */
-		jQuery("li.menu-item-has-children").on('hover', function(e) {
+		jQuery("li.menu-item-has-children").hover(function(e) {
 			if (window.innerWidth >=900) {
-				if (jQuery(this).find("ul.sub-menu").is(':visible')) {
-					jQuery(this).find("ul.sub-menu").hide();
-				} else {
-					jQuery(this).find("ul.sub-menu").css('display','block');	
-				}
+				jQuery(this).find("ul.sub-menu").css('display','block');	
+				e.stopPropagation();
+				e.preventDefault();
+			}
+		}, function(e) {
+			if (window.innerWidth >=900) {
+				jQuery(this).find("ul.sub-menu").hide();
 				e.stopPropagation();
 				e.preventDefault();
 			}
@@ -86,7 +88,6 @@
 
 		/* enable the carat with the keyboard */
 		jQuery("li.menu-item-has-children a.navToggler").keydown(function(e) {
-			
 			/**** enter key on caret toggles the menu at all viewports ****/
 			if(e.keyCode == 13) {
 				window.enterPressHover=true;
