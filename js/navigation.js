@@ -87,7 +87,7 @@
 		});
 
 		/* enable the carat with the keyboard */
-		jQuery("li.menu-item-has-children a.bbg__top-nav__toggler").keydown(function(e) {
+		jQuery("li.menu-item-has-children a.bbg__main-navigation__toggler").keydown(function(e) {
 			/**** enter key on caret toggles the menu at all viewports ****/
 			if(e.keyCode == 13) {
 				window.enterPressHover=true;
@@ -108,7 +108,7 @@
 				}
 			}
 		});
-		jQuery("li.menu-item-has-children a.bbg__top-nav__toggler").click(function(e) {
+		jQuery("li.menu-item-has-children a.bbg__main-navigation__toggler").click(function(e) {
 			if (window.innerWidth < 900) {
 				var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
 				if (displayVal != 'none') {
