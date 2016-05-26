@@ -2953,7 +2953,6 @@ fieldset {
 }
 
 @media screen and (min-width: 900px) {
-  /*@media screen and (min-width: 37.5em) {*/
   .menu-toggle {
     display: none;
   }
@@ -3002,7 +3001,7 @@ fieldset {
     background-repeat: no-repeat;
     background-size: 1.3rem;
     padding-right: site-margins / 2;
-    padding-left: 3rem;
+    padding-left: 1rem;
   }
   .main-navigation .showChildren {
     left: auto !important;
@@ -3128,7 +3127,8 @@ fieldset {
 }
 
 .menu-item-has-children > a {
-  display: inline !important;
+  display: inline-block !important;
+  padding-left: 1rem;
 }
 
 .main-navigation.toggled ul.sub-menu {

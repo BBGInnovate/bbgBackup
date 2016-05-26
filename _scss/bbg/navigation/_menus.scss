@@ -127,7 +127,6 @@ body:not(.home) .menu-all-pages-container {
 
 
 @include media($medium-large-screen) {
-/*@media screen and (min-width: 37.5em) {*/
 	.menu-toggle {
 		display: none;
 	}
@@ -195,7 +194,8 @@ body:not(.home) .menu-all-pages-container {
 			}
 
 			padding-right: site-margins / 2;
-			padding-left: $site-margins;
+			//padding-left: $site-margins;
+			padding-left: 1rem;
 		}
 
 		.showChildren {
@@ -351,7 +351,8 @@ body:not(.home) .menu-all-pages-container {
 }
 
 .menu-item-has-children > a {
-	display:inline !important; 
+	display:inline-block !important;
+	padding-left: 1rem;
 }
 .main-navigation.toggled ul.sub-menu {
 	display:none;
