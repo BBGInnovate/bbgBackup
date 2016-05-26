@@ -2974,6 +2974,7 @@ fieldset {
   height: 5rem;
   vertical-align: top;
   width: 5rem;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 900px) {
@@ -3060,7 +3061,7 @@ fieldset {
     padding-left: 3rem;
     height: 4rem;
     vertical-align: bottom;
-    width: 5rem;
+    width: 3rem;
   }
 }
 .site-main .comment-navigation, .site-main

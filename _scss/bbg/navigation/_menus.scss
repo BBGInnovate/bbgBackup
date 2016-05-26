@@ -155,6 +155,8 @@ body:not(.home) .menu-all-pages-container {
 	height: 5rem;
 	vertical-align: top;
 	width: 5rem;
+
+	cursor: pointer;
 }
 
 
@@ -272,7 +274,7 @@ body:not(.home) .menu-all-pages-container {
 		padding-left: $site-margins;
 		height: 4rem;
 		vertical-align: bottom;
-		width: 5rem;
+		width: 3rem;
 	}
 
 }
