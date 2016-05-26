@@ -329,7 +329,7 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 		$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
 		$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
 
-		
+
 		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
 		$attributes = '';
@@ -573,7 +573,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 		$selectedCategory=false;
 		$impact=false;
 		if ( $categories ) {
-						
+
 			/* impact is an exception */
 			foreach ( $categories as $category ) {
 				if ( $category->name == "Impact" ) {
@@ -855,8 +855,8 @@ add_shortcode( 'mission', 'mission_shortcode' );
 
 // Add shortcode reference for BBG-wide audience numbers
 function audience_shortcode( $atts ) {
+	// access site-wide variables
 	global $post;
-	// $thisID = $post->ID;
 
     // set variables based on custom fields
     $total = get_field('site_setting_unduplicated_audience','options','false');
@@ -890,20 +890,39 @@ add_shortcode( 'audience', 'audience_shortcode' );
 
 // Add shortcode reference for the number of supported languages
 function languages_shortcode() {
-	$number_of_languages = 61;
+	// access site-wide variables
+	global $post;
+
+	// set variables based on custom fields
+    $number_of_languages = get_field('site_setting_total_languages','options','false');
+
+	// $number_of_languages = 61;
 	return $number_of_languages . " languages";
 }
 add_shortcode('languages', 'languages_shortcode');
 
+// Add shortcode reference for the number of total countries
+function countries_shortcode() {
+	// access site-wide variables
+	global $post;
+
+	// set variables based on custom fields
+    $number_of_languages = get_field('site_setting_total_countries','options','false');
+
+	//$number_of_countries = 100;
+	return $number_of_countries . " countries";
+}
+add_shortcode('countries', 'countries_shortcode');
+
 function fileExpired($filepath, $minutesToExpire) {
-	$expired=false;
-	if (!file_exists($filepath)) {
-		$expired=true;
+	$expired = false;
+	if ( !file_exists( $filepath ) ) {
+		$expired = true;
 	} else {
-		$secondsDiff=time() - filemtime($filepath);
-		$minutesDiff=$secondsDiff/60;
+		$secondsDiff = time() - filemtime( $filepath );
+		$minutesDiff = $secondsDiff/60;
 		if ($minutesDiff > 30) {
-			$expired=true;
+			$expired = true;
 		}
 	}
 	return  $expired;
