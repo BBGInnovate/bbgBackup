@@ -82,14 +82,17 @@ get_header();
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
 					$counter = 0;
+
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
-						//we wrap a  usa-grid container around every row.
-						echo '<!-- ROW ' . $counter . '-->';
-						echo '<section class="usa-grid-full bbg__about__children--row">';
+						if ( get_row_layout() != 'about_ribbon_page') {
+							//we wrap a  usa-grid container around every row.
+							echo '<!-- ROW ' . $counter . '-->';
+							echo '<section class="usa-grid-full bbg__about__children--row">';
+						}
 
-						if( get_row_layout() == 'about_multicolumn' ):
+						if ( get_row_layout() == 'about_multicolumn' ):
 
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 							$relatedPages = get_sub_field( 'about_muliticolumn_related_pages' );
@@ -192,34 +195,42 @@ get_header();
 							$summary = get_sub_field('about_ribbon_summary');
 							$imageURL = get_sub_field('about_ribbon_image');
 
-							//allow shortcodes in intro text
+							// allow shortcodes in intro text
 							$summary = apply_filters('the_content', $introText);
 							$summary = str_replace(']]>', ']]&gt;', $introText);
 
-							echo "<div class='usa-grid bbg__ribbon--thin'>";
+							echo "</div>"; // closes <div id="page-children" class="usa-section usa-grid bbg__about__children">
+							echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
+							echo "<!-- RIBBON: ROW ' . $counter . '-->"; // add row count
+							// echo "<section class='usa-section bbg__ribbon--thin'>"; // open ribbon container
+
+							echo "<div class='usa-grid'>";
 								echo "<div class='bbg__announcement__flexbox'>";
 
 									if ($imageURL) {
 										echo "<div class='bbg__announcement__photo' style='background-image: url($imageURL);'></div>";
 									}
 
-									if ($labelLink) {
-										echo "<h6 class='bbg-label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
-									} else {
-										echo "<h6 class='bbg-label'>$labelText</h6>";
-									}
+									echo "<div>";
 
-									if ($headlineLink) {
-										echo "<h2><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
-									} else {
-										echo "<h2>$headlineText</h2>";
-									}
+										if ($labelLink) {
+											echo "<h6 class='bbg-label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
+										} else {
+											echo "<h6 class='bbg-label'>$labelText</h6>";
+										}
 
-									echo $summary;
+										if ($headlineLink) {
+											echo "<h2><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
+										} else {
+											echo "<h2>$headlineText</h2>";
+										}
 
+										echo $summary;
+
+									echo "</div>";
 								echo "</div>";
-							echo "</div>";
-						echo '</section>';
+							// echo "</section>";
+						echo "</section>";
 						/*** END DISPLAY OF ENTIRE RIBBON ROW ***/
 						endif;
 					endwhile;
@@ -229,18 +240,6 @@ get_header();
 			</div>
 			<?php wp_reset_postdata(); ?>
 
-<!-- 			<section class="usa-section bbg__ribbon--thin">
-				<div class="usa-grid">
-
-
-						<div>
-							<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/who-we-are/annual-report/">Annual Reports</a></h6>
-							<h2><a href="http://www.bbg.gov/wp-content/media/2015/06/BBG-AR2014_FINAL-FILE_singlepgs1.pdf">Download the 2015 BBG Annual Report</a></h2>
-							<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
-						</div>
-					</div>
-				</div>
-			</section> -->
 
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
