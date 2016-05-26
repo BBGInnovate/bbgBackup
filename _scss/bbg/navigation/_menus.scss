@@ -143,7 +143,7 @@ body:not(.home) .menu-all-pages-container {
 
 			li {
 				border-top: $border-dotted;
-				border-left: $border-dotted;
+				border-left: $border-solid;
 				float: none;
 				padding-left: 0;
 
@@ -170,8 +170,8 @@ body:not(.home) .menu-all-pages-container {
 	.main-navigation {
 		li {
 			background-color: #FFF;
-			border-bottom: 1px solid #ECECEC;
-			border-right: $border-dotted;
+			border-bottom: $border-solid;
+			border-right: $border-solid;
 			float: left;
 			margin: 0;
 			padding: 0;
@@ -351,6 +351,7 @@ body:not(.home) .menu-all-pages-container {
 }
 
 .menu-item-has-children > a {
+	border-left: $border-dotted;
 	display:inline-block !important;
 	padding-left: 1rem;
 }
