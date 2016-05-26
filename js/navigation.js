@@ -114,7 +114,7 @@
 		
 		/* clicking on the body should hide all subnav items */
 		
-		jQuery(document).on('hover', function(e){
+		jQuery(document).on('click', function(e){
 			jQuery(this).find("ul.sub-menu").hide();
 		});
 	
