@@ -2992,6 +2992,7 @@ fieldset {
   .main-navigation ul ul {
     position: absolute;
     right: auto;
+    width: auto;
   }
   .main-navigation ul ul li {
     border-top: 1px dotted #CCC;

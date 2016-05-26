@@ -174,7 +174,8 @@ body:not(.home) .menu-all-pages-container {
 		/* drop down navigation */
 		ul {
 			position: absolute;
-			right: auto;
+				right: auto;
+			width: auto;
 
 			li {
 				border-top: $border-dotted;
