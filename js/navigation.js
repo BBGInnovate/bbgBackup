@@ -115,9 +115,11 @@
 
 		/* tabbing off last child should hide it */
 		jQuery('li.menu-item-has-children ul li:last-child').keydown(function (e) {
-		    if (e.which == 9) {
-				jQuery('.sub-menu').hide();
-		    }
+		    if (window.innerWidth >=900) {
+				if (e.which == 9) {
+					jQuery('.sub-menu').hide();
+				}
+			}
 		});
 		
 	}
