@@ -36,8 +36,9 @@ body:not(.home) .menu-all-pages-container {
 				}
 
 				a {
-					//padding-left: $site-margins * 2;
+					padding-left: 4rem;
 				}
+
 				a:before {
 					content: "";
 				}

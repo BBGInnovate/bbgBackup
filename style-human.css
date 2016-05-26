@@ -2880,6 +2880,9 @@ fieldset {
 .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
   left: 100%;
 }
+.main-navigation ul ul li a {
+  padding-left: 4rem;
+}
 .main-navigation ul ul li a:before {
   content: "";
 }
