@@ -2954,7 +2954,7 @@ fieldset {
 }
 
 .menu-item-has-children > a {
-  border-left: 1px dotted #CCC;
+  border-left: 1px solid #F1F1F1;
   display: inline-block !important;
   padding-left: 1rem;
   width: calc(100% - 5rem);
@@ -3018,6 +3018,8 @@ fieldset {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
     border-right: 1px solid #CCC;
+    font-size: 14px;
+    font-weight: 700;
     float: left;
     margin: 0;
     padding: 0;
@@ -3026,9 +3028,12 @@ fieldset {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
-    padding-right: 3rem;
-    padding-left: 1rem;
+    padding-right: 2.5rem;
+    padding-left: 7px;
     width: auto;
+  }
+  .main-navigation .menu-item-has-children > a:hover {
+    text-decoration: underline;
   }
   .main-navigation .showChildren {
     left: auto !important;
@@ -3038,7 +3043,7 @@ fieldset {
     display: none;
   }
   .main-navigation li:first-of-type {
-    border-left: 1px dotted #CCC;
+    border-left: 1px solid #CCC;
   }
   .main-navigation li:first-of-type,
   .main-navigation li:first-of-type a:hover,
@@ -3057,12 +3062,11 @@ fieldset {
     background-image: url("img/arrow-down.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1.3rem;
     display: inline-block !important;
     padding-left: 3rem;
-    height: 4rem;
+    height: 3.5rem;
     vertical-align: bottom;
-    width: 3rem;
+    width: 2.5rem;
   }
 }
 .site-main .comment-navigation, .site-main
