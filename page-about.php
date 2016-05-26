@@ -210,7 +210,7 @@ get_header();
 									}
 
 									if ($headlineLink) {
-										echo "<h2><a href='$headlineLink'>$headlineText</a></h2>";
+										echo "<h2><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
 									} else {
 										echo "<h2>$headlineText</h2>";
 									}
