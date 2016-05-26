@@ -907,7 +907,7 @@ function countries_shortcode() {
 	global $post;
 
 	// set variables based on custom fields
-    $number_of_languages = get_field('site_setting_total_countries','options','false');
+    $number_of_countries = get_field('site_setting_total_countries','options','false');
 
 	//$number_of_countries = 100;
 	return $number_of_countries . " countries";
