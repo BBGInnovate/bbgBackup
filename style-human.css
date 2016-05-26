@@ -3053,13 +3053,13 @@ fieldset {
   .navToggler {
     background-image: url("img/arrow-down.png");
     background-image: url("img/arrow-down.svg");
-    background-position: 1rem center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
-    display: inline !important;
+    display: inline-block !important;
     padding-left: 3rem;
-    height: 1rem;
-    vertical-align: middle;
+    height: 4rem;
+    vertical-align: bottom;
     width: 5rem;
   }
 }
