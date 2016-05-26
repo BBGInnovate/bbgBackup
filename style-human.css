@@ -2957,6 +2957,9 @@ fieldset {
   border-left: 1px solid #F1F1F1;
   display: inline-block !important;
   padding-left: 1rem;
+}
+
+.menu-item-has-children > a.bbg__top-nav__link-text {
   width: calc(100% - 5rem);
 }
 
@@ -2964,14 +2967,14 @@ fieldset {
   display: none;
 }
 
-.navToggler {
+.bbg__top-nav__toggler {
   background-image: url("img/arrow-down.png");
   background-image: url("img/arrow-down.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.3rem;
   display: inline-block !important;
-  height: 5rem;
+  height: 4.7rem;
   vertical-align: top;
   width: 5rem;
   cursor: pointer;
@@ -3064,7 +3067,7 @@ fieldset {
     text-decoration: underline;
   }
 
-  .navToggler {
+  .bbg__top-nav__toggler {
     background-image: url("img/arrow-down.png");
     background-image: url("img/arrow-down.svg");
     background-position: center;

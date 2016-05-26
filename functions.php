@@ -344,11 +344,11 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 
 		if( in_array('menu-item-has-children', $classes)) {
 			//var_dump($item); die();
-			$output .= "<a tabindex='0' title='Expand " . $title . " menu' class='navToggler'></a>";
+			$output .= "<a tabindex='0' title='Expand " . $title . " menu' class='bbg__top-nav__toggler'></a>";
 		}
 
 		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>';
+		$item_output .= '<a'. $attributes .' class="bbg__top-nav__link-text">';
 		$item_output .= $args->link_before . $title . $args->link_after;
 		$item_output .= '</a>';
 		$item_output .= $args->after;
