@@ -61,58 +61,66 @@
 		//TODO: check if Android works by default
 		/iP/i.test(navigator.userAgent) && jQuery('*').css('cursor', 'pointer');
 		
+		/*
 		jQuery("li.menu-item-has-children ul a").click(function(e) {
 			e.stopPropagation(); //we do this so that the preventDefault() below doesn't affect subnav items
 		});
 		jQuery("li.menu-item-has-children ul a").keydown(function(e) {
 			e.stopPropagation(); //same as above
 		});
+		*/
 
-		/* clicking any top level nav item with children should show its children and hide all others */
 		// see http://stackoverflow.com/questions/7394796/jquery-click-event-how-to-tell-if-mouse-was-clicked-or-enter-key-was-pressed
+		/* don't enable hover on mobile breakpoints */
 		jQuery("li.menu-item-has-children").on('hover', function(e) {
 			if (window.innerWidth >=600) {
-				if (jQuery(this).find("ul").hasClass('showChildren')) {
-					
-					//without this line, if you click a parent nav item 2x, it stays focused.
-					if (!window.enterPressHover) {
-						jQuery(this).find("a").blur();  
-					} else {
-						window.enterPressHover=false;
-					}
-					
-					jQuery(this).addClass("hidden");
-					jQuery(this).find("ul").removeClass('showChildren');
+				jQuery(this).find("ul.sub-menu").toggle();
+				e.stopPropagation();
+				e.preventDefault();
+			}
+		});
+
+		/* enable the carat with the keyboard */
+		jQuery("li.menu-item-has-children span").keydown(function(e) {
+			if(e.keyCode == 13) {
+				window.enterPressHover=true;
+				if (jQuery(this).parent().find("ul.sub-menu").is(':visible')) {
+					jQuery(this).parent().find("ul.sub-menu").hide();	
 				} else {
-					/* hide any open menus before showing the newly clicked one */
-					jQuery('.showChildren').removeClass('showChildren');
-					jQuery(this).find("ul").addClass('showChildren');
-					jQuery(this).removeClass("hidden");
+					jQuery("ul.sub-menu").hide();
+					jQuery(this).parent().find("ul.sub-menu").show();	
 				}
 				e.stopPropagation();
 				e.preventDefault();
 			}
 		});
-		jQuery("li.menu-item-has-children span").keydown(function(e) {
-		 
-		  if(e.keyCode == 13) {
-		    window.enterPressHover=true;
-		    jQuery(this).mouseover();
-		    if (jQuery(this).find("ul").hasClass('showChildren')) {
-		   		e.preventDefault();
-		    }
-		  }
+		jQuery("li.menu-item-has-children span").click(function(e) {
+			var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
+			if (displayVal != 'none') {
+				jQuery(this).parent().find("ul.sub-menu").hide();
+			} else {
+				jQuery("ul.sub-menu").hide();
+				jQuery(this).parent().find("ul.sub-menu").show();
+			}
+			e.stopPropagation();
+			e.preventDefault();
 		});
 		
 		/* clicking on the body should hide all subnav items */
+		/*
 		jQuery(document).on('hover', function(e){
-			jQuery('.showChildren').toggleClass('showChildren');
-			jQuery("li.menu-item-has-children").addClass('hidden');
+			jQuery(this).find("ul.sub-menu").hide();
 		});
-		/* clicking on the body should hide all subnav items */
-		jQuery(document).ready(function(e){
-			jQuery("li.menu-item-has-children").addClass('hidden');
+		*/
+
+		/* tabbing off last child should hide it */
+		jQuery('li.menu-item-has-children ul li:last-child').keydown(function (e) {
+		    if (e.which == 9) {
+				console.log('hideit');
+				jQuery('.sub-menu').hide();
+		    }
 		});
+		
 	}
 	levelTwoNav();
 	/**

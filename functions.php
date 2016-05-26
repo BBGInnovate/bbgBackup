@@ -320,7 +320,7 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 
 		if( in_array('menu-item-has-children', $classes)) {
 			//var_dump($item); die();
-			$output .= "<span tabindex='0' onclick=\"jQuery(this).parent().find('.sub-menu').toggle();\" class='navToggler'></span>";
+			$output .= "<span tabindex='0'  class='navToggler'></span>";
 		}
 
 		$atts = array();
