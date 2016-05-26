@@ -23,6 +23,7 @@ body:not(.home) .menu-all-pages-container {
 		display: none;
 
 		ul {
+			width: 100%;
 			z-index: 99999;
 
 			li {
@@ -35,10 +36,11 @@ body:not(.home) .menu-all-pages-container {
 				}
 
 				a {
-					padding-left: $site-margins * 2;
+					padding-left: 6rem;
 				}
+
 				a:before {
-					content: "• ";
+					content: "";
 				}
 			}
 		}
@@ -126,6 +128,39 @@ body:not(.home) .menu-all-pages-container {
 }
 
 
+
+
+
+
+
+
+.menu-item-has-children > a {
+	border-left: $border-dotted;
+	display:inline-block !important;
+	padding-left: 1rem;
+	width: calc(100% - 5rem);
+}
+.main-navigation.toggled ul.sub-menu {
+	display:none;
+} 
+.navToggler {
+	background: {
+		image: url('img/arrow-down.png');
+		image: url('img/arrow-down.svg');
+		position: center;
+		repeat: no-repeat;
+		size: 1.3rem;
+	}
+	display: inline-block !important;
+	height: 5rem;
+	vertical-align: top;
+	width: 5rem;
+
+	cursor: pointer;
+}
+
+
+
 @include media($medium-large-screen) {
 	.menu-toggle {
 		display: none;
@@ -139,7 +174,8 @@ body:not(.home) .menu-all-pages-container {
 		/* drop down navigation */
 		ul {
 			position: absolute;
-			right: auto;
+				right: auto;
+			width: auto;
 
 			li {
 				border-top: $border-dotted;
@@ -148,7 +184,7 @@ body:not(.home) .menu-all-pages-container {
 				padding-left: 0;
 
 				a {
-					padding-left: $site-margins / 2;
+					padding-left: 4rem;
 				}
 
 				a:before {
@@ -177,25 +213,16 @@ body:not(.home) .menu-all-pages-container {
 			padding: 0;
 		}
 
-		.menu-item-has-children.hidden > a {
-			background: {
-				//image: url('img/arrow-right.png');
-				//image: url('img/arrow-right.svg');
-			}
-		}
-
 		.menu-item-has-children > a {
 			background: {
-				//image: url('img/arrow-down.png');
-				//image: url('img/arrow-down.svg');
-				position: 1rem center;
+				position: center;
 				repeat: no-repeat;
 				size: 1.3rem;
 			}
 
-			padding-right: site-margins / 2;
-			//padding-left: $site-margins;
+			padding-right: $site-margins;
 			padding-left: 1rem;
+			width: auto;
 		}
 
 		.showChildren {
@@ -225,7 +252,32 @@ body:not(.home) .menu-all-pages-container {
 			padding: 1rem 1.5rem .5rem 1.5rem;
 		}
 	}
+
+
+	.navToggler {
+		background: {
+			image: url('img/arrow-down.png');
+			image: url('img/arrow-down.svg');
+			position: center;
+			repeat: no-repeat;
+			size: 1.3rem;
+		}
+		display: inline-block !important;
+		padding-left: $site-margins;
+		height: 4rem;
+		vertical-align: bottom;
+		width: 3rem;
+	}
+
 }
+
+
+
+
+
+
+
+
 
 .comment-navigation,
 .posts-navigation,
@@ -284,6 +336,11 @@ body:not(.home) .menu-all-pages-container {
 		}
 	}
 }
+
+
+
+
+
 
 
 
@@ -350,23 +407,3 @@ body:not(.home) .menu-all-pages-container {
 	}
 }
 
-.menu-item-has-children > a {
-	border-left: $border-dotted;
-	display:inline-block !important;
-	padding-left: 1rem;
-}
-.main-navigation.toggled ul.sub-menu {
-	display:none;
-} 
-.navToggler {
-	background: {
-		image: url('img/arrow-down.png');
-		image: url('img/arrow-down.svg');
-		position: 1rem center;
-		repeat: no-repeat;
-		size: 1.3rem;
-	}
-
-	padding-right: site-margins / 2;
-	padding-left: $site-margins;
-}

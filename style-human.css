@@ -2870,6 +2870,7 @@ fieldset {
   display: none;
 }
 .main-navigation ul ul {
+  width: 100%;
   z-index: 99999;
 }
 .main-navigation ul ul li {
@@ -2883,7 +2884,7 @@ fieldset {
   padding-left: 6rem;
 }
 .main-navigation ul ul li a:before {
-  content: "• ";
+  content: "";
 }
 .main-navigation li {
   border-bottom: 1px dotted #CCC;
@@ -2952,6 +2953,30 @@ fieldset {
   z-index: 9998;
 }
 
+.menu-item-has-children > a {
+  border-left: 1px dotted #CCC;
+  display: inline-block !important;
+  padding-left: 1rem;
+  width: calc(100% - 5rem);
+}
+
+.main-navigation.toggled ul.sub-menu {
+  display: none;
+}
+
+.navToggler {
+  background-image: url("img/arrow-down.png");
+  background-image: url("img/arrow-down.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.3rem;
+  display: inline-block !important;
+  height: 5rem;
+  vertical-align: top;
+  width: 5rem;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 900px) {
   .menu-toggle {
     display: none;
@@ -2967,6 +2992,7 @@ fieldset {
   .main-navigation ul ul {
     position: absolute;
     right: auto;
+    width: auto;
   }
   .main-navigation ul ul li {
     border-top: 1px dotted #CCC;
@@ -2975,7 +3001,7 @@ fieldset {
     padding-left: 0;
   }
   .main-navigation ul ul li a {
-    padding-left: 1.5rem;
+    padding-left: 4rem;
   }
   .main-navigation ul ul li a:before {
     content: "";
@@ -2997,11 +3023,12 @@ fieldset {
     padding: 0;
   }
   .main-navigation .menu-item-has-children > a {
-    background-position: 1rem center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
-    padding-right: site-margins / 2;
+    padding-right: 3rem;
     padding-left: 1rem;
+    width: auto;
   }
   .main-navigation .showChildren {
     left: auto !important;
@@ -3023,6 +3050,19 @@ fieldset {
   }
   .main-navigation a {
     padding: 1rem 1.5rem .5rem 1.5rem;
+  }
+
+  .navToggler {
+    background-image: url("img/arrow-down.png");
+    background-image: url("img/arrow-down.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1.3rem;
+    display: inline-block !important;
+    padding-left: 3rem;
+    height: 4rem;
+    vertical-align: bottom;
+    width: 3rem;
   }
 }
 .site-main .comment-navigation, .site-main
@@ -3124,26 +3164,6 @@ fieldset {
 }
 .bbg__article__nav .bbg__article__nav-next {
   float: right;
-}
-
-.menu-item-has-children > a {
-  border-left: 1px dotted #CCC;
-  display: inline-block !important;
-  padding-left: 1rem;
-}
-
-.main-navigation.toggled ul.sub-menu {
-  display: none;
-}
-
-.navToggler {
-  background-image: url("img/arrow-down.png");
-  background-image: url("img/arrow-down.svg");
-  background-position: 1rem center;
-  background-repeat: no-repeat;
-  background-size: 1.3rem;
-  padding-right: site-margins / 2;
-  padding-left: 3rem;
 }
 
 .bbg-avatar__container {
