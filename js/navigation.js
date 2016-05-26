@@ -122,7 +122,9 @@
 		/* tabbing off last child should hide it */
 		jQuery('li.menu-item-has-children ul li:last-child').keydown(function (e) {
 		    if (window.innerWidth >=900) {
-				if (e.which == 9) {
+				if (e.which == 9 && e.shiftKey) {
+					//they are going backwards from the last item in the list up. ... keep it.
+				} else if (e.which == 9) {
 					jQuery('.sub-menu').hide();
 				}
 			}
