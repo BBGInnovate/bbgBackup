@@ -113,11 +113,11 @@
 		});
 		
 		/* clicking on the body should hide all subnav items */
-		/*
+		
 		jQuery(document).on('hover', function(e){
 			jQuery(this).find("ul.sub-menu").hide();
 		});
-		*/
+	
 
 		/* tabbing off last child should hide it */
 		jQuery('li.menu-item-has-children ul li:last-child').keydown(function (e) {
