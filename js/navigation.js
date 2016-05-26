@@ -74,7 +74,11 @@
 		/* don't enable hover on mobile breakpoints */
 		jQuery("li.menu-item-has-children").on('hover', function(e) {
 			if (window.innerWidth >=900) {
-				jQuery(this).find("ul.sub-menu").toggle();
+				if (jQuery(this).find("ul.sub-menu").is(':visible')) {
+					jQuery(this).find("ul.sub-menu").hide();
+				} else {
+					jQuery(this).find("ul.sub-menu").css('display','block');	
+				}
 				e.stopPropagation();
 				e.preventDefault();
 			}
@@ -95,15 +99,17 @@
 			}
 		});
 		jQuery("li.menu-item-has-children span").click(function(e) {
-			var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
-			if (displayVal != 'none') {
-				jQuery(this).parent().find("ul.sub-menu").hide();
-			} else {
-				jQuery("ul.sub-menu").hide();
-				jQuery(this).parent().find("ul.sub-menu").css('display','block');
+			if (window.innerWidth < 900) {
+				var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
+				if (displayVal != 'none') {
+					jQuery(this).parent().find("ul.sub-menu").hide();
+				} else {
+					jQuery("ul.sub-menu").hide();
+					jQuery(this).parent().find("ul.sub-menu").css('display','block');
+				}
+				e.stopPropagation();
+				e.preventDefault();
 			}
-			e.stopPropagation();
-			e.preventDefault();
 		});
 		
 		/* clicking on the body should hide all subnav items */
