@@ -54,6 +54,9 @@ if ($dateline != "") {
 
 							$s.="<p>$teamMemberName</p>";
 							$s.='<p>$teamMemberName</p>';
+
+							echo $s;
+							die();
 						}
 					endwhile;
 					$teamRoster .= $s;
