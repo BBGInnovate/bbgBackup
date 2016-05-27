@@ -18,7 +18,13 @@
 
 .bbg__article-header__caption {
 	@extend .wp-caption-text;
-	margin: -2rem 0 $site-margins auto;
+
+	margin:  {
+		top: -2rem;
+		right: 0;
+		bottom: $site-margins;
+		left: auto;
+	}
 	width: 100%;
 }
 

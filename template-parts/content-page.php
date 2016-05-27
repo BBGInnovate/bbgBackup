@@ -34,40 +34,37 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
-
-
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
 	<?php
-		//If a featured video is set, include it.
-		//ELSE if a featured image is set, include it.
 		$hideFeaturedImage = FALSE;
-		if ($videoUrl!="") {
+
+		// If a featured video is set, include it.
+		if ( $videoUrl != "" ) {
 			echo featured_video($videoUrl);
 			$hideFeaturedImage = TRUE;
+		//ELSE if a featured image is set, include it.
 		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";
-			$featuredImageCutline="";
+			$featuredImageCutline = "";
 			$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
-			if ($thumbnail_image && isset($thumbnail_image[0])) {
-				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
-			}
-			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
-			echo the_post_thumbnail( 'large-thumb' );
 
+			if ($thumbnail_image && isset($thumbnail_image[0])) {
+				$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+			}
+
+			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+			echo the_post_thumbnail( 'large-thumb' );
 			echo '</div>';
-			echo '</div> <!-- usa-grid-full -->';
 
 			if ($featuredImageCutline != "") {
-				echo '<div class="usa-grid">';
-					echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-				echo '</div> <!-- usa-grid -->';
+				echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
 			}
+
+			echo '</div> <!-- usa-grid-full -->';
 		}
 	?><!-- .bbg__article-header__thumbnail -->
 
@@ -78,9 +75,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<header class="entry-header">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
-
-
-
 
 		<div class="bbg__article-sidebar--left">
 			<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
@@ -100,20 +94,24 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			</ul>
 		</div><!-- .bbg__article-sidebar--left -->
 
-
-
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-			<?php the_content(); ?>
-		</div><!-- .entry-content -->
 
+			<?php
+			$pageHeadline = get_field('headline');
+
+			if ( $pageHeadline ) {
+				echo "<h2>" . $pageHeadline . "</h2>";
+			}
+
+			the_content();
+
+			?>
+		</div><!-- .entry-content -->
 
 
 		<div class="bbg__article-sidebar">
 			<p>Sidebar info or widgets here? Maybe just display HTML text from an ACF custom field? Pullquotes?</p>
 		</div><!-- .bbg__article-sidebar -->
-
-
-
 
 
 		<footer class="entry-footer bbg-post-footer 1234">
