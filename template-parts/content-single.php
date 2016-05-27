@@ -41,6 +41,26 @@ if ($dateline != "") {
 	}
 }
 
+				// check if the flexible content field has rows of data
+				$teamRoster = "";
+				if( have_rows('project_team_members') ):
+
+					while ( have_rows('project_team_members') ) : the_row();
+						$s = "";
+
+						if ( get_row_layout() == 'team_member') {
+							//we wrap a  usa-grid container around every row.
+							$teamMemberName = get_sub_field( 'team_member_name' );
+
+							$s.="<p>$teamMemberName</p>";
+							$s.='<p>$teamMemberName</p>';
+						}
+						endif;
+					endwhile;
+					$teamRoster = $s;
+				endif;
+
+
 
 $entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
 $entityLogo="";
@@ -267,6 +287,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
+			<?php echo $teamRoster; ?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 

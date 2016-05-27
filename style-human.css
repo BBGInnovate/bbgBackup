@@ -2844,6 +2844,7 @@ fieldset {
 @media screen and (min-width: 600px) {
   body:not(.home) .menu-all-pages-container {
     min-height: 5rem;
+    margin-bottom: 2rem;
   }
 }
 
