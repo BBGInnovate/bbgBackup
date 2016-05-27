@@ -59,7 +59,7 @@ get_header(); ?>
 								<?php } ?>
 
 
-								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+								<!--<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>-->
 							</header><!-- .entry-header -->
 						</div>
 
@@ -69,7 +69,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>Our challenges</h2>
+									<!--<h2>Our challenges</h2>-->
 									<p class="usa-font-lead">BBG networks operate in a competitive, diverse, fragmented global media environment undergoing revolutionary change. There is more information, more channels of distribution and Limited Freedom of the Press.</p>
 								</div>
 								<div class="usa-grid">
