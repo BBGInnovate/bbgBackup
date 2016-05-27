@@ -5956,12 +5956,16 @@ section.usa-section.bbg-banner__section {
   }
 }
 
+.bbg__project-team .bbg__project-team__header {
+  color: #981b1e;
+  text-transform: uppercase;
+}
 .bbg__project-team .bbg__project-team__name {
   font-weight: bold;
 }
 .bbg__project-team .bbg__project-team__role {
   display: block;
-  font-size: .8;
+  font-size: 80%;
   text-transform: uppercase;
 }
 

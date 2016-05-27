@@ -45,14 +45,14 @@ if ($dateline != "") {
 				$teamRoster = "";
 				if( have_rows('project_team_members') ):
 
-					$s = "<div class='bbg__project-team'><h5>roster</h5>";
+					$s = "<div class='bbg__project-team'><h5 class='bbg__project-team__header'>Project team</h5>";
 					while ( have_rows('project_team_members') ) : the_row();
 
 						if ( get_row_layout() == 'team_member') {
 							$teamMemberName = get_sub_field( 'team_member_name' );
 							$teamMemberRole = get_sub_field( 'team_member_role' );
 
-							$s .= "<p class='bbg__project-team__name'>$teamMemberName, <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
+							$s .= "<p><span class='bbg__project-team__name'>$teamMemberName,</span> <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
 						}
 					endwhile;
 					$s .= "</div>";
