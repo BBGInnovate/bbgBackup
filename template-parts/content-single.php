@@ -42,11 +42,11 @@ if ($dateline != "") {
 }
 
 				// check if the flexible content field has rows of data
-				$teamRoster = "";
+				$teamRoster = "<h5>roster</h5>";
 				if( have_rows('project_team_members') ):
 
+					$s = "";
 					while ( have_rows('project_team_members') ) : the_row();
-						$s = "";
 
 						if ( get_row_layout() == 'team_member') {
 							//we wrap a  usa-grid container around every row.
@@ -56,7 +56,7 @@ if ($dateline != "") {
 							$s.='<p>$teamMemberName</p>';
 						}
 					endwhile;
-					$teamRoster = $s;
+					$teamRoster .= $s;
 				endif;
 
 
