@@ -30,7 +30,7 @@ $mobileAppsPostContent="";
 
 $qParams=array(
 	'post_type' => array('post')
-	,'cat' => get_cat_id('Impact')
+	,'cat' => get_cat_id('Project')
 	,'posts_per_page' => $postsPerPage
 	,'offset' => $offset
 	,'post_status' => array('publish')
