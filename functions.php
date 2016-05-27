@@ -1858,23 +1858,6 @@ function getSoapboxStr($soap) {
 	return $s;
 }
 
-function my_acf_json_save_point( $path ) {
-    //change default folder for ACF json. see https://www.advancedcustomfields.com/resources/local-json/
-    $path = get_stylesheet_directory() . '/jsonACF';
-    return $path;
-}
-
-function my_acf_json_load_point( $paths ) {
-    // remove original path (optional)
-    unset($paths[0]);
-    // append path
-    $paths[] = get_stylesheet_directory() . '/jsonACF';
-    // return
-    return $paths;
-}
-//add_filter('acf/settings/save_json', 'my_acf_json_save_point');
-//add_filter('acf/settings/load_json', 'my_acf_json_load_point');
-
 
 
 
