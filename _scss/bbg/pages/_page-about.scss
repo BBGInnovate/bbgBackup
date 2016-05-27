@@ -26,7 +26,9 @@
 
 // Style the mission differently
 .bbg__about__child--mission {
-	background-color: $color-gray-dark;
+	//background-color: $color-gray-dark;
+		/* Temporary edits from brian */
+		background-color: $color-gray-lightest;
 	border-radius: $border-radius;
 	padding: {
 		top: 0;
@@ -46,11 +48,14 @@
 	}
 
 	p {
-		color: #FFF;
+		//color: #FFF;
+		/* Temporary edits from brian */
+		color: #000;
 		font: {
 			family: $font-serif;
 			size: 2rem;
-			weight: 500;
+			//weight: 500;
+			weight: 300;
 		}
 		line-height: 2.1;
 		margin: 0;
@@ -121,6 +126,11 @@
 	p {
 		line-height: 2;
 		margin-top: 0;
+
+		/* Temporary edits from brian */
+		font-family: $font-sans;
+		font-size: 1.6rem;
+		line-height: 1.7;
 	}
 
 	.bbg__about__grandchild__link {

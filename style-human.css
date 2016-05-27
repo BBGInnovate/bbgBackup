@@ -2876,6 +2876,7 @@ fieldset {
 .bbg__main-navigation ul ul li {
   border-top: 1px dotted #CCC;
   border-bottom: none;
+  text-transform: none;
 }
 .bbg__main-navigation ul ul li:hover > ul, .bbg__main-navigation ul ul li.focus > ul {
   left: 100%;
@@ -5391,7 +5392,8 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__about__child--mission {
-  background-color: #323a45;
+  /* Temporary edits from brian */
+  background-color: #f1f1f1;
   border-radius: 0.3rem;
   padding-top: 0;
   padding-right: 1rem;
@@ -5405,10 +5407,11 @@ section.usa-section.bbg-banner__section {
   display: block;
 }
 .bbg__about__child--mission p {
-  color: #FFF;
+  /* Temporary edits from brian */
+  color: #000;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 2.1;
   margin: 0;
 }
@@ -5461,6 +5464,10 @@ section.usa-section.bbg-banner__section {
 .bbg__about__grandchild p {
   line-height: 2;
   margin-top: 0;
+  /* Temporary edits from brian */
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.7;
 }
 .bbg__about__grandchild .bbg__about__grandchild__link {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
