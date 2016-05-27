@@ -5956,6 +5956,15 @@ section.usa-section.bbg-banner__section {
   }
 }
 
+.bbg__project-team .bbg__project-team__name {
+  font-weight: bold;
+}
+.bbg__project-team .bbg__project-team__role {
+  display: block;
+  font-size: .8;
+  text-transform: uppercase;
+}
+
 .comments-area {
   max-width: 600px;
   margin: 0 auto;
