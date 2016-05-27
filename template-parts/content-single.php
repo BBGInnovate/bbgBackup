@@ -49,14 +49,10 @@ if ($dateline != "") {
 					while ( have_rows('project_team_members') ) : the_row();
 
 						if ( get_row_layout() == 'team_member') {
-							//we wrap a  usa-grid container around every row.
 							$teamMemberName = get_sub_field( 'team_member_name' );
+							$teamMemberRole = get_sub_field( 'team_member_role' );
 
-							$s.="<p>$teamMemberName</p>";
-							$s.='<p>$teamMemberName</p>';
-
-							echo $s;
-							die();
+							$s .= "<p class='bbg__project-team__role'>$teamMemberName, <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
 						}
 					endwhile;
 					$teamRoster .= $s;
