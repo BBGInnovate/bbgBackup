@@ -4711,6 +4711,15 @@ img > a:focus,
   margin-bottom: 1rem;
 }
 
+.bbg__page-header__tagline {
+  color: #757575;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 section.usa-section {
   margin-bottom: 6rem;
 }

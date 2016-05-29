@@ -172,11 +172,22 @@ img,
 	}
 }
 
+.bbg__page-header__tagline {
+	color: $color-gray-medium;
+	font: {
+		family: $font-serif;
+		size: 1.8rem;
+		weight: 500;
+	}
+	margin: {
+		top: 0;
+		bottom: 2rem;
+	}
+}
+
 section.usa-section {
 	margin-bottom: $site-margins-large;
 }
-
-
 
 
 article {

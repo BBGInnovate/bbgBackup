@@ -66,7 +66,7 @@ get_header(); ?>
 
 				<header class="page-header">
 					<h6 class="bbg-label--mobile large">Portfolio</h6>
-					<h5>Spotlighting some of the amazing reporting projects from across BBG</h5>
+					<h5 class="bbg__page-header__tagline">Spotlighting some of the amazing reporting projects from across BBG</h5>
 				</header><!-- .page-header -->
 			</div>
 
