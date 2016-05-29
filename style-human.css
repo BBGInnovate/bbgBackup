@@ -4700,6 +4700,7 @@ img > a:focus,
 }
 .bbg-label--mobile.large, .bbg-label.large {
   margin-bottom: 0;
+  text-transform: uppercase;
 }
 @media screen and (min-width: 481px) {
   .bbg-label--mobile.large, .bbg-label.large {
@@ -4719,6 +4720,7 @@ img > a:focus,
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 2rem;
+  text-transform: none;
 }
 
 section.usa-section {

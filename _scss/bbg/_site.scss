@@ -156,10 +156,8 @@ img,
 
 	&--mobile.large,
 	&.large {
-		margin: {
-			//top: $site-margins;
-			bottom: 0;
-		}
+		margin-bottom: 0;
+		text-transform: uppercase;
 
 		@include media($small-screen) {
 			font-size: 3rem;
@@ -184,6 +182,7 @@ img,
 		top: 0;
 		bottom: 2rem;
 	}
+	text-transform: none;
 }
 
 section.usa-section {
