@@ -173,10 +173,11 @@ img,
 }
 
 .bbg__page-header__tagline {
-	color: $color-gray-medium;
+	color: $color-gray-light;
 	font: {
 		family: $font-serif;
-		size: 1.8rem;
+		size: 1.7rem;
+		style: italic;
 		weight: 500;
 	}
 	margin: {

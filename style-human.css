@@ -4712,9 +4712,10 @@ img > a:focus,
 }
 
 .bbg__page-header__tagline {
-  color: #757575;
+  color: #aeb0b5;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  font-style: italic;
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 2rem;
