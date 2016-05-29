@@ -65,8 +65,8 @@ get_header(); ?>
 			<?php if ( $custom_query->have_posts() ) : ?>
 
 				<header class="page-header">
-					<h6 class="bbg-label--mobile large">Portfolio</h6>
-					<h5 class="bbg__page-header__tagline">Spotlighting some of the amazing reporting projects from across BBG</h5>
+					<h5 class="bbg-label--mobile large">Portfolio</h5>
+					<h6 class="bbg__page-header__tagline">Spotlighting some of the amazing reporting projects from across BBG</h6>
 				</header><!-- .page-header -->
 			</div>
 
