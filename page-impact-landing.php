@@ -135,14 +135,14 @@ get_header(); ?>
 
 
 			<div class="usa-grid-full">
-				<section class="usa-section bbg__ribbon--thin" style="background-color:#F1F1F1;">
+				<section class="usa-section bbg__banner--thin">
 					<div class="usa-grid-full">
-						<div class="bbg__announcement__flexbox">
+					<div class="bbg__announcement__flexbox">
 							<div class="bbg__announcement__photo" style="background-image: url(<?php echo get_template_directory_uri() ?>/img/impact/measuring_impact_icon.png);"></div>
-							<div>
+							<div class="bbg__announcement__text">
 								<h6 class="bbg-label"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">Defining impact</a></h6>
-								<h2><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/" style="color: #000;">How do we measure BBG's impact?</a></h2>
-								<p style="color: #000;">In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
+								<h2><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/measuring-impact/">How do we measure BBG's impact?</a></h2>
+								<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
 							</div>
 						</div>
 					</div>
