@@ -4791,7 +4791,7 @@ article {
 }
 @media screen and (min-width: 900px) {
   .bbg-header__logo {
-    height: 4.8rem;
+    height: 5.5rem;
   }
 }
 
@@ -4814,6 +4814,11 @@ article {
   .bbg-header__site-title {
     font-size: 4rem;
     padding-top: .2rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg-header__site-title {
+    font-size: 5rem;
   }
 }
 

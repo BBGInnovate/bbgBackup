@@ -246,7 +246,7 @@ article {
 		height: $site-title-font-size * 2.2;
 	}
 	@include media($medium-large-screen) {
-		height: $site-title-font-size * 1.2;
+		height: 5.5rem;
 	}
 }
 
@@ -269,6 +269,10 @@ article {
 	@include media($medium-screen) {
 		font-size: $site-title-font-size;
 		padding-top: .2rem;
+	}
+
+	@include media($medium-large-screen) {
+		font-size: 5rem;
 	}
 }
 
