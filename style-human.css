@@ -2242,26 +2242,26 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.usa-sign_up-block, .bbg-footer__search {
+.usa-sign_up-block, .bbg__footer__search {
   padding-bottom: 2rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
 @media screen and (min-width: 600px) {
-  .usa-sign_up-block, .bbg-footer__search {
+  .usa-sign_up-block, .bbg__footer__search {
     float: right;
     padding: 0;
   }
 }
-.usa-sign_up-block label:first-of-type, .bbg-footer__search label:first-of-type {
+.usa-sign_up-block label:first-of-type, .bbg__footer__search label:first-of-type {
   margin-top: 0;
 }
-.usa-sign_up-block button, .bbg-footer__search button {
+.usa-sign_up-block button, .bbg__footer__search button {
   float: none;
   margin-right: 0;
   margin-top: 1.5rem;
 }
-.usa-sign_up-block input, .bbg-footer__search input {
+.usa-sign_up-block input, .bbg__footer__search input {
   width: 100%;
 }
 
@@ -4964,12 +4964,12 @@ article {
 /***************************************/
 /*    FOOTER STYLES                    */
 /*                                     */
-.bbg-footer {
+.bbg__footer {
   position: relative;
   z-index: 9999;
 }
 
-.bbg-footer-big-top {
+.bbg__footer__big-top {
   padding: 0 3rem;
 }
 
@@ -4980,11 +4980,11 @@ article {
   font-size: .9em;
 }
 
-.bbg-footer__search {
+.bbg__footer__search {
   padding: 2rem 3rem;
 }
 @media screen and (min-width: 600px) {
-  .bbg-footer__search {
+  .bbg__footer__search {
     padding-top: 5.4rem;
     padding-right: 0;
     padding-bottom: 2rem;
@@ -4992,23 +4992,34 @@ article {
   }
 }
 
-.bbg-footer__return-to-top__container {
+.bbg__footer__return-to-top__container {
   text-align: right;
   margin-top: 3rem;
   margin-right: auto;
   margin-left: auto;
 }
 
-.bbg-footer__return-to-top {
+.bbg__footer__return-to-top {
   border: 1px solid #CCC;
   border-bottom: none;
   border-radius: 0.3rem 0.3rem 0 0;
   display: inline-block;
   padding: 0;
 }
-.bbg-footer__return-to-top a {
+.bbg__footer__return-to-top a {
   display: block;
   padding: 1.5rem 2rem;
+}
+
+.bbg__footer__sub {
+  background-color: #323a45;
+  padding: .5rem 0 1rem 0;
+}
+.bbg__footer__sub .bbg__footer__sub__required-link {
+  display: inline-block;
+}
+.bbg__footer__sub .bbg__footer__sub__required-link a {
+  color: #9bdaf1;
 }
 
 /****************************************/

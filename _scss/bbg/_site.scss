@@ -442,12 +442,12 @@ article {
 /*    FOOTER STYLES                    */
 /*                                     */
 
-.bbg-footer {
+.bbg__footer {
 	position: relative;
 	z-index: 9999;
 }
 
-.bbg-footer-big-top {
+.bbg__footer__big-top {
 	padding: 0 $site-margins;
 }
 
@@ -462,7 +462,7 @@ article {
 	}
 }
 
-.bbg-footer__search {
+.bbg__footer__search {
 	@extend .usa-sign_up-block;
 	padding: 2rem $site-margins;
 
@@ -476,7 +476,7 @@ article {
 	}
 }
 
-.bbg-footer__return-to-top__container {
+.bbg__footer__return-to-top__container {
 	text-align: right;
 	margin: {
 		top: $site-margins;
@@ -485,7 +485,7 @@ article {
 	}
 }
 
-.bbg-footer__return-to-top {
+.bbg__footer__return-to-top {
 	border: 1px solid #CCC;
 	border-bottom: none;
 	border-radius: $border-radius $border-radius 0 0;
@@ -497,6 +497,20 @@ article {
 		padding: $site-margins-medium 2rem;
 	}
 }
+
+.bbg__footer__sub {
+	background-color: $color-gray-dark;
+	padding: .5rem 0 1rem 0;
+
+	.bbg__footer__sub__required-link {
+		display: inline-block;
+	}
+	.bbg__footer__sub__required-link a {
+		color: $color-primary-alt-light;
+	}
+
+}
+
 
 
 
