@@ -3450,8 +3450,9 @@ object {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1.3rem;
-    padding-right: 2.5rem;
-    padding-left: 7px;
+    border-left: none;
+    padding-right: 2rem;
+    padding-left: 2px;
     width: auto;
   }
   .bbg__main-navigation .showChildren {
