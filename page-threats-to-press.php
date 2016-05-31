@@ -200,6 +200,19 @@ get_header(); ?>
 				</div>
 			</section>
 
+			<section class="usa-section ">
+				<div class="usa-grid">
+					<div class="bbg__quotation ">
+						<h2 class="bbg__quotation-text--large">“This is the particular invaluable contribution that a station like RFA, dedicated to the strengthening of democratic values and freedoms all over the world, has to make.”</h2>
+						<div class="bbg__quotation-attribution__container">
+							<p class="bbg__quotation-attribution">
+								<img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/aung_san_suu_kyi-small-square.jpg" class="bbg__quotation-attribution__mugshot">
+								<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">Aung San Suu Kyi</span><span class="bbg__quotation-attribution__credit">Nobel Peace Prize recipient</span></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
