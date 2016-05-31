@@ -5911,25 +5911,6 @@ section.usa-section.bbg-banner__section {
   display: none;
 }
 
-.bbg__about__child--mission {
-  	/*
-  	a {
-  		color: $color-primary-alt-light;
-  	}
-  	
-  	.bbg-label {
-  		background-color: $color-secondary-darkest;
-  		color: #FFF;
-  		display: inline-block;
-  		font-size: $lead-font-size;
-  		padding: .5rem 1rem;
-  
-  		a {
-  			color: #FFF;
-  		}
-  	}
-  	*/
-}
 .bbg__about__child--mission .single-post-thumbnail {
   display: none;
 }
@@ -5947,18 +5928,24 @@ section.usa-section.bbg-banner__section {
 .bbg__about__child--mission p {
   color: #000;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.7;
   margin: 0;
 }
+@media screen and (min-width: 600px) {
+  .bbg__about__child--mission p {
+    font-size: 1.5rem;
+  }
+}
 @media screen and (min-width: 900px) {
   .bbg__about__child--mission p {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 600px) {
   .bbg__about__child--mission p {
+    font-size: 2rem;
     line-height: 2.1;
   }
 }
