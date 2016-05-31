@@ -33,6 +33,18 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+			<div class="usa-grid">
+
+
+			<?php if ( $custom_query->have_posts() ) : ?>
+
+				<header class="page-header">
+					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
+				</header><!-- .page-header -->
+			</div>
+
+
 			<?php
 				$hideFeaturedImage = FALSE;
 				if ($videoUrl != "") {
@@ -66,9 +78,9 @@ get_header();
 				<?php } ?>
 
 				<!-- Page title -->
-				<header class="entry-header">
+				<!--<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-				</header>
+				</header>-->
 			</div>
 
 			<!-- Page introduction (content) -->

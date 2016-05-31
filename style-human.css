@@ -5887,8 +5887,10 @@ section.usa-section.bbg-banner__section {
   }
 }
 
-.bbg__home__recent-posts .bbg__secondary-stories .bbg-blog__excerpt-title--list {
-  font-size: 2.5rem;
+@media screen and (min-width: 600px) {
+  .bbg__home__recent-posts .bbg__secondary-stories .bbg-blog__excerpt-title--list {
+    font-size: 2.5rem;
+  }
 }
 
 /* Page content as introduction */
@@ -5910,48 +5912,54 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__about__child--mission {
-  /* Temporary edits from brian */
-  background-color: #f1f1f1;
-  border-radius: 0.3rem;
-  padding-top: 0;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
+  	/*
+  	a {
+  		color: $color-primary-alt-light;
+  	}
+  	
+  	.bbg-label {
+  		background-color: $color-secondary-darkest;
+  		color: #FFF;
+  		display: inline-block;
+  		font-size: $lead-font-size;
+  		padding: .5rem 1rem;
+  
+  		a {
+  			color: #FFF;
+  		}
+  	}
+  	*/
 }
 .bbg__about__child--mission .single-post-thumbnail {
   display: none;
 }
 .bbg__about__child--mission .bbg__about__excerpt-content {
   display: block;
-}
-.bbg__about__child--mission p {
-  /* Temporary edits from brian */
-  color: #000;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 2rem;
-  font-weight: 300;
-  line-height: 2.1;
-  margin: 0;
-}
-.bbg__about__child--mission a {
-  color: #9bdaf1;
-}
-.bbg__about__child--mission .bbg-label {
-  background-color: #981b1e;
-  color: #FFF;
-  display: inline-block;
-  font-size: 2rem;
-  padding: .5rem 1rem;
-}
-.bbg__about__child--mission .bbg-label a {
-  color: #FFF;
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  padding: 1rem;
 }
 @media screen and (min-width: 900px) {
-  .bbg__about__child--mission {
-    padding-top: 0;
-    padding-right: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 3rem;
+  .bbg__about__child--mission .bbg__about__excerpt-content {
+    padding: 3rem;
+  }
+}
+.bbg__about__child--mission p {
+  color: #000;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0;
+}
+@media screen and (min-width: 900px) {
+  .bbg__about__child--mission p {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__about__child--mission p {
+    line-height: 2.1;
   }
 }
 

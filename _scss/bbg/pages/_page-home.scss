@@ -235,7 +235,7 @@ section.usa-section.bbg-banner__section {
 		font-size: 2.4rem;
 	}
 
-	@media screen and (min-width: 600px) { 
+	@include media($medium-screen) {
 		.bbg__event-announcement__excerpt {
 			display: none;
 		}
@@ -244,7 +244,7 @@ section.usa-section.bbg-banner__section {
 		}
 	}
 
-	@media screen and (min-width: 900px) { 
+	@include media($medium-large-screen) {
 		.bbg__event-announcement__excerpt {
 			display: block;
 		}
@@ -255,8 +255,10 @@ section.usa-section.bbg-banner__section {
 }
 .bbg__home__recent-posts {
 	.bbg__secondary-stories {
-		.bbg-blog__excerpt-title--list {
-			font-size: 2.5rem;
+		@include media($medium-screen) {
+			.bbg-blog__excerpt-title--list {
+				font-size: 2.5rem;
+			}
 		}
 	}
 }

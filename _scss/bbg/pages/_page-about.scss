@@ -26,16 +26,6 @@
 
 // Style the mission differently
 .bbg__about__child--mission {
-	//background-color: $color-gray-dark;
-		/* Temporary edits from brian */
-		background-color: $color-gray-lightest;
-	border-radius: $border-radius;
-	padding: {
-		top: 0;
-		right: $site-margins-small;
-		bottom: $site-margins-small;
-		left: $site-margins-small;
-	}
 
 	// Hide the post image
 	.single-post-thumbnail {
@@ -45,26 +35,38 @@
 	// Show excerpt
 	.bbg__about__excerpt-content {
 		display: block;
+		background-color: $color-gray-lightest;
+		border-radius: $border-radius;
+		padding: $site-margins-small;
+
+		@include media($medium-large-screen) {
+			padding: $site-margins;
+		}
 	}
 
 	p {
-		//color: #FFF;
-		/* Temporary edits from brian */
 		color: #000;
 		font: {
 			family: $font-serif;
-			size: 2rem;
-			//weight: 500;
+			size: 1.5rem;
 			weight: 300;
 		}
-		line-height: 2.1;
+		line-height: 1.7;
 		margin: 0;
+
+		@include media($medium-large-screen) {
+			font-size: 2rem;
+		}
+		@include media($medium-screen) {
+			line-height: 2.1;
+		}
 	}
 
+	/*
 	a {
 		color: $color-primary-alt-light;
 	}
-
+	
 	.bbg-label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
@@ -76,15 +78,7 @@
 			color: #FFF;
 		}
 	}
-
-	@include media($medium-large-screen) {
-		padding: {
-			top: 0;
-			right: $site-margins;
-			bottom: $site-margins;
-			left: $site-margins;
-		}
-	}
+	*/
 }
 
 /*****
