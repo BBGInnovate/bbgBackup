@@ -37,33 +37,33 @@ function createGeojson(){*/
 	myGeojson[0].type = "FeatureCollection";
 	myGeojson[0].features = [];
 
-	var dataLength = 4; //data.length;
-	var lat, lng;
+	var dataLength = data.length;
+	var lat, lng, pinColor;
 
 	for (var i = 0; i < dataLength; i++){
-		//myGeojson[0].features[i] = {"type" : "Feature"};
-
 		lat = Number(data[i].Latitude);
 		lng = Number(data[i].Longitude);
+		if (data[i].Status == "Threatened") {
+			pinColor = "#900";
+		} else if (data[i].Status == "Missing"){
+			pinColor = "#C22";
+		} else if (data[i].Status == "Killed") {
+			pinColor = "#000";
+		} else {
+			pinColor = "#333";
+		}
 
 		myGeojson[0].features[i] = {"type" : "Feature", "geometry" : {}, "properties" : {}};
 		myGeojson[0].features[i].geometry = {"type" : "Point", "coordinates" : [lng, lat]};
+		myGeojson[0].features[i].properties = {"title" : data[i].Name, "description" : data[i].Description, "marker-color" : pinColor, "marker-size" : "large", "marker-symbol" : ""};
 
-		myGeojson[0].features[i].properties = {"title" : data[i].Name, "description" : data[i].Description, "marker-color" : "#F7941E", "marker-size" : "large", "marker-symbol" : "building"};
-
-		/*
-		myGeojson[0].features[i].properties = {"title" : data[i].Name};
-		myGeojson[0].features[i].properties = {"description" : data[i].Description};
-		myGeojson[0].features[i].properties = {"marker-color" : "#F7941E"};
-		myGeojson[0].features[i].properties = {"marker-size" : "large"};
-		myGeojson[0].features[i].properties = {"marker-symbol" : "building"};
-		*/
 	}
 
 	console.log("This JSON is from the google spreadsheet");
 	console.log("https://docs.google.com/spreadsheets/d/1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo/pubhtml");
 	console.log(myGeojson);
 	console.log("");
+	geojson = myGeojson;
 	createMap();
 }
 
@@ -71,7 +71,9 @@ function createGeojson(){*/
 function createMap(){
 	L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
 
-	var geojson = [
+	console.log('cats');
+	/*
+	var xxxgeojson = [
 	{
 		"type": "FeatureCollection",
 		"features": [
@@ -149,6 +151,7 @@ function createMap(){
 	];
 	console.log("This JSON is hard-coded (and is what's used to build the map)");
 	console.log(geojson);
+	*/
 
 	//Create the map.
 	var map = L.mapbox.map('map-threats', 'visualjournalist.mnbadlih', {
