@@ -229,6 +229,10 @@ article {
 	padding: 0;
 	&:hover {
 		text-decoration: none;
+
+		.bbg-header__site-title {
+			color: $color-cool-blue-light;
+		}
 	}
 	&:focus {
 		background: none;

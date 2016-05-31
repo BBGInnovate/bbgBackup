@@ -4770,6 +4770,9 @@ article {
 .bbg-header__link:hover {
   text-decoration: none;
 }
+.bbg-header__link:hover .bbg-header__site-title {
+  color: #4773aa;
+}
 .bbg-header__link:focus {
   background: none;
 }
