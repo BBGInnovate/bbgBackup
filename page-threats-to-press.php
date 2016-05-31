@@ -119,10 +119,84 @@ get_header(); ?>
 			<section class="usa-section">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
-						<h5 class="bbg-label">Threats to press map</h5>
-						<h6 id="food"></h6>
+						<h5 class="bbg-label">Threats around the world</h5>
 					</div>
 					<div id="map-threats" class="bbg__map--threats"></div>
+				</div>
+			</section>
+
+
+			<section class="usa-section" style="background-color: #333;">
+				<div class="usa-grid-full">
+					<div class="usa-grid">
+						<h5 class="bbg-label">Fallen journalists</h5>
+					</div>
+
+					<div class="usa-grid">
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot"/>
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+						<div class="bbg__profile-grid__profile usa-width-one-sixth">
+							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
+							<h3 class="bbg__profile-grid__profile__name">Name goes here</h3>
+							<h5 class="bbg__profile-grid__profile__dates">Oct. 6, 1977 - July 11, 2016</h5>
+							<p class="bbg__profile-grid__profile__description"></p>
+						</div>
+
+					</div>
 				</div>
 			</section>
 
@@ -130,7 +204,6 @@ get_header(); ?>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/vendor/tabletop.js"></script>
-
 		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/map-threats.js"></script>
 
 

@@ -3332,6 +3332,11 @@ object {
 .bbg__main-navigation .bbg__top-nav__link-text {
   width: calc(100% - 5rem);
 }
+@media screen and (min-width: 900px) {
+  .bbg__main-navigation .bbg__top-nav__link-text {
+    width: auto;
+  }
+}
 
 /* Small menu. */
 .menu-toggle {
@@ -6516,13 +6521,50 @@ section.usa-section.bbg-banner__section {
     height: 600px;
   }
 }
-
-.bbg__map-profile__mugshot {
-  float: left;
-  margin-right: 1rem;
-  width: 30%;
+.bbg__map--threats .bbg__map-profile__mugshot {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map--threats .bbg__map-profile__mugshot {
+    display: block;
+    float: left;
+    margin-right: 1rem;
+    width: 30%;
+  }
+}
+.bbg__map--threats .bbg__map-profile__date {
+  color: #757575;
 }
 
-.bbg__map-profile__date {
-  color: #757575;
+.bbg__profile-grid__profile {
+  margin-bottom: 3rem;
+}
+.bbg__profile-grid__profile .bbg__profile-grid__profile__mugshot {
+  width: 100%;
+}
+.bbg__profile-grid__profile .bbg__profile-grid__profile__name {
+  color: #FFF;
+}
+.bbg__profile-grid__profile .bbg__profile-grid__profile__dates {
+  color: #999;
+}
+.bbg__profile-grid__profile .bbg__profile-grid__profile__description {
+  color: #F1F1F1;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 90%;
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .bbg__profile-grid__profile.usa-width-one-sixth {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+  }
+  .bbg__profile-grid__profile.usa-width-one-sixth:last-child {
+    margin-right: 0;
+  }
+  .bbg__profile-grid__profile.usa-width-one-sixth:nth-child(2n) {
+    margin-right: 0;
+  }
 }

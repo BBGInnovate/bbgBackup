@@ -14,22 +14,53 @@
 	@include media($large-screen) {
 		height: 600px;
 	}
+
+	.bbg__map-profile__mugshot {
+		display: none;
+
+		@include media($medium-screen) {
+			display: block;
+			float: left;
+			margin-right: 1rem;
+			width: 30%;
+		}
+	}
+
+	.bbg__map-profile__date {
+		color: $color-gray-medium;
+	}
 }
 
-.bbg__map-profile__mugshot {
-	float: left;
-	margin-right: 1rem;
-	width: 30%;
+.bbg__profile-grid__profile {
+	margin-bottom: $site-margins;
+
+	.bbg__profile-grid__profile__mugshot {
+		width: 100%;
+	}
+
+	.bbg__profile-grid__profile__name {
+		color: #FFF;
+	}
+	.bbg__profile-grid__profile__dates {
+		color: #999;
+	}
+
+	.bbg__profile-grid__profile__description {
+		color: #F1F1F1;
+		font-family: $font-sans;
+		font-size: 90%;
+	}
 }
 
-.bbg__map-profile__title {
+@media screen and (min-width: 300px) and (max-width: 600px){
+	.bbg__profile-grid__profile {
+		&.usa-width-one-sixth {
+			@include span-columns(6);
+		}
 
+		&.usa-width-one-sixth:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
 }
 
-.bbg__map-profile__network {
-
-}
-
-.bbg__map-profile__date {
-	color: $color-gray-medium;
-}

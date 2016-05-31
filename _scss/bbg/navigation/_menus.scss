@@ -84,7 +84,11 @@ body:not(.home) .menu-all-pages-container {
 	}
 
 	.bbg__top-nav__link-text {
-		width: calc(100% - 5rem)
+		width: calc(100% - 5rem);
+
+		@include media($medium-large-screen) {
+			width: auto;
+		}
 	}
 }
 
