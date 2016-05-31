@@ -60,8 +60,10 @@ function createGeojson(){*/
 		*/
 	}
 
+	console.log("This JSON is from the google spreadsheet");
+	console.log("https://docs.google.com/spreadsheets/d/1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo/pubhtml");
 	console.log(myGeojson);
-	console.log("xxxx");
+	console.log("");
 	createMap();
 }
 
@@ -145,6 +147,7 @@ function createMap(){
 	}
 
 	];
+	console.log("This JSON is hard-coded (and is what's used to build the map)");
 	console.log(geojson);
 
 	//Create the map.
