@@ -40,7 +40,7 @@ get_header();
 			<?php if ( $custom_query->have_posts() ) : ?>
 
 				<header class="page-header">
-					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
+					<h5 class="bbg-label--mobile large">Who we are</h5>
 				</header><!-- .page-header -->
 			</div>
 
