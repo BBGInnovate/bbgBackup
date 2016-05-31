@@ -35,12 +35,10 @@ get_header();
 		<main id="main" class="site-main" role="main">
 
 			<div class="usa-grid">
-
-
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
 				</header><!-- .page-header -->
-
+			</div>
 
 			<?php
 				$hideFeaturedImage = FALSE;
