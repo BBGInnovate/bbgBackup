@@ -262,7 +262,7 @@ get_header();
 
 
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
-			<section id="recent-posts" class="usa-section">
+			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
 				<div class="usa-grid">
 					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">BBG News</a></h6>
 				</div>
@@ -292,7 +292,7 @@ get_header();
 
 				<!-- Headlines -->
 				<div class="usa-grid bbg__ceo-post"> 
-					<div class="usa-width-one-half">
+					<div class="usa-width-one-half bbg__secondary-stories">
 						<?php
 							/* BEWARE: sticky posts add a record */
 							$maxPostsToShow=9;

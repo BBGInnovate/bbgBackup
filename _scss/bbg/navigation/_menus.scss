@@ -7,7 +7,7 @@
 }
 
 body:not(.home) .menu-all-pages-container {
-	@include media($medium-screen) {
+	@include media($medium-large-screen) {
 		min-height: 5rem;
 		margin-bottom: 2rem;
 	}
