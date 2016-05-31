@@ -5894,6 +5894,10 @@ section.usa-section.bbg-banner__section {
 }
 
 /* Page content as introduction */
+.bbg__about__intro p:first-child {
+  line-height: 2.5;
+}
+
 .bbg__about__children--row {
   margin-bottom: 6rem;
 }
