@@ -38,11 +38,16 @@ function createGeojson(){*/
 	myGeojson[0].features = [];
 
 	var dataLength = 4; //data.length;
+	var lat, lng;
 
 	for (var i = 0; i < dataLength; i++){
 		//myGeojson[0].features[i] = {"type" : "Feature"};
+
+		lat = Number(data[i].Latitude);
+		lng = Number(data[i].Longitude);
+
 		myGeojson[0].features[i] = {"type" : "Feature", "geometry" : {}, "properties" : {}};
-		myGeojson[0].features[i].geometry = {"type" : "Point", "coordinates" : [data[i].Longitude, data[i].Latitude]};
+		myGeojson[0].features[i].geometry = {"type" : "Point", "coordinates" : [lng, lat]};
 
 		myGeojson[0].features[i].properties = {"title" : data[i].Name, "description" : data[i].Description, "marker-color" : "#F7941E", "marker-size" : "large", "marker-symbol" : "building"};
 

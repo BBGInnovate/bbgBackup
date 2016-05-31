@@ -131,8 +131,6 @@ get_header(); ?>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/vendor/tabletop.js"></script>
 
-		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/vendor/mapsheet.js"></script>
-
 		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/map-threats.js"></script>
 
 
