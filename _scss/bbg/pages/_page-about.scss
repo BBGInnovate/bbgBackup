@@ -60,7 +60,7 @@
 		@include media($medium-large-screen) {
 			font-size: 1.8rem;
 		}
-		@include media($medium-screen) {
+		@include media($large-screen) {
 			font-size: 2rem;
 			line-height: 2.1;
 		}

@@ -5943,7 +5943,7 @@ section.usa-section.bbg-banner__section {
     font-size: 1.8rem;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1201px) {
   .bbg__about__child--mission p {
     font-size: 2rem;
     line-height: 2.1;
