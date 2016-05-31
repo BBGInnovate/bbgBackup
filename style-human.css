@@ -5894,12 +5894,6 @@ section.usa-section.bbg-banner__section {
 }
 
 /* Page content as introduction */
-.bbg__about__intro p:first-child {
-  font-size: 2rem;
-  line-height: 2.5;
-  margin-top: 0;
-}
-
 .bbg__about__children--row {
   margin-bottom: 6rem;
 }
@@ -5918,7 +5912,12 @@ section.usa-section.bbg-banner__section {
   display: block;
   background-color: #f1f1f1;
   border-radius: 0.3rem;
-  padding: 1rem;
+  padding: 1.5rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__about__child--mission .bbg__about__excerpt-content {
+    padding: 1rem;
+  }
 }
 @media screen and (min-width: 900px) {
   .bbg__about__child--mission .bbg__about__excerpt-content {
@@ -5935,7 +5934,7 @@ section.usa-section.bbg-banner__section {
 }
 @media screen and (min-width: 600px) {
   .bbg__about__child--mission p {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 @media screen and (min-width: 900px) {
