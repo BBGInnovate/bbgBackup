@@ -82,6 +82,10 @@ body:not(.home) .menu-all-pages-container {
 	.current_page_ancestor > a,
 	.current-menu-ancestor > a {
 	}
+
+	.bbg__top-nav__link-text {
+		width: calc(100% - 5rem)
+	}
 }
 
 /* Small menu. */

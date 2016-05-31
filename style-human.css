@@ -3329,6 +3329,9 @@ object {
   box-shadow: none;
   margin: 0;
 }
+.bbg__main-navigation .bbg__top-nav__link-text {
+  width: calc(100% - 5rem);
+}
 
 /* Small menu. */
 .menu-toggle {
