@@ -77,10 +77,6 @@ get_header();
 					<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 				<?php } ?>
 
-				<!-- Page title -->
-				<!--<header class="entry-header">
-					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-				</header>-->
 			</div>
 
 			<!-- Page introduction (content) -->
