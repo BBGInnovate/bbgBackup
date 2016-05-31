@@ -37,12 +37,9 @@ get_header();
 			<div class="usa-grid">
 
 
-			<?php if ( $custom_query->have_posts() ) : ?>
-
 				<header class="page-header">
-					<h5 class="bbg-label--mobile large">Who we are</h5>
+					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
 				</header><!-- .page-header -->
-			</div>
 
 
 			<?php
@@ -77,6 +74,10 @@ get_header();
 					<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 				<?php } ?>
 
+				<!-- Page title -->
+				<!--<header class="entry-header">
+					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+				</header>-->
 			</div>
 
 			<!-- Page introduction (content) -->
