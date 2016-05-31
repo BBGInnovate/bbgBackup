@@ -73,6 +73,12 @@ get_header(); ?>
 				</header><!-- .page-header -->
 			</div>
 
+			<section class="usa-section">
+					<div id="map-threats" class="bbg__map--threats"></div>
+			</section>
+
+
+
 			<div class="usa-grid-full">
 
 				<?php /* Start the Loop */
@@ -115,7 +121,7 @@ get_header(); ?>
 
 			</div><!-- .usa-grid-full -->
 
-
+<!--
 			<section class="usa-section">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
@@ -124,7 +130,7 @@ get_header(); ?>
 					<div id="map-threats" class="bbg__map--threats"></div>
 				</div>
 			</section>
-
+-->
 
 			<section class="usa-section" style="background-color: #333;">
 				<div class="usa-grid-full">
