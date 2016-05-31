@@ -62,22 +62,6 @@ get_header();
 				}
 			?><!-- .bbg__article-header__thumbnail -->
 
-			<!-- Page header -->
-			<div id="page-header" class="usa-grid">
-				<!-- Parent title -->
-				<?php if ($post->post_parent) {
-					$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-					$parent_link = get_permalink($post->post_parent);
-				?>
-					<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-				<?php } ?>
-
-				<!-- Page title -->
-				<!--<header class="entry-header">
-					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-				</header>-->
-			</div>
-
 			<!-- Page introduction (content) -->
 			<section id="page-intro" class="usa-section usa-grid bbg__about__intro">
 				<?php echo $pageContent; ?>

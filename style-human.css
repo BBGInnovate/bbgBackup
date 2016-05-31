@@ -5905,6 +5905,12 @@ section.usa-section.bbg-banner__section {
 /*****
 	Multi-column child styles
 *****/
+@media screen and (min-width: 600px) {
+  .bbg__about__child .bbg-label {
+    font-size: 2rem;
+  }
+}
+
 .bbg__about__excerpt-content {
   display: none;
 }

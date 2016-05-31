@@ -15,9 +15,18 @@
 	margin-bottom: $site-margins-large;
 }
 
+
 /*****
 	Multi-column child styles
 *****/
+
+.bbg__about__child {
+	@include media($medium-screen) {
+		.bbg-label {
+			font-size: 2rem;
+		}
+	}
+}
 
 .bbg__about__excerpt-content {
 	display: none;
