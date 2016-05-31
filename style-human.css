@@ -6495,3 +6495,34 @@ section.usa-section.bbg-banner__section {
   font-size: 80%;
   text-transform: uppercase;
 }
+
+.bbg__map--threats {
+  background-color: #F1F1F1;
+  height: 350px;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map--threats {
+    height: 400px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__map--threats {
+    height: 500px;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .bbg__map--threats {
+    height: 600px;
+  }
+}
+
+.bbg__map-profile__mugshot {
+  float: left;
+  margin-right: 1rem;
+  width: 30%;
+}
+
+.bbg__map-profile__date {
+  color: #757575;
+}

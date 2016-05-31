@@ -122,7 +122,7 @@ get_header(); ?>
 						<h5 class="bbg-label">Threats to press map</h5>
 						<h6 id="food"></h6>
 					</div>
-					<div id="map-threats" class="map" style="background-color: #CCC; height: 500px; width: 100%;"></div>
+					<div id="map-threats" class="bbg__map--threats"></div>
 				</div>
 			</section>
 

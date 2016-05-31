@@ -1,0 +1,35 @@
+.bbg__map--threats {
+	background-color: #F1F1F1;
+	height: 350px;
+	width: 100%;
+
+	@include media($medium-screen) {
+		height: 400px;
+	}
+
+	@include media($medium-large-screen) {
+		height: 500px;
+	}
+
+	@include media($large-screen) {
+		height: 600px;
+	}
+}
+
+.bbg__map-profile__mugshot {
+	float: left;
+	margin-right: 1rem;
+	width: 30%;
+}
+
+.bbg__map-profile__title {
+
+}
+
+.bbg__map-profile__network {
+
+}
+
+.bbg__map-profile__date {
+	color: $color-gray-medium;
+}
