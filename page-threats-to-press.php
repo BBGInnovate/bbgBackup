@@ -117,12 +117,13 @@ get_header(); ?>
 							if(  $counter==1 ){
 								echo '</div>';
 								echo '<div class="usa-grid">';
+								echo '<h5 class="bbg-label">News + updates</h5>';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
 							} elseif( $counter==3 ){
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								//echo '<h6 class="page-title bbg-label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4
