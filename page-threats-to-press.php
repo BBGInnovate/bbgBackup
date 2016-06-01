@@ -13,6 +13,21 @@ There are some nuances to this.  Note that we're not using the paged parameter b
 http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 ****/
 
+$pageContent = "";
+$pageTitle = "";
+$pageExcerpt = "";
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$pageContent = get_the_content();
+		$pageTitle = get_the_title();
+		$pageExcerpt = get_the_excerpt();
+		$pageContent = apply_filters('the_content', $pageContent);
+		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
+
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $numPostsFirstPage=7;
@@ -77,7 +92,14 @@ get_header(); ?>
 					<div id="map-threats" class="bbg__map--threats"></div>
 			</section>
 
-
+			<section id="mission" class="usa-section usa-grid">
+			<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
+			<?php
+				echo '<h3 id="site-intro" class="usa-font-lead">';
+				echo $pageContent; // or $pageExcerpt
+				echo '</h3>';
+			?>
+			</section><!-- Site introduction -->
 
 			<div class="usa-grid-full">
 
