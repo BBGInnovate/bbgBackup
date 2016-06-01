@@ -30,7 +30,7 @@ wp_reset_query();
 
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-$numPostsFirstPage=7;
+$numPostsFirstPage=6;
 $numPostsSubsequentPages=6;
 
 $threatsCat=get_category_by_slug('threats-to-press');
