@@ -121,7 +121,8 @@ get_header(); ?>
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-							} elseif( $counter==3 ){
+							//} elseif( $counter==3 ){
+							} elseif( $counter==2 ){
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
