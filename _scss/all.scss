@@ -31,14 +31,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 @import 'core/defaults';
 @import 'core/variables';
+@import 'bbg/variables-bbg';
+
 @import 'core/fonts';
 @import 'core/base';
 @import 'core/grid-settings';
 @import 'core/grid';
 @import 'core/utilities';
 
-@import 'bbg/variables-bbg'; /*MOVED FROM BELOW TO UPDATE FONTS*/
-@import 'bbg/utilities';
+@import 'bbg/utilities';/*MOVED FROM BELOW TO UPDATE FONTS*/
 
 
 // Elements -------------- //

@@ -620,6 +620,22 @@ body {
   }
 }
 @media screen and (min-width: 1201px) {
+  .usa-grid,
+  .usa-grid-full {
+    /*
+    .usa-width-one-sixth {
+      @include span-columns(2);
+
+      &:nth-child(3n) {
+        @include span-columns(2);
+      }
+
+      &:nth-child(6n) {
+        margin-right: 0;
+      }
+    }
+    */
+  }
   .usa-grid .usa-width-one-whole,
   .usa-grid-full .usa-width-one-whole {
     float: left;
@@ -701,32 +717,6 @@ body {
   .usa-grid-full .usa-width-three-fourths:last-child {
     margin-right: 0;
   }
-  .usa-grid .usa-width-one-sixth,
-  .usa-grid-full .usa-width-one-sixth {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
-  }
-  .usa-grid .usa-width-one-sixth:last-child,
-  .usa-grid-full .usa-width-one-sixth:last-child {
-    margin-right: 0;
-  }
-  .usa-grid .usa-width-one-sixth:nth-child(3n),
-  .usa-grid-full .usa-width-one-sixth:nth-child(3n) {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
-  }
-  .usa-grid .usa-width-one-sixth:nth-child(3n):last-child,
-  .usa-grid-full .usa-width-one-sixth:nth-child(3n):last-child {
-    margin-right: 0;
-  }
-  .usa-grid .usa-width-one-sixth:nth-child(6n),
-  .usa-grid-full .usa-width-one-sixth:nth-child(6n) {
-    margin-right: 0;
-  }
   .usa-grid .usa-width-five-sixths,
   .usa-grid-full .usa-width-five-sixths {
     float: left;
@@ -765,6 +755,34 @@ body {
     margin-right: 0;
   }
 }
+@media screen and (min-width: 900px) {
+  .usa-grid .usa-width-one-sixth,
+  .usa-grid-full .usa-width-one-sixth {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%;
+  }
+  .usa-grid .usa-width-one-sixth:last-child,
+  .usa-grid-full .usa-width-one-sixth:last-child {
+    margin-right: 0;
+  }
+  .usa-grid .usa-width-one-sixth:nth-child(3n),
+  .usa-grid-full .usa-width-one-sixth:nth-child(3n) {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%;
+  }
+  .usa-grid .usa-width-one-sixth:nth-child(3n):last-child,
+  .usa-grid-full .usa-width-one-sixth:nth-child(3n):last-child {
+    margin-right: 0;
+  }
+  .usa-grid .usa-width-one-sixth:nth-child(6n),
+  .usa-grid-full .usa-width-one-sixth:nth-child(6n) {
+    margin-right: 0;
+  }
+}
 .usa-grid .usa-end-row,
 .usa-grid-full .usa-end-row {
   margin-right: 0;
@@ -783,7 +801,6 @@ body {
   left: -999em;
 }
 
-/*MOVED FROM BELOW TO UPDATE FONTS*/
 .u--no-wrap {
   white-space: nowrap;
 }
@@ -830,6 +847,7 @@ body {
   }
 }
 
+/*MOVED FROM BELOW TO UPDATE FONTS*/
 .usa-button,
 .usa-button-primary,
 .usa-button:visited,

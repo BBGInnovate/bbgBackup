@@ -72,6 +72,7 @@
     .usa-width-three-fourths {
       @include span-columns(9);
     }
+    /*
     .usa-width-one-sixth {
       @include span-columns(2);
 
@@ -83,6 +84,7 @@
         margin-right: 0;
       }
     }
+    */
     .usa-width-five-sixths {
       @include span-columns(10);
     }
@@ -94,6 +96,20 @@
       }
 
       &:nth-child(12n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include media($medium-large) {
+    .usa-width-one-sixth {
+      @include span-columns(2);
+
+      &:nth-child(3n) {
+        @include span-columns(2);
+      }
+
+      &:nth-child(6n) {
         margin-right: 0;
       }
     }

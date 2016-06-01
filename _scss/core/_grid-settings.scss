@@ -8,3 +8,5 @@ $large-screen:  1201px;
 $large: new-breakpoint(min-width $large-screen 12);
 $medium: new-breakpoint(min-width $medium-screen 6);
 $small: new-breakpoint(min-width $small-screen 1);
+
+$medium-large: new-breakpoint(min-width $medium-large-screen 12);
