@@ -84,7 +84,7 @@ get_header(); ?>
 				<?php /* Start the Loop */
 					$counter = 0;
 				?>
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
 
 					<?php
 
