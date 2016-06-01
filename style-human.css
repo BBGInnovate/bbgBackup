@@ -6540,6 +6540,8 @@ section.usa-section.bbg-banner__section {
   margin-bottom: 3rem;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__mugshot {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
   width: 100%;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__name {

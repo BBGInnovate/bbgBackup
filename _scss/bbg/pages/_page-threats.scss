@@ -35,6 +35,8 @@
 	margin-bottom: $site-margins;
 
 	.bbg__profile-grid__profile__mugshot {
+		-webkit-filter: grayscale(1);
+		filter: grayscale(1);
 		width: 100%;
 	}
 
