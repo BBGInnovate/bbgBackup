@@ -33,6 +33,10 @@ $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $numPostsFirstPage=7;
 $numPostsSubsequentPages=6;
 
+$threatsCat=get_category_by_slug('threats-to-press');
+$threatsPermalink = get_category_link($threatsCat->term_id);
+
+
 $postsPerPage=$numPostsFirstPage;
 $offset=0;
 if ($currentPage > 1) {
@@ -117,7 +121,7 @@ get_header(); ?>
 							if(  $counter==1 ){
 								echo '</div>';
 								echo '<div class="usa-grid">';
-								echo '<h5 class="bbg-label">News + updates</h5>';
+								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
