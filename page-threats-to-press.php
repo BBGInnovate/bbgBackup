@@ -92,64 +92,54 @@ get_header(); ?>
 					<div id="map-threats" class="bbg__map--threats"></div>
 			</section>
 
-			<section id="mission" class="usa-section usa-grid">
-			<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
-			<?php
-				echo '<h3 id="site-intro" class="usa-font-lead">';
-				echo $pageContent; // or $pageExcerpt
-				echo '</h3>';
-			?>
-			</section><!-- Site introduction -->
-
-			<div class="usa-grid-full">
-
-				<?php /* Start the Loop */
-					$counter = 0;
-				?>
-				<?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
-
-					<?php
-
-						$counter++;
-						//Add a check here to only show featured if it's not paginated.
-						if(  $counter==1 ){
-							echo '</div>';
-							echo '<div class="usa-grid">';
-							echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-						} elseif( $counter==3 ){
-							echo '</div><!-- left column -->';
-							echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-							echo '<header class="page-header">';
-							echo '<h6 class="page-title bbg-label small">More news</h6>';
-							echo '</header>';
-
-							//These values are used for every excerpt >=4
-							$includeImage = FALSE;
-							$includeMeta = FALSE;
-							$includeExcerpt=FALSE;
-						}
-						get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-						
-					?>
-				<?php endwhile; ?>
-					</div><!-- .bbg-grid right column -->
-			<?php endif; ?>
-
-
-			</div><!-- .usa-grid-full -->
-
-<!--
 			<section class="usa-section">
-				<div class="usa-grid-full">
-					<div class="usa-grid">
-						<h5 class="bbg-label">Threats around the world</h5>
-					</div>
-					<div id="map-threats" class="bbg__map--threats"></div>
+				<div class="usa-grid">
+					<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
+					<?php
+						echo '<h3 class="usa-font-lead">';
+						echo $pageContent; // or $pageExcerpt
+						echo '</h3>';
+					?>
 				</div>
-			</section>
--->
+				<div class="usa-grid-full">
 
-			<section class="usa-section" style="background-color: #333;">
+					<?php /* Start the Loop */
+						$counter = 0;
+					?>
+					<?php while ( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+
+						<?php
+
+							$counter++;
+							//Add a check here to only show featured if it's not paginated.
+							if(  $counter==1 ){
+								echo '</div>';
+								echo '<div class="usa-grid">';
+								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
+							} elseif( $counter==3 ){
+								echo '</div><!-- left column -->';
+								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
+								echo '<header class="page-header">';
+								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								echo '</header>';
+
+								//These values are used for every excerpt >=4
+								$includeImage = FALSE;
+								$includeMeta = FALSE;
+								$includeExcerpt=FALSE;
+							}
+							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+							
+						?>
+					<?php endwhile; ?>
+						</div><!-- .bbg-grid right column -->
+				<?php endif; ?>
+
+
+				</div><!-- .usa-grid-full -->
+			</section>
+
+			<section class="usa-section bbg__ribbon" style="">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
 						<h5 class="bbg-label">Fallen journalists</h5>
@@ -158,63 +148,63 @@ get_header(); ?>
 					<div class="usa-grid">
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="https://bbgredesign.voanews.com/wp-content/media/2016/06/mugshot__Almigdad_Mojalli__VOA__01-17-16.jpg" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Almigdad Mojalli</h3>
+							<h4 class="bbg__profile-grid__profile__name">Almigdad Mojalli</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. 17, 2016</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="https://bbgredesign.voanews.com/wp-content/media/2016/06/mugshot__Mukarram_Khan_Aatif__VOA__01-17-12.jpg" class="bbg__profile-grid__profile__mugshot"/>
-							<h3 class="bbg__profile-grid__profile__name">Mukarram Khan Aatif</h3>
+							<h4 class="bbg__profile-grid__profile__name">Mukarram Khan Aatif</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. 17, 2012</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h3 class="bbg__profile-grid__profile__name">Name goes here and hereg</h3>
+							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>

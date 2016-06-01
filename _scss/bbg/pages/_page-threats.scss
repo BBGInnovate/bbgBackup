@@ -1,18 +1,22 @@
 .bbg__map--threats {
 	background-color: #F1F1F1;
-	height: 350px;
+	height: 300px;
 	width: 100%;
+
+	@include media($small-screen) {
+		height: 350;
+	}
 
 	@include media($medium-screen) {
 		height: 400px;
 	}
 
 	@include media($medium-large-screen) {
-		height: 500px;
+		height: 450px;
 	}
 
 	@include media($large-screen) {
-		height: 600px;
+		//height: 600px;
 	}
 
 	.bbg__map-profile__mugshot {

@@ -6503,8 +6503,13 @@ section.usa-section.bbg-banner__section {
 
 .bbg__map--threats {
   background-color: #F1F1F1;
-  height: 350px;
+  height: 300px;
   width: 100%;
+}
+@media screen and (min-width: 481px) {
+  .bbg__map--threats {
+    height: 350;
+  }
 }
 @media screen and (min-width: 600px) {
   .bbg__map--threats {
@@ -6513,12 +6518,7 @@ section.usa-section.bbg-banner__section {
 }
 @media screen and (min-width: 900px) {
   .bbg__map--threats {
-    height: 500px;
-  }
-}
-@media screen and (min-width: 1201px) {
-  .bbg__map--threats {
-    height: 600px;
+    height: 450px;
   }
 }
 .bbg__map--threats .bbg__map-profile__mugshot {
