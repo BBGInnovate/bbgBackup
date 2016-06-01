@@ -84,7 +84,6 @@ get_header(); ?>
 
 				<header class="page-header">
 					<h5 class="bbg-label--mobile large">Threats to Press</h5>
-					<h6 class="bbg__page-header__tagline">Tagline explaining Threats to Press goes here and here.</h6>
 				</header><!-- .page-header -->
 			</div>
 
@@ -93,7 +92,7 @@ get_header(); ?>
 			</section>
 
 			<section class="usa-section">
-				<div class="usa-grid">
+				<div class="usa-grid" style="margin-bottom: 3rem">
 					<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
 					<?php
 						echo '<h3 class="usa-font-lead">';
@@ -139,7 +138,7 @@ get_header(); ?>
 				</div><!-- .usa-grid-full -->
 			</section>
 
-			<section class="usa-section bbg__ribbon" style="">
+			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
 						<h5 class="bbg-label">Fallen journalists</h5>

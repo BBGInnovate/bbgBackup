@@ -6536,6 +6536,11 @@ section.usa-section.bbg-banner__section {
   color: #757575;
 }
 
+.bbg__memorial .usa-grid-full {
+  background-color: #f1f1f1;
+  padding-top: 2rem;
+}
+
 .bbg__profile-grid__profile {
   margin-bottom: 3rem;
 }
@@ -6543,9 +6548,6 @@ section.usa-section.bbg-banner__section {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
   width: 100%;
-}
-.bbg__profile-grid__profile .bbg__profile-grid__profile__name {
-  color: #FFF;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__dates {
   color: #999;
