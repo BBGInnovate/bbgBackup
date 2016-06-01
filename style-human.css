@@ -3891,12 +3891,21 @@ object {
   width: 100%;
 }
 
+/*
+!!? we're using a negative margin here because there's an awkward spacing
+before the photo cutline. Why don't we fix that spacing,
+instead of trying to fix it here.
+*/
 .bbg__article-header__caption {
-  margin-top: -2rem;
-  margin-right: 0;
-  margin-bottom: 3rem;
-  margin-left: auto;
+  /*
+  margin:  {
+  	top: -2rem;
+  	right: 0;
+  	bottom: $site-margins;
+  	left: auto;
+  }
   width: 100%;
+  */
 }
 
 .bbg__article--no-featured-image {

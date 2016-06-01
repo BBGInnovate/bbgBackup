@@ -89,6 +89,9 @@ get_header(); ?>
 
 			<section class="usa-section">
 					<div id="map-threats" class="bbg__map--threats"></div>
+					<div class="usa-grid">
+						<p class="bbg__article-header__caption">This map tracks the courageous journalists reporting for Voice of America, Radio Free Europe/Radio Liberty, Radio and TV Marti, Middle East Broadcasting Networks (Alhurra and Radio Sawa), and Radio Free Asia, and the threats that they face on a regular basis. </p>
+					</div>
 			</section>
 
 			<section class="usa-section">
@@ -215,11 +218,11 @@ get_header(); ?>
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<div class="bbg__quotation ">
-						<h2 class="bbg__quotation-text--large">“This is the particular invaluable contribution that a station like RFA, dedicated to the strengthening of democratic values and freedoms all over the world, has to make.”</h2>
+						<h2 class="bbg__quotation-text--large">“They were in a position to experience world events first-hand and to make a difference. Their work portrayed war in a close-up fashion that showed the world what conflict is really like, what it’s like for the victims and what it’s like for the soldiers.”</h2>
 						<div class="bbg__quotation-attribution__container">
 							<p class="bbg__quotation-attribution">
-								<img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/aung_san_suu_kyi-small-square.jpg" class="bbg__quotation-attribution__mugshot">
-								<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">Aung San Suu Kyi</span><span class="bbg__quotation-attribution__credit">Nobel Peace Prize recipient</span></span>
+								<img src="http://placehold.it/100x100" class="bbg__quotation-attribution__mugshot">
+								<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">Richard Engel</span><span class="bbg__quotation-attribution__credit">NBC News chief foreign correspondent</span></span>
 							</p>
 						</div>
 					</div>
