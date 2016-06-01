@@ -156,69 +156,15 @@ get_header(); ?>
 					</div>
 
 					<div class="usa-grid">
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="https://bbgredesign.voanews.com/wp-content/media/2016/06/mugshot__Almigdad_Mojalli__VOA__01-17-16.jpg" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Almigdad Mojalli</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. 17, 2016</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
+						<!--
 						<div class="bbg__profile-grid__profile usa-width-one-sixth">
 							<img src="https://bbgredesign.voanews.com/wp-content/media/2016/06/mugshot__Mukarram_Khan_Aatif__VOA__01-17-12.jpg" class="bbg__profile-grid__profile__mugshot"/>
 							<h4 class="bbg__profile-grid__profile__name">Mukarram Khan Aatif</h4>
 							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. 17, 2012</h5>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="http://placehold.it/300x400" class="bbg__profile-grid__profile__mugshot" />
-							<h4 class="bbg__profile-grid__profile__name">Name goes here and hereg</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. XX, 20XX</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-
+						-->
+						<div id="memorialWall"></div>
 					</div>
 				</div>
 			</section>

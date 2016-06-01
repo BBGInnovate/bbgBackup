@@ -18,7 +18,7 @@ function init() {
 	                 callback: showInfo,
 	                 simpleSheet: true,
 	                 orderby: 'Date',
-	                 reverse: false } );
+	                 reverse: true } );
 }
 
 function showInfo(data) {
@@ -65,6 +65,43 @@ function showInfo(data) {
 	console.log("This JSON is from the google spreadsheet");
 	console.log("https://docs.google.com/spreadsheets/d/1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo/pubhtml");
 	console.log(geojson);
+
+	//createMemorial(data);
+
+
+
+
+	var wall = "";
+	var journalist = "";
+	var dataLength2 = data.length;
+	var mugshot = "";
+	var altTag = "";
+
+	for (var i = 0; i < dataLength2; i++){
+		console.log("i: "+i);
+		mugshot = ""
+		if (data[i].Mugshot && data[i].Mugshot!= ""){
+			mugshot = data[i].Mugshot;
+			alt = "Photo of " + data[i].Name;
+		} else {
+			mugshot = "http://placehold.it/300x400";
+			alt ="";
+		}
+		if (data[i].Status == "Killed"){
+			journalist = "";
+			console.log("i (killed): "+i);
+			journalist +='<div class="bbg__profile-grid__profile usa-width-one-sixth">';
+			journalist +='<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>';
+			journalist +='<h4 class="bbg__profile-grid__profile__name">' + data[i].Name + '</h4>';
+			journalist +='<h5 class="bbg__profile-grid__profile__dates">Killed ' + data[i].Date + '</h5>';
+			journalist +='<p class="bbg__profile-grid__profile__description"></p>';
+			journalist +='</div>';
+
+			wall += journalist;
+		}
+	}
+	console.log(wall);
+	document.getElementById("memorialWall").innerHTML = wall;
 
 	createMap();
 }
@@ -125,3 +162,4 @@ function createMap(){
 
 	resizeStuffOnResize();
 }
+
