@@ -1858,7 +1858,17 @@ function getSoapboxStr($soap) {
 	return $s;
 }
 
-
-
+add_filter('the_posts', 'show_future_posts');
+function show_future_posts($posts) {
+	global $wp_query, $wpdb;
+	$returnVal=$posts;
+	if(is_single() && $wp_query->post_count == 0) {
+		$futurePosts = $wpdb->get_results($wp_query->request);
+		if (count($futurePosts) > 0 && has_category('Event', $futurePosts[0])) {
+			$returnVal = $futurePosts;	   		
+		}
+	} 
+	return $returnVal;
+}
 
 ?>
