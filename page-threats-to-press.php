@@ -89,30 +89,25 @@ get_header(); ?>
 					<?php
 
 						$counter++;
-
-
 						//Add a check here to only show featured if it's not paginated.
-						if (  (!is_paged() && $counter==1) ){
-							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
-						} else {
-							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
-								echo '</div>';
-								echo '<div class="usa-grid">';
-								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
-								echo '</div><!-- left column -->';
-								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
-								echo '</header>';
+						if(  $counter==1 ){
+							echo '</div>';
+							echo '<div class="usa-grid">';
+							echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
+						} elseif( $counter==3 ){
+							echo '</div><!-- left column -->';
+							echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
+							echo '<header class="page-header">';
+							echo '<h6 class="page-title bbg-label small">More news</h6>';
+							echo '</header>';
 
-								//These values are used for every excerpt >=4
-								$includeImage = FALSE;
-								$includeMeta = FALSE;
-								$includeExcerpt=FALSE;
-							}
-							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+							//These values are used for every excerpt >=4
+							$includeImage = FALSE;
+							$includeMeta = FALSE;
+							$includeExcerpt=FALSE;
 						}
+						get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+						
 					?>
 				<?php endwhile; ?>
 					</div><!-- .bbg-grid right column -->
