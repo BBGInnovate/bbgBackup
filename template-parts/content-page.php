@@ -58,11 +58,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
 			echo the_post_thumbnail( 'large-thumb' );
-			echo '</div>';
 
 			if ($featuredImageCutline != "") {
-				echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+				echo '<div class="usa-grid">';
+					echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+				echo '</div> <!-- usa-grid -->';
 			}
+
+			echo '</div>';
 
 			echo '</div> <!-- usa-grid-full -->';
 		}
