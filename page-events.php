@@ -15,8 +15,8 @@ http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-$numPostsFirstPage=7;
-$numPostsSubsequentPages=6;
+$numPostsFirstPage=12;
+$numPostsSubsequentPages=11;
 
 $postsPerPage=$numPostsFirstPage;
 $offset=0;
@@ -37,23 +37,14 @@ $qParams=array(
 );
 
 /*** late in the game we ran into a pagination issue, so we're running a second query here ***/
-$custom_query_args= $qParams;
-$custom_query = new WP_Query( $custom_query_args );
+$past_events_query_args= $qParams;
+$past_events_query = new WP_Query( $past_events_query_args );
 
 $totalPages=1;
-if ($custom_query->found_posts > $numPostsFirstPage) {
-	$totalPages = 1 + ceil( ($custom_query->found_posts - $numPostsFirstPage)/$numPostsSubsequentPages);
+if ($past_events_query->found_posts > $numPostsFirstPage) {
+	$totalPages = 1 + ceil( ($past_events_query->found_posts - $numPostsFirstPage)/$numPostsSubsequentPages);
 }
 
-//query_posts($qParams);
-
-
-/*** SHARING VARS ****/
-/*
-$teamCategoryID=$_GET["cat"];
-$teamCategory=get_category($teamCategoryID);
-$portfolioDescription=$teamCategory->description;
-*/
 $portfolioDescription="some portfolio description could go here based on the category description?";
 
 get_header(); ?>
@@ -62,7 +53,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<div class="usa-grid">
 
-			<?php if ( $custom_query->have_posts() ) : ?>
+			<?php if ( $past_events_query->have_posts() ) : ?>
 
 				<header class="page-header">
 					<h6 class="bbg-label--mobile large">
@@ -76,42 +67,49 @@ get_header(); ?>
 					</h6>
 				</header><!-- .page-header -->
 			</div>
-			<?php
-				if ($mobileAppsPostContent != "") {
-					echo '<section id="mobileAppsIntro" class=" usa-grid">';
-					echo $mobileAppsPostContent;
-					echo '</section>';
-				}
-			?>
+			
 			<div class="usa-grid-full">
-				<?php
-					$counter=0;
-					while ( $custom_query->have_posts() )  {
-						$custom_query->the_post();
-						$counter=$counter+1;
-						if ( $counter == 1 && $currentPage==1 ) {
-							$includeMetaFeatured = FALSE;
+
+				<?php /* Start the Loop */ 
+					$counter = 0;
+				?>
+
+
+
+				<?php /* Start the Loop */ ?>
+				<?php while ( $past_events_query->have_posts() ) : $past_events_query->the_post(); ?>
+
+					<?php
+						$counter++;
+													//Add a check here to only show featured if it's not paginated.
+						if (  (!is_paged() && $counter==1) ){
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
-							echo '<div class="usa-grid">';
-						} elseif ( $counter == 1 && $currentPage != 1 ) {
-							echo '<div class="usa-grid">';
-							$gridClass = "bbg-grid--1-2-3";
-							get_template_part( 'template-parts/content-portfolio', get_post_format() );
 						} else {
-							$gridClass = "bbg-grid--1-2-3";
-							get_template_part( 'template-parts/content-portfolio', get_post_format() );
+							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
+								echo '</div>';
+								echo '<div class="usa-grid">';
+								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
+							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
+								echo '</div><!-- left column -->';
+								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
+								echo '<header class="page-header">';
+								echo '<h6 class="page-title bbg-label small">More events</h6>';
+								echo '</header>';
+
+								//These values are used for every excerpt >=4
+								$includeImage = FALSE;
+								$includeMeta = FALSE;
+								$includeExcerpt=FALSE;
+							}
+							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 						}
-					}
-					echo '</div><!-- .usa-grid -->';
+					?>
 
-					echo '<div class="usa-grid">';
-					/*
-					$args = array(
-						'prev_text'          => __( 'Older projects' ),
-						'next_text'          => __( 'Newer projects' ),
-						'screen_reader_text' => __( 'Project navigation' )
-					);*/
+				<?php endwhile; ?>
 
+				</div><!-- .usa-grid -->
+				
+				<?php 
 					echo '<nav class="navigation posts-navigation" role="navigation">';
 					echo '<h2 class="screen-reader-text">Event navigation</h2>';
 					echo '<div class="nav-links">';
@@ -131,20 +129,62 @@ get_header(); ?>
 					
 					echo '</div>';
 					echo '</nav>';
-					echo '</div><!-- .usa-grid -->';
 
+					
 				?>
 
-			<?php else : ?>
 
-				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
 			<?php endif; ?>
 			</div><!-- .usa-grid-full -->
+			<div class="usa-grid-full">
+			<?php
+				if (!is_paged()) {
+					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';
+					echo '<header class="page-header">';
+					echo '<h6 class="page-title bbg-label small">Upcoming events</h6>';
+					echo '</header>';
+
+					$qParamsUpcoming = array(
+						'post_type' => array('post')
+						,'cat' => get_cat_id('Event')
+						,'posts_per_page' => $postsPerPage
+						,'offset' => $offset
+						,'post_status' => array('future')
+						,'order' => 'ASC'
+					);
+					$future_events_query_args = $qParamsUpcoming;
+					$future_events_query = new WP_Query( $future_events_query_args );
+					while ( $future_events_query->have_posts() ) {
+						$future_events_query->the_post(); 
+						$counter++;
+						//These values are used for every excerpt >=4
+						$includeImage = FALSE;
+						$includeMeta = FALSE;
+						$includeExcerpt = FALSE;
+						//get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+
+						//I'm not using get_template_part because of how future permalinks, but we could make that work if we needed
+
+						echo '<article id="post-' .get_the_ID() . '" ' . get_post_class($classNames) . '>';
+						global $post;
+						$my_post = clone $post;
+						$my_post->post_status = 'published';
+						$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+						$permalink = get_permalink($my_post);
+						echo "<a href='$permalink'>" . get_the_title() . "</a>";
+						echo '</article>';
+
+
+
+
+					}
+					echo '</section>';
+				}
+			?>
+			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
-
-
