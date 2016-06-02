@@ -317,6 +317,12 @@ require get_template_directory() . '/inc/bbg-functions-congressional-committees.
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
 
 /**
+ * Load BBG Board + Sr Management
+ */
+require get_template_directory() . '/inc/bbg-functions-contactCards.php';
+
+
+/**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
  * Reference: http://www.paulund.co.uk/how-to-display-author-bio-with-wordpress
  */
@@ -648,39 +654,6 @@ function sortByTitle($a, $b) {
     return strcmp($a["title"], $b["title"]);
 }
 
-function acf_load_contact_card_choices( $field ) {
-    //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
-    //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
-
-	global $post;
-	$post_original=$post;
-    $field['choices'] = array();
-    $qParamsContact=array(
-		'post_type' => array('post')
-		,'cat' => get_cat_id('contact')
-		,'posts_per_page' => 100
-	);
-	$custom_query = new WP_Query( $qParamsContact );
-	$choices = array();
-	while ( $custom_query -> have_posts() )  {
-		$custom_query->the_post();
-		$choices[] = array(
-			"post_id"=>get_the_ID(),
-			"title"=>get_the_title()
-		);
-	}
-	usort($choices, 'sortByTitle');
-	foreach ($choices as $choice) {
-		$field['choices'][ $choice["post_id"]] = $choice["title"];
-	}
-
-	$post=$post_original;
-	// return the field
-	return $field;
-}
-
-add_filter('acf/load_field/name=contact_post_id', 'acf_load_contact_card_choices');
-
 function acf_load_committee_member_choices( $field ) {
     //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
     //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
@@ -813,44 +786,6 @@ function my_add_excerpts_to_pages() {
      add_post_type_support( 'page', 'excerpt' );
 }
 
-function renderContactCard($postIDs) {
-	if (is_array($postIDs) && count($postIDs) > 0) {
-		$qParamsContactCard=array(
-			'post__in' => $postIDs,
-			'ignore_sticky_posts' => true
-		);
-		$custom_query = new WP_Query( $qParamsContactCard );
-		if ( $custom_query->have_posts() ) :
-			echo '<div class="usa-grid-full bbg__contact-box">';
-			echo '<h3 class="bbg__contact-box__title">Find out more</h3>';
-			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				//now let's get the custom fields associated with our related contact posts
-				$id = get_the_ID();
-				$email = get_post_meta( $id, 'email',true );
-				$fullname = get_post_meta( $id, 'fullname',true );
-				$phone = get_post_meta( $id, 'phone',true );
-				$bio = get_the_content($id);
-				$office = get_post_meta( $id, 'office',true );
-				$jobTitle = get_post_meta( $id, 'job_title',true );
-
-				if ($jobTitle!=""){
-					$office = $jobTitle . ", " . $office;
-				}
-
-				echo '<div class="bbg__contact__card">';
-				echo '<p>Contact '.$fullname.'<br/>';
-				echo $office.'</p>';
-				echo '<ul class="bbg__contact__card-list">';
-				echo '<li class="bbg__contact__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__contact__icon email"></span><span class="bbg__contact__text">'.$email.'</span></a></li>';
-				echo '<li class="bbg__contact__link phone"><span class="bbg__contact__icon phone"></span><span class="bbg__contact__text">'.$phone.'</span></li>';
-				echo '</ul></div>';
-
-			endwhile;
-			echo '</div>';
-		endif;
-		wp_reset_postdata();
-	}
-}
 
 function bbgredesign_get_image_size_links($imgID) {
 	//http://justintadlock.com/archives/2011/01/28/linking-to-all-image-sizes-in-wordpress
@@ -1000,191 +935,6 @@ function getRandomEntityImage() {
 	}
 
 }
-
-
-function outputBoardMembers($showActive) {
-	//$showActive should be a 0 or 1 passed in a 'active' in the shortcode
-	$boardPage=get_page_by_title('The Board');
-	$thePostID=$boardPage->ID;
-
-	$formerCSS="";
-	$formerGovernorsLink = "";
-
-	if ($showActive==0) {
-		$formerCSS=" bbg__former-member";
-	}
-
-	$qParams=array(
-		'post_type' => array('page')
-		,'post_status' => array('publish')
-		,'post_parent' => $thePostID
-		,'order' => 'ASC'
-		,'orderby' => 'meta_value'
-		,'meta_key' => 'last_name'
-		,'posts_per_page' => 100
-	);
-	$custom_query = new WP_Query($qParams);
-
-	//Default adds a space above header if there's no image set
-	$featuredImageClass = " bbg__article--no-featured-image";
-
-	$boardStr="";
-	$chairpersonStr="";
-	$secretaryStr="";
-
-	while ( $custom_query->have_posts() )  {
-		$custom_query->the_post();
-		$id=get_the_ID();
-		$active=get_post_meta( $id, 'active', true );
-		if (!isset($active) || $active=="" || !$active) {
-			$active=0;
-		}
-		if (  (get_the_title() != "Special Committees") && ($showActive==$active)) {
-			$isChairperson=get_post_meta( $id, 'chairperson', true );
-			$isSecretary=get_post_meta( $id, 'secretary_of_state', true );
-			//$occupation=get_post_meta( $id, 'occupation', true );
-			$email=get_post_meta( $id, 'email', true );
-			$phone=get_post_meta( $id, 'phone', true );
-			$twitterProfileHandle=get_post_meta( $id, 'twitter_handle', true );
-			$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
-			$profilePhoto = "";
-
-			if ($profilePhotoID) {
-				$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-				$profilePhoto = $profilePhoto[0];
-			}
-
-			$profileName = get_the_title();
-			$occupation = "";
-			if ($isChairperson) {
-				$occupation =  '<span class="bbg__profile-excerpt__occupation">Chairman of the Board</span>';
-			} else if ($isSecretary) {
-				$occupation =  '<span class="bbg__profile-excerpt__occupation">Ex officio board member</span>';
-			}
-
-
-			$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-				$b.=  '<h3 class="bbg__profile-excerpt__name">';
-					$b.=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
-				$b.=  '</h3>';
-
-				//Only show a profile photo if it's set.
-				if ($profilePhoto!=""){
-					$b.=  '<a href="' . get_the_permalink() . '">';
-						$b.=  '<div class="bbg__profile-excerpt__photo-container">';
-							$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo' . $formerCSS . '" alt="Photo of BBG Governor '. get_the_title() .'"/>';
-						$b.=  '</div>';
-					$b.=  '</a>';
-				}
-
-				$b.= '<p>' . $occupation . get_the_excerpt() . '</p>';
-			$b.=  '</div><!-- .bbg__profile-excerpt -->';
-
-			if ($isChairperson) {
-				$chairpersonStr=$b;
-			} else if ($isSecretary) {
-				$secretaryStr=$b;
-			} else {
-				$boardStr.=$b;
-			}
-		}
-	}
-	$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>' . $formerGovernorsLink;
-
-	return $boardStr;
-}
-function board_member_list_shortcode($atts) {
-	return outputBoardMembers($atts['active']);
-}
-add_shortcode('board_member_list', 'board_member_list_shortcode');
-
-
-function outputSeniorManagement($type) {
-	$boardPage=get_page_by_title('Senior Management');
-	$thePostID=$boardPage->ID;
-
-	$qParams=array(
-		'post_type' => array('page')
-		,'post_status' => array('publish')
-		,'post_parent' => $thePostID
-		,'orderby' => 'meta_value'
-		,'meta_key' => 'last_name'
-		,'order' => 'ASC'
-		,'posts_per_page' => 100
-	);
-	$custom_query = new WP_Query($qParams);
-
-	$boardStr="";
-	$ceoStr="";
-	$granteeStr="";
-
-	while ( $custom_query->have_posts() )  {
-		$custom_query->the_post();
-		$id=get_the_ID();
-		$active=get_post_meta( $id, 'active', true );
-		if ($active){
-			$isCEO=get_post_meta( $id, 'ceo', true );
-			$isGrantee=get_post_meta( $id, 'grantee_leadership', true );
-			$occupation=get_post_meta( $id, 'occupation', true );
-			$email=get_post_meta( $id, 'email', true );
-			$phone=get_post_meta( $id, 'phone', true );
-			$twitterProfileHandle=get_post_meta( $id, 'twitter_handle', true );
-			$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
-			$profilePhoto = "";
-
-			if ($profilePhotoID) {
-				$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-				$profilePhoto = $profilePhoto[0];
-			}
-
-			$profileName = get_the_title(); // . ', ' . $occupation;
-
-			$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-				$b.=  '<h3 class="bbg__profile-excerpt__name">';
-					$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
-				$b.=  '</h3>';
-
-				//Only show a profile photo if it's set.
-				if ($profilePhoto!=""){
-					$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">';
-						$b.=  '<div class="bbg__profile-excerpt__photo-container">';
-							$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .', ' . $occupation .'"/>';
-						$b.=  '</div>';
-					$b.=  '</a>';
-				}
-
-				$b.=  '<p class="bbg__profile-excerpt__text">';
-					$b.=  '<span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
-					$b.=  get_the_excerpt();
-				$b.=  '</p>';
-			$b.=  '</div><!-- .bbg__profile-excerpt__profile -->';
-
-			if ($isCEO) {
-				$ceoStr=$b;
-			} else if ($isGrantee) {
-				$granteeStr.=$b;
-			} else {
-				$boardStr.=$b;
-			}
-		}
-	}
-	$s = '';
-	$s .= '<div class="usa-grid-full">';
-	if ($type=='ibb') {
-		$s .=  $ceoStr . $boardStr;
-	} else if ($type=='broadcast') {
-		$s .= $granteeStr;
-	}
-	$s .= '</div>';
-
-	return $s;
-}
-
-function senior_management_list_shortcode($atts) {
-	return outputSeniorManagement($atts['type']);
-}
-add_shortcode('senior_management_list', 'senior_management_list_shortcode');
-
 
 function outputBroadcasters($cols) {
 	$entityParentPage = get_page_by_path('broadcasters');
