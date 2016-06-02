@@ -204,6 +204,13 @@ function bbginnovate_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bbginnovate_scripts' );
 
+function enqueueAdminStyles() {
+	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array('jquery'), '20160223', true );
+	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
+}
+
+add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
+
 function loggedInAlerts() {
 	if ( is_user_logged_in() ) {
 		echo '<script type="text/javascript">';
@@ -285,12 +292,7 @@ add_filter( 'get_the_archive_title', function ($title) {
 	return $title;
 });
 
-function enqueueAdminStyles() {
-	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array('jquery'), '20160223', true );
-	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
-}
 
-add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
 
 
 
