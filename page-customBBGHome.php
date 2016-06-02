@@ -282,7 +282,8 @@ get_header();
 					/* let's get our featured post, which is either selected in homepage settings or is most recent post */
 					if ($featuredPost) {
 						$qParams=array(
-							'post__in' => array($featuredPost->ID)
+							'post__in' => array($featuredPost->ID),
+							'post_status' => array('publish','future')
 						);
 					} else {
 						$qParams=getRecentPostQueryParams(1,$postIDsUsed,$STANDARD_POST_CATEGORY_EXCLUDES);
