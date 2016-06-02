@@ -285,35 +285,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 	return $title;
 });
 
-
-
-
-/*=========== ADD USERID TO USER LIST SO THAT IT'S EASY TO SET THE RANKING GENERAL SETTING *===========*/
-add_filter('manage_users_columns', 'pippin_add_user_id_column');
-function pippin_add_user_id_column($columns) {
-	$new = array();
-	foreach($columns as $key => $title) {
-		if ($key=='username') {
-			$new['user_id'] = 'ID';
-			$new['isActive'] = 'Active';
-		}
-		$new[$key] = $title;
-	}
-	return $new;
-}
-
-add_action('manage_users_custom_column',  'pippin_show_user_id_column_content', 10, 3);
-function pippin_show_user_id_column_content($value, $column_name, $user_id) {
-    $user = get_userdata( $user_id );
-	if ( 'user_id' == $column_name ) {
-		return $user_id;
-	}
-	if ('isActive' == $column_name) {
-		return ($user->isActive == "on") ? "<span class='adminYes'>Yes</span>": "<span class='adminNo'>No</span>";
-	}
-    return $value;
-}
-
 function enqueueAdminStyles() {
 	wp_enqueue_script( 'bbginnovate-bbgredesign', get_template_directory_uri() . '/js/bbgredesign.js', array('jquery'), '20160223', true );
 	wp_enqueue_style( 'bbginnovate_admin_css', get_template_directory_uri() . '/bbgredesign_admin.css', array(), '20160403' );
