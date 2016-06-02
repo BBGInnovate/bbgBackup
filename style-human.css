@@ -529,6 +529,10 @@ body {
   .usa-grid-full .usa-width-one-half:last-child {
     margin-right: 0;
   }
+  .usa-grid .usa-width-one-half:nth-child(2n),
+  .usa-grid-full .usa-width-one-half:nth-child(2n) {
+    margin-right: 0;
+  }
   .usa-grid .usa-width-one-third,
   .usa-grid-full .usa-width-one-third {
     float: left;
@@ -4922,7 +4926,7 @@ article {
   line-height: 1.5;
 }
 .bbg__article-sidebar .bbg__article-sidebar__tagline {
-  color: #999;
+  color: #757575;
   font-size: 90%;
   margin-top: 0;
   margin-bottom: 1.5rem;

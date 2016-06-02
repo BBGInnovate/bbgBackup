@@ -9,6 +9,10 @@
     }
     .usa-width-one-half {
       @include span-columns(3);
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
     }
     .usa-width-one-third {
       @include span-columns(2);

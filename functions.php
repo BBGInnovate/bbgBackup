@@ -723,7 +723,7 @@ function outputJoblist() {
 		$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 	} else {
 		$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
-		$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America postings and Office of Cuban Broadcasting</p>";
+		$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
 		for ($i=0; $i < count($jobs); $i++) {
 			$j=$jobs[$i];
 			//var_dump($j);

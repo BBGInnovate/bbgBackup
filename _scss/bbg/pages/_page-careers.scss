@@ -1,0 +1,15 @@
+.bbg__employee-profile__excerpt {
+	@extend .usa-width-one-half;
+
+	margin-bottom: $site-margins;
+
+	.bbg__employee-profile__excerpt__description {
+		font-family: $font-sans;
+	}
+
+	&.featured {
+		width: 100% !important;
+		float: none !important;
+		margin-right: 0 !important;
+	}
+}
