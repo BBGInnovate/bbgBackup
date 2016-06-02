@@ -72,7 +72,7 @@ $postIDsUsed=array();
 if ($featuredPost) {
 	$postIDsUsed[]=$featuredPost->ID;
 }
-if ($featuredBoardMeeting) {
+if ($showFeaturedEvent && $featuredBoardMeeting) {
 	$postIDsUsed[]=$featuredBoardMeeting->ID;
 }
 if ($soap) {
