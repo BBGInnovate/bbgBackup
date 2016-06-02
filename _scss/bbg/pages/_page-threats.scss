@@ -77,3 +77,10 @@
 	}
 }
 
+.bbg__profile-grid__profile {
+	@extend .usa-width-one-sixth;
+	float: none !important;
+	display: inline-block !important;
+	vertical-align: top;
+}
+

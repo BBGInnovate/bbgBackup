@@ -22,7 +22,7 @@ function init() {
 }
 
 function showInfo(data) {
-	// data comes through as a simple array since simpleSheet is turned on
+	// Create the GeoJSON for the map
 	geojson[0] = new Object();
 
 	geojson[0].type = "FeatureCollection";
@@ -62,37 +62,46 @@ function showInfo(data) {
 		geojson[0].features[i].properties = {"title" : title, "description" : description, "country" : data[i].Country, "date" : data[i].Date, "link" : data[i].Link, "network" : data[i].Network, "marker-color" : pinColor, "marker-size" : "medium", "marker-symbol" : ""};
 	}
 
+	/*
 	console.log("This JSON is from the google spreadsheet");
 	console.log("https://docs.google.com/spreadsheets/d/1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo/pubhtml");
 	console.log(geojson);
+	*/
 
-	//createMemorial(data);
-
-
-
-
+	//Create the memorial wall for slain journalists
 	var wall = "";
 	var journalist = "";
+	var journalistName = "";
 	var dataLength2 = data.length;
 	var mugshot = "";
 	var altTag = "";
 
 	for (var i = 0; i < dataLength2; i++){
-		console.log("i: "+i);
+
 		mugshot = ""
 		if (data[i].Mugshot && data[i].Mugshot!= ""){
 			mugshot = data[i].Mugshot;
-			alt = "Photo of " + data[i].Name;
+			altTag = "Photo of " + data[i].Name;
+			mugshot = '<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>'
 		} else {
 			mugshot = "http://placehold.it/300x400";
-			alt ="";
+			altTag = "";
+			mugshot = '<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>'
 		}
+
+		if (data[i].Link && data[i].Link!= ""){
+			journalistName = '<a href="' + data[i].Link + '">' + data[i].Name + "</a>";
+			mugshot = '<a href="' + data[i].Link + '">' + mugshot + "</a>";
+		} else {
+			journalistName = data[i].Name;
+		}
+
+
 		if (data[i].Status == "Killed"){
 			journalist = "";
-			console.log("i (killed): "+i);
-			journalist +='<div class="bbg__profile-grid__profile usa-width-one-sixth">';
-			journalist +='<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>';
-			journalist +='<h4 class="bbg__profile-grid__profile__name">' + data[i].Name + '</h4>';
+			journalist +='<div class="bbg__profile-grid__profile">';
+			journalist += mugshot;
+			journalist +='<h4 class="bbg__profile-grid__profile__name">' + journalistName + '</h4>';
 			journalist +='<h5 class="bbg__profile-grid__profile__dates">Killed ' + data[i].Date + '</h5>';
 			journalist +='<p class="bbg__profile-grid__profile__description"></p>';
 			journalist +='</div>';
@@ -100,7 +109,6 @@ function showInfo(data) {
 			wall += journalist;
 		}
 	}
-	console.log(wall);
 	document.getElementById("memorialWall").innerHTML = wall;
 
 	createMap();

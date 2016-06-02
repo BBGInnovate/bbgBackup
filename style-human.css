@@ -577,19 +577,22 @@ body {
   .usa-grid-full .usa-width-three-fourths:last-child {
     margin-right: 0;
   }
-  .usa-grid .usa-width-one-sixth,
-  .usa-grid-full .usa-width-one-sixth {
+  .usa-grid .usa-width-one-sixth, .usa-grid .bbg__profile-grid__profile,
+  .usa-grid-full .usa-width-one-sixth,
+  .usa-grid-full .bbg__profile-grid__profile {
     float: left;
     display: block;
     margin-right: 4.82916%;
     width: 30.11389%;
   }
-  .usa-grid .usa-width-one-sixth:last-child,
-  .usa-grid-full .usa-width-one-sixth:last-child {
+  .usa-grid .usa-width-one-sixth:last-child, .usa-grid .bbg__profile-grid__profile:last-child,
+  .usa-grid-full .usa-width-one-sixth:last-child,
+  .usa-grid-full .bbg__profile-grid__profile:last-child {
     margin-right: 0;
   }
-  .usa-grid .usa-width-one-sixth:nth-child(3n),
-  .usa-grid-full .usa-width-one-sixth:nth-child(3n) {
+  .usa-grid .usa-width-one-sixth:nth-child(3n), .usa-grid .bbg__profile-grid__profile:nth-child(3n),
+  .usa-grid-full .usa-width-one-sixth:nth-child(3n),
+  .usa-grid-full .bbg__profile-grid__profile:nth-child(3n) {
     margin-right: 0;
   }
   .usa-grid .usa-width-five-sixths,
@@ -756,30 +759,35 @@ body {
   }
 }
 @media screen and (min-width: 900px) {
-  .usa-grid .usa-width-one-sixth,
-  .usa-grid-full .usa-width-one-sixth {
+  .usa-grid .usa-width-one-sixth, .usa-grid .bbg__profile-grid__profile,
+  .usa-grid-full .usa-width-one-sixth,
+  .usa-grid-full .bbg__profile-grid__profile {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 14.70196%;
   }
-  .usa-grid .usa-width-one-sixth:last-child,
-  .usa-grid-full .usa-width-one-sixth:last-child {
+  .usa-grid .usa-width-one-sixth:last-child, .usa-grid .bbg__profile-grid__profile:last-child,
+  .usa-grid-full .usa-width-one-sixth:last-child,
+  .usa-grid-full .bbg__profile-grid__profile:last-child {
     margin-right: 0;
   }
-  .usa-grid .usa-width-one-sixth:nth-child(3n),
-  .usa-grid-full .usa-width-one-sixth:nth-child(3n) {
+  .usa-grid .usa-width-one-sixth:nth-child(3n), .usa-grid .bbg__profile-grid__profile:nth-child(3n),
+  .usa-grid-full .usa-width-one-sixth:nth-child(3n),
+  .usa-grid-full .bbg__profile-grid__profile:nth-child(3n) {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 14.70196%;
   }
-  .usa-grid .usa-width-one-sixth:nth-child(3n):last-child,
-  .usa-grid-full .usa-width-one-sixth:nth-child(3n):last-child {
+  .usa-grid .usa-width-one-sixth:nth-child(3n):last-child, .usa-grid .bbg__profile-grid__profile:nth-child(3n):last-child,
+  .usa-grid-full .usa-width-one-sixth:nth-child(3n):last-child,
+  .usa-grid-full .bbg__profile-grid__profile:nth-child(3n):last-child {
     margin-right: 0;
   }
-  .usa-grid .usa-width-one-sixth:nth-child(6n),
-  .usa-grid-full .usa-width-one-sixth:nth-child(6n) {
+  .usa-grid .usa-width-one-sixth:nth-child(6n), .usa-grid .bbg__profile-grid__profile:nth-child(6n),
+  .usa-grid-full .usa-width-one-sixth:nth-child(6n),
+  .usa-grid-full .bbg__profile-grid__profile:nth-child(6n) {
     margin-right: 0;
   }
 }
@@ -6586,16 +6594,21 @@ section.usa-section.bbg-banner__section {
 }
 
 @media screen and (min-width: 300px) and (max-width: 600px) {
-  .bbg__profile-grid__profile.usa-width-one-sixth {
+  .bbg__profile-grid__profile.usa-width-one-sixth, .bbg__profile-grid__profile {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 48.82117%;
   }
-  .bbg__profile-grid__profile.usa-width-one-sixth:last-child {
+  .bbg__profile-grid__profile.usa-width-one-sixth:last-child, .bbg__profile-grid__profile:last-child {
     margin-right: 0;
   }
-  .bbg__profile-grid__profile.usa-width-one-sixth:nth-child(2n) {
+  .bbg__profile-grid__profile.usa-width-one-sixth:nth-child(2n), .bbg__profile-grid__profile:nth-child(2n) {
     margin-right: 0;
   }
+}
+.bbg__profile-grid__profile {
+  float: none !important;
+  display: inline-block !important;
+  vertical-align: top;
 }
