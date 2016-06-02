@@ -287,55 +287,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 
 
 
-/**
- * Add non-standard metadata to author
- * Reference: http://justintadlock.com/archives/2009/09/10/adding-and-using-custom-user-profile-fields
- */
-
-add_action( 'show_user_profile', 'bbg_show_extra_profile_fields' );
-add_action( 'edit_user_profile', 'bbg_show_extra_profile_fields' );
-function bbg_show_extra_profile_fields( $user ) {
-	$isActive=esc_attr( get_the_author_meta( 'isActive', $user->ID ));
-	$isActiveChecked= ($isActive=="on") ? "checked" : "";
-
-
-?>
-
-	<h3>Additional Profile Information</h3>
-
-	<table class="form-table">
-
-		<tr>
-			<th><label for="occupation">Occupation</label></th>
-
-			<td>
-				<input type="text" name="occupation" id="occupation" value="<?php echo esc_attr( get_the_author_meta( 'occupation', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description">Please enter your Occupation.</span>
-			</td>
-		</tr>
-		<tr>
-			<th><label for="isActive">Active</label></th>
-
-			<td>
-				<input type="checkbox" name="isActive" id="isActive" <?php echo $isActiveChecked; ?>  />
-				<span class="description">User is active</span>
-			</td>
-		</tr>
-	</table>
-<?php }
-
-add_action( 'personal_options_update', 'my_save_extra_profile_fields' );
-add_action( 'edit_user_profile_update', 'my_save_extra_profile_fields' );
-
-function my_save_extra_profile_fields( $user_id ) {
-
-	if ( !current_user_can( 'edit_user', $user_id ) )
-		return false;
-
-	update_usermeta( $user_id, 'occupation', $_POST['occupation'] );
-	update_usermeta( $user_id, 'isActive', $_POST['isActive'] );
-
-}
 
 /*=========== ADD USERID TO USER LIST SO THAT IT'S EASY TO SET THE RANKING GENERAL SETTING *===========*/
 add_filter('manage_users_columns', 'pippin_add_user_id_column');
