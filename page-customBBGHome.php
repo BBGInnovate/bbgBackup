@@ -223,6 +223,15 @@ get_header();
 							$id = $featuredBoardMeeting->ID;
 							$labelText = $featuredEventLabel;
 							$eventPermalink = get_the_permalink($id);
+
+							/* permalinks for future posts by default don't return properly.  fix that. */
+							if ($featuredBoardMeeting -> post_status == 'future') {
+								$my_post = clone $featuredBoardMeeting;
+								$my_post->post_status = 'published';
+								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+								$eventPermalink = get_permalink($my_post);
+							}
+							
 							$imgSrc = $defaultBoardMeetingImage;
 							$featuredImageID = get_post_thumbnail_id($id);	
 							if ($featuredImageID) {
