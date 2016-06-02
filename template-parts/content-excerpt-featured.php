@@ -15,6 +15,17 @@ if (! isset ($includeMetaFeatured)) {
 }
 
 $postPermalink=esc_url( get_permalink() );
+
+
+/*** the only way you should ever have a future post status here is if a future event is featured on the homepage */
+if (get_post_status() == 'future') {
+	global $post;
+	$my_post = clone $post;
+	$my_post->post_status = 'published';
+	$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+	$postPermalink = get_permalink($my_post);
+}
+
 if (isset($_GET['category_id'])) {
 	$postPermalink=add_query_arg('category_id', $_GET['category_id'], $postPermalink);
 }
