@@ -9,6 +9,34 @@
 
 require "config_bbgWPtheme.php";
 
+
+/****** UTILITY FUNCTIONS - KEEP UP TOP ****/
+function fileExpired($filepath, $minutesToExpire) {
+	$expired = false;
+	if ( !file_exists( $filepath ) ) {
+		$expired = true;
+	} else {
+		$secondsDiff = time() - filemtime( $filepath );
+		$minutesDiff = $secondsDiff/60;
+		if ($minutesDiff > 30) {
+			$expired = true;
+		}
+	}
+	return  $expired;
+}
+function fetchUrl($url) {
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_URL,$url);
+	$result=curl_exec($ch);
+	curl_close($ch);
+	return $result;
+}
+/****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
+
+
+
 if ( ! function_exists( 'bbginnovate_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -581,19 +609,6 @@ function search_excerpt_footer() {
 
 endif;
 
-function fileExpired($filepath, $minutesToExpire) {
-	$expired = false;
-	if ( !file_exists( $filepath ) ) {
-		$expired = true;
-	} else {
-		$secondsDiff = time() - filemtime( $filepath );
-		$minutesDiff = $secondsDiff/60;
-		if ($minutesDiff > 30) {
-			$expired = true;
-		}
-	}
-	return  $expired;
-}
 
 //Grab the list of congressional committee members from the Sunlight Foundation's API
 function getCongressionalCommittee($committeeID, $committeeTitle) {
@@ -774,15 +789,7 @@ function acf_load_committee_member_choices( $field ) {
 add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_choices');
 add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_choices');
 
-function fetchUrl($url) {
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_URL,$url);
-	$result=curl_exec($ch);
-	curl_close($ch);
-	return $result;
-}
+
 
 function getJobs() {
 	$jobsFilepath = get_template_directory() . "/jobcache.json";
