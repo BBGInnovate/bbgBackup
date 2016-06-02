@@ -78,7 +78,6 @@ get_header(); ?>
 									?>
 									<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-									<?php echo get_title(); ?>
 
 								<?php } else{ ?>
 									<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>
