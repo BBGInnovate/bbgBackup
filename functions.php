@@ -731,9 +731,10 @@ function outputJoblist() {
 			$title=$j['position_title'];
 			$startDate=$j['start_date'];
 			$endDate=$j['end_date'];
+
 			$locations=$j['locations'];
 
-			$s.= "<a href='$url'>$title</a><BR>";
+			$s.= "<p><a href='$url'>$title</a><br/>";
 			$locationStr = "Location";
 			if (count($locations)>1){
 				$locationStr = "Locations";
@@ -742,11 +743,12 @@ function outputJoblist() {
 			$s.= $locationStr.": ";
 			for ($k=0; $k<count($locations); $k++) {
 				$loc = $locations[$k];
-				$s.= "$loc<BR>";
+				$s.= "$loc<br/>";
 			}
-			$s .= "<BR>";
+			$s .= "Closes: $endDate<br/>";
+			$s .= "</p>";
 		}
-		$s .= "All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a><BR>";
+		$s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 	}
 	return $s;
 }

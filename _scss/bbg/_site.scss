@@ -333,11 +333,20 @@ article {
 .bbg__article-sidebar {
 	font-family: $font-sans;
 	margin: 0 auto;
-	max-width: 600px;
+	max-width: $article-max-width;
 
 	p {
 		font-family: $font-sans;
 		line-height: 1.5;
+	}
+
+	.bbg__article-sidebar__tagline {
+		color: #999;
+		font-size: 90%;
+		margin: {
+			top: 0;
+			bottom: $site-margins-medium;
+		}
 	}
 }
 
@@ -758,7 +767,7 @@ article {
 
 	.bbg__quotation-attribution__text {
 		display: table-cell;
-		max-width: 250px;
+		max-width: 200px;
 		text-align: left;
 		vertical-align: middle;
 

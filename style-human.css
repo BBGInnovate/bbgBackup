@@ -4921,6 +4921,12 @@ article {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
 }
+.bbg__article-sidebar .bbg__article-sidebar__tagline {
+  color: #999;
+  font-size: 90%;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
 
 .bbg__article-sidebar__list--labeled {
   display: block;
@@ -5290,7 +5296,7 @@ article {
 }
 .bbg__quotation .bbg__quotation-attribution__text {
   display: table-cell;
-  max-width: 250px;
+  max-width: 200px;
   text-align: left;
   vertical-align: middle;
 }
