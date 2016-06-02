@@ -10,7 +10,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: 2-column-entity
+   template name: Entity
  */
 
 $pageContent="";
