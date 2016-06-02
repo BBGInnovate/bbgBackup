@@ -253,7 +253,7 @@ require get_template_directory() . '/inc/bbg-functions-nav.php';
 /**
  * Load custom TinyMCE jazz
  */
-require get_template_directory() . '/inc/bbg-functions-nav.php';
+require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
 
 /**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
