@@ -33,6 +33,19 @@ function fetchUrl($url) {
 	curl_close($ch);
 	return $result;
 }
+function getFeed($url,$id) {
+	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
+	if ( fileExpired($feedFilepath,60)) { //one hour expiration
+		$feedStr=fetchUrl($url);
+		file_put_contents($feedFilepath, $feedStr);
+	} else {
+		$feedStr=file_get_contents($feedFilepath);
+	}
+	$xml = simplexml_load_string($feedStr);
+	$json = json_encode($xml,JSON_PRETTY_PRINT);
+	$json=json_decode($json);
+	return $json;
+}
 /****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
 
 
@@ -767,19 +780,7 @@ function jobs_shortcode() {
 add_shortcode('jobslist', 'jobs_shortcode');
 
 
-function getFeed($url,$id) {
-	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
-	if ( fileExpired($feedFilepath,60)) { //one hour expiration
-		$feedStr=fetchUrl($url);
-		file_put_contents($feedFilepath, $feedStr);
-	} else {
-		$feedStr=file_get_contents($feedFilepath);
-	}
-	$xml = simplexml_load_string($feedStr);
-	$json = json_encode($xml,JSON_PRETTY_PRINT);
-	$json=json_decode($json);
-	return $json;
-}
+
 
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
@@ -902,6 +903,11 @@ function outputSpecialCommittees($active) {
 	return $s;
 }
 
+function special_committee_list_shortcode($atts) {
+	return outputSpecialCommittees($atts['active']);
+}
+add_shortcode('special_committee_list', 'special_committee_list_shortcode');
+
 function getEntityData() {
 	/*** Possible todo: leverage wordpress transient cache ***/
 	$entityParentPage = get_page_by_path('networks');
@@ -990,10 +996,6 @@ function getRandomEntityImage() {
 
 }
 
-function special_committee_list_shortcode($atts) {
-	return outputSpecialCommittees($atts['active']);
-}
-add_shortcode('special_committee_list', 'special_committee_list_shortcode');
 
 function outputBoardMembers($showActive) {
 	//$showActive should be a 0 or 1 passed in a 'active' in the shortcode
