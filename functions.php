@@ -312,6 +312,11 @@ require get_template_directory() . '/inc/bbg-functions-quotations.php';
 require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
 
 /**
+ * Load BBG Board + Sr Management
+ */
+require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
+
+/**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
  * Reference: http://www.paulund.co.uk/how-to-display-author-bio-with-wordpress
  */
