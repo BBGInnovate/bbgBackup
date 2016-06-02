@@ -51,6 +51,11 @@ if ($dateline != "") {
 						if ( get_row_layout() == 'team_member') {
 							$teamMemberName = get_sub_field( 'team_member_name' );
 							$teamMemberRole = get_sub_field( 'team_member_role' );
+							$teamMemberTwitterHandle = get_sub_field( 'team_member_twitter_handle' );
+
+							if ($teamMemberTwitterHandle && $teamMemberTwitterHandle != ""){
+								$teamMemberName = "<a href='https://twitter.com/" . $teamMemberTwitterHandle ."'>" . $teamMemberName . "</a>";
+							}
 
 							$s .= "<p><span class='bbg__project-team__name'>$teamMemberName,</span> <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
 						}

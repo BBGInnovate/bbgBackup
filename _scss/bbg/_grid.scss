@@ -15,7 +15,7 @@
 	}
 }
 
-@include media($large-screen) {
+@include media($medium-large-screen) {
 	.bbg-grid--1-2-3 {
 		@include span-columns(4);
 		margin-right: 2%;

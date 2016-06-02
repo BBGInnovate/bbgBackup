@@ -4404,7 +4404,7 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
     margin-right: 2.35765%;
   }
 }
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 900px) {
   .bbg-grid--1-2-3 {
     float: left;
     display: block;
