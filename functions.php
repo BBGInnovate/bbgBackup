@@ -204,6 +204,15 @@ function bbginnovate_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bbginnovate_scripts' );
 
+function loggedInAlerts() {
+	if ( is_user_logged_in() ) {
+		echo '<script type="text/javascript">';
+		echo 'jQuery(".bbg__site-alert").css("top","30px");';
+		echo '</script>';
+	}
+}
+add_action( 'wp_footer', 'loggedInAlerts' );
+
 /**
  * Implement the Custom Header feature.
  */
