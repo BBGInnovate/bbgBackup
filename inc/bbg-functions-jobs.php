@@ -79,7 +79,7 @@
 	}
 	add_shortcode('jobslist', 'jobs_shortcode');
 	
-	function outputEmployeeProfiles($type) {
+	function outputEmployeeProfiles() {
 		$qParams=array(
 			'post_type' => array('post')
 			,'post_status' => array('publish')
