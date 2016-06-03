@@ -6578,25 +6578,6 @@ section.usa-section.bbg-banner__section {
   margin-left: 1em;
 }
 
-/*** GLOBAL DEFAULTS **/
-/*article a:link, article a:visited {
-    text-decoration: none;
-    border-bottom: 1px dotted#d63;
-}
-
-article a:hover, article a:focus, article a:active {
-    color: #d63;
-    text-decoration: none;
-    border-bottom: 1px dotted#cb4b16;
-}*/
-<<<<<<< HEAD
-/*** GLOBAL ELEMENTS AND ATTRIBUTES **/
-/* article p, #content article p {
-    margin-top: 1em;
-    margin-bottom: 1em;
-} */
-=======
->>>>>>> 642b3cf80777ebf748cddd5ad7cb57678a2f6073
 /*** LEGISLATIVE DOCUMENT HEADER **/
 section.form {
   text-align: center;
