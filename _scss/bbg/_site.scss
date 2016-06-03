@@ -189,6 +189,9 @@ section.usa-section {
 	margin-bottom: $site-margins-large;
 }
 
+.bbg__section--medium {
+	margin-bottom: 4rem;
+}
 
 article {
 	margin-bottom: $site-margins;
@@ -341,7 +344,7 @@ article {
 	}
 
 	.bbg__article-sidebar__tagline {
-		color: #999;
+		color: $color-gray-medium;
 		font-size: 90%;
 		margin: {
 			top: 0;
@@ -392,6 +395,10 @@ article {
 					right: 0;
 					left: 0;
 				}
+
+				strong {
+					font-family: $font-sans;
+				}
 			}
 
 			/*.bbg__profile__content p:first-of-type {*/
@@ -422,6 +429,10 @@ article {
 
 			&:first-child {
 				margin-top: -1rem;
+			}
+
+			p {
+				font-size: 90%;
 			}
 		}
 	}

@@ -81,3 +81,32 @@
 		clear: right;
 	}
 }
+
+
+
+
+
+//@include media($small-screen) {
+	.bbg-grid--2-3-3 {
+		@include span-columns(6);
+		margin-right: $bbg-grid-gutter;
+	}
+	.bbg-grid--2-3-3:nth-child(2n) {
+		clear: right;
+		margin-right: 0;
+	}
+//}
+@include media($medium-screen) {
+	.bbg-grid--2-3-3 {
+		@include span-columns(4);
+		clear: none;
+		margin-right: $bbg-grid-gutter;
+	}
+	.bbg-grid--2-3-3:nth-child(2n) {
+		margin-right: $bbg-grid-gutter;
+	}
+	.bbg-grid--2-3-3:nth-child(3n) {
+		clear: right;
+		margin-right: 0;
+	}
+}

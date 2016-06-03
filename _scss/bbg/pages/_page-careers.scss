@@ -1,0 +1,25 @@
+.bbg__employee-profile__excerpt {
+	@extend .bbg-grid--2-3-3;
+
+	margin-bottom: $site-margins;
+
+	.bbg__employee-profile__excerpt__description {
+		font-family: $font-sans;
+	}
+
+	&.featured {
+		width: 100% !important;
+		float: none !important;
+		margin-bottom: $site-margins-large;
+		margin-right: 0 !important;
+	}
+}
+
+.bbg__profile__intern {
+	.bbg__profile__intern__job-label {
+		color: $color-secondary-darkest;
+		display: block;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
