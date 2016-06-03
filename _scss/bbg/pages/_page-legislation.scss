@@ -1,0 +1,243 @@
+.bill_text_content {
+	font: {
+		family: $font-serif;
+		size: $small-font-size;
+	}
+
+	line-height: $small-line-height;
+
+	pre {
+	    // line-height: 140%;
+	    // color: black;
+	}
+
+	blockquote { margin: 1em; }
+
+	ul { margin-left: 1em; }
+}
+
+/*** GLOBAL DEFAULTS **/
+/*article a:link, article a:visited {
+    text-decoration: none;
+    border-bottom: 1px dotted#d63;
+}
+
+article a:hover, article a:focus, article a:active {
+    color: #d63;
+    text-decoration: none;
+    border-bottom: 1px dotted#cb4b16;
+}*/
+
+/*** GLOBAL ELEMENTS AND ATTRIBUTES **/
+article {
+    // font-size: 18.6667px;
+    // font-size: 1.1rem;
+    // line-height: 140%;
+    // padding: 1%;
+}
+
+article p, #content article p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+/*** LEGISLATIVE DOCUMENT HEADER **/
+section.form {
+    text-align: center;
+}
+
+p.congress, p.session, p.enrolled-dateline {
+    /* rendered light because it is not useful info */
+    margin: 0 !important;
+    font-size: 85%;
+    color: #777;
+}
+
+p.congress, p.session {
+	font-variant: small-caps;
+}
+
+p.legis-num {
+	font-size: 125%;
+	font-weight: bolder;
+	margin: 20px 0 !important;
+}
+
+p.legis-type {
+    font-size: 125%;
+    font-weight: bold;
+}
+
+p.legis-type::before {
+	display: block;
+	border-top: 1px solid #AAA;
+    width: 50%;
+    content: "";
+}
+
+p.legis-type::before { margin: 0 auto 1em; }
+
+/*** LEGISLATIVE DOCUMENT BODY **/
+section.legis-body, section.resolution-body, section.amendment-body {
+    margin: 0.5em;
+    border: dashed black;
+    border-width: 0.1em 0;
+    padding: 1em 0 0.25em;
+}
+
+
+/*** ALL SEGMENTS **/
+span.enum + p.header {
+    display: inline;
+}
+
+/*** SEGMENTS ABOVE SECTION **/
+section.big-level > span.enum,
+    section.big-level > p.header {
+        display: block;
+        text-align: center;
+    }
+
+section.big-level > span.enum {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    font-weight: bolder;
+}
+
+section.big-level > p.header {
+    margin-top: -0.5em;
+    margin-bottom: 1.5em;
+    font-size: 125%;
+}
+
+/*** BIG LEVEL HEADING TEXT **/
+section.division > span.enum::before {
+    content: "Division ";
+}
+section.subdivision > span.enum::before {
+    content: "Subdivision ";
+}
+section.title > span.enum::before {
+    content: "Title ";
+}
+section.subtitle > span.enum::before {
+    content: "Subtitle ";
+}
+section.chapter > span.enum::before {
+    content: "Chapter ";
+}
+section.subchapter > span.enum::before {
+    content: "Subchapter ";
+}
+section.part > span.enum::before {
+    content: "Part ";
+}
+section.subpart > span.enum::before {
+    content: "Subpart ";
+}
+
+/*** SECTION SEGMENT **/
+section.section > span.enum::before {
+    content: "Sec. ";
+}
+
+section.section > span.enum, section.section > p.header {
+    font-weight: bolder;
+}
+section.section > span.enum + p.header,
+    section.section > span.enum + p.text {
+        margin-left: 0.25em;
+    }
+
+/* XXX: We should probably handle this generically. */
+/*section.section[data-indent = "down1"] {
+    margin-left: 1em;
+}*/
+
+/*** SEGMENTS BELOW SECTION **/
+section.little-level {
+    padding-left: 1.5em;
+    margin: 1em 0;
+}
+section.little-level > span.enum {
+    margin-left: -1.5em;
+    margin-right: .25em;
+}
+section.little-level > span.enum + p.header {
+    margin-left: 0.125em;
+    text-align: left;
+}
+section.little-level > p.header::after {
+    content: ".\2014";
+}
+
+p.text {}
+
+span.enum + p.text {
+    display: inline;
+}
+
+
+/* QUOTED BLOCKS */
+section.quoted-block > div.wrapper:first-child {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    border: solid#CCC;
+    border-width: 0.1333em 0.2em;
+    background-color: #F3F3F3;
+    padding: 0 .5em;
+}
+
+p.text, p.quoted-block-continuation-text {
+    line-height: 1.25;
+    text-align: justify;
+}
+
+q.quote {
+    quotes: "“"
+    "”"
+    "‘"
+    "’";
+}
+
+q.quote::before {
+    content: open-quote;
+}
+
+q.quote::after {
+    content: close-quote;
+}
+
+/*** TEXT WE WANT TO HIGHLIGHT **/
+/*span.short-title {}
+
+span.effective-date {
+        color: #00C;
+}*/
+
+/*** APPROPRIATIONS **/
+/*
+div.appropriations-major > p.header,
+    div.appropriations-intermediate > p.header,
+    div.appropriations-small > p.header {
+        display: block;
+        margin: 1em 0;
+        text-align: center;
+    }
+
+div.appropriations-major > p.header {
+    margin-top: -0.5em;
+    margin-bottom: 1.5em;
+    font-size: 125%;
+    font-weight: normal;
+}
+
+div.appropriations-intermediate > p.header {
+    font-size: 115%;
+    text-transform: capitalize;
+}
+
+div.appropriations-small > p.header {
+    font-size: 105%;
+}*/

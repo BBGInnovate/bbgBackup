@@ -10,7 +10,8 @@
 
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
-
+//Add featured timeline
+$timelineUrl = get_post_meta( get_the_ID(), 'featured_timeline_url', true );
 
 //Experimenting with adding the social share code to Pages
 //the title/headline field, followed by the URL and the author's twitter handle
@@ -45,6 +46,20 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		if ( $videoUrl != "" ) {
 			echo featured_video($videoUrl);
 			$hideFeaturedImage = TRUE;
+
+		//ELSE if a featured timeline is set, include it.
+		} elseif ( $timelineUrl != "" ) {
+			$urlParts = parse_url($timelineUrl); // Parse string as a URL
+			$domain = $urlParts['host']; 		// Get Domain. i.e. crunchify.com
+			$path = $urlParts['path'];			// Get Path. i.e. /path
+			$urlQuery = $urlParts['query'];		// Get query params (everything after the ?)
+
+			// Merge URL parts to generate complete URL
+			$timelineUrl = $domain . $path . $urlQuery;
+			// echo $timelineUrl;
+			echo featured_timeline($timelineUrl);
+			$hideFeaturedImage = TRUE;
+
 		//ELSE if a featured image is set, include it.
 		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
@@ -113,7 +128,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
-			<p>Sidebar info or widgets here? Maybe just display HTML text from an ACF custom field? Pullquotes?</p>
+			<!-- <p>Sidebar info or widgets here? Maybe just display HTML text from an ACF custom field? Pullquotes?</p> -->
 		</div><!-- .bbg__article-sidebar -->
 
 

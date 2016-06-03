@@ -433,6 +433,16 @@ function featured_video ($url) {
 	return $return;
 }
 
+function featured_timeline ($url) {
+	// $url = str_replace( "http://", "", $url ); //timeline js
+	$return="<div class='bbg-embed-shell bbg__featured-timeline'><div class='embed-container'>";
+	$return.="<iframe src='" . $url . "' frameborder='0'  height='600' width='1040' '></iframe>";
+	$return.="</div></div>";
+
+	// echo $return;
+	return $return;
+}
+
 
 /*===================================================================================
  * CUSTOM POST CATEGORY LIST LOGIC
@@ -1106,9 +1116,9 @@ function show_future_posts($posts) {
 	if(is_single() && $wp_query->post_count == 0) {
 		$futurePosts = $wpdb->get_results($wp_query->request);
 		if (count($futurePosts) > 0 && has_category('Event', $futurePosts[0])) {
-			$returnVal = $futurePosts;	   		
+			$returnVal = $futurePosts;
 		}
-	} 
+	}
 	return $returnVal;
 }
 
