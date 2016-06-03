@@ -3,6 +3,12 @@
 
 	margin-bottom: $site-margins;
 
+	.bbg__employee-profile__excerpt__name {
+		margin: {
+			top: 1rem;
+			bottom: 0;
+		}
+	}
 	.bbg__employee-profile__excerpt__title {
 		font-family: $font-sans;
 		margin-top: 0;

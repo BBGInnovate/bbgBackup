@@ -88,8 +88,8 @@
 		);
 		$custom_query = new WP_Query($qParams);
 
-		$epStr = '<section class="bbg__section">';
-		$epStr .= '<h5 class="bbg-label small">Employees</h5>';
+		$epStr = '<section class="bbg__section" style="margin-top: 4rem;">';
+		$epStr .= '<h5 class="bbg-label"><a href="/category/employee/">Employee spotlight</a></h5>';
 		$epStr .= '<p class="" style="font-family: sans-serif;">This is a description that goes here and here.</p>';
 		$epStr .= '<div class="usa-grid-full">';
 		while ( $custom_query->have_posts() )  {

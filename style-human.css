@@ -5785,6 +5785,16 @@ article {
   }
 }
 
+.bbg__infobox {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+.bbg__infobox p, .bbg__infobox a, .bbg__infobox ul, .bbg__infobox li {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+
 .bbg-banner {
   background-color: #f1f1f1;
   background-size: cover;
@@ -6130,6 +6140,10 @@ section.usa-section.bbg-banner__section {
 
 .bbg__employee-profile__excerpt {
   margin-bottom: 3rem;
+}
+.bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__name {
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 .bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__title {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;

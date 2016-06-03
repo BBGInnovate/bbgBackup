@@ -1282,5 +1282,16 @@ article {
 }
 
 
+.bbg__infobox {
+	background-color: $color-gray-lightest;
+	border-radius: $border-radius;
+	padding: {
+		top: 2rem;
+		bottom: 1rem;
+	};
 
+	p, a, ul, li {
+		font-family: $font-sans;
+	}
+}
 
