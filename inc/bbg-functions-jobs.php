@@ -14,6 +14,12 @@
 		return $jobs;
 	}
 
+	function dCompare($a, $b) {
+	    $t1 = ($a['endDateTimestamp']);
+	    $t2 = ($b['endDateTimestamp']);
+	    return $t1 - $t2;
+	}    
+	
 	function outputJoblist() {
 		$jobs=getJobs();
 		$s="";
@@ -23,13 +29,28 @@
 		} else {
 			$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
 			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
+			
+			//sort by end date, and add formatted end date
+			for ($i=0; $i < count($jobs); $i++) {
+				$j=&$jobs[$i];
+				$endDateStr=$j['end_date'];
+				$endDateObj=explode("-", $endDateStr);
+				$year = $endDateObj[0];
+				$month = $endDateObj[1];
+				$day = $endDateObj[2];
+				$endDateTimestamp=mktime(0, 0, 0, $month, $day, $year);
+				$j['formatted_end_date'] = date('F d, o', $endDateTimestamp);
+				$j['endDateTimestamp'] = $endDateTimestamp;
+			}
+			usort($jobs, 'dCompare');
+
 			for ($i=0; $i < count($jobs); $i++) {
 				$j=$jobs[$i];
 				//var_dump($j);
 				$url = $j['url'];
 				$title=$j['position_title'];
 				$startDate=$j['start_date'];
-				$endDate=$j['end_date'];
+				$endDate=$j['formatted_end_date'];
 
 				$locations=$j['locations'];
 
