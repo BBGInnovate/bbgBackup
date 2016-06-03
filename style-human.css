@@ -3258,6 +3258,24 @@ object {
   width: 100%;
 }
 
+.timeline-container {
+  height: 100%;
+  max-height: 650px;
+  max-width: 100%;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
+}
+.timeline-container iframe,
+.timeline-container object,
+.timeline-container embed {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 /****************************************/
 /*   RESPONSIVE FACEBOOK EMBEDS         */
 /*   used on homepage, posts and pages  */

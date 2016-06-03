@@ -55,7 +55,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			$urlQuery = $urlParts['query'];		// Get query params (everything after the ?)
 
 			// Merge URL parts to generate complete URL
-			$timelineUrl = $domain . $path . $urlQuery;
+			$timelineUrl = "//" . $domain . $path . "?" . $urlQuery;
 			// echo $timelineUrl;
 			echo featured_timeline($timelineUrl);
 			$hideFeaturedImage = TRUE;

@@ -439,8 +439,8 @@ function featured_video ($url) {
 }
 
 function featured_timeline ($url) {
-	$return="<div class='bbg-embed-shell bbg__featured-timeline'><div class='embed-container'>";
-	$return.="<iframe src='" . $url . "' frameborder='0'  height='600' width='1040' '></iframe>";
+	$return="<div class='bbg__featured-timeline'><div class='timeline-container'>";
+	$return.="<iframe src='" . $url . "' frameborder='0' width='1040'></iframe>";
 	$return.="</div></div>";
 
 	return $return;
