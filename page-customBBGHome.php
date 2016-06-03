@@ -54,9 +54,8 @@ if ($featuredEventLabel == "") {
 	$featuredEventLabel = "This week";
 }
 
-$featuredBoardMeeting = get_field('homepage_featured_board_meeting', 'option');
+$featuredEvent = get_field('homepage_featured_event', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
-$defaultBoardMeetingImageObj=get_field('site_setting_default_homepage_board_meeting_image', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 
 /*** get impact category ***/
@@ -72,8 +71,8 @@ $postIDsUsed=array();
 if ($featuredPost) {
 	$postIDsUsed[]=$featuredPost->ID;
 }
-if ($showFeaturedEvent && $featuredBoardMeeting) {
-	$postIDsUsed[]=$featuredBoardMeeting->ID;
+if ($showFeaturedEvent && $featuredEvent) {
+	$postIDsUsed[]=$featuredEvent->ID;
 }
 if ($soap) {
 	$postIDsUsed[]=$soap->ID;
@@ -82,14 +81,7 @@ if ($threatsToPressPost) {
 	$postIDsUsed[]=$threatsToPressPost->ID;
 }
 
-/*** prepare a variable for our default board meeting image string ***/
-$defaultBoardMeetingImage="";
-if ($defaultBoardMeetingImageObj) {
-	if (  isset($defaultBoardMeetingImageObj['sizes']) && 
-		  isset($defaultBoardMeetingImageObj['sizes']['medium-thumb'])) {
-		$defaultBoardMeetingImage=$defaultBoardMeetingImageObj['sizes']['medium-thumb'];		
-	}
-}
+
 
 /*** output the standard header ***/
 get_header();
@@ -218,27 +210,21 @@ get_header();
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php 
-						if ($featuredBoardMeeting && $showFeaturedEvent) { 
+						if ($featuredEvent && $showFeaturedEvent) { 
 
-							$id = $featuredBoardMeeting->ID;
+							$id = $featuredEvent->ID;
 							$labelText = $featuredEventLabel;
 							$eventPermalink = get_the_permalink($id);
 
 							/* permalinks for future posts by default don't return properly.  fix that. */
-							if ($featuredBoardMeeting -> post_status == 'future') {
-								$my_post = clone $featuredBoardMeeting;
+							if ($featuredEvent -> post_status == 'future') {
+								$my_post = clone $featuredEvent;
 								$my_post->post_status = 'published';
 								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
 								$eventPermalink = get_permalink($my_post);
 							}
 							
-							$imgSrc = $defaultBoardMeetingImage;
-							$featuredImageID = get_post_thumbnail_id($id);	
-							if ($featuredImageID) {
-								$imgObj = wp_get_attachment_image_src($featuredImageID, 'medium-thumb');
-								$imgSrc = $imgObj[0];
-							}
-							$eventTitle = $featuredBoardMeeting->post_title;
+							$eventTitle = $featuredEvent->post_title;
 							$excerpt = my_excerpt($id);
 					?>
 
