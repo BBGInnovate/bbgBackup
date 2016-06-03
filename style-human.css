@@ -6153,6 +6153,11 @@ section.usa-section.bbg-banner__section {
   margin-top: 0;
 }
 
+/*
+.bbg__jobs-list__title {
+	font-weight: bold;
+}
+*/
 .bbg__profile__intern .bbg__profile__intern__job-label {
   color: #981b1e;
   display: block;
