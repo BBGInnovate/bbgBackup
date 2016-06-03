@@ -1293,5 +1293,9 @@ article {
 	p, a, ul, li {
 		font-family: $font-sans;
 	}
+
+	ul li:after, ol li:after {
+		margin-bottom: 0;
+	}
 }
 
