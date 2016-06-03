@@ -5021,6 +5021,9 @@ article {
     margin-right: 0;
     margin-left: 0;
   }
+  .bbg__article-content.large p strong {
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  }
   .bbg__article-content.large .bbg__profile__content p:first-child {
     font-size: 1.7rem;
     font-weight: 100;
