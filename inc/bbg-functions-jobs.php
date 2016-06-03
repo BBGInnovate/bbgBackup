@@ -93,7 +93,7 @@
 				$e .= '<div class="bbg__employee-profile__excerpt">';
 				
 				$e .= '<a href="'.$permalink.'"><img src="'.$profilePhoto.'"/></a>';
-				$e .= '<h4><a href="'.$permalink.'">'.$profileName.'</h4>';
+				$e .= '<h4><a href="'.$permalink.'">'.$profileName.'</a></h4>';
 				$e .= '<h6>'.$occupation.'</h6>';
 				$e .= '</div>';
 				$epStr .= $e;
