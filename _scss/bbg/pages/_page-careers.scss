@@ -3,15 +3,9 @@
 
 	margin-bottom: $site-margins;
 
-	.bbg__employee-profile__excerpt__description {
+	.bbg__employee-profile__excerpt__title {
 		font-family: $font-sans;
-	}
-
-	&.featured {
-		width: 100% !important;
-		float: none !important;
-		margin-bottom: $site-margins-large;
-		margin-right: 0 !important;
+		margin-top: 0;
 	}
 }
 

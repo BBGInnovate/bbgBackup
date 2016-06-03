@@ -61,15 +61,15 @@ object {
 
 .timeline-container {
 	height: 100%;
-	max: {
-		height: 650px;
-		width: 100%;
-	}
-	min: {
-		height: 650px;
-	}
+	max-width: 100%;
+	min-height: 450px;
 	position: relative;
 	overflow: hidden;
+
+	@include media($medium-screen) {
+		min-height: 650px;
+	}
+
 
 	iframe,
 	object,
@@ -99,7 +99,7 @@ object {
 /*********************************/
 /*   IFRAMES FOR TIMELINEJS      */
 /*   used on posts and pages     */
-
+/*
 .bbg__iframe__timelinejs {
 	margin: {
 		right: -$site-margins;
@@ -117,3 +117,4 @@ object {
 		width: 100%;
 	}
 }
+*/

@@ -3260,11 +3260,15 @@ object {
 
 .timeline-container {
   height: 100%;
-  max-height: 650px;
   max-width: 100%;
-  min-height: 650px;
+  min-height: 450px;
   position: relative;
   overflow: hidden;
+}
+@media screen and (min-width: 600px) {
+  .timeline-container {
+    min-height: 650px;
+  }
 }
 .timeline-container iframe,
 .timeline-container object,
@@ -3289,21 +3293,25 @@ object {
 /*********************************/
 /*   IFRAMES FOR TIMELINEJS      */
 /*   used on posts and pages     */
+/*
 .bbg__iframe__timelinejs {
-  margin-right: -3rem;
-  margin-left: -3rem;
-  max-width: none;
-  width: 100%;
-  width: calc(100% + 6rem);
-}
-@media screen and (min-width: 900px) {
-  .bbg__iframe__timelinejs {
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-  }
-}
+	margin: {
+		right: -$site-margins;
+		left: -$site-margins;
+	}
+	max-width: none;
+	width: 100%;
+	width: calc(100% + 6rem);
 
+	@include media($medium-large-screen) {
+		margin: {
+			right: auto;
+			left: auto;
+		}
+		width: 100%;
+	}
+}
+*/
 /*****************************/
 .menu-all-pages-container {
   margin: 0 auto;
@@ -6123,14 +6131,9 @@ section.usa-section.bbg-banner__section {
 .bbg__employee-profile__excerpt {
   margin-bottom: 3rem;
 }
-.bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__description {
+.bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__title {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-}
-.bbg__employee-profile__excerpt.featured {
-  width: 100% !important;
-  float: none !important;
-  margin-bottom: 6rem;
-  margin-right: 0 !important;
+  margin-top: 0;
 }
 
 .bbg__profile__intern .bbg__profile__intern__job-label {

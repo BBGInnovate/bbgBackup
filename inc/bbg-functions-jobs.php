@@ -113,9 +113,9 @@
 				$e = '';
 				$e .= '<div class="bbg__employee-profile__excerpt">';
 				
-				$e .= '<a href="'.$permalink.'"><img src="'.$profilePhoto.'"/></a>';
-				$e .= '<h4><a href="'.$permalink.'">'.$profileName.'</a></h4>';
-				$e .= '<h6>'.$occupation.'</h6>';
+				$e .= '<a href="'.$permalink.'" tabindex="-1"><img src="'.$profilePhoto.'"/></a>';
+				$e .= '<h4 class="bbg__employee-profile__excerpt__name"><a href="'.$permalink.'">'.$profileName.'</a></h4>';
+				$e .= '<p class="bbg__employee-profile__excerpt__title">'.$occupation.'</p>';
 				$e .= '</div>';
 				$epStr .= $e;
 			}
