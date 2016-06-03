@@ -88,7 +88,7 @@
 		);
 		$custom_query = new WP_Query($qParams);
 
-		$epStr = '<section class="usa-section">';
+		$epStr = '<section class="bbg__section">';
 		$epStr .= '<h5 class="bbg-label small">Employees</h5>';
 		$epStr .= '<p class="" style="font-family: sans-serif;">This is a description that goes here and here.</p>';
 		$epStr .= '<div class="usa-grid-full">';
