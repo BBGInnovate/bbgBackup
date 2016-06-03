@@ -5038,6 +5038,9 @@ article {
   .bbg__article-sidebar.large:first-child {
     margin-top: -1rem;
   }
+  .bbg__article-sidebar.large p {
+    font-size: 90%;
+  }
 }
 .bbg__article-sidebar--left {
   border-bottom: 1px solid #CCC;
