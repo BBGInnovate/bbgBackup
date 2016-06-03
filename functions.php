@@ -317,9 +317,14 @@ require get_template_directory() . '/inc/bbg-functions-congressional-committees.
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
 
 /**
- * Load BBG Board + Sr Management
+ * Load Contact Cards
  */
 require get_template_directory() . '/inc/bbg-functions-contactCards.php';
+
+/**
+ * Load Jobs functions
+ */
+require get_template_directory() . '/inc/bbg-functions-jobs.php';
 
 
 /**
@@ -698,69 +703,6 @@ function acf_load_committee_member_choices( $field ) {
 
 add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_choices');
 add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_choices');
-
-
-
-function getJobs() {
-	$jobsFilepath = get_template_directory() . "/jobcache.json";
-	if ( fileExpired($jobsFilepath, 90)  ) {  //1440 min = 1 day
-		$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
-		$result=fetchUrl($jobsUrl);
-		file_put_contents($jobsFilepath, $result);
-	} else {
-		$result=file_get_contents($jobsFilepath);
-	}
-	$jobs = json_decode($result, true);
-
-	return $jobs;
-}
-
-function outputJoblist() {
-	$jobs=getJobs();
-	$s="";
-
-	if (count($jobs)==0) {
-		$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
-	} else {
-		$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
-		$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
-		for ($i=0; $i < count($jobs); $i++) {
-			$j=$jobs[$i];
-			//var_dump($j);
-			$url = $j['url'];
-			$title=$j['position_title'];
-			$startDate=$j['start_date'];
-			$endDate=$j['end_date'];
-
-			$locations=$j['locations'];
-
-			$s.= "<p><a href='$url'>$title</a><br/>";
-			$locationStr = "Location";
-			if (count($locations)>1){
-				$locationStr = "Locations";
-			}
-
-			$s.= $locationStr.": ";
-			for ($k=0; $k<count($locations); $k++) {
-				$loc = $locations[$k];
-				$s.= "$loc<br/>";
-			}
-			$s .= "Closes: $endDate<br/>";
-			$s .= "</p>";
-		}
-		$s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
-	}
-	return $s;
-}
-
-// Add shortcode to output the jobs list
-function jobs_shortcode() {
-	return outputJoblist();
-}
-add_shortcode('jobslist', 'jobs_shortcode');
-
-
-
 
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
