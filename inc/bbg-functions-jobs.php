@@ -21,49 +21,51 @@
 	}    
 	
 	function outputJoblist() {
-		$jobs=getJobs();
-		$s="";
+		$jobs = getJobs();
+		$s = "";
 
 		if (count($jobs)==0) {
 			$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 		} else {
-			$jobSearchLink='https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
+			$jobSearchLink = 'https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
 			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
 			
 			//sort by end date, and add formatted end date
 			for ($i=0; $i < count($jobs); $i++) {
-				$j=&$jobs[$i];
-				$endDateStr=$j['end_date'];
-				$endDateObj=explode("-", $endDateStr);
+				$j = &$jobs[$i];
+				$endDateStr = $j['end_date'];
+				$endDateObj = explode("-", $endDateStr);
 				$year = $endDateObj[0];
 				$month = $endDateObj[1];
 				$day = $endDateObj[2];
-				$endDateTimestamp=mktime(0, 0, 0, $month, $day, $year);
+				$endDateTimestamp = mktime(0, 0, 0, $month, $day, $year);
 				$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
 			}
 			usort($jobs, 'dCompare');
 
-			for ($i=0; $i < count($jobs); $i++) {
-				$j=$jobs[$i];
+			for ($i = 0; $i < count($jobs); $i++) {
+				$j = $jobs[$i];
 				//var_dump($j);
 				$url = $j['url'];
-				$title=$j['position_title'];
-				$startDate=$j['start_date'];
-				$endDate=$j['formatted_end_date'];
+				$title = $j['position_title'];
+				$startDate = $j['start_date'];
+				$endDate = $j['formatted_end_date'];
 
-				$locations=$j['locations'];
+				$locations = $j['locations'];
 
-				$s.= "<p><a href='$url'>$title</a><br/>";
-				$locationStr = "Location";
-				if (count($locations)>1){
-					$locationStr = "Locations";
-				}
+				$s .= "<p><a href='$url' class='bbg__jobs-list__title'>$title</a><br/>";
 
-				$s.= $locationStr.": ";
-				for ($k=0; $k<count($locations); $k++) {
-					$loc = $locations[$k];
-					$s.= "$loc<br/>";
+				if (count($locations)>1 || $locations[0] != "Washington, DC"){
+					$locationStr = "Location: ";
+					if (count($locations) > 1){
+						$locationStr = "Locations: ";
+					}
+
+					for ($k = 0; $k < count($locations); $k++) {
+						$loc = $locations[$k];
+						$s .= "$loc<br/>";
+					}
 				}
 				$s .= "Closes: $endDate<br/>";
 				$s .= "</p>";
@@ -79,7 +81,7 @@
 	}
 	add_shortcode('jobslist', 'jobs_shortcode');
 	
-	function outputEmployeeProfiles($type) {
+	function outputEmployeeProfiles() {
 		$qParams=array(
 			'post_type' => array('post')
 			,'post_status' => array('publish')
@@ -88,8 +90,8 @@
 		);
 		$custom_query = new WP_Query($qParams);
 
-		$epStr = '<section class="bbg__section">';
-		$epStr .= '<h5 class="bbg-label small">Employees</h5>';
+		$epStr = '<section class="bbg__section" style="margin-top: 4rem;">';
+		$epStr .= '<h5 class="bbg-label"><a href="/category/employee/">Employee spotlight</a></h5>';
 		$epStr .= '<p class="" style="font-family: sans-serif;">This is a description that goes here and here.</p>';
 		$epStr .= '<div class="usa-grid-full">';
 		while ( $custom_query->have_posts() )  {
@@ -113,9 +115,9 @@
 				$e = '';
 				$e .= '<div class="bbg__employee-profile__excerpt">';
 				
-				$e .= '<a href="'.$permalink.'"><img src="'.$profilePhoto.'"/></a>';
-				$e .= '<h4><a href="'.$permalink.'">'.$profileName.'</a></h4>';
-				$e .= '<h6>'.$occupation.'</h6>';
+				$e .= '<a href="'.$permalink.'" tabindex="-1"><img src="'.$profilePhoto.'"/></a>';
+				$e .= '<h4 class="bbg__employee-profile__excerpt__name"><a href="'.$permalink.'">'.$profileName.'</a></h4>';
+				$e .= '<p class="bbg__employee-profile__excerpt__title">'.$occupation.'</p>';
 				$e .= '</div>';
 				$epStr .= $e;
 			}

@@ -3,17 +3,23 @@
 
 	margin-bottom: $site-margins;
 
-	.bbg__employee-profile__excerpt__description {
-		font-family: $font-sans;
+	.bbg__employee-profile__excerpt__name {
+		margin: {
+			top: 1rem;
+			bottom: 0;
+		}
 	}
-
-	&.featured {
-		width: 100% !important;
-		float: none !important;
-		margin-bottom: $site-margins-large;
-		margin-right: 0 !important;
+	.bbg__employee-profile__excerpt__title {
+		font-family: $font-sans;
+		margin-top: 0;
 	}
 }
+
+/*
+.bbg__jobs-list__title {
+	font-weight: bold;
+}
+*/
 
 .bbg__profile__intern {
 	.bbg__profile__intern__job-label {
@@ -23,3 +29,4 @@
 		text-transform: uppercase;
 	}
 }
+
