@@ -322,6 +322,8 @@ article {
 
 
 .bbg__article-content{
+	margin-bottom: $site-margins;
+
 	li {
 		font-family: $font-serif;
 	}
@@ -375,7 +377,7 @@ article {
 		margin: {
 			top: 0;
 			right: auto;
-			bottom: 3rem;
+			bottom: $site-margins;
 			left: auto;
 		}
 		width: 56%;

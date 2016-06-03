@@ -4981,6 +4981,9 @@ article {
   }
 }
 
+.bbg__article-content {
+  margin-bottom: 3rem;
+}
 .bbg__article-content li {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
