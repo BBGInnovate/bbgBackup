@@ -6103,6 +6103,13 @@ section.usa-section.bbg-banner__section {
   margin-right: 0 !important;
 }
 
+.bbg__profile__intern .bbg__profile__intern__job-label {
+  color: #981b1e;
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 @media screen and (min-width: 900px) {
   .multicolumn {
     -webkit-column-count: 2;

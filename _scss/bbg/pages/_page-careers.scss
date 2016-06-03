@@ -14,3 +14,12 @@
 		margin-right: 0 !important;
 	}
 }
+
+.bbg__profile__intern {
+	.bbg__profile__intern__job-label {
+		color: $color-secondary-darkest;
+		display: block;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
