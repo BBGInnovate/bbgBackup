@@ -439,12 +439,10 @@ function featured_video ($url) {
 }
 
 function featured_timeline ($url) {
-	// $url = str_replace( "http://", "", $url ); //timeline js
 	$return="<div class='bbg-embed-shell bbg__featured-timeline'><div class='embed-container'>";
 	$return.="<iframe src='" . $url . "' frameborder='0'  height='600' width='1040' '></iframe>";
 	$return.="</div></div>";
 
-	// echo $return;
 	return $return;
 }
 
