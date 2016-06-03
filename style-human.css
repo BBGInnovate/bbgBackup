@@ -4813,6 +4813,10 @@ section.usa-section {
   margin-bottom: 6rem;
 }
 
+.bbg__section--medium {
+  margin-bottom: 4rem;
+}
+
 article {
   margin-bottom: 3rem;
 }
