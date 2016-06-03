@@ -31,10 +31,10 @@ article {
     // padding: 1%;
 }
 
-article p, #content article p {
+/* article p, #content article p {
     margin-top: 1em;
     margin-bottom: 1em;
-}
+} */
 
 
 /*** LEGISLATIVE DOCUMENT HEADER **/
@@ -43,7 +43,6 @@ section.form {
 }
 
 p.congress, p.session, p.enrolled-dateline {
-    /* rendered light because it is not useful info */
     margin: 0 !important;
     font-size: 85%;
     color: #777;
@@ -101,9 +100,8 @@ section.big-level > span.enum {
 }
 
 section.big-level > p.header {
-    margin-top: -0.5em;
-    margin-bottom: 1.5em;
-    font-size: 125%;
+    margin-top: 1.5em;
+    text-transform: capitalize;
 }
 
 /*** BIG LEVEL HEADING TEXT **/
@@ -167,7 +165,12 @@ section.little-level > p.header::after {
     content: ".\2014";
 }
 
-p.text {}
+p.text {
+	span.enum {
+	    display: inline;
+	    margin-right: 1rem;
+	}
+}
 
 span.enum + p.text {
     display: inline;
