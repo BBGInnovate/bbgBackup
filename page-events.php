@@ -13,10 +13,16 @@ There are some nuances to this.  Note that we're not using the paged parameter b
 http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 ****/
 
+$featuredEvent = get_field('homepage_featured_event', 'option');
+$showFeaturedEvent = get_field('show_homepage_event', 'option');
+
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$postIDsUsed=array();
 
 $numPostsFirstPage=12;
 $numPostsSubsequentPages=11;
+
 
 $postsPerPage=$numPostsFirstPage;
 $offset=0;
@@ -27,6 +33,27 @@ if ($currentPage > 1) {
 
 $hasTeamFilter=false;
 
+
+/**** QUERY TO GET FIRST POST - EITHER FEATURED OR FIRST REVERSE CHRON ***/
+if ($showFeaturedEvent && $featuredEvent) {
+	$qParamsFirst=array(
+		'p' => $featuredEvent->ID
+	);
+} else {
+	$qParamsFirst=array(
+		'post_type' => array('post')
+		,'cat' => get_cat_id('Event')
+		,'posts_per_page' => 1
+		,'post_status' => array('publish')
+	);
+}
+ 
+$featured_event_query = new WP_Query( $qParamsFirst );
+while ( $featured_event_query->have_posts() ) {
+	$featured_event_query->the_post(); 
+	$postIDsUsed[] = get_the_ID();
+}
+
 /**** QUERY PAST EVENTS FOR MAIN PAGE LOOP ***/
 $qParams=array(
 	'post_type' => array('post')
@@ -34,6 +61,7 @@ $qParams=array(
 	,'posts_per_page' => $postsPerPage
 	,'offset' => $offset
 	,'post_status' => array('publish')
+	,'post__not_in' => $postIDsUsed
 );
 $past_events_query_args= $qParams;
 $past_events_query = new WP_Query( $past_events_query_args );
@@ -52,6 +80,7 @@ $qParamsUpcoming = array(
 	,'offset' => $offset
 	,'post_status' => array('future')
 	,'order' => 'ASC'
+	,'post__not_in' => $postIDsUsed
 );
 $future_events_query_args = $qParamsUpcoming;
 $future_events_query = new WP_Query( $future_events_query_args );
@@ -77,36 +106,44 @@ get_header(); ?>
 			</div>
 			<!-- END HEADER -->
 
+			<!-- BEGIN FEATURED/FIRST EVENT -->
+			<div class="usa-grid-full">
+				<?php 
+					if ( !is_paged() ) {
+						while ( $featured_event_query->have_posts() ) {
+							$featured_event_query->the_post(); 
+							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
+						}
+					}
+				?>
+			</div><!-- .usa-grid-full -->
+			<!-- END FEATURED/FIRST EVENT -->
+
+
 			<!-- BEGIN PAST EVENTS -->
 			<div class="usa-grid-full">
+			<div class="bbg-grid--1-1-1-2 secondary-stories">
 			<?php 
 				$counter = 0;
 				while ( $past_events_query->have_posts() ) {
 					$past_events_query->the_post(); 
 					$counter++;
-					if (  (!is_paged() && $counter==1) ){
-						get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
-					} else {
-						if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
-							echo '</div>';
-							echo '<div class="usa-grid">';
-							echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-						} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
-							echo '</div><!-- left column -->';
-							echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-							echo '<header class="page-header">';
-							echo '<h6 class="page-title bbg-label small">More events</h6>';
-							echo '</header>';
+					if( (!is_paged() && $counter == 3) || (is_paged() && $counter==2)){
+						echo '</div><!-- left column -->';
+						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
+						echo '<header class="page-header">';
+						echo '<h6 class="page-title bbg-label small">More events</h6>';
+						echo '</header>';
 
-							//These values are used for every excerpt >=4
-							$includeImage = FALSE;
-							$includeMeta = FALSE;
-							$includeExcerpt=FALSE;
-						}
-						get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+						//These values are used for every excerpt >=4
+						$includeImage = FALSE;
+						$includeMeta = FALSE;
+						$includeExcerpt=FALSE;
 					}
+					get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 				}
 			?>
+			</div><!-- right column -->
 			</div><!-- .usa-grid-full -->
 			<!-- END PAST EVENTS -->
 
