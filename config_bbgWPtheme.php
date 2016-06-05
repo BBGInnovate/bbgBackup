@@ -1,22 +1,26 @@
 <?php
-$fields = get_fields('options');
-if( $fields )
-{
-	foreach( $fields as $field_name => $value )
-	{
-		switch ($field_name) {
-			case "site_setting_default_og_description":
-				define("DEFAULT_DESCRIPTION", $value);
-			break;
-			case "site_setting_default_og_image":
-				$defaultImage = wp_get_attachment_image_src( $value , 'Full');
-				$defaultImageUrl = $defaultImage[0];
-				define("DEFAULT_IMAGE", $defaultImageUrl);
-			break;
-			case "site_setting_site_title_markup":
-				define("SITE_TITLE_MARKUP", $value);
-			break;
 
+//if we call this in the admin area, we have trouble filling out repeater fields in settings pages
+if (! is_admin()) {
+	$fields = get_fields('options');
+	if( $fields )
+	{
+		foreach( $fields as $field_name => $value )
+		{
+			switch ($field_name) {
+				case "site_setting_default_og_description":
+					define("DEFAULT_DESCRIPTION", $value);
+				break;
+				case "site_setting_default_og_image":
+					$defaultImage = wp_get_attachment_image_src( $value , 'Full');
+					$defaultImageUrl = $defaultImage[0];
+					define("DEFAULT_IMAGE", $defaultImageUrl);
+				break;
+				case "site_setting_site_title_markup":
+					define("SITE_TITLE_MARKUP", $value);
+				break;
+
+			}
 		}
 	}
 }
