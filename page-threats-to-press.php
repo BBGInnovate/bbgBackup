@@ -80,12 +80,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 
-
-			<div class="usa-grid">
-
-
 			<?php if ( $custom_query->have_posts() ) : ?>
 
+			<div class="usa-grid">
 				<header class="page-header">
 					<h5 class="bbg-label--mobile large">Threats to Press</h5>
 				</header><!-- .page-header -->
@@ -143,11 +140,11 @@ get_header(); ?>
 						?>
 					<?php endwhile; ?>
 						</div><!-- .bbg-grid right column -->
-				<?php endif; ?>
 
 
 				</div><!-- .usa-grid-full -->
 			</section>
+			<?php endif; ?>
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
