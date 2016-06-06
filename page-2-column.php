@@ -49,16 +49,6 @@ get_header(); ?>
 									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 									$parent_link = get_permalink($post->post_parent);
-								?>
-								<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-	
-								<?php } ?>
-
-
-								<?php if($post->post_parent) {
-									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-									$parent_link = get_permalink($post->post_parent);
 									?>
 									<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 								<?php } else{ ?>
