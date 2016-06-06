@@ -5007,6 +5007,12 @@ article {
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
+.bbg__article-sidebar .bbg__article-sidebar__promo-photo {
+  float: left;
+  margin-right: 1.5rem;
+  max-width: 140px;
+  width: 50%;
+}
 
 .bbg__article-sidebar__list--labeled {
   display: block;
@@ -6156,11 +6162,6 @@ section.usa-section.bbg-banner__section {
   margin-top: 0;
 }
 
-/*
-.bbg__jobs-list__title {
-	font-weight: bold;
-}
-*/
 .bbg__profile__intern .bbg__profile__intern__job-label {
   color: #981b1e;
   display: block;
@@ -6168,174 +6169,18 @@ section.usa-section.bbg-banner__section {
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 900px) {
-  .multicolumn {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-    -webkit-column-gap: 3rem;
-    /* Chrome, Safari, Opera */
-    -moz-column-gap: 3rem;
-    /* Firefox */
-    column-gap: 3rem;
-  }
+.bbg__career-box .usa-width-two-thirds {
+  padding-right: 2.35765%;
+  border-right: 1px dotted #CCC;
 }
-
-.bbg-fuego__article.bbg-grid--1-2-2 {
-  border-top: none !important;
-  padding-top: 0;
-}
-
-.bbg-fuego__article {
-  border-top: 1px solid #f1f1f1;
-  border-right: 1px solid #CCC;
-  border-bottom: 1px solid #CCC;
-  border-left: 1px solid #f1f1f1;
-  border-radius: 0.3rem;
+.bbg__career-box .usa-width-two-thirds p {
   margin-top: 0;
-  margin-bottom: 1.5rem;
-  padding: 2.25rem;
 }
-@media screen and (min-width: 900px) {
-  .bbg-fuego__article {
-    margin-bottom: 2.25rem;
-    -webkit-column-break-inside: avoid;
-    /* Chrome, Safari, Opera */
-    page-break-inside: avoid;
-    /* Firefox */
-    break-inside: avoid;
-    /* IE 10+ */
-  }
-}
-
-.bbg-fuego__article__header-source-link,
-.bbg-fuego__article__header-source-link:visited {
-  color: #981b1e;
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
-}
-
-@media screen and (min-width: 900px) {
-  .bbg-fuego__article:first-of-type {
-    margin-top: 2.25rem;
-  }
-}
-
-.bbg-fuego__article__header-link,
-.bbg-fuego__article__header-link:visited {
-  color: #333;
-}
-
-.bbg-fuego__article__header-title--large {
-  font-size: 3rem;
-}
-@media screen and (min-width: 1201px) {
-  .bbg-fuego__article__header-title--large {
-    font-size: 4rem;
-  }
-}
-
-.bbg-fuego__article__description,
-.bbg-fuego__article__description p {
-  color: #333;
-  padding: 0;
-}
-.bbg-fuego__article__description:hover, .bbg-fuego__article__description:focus,
-.bbg-fuego__article__description p:hover,
-.bbg-fuego__article__description p:focus {
-  background: none;
-  text-decoration: none;
-}
-
-.bbg-fuego__article__thumbnail {
-  background-color: #f1f1f1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  float: left;
-  height: 120px;
-  margin: 0 1.5rem 1rem 0;
-  max-width: 200px;
-  width: 50%;
-}
-
-.bbg-fuego__article__thumbnail--large {
-  background-color: #f1f1f1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 240px;
-  margin: 0 0 1rem 0;
-  width: 100%;
-}
-
-.bbg-fuego__article__footer {
-  color: #999;
-  font-size: 1.3rem;
-  text-align: right;
-}
-
-.bbg-fueg__article__footer-image {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-radius: 50%;
-  display: inline-block;
-  height: 3rem;
-  vertical-align: middle;
-  width: 3rem;
-}
-
-.bbg-fuego__button__hide-link {
-  background-color: #981b1e;
-}
-
-.bbg-fuego__twitter-photo {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-radius: 50%;
-  float: left;
-  height: 70px;
-  vertical-align: middle;
-  width: 70px;
-}
-.bbg-fuego__twitter-photo:focus {
-  background-color: transparent;
-}
-
-.bbg-fuego__twitter__author-name {
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 0;
-  padding-left: 80px;
-}
-
-.bbg-fuego__twitter__author-handle {
+.bbg__career-box .usa-width-one-third h4, .bbg__career-box .usa-width-one-third .bbg__board__committee-list li a, .bbg__board__committee-list li .bbg__career-box .usa-width-one-third a {
   margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 80px;
 }
 
-.bbg-fuego__twitter__tweet {
-  font-size: 2rem;
-  font-weight: bold;
-  padding-left: 80px;
-  word-wrap: break-word;
-}
-
-.bbg-fuego__twitter__quoted-tweet {
-  background-color: #F7F7F7;
-  border: 1px solid #EFEFEF;
-  margin-bottom: 1rem;
-  padding: 3rem;
-  padding-bottom: 1.5rem;
-}
-
-.bbg-fuego__twitter__quote-text {
-  padding-left: 80px;
-  word-wrap: break-word;
-}
-
+/*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */
 .bbg__article--no-featured-image .bbg__profile-photo {
   margin: 0 auto;
 }

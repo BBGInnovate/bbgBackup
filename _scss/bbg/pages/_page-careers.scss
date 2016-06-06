@@ -15,12 +15,6 @@
 	}
 }
 
-/*
-.bbg__jobs-list__title {
-	font-weight: bold;
-}
-*/
-
 .bbg__profile__intern {
 	.bbg__profile__intern__job-label {
 		color: $color-secondary-darkest;
@@ -30,3 +24,19 @@
 	}
 }
 
+.bbg__career-box {
+	.usa-width-two-thirds {
+		padding-right: $bbg-grid-gutter;
+		border-right: $border-dotted;
+
+		p {
+			margin-top: 0;
+		}
+	}
+
+	.usa-width-one-third {
+		h4 {
+			margin-top: 0;
+		}
+	}
+}

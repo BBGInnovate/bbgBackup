@@ -80,12 +80,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 
-
-			<div class="usa-grid">
-
-
 			<?php if ( $custom_query->have_posts() ) : ?>
 
+			<div class="usa-grid">
 				<header class="page-header">
 					<h5 class="bbg-label--mobile large">Threats to Press</h5>
 				</header><!-- .page-header -->
@@ -143,11 +140,11 @@ get_header(); ?>
 						?>
 					<?php endwhile; ?>
 						</div><!-- .bbg-grid right column -->
-				<?php endif; ?>
 
 
 				</div><!-- .usa-grid-full -->
 			</section>
+			<?php endif; ?>
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
@@ -175,7 +172,7 @@ get_header(); ?>
 						<h2 class="bbg__quotation-text--large">“They were in a position to experience world events first-hand and to make a difference. Their work portrayed war in a close-up fashion that showed the world what conflict is really like, what it’s like for the victims and what it’s like for the soldiers.”</h2>
 						<div class="bbg__quotation-attribution__container">
 							<p class="bbg__quotation-attribution">
-								<img src="http://placehold.it/100x100" class="bbg__quotation-attribution__mugshot">
+								<img src="<?php echo site_url(); ?>/wp-content/media/2016/06/mugshot_richard-engel-100.jpg" class="bbg__quotation-attribution__mugshot">
 								<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">Richard Engel</span><span class="bbg__quotation-attribution__credit">NBC News chief foreign correspondent</span></span>
 							</p>
 						</div>
