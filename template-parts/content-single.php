@@ -328,7 +328,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			<?php echo $teamRoster; ?>
 			<?php 
 				if ( $includeMap ){
-					echo "<img src='" . $map . "'/>";
+					echo "<img src='" . $map . "' class='bbg__locator-map'/>";
 					echo "<h3>" . $mapHeadline . "</h3>";
 					echo "<p>" . $mapDescription . "</p>";
 				}
