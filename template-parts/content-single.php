@@ -296,13 +296,11 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				<li class="bbg__article-share__link facebook">
 					<a href="<?php echo $fbUrl; ?>">
 						<span class="bbg__article-share__icon facebook"></span>
-						<span class="bbg__article-share__text">Share</span>
 					</a>
 				</li>
 				<li class="bbg__article-share__link twitter">
 					<a href="<?php echo $twitterURL; ?>">
 						<span class="bbg__article-share__icon twitter"></span>
-						<span class="bbg__article-share__text">Tweet</span>
 					</a>
 				</li>
 			</ul>

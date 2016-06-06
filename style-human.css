@@ -3057,15 +3057,15 @@ fieldset {
 /* Article share links: text */
 .bbg__article-share__text {
   display: none;
-  /*
-  @include media($medium-screen) {
-  	display: inline-block;
-  }
-  */
 }
 .bbg__article-share__text:hover, .bbg__article-share__text:focus {
   background: none;
   text-decoration: underline;
+}
+@media screen and (min-width: 600px) {
+  .bbg__article-share__text {
+    display: inline-block;
+  }
 }
 
 /** ---------------
