@@ -353,6 +353,13 @@ article {
 			bottom: $site-margins-medium;
 		}
 	}
+
+	.bbg__article-sidebar__promo-photo {
+		float: left;
+		margin-right: $site-margins-medium;
+		max-width: 140px;
+		width: 50%;
+	}
 }
 
 .bbg__article-sidebar__list--labeled {
