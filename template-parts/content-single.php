@@ -27,6 +27,33 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
+$includeMap = get_post_meta( get_the_ID(), 'map_include', true );
+if ( $includeMap ) {
+	$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+	$mapHeadline = get_post_meta( get_the_ID(), 'map_headline', true );
+	$mapDescription = get_post_meta( get_the_ID(), 'map_description', true );
+	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
+	$mapZoom = get_post_meta( get_the_ID(), 'map_zoom', true );
+
+	$key = 	'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	$zoom = 4;
+	if ( $mapZoom > 0 && $mapZoom < 20 ) {
+		$zoom = $mapZoom;
+	}
+
+	$lat = $mapLocation['lat'];
+	$lng = $mapLocation['lng'];
+	$pin = "";
+
+	if ( $mapPin ){
+		$pin = "pin-s+990000(" . $lng .",". $lat .")/";
+	}
+
+	$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
+
+}
+
+
 $pageContent=get_the_content();
 $pageContent = apply_filters('the_content', $pageContent);
 $pageContent = str_replace(']]>', ']]&gt;', $pageContent);
@@ -299,6 +326,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<div class="bbg__article-sidebar">
 			<?php echo $teamRoster; ?>
+			<?php 
+				if ( $includeMap ){
+					echo "<img src='" . $map . "'/>";
+					echo "<h3>" . $mapHeadline . "</h3>";
+					echo "<p>" . $mapDescription . "</p>";
+				}
+			?>
+
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
