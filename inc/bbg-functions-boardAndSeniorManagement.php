@@ -98,7 +98,8 @@
 
 
 	function outputSeniorManagement($type) {
-		$boardPage=get_page_by_title('Senior Management');
+		//$boardPage=get_page_by_title('Senior Management');
+		$boardPage=get_page_by_title('IBB Management');
 		$thePostID=$boardPage->ID;
 
 		$qParams=array(
