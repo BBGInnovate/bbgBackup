@@ -3944,12 +3944,12 @@ object {
 .bbg__article-header__thumbnail--large {
   line-height: 0;
   margin-bottom: 3rem;
-  max-height: 624px;
-  overflow: hidden;
   position: relative;
 }
 .bbg__article-header__thumbnail--large img {
   width: 100%;
+  max-height: 624px;
+  overflow: hidden;
 }
 
 /*
