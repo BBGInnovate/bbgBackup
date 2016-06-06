@@ -83,9 +83,9 @@
 	Umbrella child styles
 *****/
 .bbg__about__child__intro {
-	@extend .usa-font-lead;
 
-	p {
+	p:first-of-type {
+		@extend .usa-font-lead;
 		line-height: 2.5;
 	}
 }
