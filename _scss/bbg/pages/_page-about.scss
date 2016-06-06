@@ -2,7 +2,7 @@
 .bbg__about__intro {
 
 	// First paragraph
-	p:first-child {
+	p:first-of-type {
 		@extend .usa-font-lead;
 
 		//font-size: $read-in-font-size;

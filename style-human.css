@@ -1921,7 +1921,7 @@ p a,
   }
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
+.usa-font-lead, .bbg__about__intro p:first-of-type, .bbg__about__child__intro {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 2rem;
   line-height: 1.7;
@@ -4618,12 +4618,12 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
+.usa-font-lead, .bbg__about__intro p:first-of-type, .bbg__about__child__intro {
   font-size: 1.6rem;
   font-weight: 300;
 }
 @media screen and (min-width: 600px) {
-  .usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
+  .usa-font-lead, .bbg__about__intro p:first-of-type, .bbg__about__child__intro {
     font-size: 2rem;
     line-height: 2.5;
   }
@@ -4756,7 +4756,7 @@ img > a:focus,
   text-decoration: none;
 }
 
-.usa-font-lead, .bbg__about__intro p:first-child, .bbg__about__child__intro {
+.usa-font-lead, .bbg__about__intro p:first-of-type, .bbg__about__child__intro {
   color: #000;
 }
 
@@ -6040,7 +6040,7 @@ section.usa-section.bbg-banner__section {
 }
 
 /* Page content as introduction */
-.bbg__about__intro p:first-child {
+.bbg__about__intro p:first-of-type {
   line-height: 2.5;
 }
 
@@ -6807,7 +6807,7 @@ div.appropriations-small > p.header {
 .bbg__impact-model p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
-.bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-child, .bbg__about__intro .bbg__impact-model p:first-child, .bbg__impact-model p.bbg__about__child__intro {
+.bbg__impact-model p.usa-font-lead, .bbg__impact-model .bbg__about__intro p:first-of-type, .bbg__about__intro .bbg__impact-model p:first-of-type, .bbg__impact-model p.bbg__about__child__intro {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
 }
 .bbg__impact-model p.bbg__infobox__tagline {
