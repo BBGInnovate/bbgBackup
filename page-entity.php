@@ -142,7 +142,7 @@ if ( $includeMap ) {
 	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
 	$mapZoom = get_post_meta( get_the_ID(), 'map_zoom', true );
 
-	$key = 	'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	$key = 	'<?php echo MAPBOX_API_KEY; ?>';
 	$zoom = 8;
 	if ( $mapZoom > 0 && $mapZoom < 20 ) {
 		$zoom = $mapZoom;

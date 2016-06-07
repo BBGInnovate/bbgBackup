@@ -116,7 +116,7 @@ function showInfo(data) {
 
 
 function createMap(){
-	L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
 	//Create the map.
 	var map = L.mapbox.map('map-threats', 'visualjournalist.mnbadlih', {

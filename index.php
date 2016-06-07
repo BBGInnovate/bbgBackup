@@ -110,7 +110,7 @@ get_header(); ?>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 
 <script type="text/javascript">
-L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 var map = L.mapbox.map('map', 'mapbox.streets')
 	.setView([38.91338, -77.03236], 16);
 	<?php /* echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');';*/ ?>
