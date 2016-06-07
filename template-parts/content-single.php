@@ -28,12 +28,10 @@ if ( in_category('Press Release') && $includeDateline ){
 }
 
 
-
-
-
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
-if ( $includeMap ) {
-	$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+
+if ( $includeMap && $mapLocation) {
 	$mapHeadline = get_post_meta( get_the_ID(), 'map_headline', true );
 	$mapDescription = get_post_meta( get_the_ID(), 'map_description', true );
 	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
@@ -329,7 +327,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<div class="bbg__article-sidebar">
 			<?php echo $teamRoster; ?>
 			<?php 
-				if ( $includeMap ){
+				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
 					echo "<div id='map' class='bbg__locator-map'></div>";
 					echo "<h3>" . $mapHeadline . "</h3>";
@@ -349,7 +347,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 <?php
 /* if the map is set, then load the necessary JS and CSS files */
-if ( $includeMap ){
+if ( $includeMap  && $mapLocation){
 ?>
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />

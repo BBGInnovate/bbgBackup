@@ -977,7 +977,10 @@ article {
 		bottom: $site-margins;
 	}
 	padding: $site-margins;
-	position: relative;
+
+	@include media($medium-screen) {
+		position: relative;
+	}
 
 	p, a, ul, li {
 		font-family: $font-sans;
@@ -1000,10 +1003,7 @@ article {
 		}
 
 		.bbg__contact-card__map {
-			background-color: #999;
-			background-position: center;
-			background-size: cover;
-
+			background-color: $color-gray-medium;
 			height: 200px;
 			width: 100%;
 

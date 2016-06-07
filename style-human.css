@@ -5541,7 +5541,11 @@ article {
   margin-top: 3rem;
   margin-bottom: 3rem;
   padding: 3rem;
-  position: relative;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-card {
+    position: relative;
+  }
 }
 .bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
@@ -5561,9 +5565,7 @@ article {
   }
 }
 .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
-  background-color: #999;
-  background-position: center;
-  background-size: cover;
+  background-color: #757575;
   height: 200px;
   width: 100%;
 }
