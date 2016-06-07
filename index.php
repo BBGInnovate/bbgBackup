@@ -365,8 +365,19 @@ if ( $custom_query->have_posts() ) :
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'map_location', true );
+			$storyLink = get_permalink();
 			$mapHeadline = get_post_meta( $id, 'map_headline', true );
-			$mapDescription = get_post_meta( $id, 'map_description', true );
+			$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
+
+			$mapDescription = get_the_title();
+
+			$pinColor = "#981b1e";
+			if (has_category('VOA')){
+				$pinColor = "#344998";
+			} elseif (has_category('RFA')){
+				$pinColor = "#009c50";
+			}
+
 			$counter++;
 
 			if ($counter > 1){
@@ -384,12 +395,11 @@ if ( $custom_query->have_posts() ) :
 			"properties": {
 				"title": "'. $mapHeadline .'",
 				"description": "'. $mapDescription .'",
-				"marker-color": "#981b1e",
+				"marker-color": "'. $pinColor .'",
 				"marker-size": "large",
 				"marker-symbol": ""
 			}
 		}';
-			//echo $location['lat'];
 			
 		endwhile;
 		$geojson .= $geojsonGuts;
@@ -414,7 +424,7 @@ endif;
 
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-var map = L.mapbox.map('map', 'mapbox.streets');
+var map = L.mapbox.map('map', 'mapbox.emerald');
 var myLayer = L.mapbox.featureLayer().addTo(map);
 	myLayer.setGeoJSON(geojson);
 

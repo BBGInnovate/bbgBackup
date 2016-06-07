@@ -330,7 +330,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
 					echo "<div id='map' class='bbg__locator-map'></div>";
-					echo "<h3>" . $mapHeadline . "</h3>";
+					echo "<h4>" . $mapHeadline . "</h4>";
 					echo "<p>" . $mapDescription . "</p>";
 				}
 			?>
