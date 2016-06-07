@@ -299,7 +299,7 @@ $postsPerPage =20;
 
 $qParams=array(
 	'post_type' => array('post')
-	,'cat' => get_cat_id('Mapped')
+	,'cat' => get_cat_id('Map it')
 	,'posts_per_page' => $postsPerPage
 	,'post_status' => array('publish')
 );
@@ -415,9 +415,8 @@ L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 var map = L.mapbox.map('map', 'mapbox.streets');
 var myLayer = L.mapbox.featureLayer().addTo(map);
 	myLayer.setGeoJSON(geojson);
-	//.setView([33.91338, 43], 3);
-	<?php /* echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');';*/ ?>
 
+	//Disable the map scroll/zoom so that you can scroll the page.
 	map.scrollWheelZoom.disable();
 
 /*
@@ -445,10 +444,10 @@ L.mapbox.featureLayer({
 	}
 }).addTo(map);
 */
-	//Check the width of the browser.
 	function centerMap(){
 		map.fitBounds(myLayer.getBounds());
 		/*
+		//Check the width of the browser.
 		var w = window.innerWidth;
 		if (w>900){
 			//Fit the map to the markers.
@@ -464,7 +463,7 @@ L.mapbox.featureLayer({
 	centerMap();
 
 
-	//Resize YouTube videos proportionately
+	//Recenter the map on resize
 	function resizeStuffOnResize(){
 	  waitForFinalEvent(function(){
 			centerMap();
