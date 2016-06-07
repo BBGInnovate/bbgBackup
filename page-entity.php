@@ -128,14 +128,44 @@ if ($street != "" && $city!= "" && $state != "" && $zip != "") {
 	$zoom = 14;
 	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street.',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
 	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
-	$includeMap = "bbg__contact-card--include-map";
+	//$includeMap = "bbg__contact-card--include-map";
 
 	$address = '<p><a href="'. $mapLink . '">' . $address . '</a></p>';
 }
 
+/* Add a map */
+$includeMap = get_post_meta( get_the_ID(), 'map_include', true );
+if ( $includeMap ) {
+	$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+	$mapHeadline = get_post_meta( get_the_ID(), 'map_headline', true );
+	$mapDescription = get_post_meta( get_the_ID(), 'map_description', true );
+	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
+	$mapZoom = get_post_meta( get_the_ID(), 'map_zoom', true );
+
+	$key = 	'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	$zoom = 8;
+	if ( $mapZoom > 0 && $mapZoom < 20 ) {
+		$zoom = $mapZoom;
+	}
+
+	$lat = $mapLocation['lat'];
+	$lng = $mapLocation['lng'];
+	$pin = "";
+
+	if ( $mapPin ){
+		$pin = "pin-s+990000(" . $lng .",". $lat .")/";
+	}
+
+	//Static map like this:
+	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
+}
+
+
 if ($address != "" || $phone != "" || $email != ""){
 	$includeContactBox = TRUE;
 }
+
+
 
 
 
@@ -471,11 +501,15 @@ get_header(); ?>
 
 								<?php if ($includeContactBox){ ?>
 								<aside class="bbg__article-sidebar__aside">
-								<div class="bbg__contact-card <?php echo $includeMap; ?>">
-									<?php if ($includeMap!=""){ ?>
+								<div class="bbg__contact-card <?php if ($includeMap){echo 'bbg__contact-card--include-map';} ?>">
+									<?php if ($includeMap){ ?>
+									<!--
 									<a href="<?php echo $mapLink; ?>">
 									<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
 									</a>
+									-->
+
+									<div id='map' class='bbg__contact-card__map'></div>
 									<?php } ?>
 
 									<div class="bbg__contact-card__text">
@@ -540,6 +574,50 @@ get_header(); ?>
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
+
+<?php
+/* if the map is set, then load the necessary JS and CSS files */
+if ( $includeMap ){
+?>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+	<script type="text/javascript">
+	L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	var map = L.mapbox.map('map', 'mapbox.streets')
+		//.setView([38.91338, -77.03236], 16);
+		<?php echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');'; ?>
+
+	map.scrollWheelZoom.disable();
+
+	L.mapbox.featureLayer({
+		// this feature is in the GeoJSON format: see geojson.org
+		// for the full specification
+		type: 'Feature',
+		geometry: {
+			type: 'Point',
+			// coordinates here are in longitude, latitude order because
+			// x, y is the standard for GeoJSON and many formats
+			coordinates: [
+				//-77.03221142292,
+				//38.913371603574
+				<?php echo $lng . ', ' . $lat; ?>
+			]
+		},
+		properties: {
+			title: '<?php echo $mapHeadline; ?>',
+			description: '<?php echo $mapDescription; ?>',
+			// one can customize markers by adding simplestyle properties
+			// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+			'marker-size': 'large',
+			'marker-color': '#981b1e',
+			'marker-symbol': ''
+		}
+	}).addTo(map);
+
+	</script>
+<?php } ?>
+
 
 <?php /*get_sidebar();*/ ?>
 <?php get_footer(); ?>

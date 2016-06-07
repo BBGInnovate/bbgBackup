@@ -27,6 +27,10 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
+
+
+
+
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 if ( $includeMap ) {
 	$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -49,8 +53,8 @@ if ( $includeMap ) {
 		$pin = "pin-s+990000(" . $lng .",". $lat .")/";
 	}
 
-	$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
-
+	//Static map version like this:
+	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
 }
 
 

@@ -29,6 +29,7 @@ get_header(); ?>
 
 
 
+			<section class="usa-section">
 
 				<?php if ( is_home() && ! is_front_page() ) : ?>
 					<!--
@@ -54,7 +55,7 @@ get_header(); ?>
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 						} else {
 							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
-								echo '</div>';
+								//echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
 							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
@@ -73,7 +74,8 @@ get_header(); ?>
 						}
 					?>
 				<?php endwhile; ?>
-					</div><!-- .bbg-grid right column -->
+				</div><!-- .bbg-grid right column -->
+			</div>
 
 
 
@@ -82,12 +84,21 @@ get_header(); ?>
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
 			<?php endif; ?>
-
-			</div><!-- .usa-grid -->
+			<!--
 			<div class="usa-grid">
 				<?php the_posts_navigation(); ?>
 			</div>
-			<div id="map" class="bbg__map--threats"></div>
+			-->
+
+			</div><!-- .usa-grid -->
+			</section>
+
+			<section class="usa-section">
+				<div class="usa-grid">
+					<h5 class="bbg-label">Around the world</h5>
+				</div>
+				<div id="map" class="bbg__map--threats"></div>
+			</section>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
