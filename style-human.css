@@ -2999,6 +2999,12 @@ fieldset {
   text-decoration: none;
 }
 
+@media screen and (min-width: 900px) {
+  .bbg__article-sidebar.large .bbg__article-share__link {
+    display: block;
+  }
+}
+
 .bbg__article-share__link:before {
   content: "";
 }
@@ -4422,6 +4428,17 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 }
 
 /* locator map */
+.bbg__locator-map {
+  width: 100%;
+  min-height: 300px;
+}
+@media screen and (min-width: 900px) {
+  .bbg__locator-map a.leaflet-control-zoom-out,
+  .bbg__locator-map a.leaflet-control-zoom-in {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;
@@ -6161,6 +6178,10 @@ section.usa-section.bbg-banner__section {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: 0;
 }
+.bbg__employee-profile__excerpt bbg__employee-profile__excerpt__title {
+  line-height: 1.3;
+  font-size: 90%;
+}
 
 .bbg__profile__intern .bbg__profile__intern__job-label {
   color: #981b1e;
@@ -6169,12 +6190,14 @@ section.usa-section.bbg-banner__section {
   text-transform: uppercase;
 }
 
-.bbg__career-box .usa-width-two-thirds {
-  padding-right: 2.35765%;
-  border-right: 1px dotted #CCC;
-}
 .bbg__career-box .usa-width-two-thirds p {
   margin-top: 0;
+}
+@media screen and (min-width: 900px) {
+  .bbg__career-box .usa-width-two-thirds {
+    padding-right: 2.35765%;
+    border-right: 1px dotted #CCC;
+  }
 }
 .bbg__career-box .usa-width-one-third h4, .bbg__career-box .usa-width-one-third .bbg__board__committee-list li a, .bbg__board__committee-list li .bbg__career-box .usa-width-one-third a {
   margin-top: 0;

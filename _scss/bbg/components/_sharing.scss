@@ -39,6 +39,14 @@
 	*/
 }
 
+.bbg__article-sidebar.large {
+	.bbg__article-share__link {
+		@include media($medium-large-screen) {
+			display: block;
+		}
+	}
+}
+
 .bbg__article-share__link:before {
 	content: "";
 }

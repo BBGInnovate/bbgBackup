@@ -326,7 +326,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			<?php echo $teamRoster; ?>
 			<?php 
 				if ( $includeMap ){
-					echo "<img src='" . $map . "' class='bbg__locator-map'/>";
+					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
+					echo "<div id='map' class='bbg__locator-map'></div>";
 					echo "<h3>" . $mapHeadline . "</h3>";
 					echo "<p>" . $mapDescription . "</p>";
 				}
@@ -341,3 +342,47 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<?php bbginnovate_entry_footer(); ?>
 	</footer> --><!-- .entry-footer -->
 </article><!-- #post-## -->
+
+<?php
+/* if the map is set, then load the necessary JS and CSS files */
+if ( $includeMap ){
+?>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+	<script type="text/javascript">
+	L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	var map = L.mapbox.map('map', 'mapbox.streets')
+		//.setView([38.91338, -77.03236], 16);
+		<?php echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');'; ?>
+
+	L.mapbox.featureLayer({
+		// this feature is in the GeoJSON format: see geojson.org
+		// for the full specification
+		type: 'Feature',
+		geometry: {
+			type: 'Point',
+			// coordinates here are in longitude, latitude order because
+			// x, y is the standard for GeoJSON and many formats
+			coordinates: [
+				//-77.03221142292,
+				//38.913371603574
+				<?php echo $lng . ', ' . $lat; ?>
+			]
+		},
+		properties: {
+			title: '<?php echo $mapHeadline; ?>',
+			description: '<?php echo $mapDescription; ?>',
+			// one can customize markers by adding simplestyle properties
+			// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+			'marker-size': 'large',
+			'marker-color': '#981b1e',
+			'marker-symbol': ''
+		}
+	}).addTo(map);
+
+	</script>
+
+	<style>
+	</style>
+<?php } ?>

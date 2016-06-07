@@ -13,6 +13,11 @@
 		font-family: $font-sans;
 		margin-top: 0;
 	}
+
+	bbg__employee-profile__excerpt__title {
+		line-height: 1.3;
+		font-size: 90%;
+	}
 }
 
 .bbg__profile__intern {
@@ -26,11 +31,13 @@
 
 .bbg__career-box {
 	.usa-width-two-thirds {
-		padding-right: $bbg-grid-gutter;
-		border-right: $border-dotted;
-
 		p {
 			margin-top: 0;
+		}
+
+		@include media($medium-large-screen) {
+			padding-right: $bbg-grid-gutter;
+			border-right: $border-dotted;
 		}
 	}
 

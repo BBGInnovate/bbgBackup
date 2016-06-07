@@ -44,8 +44,8 @@ $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
 $entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
 
-$siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Visit the Websites</h3><select name='entity_sites' id='entity_sites'>";
-$siteSelect .= "<option>Select a URL</option>";
+$siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Explore the $abbreviation websites</h3><select name='entity_sites' id='entity_sites'>";
+$siteSelect .= "<option>Select a language or service</option>";
 foreach ($subgroups as $s) {
 	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
 }
@@ -417,7 +417,7 @@ get_header(); ?>
 									?>
 									<aside class="bbg__article-sidebar__aside">
 									<ul class="bbg__article-share">
-									<h3 class="bbg__sidebar-label bbg__contact-label">Social media </h3>
+									<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
 									<ul>
 										<?php
 											if ($facebook!=""){
