@@ -374,8 +374,15 @@ if ( $custom_query->have_posts() ) :
 			$pinColor = "#981b1e";
 			if (has_category('VOA')){
 				$pinColor = "#344998";
+				$mapHeadline = "<a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a>';
 			} elseif (has_category('RFA')){
 				$pinColor = "#009c50";
+				$mapHeadline = "<a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a>';
+			} elseif (has_category('RFE/RL')){
+				$pinColor = "#ea6828";
+				$mapHeadline = "<a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a>';
+			} else {
+				$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
 			}
 
 			$counter++;
