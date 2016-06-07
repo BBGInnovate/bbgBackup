@@ -116,10 +116,10 @@ function showInfo(data) {
 
 
 function createMap(){
-	L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+	L.mapbox.accessToken = bbgConfig.MAPBOX_API_KEY;
 
 	//Create the map.
-	var map = L.mapbox.map('map-threats', 'visualjournalist.mnbadlih', {
+	var map = L.mapbox.map('map-threats', 'mapbox.emerald', {
 		scrollWheelZoom: false
 	});
 
@@ -129,6 +129,7 @@ function createMap(){
 
 	//Check the width of the browser.
 	function centerMap(){
+		//map.fitBounds(myLayer.getBounds());
 		var w = window.innerWidth;
 		if (w>900){
 			//Fit the map to the markers.

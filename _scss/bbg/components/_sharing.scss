@@ -28,12 +28,22 @@
 		background: none;
 		text-decoration: none;
 	}
+	/*
 	@include media($medium-screen) {
 		margin-right: 2rem;
 	}
 
 	@include media($medium-large-screen) {
 		display: block;
+	}
+	*/
+}
+
+.bbg__article-sidebar.large {
+	.bbg__article-share__link {
+		@include media($medium-large-screen) {
+			display: block;
+		}
 	}
 }
 
@@ -52,11 +62,13 @@
 	margin-right: .5rem;
 	vertical-align: middle;
 	width: $share-icon-large;
+	/*
 	@include media($medium-screen) {
 		border-radius: 0;
 		height: $share-icon-small;
 		width: $share-icon-small;
 	}
+	*/
 }
 
 .bbg__contact__icon.email,

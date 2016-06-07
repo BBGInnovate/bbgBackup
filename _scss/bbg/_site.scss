@@ -628,6 +628,10 @@ article {
 	@include media($small-screen) {
 		margin-bottom: $site-margins;
 	}
+
+	&:last-of-type {
+		margin-bottom: 0;
+	};
 }
 
 .bbg-blog__excerpt-title--list {
@@ -977,7 +981,10 @@ article {
 		bottom: $site-margins;
 	}
 	padding: $site-margins;
-	position: relative;
+
+	@include media($medium-screen) {
+		position: relative;
+	}
 
 	p, a, ul, li {
 		font-family: $font-sans;
@@ -1000,10 +1007,7 @@ article {
 		}
 
 		.bbg__contact-card__map {
-			background-color: #999;
-			background-position: center;
-			background-size: cover;
-
+			background-color: $color-gray-medium;
 			height: 200px;
 			width: 100%;
 

@@ -7,8 +7,13 @@
  * @package bbgRedesign
  */
 
-require "config_bbgWPtheme.php";
-
+//can't 'DEFINE' an array, so we just set a var.  Note that this should be kept here and not called on 'init' else it won't be available globally.
+$STANDARD_POST_CATEGORY_EXCLUDES = array(
+	get_cat_id("John's take"),
+	get_cat_id('Contact'),
+	get_cat_id('Quotation'),
+	get_cat_id('Employee')
+);
 
 /****** UTILITY FUNCTIONS - KEEP UP TOP ****/
 function fileExpired($filepath, $minutesToExpire) {
@@ -735,7 +740,10 @@ function getEntityLinks($entityID) {
 /**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/
 add_action( 'init', 'my_add_excerpts_to_pages' );
 function my_add_excerpts_to_pages() {
-     add_post_type_support( 'page', 'excerpt' );
+    add_post_type_support( 'page', 'excerpt' );
+	
+	require "config_bbgWPtheme.php"; //originally we had this at the top of the file, but calling get_fields in functions.php before everything runs caused an issue with ACF where it would never return a post object, instead always an ID
+
 }
 
 

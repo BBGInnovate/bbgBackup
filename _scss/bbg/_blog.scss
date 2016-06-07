@@ -4,15 +4,14 @@
 .bbg__article-header__thumbnail--large {
 	line-height: 0;
 	margin: {
-		//top: $site-margins;
 		bottom: $site-margins;
 	}
-	max-height: 624px;
-	overflow: hidden;
 	position: relative;
 
 	img {
 		width: 100%;
+		max-height: 624px;
+		overflow: hidden;
 	}
 }
 
@@ -608,3 +607,28 @@ ul.bbg__article-content__list--inline {
 	font-size: 80%;
 	font-weight: bold;
 }
+
+
+
+
+
+/* locator map */
+.bbg__locator-map {
+	width: 100%;
+	min-height: 300px;
+
+	@include media($medium-large-screen) {
+		a.leaflet-control-zoom-out,
+		a.leaflet-control-zoom-in {
+			display: none;
+		}
+	}
+}
+
+.bbg__article-sidebar.large {
+	.leaflet-container div,
+	.leaflet-container p {
+		margin-bottom: 0;
+	}
+}
+

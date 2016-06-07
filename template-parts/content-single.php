@@ -27,6 +27,35 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
+
+$includeMap = get_post_meta( get_the_ID(), 'map_include', true );
+$mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+
+if ( $includeMap && $mapLocation) {
+	$mapHeadline = get_post_meta( get_the_ID(), 'map_headline', true );
+	$mapDescription = get_post_meta( get_the_ID(), 'map_description', true );
+	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
+	$mapZoom = get_post_meta( get_the_ID(), 'map_zoom', true );
+
+	$key = 	'<?php echo MAPBOX_API_KEY; ?>';
+	$zoom = 4;
+	if ( $mapZoom > 0 && $mapZoom < 20 ) {
+		$zoom = $mapZoom;
+	}
+
+	$lat = $mapLocation['lat'];
+	$lng = $mapLocation['lng'];
+	$pin = "";
+
+	if ( $mapPin ){
+		$pin = "pin-s+990000(" . $lng .",". $lat .")/";
+	}
+
+	//Static map version like this:
+	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
+}
+
+
 $pageContent=get_the_content();
 $pageContent = apply_filters('the_content', $pageContent);
 $pageContent = str_replace(']]>', ']]&gt;', $pageContent);
@@ -269,13 +298,11 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				<li class="bbg__article-share__link facebook">
 					<a href="<?php echo $fbUrl; ?>">
 						<span class="bbg__article-share__icon facebook"></span>
-						<span class="bbg__article-share__text">Share</span>
 					</a>
 				</li>
 				<li class="bbg__article-share__link twitter">
 					<a href="<?php echo $twitterURL; ?>">
 						<span class="bbg__article-share__icon twitter"></span>
-						<span class="bbg__article-share__text">Tweet</span>
 					</a>
 				</li>
 			</ul>
@@ -299,6 +326,15 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<div class="bbg__article-sidebar">
 			<?php echo $teamRoster; ?>
+			<?php 
+				if ( $includeMap  && $mapLocation){
+					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
+					echo "<div id='map' class='bbg__locator-map'></div>";
+					echo "<h3>" . $mapHeadline . "</h3>";
+					echo "<p>" . $mapDescription . "</p>";
+				}
+			?>
+
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
@@ -308,3 +344,46 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<?php bbginnovate_entry_footer(); ?>
 	</footer> --><!-- .entry-footer -->
 </article><!-- #post-## -->
+
+<?php
+/* if the map is set, then load the necessary JS and CSS files */
+if ( $includeMap  && $mapLocation){
+?>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+	<script type="text/javascript">
+	L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+	var map = L.mapbox.map('map', 'mapbox.streets')
+		//.setView([38.91338, -77.03236], 16);
+		<?php echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');'; ?>
+
+	map.scrollWheelZoom.disable();
+
+	L.mapbox.featureLayer({
+		// this feature is in the GeoJSON format: see geojson.org
+		// for the full specification
+		type: 'Feature',
+		geometry: {
+			type: 'Point',
+			// coordinates here are in longitude, latitude order because
+			// x, y is the standard for GeoJSON and many formats
+			coordinates: [
+				//-77.03221142292,
+				//38.913371603574
+				<?php echo $lng . ', ' . $lat; ?>
+			]
+		},
+		properties: {
+			title: '<?php echo $mapHeadline; ?>',
+			description: '<?php echo $mapDescription; ?>',
+			// one can customize markers by adding simplestyle properties
+			// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+			'marker-size': 'large',
+			'marker-color': '#981b1e',
+			'marker-symbol': ''
+		}
+	}).addTo(map);
+
+	</script>
+<?php } ?>
