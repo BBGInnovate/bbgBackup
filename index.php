@@ -366,7 +366,7 @@ if ( $custom_query->have_posts() ) :
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'map_location', true );
 			$mapHeadline = get_post_meta( $id, 'map_headline', true );
-			$location = get_post_meta( $id, 'map_description', true );
+			$mapDescription = get_post_meta( $id, 'map_description', true );
 			$counter++;
 
 			if ($counter > 1){
