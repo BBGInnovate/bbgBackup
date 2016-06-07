@@ -119,7 +119,7 @@ function createMap(){
 	L.mapbox.accessToken = bbgConfig.MAPBOX_API_KEY;
 
 	//Create the map.
-	var map = L.mapbox.map('map-threats', 'visualjournalist.mnbadlih', {
+	var map = L.mapbox.map('map-threats', 'mapbox.emerald', {
 		scrollWheelZoom: false
 	});
 
