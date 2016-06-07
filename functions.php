@@ -13,7 +13,7 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Contact'),
 	get_cat_id('Quotation'),
 	get_cat_id('Employee')
-)
+);
 
 /****** UTILITY FUNCTIONS - KEEP UP TOP ****/
 function fileExpired($filepath, $minutesToExpire) {
