@@ -293,6 +293,117 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
+<?php
+
+$postsPerPage =20;
+
+$qParams=array(
+	'post_type' => array('post')
+	,'cat' => get_cat_id('Mapped')
+	,'posts_per_page' => $postsPerPage
+	,'post_status' => array('publish')
+);
+
+/*
+var geojson = [
+	{
+		"type": "FeatureCollection",
+		"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-77.016556,
+					38.887226
+				]
+			},
+			"properties": {
+				"title": "Africa Rizing HQ",
+				"description": "description could go here.",
+				"marker-color": "#F7941E",
+				"marker-size": "large",
+				"marker-symbol": "building"
+			}
+		},
+
+		{
+			"type": "Feature",
+			"geometry": {
+			"type": "Point",
+			"coordinates": [
+			  -0.200000,
+			  5.550000
+			]
+			},
+			"properties": {
+			"title": "Adam Martin (<a href='http://twitter.com/'>@adamjmartin</a>) — Accra, Ghana",
+			"description": "<img src='http://54.243.239.169/brian/africa.rizing/images/mugshot_adamjmartin.jpg' style='width: 30%; float: left; margin-right: 10px; '> #BOS #DCA #ACC Tweets on #beisbol #media #tech dir. of tech & innovation @BBGInnovate former #pubmedia @NPRTechTeam and @NPRNews always RadioBoston dot Com",
+			"marker-color": "#FBB040",
+			"marker-size": "large"
+			}
+		}
+	  ]
+	}
+];
+*/
+
+/*** late in the game we ran into a pagination issue, so we're running a second query here ***/
+$custom_query_args= $qParams;
+$custom_query = new WP_Query( $custom_query_args );
+
+$geojson = 'var geojson = [
+	{
+		"type": "FeatureCollection",
+		"features": [
+';
+$geojsonGuts = "";
+
+
+if ( $custom_query->have_posts() ) :
+		$counter = 0;
+		while ( $custom_query->have_posts() ) : $custom_query->the_post();
+			$id = get_the_ID();
+			$location = get_post_meta( $id, 'map_location', true );
+			$counter++;
+
+			if ($counter > 1){
+				$geojsonGuts .= ",";
+			}
+			$geojsonGuts .= '{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					'. $location['lng'] .',
+					'. $location['lat'] .'
+				]
+			},
+			"properties": {
+				"title": "Africa Rizing HQ",
+				"description": "description could go here.",
+				"marker-color": "#981b1e",
+				"marker-size": "large",
+				"marker-symbol": ""
+			}
+		}';
+			//echo $location['lat'];
+			
+		endwhile;
+		$geojson .= $geojsonGuts;
+		$geojson .= '	  ]
+	}
+];';
+		echo '<script type="text/javascript">';
+		echo $geojson;
+		echo '</script>';
+endif; 
+
+
+
+?>
+
+
 
 
 <?php /* include map stuff -------------------------------------------------- */ ?>
@@ -301,12 +412,15 @@ get_header(); ?>
 
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-var map = L.mapbox.map('map', 'mapbox.streets')
-	.setView([33.91338, 43], 3);
+var map = L.mapbox.map('map', 'mapbox.streets');
+var myLayer = L.mapbox.featureLayer().addTo(map);
+	myLayer.setGeoJSON(geojson);
+	//.setView([33.91338, 43], 3);
 	<?php /* echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');';*/ ?>
 
-map.scrollWheelZoom.disable(); //allows you 
+	map.scrollWheelZoom.disable();
 
+/*
 L.mapbox.featureLayer({
 	// this feature is in the GeoJSON format: see geojson.org
 	// for the full specification
@@ -318,7 +432,6 @@ L.mapbox.featureLayer({
 		coordinates: [
 			33.03221142292,
 			43.913371603574
-			<?php /* echo $lng . ', ' . $lat;*/ ?>
 		]
 	},
 	properties: {
@@ -331,6 +444,52 @@ L.mapbox.featureLayer({
 		'marker-symbol': ''
 	}
 }).addTo(map);
+*/
+	//Check the width of the browser.
+	function centerMap(){
+		map.fitBounds(myLayer.getBounds());
+		/*
+		var w = window.innerWidth;
+		if (w>900){
+			//Fit the map to the markers.
+			map.fitBounds(myLayer.getBounds());
+		}else if (w>600){
+			//Center and zoom the map
+			map.setView([30, 35], 3);
+		}else{
+			map.setView([30, 55], 2);
+		}
+		*/
+	}
+	centerMap();
+
+
+	//Resize YouTube videos proportionately
+	function resizeStuffOnResize(){
+	  waitForFinalEvent(function(){
+			centerMap();
+	  }, 500, "some unique string");
+	}
+
+	//Wait for the window resize to 'end' before executing a function---------------
+	var waitForFinalEvent = (function () {
+		var timers = {};
+		return function (callback, ms, uniqueId) {
+			if (!uniqueId) {
+				uniqueId = "Don't call this twice without a uniqueId";
+			}
+			if (timers[uniqueId]) {
+				clearTimeout (timers[uniqueId]);
+			}
+			timers[uniqueId] = setTimeout(callback, ms);
+		};
+	})();
+
+	window.addEventListener('resize', function(event){
+		resizeStuffOnResize();
+	});
+
+	resizeStuffOnResize();
 
 </script>
 
