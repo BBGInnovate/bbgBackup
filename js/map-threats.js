@@ -129,8 +129,7 @@ function createMap(){
 
 	//Check the width of the browser.
 	function centerMap(){
-		map.fitBounds(myLayer.getBounds());
-		/*
+		//map.fitBounds(myLayer.getBounds());
 		var w = window.innerWidth;
 		if (w>900){
 			//Fit the map to the markers.
@@ -141,7 +140,6 @@ function createMap(){
 		}else{
 			map.setView([30, 55], 2);
 		}
-		*/
 	}
 	centerMap();
 

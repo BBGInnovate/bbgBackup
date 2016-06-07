@@ -365,6 +365,8 @@ if ( $custom_query->have_posts() ) :
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'map_location', true );
+			$mapHeadline = get_post_meta( $id, 'map_headline', true );
+			$location = get_post_meta( $id, 'map_description', true );
 			$counter++;
 
 			if ($counter > 1){
@@ -380,8 +382,8 @@ if ( $custom_query->have_posts() ) :
 				]
 			},
 			"properties": {
-				"title": "Africa Rizing HQ",
-				"description": "description could go here.",
+				"title": "'. $mapHeadline .'",
+				"description": "'. $mapDescription .'",
 				"marker-color": "#981b1e",
 				"marker-size": "large",
 				"marker-symbol": ""
@@ -419,31 +421,6 @@ var myLayer = L.mapbox.featureLayer().addTo(map);
 	//Disable the map scroll/zoom so that you can scroll the page.
 	map.scrollWheelZoom.disable();
 
-/*
-L.mapbox.featureLayer({
-	// this feature is in the GeoJSON format: see geojson.org
-	// for the full specification
-	type: 'Feature',
-	geometry: {
-		type: 'Point',
-		// coordinates here are in longitude, latitude order because
-		// x, y is the standard for GeoJSON and many formats
-		coordinates: [
-			33.03221142292,
-			43.913371603574
-		]
-	},
-	properties: {
-		title: 'Title goes here',
-		description: 'Description goes here',
-		// one can customize markers by adding simplestyle properties
-		// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-		'marker-size': 'large',
-		'marker-color': '#981b1e',
-		'marker-symbol': ''
-	}
-}).addTo(map);
-*/
 	function centerMap(){
 		map.fitBounds(myLayer.getBounds());
 		/*
