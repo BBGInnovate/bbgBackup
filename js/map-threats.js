@@ -116,7 +116,7 @@ function showInfo(data) {
 
 
 function createMap(){
-	L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+	L.mapbox.accessToken = bbgConfig.MAPBOX_API_KEY;
 
 	//Create the map.
 	var map = L.mapbox.map('map-threats', 'visualjournalist.mnbadlih', {

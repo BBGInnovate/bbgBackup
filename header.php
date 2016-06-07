@@ -107,6 +107,11 @@ $moveUSAbannerBecauseOfAlert = '';
 
 <?php wp_head(); ?>
 
+<script type="text/javascript">
+	bbgConfig={};
+	bbgConfig.MAPBOX_API_KEY = '<?php echo MAPBOX_API_KEY; ?>';
+</script>
+
 
 
 <!-- IE <9 patch
