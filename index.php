@@ -16,94 +16,29 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="usa-grid-full">
 
-			<?php if ( have_posts() ) : ?>
 
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h6 class="bbg-label--mobile large">News + information</h6>
+					<h5 class="bbg-label--mobile large">Network news</h5>
+					<h6 class="bbg__page-header__tagline">Tagline explaining what impact means for BBG goes here and here.</h6>
 				</header><!-- .page-header -->
 			</div>
 
 
 
-			<section class="usa-section">
-
-				<?php if ( is_home() && ! is_front_page() ) : ?>
-					<!--
-					<header class="page-header">
-						<h6 class="page-title screen-reader-text bbg-label large"><?php single_post_title(); ?></h6>
-					</header>
-					-->
-				<?php endif; ?>
-
-
-				<?php /* Start the Loop */
-					$counter = 0;
-				?>
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php
-
-						$counter++;
-
-
-						//Add a check here to only show featured if it's not paginated.
-						if (  (!is_paged() && $counter==1) ){
-							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
-						} else {
-							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
-								//echo '</div>';
-								echo '<div class="usa-grid">';
-								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
-								echo '</div><!-- left column -->';
-								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
-								echo '</header>';
-
-								//These values are used for every excerpt >=4
-								$includeImage = FALSE;
-								$includeMeta = FALSE;
-								$includeExcerpt=FALSE;
-							}
-							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-						}
-					?>
-				<?php endwhile; ?>
-				</div><!-- .bbg-grid right column -->
-			</div>
-
-
-
-			<?php else : ?>
-
-				<?php get_template_part( 'template-parts/content', 'none' ); ?>
-
-			<?php endif; ?>
-			<!--
-			<div class="usa-grid">
-				<?php the_posts_navigation(); ?>
-			</div>
-			-->
-
-			</div><!-- .usa-grid -->
-			</section>
 
 			<section class="usa-section">
-				<div class="usa-grid">
-					<h5 class="bbg-label">Around the world</h5>
-				</div>
 				<div id="map" class="bbg__map--threats"></div>
 			</section>
 
 
+			<div class="usa-grid-full">
+
 			<section class="usa-section">
 				<div class="usa-grid">
-					<h5 class="bbg-label"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">VOA updates</a></h5>
+					<h5 class="bbg-label small"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">VOA updates</a></h5>
 				</div>
 
 				<div class="usa-grid">
@@ -158,7 +93,7 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid">
-					<h5 class="bbg-label"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">RFE/RL updates</a></h5>
+					<h5 class="bbg-label small"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">RFE/RL updates</a></h5>
 				</div>
 
 				<div class="usa-grid">
@@ -206,7 +141,7 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid">
-					<h5 class="bbg-label"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">OCB updates</a></h5>
+					<h5 class="bbg-label small"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">OCB updates</a></h5>
 				</div>
 
 				<div class="usa-grid">
@@ -254,7 +189,7 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid">
-					<h5 class="bbg-label"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">RFA updates</a></h5>
+					<h5 class="bbg-label small"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">RFA updates</a></h5>
 				</div>
 
 				<div class="usa-grid">
@@ -302,7 +237,7 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid">
-					<h5 class="bbg-label"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">MBN updates</a></h5>
+					<h5 class="bbg-label small"><a href="https://bbgredesign.voanews.com/blog/category/threats-to-press/">MBN updates</a></h5>
 				</div>
 
 				<div class="usa-grid">
@@ -367,7 +302,7 @@ get_header(); ?>
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 var map = L.mapbox.map('map', 'mapbox.streets')
-	.setView([38.91338, -77.03236], 16);
+	.setView([33.91338, 43], 3);
 	<?php /* echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');';*/ ?>
 
 map.scrollWheelZoom.disable(); //allows you 
@@ -381,8 +316,8 @@ L.mapbox.featureLayer({
 		// coordinates here are in longitude, latitude order because
 		// x, y is the standard for GeoJSON and many formats
 		coordinates: [
-			-77.03221142292,
-			38.913371603574
+			33.03221142292,
+			43.913371603574
 			<?php /* echo $lng . ', ' . $lat;*/ ?>
 		]
 	},

@@ -5274,6 +5274,9 @@ article {
     margin-bottom: 3rem;
   }
 }
+.bbg-blog__excerpt--list:last-of-type {
+  margin-bottom: 0;
+}
 
 .bbg-blog__excerpt-title--list {
   clear: none;
