@@ -113,7 +113,7 @@ get_header(); ?>
 								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova confirms Clooney as defense counsel</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">
-								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="http://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="http://placehold.it/300x180 300w, http://placehold.it/300x180 1040w, http://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
+								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="https://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="https://placehold.it/300x180 300w, https://placehold.it/300x180 1040w, https://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
 							</div>
 							<div class="entry-content bbg-blog__excerpt-content">
 								<p>The announcement&nbsp;by international human rights lawyer Amal Clooney that she will defend RFE/RL contributor Khadija Ismayilova&nbsp;before the European Court of Human Rights has raised the profile of the case along with hopes among media freedom advocates.</p>
@@ -168,7 +168,7 @@ get_header(); ?>
 								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova confirms Clooney as defense counsel</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">
-								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="http://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="http://placehold.it/300x180 300w, http://placehold.it/300x180 1040w, http://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
+								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="https://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="https://placehold.it/300x180 300w, https://placehold.it/300x180 1040w, https://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
 							</div>
 							<div class="entry-content bbg-blog__excerpt-content">
 								<p>The announcement&nbsp;by international human rights lawyer Amal Clooney that she will defend RFE/RL contributor Khadija Ismayilova&nbsp;before the European Court of Human Rights has raised the profile of the case along with hopes among media freedom advocates.</p>
@@ -216,7 +216,7 @@ get_header(); ?>
 								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova confirms Clooney as defense counsel</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">
-								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="http://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="http://placehold.it/300x180 300w, http://placehold.it/300x180 1040w, http://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
+								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="https://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="https://placehold.it/300x180 300w, https://placehold.it/300x180 1040w, https://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
 							</div>
 							<div class="entry-content bbg-blog__excerpt-content">
 								<p>The announcement&nbsp;by international human rights lawyer Amal Clooney that she will defend RFE/RL contributor Khadija Ismayilova&nbsp;before the European Court of Human Rights has raised the profile of the case along with hopes among media freedom advocates.</p>
@@ -264,7 +264,7 @@ get_header(); ?>
 								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova confirms Clooney as defense counsel</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">
-								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="http://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="http://placehold.it/300x180 300w, http://placehold.it/300x180 1040w, http://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
+								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="https://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="https://placehold.it/300x180 300w, https://placehold.it/300x180 1040w, https://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
 							</div>
 							<div class="entry-content bbg-blog__excerpt-content">
 								<p>The announcement&nbsp;by international human rights lawyer Amal Clooney that she will defend RFE/RL contributor Khadija Ismayilova&nbsp;before the European Court of Human Rights has raised the profile of the case along with hopes among media freedom advocates.</p>
@@ -312,7 +312,7 @@ get_header(); ?>
 								<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark">Ismayilova confirms Clooney as defense counsel</a></h3>
 							</header><!-- .bbg-blog__excerpt-header -->
 							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">
-								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="http://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="http://placehold.it/300x180 300w, http://placehold.it/300x180 1040w, http://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
+								<a href="https://bbgredesign.voanews.com/blog/2016/01/21/ismayilova-confirms-clooney-as-defense-counsel/" rel="bookmark" tabindex="-1"><img width="300" height="180" src="https://placehold.it/300x180" class="attachment-small-thumb size-small-thumb wp-post-image" alt="British lawyer Amal Alamuddin speaks into a microphone." srcset="https://placehold.it/300x180 300w, https://placehold.it/300x180 1040w, https://placehold.it/300x180 600w" sizes="(max-width: 300px) 100vw, 300px">			</a>
 							</div>
 							<div class="entry-content bbg-blog__excerpt-content">
 								<p>The announcement&nbsp;by international human rights lawyer Amal Clooney that she will defend RFE/RL contributor Khadija Ismayilova&nbsp;before the European Court of Human Rights has raised the profile of the case along with hopes among media freedom advocates.</p>
