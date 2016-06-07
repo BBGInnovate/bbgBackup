@@ -76,7 +76,6 @@ get_header(); ?>
 					</div><!-- .bbg-grid right column -->
 
 
-			<div id="map" class="bbg__map--threats"></div>
 
 			<?php else : ?>
 
@@ -88,6 +87,8 @@ get_header(); ?>
 			<div class="usa-grid">
 				<?php the_posts_navigation(); ?>
 			</div>
+			<div id="map" class="bbg__map--threats"></div>
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
