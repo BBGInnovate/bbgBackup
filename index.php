@@ -367,7 +367,7 @@ if ( $custom_query->have_posts() ) :
 			$location = get_post_meta( $id, 'map_location', true );
 			$storyLink = get_permalink();
 			$mapHeadline = get_post_meta( $id, 'map_headline', true );
-			$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
+			//$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
 
 			$mapDescription = get_the_title();
 
