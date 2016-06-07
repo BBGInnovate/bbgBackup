@@ -356,6 +356,8 @@ if ( $includeMap ){
 		//.setView([38.91338, -77.03236], 16);
 		<?php echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');'; ?>
 
+	map.scrollWheelZoom.disable();
+
 	L.mapbox.featureLayer({
 		// this feature is in the GeoJSON format: see geojson.org
 		// for the full specification
