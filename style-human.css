@@ -6415,6 +6415,23 @@ section.usa-section.bbg-banner__section {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.3rem;
   line-height: 1.4;
+  /*** LEGISLATIVE DOCUMENT HEADER **/
+  /*** LEGISLATIVE DOCUMENT BODY **/
+  /*** ALL SEGMENTS **/
+  /*** SEGMENTS ABOVE SECTION **/
+  /*** BIG LEVEL HEADING TEXT **/
+  /*** SECTION SEGMENT **/
+  /*** SEGMENTS BELOW SECTION **/
+  /* QUOTED BLOCKS */
+}
+.bill_text_content h2 {
+  color: #000;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.6rem;
+  text-align: center;
+}
+.bill_text_content .enroll-date {
+  text-align: center;
 }
 .bill_text_content blockquote {
   margin: 1em;
@@ -6422,157 +6439,122 @@ section.usa-section.bbg-banner__section {
 .bill_text_content ul {
   margin-left: 1em;
 }
-
-/*** LEGISLATIVE DOCUMENT HEADER **/
-section.form {
+.bill_text_content section.form {
   text-align: center;
 }
-
-p.congress, p.session, p.enrolled-dateline {
+.bill_text_content section.form p.congress, .bill_text_content section.form p.session {
   margin: 0 !important;
   font-size: 85%;
+  font-variant: small-caps;
   color: #777;
 }
-
-p.congress, p.session {
-  font-variant: small-caps;
-}
-
-p.legis-num {
+.bill_text_content section.form p.legis-num {
   font-size: 125%;
   font-weight: bolder;
   margin: 20px 0 !important;
 }
-
-p.legis-type {
+.bill_text_content section.form p.legis-type {
   font-size: 125%;
   font-weight: bold;
 }
-
-p.legis-type::before {
+.bill_text_content section.form p.legis-type::before {
   display: block;
   border-top: 1px solid #AAA;
   width: 50%;
   content: "";
 }
-
-p.legis-type::before {
+.bill_text_content section.form p.legis-type::before {
   margin: 0 auto 1em;
 }
-
-/*** LEGISLATIVE DOCUMENT BODY **/
-section.legis-body, section.resolution-body, section.amendment-body {
+.bill_text_content section.form .enacted {
+  font-style: italic;
+}
+.bill_text_content section.legis-body, .bill_text_content section.resolution-body, .bill_text_content section.amendment-body {
   margin: 0.5em;
   border: dashed black;
   border-width: 0.1em 0;
   padding: 1em 0 0.25em;
 }
-
-/*** ALL SEGMENTS **/
-span.enum + p.header {
+.bill_text_content span.enum + p.header {
   display: inline;
 }
-
-/*** SEGMENTS ABOVE SECTION **/
-section.big-level > span.enum,
-section.big-level > p.header {
+.bill_text_content span.enum::after {
+  content: "\2002";
+}
+.bill_text_content section.big-level > span.enum,
+.bill_text_content section.big-level > p.header {
   display: block;
   text-align: center;
 }
-
-section.big-level > span.enum {
+.bill_text_content section.big-level > span.enum {
   margin-top: 0.5em;
   margin-bottom: 1em;
   font-weight: bolder;
 }
-
-section.big-level > p.header {
+.bill_text_content section.big-level > p.header {
   margin-top: 1.5em;
   text-transform: capitalize;
 }
-
-/*** BIG LEVEL HEADING TEXT **/
-section.division > span.enum::before {
+.bill_text_content section.division span.enum::before {
   content: "Division ";
 }
-
-section.subdivision > span.enum::before {
+.bill_text_content section.subdivision span.enum::before {
   content: "Subdivision ";
 }
-
-section.title > span.enum::before {
+.bill_text_content section.title span.enum::before {
   content: "Title ";
 }
-
-section.subtitle > span.enum::before {
+.bill_text_content section.subtitle span.enum::before {
   content: "Subtitle ";
 }
-
-section.chapter > span.enum::before {
+.bill_text_content section.chapter span.enum::before {
   content: "Chapter ";
 }
-
-section.subchapter > span.enum::before {
+.bill_text_content section.subchapter span.enum::before {
   content: "Subchapter ";
 }
-
-section.part > span.enum::before {
+.bill_text_content section.part span.enum::before {
   content: "Part ";
 }
-
-section.subpart > span.enum::before {
+.bill_text_content section.subpart span.enum::before {
   content: "Subpart ";
 }
-
-/*** SECTION SEGMENT **/
-section.section > span.enum::before {
+.bill_text_content section.section span.enum::before {
   content: "Sec. ";
 }
-
-section.section > span.enum, section.section > p.header {
+.bill_text_content section.section > span.enum, .bill_text_content section.section > p.header {
   font-weight: bolder;
 }
-
-section.section > span.enum + p.header,
-section.section > span.enum + p.text {
+.bill_text_content section.section > span.enum + p.header,
+.bill_text_content section.section > span.enum + p.text {
   margin-left: 0.25em;
 }
-
-/* XXX: We should probably handle this generically. */
-/*section.section[data-indent = "down1"] {
-    margin-left: 1em;
-}*/
-/*** SEGMENTS BELOW SECTION **/
-section.little-level {
+.bill_text_content section.little-level {
   padding-left: 1.5em;
   margin: 1em 0;
 }
-
-section.little-level > span.enum {
+.bill_text_content section.little-level > span.enum {
   margin-left: -1.5em;
   margin-right: .25em;
 }
-
-section.little-level > span.enum + p.header {
+.bill_text_content section.little-level > span.enum + p.header {
   margin-left: 0.125em;
   text-align: left;
 }
-
-section.little-level > p.header::after {
+.bill_text_content section.little-level > p.header::after {
   content: ".\2014";
 }
-
-p.text span.enum {
+.bill_text_content p.text span.enum {
   display: inline;
   margin-right: 1rem;
 }
-
-span.enum + p.text {
+.bill_text_content p.text span.enum::before, .bill_text_content p.text span.enum::after {
+  content: "";
+}
+.bill_text_content span.enum + p.text {
   display: inline;
 }
-
-/* QUOTED BLOCKS */
-section.quoted-block > div.wrapper:first-child {
+.bill_text_content section.quoted-block > div.wrapper:first-child {
   margin-top: 1em;
   margin-left: 0.5em;
   border: solid #CCC;
@@ -6580,21 +6562,17 @@ section.quoted-block > div.wrapper:first-child {
   background-color: #F3F3F3;
   padding: 0 .5em;
 }
-
-p.text, p.quoted-block-continuation-text {
+.bill_text_content p.text, .bill_text_content p.quoted-block-continuation-text {
   line-height: 1.25;
   text-align: justify;
 }
-
-q.quote {
+.bill_text_content q.quote {
   quotes: "“" "”" "‘" "’";
 }
-
-q.quote::before {
+.bill_text_content q.quote::before {
   content: open-quote;
 }
-
-q.quote::after {
+.bill_text_content q.quote::after {
   content: close-quote;
 }
 
