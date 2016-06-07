@@ -624,3 +624,11 @@ ul.bbg__article-content__list--inline {
 		}
 	}
 }
+
+.bbg__article-sidebar.large {
+	.leaflet-container div,
+	.leaflet-container p {
+		margin-bottom: 0;
+	}
+}
+
