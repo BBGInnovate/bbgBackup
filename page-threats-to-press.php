@@ -104,7 +104,10 @@ get_header(); ?>
 						echo '</h3>';
 					?>
 				</div>
-				<div class="usa-grid-full">
+			</section>
+
+			<section class="usa-section">
+				<div class="usa-grid">
 
 					<?php /* Start the Loop */
 						$counter = 0;
@@ -116,8 +119,6 @@ get_header(); ?>
 							$counter++;
 							//Add a check here to only show featured if it's not paginated.
 							if(  $counter==1 ){
-								echo '</div>';
-								echo '<div class="usa-grid">';
 								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">Threats to press updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
@@ -142,7 +143,7 @@ get_header(); ?>
 						</div><!-- .bbg-grid right column -->
 
 
-				</div><!-- .usa-grid-full -->
+				</div><!-- .usa-grid -->
 			</section>
 			<?php endif; ?>
 
