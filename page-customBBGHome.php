@@ -359,17 +359,20 @@ get_header();
 									$counter++;
 									$id = get_the_ID();
 									$postIDsUsed[] = $id;
+									$permalink = get_the_permalink();
 									//$title = get_the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
 									echo '<article id="post-' . $id . '" '; post_class(); echo '>';
 									echo '<div>';
-									echo '<a href="https://bbgredesign.voanews.com/blog/threats-to-journalism/khadija-ismailova/" rel="bookmark">';
-									echo '<img src="https://bbgredesign.voanews.com/wp-content/media/2014/12/Khadija-Ismayilova-in-Baku-studio.jpg">';
+									echo '<a href="'.$permalink.'" rel="bookmark">';
+									the_post_thumbnail( 'large-thumb' );
 									echo '</a>';
 									echo '</div>';
 									echo '<header class="entry-header bbg-blog__excerpt-header"><h2 class="entry-title bbg-blog__excerpt-title--list"><a href="'.get_the_permalink().'">' . get_the_title() . '</a></h2></header>';
+									/*
 									echo '<div class="entry-content bbg-blog__excerpt-content"><p>';
 									echo get_the_excerpt();
 									echo '</p></div><!-- .bbg-blog__excerpt-content -->';
+									*/
 									echo '</article>';
 								endwhile;
 							}
@@ -379,7 +382,7 @@ get_header();
 					<div class="bbg-grid--1-2-2 tertiary-stories">
 						<?php
 							/* BEWARE: sticky posts add a record */
-							$maxPostsToShow=7;
+							$maxPostsToShow=6;
 							$qParams=getThreatsPostQueryParams($maxPostsToShow,$postIDsUsed);
 							query_posts($qParams);
 							if ( have_posts() ) {
