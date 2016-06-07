@@ -76,6 +76,8 @@ get_header(); ?>
 					</div><!-- .bbg-grid right column -->
 
 
+			<div id="map" class="bbg__map--threats"></div>
+
 			<?php else : ?>
 
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>
@@ -88,6 +90,47 @@ get_header(); ?>
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
+
+
+
+<?php /* include map stuff -------------------------------------------------- */ ?>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+<script type="text/javascript">
+L.mapbox.accessToken = 'pk.eyJ1IjoidmlzdWFsam91cm5hbGlzdCIsImEiOiIwODQxY2VlNDRjNTBkNWY1Mjg2OTk3NWIzMmJjMGJhMSJ9.ZjwAspfFYSc4bijF6XS7hw';
+var map = L.mapbox.map('map', 'mapbox.streets')
+	.setView([38.91338, -77.03236], 16);
+	<?php /* echo '.setView(['. $lat . ', ' . $lng . '], ' . $zoom . ');';*/ ?>
+
+L.mapbox.featureLayer({
+	// this feature is in the GeoJSON format: see geojson.org
+	// for the full specification
+	type: 'Feature',
+	geometry: {
+		type: 'Point',
+		// coordinates here are in longitude, latitude order because
+		// x, y is the standard for GeoJSON and many formats
+		coordinates: [
+			-77.03221142292,
+			38.913371603574
+			<?php /* echo $lng . ', ' . $lat;*/ ?>
+		]
+	},
+	properties: {
+		title: 'Title goes here',
+		description: 'Description goes here',
+		// one can customize markers by adding simplestyle properties
+		// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+		'marker-size': 'large',
+		'marker-color': '#981b1e',
+		'marker-symbol': ''
+	}
+}).addTo(map);
+
+</script>
+
+
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

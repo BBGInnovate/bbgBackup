@@ -382,7 +382,4 @@ if ( $includeMap ){
 	}).addTo(map);
 
 	</script>
-
-	<style>
-	</style>
 <?php } ?>

@@ -118,7 +118,7 @@ get_header(); ?>
 							if(  $counter==1 ){
 								echo '</div>';
 								echo '<div class="usa-grid">';
-								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
+								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">Threats to press updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
