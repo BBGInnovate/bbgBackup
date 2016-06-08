@@ -2,7 +2,8 @@
 /**
  * The template for displaying all pages.
  *
- * This is the template that displays all pages by default.
+ * This is the template that displays the BBG entity pages.
+ * VOA, RFE/RL, OCB, RFA and MBN
  * Please note that this is the WordPress construct of pages
  * and that other 'pages' on your WordPress site may use a
  * different template.
@@ -536,16 +537,18 @@ get_header(); ?>
 											if (count($threats)) {
 												$maxThreatsStories=3;
 												echo '<aside class="bbg__article-sidebar__aside">';
-												echo '<h3 class="bbg__sidebar-label">Threats to Press</h3>';
+												echo '<h6 class="bbg-label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
 												echo "<ul class='bbg__rss__list'>";	
 												for ( $i=0; $i<min($maxRelatedStories,count($threats)); $i++) {
 													$o=$threats[$i];
 													echo '<li class="bbg__rss__list-link">';
 													echo '<a href="' . $o['url'] . '">';
+													/*
 													if ($o['thumb'] != "") {
 														echo $o['thumb'];
 													//	echo "<img src='". $o['image'] . "'/>";
 													}
+													*/
 													echo $o['title'] . '</a>';
 													echo '</li>';
 												}
@@ -592,7 +595,7 @@ get_header(); ?>
 
 
 
-							</div><!-- .bbg__article-sidebar ------------------------------------------------- -->
+							</div><!-- .bbg__article-sidebar -->
 
 						</div>
 

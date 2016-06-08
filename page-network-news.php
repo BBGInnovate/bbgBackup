@@ -1,6 +1,8 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying highlights from across the 5 BBG entities.
+ * Features a banner map of recent headlines about the entities
+ * and a subsection for each of the entities.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -14,19 +16,10 @@ if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
 
-/*
-$pageTagline = get_field( 'page_tagline', '', true );
-if ($pageTagline && $pageTagline != ""){
-	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
-}
-*/
-
 get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
-
 
 			<div class="usa-grid">
 				<header class="page-header">
@@ -35,7 +28,7 @@ get_header(); ?>
 				</header><!-- .page-header -->
 			</div>
 
-			<!-- this empty section holds the map threats and is populated in later in the page by javascript -->
+			<!-- this section holds the threats map and is populated later in the page by javascript -->
 			<section class="usa-section">
 				<div id="map" class="bbg__map--banner"></div>
 			</section>
@@ -279,13 +272,13 @@ endif;
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
-<!--<script src="https://www.mapbox.com/mapbox.js/assets/data/realworld.388.js"></script>-->
 
 
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
 //console.log(geojson[0].features[0].properties);
+//console.log('description: '+ geojson[0].features[0].properties['description'])
 
 var map = L.mapbox.map('map', 'mapbox.streets')
 //        .setView([-37.82, 175.215], 14);
@@ -298,38 +291,21 @@ var map = L.mapbox.map('map', 'mapbox.streets')
         var marker = L.marker(new L.LatLng(a[1], a[0]), {
             icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
             title: title,
-            description: geojson[0].features[i].properties.description
+            description: geojson[0].features[i].properties['description']
         });
         marker.bindPopup(title);
         markers.addLayer(marker);
     }
 
     map.addLayer(markers);
+
+	//Disable the map scroll/zoom so that you can scroll the page.
+	map.scrollWheelZoom.disable();
 
 	function centerMap(){
 		map.fitBounds(markers.getBounds());
 	}
 
-
-/*
-var map = L.mapbox.map('map', 'mapbox.streets')
-        .setView([-37.82, 175.215], 14);
-
-    var markers = new L.MarkerClusterGroup();
-
-    for (var i = 0; i < addressPoints.length; i++) {
-        var a = addressPoints[i];
-        var title = a[2];
-        var marker = L.marker(new L.LatLng(a[0], a[1]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
-            title: title
-        });
-        marker.bindPopup(title);
-        markers.addLayer(marker);
-    }
-
-    map.addLayer(markers);
-*/
 
 //console.log(geojson[0].features.length);
 

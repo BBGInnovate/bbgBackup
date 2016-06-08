@@ -87,7 +87,7 @@
 		});
 
 		/* enable the carat with the keyboard */
-		jQuery("li.menu-item-has-children a.bbg__main-navigation__toggler").keydown(function(e) {
+		jQuery("li.menu-item-has-children input[type='image']").keydown(function(e) {
 			/**** enter key on caret toggles the menu at all viewports ****/
 			if(e.keyCode == 13) {
 				window.enterPressHover=true;
@@ -108,8 +108,9 @@
 				}
 			}
 		});
-		jQuery("li.menu-item-has-children a.bbg__main-navigation__toggler").click(function(e) {
-			if (window.innerWidth < 900) {
+		jQuery("li.menu-item-has-children input[type='image']").click(function(e) {
+			//no need for clickable image on mobile
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 				var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
 				if (displayVal != 'none') {
 					jQuery(this).parent().find("ul.sub-menu").hide();
