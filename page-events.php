@@ -121,7 +121,7 @@ get_header(); ?>
 
 
 			<!-- BEGIN PAST EVENTS -->
-			<div class="usa-grid-full">
+			<div class="usa-grid">
 			<div class="bbg-grid--1-1-1-2 secondary-stories">
 			<?php 
 				$counter = 0;

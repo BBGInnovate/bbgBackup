@@ -4448,11 +4448,6 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   font-weight: bold;
 }
 
-.bbg__article-sidebar.large .leaflet-container div,
-.bbg__article-sidebar.large .leaflet-container p {
-  margin-bottom: 0;
-}
-
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;
