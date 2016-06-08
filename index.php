@@ -144,6 +144,7 @@ $qParams=array(
 );
 
 /*
+//Sample GeoJSON format
 var geojson = [
 	{
 		"type": "FeatureCollection",
@@ -209,6 +210,8 @@ if ( $custom_query->have_posts() ) :
 			//$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
 
 			$mapDescription = get_the_title();
+			$mapDate = get_the_date();
+			$mapDescription = $mapDescription . " <span class='bbg__map__infobox__date'>(" . $mapDate . ")</span>";
 
 			$pinColor = "#981b1e";
 			if (has_category('VOA')){
