@@ -37,13 +37,17 @@ get_header(); ?>
 				$entities = ['voa','rferl', 'ocb', 'rfa', 'mbn'];
 				foreach ($entities as $e) {
 					/**** START FETCH related press releases ****/
-					$entitySlug=$e . '-press-release';
-					$pressReleases=array();
+					$entitySlug = $e . '-press-release';
+					$entityString = $e;
+					if ($entityString == 'rferl'){
+						$entityString = 'RFE/RL';
+					}
+					$pressReleases = array();
 					if ($entitySlug != "") {
-						$prCategoryObj=get_category_by_slug($entitySlug );
+						$prCategoryObj = get_category_by_slug($entitySlug );
 						if (is_object($prCategoryObj)) {
-							$prCategoryID=$prCategoryObj->term_id;
-							$qParams=array(
+							$prCategoryID = $prCategoryObj->term_id;
+							$qParams = array(
 								'post_type' => array('post'),
 								'posts_per_page' => 5,
 								'category__and' => array(
@@ -65,56 +69,56 @@ get_header(); ?>
 							if ($custom_query -> have_posts()) {
 								while ( $custom_query -> have_posts() )  {
 									$custom_query->the_post();
-									$id=get_the_ID();
-									$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt(), 'thumb'=>get_the_post_thumbnail( $id, 'small-thumb' ));
+									$id = get_the_ID();
+									$pressReleases[] = array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt(), 'thumb'=>get_the_post_thumbnail( $id, 'small-thumb' ));
 								}
 							}
 							wp_reset_postdata();
 							wp_reset_query();
 						}
 					}
-					$s='<section class="usa-section">';
-					$s.='<div class="usa-grid">';
-					$entityPermalink=get_permalink( get_page_by_path( 'networks/'.$e ) );
-					$s.='<h5 class="bbg-label small"><a href="' . $entityPermalink . '">'. $e .'</a></h5>';
-					$s.='</div>';
-					$s.='<div class="usa-grid">';
+					$s = '<section class="usa-section">';
+					$s .= '<div class="usa-grid">';
+					$entityPermalink = get_permalink( get_page_by_path( 'networks/' . $e ) );
+					$s .= '<h5 class="bbg-label small"><a href="' . $entityPermalink . '">'. $entityString .'</a></h5>';
+					$s .= '</div>';
+					$s .= '<div class="usa-grid">';
 					if (count($pressReleases)) {
 						//$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
-						$counter=0;
+						$counter = 0;
 						foreach ($pressReleases as $pr) {
 							$counter++;
-							$url=$pr['url'];
-							$title=$pr['title'];
+							$url = $pr['url'];
+							$title = $pr['title'];
 
-							if ($counter==1) {
-								$s.='<div class="bbg-grid--1-1-1-2 secondary-stories">';	
-							} else if ($counter==2) {
-								$s.='<div class="bbg-grid--1-1-1-2 tertiary-stories">';	
+							if ($counter == 1) {
+								$s .= '<div class="bbg-grid--1-1-1-2 secondary-stories">';	
+							} else if ($counter == 2) {
+								$s .= '<div class="bbg-grid--1-1-1-2 tertiary-stories">';	
 							}
 							
 							
-							if ($counter==1) {
-								$s.='<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
-								$s.= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
+							if ($counter == 1) {
+								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
+								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
 								$s .= '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">';
-								$s.= $pr['thumb'];
+								$s .= $pr['thumb'];
 								$s .= '</div>';
-								$s .= '<div class="entry-content bbg-blog__excerpt-content">';
-								$s.= $pr['excerpt'];
-								$s .= '</div>';
+								$s .= '<div class="entry-content bbg-blog__excerpt-content"><p>';
+								$s .= $pr['excerpt'];
+								$s .= '</p></div>';
 							} else {
-								$s.='<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg-blog__excerpt--list" )) . '">';
-								$s.= '<header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="'.$url.'">'.$title.'</a></h3></header>';
+								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg-blog__excerpt--list" )) . '">';
+								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="'.$url.'">'.$title.'</a></h3></header>';
 							}	
 							$s .= '</article>';
-							if ($counter==1 || $counter==5) {
-								$s.='</div>';
+							if ($counter == 1 || $counter == 5) {
+								$s .= '</div>';
 							}
 
 						}
 					}
-					$s .='</div></section>';
+					$s .= '</div></section>';
 					echo $s;
 				}
 			?>
@@ -205,15 +209,15 @@ if ( $custom_query->have_posts() ) :
 			$pinColor = "#981b1e";
 			if (has_category('VOA')){
 				$pinColor = "#344998";
-				$mapHeadline = "<a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a>';
+				$mapHeadline = "<h4><a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a></h4>';
 			} elseif (has_category('RFA')){
 				$pinColor = "#009c50";
-				$mapHeadline = "<a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a>';
+				$mapHeadline = "<h4><a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a></h4>';
 			} elseif (has_category('RFE/RL')){
 				$pinColor = "#ea6828";
-				$mapHeadline = "<a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a>';
+				$mapHeadline = "<h4><a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a></h4>';
 			} else {
-				$mapHeadline = "<a href='". $storyLink ."'>" . $mapHeadline . '</a>';
+				$mapHeadline = "<h4><a href='". $storyLink ."'>" . $mapHeadline . '</a></h4>';
 			}
 
 			$counter++;

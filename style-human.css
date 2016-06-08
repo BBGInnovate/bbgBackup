@@ -5190,8 +5190,12 @@ article {
 .bbg__footer__sub .bbg__footer__sub__required-link {
   display: inline-block;
 }
+.bbg__footer__sub .bbg__footer__sub__required-link:first-of-type a {
+  padding: 0 1rem 0 0;
+}
 .bbg__footer__sub .bbg__footer__sub__required-link a {
   color: #9bdaf1;
+  padding: 0 1rem;
 }
 
 /****************************************/
@@ -5274,8 +5278,10 @@ article {
     margin-bottom: 3rem;
   }
 }
-.bbg-blog__excerpt--list:last-of-type {
-  margin-bottom: 0;
+@media screen and (min-width: 900px) {
+  .bbg-blog__excerpt--list:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .bbg-blog__excerpt-title--list {
