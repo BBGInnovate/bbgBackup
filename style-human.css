@@ -4338,7 +4338,7 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   /* Contact card share links */
   /* Article share links: text */
 }
-.bbg__contact-box p, .bbg__contact-box a, .bbg__contact-box ul, .bbg__contact-box li {
+.bbg__contact-box p, .bbg__contact-box a, .bbg__contact-box ul, .bbg__contact-box li, .bbg__contact-box span {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
 .bbg__contact-box li.bbg__contact__link {
@@ -6752,38 +6752,38 @@ div.appropriations-small > p.header {
   text-transform: uppercase;
 }
 
-.bbg__map--threats {
+.bbg__map--banner {
   background-color: #F1F1F1;
   height: 300px;
   width: 100%;
 }
 @media screen and (min-width: 481px) {
-  .bbg__map--threats {
+  .bbg__map--banner {
     height: 350;
   }
 }
 @media screen and (min-width: 600px) {
-  .bbg__map--threats {
+  .bbg__map--banner {
     height: 400px;
   }
 }
 @media screen and (min-width: 900px) {
-  .bbg__map--threats {
+  .bbg__map--banner {
     height: 450px;
   }
 }
-.bbg__map--threats .bbg__map-profile__mugshot {
+.bbg__map--banner .bbg__map-profile__mugshot {
   display: none;
 }
 @media screen and (min-width: 600px) {
-  .bbg__map--threats .bbg__map-profile__mugshot {
+  .bbg__map--banner .bbg__map-profile__mugshot {
     display: block;
     float: left;
     margin-right: 1rem;
     width: 30%;
   }
 }
-.bbg__map--threats .bbg__map-profile__date {
+.bbg__map--banner .bbg__map-profile__date {
   color: #757575;
 }
 

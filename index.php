@@ -11,6 +11,10 @@
  *
  * @package bbgRedesign
  */
+$pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
+if ($pageTagline && $pageTagline!=""){
+	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
+}
 
 get_header(); ?>
 
@@ -22,13 +26,13 @@ get_header(); ?>
 			<div class="usa-grid">
 				<header class="page-header">
 					<h5 class="bbg-label--mobile large">Network news</h5>
-					<h6 class="bbg__page-header__tagline">Tagline explaining what impact means for BBG goes here and here.</h6>
+					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
 
 			<!-- this empty section holds the map threats and is populated in later in the page by javascript -->
 			<section class="usa-section">
-				<div id="map" class="bbg__map--threats"></div>
+				<div id="map" class="bbg__map--banner"></div>
 			</section>
 
 
