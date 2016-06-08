@@ -156,18 +156,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="bbg__footer__sub">
-			<div class="usa-grid">
-				<div>
-					<div class="bbg__footer__sub__required-link"><a href="/about-the-agency/research-reports/foia/">FOIA</a> |</div>
-					<div class="bbg__footer__sub__required-link"><a href="http://oig.state.gov/hotline/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://oig.state.gov/hotline/', 'Inspector General Hotline');">Inspector General Hotline</a></div> | 
-					<div class="bbg__footer__sub__required-link"><a href="/sitemap">Sitemap</a> |</div>
-					<div class="bbg__footer__sub__required-link"><a href="privacy-policy">Privacy Policy</a> |</div>
-					<div class="bbg__footer__sub__required-link"><a href="http://www.usa.gov/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.usa.gov/', 'USA.gov');">USA.gov</a> |</div>
-					<div class="bbg__footer__sub__required-link"><a href="/open">Open Gov</a></div>
+		<?php if( have_rows('site_setting_footer_links', 'option') ): ?>
+			<div class="bbg__footer__sub">
+				<div class="usa-grid">
+				<?php 
+					$counter=0;
+					while( have_rows('site_setting_footer_links', 'option') ): the_row(); 
+						$counter++;
+						if ($counter > 1) {
+							echo " | ";
+						}
+						$anchorText = get_sub_field('anchor_text');
+						$anchorLink = get_sub_field('anchor_link');
+						echo "<div class='bbg__footer__sub__required-link'><a href='$anchorLink'>$anchorText</a></div>";
+					endwhile; 
+				?>
 				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 	</footer>
 
 </div><!-- #page -->
