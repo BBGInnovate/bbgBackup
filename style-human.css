@@ -6502,6 +6502,9 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.form .enacted {
   font-style: italic;
 }
+.bill_text_content section.form .enacted .enacted-normal {
+  font-style: normal;
+}
 .bill_text_content section.legis-body, .bill_text_content section.resolution-body, .bill_text_content section.amendment-body {
   margin: 0.5em;
   border: dashed black;
@@ -6512,7 +6515,7 @@ section.usa-section.bbg-banner__section {
   display: inline;
 }
 .bill_text_content span.enum::after {
-  content: "\2002";
+  content: ".\2002";
 }
 .bill_text_content section.big-level > span.enum,
 .bill_text_content section.big-level > p.header {
@@ -6589,11 +6592,10 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.quoted-block > div.wrapper:first-child {
   margin-top: 1em;
-  margin-left: 0.5em;
   border: solid #CCC;
   border-width: 0.1333em 0.2em;
   background-color: #F3F3F3;
-  padding: 0 .5em;
+  padding: 0 2.5em 0 0.5em;
 }
 .bill_text_content p.text, .bill_text_content p.quoted-block-continuation-text {
   line-height: 1.25;

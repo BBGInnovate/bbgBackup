@@ -58,6 +58,10 @@
 
 		.enacted  {
 			font-style: italic;
+
+			.enacted-normal {
+				font-style: normal;
+			}
 		}
 	}
 
@@ -76,7 +80,7 @@
 	}
 
 	span.enum::after {
-		content: "\2002";
+		content: ".\2002";
 	}
 
 	/*** SEGMENTS ABOVE SECTION **/
@@ -174,11 +178,11 @@
 	/* QUOTED BLOCKS */
 	section.quoted-block > div.wrapper:first-child {
 	    margin-top: 1em;
-	    margin-left: 0.5em;
+	    // margin-left: 0.5em;
 	    border: solid#CCC;
 	    border-width: 0.1333em 0.2em;
 	    background-color: #F3F3F3;
-	    padding: 0 .5em;
+	    padding: 0 2.5em 0 0.5em;
 	}
 
 	p.text, p.quoted-block-continuation-text {
