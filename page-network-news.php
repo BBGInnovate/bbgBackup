@@ -286,6 +286,7 @@ endif;
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
 //console.log(geojson[0].features[0].properties);
+//console.log('description: '+ geojson[0].features[0].properties['description'])
 
 var map = L.mapbox.map('map', 'mapbox.streets')
 //        .setView([-37.82, 175.215], 14);
@@ -298,13 +299,16 @@ var map = L.mapbox.map('map', 'mapbox.streets')
         var marker = L.marker(new L.LatLng(a[1], a[0]), {
             icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
             title: title,
-            description: geojson[0].features[i].properties.description
+            description: geojson[0].features[i].properties['description']
         });
         marker.bindPopup(title);
         markers.addLayer(marker);
     }
 
     map.addLayer(markers);
+
+	//Disable the map scroll/zoom so that you can scroll the page.
+	map.scrollWheelZoom.disable();
 
 	function centerMap(){
 		map.fitBounds(markers.getBounds());
