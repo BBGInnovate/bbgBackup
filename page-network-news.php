@@ -276,9 +276,66 @@ endif;
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+<!--<script src="https://www.mapbox.com/mapbox.js/assets/data/realworld.388.js"></script>-->
+
+
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+
+//console.log(geojson[0].features[0].properties);
+
+var map = L.mapbox.map('map', 'mapbox.streets')
+//        .setView([-37.82, 175.215], 14);
+
+    var markers = new L.MarkerClusterGroup();
+
+    for (var i = 0; i < geojson[0].features.length; i++) {
+        var a = geojson[0].features[i].geometry.coordinates;
+        var title = geojson[0].features[i].properties.title; //a[2];
+        var marker = L.marker(new L.LatLng(a[1], a[0]), {
+            icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
+            title: title,
+            description: geojson[0].features[i].properties.description
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
+
+    map.addLayer(markers);
+
+	function centerMap(){
+		map.fitBounds(markers.getBounds());
+	}
+
+
+/*
+var map = L.mapbox.map('map', 'mapbox.streets')
+        .setView([-37.82, 175.215], 14);
+
+    var markers = new L.MarkerClusterGroup();
+
+    for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+            title: title
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
+
+    map.addLayer(markers);
+*/
+
+//console.log(geojson[0].features.length);
+
+/*
 var map = L.mapbox.map('map', 'mapbox.emerald');
+
 var myLayer = L.mapbox.featureLayer().addTo(map);
 	myLayer.setGeoJSON(geojson);
 
@@ -287,20 +344,8 @@ var myLayer = L.mapbox.featureLayer().addTo(map);
 
 	function centerMap(){
 		map.fitBounds(myLayer.getBounds());
-		/*
-		//Check the width of the browser.
-		var w = window.innerWidth;
-		if (w>900){
-			//Fit the map to the markers.
-			map.fitBounds(myLayer.getBounds());
-		}else if (w>600){
-			//Center and zoom the map
-			map.setView([30, 35], 3);
-		}else{
-			map.setView([30, 55], 2);
-		}
-		*/
 	}
+*/
 	centerMap();
 
 
@@ -330,7 +375,6 @@ var myLayer = L.mapbox.featureLayer().addTo(map);
 	});
 
 	resizeStuffOnResize();
-
 </script>
 
 
