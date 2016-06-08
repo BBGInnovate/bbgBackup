@@ -6473,6 +6473,7 @@ section.usa-section.bbg-banner__section {
   /*** SEGMENTS ABOVE SECTION **/
   /*** BIG LEVEL HEADING TEXT **/
   /*** SECTION SEGMENT **/
+  /*** SUBSECTION SEGMENT **/
   /*** SEGMENTS BELOW SECTION **/
   /* QUOTED BLOCKS */
 }
@@ -6534,7 +6535,7 @@ section.usa-section.bbg-banner__section {
   display: inline;
 }
 .bill_text_content span.enum::after {
-  content: ".\2002";
+  content: "\2002";
 }
 .bill_text_content section.big-level > span.enum,
 .bill_text_content section.big-level > p.header {
@@ -6547,7 +6548,7 @@ section.usa-section.bbg-banner__section {
   font-weight: bolder;
 }
 .bill_text_content section.big-level > p.header {
-  margin-top: 1.5em;
+  margin-top: 2.5em;
   text-transform: capitalize;
 }
 .bill_text_content section.division span.enum::before {
@@ -6558,6 +6559,9 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.title span.enum::before {
   content: "Title ";
+}
+.bill_text_content section.title span.enum::after {
+  content: "\2014";
 }
 .bill_text_content section.subtitle span.enum::before {
   content: "Subtitle ";
@@ -6577,12 +6581,23 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.section span.enum::before {
   content: "Sec. ";
 }
+.bill_text_content section.section span.enum::after {
+  content: ".\2002";
+}
 .bill_text_content section.section > span.enum, .bill_text_content section.section > p.header {
-  font-weight: bolder;
+  font-weight: 700;
 }
 .bill_text_content section.section > span.enum + p.header,
 .bill_text_content section.section > span.enum + p.text {
   margin-left: 0.25em;
+}
+.bill_text_content section.subsection span.enum::before,
+.bill_text_content section.paragraph span.enum::before {
+  content: "(";
+}
+.bill_text_content section.subsection span.enum::after,
+.bill_text_content section.paragraph span.enum::after {
+  content: ")\2002";
 }
 .bill_text_content section.little-level {
   padding-left: 1.5em;
@@ -6596,15 +6611,8 @@ section.usa-section.bbg-banner__section {
   margin-left: 0.125em;
   text-align: left;
 }
-.bill_text_content section.little-level > p.header::after {
-  content: ".\2014";
-}
 .bill_text_content p.text span.enum {
   display: inline;
-  margin-right: 1rem;
-}
-.bill_text_content p.text span.enum::before, .bill_text_content p.text span.enum::after {
-  content: "";
 }
 .bill_text_content span.enum + p.text {
   display: inline;

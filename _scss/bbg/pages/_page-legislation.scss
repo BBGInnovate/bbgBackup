@@ -80,7 +80,7 @@
 	}
 
 	span.enum::after {
-		content: ".\2002";
+		content: "\2002";
 	}
 
 	/*** SEGMENTS ABOVE SECTION **/
@@ -97,7 +97,7 @@
 	}
 
 	section.big-level > p.header {
-	    margin-top: 1.5em;
+	    margin-top: 2.5em;
 	    text-transform: capitalize;
 	}
 
@@ -108,8 +108,14 @@
 	section.subdivision span.enum::before {
 	    content: "Subdivision ";
 	}
-	section.title span.enum::before {
-	    content: "Title ";
+	section.title {
+		span.enum::before {
+	    	content: "Title ";
+	    }
+
+	    span.enum::after {
+			content: "\2014";
+		}
 	}
 	section.subtitle span.enum::before {
 	    content: "Subtitle ";
@@ -128,18 +134,35 @@
 	}
 
 	/*** SECTION SEGMENT **/
-	section.section span.enum::before {
-	    content: "Sec. ";
+	section.section {
+		span.enum::before {
+	    	content: "Sec. ";
+	    }
+	    span.enum::after {
+			content: ".\2002";
+		}
 	}
 
 	section.section > span.enum, section.section > p.header {
-	    font-weight: bolder;
+	    font-weight: $font-bold;
 	}
 
 	section.section > span.enum + p.header,
 	section.section > span.enum + p.text {
         margin-left: 0.25em;
     }
+
+    /*** SUBSECTION SEGMENT **/
+	section.subsection,
+	section.paragraph {
+		span.enum::before {
+	    	content: "(";
+	    }
+
+	    span.enum::after {
+			content: ")\2002";
+		}
+	}
 
 	/*** SEGMENTS BELOW SECTION **/
 	section.little-level {
@@ -155,18 +178,18 @@
 	    text-align: left;
 	}
 	section.little-level > p.header::after {
-	    content: ".\2014";
+	    // content: ".\2014";
 	}
 
 	p.text {
 		span.enum {
 		    display: inline;
-		    margin-right: 1rem;
+		    // margin-right: 1rem;
 
-		    &::before,
-		    &::after {
-		    	content: "";
-		    }
+		    // &::before,
+		    // &::after {
+		    // 	content: "";
+		    // }
 		}
 	}
 
