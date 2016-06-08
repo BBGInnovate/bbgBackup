@@ -3461,10 +3461,11 @@ object {
 .bbg__main-navigation.toggled ul {
   display: block;
   z-index: 9998;
+  box-shadow: inset -5px -10px 10px #f1f1f1;
 }
 
 .menu-item-has-children > a {
-  border-left: 1px solid #F1F1F1;
+  border-left: 1px solid #f1f1f1;
   display: inline-block !important;
   padding-left: 1rem;
 }

@@ -11,8 +11,8 @@
  *
  * @package bbgRedesign
  */
-$pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
-if ($pageTagline && $pageTagline!=""){
+$pageTagline = get_field( 'page_tagline', '', true );
+if ($pageTagline && $pageTagline != ""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
 

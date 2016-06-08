@@ -136,6 +136,8 @@ body:not(.home) .menu-all-pages-container {
 .bbg__main-navigation.toggled ul {
 	display: block;
 	z-index: 9998;
+
+	box-shadow: inset -5px -10px 10px $color-gray-lightest;
 }
 
 
@@ -146,7 +148,7 @@ body:not(.home) .menu-all-pages-container {
 
 
 .menu-item-has-children > a {
-	border-left: 1px solid #F1F1F1;
+	border-left: 1px solid $color-gray-lightest;
 	display:inline-block !important;
 	padding-left: 1rem;
 	//width: calc(100% - 5rem);
