@@ -75,6 +75,10 @@
 
 
 	/*** ALL SEGMENTS **/
+	span.enum {
+		font-weight: $font-bold;
+	}
+
 	span.enum + p.header {
 	    display: inline;
 	}
@@ -143,7 +147,8 @@
 		}
 	}
 
-	section.section > span.enum, section.section > p.header {
+	section.title > p.header,
+	section.section > p.header {
 	    font-weight: $font-bold;
 	}
 
@@ -184,12 +189,6 @@
 	p.text {
 		span.enum {
 		    display: inline;
-		    // margin-right: 1rem;
-
-		    // &::before,
-		    // &::after {
-		    // 	content: "";
-		    // }
 		}
 	}
 
@@ -201,7 +200,6 @@
 	/* QUOTED BLOCKS */
 	section.quoted-block > div.wrapper:first-child {
 	    margin-top: 1em;
-	    // margin-left: 0.5em;
 	    border: solid#CCC;
 	    border-width: 0.1333em 0.2em;
 	    background-color: #F3F3F3;

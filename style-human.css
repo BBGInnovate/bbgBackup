@@ -6531,6 +6531,9 @@ section.usa-section.bbg-banner__section {
   border-width: 0.1em 0;
   padding: 1em 0 0.25em;
 }
+.bill_text_content span.enum {
+  font-weight: 700;
+}
 .bill_text_content span.enum + p.header {
   display: inline;
 }
@@ -6584,7 +6587,8 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.section span.enum::after {
   content: ".\2002";
 }
-.bill_text_content section.section > span.enum, .bill_text_content section.section > p.header {
+.bill_text_content section.title > p.header,
+.bill_text_content section.section > p.header {
   font-weight: 700;
 }
 .bill_text_content section.section > span.enum + p.header,
