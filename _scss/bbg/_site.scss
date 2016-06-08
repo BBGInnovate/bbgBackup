@@ -1064,8 +1064,14 @@ article {
 		margin-bottom: $site-margins
 	}
 
-	.bbg-portfolio__excerpt div {
-		margin-bottom: 0;
+	.bbg-portfolio__excerpt {
+		@include media($medium-large-screen) {
+			margin-bottom: 4rem;
+		}
+
+		div {
+			margin-bottom: 0;
+		}
 	}
 }
 
