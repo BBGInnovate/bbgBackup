@@ -6509,7 +6509,7 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.form p.legis-num {
   font-size: 125%;
   font-weight: bolder;
-  margin: 20px 0 !important;
+  margin: 2rem 0 !important;
 }
 .bill_text_content section.form p.legis-type {
   font-size: 125%;
@@ -6584,7 +6584,6 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.chapter > p.header {
   font-size: 115%;
-  font-weight: 700;
 }
 .bill_text_content section.subchapter span.enum::before {
   content: "Subchapter ";
@@ -6595,6 +6594,13 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.subpart span.enum::before {
   content: "Subpart ";
 }
+.bill_text_content section.section p.header {
+  font-variant: capitalize;
+}
+.bill_text_content section.section p.header + p.text {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
 .bill_text_content section.section span.enum::before {
   content: "Sec. ";
 }
@@ -6604,6 +6610,16 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.section > span.enum + p.header,
 .bill_text_content section.section > span.enum + p.text {
   margin-left: 0.25em;
+}
+.bill_text_content section.subsection p.inline-header,
+.bill_text_content section.paragraph p.inline-header {
+  font-variant: capitalize;
+}
+.bill_text_content section.subsection p.inline-header + p.text,
+.bill_text_content section.paragraph p.inline-header + p.text {
+  display: inline;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
 }
 .bill_text_content section.subsection span.enum::before,
 .bill_text_content section.paragraph span.enum::before {
@@ -6625,6 +6641,9 @@ section.usa-section.bbg-banner__section {
   margin-left: 0.125em;
   text-align: left;
 }
+.bill_text_content p.text {
+  line-height: 1.7;
+}
 .bill_text_content p.text span.enum {
   display: inline;
 }
@@ -6638,7 +6657,7 @@ section.usa-section.bbg-banner__section {
   background-color: #F3F3F3;
   padding: 0 2.5em 0 0.5em;
 }
-.bill_text_content p.text, .bill_text_content p.quoted-block-continuation-text {
+.bill_text_content p.quoted-block-continuation-text {
   line-height: 1.25;
   text-align: justify;
 }

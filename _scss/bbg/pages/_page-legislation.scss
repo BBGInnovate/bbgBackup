@@ -39,7 +39,7 @@
 		p.legis-num {
 			font-size: 125%;
 			font-weight: bolder;
-			margin: 20px 0 !important;
+			margin: 2rem 0 !important;
 		}
 
 		p.legis-type {
@@ -145,14 +145,9 @@
 	    	content: "Chapter ";
 	    }
 	}
-
 	section.chapter > p.header {
-	    font: {
-	    	size: 115%;
-	    	weight: $font-bold;
-	    }
+	    font-size: 115%;
 	}
-
 	section.subchapter span.enum::before {
 	    content: "Subchapter ";
 	}
@@ -165,6 +160,14 @@
 	}
 	// Section + Subsection
 	section.section {
+		p.header {
+			font-variant: capitalize;
+
+			&+ p.text {
+				margin-top: -1rem;
+				margin-bottom: 2rem;
+			}
+		}
 		span.enum::before {
 	    	content: "Sec. ";
 	    }
@@ -180,6 +183,15 @@
 
 	section.subsection,
 	section.paragraph {
+		p.inline-header {
+			font-variant: capitalize;
+
+			&+ p.text {
+				display: inline;
+				margin-top: -1rem;
+				margin-bottom: 2rem;
+			}
+		}
 		span.enum::before {
 	    	content: "(";
 	    }
@@ -207,6 +219,8 @@
 	}
 
 	p.text {
+		line-height: $lead-line-height;
+
 		span.enum {
 		    display: inline;
 		}
@@ -226,7 +240,7 @@
 	    padding: 0 2.5em 0 0.5em;
 	}
 
-	p.text, p.quoted-block-continuation-text {
+	p.quoted-block-continuation-text {
 	    line-height: 1.25;
 	    text-align: justify;
 	}
