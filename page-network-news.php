@@ -285,9 +285,7 @@ endif;
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
-//
-
-console.log(geojson[0].features[0].properties);
+//console.log(geojson[0].features[0].properties);
 
 var map = L.mapbox.map('map', 'mapbox.streets')
 //        .setView([-37.82, 175.215], 14);
@@ -298,7 +296,7 @@ var map = L.mapbox.map('map', 'mapbox.streets')
         var a = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
         var marker = L.marker(new L.LatLng(a[1], a[0]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': '0044FF'}),
+            icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
             title: title,
             description: geojson[0].features[i].properties.description
         });
