@@ -1,4 +1,4 @@
-.bbg__map--threats {
+.bbg__map--banner {
 	background-color: #F1F1F1;
 	height: 300px;
 	width: 100%;
@@ -19,7 +19,7 @@
 		//height: 600px;
 	}
 
-	.bbg__map-profile__mugshot {
+	.bbg__map__infobox__mugshot {
 		display: none;
 
 		@include media($medium-screen) {
@@ -30,7 +30,7 @@
 		}
 	}
 
-	.bbg__map-profile__date {
+	.bbg__map__infobox__date {
 		color: $color-gray-medium;
 	}
 }

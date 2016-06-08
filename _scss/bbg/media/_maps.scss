@@ -1,0 +1,20 @@
+/* locator map */
+.bbg__locator-map {
+	width: 100%;
+	min-height: 300px;
+
+	@include media($medium-large-screen) {
+		a.leaflet-control-zoom-out,
+		a.leaflet-control-zoom-in {
+			display: none;
+		}
+	}
+}
+
+.bbg__article-sidebar.large {
+	.leaflet-container div,
+	.leaflet-container p {
+		margin-bottom: 0;
+	}
+}
+

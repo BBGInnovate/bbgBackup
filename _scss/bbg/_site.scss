@@ -541,11 +541,26 @@ article {
 
 	.bbg__footer__sub__required-link {
 		display: inline-block;
-	}
-	.bbg__footer__sub__required-link a {
-		color: $color-primary-alt-light;
+
+		&:first-of-type a{
+			padding: 0 .5rem 0 0;
+		};
 	}
 
+	.bbg__footer__sub__required-link a {
+		color: $color-primary-alt-light;
+		padding: 0 .5rem;
+	}
+
+	@include media($medium-large-screen) {
+		.bbg__footer__sub__required-link:first-of-type a{
+			padding: 0 1rem 0 0;
+		};
+
+		.bbg__footer__sub__required-link a {
+			padding: 0 1rem;
+		}
+	}
 }
 
 
@@ -629,9 +644,11 @@ article {
 		margin-bottom: $site-margins;
 	}
 
-	&:last-of-type {
-		margin-bottom: 0;
-	};
+	@include media($medium-large-screen) {
+		&:last-of-type {
+			margin-bottom: 0;
+		};
+	}
 }
 
 .bbg-blog__excerpt-title--list {

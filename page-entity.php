@@ -334,6 +334,46 @@ if (count($awards)) {
 $pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
+/**** START FETCH threats to press ****/
+$entityRegularSlug=str_replace("-press-release", "", $prCategorySlug);
+$threats=array();
+$threatsCategoryObj=get_category_by_slug("threats-to-press");
+$threatsCategoryID=$threatsCategoryObj->term_id;
+if ($entityRegularSlug != "") {
+	$entityCategoryObj=get_category_by_slug($entityRegularSlug);
+	if (is_object($entityCategoryObj)) {
+		$entityCategoryID=$entityCategoryObj->term_id;
+		$qParams=array(
+			'post_type' => array('post'),
+			'posts_per_page' => 3,
+			'category__and' => array(
+									$entityCategoryID,
+									$threatsCategoryID
+							  ),
+			'orderby', 'date',
+			'order', 'DESC',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field' => 'slug',
+					'terms' => 'post-format-quote',
+					'operator' => 'NOT IN'
+
+				)
+			)
+		);
+		$custom_query = new WP_Query($qParams);
+		if ($custom_query -> have_posts()) {
+			while ( $custom_query -> have_posts() )  {
+				$custom_query->the_post();
+				$id=get_the_ID();
+				$threats[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt(), 'thumb'=>get_the_post_thumbnail( $id, 'small-thumb' ));
+			}
+		}
+		wp_reset_postdata();
+	}
+}
+/**** END FETCH threats to press ****/
 
 get_header(); ?>
 
@@ -492,10 +532,31 @@ get_header(); ?>
 											}
 											echo '</ul><!-- rss feed -->';
 											echo '</aside>';
+
+											if (count($threats)) {
+												$maxThreatsStories=3;
+												echo '<aside class="bbg__article-sidebar__aside">';
+												echo '<h3 class="bbg__sidebar-label">Threats to Press</h3>';
+												echo "<ul class='bbg__rss__list'>";	
+												for ( $i=0; $i<min($maxRelatedStories,count($threats)); $i++) {
+													$o=$threats[$i];
+													echo '<li class="bbg__rss__list-link">';
+													echo '<a href="' . $o['url'] . '">';
+													if ($o['thumb'] != "") {
+														echo $o['thumb'];
+													//	echo "<img src='". $o['image'] . "'/>";
+													}
+													echo $o['title'] . '</a>';
+													echo '</li>';
+												}
+												echo '</ul></aside>';
+											}
 										}
 										echo '<aside class="bbg__article-sidebar__aside">';
 										echo $siteSelect;
 										echo '</aside>';
+
+
 									?>
 
 

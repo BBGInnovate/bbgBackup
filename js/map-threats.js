@@ -32,7 +32,7 @@ function showInfo(data) {
 	var description, lat, lng, pinColor, title;
 
 	for (var i = 0; i < dataLength; i++){
-		description = data[i].Description + " <span class='bbg__map-profile__date'>(" + data[i].Date + ")</span>";
+		description = data[i].Description + " <span class='bbg__map__infobox__date'>(" + data[i].Date + ")</span>";
 		lat = Number(data[i].Latitude);
 		lng = Number(data[i].Longitude);
 
@@ -47,7 +47,7 @@ function showInfo(data) {
 		}
 
 		if (data[i].Mugshot && data[i].Mugshot != "") {
-			description = "<img src='" + data[i].Mugshot + "' class='bbg__map-profile__mugshot'/>" + description;
+			description = "<img src='" + data[i].Mugshot + "' class='bbg__map__infobox__mugshot'/>" + description;
 		}
 
 		if (data[i].Link && data[i].Link != "") {

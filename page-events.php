@@ -121,7 +121,7 @@ get_header(); ?>
 
 
 			<!-- BEGIN PAST EVENTS -->
-			<div class="usa-grid-full">
+			<div class="usa-grid">
 			<div class="bbg-grid--1-1-1-2 secondary-stories">
 			<?php 
 				$counter = 0;
@@ -148,7 +148,7 @@ get_header(); ?>
 			<!-- END PAST EVENTS -->
 
 			<!-- BEGIN NAVIGATION  -->
-			<div class="usa-grid-full">
+			<div class="usa-grid">
 			<?php 
 				echo '<nav class="navigation posts-navigation" role="navigation">';
 				echo '<h2 class="screen-reader-text">Event navigation</h2>';
@@ -174,7 +174,7 @@ get_header(); ?>
 			<!-- END NAVIGATION  -->
 			
 			<!-- BEGIN FUTURE EVENTS  -->
-			<div class="usa-grid-full">
+			<div class="usa-grid">
 			<?php
 				if (!is_paged()) {
 					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';

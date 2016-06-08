@@ -89,7 +89,7 @@ get_header(); ?>
 			</div>
 
 			<section class="usa-section">
-					<div id="map-threats" class="bbg__map--threats"></div>
+					<div id="map-threats" class="bbg__map--banner"></div>
 					<div class="usa-grid">
 						<p class="bbg__article-header__caption">This map tracks the courageous journalists reporting for Voice of America, Radio Free Europe/Radio Liberty, Radio and TV Marti, Middle East Broadcasting Networks (Alhurra and Radio Sawa), and Radio Free Asia, and the threats that they face on a regular basis. </p>
 					</div>
