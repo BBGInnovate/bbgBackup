@@ -286,14 +286,17 @@ var map = L.mapbox.map('map', 'mapbox.streets')
     var markers = new L.MarkerClusterGroup();
 
     for (var i = 0; i < geojson[0].features.length; i++) {
-        var a = geojson[0].features[i].geometry.coordinates;
+        var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
-        var marker = L.marker(new L.LatLng(a[1], a[0]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
-            title: title,
-            description: geojson[0].features[i].properties['description']
+        var description = geojson[0].features[i].properties['description'];
+        var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
+            icon: L.mapbox.marker.icon({
+            	'marker-symbol': '', 
+            	'marker-color': geojson[0].features[i].properties['marker-color']
+           	})
         });
-        marker.bindPopup(title);
+        var popupText = title + description;
+        marker.bindPopup(popupText);
         markers.addLayer(marker);
     }
 
