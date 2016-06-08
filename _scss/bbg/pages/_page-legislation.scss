@@ -58,6 +58,10 @@
 
 		.enacted  {
 			font-style: italic;
+
+			.enacted-normal {
+				font-style: normal;
+			}
 		}
 	}
 
@@ -71,6 +75,10 @@
 
 
 	/*** ALL SEGMENTS **/
+	span.enum {
+		font-weight: $font-bold;
+	}
+
 	span.enum + p.header {
 	    display: inline;
 	}
@@ -93,7 +101,7 @@
 	}
 
 	section.big-level > p.header {
-	    margin-top: 1.5em;
+	    margin-top: 2.5em;
 	    text-transform: capitalize;
 	}
 
@@ -104,8 +112,14 @@
 	section.subdivision span.enum::before {
 	    content: "Subdivision ";
 	}
-	section.title span.enum::before {
-	    content: "Title ";
+	section.title {
+		span.enum::before {
+	    	content: "Title ";
+	    }
+
+	    span.enum::after {
+			content: "\2014";
+		}
 	}
 	section.subtitle span.enum::before {
 	    content: "Subtitle ";
@@ -124,18 +138,36 @@
 	}
 
 	/*** SECTION SEGMENT **/
-	section.section span.enum::before {
-	    content: "Sec. ";
+	section.section {
+		span.enum::before {
+	    	content: "Sec. ";
+	    }
+	    span.enum::after {
+			content: ".\2002";
+		}
 	}
 
-	section.section > span.enum, section.section > p.header {
-	    font-weight: bolder;
+	section.title > p.header,
+	section.section > p.header {
+	    font-weight: $font-bold;
 	}
 
 	section.section > span.enum + p.header,
 	section.section > span.enum + p.text {
         margin-left: 0.25em;
     }
+
+    /*** SUBSECTION SEGMENT **/
+	section.subsection,
+	section.paragraph {
+		span.enum::before {
+	    	content: "(";
+	    }
+
+	    span.enum::after {
+			content: ")\2002";
+		}
+	}
 
 	/*** SEGMENTS BELOW SECTION **/
 	section.little-level {
@@ -151,18 +183,12 @@
 	    text-align: left;
 	}
 	section.little-level > p.header::after {
-	    content: ".\2014";
+	    // content: ".\2014";
 	}
 
 	p.text {
 		span.enum {
 		    display: inline;
-		    margin-right: 1rem;
-
-		    &::before,
-		    &::after {
-		    	content: "";
-		    }
 		}
 	}
 
@@ -174,11 +200,10 @@
 	/* QUOTED BLOCKS */
 	section.quoted-block > div.wrapper:first-child {
 	    margin-top: 1em;
-	    margin-left: 0.5em;
 	    border: solid#CCC;
 	    border-width: 0.1333em 0.2em;
 	    background-color: #F3F3F3;
-	    padding: 0 .5em;
+	    padding: 0 2.5em 0 0.5em;
 	}
 
 	p.text, p.quoted-block-continuation-text {
