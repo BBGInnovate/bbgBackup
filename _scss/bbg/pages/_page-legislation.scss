@@ -1,13 +1,4 @@
-.bill_text_content {
-	font: {
-		family: $font-serif;
-		size: $small-font-size;
-	}
-
-	line-height: $small-line-height;
-
-	h2,
-	h3 {
+.public-law {
 		color: #000;
 		font: {
 			family: $font-serif;
@@ -15,6 +6,14 @@
 		}
 		text-align: center;
 	}
+
+.bill_text_content {
+	font: {
+		family: $font-serif;
+		size: $small-font-size;
+	}
+
+	line-height: $small-line-height;
 
 	.enroll-date {
 		text-align: center;
@@ -77,7 +76,6 @@
 	    padding: 1em 0 0.25em;
 	}
 
-
 	/*** ALL SEGMENTS **/
 	span.enum {
 		font-weight: $font-bold;
@@ -110,14 +108,17 @@
 	}
 
 	/*** BIG LEVEL HEADING TEXT **/
+	// Division + Subdivision
 	section.division span.enum::before {
 	    content: "Division ";
 	}
+
 	section.subdivision span.enum::before {
 	    content: "Subdivision ";
 	}
+	// Title + Subtitle
 	section.title {
-		font-size: 125%;
+		// font-size: 125%;
 
 		span.enum::before {
 	    	content: "Title ";
@@ -127,27 +128,42 @@
 			content: "\2014";
 		}
 	}
+
+	section.title > p.header {
+	    font: {
+	    	size: 125%;
+	    	weight: $font-bold;
+	    }
+	}
+
 	section.subtitle span.enum::before {
 	    content: "Subtitle ";
 	}
+	// Chapter + Subchapter
 	section.chapter {
-		font-size: 115%;
-
 		span.enum::before {
 	    	content: "Chapter ";
 	    }
 	}
+
+	section.chapter > p.header {
+	    font: {
+	    	size: 115%;
+	    	weight: $font-bold;
+	    }
+	}
+
 	section.subchapter span.enum::before {
 	    content: "Subchapter ";
 	}
+	// Part + Subpart
 	section.part span.enum::before {
 	    content: "Part ";
 	}
 	section.subpart span.enum::before {
 	    content: "Subpart ";
 	}
-
-	/*** SECTION SEGMENT **/
+	// Section + Subsection
 	section.section {
 		span.enum::before {
 	    	content: "Sec. ";
@@ -157,17 +173,11 @@
 		}
 	}
 
-	section.title > p.header,
-	section.section > p.header {
-	    font-weight: $font-bold;
-	}
-
 	section.section > span.enum + p.header,
 	section.section > span.enum + p.text {
         margin-left: 0.25em;
     }
 
-    /*** SUBSECTION SEGMENT **/
 	section.subsection,
 	section.paragraph {
 		span.enum::before {
