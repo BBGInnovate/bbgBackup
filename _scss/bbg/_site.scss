@@ -1063,8 +1063,17 @@ article {
 	div {
 		margin-bottom: $site-margins
 	}
-}
 
+	.bbg-portfolio__excerpt {
+		@include media($medium-large-screen) {
+			margin-bottom: 4rem;
+		}
+
+		div {
+			margin-bottom: 0;
+		}
+	}
+}
 
 
 .bbg__entity-logo__press-release {

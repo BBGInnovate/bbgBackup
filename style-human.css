@@ -5621,6 +5621,14 @@ article {
 .bbg__article-sidebar.large div {
   margin-bottom: 3rem;
 }
+@media screen and (min-width: 900px) {
+  .bbg__article-sidebar.large .bbg-portfolio__excerpt {
+    margin-bottom: 4rem;
+  }
+}
+.bbg__article-sidebar.large .bbg-portfolio__excerpt div {
+  margin-bottom: 0;
+}
 
 .bbg__entity-logo__press-release {
   float: right;
