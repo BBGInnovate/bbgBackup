@@ -6,7 +6,8 @@
 
 	line-height: $small-line-height;
 
-	h2 {
+	h2,
+	h3 {
 		color: #000;
 		font: {
 			family: $font-serif;
@@ -68,8 +69,11 @@
 	/*** LEGISLATIVE DOCUMENT BODY **/
 	section.legis-body, section.resolution-body, section.amendment-body {
 	    margin: 0.5em;
-	    border: dashed black;
-	    border-width: 0.1em 0;
+	    border-top: {
+	    	color: black;
+	    	style: dashed;
+	    	width: 0.1em;
+	    }
 	    padding: 1em 0 0.25em;
 	}
 
@@ -113,6 +117,8 @@
 	    content: "Subdivision ";
 	}
 	section.title {
+		font-size: 125%;
+
 		span.enum::before {
 	    	content: "Title ";
 	    }
@@ -124,8 +130,12 @@
 	section.subtitle span.enum::before {
 	    content: "Subtitle ";
 	}
-	section.chapter span.enum::before {
-	    content: "Chapter ";
+	section.chapter {
+		font-size: 115%;
+
+		span.enum::before {
+	    	content: "Chapter ";
+	    }
 	}
 	section.subchapter span.enum::before {
 	    content: "Subchapter ";

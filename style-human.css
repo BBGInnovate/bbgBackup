@@ -6477,7 +6477,8 @@ section.usa-section.bbg-banner__section {
   /*** SEGMENTS BELOW SECTION **/
   /* QUOTED BLOCKS */
 }
-.bill_text_content h2 {
+.bill_text_content h2,
+.bill_text_content h3 {
   color: #000;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.6rem;
@@ -6527,8 +6528,9 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.legis-body, .bill_text_content section.resolution-body, .bill_text_content section.amendment-body {
   margin: 0.5em;
-  border: dashed black;
-  border-width: 0.1em 0;
+  border-top-color: black;
+  border-top-style: dashed;
+  border-top-width: 0.1em;
   padding: 1em 0 0.25em;
 }
 .bill_text_content span.enum {
@@ -6560,6 +6562,9 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.subdivision span.enum::before {
   content: "Subdivision ";
 }
+.bill_text_content section.title {
+  font-size: 125%;
+}
 .bill_text_content section.title span.enum::before {
   content: "Title ";
 }
@@ -6568,6 +6573,9 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.subtitle span.enum::before {
   content: "Subtitle ";
+}
+.bill_text_content section.chapter {
+  font-size: 115%;
 }
 .bill_text_content section.chapter span.enum::before {
   content: "Chapter ";
