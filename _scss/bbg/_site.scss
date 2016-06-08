@@ -543,14 +543,24 @@ article {
 		display: inline-block;
 
 		&:first-of-type a{
-			padding: 0 1rem 0 0;
+			padding: 0 .5rem 0 0;
 		};
 	}
+
 	.bbg__footer__sub__required-link a {
 		color: $color-primary-alt-light;
-		padding: 0 1rem;
+		padding: 0 .5rem;
 	}
 
+	@include media($medium-large-screen) {
+		.bbg__footer__sub__required-link:first-of-type a{
+			padding: 0 1rem 0 0;
+		};
+
+		.bbg__footer__sub__required-link a {
+			padding: 0 1rem;
+		}
+	}
 }
 
 

@@ -209,15 +209,15 @@ if ( $custom_query->have_posts() ) :
 			$pinColor = "#981b1e";
 			if (has_category('VOA')){
 				$pinColor = "#344998";
-				$mapHeadline = "<h4><a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a></h4>';
+				$mapHeadline = "<h5><a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a></h5>';
 			} elseif (has_category('RFA')){
 				$pinColor = "#009c50";
-				$mapHeadline = "<h4><a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a></h4>';
+				$mapHeadline = "<h5><a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a></h5>';
 			} elseif (has_category('RFE/RL')){
 				$pinColor = "#ea6828";
-				$mapHeadline = "<h4><a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a></h4>';
+				$mapHeadline = "<h5><a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a></h5>';
 			} else {
-				$mapHeadline = "<h4><a href='". $storyLink ."'>" . $mapHeadline . '</a></h4>';
+				$mapHeadline = "<h5><a href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
 			}
 
 			$counter++;
