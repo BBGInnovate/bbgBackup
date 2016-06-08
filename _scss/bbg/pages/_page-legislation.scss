@@ -141,12 +141,18 @@
 	}
 	// Chapter + Subchapter
 	section.chapter {
-		// font-size: 115%;
-
 		span.enum::before {
 	    	content: "Chapter ";
 	    }
 	}
+
+	section.chapter > p.header {
+	    font: {
+	    	size: 115%;
+	    	weight: $font-bold;
+	    }
+	}
+
 	section.subchapter span.enum::before {
 	    content: "Subchapter ";
 	}
@@ -165,13 +171,6 @@
 	    span.enum::after {
 			content: ".\2002";
 		}
-	}
-
-	section.section > p.header {
-	    font: {
-	    	size: 115%;
-	    	weight: $font-bold;
-	    }
 	}
 
 	section.section > span.enum + p.header,

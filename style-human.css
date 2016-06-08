@@ -6582,6 +6582,10 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.chapter span.enum::before {
   content: "Chapter ";
 }
+.bill_text_content section.chapter > p.header {
+  font-size: 115%;
+  font-weight: 700;
+}
 .bill_text_content section.subchapter span.enum::before {
   content: "Subchapter ";
 }
@@ -6596,10 +6600,6 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.section span.enum::after {
   content: ".\2002";
-}
-.bill_text_content section.section > p.header {
-  font-size: 115%;
-  font-weight: 700;
 }
 .bill_text_content section.section > span.enum + p.header,
 .bill_text_content section.section > span.enum + p.text {
