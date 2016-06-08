@@ -6471,6 +6471,13 @@ section.usa-section.bbg-banner__section {
   font-size: 1.3rem;
 }
 
+.public-law {
+  color: #000;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
 .bill_text_content {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.3rem;
@@ -6480,17 +6487,8 @@ section.usa-section.bbg-banner__section {
   /*** ALL SEGMENTS **/
   /*** SEGMENTS ABOVE SECTION **/
   /*** BIG LEVEL HEADING TEXT **/
-  /*** SECTION SEGMENT **/
-  /*** SUBSECTION SEGMENT **/
   /*** SEGMENTS BELOW SECTION **/
   /* QUOTED BLOCKS */
-}
-.bill_text_content h2,
-.bill_text_content h3 {
-  color: #000;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  font-size: 1.6rem;
-  text-align: center;
 }
 .bill_text_content .enroll-date {
   text-align: center;
@@ -6570,20 +6568,18 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.subdivision span.enum::before {
   content: "Subdivision ";
 }
-.bill_text_content section.title {
-  font-size: 125%;
-}
 .bill_text_content section.title span.enum::before {
   content: "Title ";
 }
 .bill_text_content section.title span.enum::after {
   content: "\2014";
 }
+.bill_text_content section.title > p.header {
+  font-size: 125%;
+  font-weight: 700;
+}
 .bill_text_content section.subtitle span.enum::before {
   content: "Subtitle ";
-}
-.bill_text_content section.chapter {
-  font-size: 115%;
 }
 .bill_text_content section.chapter span.enum::before {
   content: "Chapter ";
@@ -6603,8 +6599,8 @@ section.usa-section.bbg-banner__section {
 .bill_text_content section.section span.enum::after {
   content: ".\2002";
 }
-.bill_text_content section.title > p.header,
 .bill_text_content section.section > p.header {
+  font-size: 115%;
   font-weight: 700;
 }
 .bill_text_content section.section > span.enum + p.header,
