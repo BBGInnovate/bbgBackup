@@ -6613,7 +6613,7 @@ section.usa-section.bbg-banner__section {
 }
 .bill_text_content section.subsection p.inline-header,
 .bill_text_content section.paragraph p.inline-header {
-  font-variant: capitalize;
+  font-variant: small-caps;
 }
 .bill_text_content section.subsection p.inline-header + p.text,
 .bill_text_content section.paragraph p.inline-header + p.text {

@@ -184,7 +184,7 @@
 	section.subsection,
 	section.paragraph {
 		p.inline-header {
-			font-variant: capitalize;
+			font-variant: small-caps;
 
 			&+ p.text {
 				display: inline;
