@@ -88,7 +88,7 @@
 
 		/* enable the carat with the keyboard */
 		jQuery("li.menu-item-has-children input[type='image']").keydown(function(e) {
-			/**** enter key on caret toggles the menu at all viewports ****/
+			/**** enter key on caret toggles the menu at all viewports.  this should only fire on a desktop ****/
 			if(e.keyCode == 13) {
 				window.enterPressHover=true;
 				if (jQuery(this).parent().find("ul.sub-menu").is(':visible')) {
@@ -109,8 +109,9 @@
 			}
 		});
 		jQuery("li.menu-item-has-children input[type='image']").click(function(e) {
-			//no need for clickable image on mobile
-			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			//the image should be clickable on mobile at all widths (so, even at desktop width for instance iPad, because there is now hover)
+			//on a desktop, it should only be clickable at < 900 so the narrow menu version works
+			if( window.innerWidth  < 900 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 				var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
 				if (displayVal != 'none') {
 					jQuery(this).parent().find("ul.sub-menu").hide();
