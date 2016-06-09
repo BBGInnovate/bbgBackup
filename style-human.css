@@ -3479,16 +3479,24 @@ object {
 }
 
 .bbg__main-navigation__toggler {
+  background-color: transparent;
   background-image: url("img/arrow-down.png");
   background-image: url("img/arrow-down.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.3rem;
+  cursor: pointer;
   display: inline-block !important;
   height: 4.7rem;
+  margin: 0;
   vertical-align: top;
   width: 5rem;
-  cursor: pointer;
+}
+.bbg__main-navigation__toggler:hover {
+  background-color: transparent;
+}
+.bbg__main-navigation__toggler:focus {
+  background-color: #dce4ef;
 }
 
 @media screen and (min-width: 900px) {

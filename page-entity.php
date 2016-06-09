@@ -521,8 +521,8 @@ get_header(); ?>
 											echo '<h3 class="bbg__sidebar-label">Recent stories from ' . $websiteName . '</h3>';
 											echo '<ul class="bbg__rss__list'. $languageDirection .'">';
 											$maxRelatedStories=3;
-											for ( $i=0; $i<min($maxRelatedStories,count($rssItems)); $i++) {
-												$o=$rssItems[$i];
+											for ( $i = 0; $i < min( $maxRelatedStories, count($rssItems) ); $i++) {
+												$o = $rssItems[$i];
 												echo '<li class="bbg__rss__list-link">';
 												echo '<a href="' . $o['url'] . '">';
 												if ($o['image'] != "") {
@@ -538,9 +538,9 @@ get_header(); ?>
 												$maxThreatsStories=3;
 												echo '<aside class="bbg__article-sidebar__aside">';
 												echo '<h6 class="bbg-label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
-												echo "<ul class='bbg__rss__list'>";	
-												for ( $i=0; $i<min($maxRelatedStories,count($threats)); $i++) {
-													$o=$threats[$i];
+												echo '<ul class="bbg__rss__list">';	
+												for ( $i = 0; $i <= min( $maxRelatedStories, count($threats) ); $i++) {
+													$o = $threats[$i];
 													echo '<li class="bbg__rss__list-link">';
 													echo '<a href="' . $o['url'] . '">';
 													/*
@@ -567,13 +567,7 @@ get_header(); ?>
 								<aside class="bbg__article-sidebar__aside">
 								<div class="bbg__contact-card <?php if ($includeMap){echo 'bbg__contact-card--include-map';} ?>">
 									<?php if ($includeMap){ ?>
-									<!--
-									<a href="<?php echo $mapLink; ?>">
-									<div class="bbg__contact-card__map" style="background-image: url(<?php echo $map; ?>)"></div>
-									</a>
-									-->
-
-									<div id='map' class='bbg__contact-card__map'></div>
+										<div id='map' class='bbg__contact-card__map'></div>
 									<?php } ?>
 
 									<div class="bbg__contact-card__text">
