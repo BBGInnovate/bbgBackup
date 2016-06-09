@@ -80,14 +80,22 @@
 
 .bbg__article-content {
 
+	/*
 	h3 {
 		font-family: $font-sans;
+	}
+	*/
+
+	> h3 {
 		margin-top: 2em;
+		/*text-transform: uppercase;*/
 	}
 
-	/* Why? Where? */
-	> h3 {
-		text-transform: uppercase;
+	.bbg__profile__content {
+		h3 {
+			margin-top: 2em;
+			text-transform: uppercase;
+		}
 	}
 
 	> h4 {
