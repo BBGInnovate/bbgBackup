@@ -2,7 +2,7 @@
 /**
  * Extend Walker function to add usa-sidenav-sub_list class to submenu navigation items
  */
-class themeslug_walker_nav_menu extends Walker_Nav_Menu {
+class bbginnovate_walker_nav_menu extends Walker_Nav_Menu {
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
@@ -70,7 +70,7 @@ class themeslug_walker_nav_menu extends Walker_Nav_Menu {
 }
 
 
-class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
+class bbginnovate_walker_header_usa_menu extends Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
