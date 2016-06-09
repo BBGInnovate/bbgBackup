@@ -100,7 +100,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h1 class="bbg__impact-model__headline">How do we measure impact?</h1>
-									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages & in over 100 countries. Our shared mission provides the framework for a common standard to define & measure impact.</p>
+									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages and in over 100 countries. Our shared mission provides the framework for a common standard to define and measure impact.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
@@ -124,8 +124,8 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid" style="margin-bottom: 6rem;">
-									<h2>IMPACT PILLARS & INDICATORS</h2>
-									<p class="usa-font-lead">Below are a illustrative sample of core & optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
+									<h2>IMPACT PILLARS + INDICATORS</h2>
+									<p class="usa-font-lead">Below are a illustrative sample of core and optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
 								</div>
 
 								<div class="usa-grid">

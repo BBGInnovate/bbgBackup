@@ -3997,23 +3997,6 @@ object {
   overflow: hidden;
 }
 
-/*
-!!? we're using a negative margin here because there's an awkward spacing
-before the photo cutline. Why don't we fix that spacing,
-instead of trying to fix it here.
-*/
-.bbg__article-header__caption {
-  /*
-  margin:  {
-  	top: -2rem;
-  	right: 0;
-  	bottom: $site-margins;
-  	left: auto;
-  }
-  width: 100%;
-  */
-}
-
 .bbg__article--no-featured-image {
   margin-top: 3rem;
 }
@@ -4069,9 +4052,14 @@ instead of trying to fix it here.
   }
 }
 
-.bbg__article-content > h3 {
+.bbg__article-content {
+  /* Why? Where? */
+}
+.bbg__article-content h3 {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: 2em;
+}
+.bbg__article-content > h3 {
   text-transform: uppercase;
 }
 .bbg__article-content > h4, .bbg__board__committee-list li .bbg__article-content > a {
