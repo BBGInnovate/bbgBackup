@@ -110,7 +110,7 @@
 		});
 		jQuery("li.menu-item-has-children input[type='image']").click(function(e) {
 			//no need for clickable image on mobile
-			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			if( window.innerWidth  < 900 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 				var displayVal=jQuery(this).parent().find(".sub-menu").css('display');
 				if (displayVal != 'none') {
 					jQuery(this).parent().find("ul.sub-menu").hide();
