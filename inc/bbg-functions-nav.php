@@ -114,7 +114,8 @@ class themeslug_walker_header_usa_menu extends Walker_Nav_Menu {
 		if( in_array('menu-item-has-children', $classes)) {
 			//var_dump($item); die();
 			//$output .= "<a tabindex='0' title='Expand " . $title . " menu' class='bbg__main-navigation__toggler'></a>";
-			$output .= "<input tabindex='0' height='15' class='bbg__main-navigation__toggler' type='image' src='https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/arrow-down.png' title='Toggle menu $title' alt='Toggle menu $title'>";
+			$arrowPath = get_template_directory_uri() . '/img/arrow-down.png';
+			$output .= "<input tabindex='0' height='15' class='bbg__main-navigation__toggler' type='image' src='$arrowPath' title='Toggle menu $title' alt='Toggle menu $title'>";
 		}
 
 		$item_output = $args->before;
