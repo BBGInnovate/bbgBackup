@@ -295,7 +295,7 @@ var map = L.mapbox.map('map', 'mapbox.streets')
 		iconCreateFunction: function (cluster) {
 			var childCount = cluster.getChildCount();
 			var c = ' marker-cluster-';
-			if (childCount < 2) {
+			if (childCount < 10) {
 			    c += 'small';
 			} else if (childCount < 100) {
 			    c += 'medium';
