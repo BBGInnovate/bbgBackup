@@ -35,7 +35,7 @@ h4 a {
 	color: $color-primary-darker;
 }
 
-a {
+a:not(.bbg__article-share__icon span) {
 	&:focus {
 		background-color: $color-gray-cool-light;
 

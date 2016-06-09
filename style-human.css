@@ -4736,30 +4736,30 @@ h4 a,
   color: #205493;
 }
 
-a:focus {
+a:not(.bbg__article-share__icon span):focus {
   background-color: #dce4ef;
 }
-a:focus img,
-a:focus *[class*="avatar"],
-a:focus *[class*="icon"],
-a:focus *[class*="image"],
-a:focus *[class*="photo"],
-a:focus *[class*="thumbnail"] {
+a:not(.bbg__article-share__icon span):focus img,
+a:not(.bbg__article-share__icon span):focus *[class*="avatar"],
+a:not(.bbg__article-share__icon span):focus *[class*="icon"],
+a:not(.bbg__article-share__icon span):focus *[class*="image"],
+a:not(.bbg__article-share__icon span):focus *[class*="photo"],
+a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] {
   background-color: transparent;
   text-decoration: none;
 }
-a:focus img > a:hover,
-a:focus img > a:focus,
-a:focus *[class*="avatar"] > a:hover,
-a:focus *[class*="avatar"] > a:focus,
-a:focus *[class*="icon"] > a:hover,
-a:focus *[class*="icon"] > a:focus,
-a:focus *[class*="image"] > a:hover,
-a:focus *[class*="image"] > a:focus,
-a:focus *[class*="photo"] > a:hover,
-a:focus *[class*="photo"] > a:focus,
-a:focus *[class*="thumbnail"] > a:hover,
-a:focus *[class*="thumbnail"] > a:focus {
+a:not(.bbg__article-share__icon span):focus img > a:hover,
+a:not(.bbg__article-share__icon span):focus img > a:focus,
+a:not(.bbg__article-share__icon span):focus *[class*="avatar"] > a:hover,
+a:not(.bbg__article-share__icon span):focus *[class*="avatar"] > a:focus,
+a:not(.bbg__article-share__icon span):focus *[class*="icon"] > a:hover,
+a:not(.bbg__article-share__icon span):focus *[class*="icon"] > a:focus,
+a:not(.bbg__article-share__icon span):focus *[class*="image"] > a:hover,
+a:not(.bbg__article-share__icon span):focus *[class*="image"] > a:focus,
+a:not(.bbg__article-share__icon span):focus *[class*="photo"] > a:hover,
+a:not(.bbg__article-share__icon span):focus *[class*="photo"] > a:focus,
+a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] > a:hover,
+a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] > a:focus {
   background-color: transparent;
   text-decoration: none;
 }
