@@ -184,7 +184,7 @@ $moveUSAbannerBecauseOfAlert = '';
 
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new themeslug_walker_header_usa_menu() ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
 		</nav><!-- #site-navigation -->
 
 

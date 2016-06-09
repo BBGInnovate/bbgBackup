@@ -36,7 +36,7 @@ get_header(); ?>
 
     <aside id="menu-content" class="widget-area sidenav" role="complementary">
         <!-- Adding main navigation to the sidebar -->
-        <?php wp_nav_menu( array( 'theme_location' => 'menu-side', 'container' => 'nav', 'container_class' => '', 'menu_id' => 'primary-menu', 'menu_class' => 'menu usa-sidenav-list', 'walker' => new themeslug_walker_nav_menu() )); ?>
+        <?php wp_nav_menu( array( 'theme_location' => 'menu-side', 'container' => 'nav', 'container_class' => '', 'menu_id' => 'primary-menu', 'menu_class' => 'menu usa-sidenav-list', 'walker' => new bbginnovate_walker_nav_menu() )); ?>
             <!-- #primary-menu -->
     </aside><!-- #secondary -->
 <?php /*get_footer();*/ ?>
