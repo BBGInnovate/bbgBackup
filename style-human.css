@@ -4744,8 +4744,7 @@ a:focus *[class*="avatar"],
 a:focus *[class*="icon"],
 a:focus *[class*="image"],
 a:focus *[class*="photo"],
-a:focus *[class*="thumbnail"],
-a:focus *[style*="background-image"] {
+a:focus *[class*="thumbnail"] {
   background-color: transparent;
   text-decoration: none;
 }
@@ -4760,9 +4759,7 @@ a:focus *[class*="image"] > a:focus,
 a:focus *[class*="photo"] > a:hover,
 a:focus *[class*="photo"] > a:focus,
 a:focus *[class*="thumbnail"] > a:hover,
-a:focus *[class*="thumbnail"] > a:focus,
-a:focus *[style*="background-image"] > a:hover,
-a:focus *[style*="background-image"] > a:focus {
+a:focus *[class*="thumbnail"] > a:focus {
   background-color: transparent;
   text-decoration: none;
 }

@@ -44,8 +44,8 @@ a {
 		*[class*="icon"],
 		*[class*="image"],
 		*[class*="photo"],
-		*[class*="thumbnail"],
-		*[style*="background-image"] {
+		*[class*="thumbnail"]/*,
+		*[style*="background-image"]*/ {
 			background-color: transparent;
 			text-decoration: none;
 
