@@ -1,3 +1,6 @@
+a:focus .bbg__article-share__icon {
+	background-color: $color-gray-medium;
+}
 
 /** ARTICLE SHARE AREA */
 .bbg__article-share {
@@ -27,6 +30,10 @@
 	a:focus {
 		background: none;
 		text-decoration: none;
+	}
+
+	&:focus {
+
 	}
 	/*
 	@include media($medium-screen) {
@@ -62,13 +69,6 @@
 	margin-right: .5rem;
 	vertical-align: middle;
 	width: $share-icon-large;
-	/*
-	@include media($medium-screen) {
-		border-radius: 0;
-		height: $share-icon-small;
-		width: $share-icon-small;
-	}
-	*/
 }
 
 .bbg__contact__icon.email,

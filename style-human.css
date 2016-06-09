@@ -2960,6 +2960,10 @@ fieldset {
   padding: .25rem 1rem;
 }
 
+a:focus .bbg__article-share__icon {
+  background-color: #757575;
+}
+
 /** ARTICLE SHARE AREA */
 .bbg__article-share {
   margin-top: 0;
@@ -3021,13 +3025,6 @@ fieldset {
   margin-right: .5rem;
   vertical-align: middle;
   width: 40px;
-  /*
-  @include media($medium-screen) {
-  	border-radius: 0;
-  	height: $share-icon-small;
-  	width: $share-icon-small;
-  }
-  */
 }
 
 .bbg__contact__icon.email,
