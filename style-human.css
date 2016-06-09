@@ -4733,30 +4733,27 @@ h4 a,
   color: #205493;
 }
 
-a:not(.bbg__article-share__icon span):focus {
+a:not(.bbg__article-share__icon):focus {
   background-color: #dce4ef;
 }
-a:not(.bbg__article-share__icon span):focus img,
-a:not(.bbg__article-share__icon span):focus *[class*="avatar"],
-a:not(.bbg__article-share__icon span):focus *[class*="icon"],
-a:not(.bbg__article-share__icon span):focus *[class*="image"],
-a:not(.bbg__article-share__icon span):focus *[class*="photo"],
-a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] {
+a:not(.bbg__article-share__icon):focus img,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"],
+a:not(.bbg__article-share__icon):focus *[class*="image"],
+a:not(.bbg__article-share__icon):focus *[class*="photo"],
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] {
   background-color: transparent;
   text-decoration: none;
 }
-a:not(.bbg__article-share__icon span):focus img > a:hover,
-a:not(.bbg__article-share__icon span):focus img > a:focus,
-a:not(.bbg__article-share__icon span):focus *[class*="avatar"] > a:hover,
-a:not(.bbg__article-share__icon span):focus *[class*="avatar"] > a:focus,
-a:not(.bbg__article-share__icon span):focus *[class*="icon"] > a:hover,
-a:not(.bbg__article-share__icon span):focus *[class*="icon"] > a:focus,
-a:not(.bbg__article-share__icon span):focus *[class*="image"] > a:hover,
-a:not(.bbg__article-share__icon span):focus *[class*="image"] > a:focus,
-a:not(.bbg__article-share__icon span):focus *[class*="photo"] > a:hover,
-a:not(.bbg__article-share__icon span):focus *[class*="photo"] > a:focus,
-a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] > a:hover,
-a:not(.bbg__article-share__icon span):focus *[class*="thumbnail"] > a:focus {
+a:not(.bbg__article-share__icon):focus img > a:hover,
+a:not(.bbg__article-share__icon):focus img > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="image"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="image"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="photo"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="photo"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] > a:focus {
   background-color: transparent;
   text-decoration: none;
 }
