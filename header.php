@@ -184,7 +184,15 @@ $moveUSAbannerBecauseOfAlert = '';
 
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
+			<?php 
+
+			$btnSearch="<input alt='Search' type='image' style='display:inline;padding:10px;margin:0px;' src='" . get_template_directory_uri() . "/img/search.png'>";
+			wp_nav_menu( array( 
+				'theme_location' => 'primary', 
+				'menu_id' => 'primary-menu', 
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul>',
+				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
+
 		</nav><!-- #site-navigation -->
 
 
