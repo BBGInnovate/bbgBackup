@@ -4052,14 +4052,9 @@ object {
   }
 }
 
-.bbg__article-content {
-  /*
-  h3 {
-  	font-family: $font-sans;
-  }
-  */
-}
 .bbg__article-content > h3,
+.bbg__article-content > h4,
+.bbg__board__committee-list li .bbg__article-content > a,
 .bbg__article-content .bbg__profile__content > h3 {
   margin-top: 2em;
   /*text-transform: uppercase;*/
