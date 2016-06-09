@@ -2912,6 +2912,10 @@ fieldset {
   padding: .25rem 1rem;
 }
 
+a:focus .bbg__article-share__icon {
+  background-color: #757575;
+}
+
 /** ARTICLE SHARE AREA */
 .bbg__article-share {
   margin-top: 0;
@@ -2973,13 +2977,6 @@ fieldset {
   margin-right: .5rem;
   vertical-align: middle;
   width: 40px;
-  /*
-  @include media($medium-screen) {
-  	border-radius: 0;
-  	height: $share-icon-small;
-  	width: $share-icon-small;
-  }
-  */
 }
 
 .bbg__contact__icon.email,
@@ -3387,6 +3384,9 @@ object {
   position: absolute;
   width: auto;
 }
+.menu-toggle:focus {
+  background-color: #205493;
+}
 @media screen and (min-width: 481px) {
   .menu-toggle {
     background-position: 10px center;
@@ -3431,16 +3431,31 @@ object {
 }
 
 .bbg__main-navigation__toggler {
-  background-image: url("img/arrow-down.png");
-  background-image: url("img/arrow-down.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 1.3rem;
+  /*
+  background: {
+  	color: transparent;
+  	image: url('img/arrow-down.png');
+  	image: url('img/arrow-down.svg');
+  	position: center;
+  	repeat: no-repeat;
+  	size: 1.3rem;
+  }
+  */
+  background: none;
+  background-color: transparent;
+  cursor: pointer;
   display: inline-block !important;
   height: 4.7rem;
+  margin: 0;
+  padding: 1.5rem;
   vertical-align: top;
   width: 5rem;
-  cursor: pointer;
+}
+.bbg__main-navigation__toggler:hover {
+  background-color: transparent;
+}
+.bbg__main-navigation__toggler:focus {
+  background-color: #dce4ef;
 }
 
 @media screen and (min-width: 900px) {
@@ -3526,15 +3541,22 @@ object {
   }
 
   .bbg__main-navigation__toggler {
-    background-image: url("img/arrow-down.png");
-    background-image: url("img/arrow-down.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+    /*
+    background: {
+    	image: url('img/arrow-down.png');
+    	image: url('img/arrow-down.svg');
+    	position: center;
+    	repeat: no-repeat;
+    	//size: 1.3rem;
+    }
+    */
+    background: none;
+    background-color: transparent;
     display: inline-block !important;
-    padding-left: 3rem;
+    padding: 1rem .5rem 1rem 1rem;
     height: 3.5rem;
     vertical-align: bottom;
-    width: 2.5rem;
+    width: auto;
   }
 }
 .site-main .comment-navigation, .site-main
@@ -3927,23 +3949,6 @@ object {
   overflow: hidden;
 }
 
-/*
-!!? we're using a negative margin here because there's an awkward spacing
-before the photo cutline. Why don't we fix that spacing,
-instead of trying to fix it here.
-*/
-.bbg__article-header__caption {
-  /*
-  margin:  {
-  	top: -2rem;
-  	right: 0;
-  	bottom: $site-margins;
-  	left: auto;
-  }
-  width: 100%;
-  */
-}
-
 .bbg__article--no-featured-image {
   margin-top: 3rem;
 }
@@ -3999,10 +4004,12 @@ instead of trying to fix it here.
   }
 }
 
-.bbg__article-content > h3 {
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+.bbg__article-content > h3,
+.bbg__article-content > h4,
+.bbg__board__committee-list li .bbg__article-content > a,
+.bbg__article-content .bbg__profile__content > h3 {
   margin-top: 2em;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .bbg__article-content > h4, .bbg__board__committee-list li .bbg__article-content > a {
   clear: none;
@@ -4678,33 +4685,27 @@ h4 a,
   color: #205493;
 }
 
-a:focus {
+a:not(.bbg__article-share__icon):focus {
   background-color: #dce4ef;
 }
-a:focus img,
-a:focus *[class*="avatar"],
-a:focus *[class*="icon"],
-a:focus *[class*="image"],
-a:focus *[class*="photo"],
-a:focus *[class*="thumbnail"],
-a:focus *[style*="background-image"] {
+a:not(.bbg__article-share__icon):focus img,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"],
+a:not(.bbg__article-share__icon):focus *[class*="image"],
+a:not(.bbg__article-share__icon):focus *[class*="photo"],
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] {
   background-color: transparent;
   text-decoration: none;
 }
-a:focus img > a:hover,
-a:focus img > a:focus,
-a:focus *[class*="avatar"] > a:hover,
-a:focus *[class*="avatar"] > a:focus,
-a:focus *[class*="icon"] > a:hover,
-a:focus *[class*="icon"] > a:focus,
-a:focus *[class*="image"] > a:hover,
-a:focus *[class*="image"] > a:focus,
-a:focus *[class*="photo"] > a:hover,
-a:focus *[class*="photo"] > a:focus,
-a:focus *[class*="thumbnail"] > a:hover,
-a:focus *[class*="thumbnail"] > a:focus,
-a:focus *[style*="background-image"] > a:hover,
-a:focus *[style*="background-image"] > a:focus {
+a:not(.bbg__article-share__icon):focus img > a:hover,
+a:not(.bbg__article-share__icon):focus img > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="avatar"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="image"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="image"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="photo"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="photo"] > a:focus,
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] > a:hover,
+a:not(.bbg__article-share__icon):focus *[class*="thumbnail"] > a:focus {
   background-color: transparent;
   text-decoration: none;
 }
@@ -5514,48 +5515,6 @@ article {
 /***************************************/
 /*    Misc post/page styles            */
 /*                                     */
-.bbg__contact-card {
-  background-color: #f1f1f1;
-  border-radius: 0.3rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 3rem;
-}
-@media screen and (min-width: 600px) {
-  .bbg__contact-card {
-    position: relative;
-  }
-}
-.bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
-}
-.bbg__contact-card.bbg__contact-card--include-map {
-  padding: 0;
-}
-.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
-  padding: 1.5rem;
-  width: 100%;
-}
-@media screen and (min-width: 600px) {
-  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
-    margin-right: 0;
-    margin-left: auto;
-    width: 50%;
-  }
-}
-.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
-  background-color: #757575;
-  height: 200px;
-  width: 100%;
-}
-@media screen and (min-width: 600px) {
-  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
-    height: 100%;
-    position: absolute;
-    width: 50%;
-  }
-}
-
 @media screen and (min-width: 900px) {
   .bbg__article-sidebar.large .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
     margin-right: 0;
@@ -6188,6 +6147,59 @@ section.usa-section.bbg-banner__section {
 }
 .bbg__career-box .usa-width-one-third h4, .bbg__career-box .usa-width-one-third .bbg__board__committee-list li a, .bbg__board__committee-list li .bbg__career-box .usa-width-one-third a {
   margin-top: 0;
+}
+
+.bbg__contact-card {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 3rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-card {
+    position: relative;
+  }
+}
+.bbg__contact-card p, .bbg__contact-card a, .bbg__contact-card ul, .bbg__contact-card li {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
+.bbg__contact-card.bbg__contact-card--include-map {
+  padding: 0;
+}
+.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+  padding: 1.5rem;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+    margin-right: 0;
+    margin-left: auto;
+    width: 50%;
+  }
+}
+.bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+  background-color: #757575;
+  height: 200px;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+    height: 100%;
+    position: absolute;
+    width: 50%;
+  }
+}
+
+#entity_sites {
+  display: inline-block;
+  margin-right: 2%;
+  width: 73%;
+}
+
+#entityUrlGo {
+  margin: 0;
+  width: 25%;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */

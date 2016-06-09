@@ -101,6 +101,10 @@ body:not(.home) .menu-all-pages-container {
 		size: 20px;
 	}
 
+	&:focus {
+		background-color: $color-cool-blue;
+	}
+
 	border-radius: 0 0 $border-radius $border-radius;
 	margin-top: 0;
 	min-height: 4.5rem;
@@ -161,21 +165,30 @@ body:not(.home) .menu-all-pages-container {
 	display:none;
 } 
 .bbg__main-navigation__toggler {
+	/*
 	background: {
+		color: transparent;
 		image: url('img/arrow-down.png');
 		image: url('img/arrow-down.svg');
 		position: center;
 		repeat: no-repeat;
 		size: 1.3rem;
 	}
+	*/
+	background: none;
+	background-color: transparent;
+
+	cursor: pointer;
 	display: inline-block !important;
 	height: 4.7rem;
+	margin: 0;
+	padding: 1.5rem;
 	vertical-align: top;
 	width: 5rem;
 
-	cursor: pointer;
+	&:hover {background-color: transparent;}
+	&:focus {background-color: $color-cool-blue-lightest; }
 }
-
 
 
 @include media($medium-large-screen) {
@@ -239,9 +252,7 @@ body:not(.home) .menu-all-pages-container {
 				size: 1.3rem;
 			}
 			border-left: none;
-			//padding-right: 2.5rem;
 			padding-right: 2rem;
-			//padding-left: 7px;
 			padding-left: 2px;
 			width: auto;
 
@@ -282,6 +293,7 @@ body:not(.home) .menu-all-pages-container {
 
 
 	.bbg__main-navigation__toggler {
+		/*
 		background: {
 			image: url('img/arrow-down.png');
 			image: url('img/arrow-down.svg');
@@ -289,13 +301,15 @@ body:not(.home) .menu-all-pages-container {
 			repeat: no-repeat;
 			//size: 1.3rem;
 		}
+		*/
+		background: none;
+		background-color: transparent;
 		display: inline-block !important;
-		padding-left: $site-margins;
+		padding: 1rem .5rem 1rem 1rem;
 		height: 3.5rem;
 		vertical-align: bottom;
-		width: 2.5rem;
+		width: auto;
 	}
-
 }
 
 

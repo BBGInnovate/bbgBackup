@@ -273,6 +273,14 @@ endif;
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
+<style>
+	.marker-cluster-small {
+		background-color: rgba(255, 255, 255, 0.6) !important;
+	}
+	.marker-cluster-small div {
+		background-color: rgba(255, 0, 0, 0.6) !important;
+	}
+</style>
 
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
@@ -283,17 +291,33 @@ L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 var map = L.mapbox.map('map', 'mapbox.streets')
 //        .setView([-37.82, 175.215], 14);
 
-    var markers = new L.MarkerClusterGroup();
+    var markers = new L.MarkerClusterGroup({
+		iconCreateFunction: function (cluster) {
+			var childCount = cluster.getChildCount();
+			var c = ' marker-cluster-';
+			if (childCount < 10) {
+			    c += 'small';
+			} else if (childCount < 100) {
+			    c += 'medium';
+			} else {
+			    c += 'large';
+			}
+			return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+		}
+	});
 
     for (var i = 0; i < geojson[0].features.length; i++) {
-        var a = geojson[0].features[i].geometry.coordinates;
+        var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
-        var marker = L.marker(new L.LatLng(a[1], a[0]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': geojson[0].features[i].properties['marker-color']}),
-            title: title,
-            description: geojson[0].features[i].properties['description']
+        var description = geojson[0].features[i].properties['description'];
+        var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
+            icon: L.mapbox.marker.icon({
+            	'marker-symbol': '', 
+            	'marker-color': geojson[0].features[i].properties['marker-color']
+           	})
         });
-        marker.bindPopup(title);
+        var popupText = title + description;
+        marker.bindPopup(popupText);
         markers.addLayer(marker);
     }
 

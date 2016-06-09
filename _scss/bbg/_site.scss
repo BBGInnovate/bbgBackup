@@ -35,28 +35,30 @@ h4 a {
 	color: $color-primary-darker;
 }
 
-a {
+a:not(.bbg__article-share__icon) {
 	&:focus {
-		background-color: $color-gray-cool-light;
+			background-color: $color-gray-cool-light;
 
-		img,
-		*[class*="avatar"],
-		*[class*="icon"],
-		*[class*="image"],
-		*[class*="photo"],
-		*[class*="thumbnail"],
-		*[style*="background-image"] {
-			background-color: transparent;
-			text-decoration: none;
-
-			> a:hover,
-			> a:focus  { // removes background color and underline for linked images
+			img,
+			*[class*="avatar"],
+			/**[class*="icon"],*/
+			*[class*="image"],
+			*[class*="photo"],
+			*[class*="thumbnail"]/*,
+			*[style*="background-image"]*/ {
 				background-color: transparent;
 				text-decoration: none;
+
+				> a:hover,
+				> a:focus  { // removes background color and underline for linked images
+					background-color: transparent;
+					text-decoration: none;
+				}
 			}
-		}
 	}
 }
+
+
 
 // add class for right-angle quotes after links
 .bbg__links--right-angle-quote {
@@ -990,52 +992,7 @@ article {
 
 
 
-.bbg__contact-card {
-	background-color: $color-gray-lightest;
-	border-radius: $border-radius;
-	margin: {
-		top: $site-margins;
-		bottom: $site-margins;
-	}
-	padding: $site-margins;
 
-	@include media($medium-screen) {
-		position: relative;
-	}
-
-	p, a, ul, li {
-		font-family: $font-sans;
-	}
-
-	&.bbg__contact-card--include-map {
-		padding: 0;
-
-		.bbg__contact-card__text {
-			padding: $site-margins-medium;
-			width: 100%;
-
-			@include media($medium-screen) {
-				margin: {
-					right: 0;
-					left: auto;
-				}
-				width: 50%;
-			}
-		}
-
-		.bbg__contact-card__map {
-			background-color: $color-gray-medium;
-			height: 200px;
-			width: 100%;
-
-			@include media($medium-screen) {
-				height: 100%;
-				position: absolute;
-				width: 50%;
-			}
-		}
-	}
-}
 
 .bbg__article-sidebar.large {
 	.bbg__contact-card {

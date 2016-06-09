@@ -62,6 +62,7 @@ $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 $impactCat = get_category_by_slug('impact');
 //$impactPermalink = get_category_link($impactCat->term_id);
 $impactPermalink = get_permalink( get_page_by_path( 'impact-and-results' ) );
+$impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
 $threatsCat=get_category_by_slug('threats-to-press');
 $threatsPermalink = get_category_link($threatsCat->term_id);
 //$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
@@ -178,7 +179,7 @@ get_header();
 
 					<div class="usa-width-two-thirds">
 
-						<h6 class="bbg-label"><a href="<?php echo $impactPermalink; ?>">Impact stories</a></h6>
+						<h6 class="bbg-label"><a href="<?php echo $impactPortfolioPermalink; ?>">Impact stories</a></h6>
 
 						<div class="usa-grid-full">
 						<?php
@@ -204,7 +205,7 @@ get_header();
 						?>
 						</div>
 						<div class="usa-grid-full u--space-below-mobile--large">
-							<a href="<?php echo $impactPermalink; ?>">View all impact stories »</a>
+							<a href="<?php echo $impactPermalink; ?>">Find out how the BBG defines and measures impact »</a>
 						</div><!-- .usa-grid -->
 					</div>
 					<!-- Quotation -->
