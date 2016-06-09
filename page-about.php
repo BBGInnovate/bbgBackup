@@ -14,6 +14,11 @@ $templateName = "about";
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $videoUrl = get_field( 'featured_video_url', '', true );
 
+$pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
+if ($pageTagline && $pageTagline!=""){
+	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
+}
+
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
@@ -37,6 +42,7 @@ get_header();
 			<div class="usa-grid">
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
+					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
 
