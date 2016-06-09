@@ -161,6 +161,7 @@ body:not(.home) .menu-all-pages-container {
 	display:none;
 } 
 .bbg__main-navigation__toggler {
+	/*
 	background: {
 		color: transparent;
 		image: url('img/arrow-down.png');
@@ -169,10 +170,15 @@ body:not(.home) .menu-all-pages-container {
 		repeat: no-repeat;
 		size: 1.3rem;
 	}
+	*/
+	background: none;
+	background-color: transparent;
+
 	cursor: pointer;
 	display: inline-block !important;
 	height: 4.7rem;
 	margin: 0;
+	padding: 1.5rem;
 	vertical-align: top;
 	width: 5rem;
 
@@ -298,7 +304,7 @@ body:not(.home) .menu-all-pages-container {
 		background-color: transparent;
 		display: inline-block !important;
 		//padding-left: $site-margins;
-		padding: 1rem;
+		padding: 1rem .5rem 1rem 1rem;
 		height: 3.5rem;
 		vertical-align: bottom;
 		width: auto;

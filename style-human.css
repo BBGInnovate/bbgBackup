@@ -3479,16 +3479,23 @@ object {
 }
 
 .bbg__main-navigation__toggler {
+  /*
+  background: {
+  	color: transparent;
+  	image: url('img/arrow-down.png');
+  	image: url('img/arrow-down.svg');
+  	position: center;
+  	repeat: no-repeat;
+  	size: 1.3rem;
+  }
+  */
+  background: none;
   background-color: transparent;
-  background-image: url("img/arrow-down.png");
-  background-image: url("img/arrow-down.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 1.3rem;
   cursor: pointer;
   display: inline-block !important;
   height: 4.7rem;
   margin: 0;
+  padding: 1.5rem;
   vertical-align: top;
   width: 5rem;
 }
@@ -3594,7 +3601,7 @@ object {
     background: none;
     background-color: transparent;
     display: inline-block !important;
-    padding: 1rem;
+    padding: 1rem .5rem 1rem 1rem;
     height: 3.5rem;
     vertical-align: bottom;
     width: auto;
