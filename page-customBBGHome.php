@@ -364,7 +364,7 @@ get_header();
 									//$title = get_the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
 									echo '<article id="post-' . $id . '" '; post_class(); echo '>';
 									echo '<div>';
-									echo '<a href="'.$permalink.'" rel="bookmark">';
+									echo '<a href="'.$permalink.'" rel="bookmark" tabindex="-1">';
 									the_post_thumbnail( 'large-thumb' );
 									echo '</a>';
 									echo '</div>';

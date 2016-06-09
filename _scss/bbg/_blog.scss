@@ -111,6 +111,10 @@
 		word-wrap: break-word;
 	}
 
+	strong {
+		font-family: $font-sans;
+	}
+
 	.bbg__article-content__subhead {
 		color: $color-gray-medium;
 		font-size: 2.5rem;

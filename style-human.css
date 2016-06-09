@@ -4039,6 +4039,9 @@ object {
 .bbg__article-content p {
   word-wrap: break-word;
 }
+.bbg__article-content strong {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+}
 .bbg__article-content .bbg__article-content__subhead {
   color: #757575;
   font-size: 2.5rem;
