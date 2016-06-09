@@ -85,17 +85,11 @@
 		font-family: $font-sans;
 	}
 	*/
-
-	> h3 {
+	
+	> h3,
+	.bbg__profile__content > h3 {
 		margin-top: 2em;
 		/*text-transform: uppercase;*/
-	}
-
-	.bbg__profile__content {
-		h3 {
-			margin-top: 2em;
-			text-transform: uppercase;
-		}
 	}
 
 	> h4 {
