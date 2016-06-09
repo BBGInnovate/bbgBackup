@@ -190,7 +190,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			wp_nav_menu( array( 
 				'theme_location' => 'primary', 
 				'menu_id' => 'primary-menu', 
-				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul>',
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul><div style="position: absolute; top: 39px; right: 0;background-color: #FFF; padding: .5rem; width: 200px; z-index: 9990;">Search box could go here?</div>',
 				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
 
 		</nav><!-- #site-navigation -->
