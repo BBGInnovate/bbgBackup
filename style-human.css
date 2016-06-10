@@ -3307,6 +3307,7 @@ object {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  /*border-top:1px solid #F1F1F1;*/
   display: none;
 }
 .bbg__main-navigation ul li {
@@ -3382,16 +3383,15 @@ object {
 }
 
 .bbg__main-navigation__search {
-  padding: 3rem;
-  border-bottom: 1px solid #900;
+  padding: 1.5rem;
 }
 @media screen and (min-width: 900px) {
   .bbg__main-navigation__search {
     border: none;
+    display: inline-block;
+    float: right;
+    margin: 1rem 1.5rem 0 0;
     padding: 0;
-    position: absolute;
-    top: 39px;
-    right: 0;
     width: 200px;
     z-index: 9990;
   }
@@ -3432,15 +3432,14 @@ object {
 }
 
 .menu-toggle {
-  display: block;
   right: 0;
   z-index: 9998;
 }
 
 .bbg__main-navigation.toggled ul {
+  box-shadow: inset 0 -3px 3px #f1f1f1;
   display: block;
   z-index: 9998;
-  box-shadow: inset -5px -10px 10px #f1f1f1;
 }
 
 .menu-item-has-children > a {
@@ -3492,7 +3491,6 @@ object {
 
   .bbg__main-navigation ul {
     display: block;
-    position: absolute;
     right: 0;
     z-index: 9998;
     /* drop down navigation */
@@ -4876,7 +4874,6 @@ article {
 /* SITE TITLE AND HEADER      */
 /* used on all internal pages */
 .bbg-header__container, .bbg-header__container--home {
-  margin-bottom: 3rem;
   padding-right: 6rem;
 }
 .bbg-header__container:after, .bbg-header__container--home:after {
@@ -4888,6 +4885,11 @@ article {
 }
 .bbg-header__container:focus, .bbg-header__container--home:focus {
   background: none;
+}
+@media screen and (min-width: 900px) {
+  .bbg-header__container, .bbg-header__container--home {
+    margin-bottom: 0;
+  }
 }
 
 .bbg-header__container--home {
@@ -4911,6 +4913,12 @@ article {
   float: left;
   height: 5.2rem;
   margin-right: 1rem;
+  /*
+  @include media($medium-large-screen) {
+  	height: 5.5rem;
+  	height: 8rem;
+  }
+  */
 }
 @media screen and (min-width: 481px) {
   .bbg-header__logo {
@@ -4920,11 +4928,6 @@ article {
 @media screen and (min-width: 600px) {
   .bbg-header__logo {
     height: 8.8rem;
-  }
-}
-@media screen and (min-width: 900px) {
-  .bbg-header__logo {
-    height: 5.5rem;
   }
 }
 
@@ -4952,6 +4955,7 @@ article {
 @media screen and (min-width: 900px) {
   .bbg-header__site-title {
     font-size: 5rem;
+    padding-top: 1.5rem;
   }
 }
 
@@ -5814,6 +5818,11 @@ article {
 @media screen and (min-width: 600px) {
   .bbg-banner {
     height: 400px;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg-banner {
+    margin-top: 4rem;
   }
 }
 @media screen and (min-width: 1201px) {

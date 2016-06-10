@@ -216,11 +216,14 @@ article {
 
 .bbg-header__container {
 	@include clearfix();
-	margin-bottom: $site-margins;
 	padding-right: $site-margins-large; // bump down at small widths so it doesn't hit the navigation dropdown button
 
 	&:focus {
 		background: none;
+	}
+	@include media($medium-large-screen) {
+		//margin-bottom: $site-margins-small;
+		margin-bottom: 0;
 	}
 }
 
@@ -254,9 +257,12 @@ article {
 	@include media($medium-screen) {
 		height: $site-title-font-size * 2.2;
 	}
+	/*
 	@include media($medium-large-screen) {
 		height: 5.5rem;
+		height: 8rem;
 	}
+	*/
 }
 
 .bbg-header__site-title {
@@ -282,6 +288,7 @@ article {
 
 	@include media($medium-large-screen) {
 		font-size: 5rem;
+		padding-top: 1.5rem;
 	}
 }
 

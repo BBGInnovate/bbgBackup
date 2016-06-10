@@ -2,7 +2,6 @@
 	background-color: $color-gray-lightest;
 	@include backgroundCover();
 	height: $banner-image-height * .75;
-	//margin-bottom: $site-margins;
 	margin-bottom: .5rem;
 	max-width: 9999px;
 	position: relative;
@@ -11,6 +10,10 @@
 	@include media($medium-screen) {
 		height: $banner-image-height;
 		//margin-bottom: $site-margins * 2;
+	}
+
+	@include media($medium-large-screen) {
+		margin-top: 4rem;
 	}
 
 	@include media($large-screen) {

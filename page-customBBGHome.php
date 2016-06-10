@@ -85,6 +85,9 @@ if ($threatsToPressPost) {
 
 
 /*** output the standard header ***/
+?>
+
+<?php
 get_header();
 
 ?>

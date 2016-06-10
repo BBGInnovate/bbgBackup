@@ -21,6 +21,7 @@ body:not(.home) .menu-all-pages-container {
 
 	ul {
 		@include unstyled-list;
+		/*border-top:1px solid #F1F1F1;*/
 		display: none;
 
 		ul {
@@ -103,15 +104,16 @@ body:not(.home) .menu-all-pages-container {
 }
 
 .bbg__main-navigation__search {
-	padding: $site-margins;
-	border-bottom: 1px solid #900;
+	padding: $site-margins-medium;
+
 	@include media($medium-large-screen) {
 		border: none;
+		display:inline-block;
+		float: right;
+		margin: $site-margins-small $site-margins-medium 0 0;
 		padding:0;
-		position: absolute; 
-			top: 39px;
-			right: 0;
-		width: 200px; z-index: 9990;
+		width: 200px;
+		z-index: 9990;
 	}
 }
 
@@ -156,16 +158,14 @@ body:not(.home) .menu-all-pages-container {
 
 
 .menu-toggle {
-	display: block;
 	right: 0;
 	z-index: 9998;
 }
 
 .bbg__main-navigation.toggled ul {
+	box-shadow: inset 0 -3px 3px $color-gray-lightest;
 	display: block;
 	z-index: 9998;
-
-	box-shadow: inset -5px -10px 10px $color-gray-lightest;
 }
 
 
@@ -221,7 +221,7 @@ body:not(.home) .menu-all-pages-container {
 	}
 	.bbg__main-navigation ul {
 		display: block;
-		position: absolute;
+		//position: absolute;
 		right: 0;
 		z-index: 9998;
 

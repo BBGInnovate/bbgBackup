@@ -12,12 +12,15 @@
 		return;
 	}
 
-	button = container.getElementsByTagName( 'button' )[0];
+	//button = container.getElementsByTagName( 'button' )[0];
+	button = document.getElementById( 'bbg__menu-toggle' );
 	if ( 'undefined' === typeof button ) {
 		return;
 	}
 
 	menu = container.getElementsByTagName( 'ul' )[0];
+	//menu = container.getElementsByClassName( 'menu-all-pages-container' )[0];
+	search = container.getElementsByClassName( 'bbg__main-navigation__search-toggle' )[0];
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ( 'undefined' === typeof menu ) {
@@ -35,10 +38,13 @@
 			container.className = container.className.replace( ' toggled', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
 			menu.setAttribute( 'aria-expanded', 'false' );
+			search.style.display = 'none';
+			//
 		} else {
 			container.className += ' toggled';
 			button.setAttribute( 'aria-expanded', 'true' );
 			menu.setAttribute( 'aria-expanded', 'true' );
+			search.style.display = 'block';
 		}
 	};
 

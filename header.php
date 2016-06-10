@@ -182,11 +182,37 @@ $moveUSAbannerBecauseOfAlert = '';
 		</div>
 
 
+
+
+		<?php 
+			/* exclude default site-branding on the custom home page */
+			if ($templateName!="customBBGHome"){
+		?>
+			<div style="width: 100%; border-bottom: 1px solid #F1F1F1;">
+			<div id="header" class="usa-grid-full">
+
+				<div class="bbg-header__container">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
+						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="" class="bbg-header__logo">
+						<h1 class="bbg-header__site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
+					</a>
+
+					<button id="bbg__menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
+				</div>
+
+			</div>
+			</div>
+
+
+		<?php } else { ?>
+			<button id="bbg__menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
+		<?php } ?>
+
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
 			<?php 
 
-			$btnSearch="<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
+			$btnSearch = "<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
+			$btnSearch = "";
 
 			$searchBox = '<form class="usa-search usa-search-small">';
 			$searchBox .= '<div role="search">';
@@ -201,32 +227,9 @@ $moveUSAbannerBecauseOfAlert = '';
 			wp_nav_menu( array( 
 				'theme_location' => 'primary', 
 				'menu_id' => 'primary-menu', 
-				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'<li class="bbg__main-navigation__search">' . $searchBox . '</li></ul>',
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul><div class="bbg__main-navigation__search">' . $searchBox . '</div>',
 				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
 		</nav><!-- #site-navigation -->
-
-
-		<?php 
-			/* exclude default site-branding on the custom home page */
-			if ($templateName!="customBBGHome"){
-		?>
-
-			<div id="header" class="usa-grid-full">
-
-				<div class="bbg-header__container">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
-						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="" class="bbg-header__logo">
-						<h1 class="bbg-header__site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-					</a>
-				</div>
-
-			</div>
-
-
-		<?php 
-			}
-		?>
-
 
 	</header><!-- #masthead -->
 
