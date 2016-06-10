@@ -13,7 +13,7 @@
 	}
 
 	@include media($medium-large-screen) {
-		margin-top: 4rem;
+		margin-top: 4.8rem;
 	}
 
 	@include media($large-screen) {
@@ -40,6 +40,8 @@
 	}
 
 	.bbg-banner__site-logo{
+		clear: left;
+		display: block;
 		width: 100px;
 
 		@include media($medium-screen) {
