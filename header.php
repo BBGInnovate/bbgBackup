@@ -217,7 +217,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			$searchBox = '<form class="usa-search usa-search-small">';
 			$searchBox .= '<div role="search">';
 			$searchBox .= '<label class="usa-sr-only" for="search-field-small">Search small</label>';
-			$searchBox .= '<input id="search-field-small" type="search" name="search" placeholder="Search ...">';
+			$searchBox .= '<input id="search-field-small" type="search" name="s" placeholder="Search ...">';
 			$searchBox .= '<button type="submit">';
 			$searchBox .= '<span class="usa-sr-only">Search</span>';
 			$searchBox .= '</button>';
