@@ -3337,7 +3337,7 @@ body:not(.home) .bbg__main-navigation {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /*border-top:1px solid #F1F1F1;*/
+  border-top: 1px solid #F1F1F1;
   display: none;
 }
 .bbg__main-navigation ul li {
@@ -3492,6 +3492,7 @@ body:not(.home) .bbg__main-navigation {
   }
 
   .bbg__main-navigation ul {
+    border-top: none;
     display: block;
     right: 0;
     z-index: 9998;
