@@ -3307,7 +3307,7 @@ object {
     float: right;
     margin: 0.8rem 1.5rem 0 0;
     padding: 0;
-    width: calc(100% - 700px);
+    width: calc(100% - 720px);
     z-index: 9990;
   }
 }
