@@ -6111,6 +6111,8 @@ section.usa-section.bbg-banner__section {
   text-transform: capitalize;
 }
 .bbg__about__grandchild .bbg__about__grandchild__subtitle {
+  color: #757575;
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-weight: 700;
   text-transform: capitalize;
 }
