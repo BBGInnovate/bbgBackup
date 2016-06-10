@@ -114,7 +114,7 @@ get_header();
 								echo "<article class='bbg__about__excerpt bbg__about__child--" . strtolower(get_the_title()) . " $containerClass'>";
 								echo sprintf( "<a href='%s'>", $postPermalink );
 								echo "<h6 class='bbg-label'>" . $title . "</h6></a>";
-								echo "<div class='entry-content bbg__about__excerpt-content'>";
+								echo "<div class='entry-content'>";
 								echo $excerpt;
 								echo "</div>";
 								echo "</article>";
