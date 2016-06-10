@@ -1,11 +1,20 @@
 /*****************************/
 // top nav menu
+.bbg-header__container__box {
+	//margin-bottom: $site-margins;
+
+	@include media($medium-large-screen) {
+		border-bottom: 1px solid #CCC;
+		//margin-bottom: 0;
+		width: 100%;
+	}
+}
+
 .menu-all-pages-container {
 	margin: 0 auto;
 	max-width: $site-max-width;
 	position: relative;
 }
-
 
 .bbg__main-navigation__search {
 	padding: $site-margins-medium;
@@ -15,14 +24,21 @@
 		display:inline-block;
 		float: right;
 		margin: .8rem $site-margins-medium 0 0;
-		padding:0;
-		max-width: 200px;
+		padding: 0;
+		width: 200px;
+		width: calc(100% - 730px);//740px is the width of the nav.
 		z-index: 9990;
 	}
 }
 
 
 body:not(.home) {
+	.bbg__main-navigation {
+		margin-bottom: $site-margins-medium;
+	}
+	.menu-all-pages-container {
+		background-color: #F1F1F1;
+	}
 	@include media($medium-large-screen) {
 		.menu-all-pages-container {
 			min-height: 5rem;
@@ -30,7 +46,7 @@ body:not(.home) {
 		}
 
 		.bbg__main-navigation__search {
-			margin: 1.75rem $site-margins-medium 0 0;
+			margin: .8rem $site-margins-medium 0 0;
 		}
 	}
 }
@@ -39,7 +55,7 @@ body:not(.home) {
 
 .bbg__main-navigation {
 	clear: both;
-	display: inline;
+	display: block;
 	width: 100%;
 
 	ul {

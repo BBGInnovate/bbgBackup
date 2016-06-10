@@ -188,12 +188,12 @@ $moveUSAbannerBecauseOfAlert = '';
 			/* exclude default site-branding on the custom home page */
 			if ($templateName!="customBBGHome"){
 		?>
-			<div>
-			<div id="header" class="usa-grid-full" style="width: 100%; border-bottom: 1px solid #CCC;">
+		<div>
+			<div id="header" class="usa-grid-full bbg-header__container__box" style="">
 
 				<div class="bbg-header__container">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
-						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="" class="bbg-header__logo">
+						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
 						<h1 class="bbg-header__site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
 					</a>
 
@@ -201,7 +201,7 @@ $moveUSAbannerBecauseOfAlert = '';
 				</div>
 
 			</div>
-			</div>
+		</div>
 
 
 		<?php } else { ?>
