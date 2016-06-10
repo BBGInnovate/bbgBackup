@@ -3434,6 +3434,14 @@ object {
   z-index: 9998;
 }
 
+.bbg__main-navigation .bbg__main-navigation__search {
+  display: none;
+}
+
+.bbg__main-navigation.toggled .bbg__main-navigation__search {
+  display: block;
+}
+
 .menu-item-has-children > a {
   border-left: 1px solid #f1f1f1;
   display: inline-block !important;
@@ -3555,6 +3563,10 @@ object {
     height: 3.8rem;
     vertical-align: bottom;
     width: auto;
+  }
+
+  .bbg__main-navigation__search {
+    display: block !important;
   }
 }
 .site-main .comment-navigation, .site-main
