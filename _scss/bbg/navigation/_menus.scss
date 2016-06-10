@@ -169,10 +169,14 @@ body:not(.home) {
 	z-index: 9998;
 }
 
+.bbg__main-navigation .bbg__main-navigation__search {
+	display:none;
+}
+.bbg__main-navigation.toggled .bbg__main-navigation__search {
+	display:block;
+}
 
-
-
-
+ 
 
 
 .menu-item-has-children > a {
@@ -304,7 +308,7 @@ body:not(.home) {
 			background-color: transparent;
 			text-decoration: underline;
 		}
-	}
+	} 
 
 
 	.bbg__main-navigation__toggler {
@@ -315,6 +319,9 @@ body:not(.home) {
 		height: 3.8rem;
 		vertical-align: bottom;
 		width: auto;
+	}
+	.bbg__main-navigation__search {
+		display:block !important;
 	}
 }
 
