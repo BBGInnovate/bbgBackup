@@ -114,27 +114,11 @@ get_header();
 								echo "<article class='bbg__about__excerpt bbg__about__child--" . strtolower(get_the_title()) . " $containerClass'>";
 								echo sprintf( "<a href='%s'>", $postPermalink );
 								echo "<h6 class='bbg-label'>" . $title . "</h6></a>";
+								echo "<div class='entry-content bbg__about__excerpt-content'>";
 								echo $excerpt;
+								echo "</div>";
 								echo "</article>";
 
-								/*$qParams = array(
-									'post_type' => 'page',
-									'post_status' => 'publish',
-									'post__in' => array( $rPage->ID )
-								);
-
-								query_posts( $qParams );
-
-								if ( have_posts() ) {
-									while ( have_posts() ) {
-										the_post();
-										$gridClass = $containerClass;
-										$headline = $rPageHeadline; // custom field for longer headline/page description
-										$includePageDescription = TRUE;
-										get_template_part( 'template-parts/content-legislation', get_post_format() );
-									}
-								}
-								wp_reset_query();*/
 							}
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
