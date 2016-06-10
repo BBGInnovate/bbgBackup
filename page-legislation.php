@@ -102,7 +102,13 @@ get_header();
 							}
 
 							foreach ($relatedPages as $rPage) {
-								$rPageHeadline = $rPage->headline;
+								// define variables
+								$rPageHeadline = $rPage->headline;/*
+								$excerpt = my_excerpt($rPage->ID);
+								$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
+								$excerpt = apply_filters('the_content', $excerpt);
+								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);*/
+
 
 								$qParams = array(
 									'post_type' => 'page',
@@ -147,7 +153,7 @@ get_header();
 							$introText = str_replace(']]>', ']]&gt;', $introText);
 
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
+								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden='true'>&raquo;</span></h6>";
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
@@ -174,9 +180,9 @@ get_header();
 									echo "<article class='$containerClass bbg__about__grandchild'>";
 									echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
 									echo "<h6 class='bbg__page-header__tagline'>" . $subtitle . "</h6>"
-									if ($thumbSrc) {
+									/*if ($thumbSrc) {
 										echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
-									}
+									}*/
 									echo $excerpt;
 									echo "</article>";
 								}
