@@ -25,7 +25,8 @@
 		float: right;
 		margin: .8rem $site-margins-medium 0 0;
 		padding: 0;
-		width: calc(100% - 740px);
+		width: 200px;
+		width: calc(100% - 730px);//740px is the width of the nav.
 		z-index: 9990;
 	}
 }
