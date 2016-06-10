@@ -102,15 +102,22 @@ get_header();
 							}
 
 							foreach ($relatedPages as $rPage) {
-								// define variables
-								$rPageHeadline = $rPage->headline;/*
+								// Define all variables
+								$url = get_the_permalink($rPage->ID);
+								$title = get_the_title($rPage->ID);
 								$excerpt = my_excerpt($rPage->ID);
-								$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
+								$excerpt = $excerpt;
 								$excerpt = apply_filters('the_content', $excerpt);
-								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);*/
+								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 
+								// Output variables in HTML format
+								echo "<article class='bbg__about__excerpt bbg__about__child--" . strtolower(get_the_title()) . " $containerClass'>";
+								echo sprintf( "<a href='%s'>", $postPermalink );
+								echo "<h6 class='bbg-label'>" . $title . "</h6></a>";
+								echo $excerpt;
+								echo "</article>";
 
-								$qParams = array(
+								/*$qParams = array(
 									'post_type' => 'page',
 									'post_status' => 'publish',
 									'post__in' => array( $rPage->ID )
@@ -124,10 +131,10 @@ get_header();
 										$gridClass = $containerClass;
 										$headline = $rPageHeadline; // custom field for longer headline/page description
 										$includePageDescription = TRUE;
-										get_template_part( 'template-parts/content-about', get_post_format() );
+										get_template_part( 'template-parts/content-legislation', get_post_format() );
 									}
 								}
-								wp_reset_query();
+								wp_reset_query();*/
 							}
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
@@ -169,8 +176,6 @@ get_header();
 									$url = get_the_permalink($rp->ID);
 									$commonName = get_the_title($rp->ID);
 									$legalName = $rp->headline;
-									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) , 'mugshot' );
-									$thumbPosition = $rp->adjust_the_banner_image;
 									$excerpt = my_excerpt($rp->ID);
 									$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
 									$excerpt = apply_filters('the_content', $excerpt);
@@ -179,10 +184,7 @@ get_header();
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__about__grandchild'>";
 									echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$commonName</a></h3>";
-									echo "<h6 class='bbg__about__grandchild__subtitle'>" . $legalName . "</h6>";
-									/*if ($thumbSrc) {
-										echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
-									}*/
+									echo "<h5 class='bbg__about__grandchild__subtitle'>" . $legalName . "</h5>";
 									echo $excerpt;
 									echo "</article>";
 								}
