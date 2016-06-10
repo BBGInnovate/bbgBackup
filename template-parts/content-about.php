@@ -11,7 +11,7 @@
 
 global $includePageDescription;
 global $gridClass;
-global $headline;
+global $tagline;
 global $hideLink;
 
 $includeDescription = TRUE;
@@ -67,11 +67,11 @@ if ( isset( $_GET['category_id'] ) ) {
 		</div>
 
 		<!-- Child page headline text -->
-		<?php if ($headline) { ?>
+		<?php if ($tagline) { ?>
 			<h3 class="bbg__about__child__second-headline">
 				<?php
 					echo $link;
-					echo $headline;
+					echo $tagline;
 				?>
 			</a>
 			</h3>
