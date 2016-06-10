@@ -157,6 +157,7 @@ get_header();
 									// Define all variables
 									$url = get_the_permalink($rp->ID);
 									$title = get_the_title($rp->ID);
+									$headline = $rp->headline;
 									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) , 'mugshot' );
 									$thumbPosition = $rp->adjust_the_banner_image;
 									$excerpt = my_excerpt($rp->ID);
@@ -166,7 +167,13 @@ get_header();
 
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__about__grandchild'>";
-									echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
+
+									if ( $headline ) {
+										echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$headline</a></h3>";
+									} else {
+										echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
+									}
+
 									if ($thumbSrc) {
 										echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
 									}
