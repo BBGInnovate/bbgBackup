@@ -10,7 +10,7 @@
 		$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
 		$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
 		$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
-		$s .=			'<a tabindex="-1" href="' . $permalink . '">' . $thumb . '</a>';
+		$s .=			'<a tabindex="-1" href="' . $url . '">' . $thumb . '</a>';
 		$s .=		'</div>';
 		$s .=		'<p class=""><a href="">' . $title . '</a></p><BR>';
 		$s .=	'</header><!-- .entry-header -->';
