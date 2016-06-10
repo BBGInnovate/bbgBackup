@@ -95,6 +95,7 @@ get_header();
 							}
 
 							foreach ($relatedPages as $rPage) {
+								$rPageHeadline = $rPage->headline;
 								$rPageTagline = $rPage->page_tagline;
 								$rHideLink = $rPage->hide_link;
 
@@ -110,7 +111,8 @@ get_header();
 									while ( have_posts() ) {
 										the_post();
 										$gridClass = $containerClass;
-										$tagline = $rPageTagline; // custom field for longer headline/page description
+										$headline = $rPageHeadline; // custom field for secondary page headline
+										$tagline = $rPageTagline; // custom field for page tagline
 										$hideLink = $rHideLink;
 										$includePageDescription = TRUE;
 										get_template_part( 'template-parts/content-about', get_post_format() );

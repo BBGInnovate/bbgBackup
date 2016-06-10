@@ -11,6 +11,7 @@
 
 global $includePageDescription;
 global $gridClass;
+global $headline;
 global $tagline;
 global $hideLink;
 
@@ -29,8 +30,13 @@ if ( isset( $_GET['category_id'] ) ) {
 	$postPermalink = add_query_arg('category_id', $_GET['category_id'], $postPermalink);
 }
 
-?>
+if ( $headline ) {
+	$pageName = $headline;
+} else {
+	$pageName = get_the_title();
+}
 
+?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classNames); ?>>
 	<header class="entry-header bbg__about__excerpt-header">
@@ -41,12 +47,13 @@ if ( isset( $_GET['category_id'] ) ) {
 			$linkLabel = '<h6 class="bbg-label">' . $link;
 
 			echo "<!-- Child page title -->";
-			the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' );
+			// the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' );
+			echo $linkLabel;
+			echo $pageName;
+			echo "</a></h6>";
 
 		} else {
-			echo "<h6 class='bbg-label'>";
-			the_title();
-			echo "</h6>";
+			echo "<h6 class='bbg-label'>$pageName</h6>";
 		}
 		?>
 
