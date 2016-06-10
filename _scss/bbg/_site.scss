@@ -233,6 +233,15 @@ article {
 
 
 .bbg-header__link {
+	@include media($medium-screen) {
+		font-size: 8rem;
+		line-height: 0;
+	}
+
+	@include media($medium-large-screen) {
+		font-size: 5rem;
+	}
+
 	padding: 0;
 	&:hover {
 		text-decoration: none;

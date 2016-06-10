@@ -4897,6 +4897,17 @@ article {
 .bbg-header__link {
   padding: 0;
 }
+@media screen and (min-width: 600px) {
+  .bbg-header__link {
+    font-size: 8rem;
+    line-height: 0;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg-header__link {
+    font-size: 5rem;
+  }
+}
 .bbg-header__link:hover {
   text-decoration: none;
 }
