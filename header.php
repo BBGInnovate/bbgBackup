@@ -186,13 +186,23 @@ $moveUSAbannerBecauseOfAlert = '';
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
 			<?php 
 
-			$btnSearch="<input alt='Search' type='image' style='display:inline;padding:10px;margin:0px;' src='" . get_template_directory_uri() . "/img/search.png'>";
+			$btnSearch="<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
+
+			$searchBox = '<form class="usa-search usa-search-small">';
+			$searchBox .= '<div role="search">';
+			$searchBox .= '<label class="usa-sr-only" for="search-field-small">Search small</label>';
+			$searchBox .= '<input id="search-field-small" type="search" name="search">';
+			$searchBox .= '<button type="submit">';
+			$searchBox .= '<span class="usa-sr-only">Search</span>';
+			$searchBox .= '</button>';
+			$searchBox .= '</div>';
+			$searchBox .= '</form>';
+
 			wp_nav_menu( array( 
 				'theme_location' => 'primary', 
 				'menu_id' => 'primary-menu', 
-				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul><div style="position: absolute; top: 39px; right: 0;background-color: #FFF; padding: .5rem; width: 200px; z-index: 9990;">Search box could go here?</div>',
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'<li class="bbg__main-navigation__search">' . $searchBox . '</li></ul>',
 				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
-
 		</nav><!-- #site-navigation -->
 
 

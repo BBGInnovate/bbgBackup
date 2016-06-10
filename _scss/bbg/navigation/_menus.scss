@@ -90,7 +90,31 @@ body:not(.home) .menu-all-pages-container {
 			width: auto;
 		}
 	}
+
 }
+
+.bbg__main-navigation__search-toggle {
+	display: none;
+	@include media($medium-large-screen) {
+		display:inline; 
+		margin:0;
+		padding:12px;
+	}
+}
+
+.bbg__main-navigation__search {
+	padding: $site-margins;
+	border-bottom: 1px solid #900;
+	@include media($medium-large-screen) {
+		border: none;
+		padding:0;
+		position: absolute; 
+			top: 39px;
+			right: 0;
+		width: 200px; z-index: 9990;
+	}
+}
+
 
 /* Small menu. */
 .menu-toggle{
