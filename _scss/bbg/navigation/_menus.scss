@@ -36,11 +36,10 @@ body:not(.home) {
 	.bbg__main-navigation {
 		margin-bottom: $site-margins-medium;
 	}
-	.menu-all-pages-container {
-		background-color: #F1F1F1;
-	}
+
 	@include media($medium-large-screen) {
 		.menu-all-pages-container {
+			background-color: #F1F1F1;
 			min-height: 5rem;
 			margin-bottom: 2rem;
 		}
@@ -60,7 +59,7 @@ body:not(.home) {
 
 	ul {
 		@include unstyled-list;
-		/*border-top:1px solid #F1F1F1;*/
+		border-top:1px solid #F1F1F1;
 		display: none;
 
 		ul {
@@ -231,8 +230,8 @@ body:not(.home) {
 		display: none;
 	}
 	.bbg__main-navigation ul {
+		border-top: none;
 		display: block;
-		//position: absolute;
 		right: 0;
 		z-index: 9998;
 

@@ -3316,11 +3316,9 @@ object {
 body:not(.home) .bbg__main-navigation {
   margin-bottom: 1.5rem;
 }
-body:not(.home) .menu-all-pages-container {
-  background-color: #F1F1F1;
-}
 @media screen and (min-width: 900px) {
   body:not(.home) .menu-all-pages-container {
+    background-color: #F1F1F1;
     min-height: 5rem;
     margin-bottom: 2rem;
   }
@@ -3339,7 +3337,7 @@ body:not(.home) .menu-all-pages-container {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /*border-top:1px solid #F1F1F1;*/
+  border-top: 1px solid #F1F1F1;
   display: none;
 }
 .bbg__main-navigation ul li {
@@ -3494,6 +3492,7 @@ body:not(.home) .menu-all-pages-container {
   }
 
   .bbg__main-navigation ul {
+    border-top: none;
     display: block;
     right: 0;
     z-index: 9998;
