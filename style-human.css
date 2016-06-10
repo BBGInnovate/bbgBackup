@@ -6071,6 +6071,10 @@ section.usa-section.bbg-banner__section {
   }
 }
 
+.bbg__about__child__second-headline {
+  margin-top: 1rem;
+}
+
 .bbg__about__excerpt-content {
   display: none;
 }

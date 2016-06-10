@@ -1,7 +1,6 @@
 <?php
 /**
- * The custom home page for the Broadcasting Board of Governors.
- * It includes the mission, a portfolio of recent projects, recent blog posts and staff.
+ * Custom landing page for the "Who we are" and "Our Work" sections
  *
  * template name: About
  *
@@ -97,6 +96,7 @@ get_header();
 
 							foreach ($relatedPages as $rPage) {
 								$rPageHeadline = $rPage->headline;
+								$rHideLink = $rPage->hide_link;
 
 								$qParams = array(
 									'post_type' => 'page',
@@ -111,6 +111,7 @@ get_header();
 										the_post();
 										$gridClass = $containerClass;
 										$headline = $rPageHeadline; // custom field for longer headline/page description
+										$hideLink = $rHideLink;
 										$includePageDescription = TRUE;
 										get_template_part( 'template-parts/content-about', get_post_format() );
 									}

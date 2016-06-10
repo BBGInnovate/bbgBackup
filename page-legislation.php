@@ -106,6 +106,7 @@ get_header();
 								$url = get_the_permalink($rPage->ID);
 								$title = get_the_title($rPage->ID);
 								$excerpt = my_excerpt($rPage->ID);
+								$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Learn more »</a>";
 								$excerpt = $excerpt;
 								$excerpt = apply_filters('the_content', $excerpt);
 								$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
@@ -144,7 +145,7 @@ get_header();
 							$introText = str_replace(']]>', ']]&gt;', $introText);
 
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden='true'>&raquo;</span></h6>";
+								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
 							} else {
 								echo "<h6 class='bbg-label'>$labelText</h6>";
 							}
@@ -161,7 +162,7 @@ get_header();
 									$commonName = get_the_title($rp->ID);
 									$legalName = $rp->headline;
 									$excerpt = my_excerpt($rp->ID);
-									$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
+									$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Learn more »</a>";
 									$excerpt = apply_filters('the_content', $excerpt);
 									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
 

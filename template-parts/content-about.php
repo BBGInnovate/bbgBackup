@@ -12,6 +12,7 @@
 global $includePageDescription;
 global $gridClass;
 global $headline;
+global $hideLink;
 
 $includeDescription = TRUE;
 if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
@@ -34,13 +35,20 @@ if ( isset( $_GET['category_id'] ) ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class($classNames); ?>>
 	<header class="entry-header bbg__about__excerpt-header">
 	<?php
-		$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
-		$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
-		$linkLabel = '<h6 class="bbg-label">' . $link;
-		// $linkH3 = '<h3 class="entry-title bbg__about__excerpt-title">' . $link;
-	?>
-		<!-- Child page title -->
-		<?php the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' ); ?>
+		if ( $hideLink == FALSE ) {
+			$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
+			$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
+			$linkLabel = '<h6 class="bbg-label">' . $link;
+
+			echo "<!-- Child page title -->";
+			the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' );
+
+		} else {
+			echo "<h6 class='bbg-label'>";
+			the_title();
+			echo "</h6>";
+		}
+		?>
 
 		<!-- Child page thumbnail -->
 		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
@@ -60,7 +68,7 @@ if ( isset( $_GET['category_id'] ) ) {
 
 		<!-- Child page headline text -->
 		<?php if ($headline) { ?>
-			<h3>
+			<h3 class="bbg__about__child__second-headline">
 				<?php
 					echo $link;
 					echo $headline;
@@ -75,13 +83,6 @@ if ( isset( $_GET['category_id'] ) ) {
 	<?php if ($includeDescription) { ?>
 		<div class="entry-content bbg__about__excerpt-content">
 			<?php the_excerpt(); ?>
-
-			<?php
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
-					'after'  => '</div>',
-				) );
-			?>
 		</div><!-- .bbg__about__excerpt-title -->
 	<?php } ?>
 
