@@ -110,9 +110,9 @@ body:not(.home) .menu-all-pages-container {
 		border: none;
 		display:inline-block;
 		float: right;
-		margin: $site-margins-small $site-margins-medium 0 0;
+		margin: 1.75rem $site-margins-medium 0 0;
 		padding:0;
-		width: 200px;
+		max-width: 200px;
 		z-index: 9990;
 	}
 }
@@ -187,7 +187,7 @@ body:not(.home) .menu-all-pages-container {
 
 .bbg__main-navigation.toggled ul.sub-menu {
 	display:none;
-} 
+}
 .bbg__main-navigation__toggler {
 	/*
 	background: {
@@ -306,7 +306,7 @@ body:not(.home) .menu-all-pages-container {
 		}
 
 		a {
-			padding: 1rem 1.5rem .5rem 1.5rem;
+			padding: 1.5rem 1.5rem 1rem 1.5rem;
 		}
 
 		a:hover {
@@ -329,7 +329,7 @@ body:not(.home) .menu-all-pages-container {
 		background: none;
 		background-color: transparent;
 		display: inline-block !important;
-		padding: 1rem .5rem 1rem 1rem;
+		padding: 1.25rem .5rem 1.25rem 1rem;
 		height: 3.5rem;
 		vertical-align: bottom;
 		width: auto;

@@ -188,8 +188,8 @@ $moveUSAbannerBecauseOfAlert = '';
 			/* exclude default site-branding on the custom home page */
 			if ($templateName!="customBBGHome"){
 		?>
-			<div style="width: 100%; border-bottom: 1px solid #F1F1F1;">
-			<div id="header" class="usa-grid-full">
+			<div>
+			<div id="header" class="usa-grid-full" style="width: 100%; border-bottom: 1px solid #CCC;">
 
 				<div class="bbg-header__container">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
@@ -227,7 +227,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			wp_nav_menu( array( 
 				'theme_location' => 'primary', 
 				'menu_id' => 'primary-menu', 
-				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s'.$btnSearch.'</ul><div class="bbg__main-navigation__search">' . $searchBox . '</div>',
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul><div class="bbg__main-navigation__search">' . $searchBox . '</div>',
 				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
 		</nav><!-- #site-navigation -->
 
