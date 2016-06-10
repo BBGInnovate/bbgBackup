@@ -65,9 +65,11 @@
 	//	var_dump($impacts);
 		wp_reset_postdata();
 //https://bbgredesign.voanews.com/impact-and-results/impact-portfolio/
-		$s  = ''; 
-		$s .= '<h5 class="bbg-label small"><a href="impact-portfolio">' . $label .'</a></h5>';
 		$impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
+
+		$s  = ''; 
+		$s .= '<h5 class="bbg-label small"><a href="' . $impactPortfolioPermalink .'">' . $label .'</a></h5>';
+		
 
 		if (count($impacts['inform'])) {
 			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">INFORM</a></h3>';
