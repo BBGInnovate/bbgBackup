@@ -24,8 +24,8 @@
 		display:inline-block;
 		float: right;
 		margin: .8rem $site-margins-medium 0 0;
-		padding:0;
-		max-width: 200px;
+		padding: 0;
+		width: 20%;
 		z-index: 9990;
 	}
 }
@@ -35,7 +35,9 @@ body:not(.home) {
 	.bbg__main-navigation {
 		margin-bottom: $site-margins-medium;
 	}
-
+	.menu-all-pages-container {
+		background-color: #F1F1F1;
+	}
 	@include media($medium-large-screen) {
 		.menu-all-pages-container {
 			min-height: 5rem;
@@ -43,7 +45,7 @@ body:not(.home) {
 		}
 
 		.bbg__main-navigation__search {
-			margin: 1.6rem $site-margins-medium 0 0;
+			margin: .8rem $site-margins-medium 0 0;
 		}
 	}
 }

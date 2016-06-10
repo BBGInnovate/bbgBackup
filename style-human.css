@@ -3307,7 +3307,7 @@ object {
     float: right;
     margin: 0.8rem 1.5rem 0 0;
     padding: 0;
-    max-width: 200px;
+    width: 20%;
     z-index: 9990;
   }
 }
@@ -3315,13 +3315,16 @@ object {
 body:not(.home) .bbg__main-navigation {
   margin-bottom: 1.5rem;
 }
+body:not(.home) .menu-all-pages-container {
+  background-color: #F1F1F1;
+}
 @media screen and (min-width: 900px) {
   body:not(.home) .menu-all-pages-container {
     min-height: 5rem;
     margin-bottom: 2rem;
   }
   body:not(.home) .bbg__main-navigation__search {
-    margin: 1.6rem 1.5rem 0 0;
+    margin: 0.8rem 1.5rem 0 0;
   }
 }
 
