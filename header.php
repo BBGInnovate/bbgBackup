@@ -214,7 +214,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			$btnSearch = "<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
 			$btnSearch = "";
 
-			$searchBox = '<form class="usa-search usa-search-small">';
+			$searchBox = '<form class="usa-search usa-search-small" action="' . site_url() . '">';
 			$searchBox .= '<div role="search">';
 			$searchBox .= '<label class="usa-sr-only" for="search-field-small">Search small</label>';
 			$searchBox .= '<input id="search-field-small" type="search" name="s" placeholder="Search ...">';
