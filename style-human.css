@@ -3316,11 +3316,9 @@ object {
 body:not(.home) .bbg__main-navigation {
   margin-bottom: 1.5rem;
 }
-body:not(.home) .menu-all-pages-container {
-  background-color: #F1F1F1;
-}
 @media screen and (min-width: 900px) {
   body:not(.home) .menu-all-pages-container {
+    background-color: #F1F1F1;
     min-height: 5rem;
     margin-bottom: 2rem;
   }

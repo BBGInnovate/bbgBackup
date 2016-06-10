@@ -36,11 +36,10 @@ body:not(.home) {
 	.bbg__main-navigation {
 		margin-bottom: $site-margins-medium;
 	}
-	.menu-all-pages-container {
-		background-color: #F1F1F1;
-	}
+
 	@include media($medium-large-screen) {
 		.menu-all-pages-container {
+			background-color: #F1F1F1;
 			min-height: 5rem;
 			margin-bottom: 2rem;
 		}
