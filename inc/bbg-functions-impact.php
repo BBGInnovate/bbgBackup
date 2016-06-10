@@ -12,7 +12,7 @@
 		$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
 		$s .=			'<a tabindex="-1" href="' . $url . '">' . $thumb . '</a>';
 		$s .=		'</div>';
-		$s .=		'<p class=""><a href="">' . $title . '</a></p><BR>';
+		$s .=		'<p class=""><a href="'.$url.'">' . $title . '</a></p><BR>';
 		$s .=	'</header><!-- .entry-header -->';
 		/*
 		$s .=	'<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">';
