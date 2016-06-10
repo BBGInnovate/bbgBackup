@@ -266,70 +266,20 @@ function loggedInAlerts() {
 }
 add_action( 'wp_footer', 'loggedInAlerts' );
 
-/**
- * Implement the Custom Header feature.
- */
 require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
+require get_template_directory() . '/inc/extras.php'; 
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
 require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * Load navigation functions (walkers)
- */
-require get_template_directory() . '/inc/bbg-functions-nav.php';
-
-/**
- * Load custom TinyMCE jazz
- */
-require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
-
-/**
- * Load BBG Shortcodes
- */
-require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
-
-/**
- * Load BBG Quotations
- */
-require get_template_directory() . '/inc/bbg-functions-quotations.php';
-
-/**
- * Load BBG Congressional Committees
- */
-require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
-
-/**
- * Load BBG Board + Sr Management
- */
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
-
-/**
- * Load Contact Cards
- */
+require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
 require get_template_directory() . '/inc/bbg-functions-contactCards.php';
-
-/**
- * Load Jobs functions
- */
+require get_template_directory() . '/inc/bbg-functions-impact.php';
 require get_template_directory() . '/inc/bbg-functions-jobs.php';
+require get_template_directory() . '/inc/bbg-functions-nav.php';
+require get_template_directory() . '/inc/bbg-functions-quotations.php';
+require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
+require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
 
 
 /**
@@ -371,9 +321,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 	}
 	return $title;
 });
-
-
-
 
 
 /*===================================================================================
