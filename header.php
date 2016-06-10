@@ -189,7 +189,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			if ($templateName!="customBBGHome"){
 		?>
 			<div>
-			<div id="header" class="usa-grid-full" style="width: 100%; border-bottom: 1px solid #CCC;">
+			<div id="header" class="usa-grid-full bbg-header__container__box" style="">
 
 				<div class="bbg-header__container">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">

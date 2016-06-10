@@ -1,11 +1,20 @@
 /*****************************/
 // top nav menu
+.bbg-header__container__box {
+	//margin-bottom: $site-margins;
+
+	@include media($medium-large-screen) {
+		border-bottom: 1px solid #CCC;
+		//margin-bottom: 0;
+		width: 100%;
+	}
+}
+
 .menu-all-pages-container {
 	margin: 0 auto;
 	max-width: $site-max-width;
 	position: relative;
 }
-
 
 .bbg__main-navigation__search {
 	padding: $site-margins-medium;
@@ -23,6 +32,10 @@
 
 
 body:not(.home) {
+	.bbg__main-navigation {
+		margin-bottom: $site-margins-medium;
+	}
+
 	@include media($medium-large-screen) {
 		.menu-all-pages-container {
 			min-height: 5rem;
@@ -30,7 +43,7 @@ body:not(.home) {
 		}
 
 		.bbg__main-navigation__search {
-			margin: 1.75rem $site-margins-medium 0 0;
+			margin: 1.6rem $site-margins-medium 0 0;
 		}
 	}
 }
@@ -39,7 +52,7 @@ body:not(.home) {
 
 .bbg__main-navigation {
 	clear: both;
-	display: inline;
+	display: block;
 	width: 100%;
 
 	ul {

@@ -149,9 +149,7 @@ get_header();
 				<div class="bbg-banner">
 					<div class="bbg-banner__gradient"></div>
 					<div class="usa-grid bbg-banner__container--home">
-						<a href="<?php echo site_url(); ?>">
-							<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-						</a>
+						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
 						<div class="bbg-banner-box">
 							<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
 						</div>
