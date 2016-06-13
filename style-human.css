@@ -3068,6 +3068,16 @@ a:focus .bbg__article-share__icon {
   padding: 0 1.5rem;
 }
 
+.bbg__table__money thead th {
+  text-align: center;
+}
+.bbg__table__money th {
+  text-align: left;
+}
+.bbg__table__money td {
+  text-align: right;
+}
+
 /** ---------------
  * FORMS
  ------------------ */

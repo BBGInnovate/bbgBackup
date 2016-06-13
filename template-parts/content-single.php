@@ -63,28 +63,27 @@ if ( $includeSidebar ) {
 
 		while ( have_rows('sidebar_download') ) : the_row();
 
-				//if ( get_row_layout() == 'sidebar_download_file') {
-					$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
-					$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
-					$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
-					$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+			$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+			$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
+			$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+			$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
 
-					$sidebarImage = "";
-					if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
-						$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
-					}
+			$sidebarImage = "";
+			if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
+				$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+			}
 
-					$sidebarDescription = "";
-					if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
-						$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
-					}
+			$sidebarDescription = "";
+			if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
+				$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
+			}
 
-					$sidebarDownload = "";
-					$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
+			$sidebarDownload = "";
+			$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
 
-					$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
-				//}
+			$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 		endwhile;
+
 
 		$sidebar .= $s;
 	endif;
