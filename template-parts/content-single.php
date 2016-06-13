@@ -86,7 +86,7 @@ if ( $includeSidebar ) {
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 			} else if (get_row_layout() == 'sidebar_quote'){
 
-				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text' );
+				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
 				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
 				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
 
