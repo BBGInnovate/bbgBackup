@@ -5039,6 +5039,23 @@ article {
 .bbg__article-sidebar .bbg__sidebar__download {
   margin-bottom: 3rem;
 }
+.bbg__article-sidebar .bbg__sidebar__download:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media screen and (min-width: 481px) {
+  .bbg__article-sidebar .bbg__sidebar__download {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-sidebar .bbg__sidebar__download {
+    margin-bottom: 3rem;
+  }
+}
 .bbg__article-sidebar .bbg__sidebar__download__title {
   clear: none;
 }
@@ -5052,6 +5069,9 @@ article {
     clear: both;
     font-size: 1.5rem;
   }
+}
+.bbg__article-sidebar .bbg__sidebar__download__title a[href$=".pdf"]::after {
+  content: " (PDF)";
 }
 .bbg__article-sidebar .bbg__sidebar__download__description {
   margin-top: 0;

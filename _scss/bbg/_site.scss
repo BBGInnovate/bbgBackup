@@ -381,7 +381,16 @@ article {
 	}
 
 	.bbg__sidebar__download {
+		@include clearfix();
 		margin-bottom: $site-margins;
+
+		@include media($small-screen) {
+			margin-bottom: $site-margins-small;
+		}
+
+		@include media($medium-large-screen) {
+			margin-bottom: $site-margins;
+		}
 	}
 
 	.bbg__sidebar__download__title {
@@ -394,6 +403,12 @@ article {
 		@include media($medium-large-screen) {
 			clear: both;
 			font-size: 1.5rem;
+		}
+
+		a[href$=".pdf"]{
+			&::after {
+				content: " (PDF)";
+			}
 		}
 	}
 
