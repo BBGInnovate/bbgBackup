@@ -68,7 +68,7 @@ function showInfo(data) {
 	console.log(geojson);
 	*/
 
-	//Create the memorial wall for slain journalists
+	/*
 	var wall = "";
 	var journalist = "";
 	var journalistName = "";
@@ -110,6 +110,7 @@ function showInfo(data) {
 		}
 	}
 	document.getElementById("memorialWall").innerHTML = wall;
+	*/
 
 	createMap();
 }

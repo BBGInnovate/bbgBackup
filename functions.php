@@ -51,6 +51,17 @@ function getFeed($url,$id) {
 	$json=json_decode($json);
 	return $json;
 }
+function getCSV($url,$id,$expirationMinutes) {
+	$feedFilepath = get_template_directory() . "/" . $id . ".csv";
+	if ( $expirationMinutes<=0 || fileExpired($feedFilepath,$expirationMinutes)) { 
+		$feedStr=fetchUrl($url);
+		file_put_contents($feedFilepath, $feedStr);
+	} else {
+		$feedStr=file_get_contents($feedFilepath);
+	}
+	$csv = array_map('str_getcsv', file($feedFilepath ));
+	return $csv;
+}
 /****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
 
 
