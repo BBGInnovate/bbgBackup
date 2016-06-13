@@ -46,7 +46,7 @@ if ($dateline != "") {
 
 
 
-//Include sidebar download links
+//Include sidebar of Downloads, Links and/or Quotations
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 if ( $includeSidebar ) {
 
@@ -84,6 +84,7 @@ if ( $includeSidebar ) {
 				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
+
 			} else if (get_row_layout() == 'sidebar_quote'){
 
 				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
@@ -91,6 +92,19 @@ if ( $includeSidebar ) {
 				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
 
 				$s .= '<div class="bbg__quotation"><h5 class="bbg__quotation-text--large">“' . $sidebarQuotationText . '”</h5><p class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">' . $sidebarQuotationSpeaker . ',</span><span class="bbg__quotation-attribution__credit"> ' . $sidebarQuotationSpeakerTitle ."</span></p></div>";
+
+			} else if (get_row_layout() == 'sidebar_link'){
+
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title');
+				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+				$sidebarDescription = "";
+				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5><p class="">' . $sidebarDescription . '</p></div>';
 			}
 		endwhile;
 
