@@ -6632,6 +6632,10 @@ section.usa-section.bbg-banner__section {
   font-size: 1.3rem;
 }
 
+.act-title {
+  text-align: center;
+}
+
 .public-law {
   color: #000;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
