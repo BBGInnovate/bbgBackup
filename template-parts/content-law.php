@@ -63,9 +63,9 @@
 
 <article id="post-<?php the_ID(); ?>">
 	<div class="usa-grid">
+		<?php echo bbginnovate_post_categories(); ?>
 
-	<?php echo bbginnovate_post_categories(); ?>
-	<!-- .bbg-label -->
+		<!-- .bbg-label -->
 		<header class="entry-header">
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
