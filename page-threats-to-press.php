@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying the Threats to Press page.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -8,15 +8,23 @@
   template name: Threats to Press
  */
 
-/***** BEGIN PROJECT PAGINATION LOGIC 
-There are some nuances to this.  Note that we're not using the paged parameter because we don't have the same number of posts on every page.  Instead we use the offset parameter.  The 'posts_per_page' limits the number displayed on the current page and is used to calculate offset.
-http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
-****/
+/****** BEGIN HELPER CLASS FOR SERIALIZING PHP TO JSON ****/
+class ArrayValue implements JsonSerializable {
+    public function __construct(array $array) {
+        $this->array = $array;
+    }
+
+    public function jsonSerialize() {
+        return $this->array;
+    }
+}
+/****** END HELPER CLASS FOR SERIALIZING PHP TO JSON ****/
 
 $spreadsheetKey = "1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo";
 $spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/pubhtml";
 $csvUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/export?gid=0&format=csv";
-$threatsArray = getCSV($csvUrl,'threats',10);
+$threatsCSVArray = getCSV($csvUrl,'threats',10);
+array_shift($threatsCSVArray); //our first row contained headers
 
 
 $pageContent = "";
@@ -70,24 +78,15 @@ if ($custom_query->found_posts > $numPostsFirstPage) {
 	$totalPages = 1 + ceil( ($custom_query->found_posts - $numPostsFirstPage)/$numPostsSubsequentPages);
 }
 
-//query_posts($qParams);
-
-
-/*** SHARING VARS ****/
-/*
-$teamCategoryID=$_GET["cat"];
-$teamCategory=get_category($teamCategoryID);
-$portfolioDescription=$teamCategory->description;
-*/
-
 $wall = "";
 $journalist = "";
 $journalistName = "";
-$dataLength2 = count($threatsArray);
+$dataLength2 = count($threatsCSVArray);
 $mugshot = "";
 $altText = "";
 //Country,Name,Date,Status,Description,Mugshot,Network,Link,Latitude,Longitude
-foreach($threatsArray as $t) {
+$threatsObjArray = array();
+foreach($threatsCSVArray as $t) {
 	$country = $t[0];
 	$name = $t[1];
 	$date = $t[2];
@@ -98,6 +97,19 @@ foreach($threatsArray as $t) {
 	$link = $t[7];
 	$latitude = $t[8];
 	$longitude = $t[9];
+
+	$threatsObjArray[] = array(
+		'country' => $country,
+		'name' => $name,
+		'date' => $date,
+		'status' => $status,
+		'description' => $description,
+		'mugshot' => $mugshot,
+		'network' => $network,
+		'link' => $link,
+		'latitude' => $latitude,
+		'longitude' => $longitude
+	);
 	
 	if ($status == "Killed"){
 		if ($mugshot == "") {
@@ -124,10 +136,19 @@ foreach($threatsArray as $t) {
 		$journalist .= '</div>';
 
 		$wall .= $journalist;
+
+
 	}
 }
+$threatsJSON = "<script type='text/javascript'>\n";
+$threatsJSON .= "threats=" . json_encode(new ArrayValue($threatsObjArray), JSON_PRETTY_PRINT) . ";";
+$threatsJSON .="</script>";
+get_header();
+echo $threatsJSON;
 
-get_header(); ?>
+
+
+ ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -236,12 +257,91 @@ get_header(); ?>
 				</div>
 			</section>
 
-		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
-		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
-		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/vendor/tabletop.js"></script>
-		<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/map-threats.js"></script>
+		
+			<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+			<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+			<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+			<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+			<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+			<style>
+				.marker-cluster-small {
+					background-color: rgba(255, 255, 255, 0.6) !important;
+				}
+				.marker-cluster-small div {
+					background-color: rgba(255, 0, 0, 0.6) !important;
+				}
+			</style>
+
+			<script type="text/javascript">
+				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+				var map = L.mapbox.map('map-threats', 'mapbox.emerald'); //        .setView([-37.82, 175.215], 14);
+			    var markers = new L.MarkerClusterGroup({
+					iconCreateFunction: function (cluster) {
+						var childCount = cluster.getChildCount();
+						var c = ' marker-cluster-';
+						if (childCount < 10) {
+						    c += 'small';
+						} else if (childCount < 100) {
+						    c += 'medium';
+						} else {
+						    c += 'large';
+						}
+						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+					}
+				});
+
+				for (var i = 0; i < threats.length; i++) {
+					var t = threats[i];
+					var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
+						icon: L.mapbox.marker.icon({
+							'marker-symbol': '', 
+							'marker-color': '#900'
+						})
+					});
+					var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
+					marker.bindPopup(titleLink + t.description);
+					markers.addLayer(marker);
+				}
+
+			    map.addLayer(markers);
+
+				//Disable the map scroll/zoom so that you can scroll the page.
+				map.scrollWheelZoom.disable();
+
+				function centerMap(){
+					map.fitBounds(markers.getBounds());
+				}
+				centerMap();
 
 
+				//Recenter the map on resize
+				function resizeStuffOnResize(){
+				  waitForFinalEvent(function(){
+						centerMap();
+				  }, 500, "some unique string");
+				}
+
+				//Wait for the window resize to 'end' before executing a function---------------
+				var waitForFinalEvent = (function () {
+					var timers = {};
+					return function (callback, ms, uniqueId) {
+						if (!uniqueId) {
+							uniqueId = "Don't call this twice without a uniqueId";
+						}
+						if (timers[uniqueId]) {
+							clearTimeout (timers[uniqueId]);
+						}
+						timers[uniqueId] = setTimeout(callback, ms);
+					};
+				})();
+
+				window.addEventListener('resize', function(event){
+					resizeStuffOnResize();
+				});
+
+				resizeStuffOnResize();
+			</script>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
