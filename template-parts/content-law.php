@@ -85,14 +85,14 @@
 
 				the_content();
 			?>
-		</div><!-- .entry-content -->
 
-		<div class="bbg__article-sidebar">
-			<!-- Sidebar content -->
-			<?php if ( $includeSidebar && $sidebarTitle != "" ) {
-				echo $sidebar;
-			} ?>
-		</div><!-- .bbg__article-sidebar -->
+			<div class="bbg__article-sidebar">
+				<!-- Sidebar content -->
+				<?php if ( $includeSidebar && $sidebarTitle != "" ) {
+					echo $sidebar;
+				} ?>
+			</div><!-- .bbg__article-sidebar -->
+		</div><!-- .entry-content -->
 
 		<footer class="entry-footer bbg-post-footer 1234">
 			<?php
