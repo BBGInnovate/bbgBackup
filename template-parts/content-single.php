@@ -104,7 +104,7 @@ if ( $includeSidebar ) {
 					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
 				}
 
-				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5><p class="">' . $sidebarDescription . '</p></div>';
+				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			}
 		endwhile;
 
