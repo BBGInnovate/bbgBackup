@@ -4997,7 +4997,8 @@ article {
 /*    3-column: used on most posts and many pages  */
 /*    2-column: used on expanded profiles e.g. CEO */
 .bbg__article-header {
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
+  max-width: 600px;
 }
 .bbg__article-header:after {
   content: ".";
@@ -5005,6 +5006,11 @@ article {
   height: 0;
   clear: both;
   visibility: hidden;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-header {
+    max-width: none;
+  }
 }
 
 .bbg__article-header__banner, .bbg__article-header__banner--profile {
@@ -5051,6 +5057,9 @@ article {
   margin-right: 1.5rem;
   max-width: 140px;
   width: 50%;
+}
+.bbg__article-sidebar div {
+  margin-bottom: 3rem;
 }
 .bbg__article-sidebar .bbg__sidebar__download {
   margin-bottom: 3rem;
@@ -5108,6 +5117,36 @@ article {
     float: none;
     margin-right: 0;
     width: 100%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-text--large {
+    font-size: 2.5rem;
+    font-weight: 100;
+  }
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-attribution__text {
+    display: block;
+    max-width: none;
+  }
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__name {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__credit {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-text--large {
+    font-size: 2.1rem;
+    font-weight: 100;
+  }
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__name {
+    font-size: 1.6rem;
+  }
+  .bbg__article-sidebar .bbg__quotation .bbg__quotation-attribution__text .bbg__quotation-attribution__credit {
+    font-size: 1.2rem;
   }
 }
 

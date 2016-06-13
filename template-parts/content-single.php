@@ -90,10 +90,9 @@ if ( $includeSidebar ) {
 				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
 				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
 
-				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
+				$s .= '<div class="bbg__quotation"><h5 class="bbg__quotation-text--large">“' . $sidebarQuotationText . '”</h5><p class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">' . $sidebarQuotationSpeaker . ',</span><span class="bbg__quotation-attribution__credit"> ' . $sidebarQuotationSpeakerTitle ."</span></p></div>";
 			}
 		endwhile;
-
 
 		$sidebar .= $s;
 	endif;

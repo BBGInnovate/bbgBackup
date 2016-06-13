@@ -322,7 +322,12 @@ article {
 
 .bbg__article-header {
 	@include clearfix();
-	margin-bottom: $site-margins;
+	margin: 0 auto $site-margins auto;
+	max-width: 600px;
+
+	@include media($medium-large-screen) {
+		max-width: none;
+	}
 }
 
 .bbg__article-header__banner {
@@ -380,6 +385,10 @@ article {
 		width: 50%;
 	}
 
+	div {
+		margin-bottom: $site-margins;
+	}
+
 	.bbg__sidebar__download {
 		@include clearfix();
 		margin-bottom: $site-margins;
@@ -432,6 +441,48 @@ article {
 			width: 100%;
 		}
 	}
+	.bbg__quotation {
+
+		@include media($medium-screen) {
+			.bbg__quotation-text--large {
+				font-size: 2.5rem;
+				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__text {
+				display: block;
+				max-width: none;
+
+				.bbg__quotation-attribution__name {
+					font-size: 1.4rem;
+					text-align: center;
+				}
+
+				.bbg__quotation-attribution__credit {
+					font-size: 1.1rem;
+					text-align: center;
+				}
+			}
+		}
+
+		@include media($medium-large-screen) {
+			.bbg__quotation-text--large {
+				font-size: 2.1rem;
+				font-weight: 100;
+			}
+
+			.bbg__quotation-attribution__text {
+
+				.bbg__quotation-attribution__name {
+					font-size: 1.6rem;
+				}
+
+				.bbg__quotation-attribution__credit {
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
 }
 
 .bbg__article-sidebar__list--labeled {
@@ -450,7 +501,6 @@ article {
 
 
 @include media($medium-large-screen) {
-
 	.bbg__article-content{
 		float: left;
 		margin: {
