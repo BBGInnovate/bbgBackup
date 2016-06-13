@@ -95,7 +95,7 @@ if ( $includeSidebar ) {
 
 			} else if (get_row_layout() == 'sidebar_link'){
 
-				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title');
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
 				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
 				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
 
@@ -114,6 +114,7 @@ if ( $includeSidebar ) {
 
 
 
+//Include sidebar map 
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -144,7 +145,7 @@ if ( $includeMap && $mapLocation) {
 
 
 
-// check if the flexible content field has rows of data
+// Include sidebar list of people who worked on the project
 $teamRoster = "";
 if( have_rows('project_team_members') ):
 
