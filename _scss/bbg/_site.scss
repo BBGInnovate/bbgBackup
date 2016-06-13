@@ -360,6 +360,7 @@ article {
 
 	p {
 		font-family: $font-sans;
+		font-size: 90%;
 		line-height: 1.5;
 	}
 
@@ -377,6 +378,40 @@ article {
 		margin-right: $site-margins-medium;
 		max-width: 140px;
 		width: 50%;
+	}
+
+	.bbg__sidebar__download__title {
+		clear: none;
+
+		@include media($small-screen) {
+			font-size: 2rem;
+		}
+
+		@include media($medium-large-screen) {
+			clear: both;
+			font-size: 1.5rem;
+		}
+	}
+
+	.bbg__sidebar__download__description {
+		margin-top: 0;
+	}
+
+	.bbg__sidebar__download__thumbnail {
+		float: left;
+		margin-right: 1rem;
+		width: 50%;
+
+		@include media($medium-screen) {
+			display: none;
+		}
+
+		@include media($medium-large-screen) {
+			display: block;
+			float: none;
+			margin-right: 0;
+			width: 100%;
+		}
 	}
 }
 

@@ -27,54 +27,69 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
-//sidebar_include
+
+
+$pageContent = get_the_content();
+$pageContent = apply_filters('the_content', $pageContent);
+$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+if ($dateline != "") {
+	//place dateline immediately inside first paragraph tag
+	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
+	$needle="<p>";
+	$replaceNeedle="<p>".$dateline;
+	$pos = strpos($pageContent, $needle);
+	if ($pos !== false) {
+		$pageContent = substr_replace($pageContent, $replaceNeedle, $pos, strlen($needle));
+	}
+}
+
+
+
+
+//Include sidebar download links
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 if ( $includeSidebar ) {
-	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
-	//$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
 
+	// check if the flexible content field has rows of data
+	$sidebar = "";
+	if( have_rows('sidebar_download') ):
 
-				// check if the flexible content field has rows of data
-				$sidebar = "";
-				if( have_rows('sidebar_download') ):
+		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+		$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 
-					$s = "<h4 class=''>" . $sidebarTitle ."</h4>";
-					while ( have_rows('sidebar_download') ) : the_row();
+		while ( have_rows('sidebar_download') ) : the_row();
 
-						if ( get_row_layout() == 'sidebar_download_file') {
-							$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
-							$sidebarDownloadThumbnailID = get_sub_field( 'sidebar_download_thumbnail' );
-							$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
-							$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description' );
+			if ( get_row_layout() == 'sidebar_download_file') {
+				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
+				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
 
+				$sidebarImage = "";
+				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
+					$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+				}
 
+				$sidebarDescription = "";
+				if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
+					$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
+				}
 
-							$sidebarImage = "";
-							if ($sidebarDownloadThumbnailID) {
-								$sidebarDownloadThumbnail = wp_get_attachment_image_src( $sidebarDownloadThumbnailID , 'mugshot');
-								$sidebarDownloadThumbnail = $sidebarDownloadThumbnail[0];
-								$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' alt='Thumbnail image for download' />";
-							}
+				$sidebarDownload = "";
+				if ($sidebarDownloadLink && $sidebarDownloadLink != ""){
+					$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
+				}
 
-							$sidebarDescription = "";
-							if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
-								$sidebarDescription = "<p>" . $sidebarDownloadDescription . "</p>";
-							}
+				$s .= "<div>" . $sidebarDownload . "</div>";
+			}
+		endwhile;
 
-							$sidebarDownload = "";
-							if ($sidebarDownloadLink && $sidebarDownloadLink != ""){
-								$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "<h5>" . $sidebarDownloadTitle . "</h5></a>" . $sidebarDescription;
-							}
-
-							$s .= "<div>" . $sidebarDownload . "</div>";
-						}
-					endwhile;
-					$s .= "";
-					$sidebar .= $s;
-				endif;
-
-
+		$sidebar .= $s;
+	endif;
 }
+
+
+
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -104,42 +119,29 @@ if ( $includeMap && $mapLocation) {
 }
 
 
-$pageContent=get_the_content();
-$pageContent = apply_filters('the_content', $pageContent);
-$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
-if ($dateline != "") {
-	//place dateline immediately inside first paragraph tag
-	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
-	$needle="<p>";
-	$replaceNeedle="<p>".$dateline;
-	$pos = strpos($pageContent, $needle);
-	if ($pos !== false) {
-		$pageContent = substr_replace($pageContent, $replaceNeedle, $pos, strlen($needle));
-	}
-}
 
-				// check if the flexible content field has rows of data
-				$teamRoster = "";
-				if( have_rows('project_team_members') ):
+// check if the flexible content field has rows of data
+$teamRoster = "";
+if( have_rows('project_team_members') ):
 
-					$s = "<div class='bbg__project-team'><h5 class='bbg__project-team__header'>Project team</h5>";
-					while ( have_rows('project_team_members') ) : the_row();
+	$s = "<div class='bbg__project-team'><h5 class='bbg__project-team__header'>Project team</h5>";
+	while ( have_rows('project_team_members') ) : the_row();
 
-						if ( get_row_layout() == 'team_member') {
-							$teamMemberName = get_sub_field( 'team_member_name' );
-							$teamMemberRole = get_sub_field( 'team_member_role' );
-							$teamMemberTwitterHandle = get_sub_field( 'team_member_twitter_handle' );
+		if ( get_row_layout() == 'team_member') {
+			$teamMemberName = get_sub_field( 'team_member_name' );
+			$teamMemberRole = get_sub_field( 'team_member_role' );
+			$teamMemberTwitterHandle = get_sub_field( 'team_member_twitter_handle' );
 
-							if ($teamMemberTwitterHandle && $teamMemberTwitterHandle != ""){
-								$teamMemberName = "<a href='https://twitter.com/" . $teamMemberTwitterHandle ."'>" . $teamMemberName . "</a>";
-							}
+			if ($teamMemberTwitterHandle && $teamMemberTwitterHandle != ""){
+				$teamMemberName = "<a href='https://twitter.com/" . $teamMemberTwitterHandle ."'>" . $teamMemberName . "</a>";
+			}
 
-							$s .= "<p><span class='bbg__project-team__name'>$teamMemberName,</span> <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
-						}
-					endwhile;
-					$s .= "</div>";
-					$teamRoster .= $s;
-				endif;
+			$s .= "<p><span class='bbg__project-team__name'>$teamMemberName,</span> <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
+		}
+	endwhile;
+	$s .= "</div>";
+	$teamRoster .= $s;
+endif;
 
 
 
