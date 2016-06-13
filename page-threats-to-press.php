@@ -119,7 +119,7 @@ get_header(); ?>
 							$counter++;
 							//Add a check here to only show featured if it's not paginated.
 							if(  $counter==1 ){
-								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">Threats to press updates</a></h5>';
+								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';

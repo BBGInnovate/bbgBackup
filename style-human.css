@@ -5602,10 +5602,12 @@ article {
   border-radius: 0.3rem;
   margin-bottom: 1.5rem;
   padding: 2rem;
-}
-.usa-width-one-third .bbg__quotation .bbg__quotation-text--large {
-  font-weight: 500;
-  text-align: left;
+  /*
+  .bbg__quotation-text--large {
+  	font-weight: 500;
+  	text-align: left;
+  }
+  */
 }
 @media screen and (min-width: 600px) {
   .usa-width-one-third .bbg__quotation {
