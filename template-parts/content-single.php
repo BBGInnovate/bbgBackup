@@ -54,34 +54,44 @@ if ( $includeSidebar ) {
 	$sidebar = "";
 	$s = "";
 
-	if( have_rows('sidebar_download') ):
+	if( have_rows('sidebar_items') ):
 
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
 		if ($sidebarTitle != ""){
 			$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 		}
 
-		while ( have_rows('sidebar_download') ) : the_row();
+		while ( have_rows('sidebar_items') ) : the_row();
 
-			$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
-			$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
-			$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
-			$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+			if ( get_row_layout() == 'sidebar_download_file' ):
 
-			$sidebarImage = "";
-			if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
-				$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
+				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+
+				$sidebarImage = "";
+				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
+					$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
+					$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
+				}
+
+				$sidebarDownload = "";
+				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
+
+				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
+			} elseif (get_row_layout() == 'sidebar_quote'){
+
+				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text' );
+				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
+				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
+
+				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
 			}
-
-			$sidebarDescription = "";
-			if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
-				$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
-			}
-
-			$sidebarDownload = "";
-			$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
-
-			$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 		endwhile;
 
 
