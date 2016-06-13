@@ -13,6 +13,12 @@ There are some nuances to this.  Note that we're not using the paged parameter b
 http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 ****/
 
+$spreadsheetKey = "1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo";
+$spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/pubhtml";
+$csvUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/export?gid=0&format=csv";
+$threatsArray = getCSV($csvUrl,'threats',10);
+
+
 $pageContent = "";
 $pageTitle = "";
 $pageExcerpt = "";
@@ -74,6 +80,53 @@ $teamCategory=get_category($teamCategoryID);
 $portfolioDescription=$teamCategory->description;
 */
 
+$wall = "";
+$journalist = "";
+$journalistName = "";
+$dataLength2 = count($threatsArray);
+$mugshot = "";
+$altText = "";
+//Country,Name,Date,Status,Description,Mugshot,Network,Link,Latitude,Longitude
+foreach($threatsArray as $t) {
+	$country = $t[0];
+	$name = $t[1];
+	$date = $t[2];
+	$status = $t[3];
+	$description = $t[4];
+	$mugshot = $t[5];
+	$network = $t[6];
+	$link = $t[7];
+	$latitude = $t[8];
+	$longitude = $t[9];
+	
+	if ($status == "Killed"){
+		if ($mugshot == "") {
+			$mugshot = "http://placehold.it/300x400";
+			$altText = "";
+		} else {
+			$altText = "Photo of $name";
+		}
+
+		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
+	
+		if ($link != "") {
+			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
+			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
+		} else {
+			$journalistName = $name;
+		}
+		$journalist = "";
+		$journalist .= '<div class="bbg__profile-grid__profile">';
+		$journalist .= $imgSrc;
+		$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
+		$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
+		$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
+		$journalist .= '</div>';
+
+		$wall .= $journalist;
+	}
+}
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -119,7 +172,7 @@ get_header(); ?>
 							$counter++;
 							//Add a check here to only show featured if it's not paginated.
 							if(  $counter==1 ){
-								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">Threats to press updates</a></h5>';
+								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
@@ -162,7 +215,9 @@ get_header(); ?>
 							<p class="bbg__profile-grid__profile__description"></p>
 						</div>
 						-->
-						<div id="memorialWall"></div>
+						<div id="memorialWall">
+							<?php echo $wall; ?>
+						</div>
 					</div>
 				</div>
 			</section>

@@ -3,7 +3,7 @@
  ------------------ */
 .type-post .usa-table,
 .type-post .usa-table-borderless {
-	margin: 0 auto;
+	margin: 0 auto $site-margins auto;
 	min-width: auto;
 	max-width: $article-max-width;
 	width: 100%;
@@ -51,6 +51,25 @@
 		text-align: right;
 	}
 
+	td,
+	th {
+		padding: 1rem .5rem; 
+	}
+
+	@include media($small-screen) {
+		td,
+		th {
+			padding: 1rem; 
+		}
+	}
+
+	@include media($medium-screen) {
+		td,
+		th {
+			padding: 1.5rem; 
+		}
+	}
+
 	.bbg__table__row__total th,
 	.bbg__table__row__total td {
 		background-color: #F1F1F1;
@@ -59,7 +78,9 @@
 	}
 }
 
-
+.bbg__table__caption {
+	margin-bottom: 0;
+}
 
 
 /** ---------------

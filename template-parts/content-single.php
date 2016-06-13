@@ -46,7 +46,7 @@ if ($dateline != "") {
 
 
 
-//Include sidebar download links
+//Include sidebar of Downloads, Links and/or Quotations
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 if ( $includeSidebar ) {
 
@@ -84,16 +84,29 @@ if ( $includeSidebar ) {
 				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
+
 			} else if (get_row_layout() == 'sidebar_quote'){
 
 				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
 				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
 				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
 
-				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
+				$s .= '<div class="bbg__quotation"><h5 class="bbg__quotation-text--large">“' . $sidebarQuotationText . '”</h5><p class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">' . $sidebarQuotationSpeaker . ',</span><span class="bbg__quotation-attribution__credit"> ' . $sidebarQuotationSpeakerTitle ."</span></p></div>";
+
+			} else if (get_row_layout() == 'sidebar_link'){
+
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
+				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+				$sidebarDescription = "";
+				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			}
 		endwhile;
-
 
 		$sidebar .= $s;
 	endif;
@@ -101,6 +114,7 @@ if ( $includeSidebar ) {
 
 
 
+//Include sidebar map 
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -131,7 +145,7 @@ if ( $includeMap && $mapLocation) {
 
 
 
-// check if the flexible content field has rows of data
+// Include sidebar list of people who worked on the project
 $teamRoster = "";
 if( have_rows('project_team_members') ):
 
