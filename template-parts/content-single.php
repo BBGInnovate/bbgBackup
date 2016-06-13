@@ -63,7 +63,7 @@ if ( $includeSidebar ) {
 
 		while ( have_rows('sidebar_items') ) : the_row();
 
-			if ( get_row_layout() == 'sidebar_download_file' ):
+			if ( get_row_layout() == 'sidebar_download_file' ){
 
 				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
 				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
@@ -84,7 +84,7 @@ if ( $includeSidebar ) {
 				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
-			} elseif (get_row_layout() == 'sidebar_quote'){
+			} else if (get_row_layout() == 'sidebar_quote'){
 
 				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text' );
 				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
