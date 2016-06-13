@@ -84,14 +84,16 @@
 				}
 
 				the_content();
-			?>
 
-			<div class="bbg__article-sidebar">
-				<!-- Sidebar content -->
-				<?php if ( $includeSidebar && $sidebarTitle != "" ) {
+				// Right sidebar
+				echo "<div class='bbg__article-sidebar'>";
+				echo "<!-- Sidebar content -->";
+
+				if ( $includeSidebar && $sidebarTitle != "" ) {
 					echo $sidebar;
-				} ?>
-			</div><!-- .bbg__article-sidebar -->
+				}
+				echo "</div><!-- .bbg__article-sidebar -->";
+			?>
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer bbg-post-footer 1234">
