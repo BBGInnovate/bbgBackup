@@ -62,56 +62,6 @@ function showInfo(data) {
 		geojson[0].features[i].properties = {"title" : title, "description" : description, "country" : data[i].Country, "date" : data[i].Date, "link" : data[i].Link, "network" : data[i].Network, "marker-color" : pinColor, "marker-size" : "medium", "marker-symbol" : ""};
 	}
 
-	/*
-	console.log("This JSON is from the google spreadsheet");
-	console.log("https://docs.google.com/spreadsheets/d/1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo/pubhtml");
-	console.log(geojson);
-	*/
-
-	/*
-	var wall = "";
-	var journalist = "";
-	var journalistName = "";
-	var dataLength2 = data.length;
-	var mugshot = "";
-	var altTag = "";
-
-	for (var i = 0; i < dataLength2; i++){
-
-		mugshot = ""
-		if (data[i].Mugshot && data[i].Mugshot!= ""){
-			mugshot = data[i].Mugshot;
-			altTag = "Photo of " + data[i].Name;
-			mugshot = '<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>'
-		} else {
-			mugshot = "http://placehold.it/300x400";
-			altTag = "";
-			mugshot = '<img src="' + mugshot + '" alt="' + altTag + '" class="bbg__profile-grid__profile__mugshot"/>'
-		}
-
-		if (data[i].Link && data[i].Link!= ""){
-			journalistName = '<a href="' + data[i].Link + '">' + data[i].Name + "</a>";
-			mugshot = '<a href="' + data[i].Link + '">' + mugshot + "</a>";
-		} else {
-			journalistName = data[i].Name;
-		}
-
-
-		if (data[i].Status == "Killed"){
-			journalist = "";
-			journalist +='<div class="bbg__profile-grid__profile">';
-			journalist += mugshot;
-			journalist +='<h4 class="bbg__profile-grid__profile__name">' + journalistName + '</h4>';
-			journalist +='<h5 class="bbg__profile-grid__profile__dates">Killed ' + data[i].Date + '</h5>';
-			journalist +='<p class="bbg__profile-grid__profile__description"></p>';
-			journalist +='</div>';
-
-			wall += journalist;
-		}
-	}
-	document.getElementById("memorialWall").innerHTML = wall;
-	*/
-
 	createMap();
 }
 
