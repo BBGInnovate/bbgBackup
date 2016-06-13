@@ -3077,6 +3077,11 @@ a:focus .bbg__article-share__icon {
 .bbg__table__money td {
   text-align: right;
 }
+.bbg__table__money .bbg__table__row__total th,
+.bbg__table__money .bbg__table__row__total td {
+  background-color: #F1F1F1;
+  border-top: 1px solid #CCC;
+}
 
 /** ---------------
  * FORMS
