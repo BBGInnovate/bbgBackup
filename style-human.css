@@ -5036,6 +5036,9 @@ article {
   max-width: 140px;
   width: 50%;
 }
+.bbg__article-sidebar .bbg__sidebar__download {
+  margin-bottom: 3rem;
+}
 .bbg__article-sidebar .bbg__sidebar__download__title {
   clear: none;
 }
