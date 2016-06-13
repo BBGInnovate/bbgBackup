@@ -162,7 +162,8 @@ img,
 		text-transform: uppercase;
 
 		@include media($small-screen) {
-			font-size: 3rem;
+			//font-size: 3rem;
+			font-size: 2.5rem;
 			margin-bottom: $site-margins-medium;
 		}
 	}
@@ -176,7 +177,7 @@ img,
 	color: $color-gray-light;
 	font: {
 		family: $font-serif;
-		size: 1.7rem;
+		size: 1.4rem;
 		style: italic;
 		weight: 500;
 	}
@@ -185,6 +186,10 @@ img,
 		bottom: 2rem;
 	}
 	text-transform: none;
+
+	@include media($medium-large-screen) {
+		font-size: 1.7rem;
+	}
 }
 
 section.usa-section {

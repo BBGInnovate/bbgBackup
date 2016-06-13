@@ -27,6 +27,54 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
+//sidebar_include
+$includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+if ( $includeSidebar ) {
+	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+	//$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+
+
+				// check if the flexible content field has rows of data
+				$sidebar = "";
+				if( have_rows('sidebar_download') ):
+
+					$s = "<h4 class=''>" . $sidebarTitle ."</h4>";
+					while ( have_rows('sidebar_download') ) : the_row();
+
+						if ( get_row_layout() == 'sidebar_download_file') {
+							$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+							$sidebarDownloadThumbnailID = get_sub_field( 'sidebar_download_thumbnail' );
+							$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+							$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description' );
+
+
+
+							$sidebarImage = "";
+							if ($sidebarDownloadThumbnailID) {
+								$sidebarDownloadThumbnail = wp_get_attachment_image_src( $sidebarDownloadThumbnailID , 'mugshot');
+								$sidebarDownloadThumbnail = $sidebarDownloadThumbnail[0];
+								$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' alt='Thumbnail image for download' />";
+							}
+
+							$sidebarDescription = "";
+							if ($sidebarDescription && $sidebarDescription != ""){
+								$sidebarDescription = "<p>" . $sidebarDescription . "</p>";
+							}
+
+							$sidebarDownload = "";
+							if ($sidebarDownloadLink && $sidebarDownloadLink != ""){
+								$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "<h5>" . $sidebarDownloadTitle . "</h5></a>" . $sidebarDescription;
+							}
+
+							$s .= "<div>" . $sidebarDownload . "</div>";
+						}
+					endwhile;
+					$s .= "";
+					$sidebar .= $s;
+				endif;
+
+
+}
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -66,7 +114,7 @@ if ($dateline != "") {
 	$replaceNeedle="<p>".$dateline;
 	$pos = strpos($pageContent, $needle);
 	if ($pos !== false) {
-	    $pageContent = substr_replace($pageContent, $replaceNeedle, $pos, strlen($needle));
+		$pageContent = substr_replace($pageContent, $replaceNeedle, $pos, strlen($needle));
 	}
 }
 
@@ -335,6 +383,11 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				}
 			?>
 
+			<?php 
+				if ( $includeSidebar && $sidebarTitle != "" ) {
+					echo $sidebar;
+				}
+			?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
