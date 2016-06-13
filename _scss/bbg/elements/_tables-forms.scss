@@ -3,7 +3,7 @@
  ------------------ */
 .type-post .usa-table,
 .type-post .usa-table-borderless {
-	margin: 0 auto;
+	margin: 0 auto $site-margins auto;
 	min-width: auto;
 	max-width: $article-max-width;
 	width: 100%;
@@ -59,7 +59,9 @@
 	}
 }
 
-
+.bbg__table__caption {
+	margin-bottom: 0;
+}
 
 
 /** ---------------

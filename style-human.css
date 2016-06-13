@@ -3028,7 +3028,7 @@ a:focus .bbg__article-share__icon {
  ------------------ */
 .type-post .usa-table,
 .type-post .usa-table-borderless {
-  margin: 0 auto;
+  margin: 0 auto 3rem auto;
   min-width: auto;
   max-width: 600px;
   width: 100%;
@@ -3082,6 +3082,10 @@ a:focus .bbg__article-share__icon {
   background-color: #F1F1F1;
   border-top: 1px solid #CCC;
   font-weight: bold;
+}
+
+.bbg__table__caption {
+  margin-bottom: 0;
 }
 
 /** ---------------
@@ -4407,7 +4411,7 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 
 /** Dateline for press releases **/
 .bbg__article-dateline {
-  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  /*font-family: $font-sans;*/
   text-transform: uppercase;
 }
 
@@ -5045,6 +5049,7 @@ article {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 90%;
   line-height: 1.5;
+  margin-top: 0;
 }
 .bbg__article-sidebar .bbg__article-sidebar__tagline {
   color: #757575;
