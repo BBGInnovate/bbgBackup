@@ -57,8 +57,8 @@ if ( $includeSidebar ) {
 							}
 
 							$sidebarDescription = "";
-							if ($sidebarDescription && $sidebarDescription != ""){
-								$sidebarDescription = "<p>" . $sidebarDescription . "</p>";
+							if ($sidebarDownloadDescription && $sidebarDownloadDescription != ""){
+								$sidebarDescription = "<p>" . $sidebarDownloadDescription . "</p>";
 							}
 
 							$sidebarDownload = "";
