@@ -19,9 +19,49 @@ get_header(); ?>
 
 			<div class="usa-grid-full">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php while ( have_posts() ) : the_post();
+					$parentID = wp_get_post_parent_id( $post_ID );
 
-					<?php get_template_part( 'template-parts/content', 'page' ); ?>
+					// IF the page is a law under the Legislation parent:
+					if ($parentID == 3243) {
+						get_template_part( 'template-parts/content-law', 'page' );
+					} else {
+						get_template_part( 'template-parts/content', 'page' );
+					}
+
+
+					// $sidebarTitle = get_sub_field( 'sidebar_title' );
+					// $sidebarContent = get_sub_field( 'sidebar_items' );
+
+
+					/*foreach ($sidebarContent as $rPage) {
+						$rPageHeadline = $rPage->headline;
+						$rPageTagline = $rPage->page_tagline;
+						$rHideLink = $rPage->hide_link;
+
+						$qParams = array(
+							'post_type' => 'page',
+							'post_status' => 'publish',
+							'post__in' => array( $rPage->ID )
+						);
+
+						query_posts( $qParams );
+
+						if ( have_posts() ) {
+							while ( have_posts() ) {
+								the_post();
+								$gridClass = $containerClass;
+								$headline = $rPageHeadline; // custom field for secondary page headline
+								$tagline = $rPageTagline; // custom field for page tagline
+								$hideLink = $rHideLink;
+								$includePageDescription = TRUE;
+								get_template_part( 'template-parts/content-about', get_post_format() );
+							}
+						}
+						wp_reset_query();
+					}*/
+
+					?>
 
 					<div class="bbg-post-footer">
 					<?php
