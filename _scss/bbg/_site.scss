@@ -1006,13 +1006,6 @@ article {
 		border-radius: $border-radius;
 		margin-bottom: $site-margins-medium;
 		padding: 2rem;
-		
-		/*
-		.bbg__quotation-text--large {
-			font-weight: 500;
-			text-align: left;
-		}
-		*/
 
 		@include media($medium-screen) {
 			.bbg__quotation-attribution__mugshot {

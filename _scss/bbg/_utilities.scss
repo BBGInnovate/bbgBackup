@@ -16,6 +16,14 @@
 	}
 }
 
+.u--hide-mobile--td {
+	display: none;
+
+	@include media($medium-screen) {
+		display: table-cell;
+	}
+}
+
 .u--space-below-mobile--large {
 	margin-bottom: $site-margins-large;
 

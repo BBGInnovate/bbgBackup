@@ -784,6 +784,15 @@ body {
   }
 }
 
+.u--hide-mobile--td {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .u--hide-mobile--td {
+    display: table-cell;
+  }
+}
+
 .u--space-below-mobile--large {
   margin-bottom: 6rem;
 }
@@ -3076,6 +3085,22 @@ a:focus .bbg__article-share__icon {
 }
 .bbg__table__money td {
   text-align: right;
+}
+.bbg__table__money td,
+.bbg__table__money th {
+  padding: 1rem .5rem;
+}
+@media screen and (min-width: 481px) {
+  .bbg__table__money td,
+  .bbg__table__money th {
+    padding: 1rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__table__money td,
+  .bbg__table__money th {
+    padding: 1.5rem;
+  }
 }
 .bbg__table__money .bbg__table__row__total th,
 .bbg__table__money .bbg__table__row__total td {
@@ -5602,12 +5627,6 @@ article {
   border-radius: 0.3rem;
   margin-bottom: 1.5rem;
   padding: 2rem;
-  /*
-  .bbg__quotation-text--large {
-  	font-weight: 500;
-  	text-align: left;
-  }
-  */
 }
 @media screen and (min-width: 600px) {
   .usa-width-one-third .bbg__quotation {

@@ -51,6 +51,25 @@
 		text-align: right;
 	}
 
+	td,
+	th {
+		padding: 1rem .5rem; 
+	}
+
+	@include media($small-screen) {
+		td,
+		th {
+			padding: 1rem; 
+		}
+	}
+
+	@include media($medium-screen) {
+		td,
+		th {
+			padding: 1.5rem; 
+		}
+	}
+
 	.bbg__table__row__total th,
 	.bbg__table__row__total td {
 		background-color: #F1F1F1;
