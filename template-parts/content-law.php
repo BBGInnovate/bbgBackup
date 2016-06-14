@@ -82,10 +82,8 @@
 				if ( $pageHeadline ) {
 					echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
 				}
-				echo "<div class='usa-grid>'"
-					// echo "<section class='usa-grid-full'>";
-						the_content();
-					// echo "</section>";
+				echo "<div class='usa-grid-full'>";
+					the_content();
 
 					// Right sidebar
 					echo "<div class='bbg__article-sidebar'>";
