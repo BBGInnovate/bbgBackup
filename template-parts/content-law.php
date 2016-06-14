@@ -45,13 +45,53 @@
 					$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
 
 					$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
-				} else if (get_row_layout() == 'sidebar_quote'){
+				} elseif (get_row_layout() == 'sidebar_quote'){
 
 					$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
 					$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
 					$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
 
 					$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
+				} else if (get_row_layout() == 'sidebar_external_link'){
+
+					$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
+					$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+					$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+					$sidebarDescription = "";
+					if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+						$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+					}
+
+					$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				} else if (get_row_layout() == 'sidebar_internal_link') {
+
+					$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title', false);
+					$sidebarInternalLocation = get_sub_field( 'sidebar_internal_location' );
+					$sidebarInternalDescription = get_sub_field( 'sidebar_internal_description', false);
+
+					// get data out of WP object
+					$url = get_permalink( $sidebarInternalLocation->ID ); // Use WP object ID to get permalink for link
+					$title = $sidebarInternalLocation->post_title; // WP object title
+
+					$sidebarSectionTitle = "";
+					// Set text for the internal link
+					if ($sidebarInternalTitle && $sidebarInternalTitle != "") {
+						// User-defined title
+						$sidebarSectionTitle = "<p>" . $sidebarInternalTitle . "</p>";
+					} else {
+						// WP object title (set above)
+						$sidebarSectionTitle = "<p>" . $title . "</p>";
+					}
+
+					$sidebarDescription = "";
+					// Set text for description beneath link
+					if ($sidebarInternalDescription && $sidebarInternalDescription != "") {
+						// User-defined description
+						$sidebarDescription = "<p>" . $sidebarInternalDescription . "</p>";
+					}
+
+					$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
 				}
 			endwhile;
 
