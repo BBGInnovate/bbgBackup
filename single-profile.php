@@ -50,7 +50,7 @@ if ( have_posts() ) {
 	$internTagline = "";
 	$internDate=get_post_meta( get_the_ID(), 'internDate', true );
 	if ( $internDate && $internDate != "" ) {
-		$internTagline = "<p>— " . get_the_title() . ", " . $internDate . "</p>"
+		$internTagline = "<p>— " . get_the_title() . ", " . $internDate . "</p>";
 	}
 
 
