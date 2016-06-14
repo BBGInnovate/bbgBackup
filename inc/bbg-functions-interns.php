@@ -35,7 +35,7 @@
 			}
 			$s .= get_the_excerpt();
 			if ($internSchool != "") {
-				$s .= "<strong>—$internName,</strong> $internSchool";
+				$s .= "<strong>—$internName,</strong><br/>$internSchool";
 			} else {
 				$s .= "<strong>—$internName</strong>";
 			}
