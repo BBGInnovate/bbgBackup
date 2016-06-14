@@ -333,6 +333,10 @@ get_header();
 							}
 							wp_reset_query();
 						?>
+							<nav class="navigation posts-navigation" role="navigation">
+								<h2 class="screen-reader-text">Posts navigation</h2>
+								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_page_by_path('/news-info/page/2/'); ?>" >Read More</a></div></div>
+							</nav>	
 					</div>
 
 
