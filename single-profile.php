@@ -52,7 +52,7 @@ if ( have_posts() ) {
 
 	if ( $internDate ) {
 		$internName = get_the_title();
-		$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
+		$internTagline = "<p class='bbg__post__author-tagline'>— " . $internName . ", " . $internDate . "</p>";
 	}
 
 
