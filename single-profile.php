@@ -175,6 +175,8 @@ get_header(); ?>
 						<?php $internTagline; ?>
 
 						<!--Last modified: <?php the_modified_date('F d, Y'); ?>-->
+
+						<!-- <?php echo "<p>— " . get_the_title() . ", " . $internDate . "</p>"; ?>-->
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
