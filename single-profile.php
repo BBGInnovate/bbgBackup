@@ -50,7 +50,7 @@ if ( have_posts() ) {
 	$internTagline = "";
 	$internDate = get_post_meta( get_the_ID(), 'intern_date', true );
 	echo "INTERN DATE: " . $internDate;
-	if ( $internDate && $internDate != "" ) {
+	if ( $internDate ) {
 		echo "DOGS";
 		$internName = get_the_title();
 		$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
