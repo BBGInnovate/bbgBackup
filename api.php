@@ -23,18 +23,24 @@
 		return $result;
 	}
 	function getJSONStr($url, $id) {
-		$jsonFilepath = get_template_directory() . "/" . $id . ".json";
-		if ( fileExpired($jsonFilepath, 0) ) { 	//1440 min = 1 day
+		$id = str_replace("/", "_", $id);
+		$id = str_replace("?", "_", $id);
+		$id = str_replace("&", "_", $id);
+		$id = str_replace("=", "_", $id);
+		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/" . $id . ".json";
+		if ( fileExpired($jsonFilepath, 10) ) { 	//1440 min = 1 day
 			$result=fetchUrl($url);
 			file_put_contents($jsonFilepath, $result);
 		} else {
 			$result=file_get_contents($jsonFilepath);
 		}
-
 		return $result;
 	}
 
 	//http://bbgredesign.voanews.com/api.php?endpoint=api/countries/?region_coutry=1
-	$test = getJsonStr('http://api.bbg.gov/api/countries/?region_country=1', 'region1');
-	echo $test;
+	///$endpoint = str_replace("&", "?", $_GET['endpoint']);
+	$endpoint = $_GET['endpoint'];
+	$targetUrl = 'http://api.bbg.gov/' . $endpoint;
+	$result=getJSONStr($targetUrl, $endpoint);
+	echo $result; 
 ?>
