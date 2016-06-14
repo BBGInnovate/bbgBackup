@@ -42,6 +42,8 @@
 	$endpoint = $_GET['endpoint'];
 	$targetUrl = 'http://api.bbg.gov/' . $endpoint;
 	header('Content-Type: application/json');
+	header("Access-Control-Allow-Origin: *");
+
 	$result=getJSONStr($targetUrl, $endpoint);
 	echo $result; 
 ?>
