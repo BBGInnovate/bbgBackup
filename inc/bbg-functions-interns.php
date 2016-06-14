@@ -26,12 +26,14 @@
 			}
 			$s .= '<div class="bbg__profile__intern">';
 			$s .= '<span class="bbg__profile__intern__job-label">';
-			//$s .= '<a href="' . $permalink . '">' . get_the_title() . '</a>';
+			$s .= '<a href="' . $permalink . '">' . get_the_title() . '</a>';
 			$s .= get_the_title();
 			$s .= '</span>';
 			if ($profilePhoto != "") {
 				//title="Lindsay Matthews" alt="Lindsay Matthews"
+				$s .= '<a href="' . $permalink . '">';
 				$s .= '<img class="bbg__mugshot"  src="'.$profilePhoto.'"  />';
+				$s .= '</a>';
 			}
 			$s .= "<p>" . get_the_excerpt() . "</p>";
 			if ($internSchool != "") {
