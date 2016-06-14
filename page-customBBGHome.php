@@ -271,7 +271,7 @@ get_header();
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ) ?>">BBG News</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'news-info' ) ) ?>">BBG News</a></h6>
 				</div>
 				
 				<!-- Featured Post -->
