@@ -20,6 +20,14 @@ class ArrayValue implements JsonSerializable {
 }
 /****** END HELPER CLASS FOR SERIALIZING PHP TO JSON ****/
 
+/****** BEGIN HELPER FUNCTION SORT BY DATE ****/
+function threatDateCompare($a, $b) {
+	$t1 = ($a['dateTimestamp']);
+	$t2 = ($b['dateTimestamp']);
+	return $t2 - $t1;
+}
+/****** END HELPER FUNCTION SORT BY DATE ****/
+
 $spreadsheetKey = "1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo";
 $spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/pubhtml";
 $csvUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/export?gid=0&format=csv";
@@ -69,48 +77,50 @@ $qParams=array(
 	,'post_status' => array('publish')
 );
 
-/*** late in the game we ran into a pagination issue, so we're running a second query here ***/
 $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
-$totalPages=1;
-if ($custom_query->found_posts > $numPostsFirstPage) {
-	$totalPages = 1 + ceil( ($custom_query->found_posts - $numPostsFirstPage)/$numPostsSubsequentPages);
+$threats = array();
+foreach($threatsCSVArray as $t) {
+	$threats[] = array(
+		'country' => $t[0],
+		'name' => $t[1],
+		'date' => $t[2],
+		'status' => $t[3],
+		'description' => $t[4],
+		'mugshot' => $t[5],
+		'network' => $t[6],
+		'link' => $t[7],
+		'latitude' => $t[8],
+		'longitude' => $t[9]
+	);
 }
+
+for ($i=0; $i < count($threats); $i++) {
+	$t = &$threats[$i];
+	$dateStr = $t['date'];
+	$dateObj = explode("/", $dateStr);
+	$month = $dateObj[0];
+	$day = $dateObj[1];
+	$year = $dateObj[2];
+	$dateTimestamp = mktime(0, 0, 0, $month, $day, $year);
+	$t['dateTimestamp'] = $dateTimestamp;
+}
+usort($threats, 'threatDateCompare');
 
 $wall = "";
 $journalist = "";
 $journalistName = "";
-$dataLength2 = count($threatsCSVArray);
 $mugshot = "";
 $altText = "";
-//Country,Name,Date,Status,Description,Mugshot,Network,Link,Latitude,Longitude
-$threatsObjArray = array();
-foreach($threatsCSVArray as $t) {
-	$country = $t[0];
-	$name = $t[1];
-	$date = $t[2];
-	$status = $t[3];
-	$description = $t[4];
-	$mugshot = $t[5];
-	$network = $t[6];
-	$link = $t[7];
-	$latitude = $t[8];
-	$longitude = $t[9];
 
-	$threatsObjArray[] = array(
-		'country' => $country,
-		'name' => $name,
-		'date' => $date,
-		'status' => $status,
-		'description' => $description,
-		'mugshot' => $mugshot,
-		'network' => $network,
-		'link' => $link,
-		'latitude' => $latitude,
-		'longitude' => $longitude
-	);
-	
+for ($i=0; $i < count($threats); $i++) {
+	$t = &$threats[$i];
+	$mugshot = $t['mugshot'];
+	$link = $t['link'];
+	$name = $t['name'];
+	$date = $t['date'];
+	$status = $t['status'];
 	if ($status == "Killed"){
 		if ($mugshot == "") {
 			$mugshot = "http://placehold.it/300x400";
@@ -118,9 +128,7 @@ foreach($threatsCSVArray as $t) {
 		} else {
 			$altText = "Photo of $name";
 		}
-
 		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
-	
 		if ($link != "") {
 			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
 			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
@@ -136,12 +144,12 @@ foreach($threatsCSVArray as $t) {
 		$journalist .= '</div>';
 
 		$wall .= $journalist;
-
-
 	}
 }
+
+
 $threatsJSON = "<script type='text/javascript'>\n";
-$threatsJSON .= "threats=" . json_encode(new ArrayValue($threatsObjArray), JSON_PRETTY_PRINT) . ";";
+$threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT) . ";";
 $threatsJSON .="</script>";
 get_header();
 echo $threatsJSON;
@@ -298,11 +306,11 @@ echo $threatsJSON;
 				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
 					var t = threats[i];
-					if (t[i].status == "Killed"){
+					if (t.status == "Killed"){
 						markerColor = "#000";
-					} else if ( t[i].status == "Threatened") {
+					} else if ( t.status == "Threatened") {
 						markerColor = "#FC0";
-					} else if ( t[i].status == "Missing") {
+					} else if ( t.status == "Missing") {
 						markerColor = "#999";
 					} else {
 						//check this pin to see what the status is
