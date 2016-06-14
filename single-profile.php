@@ -49,13 +49,10 @@ if ( have_posts() ) {
 
 	$internTagline = "";
 	$internDate = get_post_meta( get_the_ID(), 'intern_date', true );
-	echo "INTERN DATE: " . $internDate;
+
 	if ( $internDate ) {
-		echo "DOGS";
 		$internName = get_the_title();
-		//$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
-		$internTagline = "<p>— test</p>";
-		echo "DOGS";
+		$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
 	}
 
 
@@ -177,11 +174,10 @@ get_header(); ?>
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
 
-						<?php $internTagline; ?>
+						<?php echo $internTagline; ?>
 
 						<!--Last modified: <?php the_modified_date('F d, Y'); ?>-->
 
-						<!-- <?php echo "<p>— " . get_the_title() . ", " . $internDate . "</p>"; ?>-->
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
