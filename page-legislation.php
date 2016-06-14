@@ -113,7 +113,7 @@ get_header();
 
 								// Output variables in HTML format
 								echo "<article class='bbg__about__excerpt bbg__about__child--" . strtolower(get_the_title()) . " $containerClass'>";
-								echo sprintf( "<a href='%s'>", $postPermalink );
+								echo sprintf( "<a href='%s'>", $url );
 								echo "<h6 class='bbg-label'>" . $title . "</h6></a>";
 								echo "<div class='entry-content'>";
 								echo $excerpt;
