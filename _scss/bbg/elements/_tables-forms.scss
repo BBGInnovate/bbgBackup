@@ -53,14 +53,7 @@
 
 	td,
 	th {
-		padding: 1rem .5rem; 
-	}
-
-	@include media($small-screen) {
-		td,
-		th {
-			padding: 1rem; 
-		}
+		padding: 1rem; 
 	}
 
 	@include media($medium-screen) {
@@ -76,6 +69,7 @@
 		border-top: 1px solid #CCC;
 		font-weight: bold;
 	}
+
 }
 
 .bbg__table__caption {

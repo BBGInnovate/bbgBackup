@@ -1,7 +1,13 @@
 <?php
 /**
  * The custom home page for the Broadcasting Board of Governors.
- * It includes the mission, a portfolio of recent projects, recent blog posts and staff.
+ * It includes:
+ *      - the mission
+ *      - a portfolio of recent impact stories, 
+ *      - recent stories,
+ *      - an optional soapbox for senior leadership commentary,
+ *      - updates on threats to press around the world
+ *      - and a list of the entities.
  *
  * @package bbgRedesign
   template name: Custom BBG Home
@@ -59,13 +65,15 @@ $featuredPost = get_field('homepage_featured_post', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 
 /*** get impact category ***/
-$impactCat = get_category_by_slug('impact');
+//$impactCat = get_category_by_slug('impact');
 //$impactPermalink = get_category_link($impactCat->term_id);
 $impactPermalink = get_permalink( get_page_by_path( 'impact-and-results' ) );
 $impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
-$threatsCat=get_category_by_slug('threats-to-press');
-$threatsPermalink = get_category_link($threatsCat->term_id);
-//$threatsPermalink = "https://bbgredesign.voanews.com/blog/tag/khadija-ismayilova/";
+
+//$threatsCat=get_category_by_slug('threats-to-press');
+//$threatsPermalink = get_category_link($threatsCat->term_id);
+$threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
+
 
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
 $postIDsUsed=array();
@@ -173,6 +181,8 @@ get_header();
 				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
+
+
 
 			<!-- Impact stories + 1 Quotation-->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
@@ -336,6 +346,8 @@ get_header();
 			</section><!-- .BBG News -->
 
 
+
+
 			<!-- Threats to Journalism.  -->
 			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
@@ -418,7 +430,6 @@ get_header();
 					<?php echo outputBroadcasters('2'); ?>
 				</div>
 			</section><!-- entity list -->
-
 
 
 

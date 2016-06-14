@@ -3088,13 +3088,7 @@ a:focus .bbg__article-share__icon {
 }
 .bbg__table__money td,
 .bbg__table__money th {
-  padding: 1rem .5rem;
-}
-@media screen and (min-width: 481px) {
-  .bbg__table__money td,
-  .bbg__table__money th {
-    padding: 1rem;
-  }
+  padding: 1rem;
 }
 @media screen and (min-width: 600px) {
   .bbg__table__money td,

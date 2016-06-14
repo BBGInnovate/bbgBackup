@@ -271,18 +271,22 @@ echo $threatsJSON;
 				.marker-cluster-small div {
 					background-color: rgba(255, 0, 0, 0.6) !important;
 				}
+				/*experimenting with styling the clusters*/
+				.marker-cluster-medium div {
+					background-color: rgba(0, 255, 0, 0.6) !important;
+				}
 			</style>
 
 			<script type="text/javascript">
 				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-				var map = L.mapbox.map('map-threats', 'mapbox.emerald'); //        .setView([-37.82, 175.215], 14);
-			    var markers = new L.MarkerClusterGroup({
+				var map = L.mapbox.map('map-threats', 'mapbox.emerald');
+				var markers = new L.MarkerClusterGroup({
 					iconCreateFunction: function (cluster) {
 						var childCount = cluster.getChildCount();
 						var c = ' marker-cluster-';
 						if (childCount < 10) {
 						    c += 'small';
-						} else if (childCount < 100) {
+						} else if (childCount < 20) {
 						    c += 'medium';
 						} else {
 						    c += 'large';
@@ -291,12 +295,23 @@ echo $threatsJSON;
 					}
 				});
 
+				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
 					var t = threats[i];
+					if (t[i].status == "Killed"){
+						markerColor = "#000";
+					} else if ( t[i].status == "Threatened") {
+						markerColor = "#FC0";
+					} else if ( t[i].status == "Missing") {
+						markerColor = "#999";
+					} else {
+						//check this pin to see what the status is
+						markerColor = "#931fe5";
+					}
 					var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 						icon: L.mapbox.marker.icon({
 							'marker-symbol': '', 
-							'marker-color': '#900'
+							'marker-color': markerColor
 						})
 					});
 					var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
