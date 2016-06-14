@@ -277,11 +277,16 @@ echo $threatsJSON;
 					background-color: rgba(255, 255, 255, 0.6) !important;
 				}
 				.marker-cluster-small div {
-					background-color: rgba(255, 0, 0, 0.6) !important;
+					background-color: rgba(255, 200, 0, 0.6) !important;
 				}
 				/*experimenting with styling the clusters*/
 				.marker-cluster-medium div {
-					background-color: rgba(0, 255, 0, 0.6) !important;
+					
+					background-color: rgba(255, 100, 0, 0.6) !important;
+				}
+				.marker-cluster-large div {
+					
+					background-color: rgba(255, 0, 0, 0.6) !important;
 				}
 			</style>
 
@@ -309,7 +314,7 @@ echo $threatsJSON;
 					if (t.status == "Killed"){
 						markerColor = "#000";
 					} else if ( t.status == "Threatened") {
-						markerColor = "#FC0";
+						markerColor = "#900";
 					} else if ( t.status == "Missing") {
 						markerColor = "#999";
 					} else {
