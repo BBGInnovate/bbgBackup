@@ -28,40 +28,7 @@ get_header(); ?>
 					} else {
 						get_template_part( 'template-parts/content', 'page' );
 					}
-
-
-					// $sidebarTitle = get_sub_field( 'sidebar_title' );
-					// $sidebarContent = get_sub_field( 'sidebar_items' );
-
-
-					/*foreach ($sidebarContent as $rPage) {
-						$rPageHeadline = $rPage->headline;
-						$rPageTagline = $rPage->page_tagline;
-						$rHideLink = $rPage->hide_link;
-
-						$qParams = array(
-							'post_type' => 'page',
-							'post_status' => 'publish',
-							'post__in' => array( $rPage->ID )
-						);
-
-						query_posts( $qParams );
-
-						if ( have_posts() ) {
-							while ( have_posts() ) {
-								the_post();
-								$gridClass = $containerClass;
-								$headline = $rPageHeadline; // custom field for secondary page headline
-								$tagline = $rPageTagline; // custom field for page tagline
-								$hideLink = $rHideLink;
-								$includePageDescription = TRUE;
-								get_template_part( 'template-parts/content-about', get_post_format() );
-							}
-						}
-						wp_reset_query();
-					}*/
-
-					?>
+				?>
 
 					<div class="bbg-post-footer">
 					<?php

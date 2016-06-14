@@ -83,16 +83,15 @@
 					echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
 				}
 				echo "<section class='usa-grid-full'>";
-				the_content();
+					the_content();
 
-				// Right sidebar
-				echo "<div class='bbg__article-sidebar'>";
-				echo "<!-- Sidebar content -->";
-
-				if ( $includeSidebar && $sidebarTitle != "" ) {
-					echo $sidebar;
-				}
-				echo "</div><!-- .bbg__article-sidebar -->";
+					// Right sidebar
+					echo "<div class='bbg__article-sidebar'>";
+					echo "<!-- Sidebar content -->";
+						if ( $includeSidebar && $sidebarTitle != "" ) {
+							echo $sidebar;
+						}
+					echo "</div><!-- .bbg__article-sidebar -->";
 				echo "</section>";
 			?>
 		</div><!-- .entry-content -->
