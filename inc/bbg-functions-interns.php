@@ -27,7 +27,7 @@
 			$s .= '<div class="bbg__profile__intern">';
 			$s .= '<span class="bbg__profile__intern__job-label">';
 			$s .= '<a href="' . $permalink . '">' . get_the_title() . '</a>';
-			$s .= get_the_title();
+			//$s .= get_the_title();
 			$s .= '</span>';
 			if ($profilePhoto != "") {
 				//title="Lindsay Matthews" alt="Lindsay Matthews"
