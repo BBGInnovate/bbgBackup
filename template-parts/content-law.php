@@ -1,4 +1,4 @@
-<?phpz
+<?php
 /**
  * Template part for displaying laws in page.php.
  *
