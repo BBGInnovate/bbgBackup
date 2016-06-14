@@ -82,7 +82,7 @@
 				if ( $pageHeadline ) {
 					echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
 				}
-
+				echo "<section class='usa-grid-full'>";
 				the_content();
 
 				// Right sidebar
@@ -93,6 +93,7 @@
 					echo $sidebar;
 				}
 				echo "</div><!-- .bbg__article-sidebar -->";
+				echo "</section>";
 			?>
 		</div><!-- .entry-content -->
 
