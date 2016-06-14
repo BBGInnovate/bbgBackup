@@ -102,6 +102,33 @@ $moveUSAbannerBecauseOfAlert = '';
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 
+<!-- Site designed by the BBG Office of Digital & Design Innovation
+=================================================================== 
+
+
+     OOOOOOOOO     DDDDDDDDDDDDD      DDDDDDDDDDDDD      IIIIIIIIII     
+   OO:::::::::OO   D::::::::::::DDD   D::::::::::::DDD   I::::::::I     
+ OO:::::::::::::OO D:::::::::::::::DD D:::::::::::::::DD I::::::::I     
+O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II     
+O::::::O   O::::::O  D:::::D    D:::::D D:::::D    D:::::D I::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O:::::O     O:::::O  D:::::D     D:::::DD:::::D     D:::::DI::::I       
+O::::::O   O::::::O  D:::::D    D:::::D D:::::D    D:::::D I::::I       
+O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II     
+ OO:::::::::::::OO D:::::::::::::::DD D:::::::::::::::DD I::::::::I     
+   OO:::::::::OO   D::::::::::::DDD   D::::::::::::DDD   I::::::::I     
+     OOOOOOOOO     DDDDDDDDDDDDD      DDDDDDDDDDDDD      IIIIIIIIII     
+                                                                        
+                           2011 - 2016
+
+-->
+
+
+
 <!-- Title, meta description and CSS
 ================================================== -->
 
@@ -111,7 +138,6 @@ $moveUSAbannerBecauseOfAlert = '';
 	bbgConfig={};
 	bbgConfig.MAPBOX_API_KEY = '<?php echo MAPBOX_API_KEY; ?>';
 </script>
-
 
 
 <!-- IE <9 patch

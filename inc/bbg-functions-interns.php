@@ -15,18 +15,23 @@
 			$custom_query->the_post();
 			$id = get_the_ID();
 			$permalink = get_the_permalink();
-			$profilePhotoID = get_post_meta( $id, 'intern_profile_photo', true );
-			$internName = get_post_meta( $id, 'intern_name', true );
-			$internSchool = get_post_meta( $id, 'intern_school', true );
-			$profilePhoto = "";
+			$internFirstName = get_post_meta( $id, 'intern_name', true );
+			$internLastName = get_post_meta( $id, 'intern_name', true );
+			$internName = get_the_title(); //$internFirstName . ' ' . $internLastName;
 
+			$internOffice = get_post_meta( $id, 'occupation', true );
+			$internSchool = get_post_meta( $id, 'intern_school', true );
+			$internDate = get_post_meta( $id, 'internDate', true );
+
+			$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
+			$profilePhoto = "";
 			if ($profilePhotoID) {
 				$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 				$profilePhoto = $profilePhoto[0];
 			}
 			$s .= '<div class="bbg__profile__intern">';
 			$s .= '<span class="bbg__profile__intern__job-label">';
-			$s .= '<a href="' . $permalink . '">' . get_the_title() . '</a>';
+			$s .= '<a href="' . $permalink . '">' . $internOffice . '</a>';
 			//$s .= get_the_title();
 			$s .= '</span>';
 			if ($profilePhoto != "") {
@@ -37,9 +42,9 @@
 			}
 			$s .= "<p>" . get_the_excerpt() . "</p>";
 			if ($internSchool != "") {
-				$s .= "<strong>—$internName,</strong><br/>$internSchool";
+				$s .= "<strong>—$internName,</strong> $internDate<br/>$internSchool";
 			} else {
-				$s .= "<strong>—$internName</strong>";
+				$s .= "<strong>—$internName</strong><br/>$internDate";
 			}
 			$s .= "</div>";
 		}

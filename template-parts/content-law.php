@@ -128,15 +128,18 @@
 						the_content();
 					echo "</section>";
 
-					// Right sidebar
-					echo "<div class='bbg__article-sidebar'>";
-						echo "<!-- Sidebar content -->";
-							if ( $includeSidebar && $sidebarTitle != "" ) {
-								echo $sidebar;
-							}
-					echo "</div><!-- .bbg__article-sidebar -->";
+					
 				?>
 			</div><!-- .entry-content -->
+			<?php 
+			// Right sidebar
+			echo "<div class='bbg__article-sidebar'>";
+				echo "<!-- Sidebar content -->";
+					if ( $includeSidebar && $sidebarTitle != "" ) {
+						echo $sidebar;
+					}
+			echo "</div><!-- .bbg__article-sidebar -->";
+			?>
 		</div>
 
 		<footer class="entry-footer bbg-post-footer 1234">

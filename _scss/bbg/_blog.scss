@@ -596,6 +596,15 @@ ul.bbg__article-content__list--inline {
 	}
 }
 
+
+/* At the end of a post, add a small tagline credit for authors 
+e.g. on the intern testimonial page */
+.bbg__post__author-tagline {
+	text-align: right;
+	margin-top: 5rem;
+}
+
+
 /** Read more tagline **/
 .bbg__read-more {
 	color: $color-primary;

@@ -47,6 +47,13 @@ if ( have_posts() ) {
 		$profilePhoto = $profilePhoto[0];
 	}
 
+	$internTagline = "";
+	$internDate = get_post_meta( get_the_ID(), 'intern_date', true );
+
+	if ( $internDate ) {
+		$internName = get_the_title();
+		$internTagline = "<p class='bbg__post__author-tagline'>— " . $internName . ", " . $internDate . "</p>";
+	}
 
 
 	$ogDescription = get_the_excerpt();
@@ -166,7 +173,11 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<?php the_content(); ?>
-						<p class="bbg-tagline">Last modified: <?php the_modified_date('F d, Y'); ?></p>
+
+						<?php echo $internTagline; ?>
+
+						<!--Last modified: <?php the_modified_date('F d, Y'); ?>-->
+
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
