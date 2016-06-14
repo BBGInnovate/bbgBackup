@@ -33,7 +33,7 @@
 				//title="Lindsay Matthews" alt="Lindsay Matthews"
 				$s .= '<img class="bbg__mugshot"  src="'.$profilePhoto.'"  />';
 			}
-			$s .= get_the_excerpt();
+			$s .= "<p>" . get_the_excerpt() . "</p>";
 			if ($internSchool != "") {
 				$s .= "<strong>—$internName,</strong><br/>$internSchool";
 			} else {
