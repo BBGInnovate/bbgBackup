@@ -41,6 +41,7 @@
 	///$endpoint = str_replace("&", "?", $_GET['endpoint']);
 	$endpoint = $_GET['endpoint'];
 	$targetUrl = 'http://api.bbg.gov/' . $endpoint;
+	header('Content-Type: application/json');
 	$result=getJSONStr($targetUrl, $endpoint);
 	echo $result; 
 ?>
