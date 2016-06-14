@@ -10,6 +10,7 @@
 			'order', 'DESC'
 		);
 		$custom_query = new WP_Query($qParams);
+		$s = "";
 		while ( $custom_query->have_posts() )  {
 			$custom_query->the_post();
 			$id = get_the_ID();
