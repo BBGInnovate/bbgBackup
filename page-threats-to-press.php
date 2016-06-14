@@ -80,6 +80,40 @@ $qParams=array(
 $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
+
+
+/* Adding optional quotation to the bottom of the page */
+$includeQuotation = get_field( 'quotation_include', '', true );
+$quotation = "";
+
+if ( $includeQuotation ) {
+	$quotationText = get_field( 'quotation_text', '', false );
+	$quotationSpeaker = get_field( 'quotation_speaker', '', false );
+	$quotationTagline = get_field( 'quotation_tagline', '', false );
+
+	$quoteMugshotID=get_field( 'quotation_mugshot', '', false );
+	$quoteMugshot = "";
+
+	if ($quoteMugshotID) {
+		$quoteMugshot = wp_get_attachment_image_src( $quoteMugshotID , 'mugshot');
+		$quoteMugshot = $quoteMugshot[0];
+		$quoteMugshot = '<img src="' . $quoteMugshot .'" class="bbg__quotation-attribution__mugshot">';
+	}
+
+	$quotation = '<h2 class="bbg__quotation-text--large">“'. $quotationText .'”</h2>';
+	$quotation .= '<div class="bbg__quotation-attribution__container">';
+	$quotation .= '<p class="bbg__quotation-attribution">';
+	$quotation .= $quoteMugshot;
+	$quotation .= '<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">'. $quotationSpeaker .'</span><span class="bbg__quotation-attribution__credit">'. $quotationTagline .'</span></span>';
+	$quotation .= '</p>';
+	$quotation .= '</div>';
+}
+
+
+
+
+
+
 $threats = array();
 foreach($threatsCSVArray as $t) {
 	$threats[] = array(
@@ -254,13 +288,7 @@ echo $threatsJSON;
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<div class="bbg__quotation ">
-						<h2 class="bbg__quotation-text--large">“They were in a position to experience world events first-hand and to make a difference. Their work portrayed war in a close-up fashion that showed the world what conflict is really like, what it’s like for the victims and what it’s like for the soldiers.”</h2>
-						<div class="bbg__quotation-attribution__container">
-							<p class="bbg__quotation-attribution">
-								<img src="<?php echo site_url(); ?>/wp-content/media/2016/06/mugshot_richard-engel-100.jpg" class="bbg__quotation-attribution__mugshot">
-								<span class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">Richard Engel</span><span class="bbg__quotation-attribution__credit">NBC News chief foreign correspondent</span></span>
-							</p>
-						</div>
+						<?php echo $quotation; ?>
 					</div>
 				</div>
 			</section>
