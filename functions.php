@@ -12,7 +12,8 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id("John's take"),
 	get_cat_id('Contact'),
 	get_cat_id('Quotation'),
-	get_cat_id('Employee')
+	get_cat_id('Employee'),
+	get_cat_id('Intern Testimonial')
 );
 
 /****** UTILITY FUNCTIONS - KEEP UP TOP ****/
@@ -286,6 +287,7 @@ require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.
 require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
 require get_template_directory() . '/inc/bbg-functions-contactCards.php';
 require get_template_directory() . '/inc/bbg-functions-impact.php';
+require get_template_directory() . '/inc/bbg-functions-interns.php';
 require get_template_directory() . '/inc/bbg-functions-jobs.php';
 require get_template_directory() . '/inc/bbg-functions-nav.php';
 require get_template_directory() . '/inc/bbg-functions-quotations.php';
