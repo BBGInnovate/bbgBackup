@@ -70,35 +70,36 @@
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
 
-		<div class="bbg__article-sidebar--left">
-			<p></p>
-		</div><!-- .bbg__article-sidebar--left -->
 
-		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+		<div class="usa-grid-full">
+			<div class="bbg__article-sidebar--left">
+				<p></p>
+			</div><!-- .bbg__article-sidebar--left -->
 
-			<?php
-				$pageHeadline = get_field('headline');
+			<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 
-				if ( $pageHeadline ) {
-					echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
-				}
-				echo "<section class='usa-grid-full'>";
-					the_content();
-				echo "</section>";
-			?>
-		</div><!-- .entry-content -->
+				<?php
+					$pageHeadline = get_field('headline');
 
-		<?php
-			// Right sidebar
-			echo "<div class='bbg__article-sidebar'>";
-			echo "<!-- Sidebar content -->";
-				if ( $includeSidebar && $sidebarTitle != "" ) {
-					echo $sidebar;
-				}
-			echo "</div><!-- .bbg__article-sidebar -->";
-		?>
+					if ( $pageHeadline ) {
+						echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
+					}
+					echo "<section class='usa-grid-full'>";
+						the_content();
+					echo "</section>";
 
-		<!-- <footer class="entry-footer bbg-post-footer 1234">
+					// Right sidebar
+					echo "<div class='bbg__article-sidebar'>";
+						echo "<!-- Sidebar content -->";
+							if ( $includeSidebar && $sidebarTitle != "" ) {
+								echo $sidebar;
+							}
+					echo "</div><!-- .bbg__article-sidebar -->";
+				?>
+			</div><!-- .entry-content -->
+		</div>
+
+		<footer class="entry-footer bbg-post-footer 1234">
 			<?php
 				edit_post_link(
 					sprintf(
@@ -110,6 +111,6 @@
 					'</span>'
 				);
 			?>
-		</footer><!-- .entry-footer --> -->
+		</footer><!-- .entry-footer -->
 	</div><!-- .usa-grid -->
 </article><!-- #post-## -->
