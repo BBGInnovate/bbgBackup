@@ -15,7 +15,7 @@
 			$custom_query->the_post();
 			$id = get_the_ID();
 			$permalink = get_the_permalink();
-			$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
+			$profilePhotoID = get_post_meta( $id, 'intern_profile_photo', true );
 			$internName = get_post_meta( $id, 'intern_name', true );
 			$internSchool = get_post_meta( $id, 'intern_school', true );
 			$profilePhoto = "";
