@@ -53,7 +53,9 @@ if ( have_posts() ) {
 	if ( $internDate ) {
 		echo "DOGS";
 		$internName = get_the_title();
-		$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
+		//$internTagline = "<p>— " . $internName . ", " . $internDate . "</p>";
+		$internTagline = "<p>— test</p>";
+		echo "DOGS";
 	}
 
 
