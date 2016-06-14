@@ -48,7 +48,8 @@ if ( have_posts() ) {
 	}
 
 	$internTagline = "";
-	$internDate=get_post_meta( get_the_ID(), 'intern_date', true );
+	$internDate = get_post_meta( get_the_ID(), 'intern_date', true );
+	echo "INTERN DATE: " . $internDate;
 	if ( $internDate && $internDate != "" ) {
 		$internTagline = "<p>— " . get_the_title() . ", " . $internDate . "</p>";
 	}
@@ -176,6 +177,7 @@ get_header(); ?>
 
 						<!--Last modified: <?php the_modified_date('F d, Y'); ?>-->
 
+						<!-- <?php echo "<p>— " . get_the_title() . ", " . $internDate . "</p>"; ?>-->
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
