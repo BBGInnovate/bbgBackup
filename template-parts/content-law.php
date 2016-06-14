@@ -82,21 +82,23 @@
 				if ( $pageHeadline ) {
 					echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
 				}
-				echo "<div class='usa-grid-full'>";
+				echo "<section class='usa-grid-full'>";
 					the_content();
-
-					// Right sidebar
-					echo "<div class='bbg__article-sidebar'>";
-					echo "<!-- Sidebar content -->";
-						if ( $includeSidebar && $sidebarTitle != "" ) {
-							echo $sidebar;
-						}
-					echo "</div><!-- .bbg__article-sidebar -->";
-				echo "</div>";
+				echo "</section>";
 			?>
 		</div><!-- .entry-content -->
 
-		<footer class="entry-footer bbg-post-footer 1234">
+		<?php
+			// Right sidebar
+			echo "<div class='bbg__article-sidebar'>";
+			echo "<!-- Sidebar content -->";
+				if ( $includeSidebar && $sidebarTitle != "" ) {
+					echo $sidebar;
+				}
+			echo "</div><!-- .bbg__article-sidebar -->";
+		?>
+
+		<!-- <footer class="entry-footer bbg-post-footer 1234">
 			<?php
 				edit_post_link(
 					sprintf(
@@ -108,6 +110,6 @@
 					'</span>'
 				);
 			?>
-		</footer><!-- .entry-footer -->
+		</footer><!-- .entry-footer --> -->
 	</div><!-- .usa-grid -->
 </article><!-- #post-## -->
