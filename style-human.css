@@ -6210,6 +6210,16 @@ section.usa-section.bbg-banner__section {
 /*****
 	Multi-column child styles
 *****/
+.bbg__about__child .bbg__about__excerpt {
+  margin-bottom: 3rem;
+  min-height: 350px;
+}
+.bbg__about__child .bbg__about__excerpt .bbg__about__excerpt-header {
+  display: table-cell;
+  height: 10%;
+  max-height: 60px;
+  vertical-align: bottom;
+}
 @media screen and (min-width: 600px) {
   .bbg__about__child .bbg-label {
     font-size: 2rem;
@@ -6224,8 +6234,13 @@ section.usa-section.bbg-banner__section {
   display: none;
 }
 
+.bbg__about__child--mission h6.bbg-label {
+  line-height: 3.1;
+  margin-bottom: 0;
+}
 .bbg__about__child--mission .single-post-thumbnail {
   display: none;
+  height: 0;
 }
 .bbg__about__child--mission .bbg__about__excerpt-content {
   display: block;
