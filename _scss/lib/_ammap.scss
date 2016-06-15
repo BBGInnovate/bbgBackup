@@ -1,7 +1,13 @@
 #chartdiv {
-	width		: 100%;
-	height		: 300px;
+	-moz-box-shadow:    inset 2px 0 10px #CCC;
+	-webkit-box-shadow: inset 2px 0 10px #CCC;
+	box-shadow:         inset 2px 0 10px #999;
+
+	border-radius: $border-radius;
+
 	font-size	: 11px;
+	height		: 300px;
+	width		: 100%;
 
 	@include media($medium-screen) {
 		height		: 400px;
