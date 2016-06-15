@@ -90,7 +90,20 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	<?php echo bbginnovate_post_categories(); ?>
 	<!-- .bbg-label -->
+
 		<header class="entry-header">
+
+			<?php if($post->post_parent) {
+				//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+				$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+				$parent_link = get_permalink($post->post_parent);
+				?>
+				<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+			<?php } else{ ?>
+				<h5 class="bbg-label--mobile large"><?php the_title(); ?></h5>
+			<?php } ?>
+
+
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
 

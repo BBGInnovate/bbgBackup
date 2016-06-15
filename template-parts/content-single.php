@@ -297,7 +297,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		//If a featured video is set, include it.
 		//ELSE if a featured image is set, include it.
 		$hideFeaturedImage = FALSE;
-		if ($videoUrl!="") {
+		if ( $videoUrl != "" ) {
 			echo featured_video($videoUrl);
 			$hideFeaturedImage = TRUE;
 		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -312,7 +312,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
 			echo the_post_thumbnail( 'large-thumb' );
 
-			if ($featuredImageCutline != "") {
+			if ( $featuredImageCutline != "" ) {
 				echo '<div class="usa-grid">';
 					echo "<div class='wp-caption-text'>$featuredImageCutline</div>";
 				echo '</div> <!-- usa-grid -->';
@@ -320,13 +320,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 			echo '</div>';
 			echo '</div> <!-- usa-grid-full -->';
-/*
-			if ($featuredImageCutline != "") {
-				echo '<div class="usa-grid">';
-					echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-				echo '</div> <!-- usa-grid -->';
-			}
-*/
 		}
 	?><!-- .bbg__article-header__thumbnail -->
 
