@@ -31,7 +31,7 @@
 
 .bbg__about__excerpt {
 	margin-bottom: 3rem;
-	min-height: 350px;
+	max-height: 350px;
 
 	.bbg__excerpt-header__thumbnail--medium {
 		max-height: 28.7rem;
@@ -49,7 +49,7 @@
 
 // Style the mission differently
 .bbg__about__child--mission {
-	.bbg__about__excerpt-header {
+	/* .bbg__about__excerpt-header {
 		height: 18%;
 		max-height: 62px;
 	}
@@ -59,7 +59,7 @@
 		@include media($medium-screen) {
 			margin-top: 2.6rem;
 		}
-	}
+	} */
 
 	// Hide the post image
 	.single-post-thumbnail {
@@ -72,12 +72,11 @@
 		display: block;
 		background-color: $color-gray-lightest;
 		border-radius: $border-radius;
-		height: 82%;
-		max-height: 28.7rem;
+		// height:
 		padding: $site-margins;
 
 		@include media($large-screen) {
-			height: 28.7rem;
+			height: 28.8rem;
 		}
 	}
 
