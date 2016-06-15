@@ -72,12 +72,29 @@ get_header();
 				// check if the flexible content field has rows of data
 				if( have_rows('about_flexible_page_rows') ):
 					$counter = 0;
+					$pageTotal = 1;
+					$containerClass = "bbg__about__child ";
 
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
+						/* @Check if number is odd or even
+						*  @var $pageTotal The number to check
+						*  Return BOOL (true/false) */
+						function checkNum($pageTotal){
+						  return ($pageTotal%2) ? TRUE : FALSE;
+						}
+						// Check function return
+						if ( checkNum($pageTotal) === TRUE ) {
+							// if TRUE
+							$containerClass .= ' bbg-grid--1-2-2';
+						} else {
+							// if FALSE
+							$containerClass .= ' bbg-grid--1-3-3';
+						}
+
 						if ( get_row_layout() != 'about_ribbon_page') {
-							//we wrap a  usa-grid container around every row.
+							// we wrap a  usa-grid container around every row.
 							echo '<!-- ROW ' . $counter . '-->';
 							echo '<section class="usa-grid-full bbg__about__children--row">';
 						}
@@ -86,13 +103,7 @@ get_header();
 
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 							$relatedPages = get_sub_field( 'about_muliticolumn_related_pages' );
-							$containerClass = "bbg__about__child";
-
-							if (count($relatedPages) == 2) {
-								$containerClass .= ' bbg-grid--1-2-2';
-							} else if (count($relatedPages) == 3) {
-								$containerClass .= ' bbg-grid--1-3-3';
-							}
+							$pageTotal = count ( $relatedPages );
 
 							foreach ($relatedPages as $rPage) {
 								$rPageHeadline = $rPage->headline;
@@ -123,16 +134,10 @@ get_header();
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 
-						elseif( get_row_layout() == 'about_umbrella_page' ):
+						elseif ( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							$relatedPages = get_sub_field('about_umbrella_related_pages');
-							// $containerClass = "bbg__about__child";
-
-							if ( count( $relatedPages ) == 2 ) {
-								$containerClass = 'bbg-grid--1-2-2';
-							} else if ( count( $relatedPages ) == 3 ) {
-								$containerClass = 'bbg-grid--1-3-3';
-							}
+							$pageTotal = count ( $relatedPages );
 
 							$labelText = get_sub_field('about_umbrella_label');
 							$labelLink = get_sub_field('about_umbrella_label_link');

@@ -21,6 +21,18 @@
 *****/
 
 .bbg__about__child {
+	.bbg__about__excerpt {
+		margin-bottom: 3rem;
+		min-height: 350px;
+
+		.bbg__about__excerpt-header {
+			display: table-cell;
+			height: 10%;
+			max-height: 60px;
+			vertical-align: bottom;
+		}
+	}
+
 	@include media($medium-screen) {
 		.bbg-label {
 			font-size: 2rem;
@@ -38,10 +50,15 @@
 
 // Style the mission differently
 .bbg__about__child--mission {
+	h6.bbg-label {
+		line-height: 3.1;
+		margin-bottom: 0;
+	}
 
 	// Hide the post image
 	.single-post-thumbnail {
 		display: none;
+		height: 0;
 	}
 
 	// Show excerpt
