@@ -10,8 +10,7 @@ jQuery(function () {
 
 function grabData(entity) {
 	jQuery('#loading').show();
-
-	jQuery.getJSON('https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/api.php?endpoint=api/countries/?group='+entity)
+	jQuery.getJSON(bbgConfig.template_directory_uri+'/api.php?endpoint=api/countries/?group='+entity)
 		.done(function( data ) {
 			var countries = [];
 			for (var i = 0; i < data.countries.length; i++) {
@@ -46,6 +45,7 @@ function grabData(entity) {
 					selectable: true
 				},
 				zoomDuration:zoomDuration,
+				backgroundZoomsToTop: true, //water zooms out
 				/*
 				 legend: {
 				 width: "100%",
