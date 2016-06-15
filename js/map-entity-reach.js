@@ -1,5 +1,8 @@
 jQuery(function () {
-	// inititalize with VOA
+
+	var defaultEntity='voa'; //might fill this from a global JS var later.
+
+	/* keep countries,map as global variables else they won't be available in the ajax callback */
 	countries=[];
 	map = AmCharts.makeChart( "chartdiv", {
 		type: "map",
@@ -37,17 +40,19 @@ jQuery(function () {
 		}
 	});
 
+	// zoom in on the new entity once it's updated
 	map.addListener('dataUpdated', function (event) {
-		console.log('dataUpdated');
 		event.chart.zoomToGroup(countries);
 	});
 	
-	grabData('voa');
 
 	jQuery('#entity').on('change', function () {
 		var entity = jQuery(this).val();
 		grabData(entity);
 	});
+
+	//load our initial data
+	grabData(defaultEntity);
 });
 
 function grabData(entity) {
@@ -63,18 +68,15 @@ function grabData(entity) {
 				if (country.region_ids) {
 					country.color = '#9F1D26';
 				}
-				country.autoZoom=true;
-				country.selectable=true;
 				countries.push(country);
 			}
 			map.dataProvider.areas = countries;
-  			map.validateData();
+				map.validateData();
 
 			jQuery('#loading').hide();
 		})
 		.fail(function( jqxhr, textStatus, error ) {
 			var err = textStatus + ", " + error;
-			alert("Request Failed: " + err);
+			alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
 		});
-		
 }
