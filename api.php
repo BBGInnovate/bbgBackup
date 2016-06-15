@@ -27,7 +27,7 @@
 		$id = str_replace("?", "_", $id);
 		$id = str_replace("&", "_", $id);
 		$id = str_replace("=", "_", $id);
-		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/" . $id . ".json";
+		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
 		if ( fileExpired($jsonFilepath, 10) ) { 	//1440 min = 1 day
 			$result=fetchUrl($url);
 			file_put_contents($jsonFilepath, $result);
