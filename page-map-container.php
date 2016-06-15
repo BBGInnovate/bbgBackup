@@ -51,24 +51,27 @@ get_header(); ?>
 					</header><!-- .page-header -->
 
 					<?php echo $pageContent; ?>
-				</div>
+				
+					<img id="loading" src="img/loading.gif" />
 
-				<img id="loading" src="img/loading.gif" />
+				</div>
 				<div class="usa-grid">
-					<form>
-						<label for="options">Select an entity</label>
-						<select id="entity"  name="options" id="options">
-							<option value="voa">VOA</option>
-							<option value="rfa">RFA</option>
-							<option value="rferl">RFERL</option>
-							<option value="ocb">OCB</option>
-							<option value="mbn">MBN</option>
-						</select>
-					</form>
+					<div class="usa-width-two-thirds">
+						<div id="chartdiv"></div>
+					</div>
+					<div class="usa-width-one-third">
+						<form>
+							<label for="options">Select an entity</label>
+							<select id="entity"  name="options" id="options">
+								<option value="voa">VOA</option>
+								<option value="rfa">RFA</option>
+								<option value="rferl">RFERL</option>
+								<option value="ocb">OCB</option>
+								<option value="mbn">MBN</option>
+							</select>
+						</form>
+					</div>
 				</div>
-
-				<div id="chartdiv"></div>
-
 				<div class="usa-grid">
 					<div class="country-details">
 						<div class="col-md-4">

@@ -7082,17 +7082,17 @@ div.appropriations-small > p.header {
   box-shadow: inset 2px 0 10px #999;
   border-radius: 0.3rem;
   font-size: 11px;
-  height: 300px;
+  height: 200px;
   width: 100%;
 }
 @media screen and (min-width: 600px) {
   #chartdiv {
-    height: 400px;
+    height: 250px;
   }
 }
 @media screen and (min-width: 900px) {
   #chartdiv {
-    height: 500px;
+    height: 300px;
   }
 }
 
