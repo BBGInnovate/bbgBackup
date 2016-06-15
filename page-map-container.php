@@ -26,9 +26,9 @@ wp_reset_query();
 
 get_header(); ?>
 
-	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/map-entity-reach.js"></script>
+	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/map-entity-reach.js'></script>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -49,29 +49,31 @@ get_header(); ?>
 						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 					</header><!-- .page-header -->
+				</div>
 
+				<section id="page-intro" class="usa-section usa-grid bbg__about__intro" style="margin-bottom: 2rem;">
 					<?php echo $pageContent; ?>
-				
-					<img id="loading" src="img/loading.gif" />
+				</section>
 
+				<div class="usa-grid">
+					<form style="margin-bottom: 2rem; max-width: none;">
+						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Select an entity</label>
+						<select id="entity" name="options" id="options" style=" display: inline-block;">
+							<option value="voa">VOA</option>
+							<option value="rfa">RFA</option>
+							<option value="rferl">RFERL</option>
+							<option value="ocb">OCB</option>
+							<option value="mbn">MBN</option>
+						</select>
+					</form>
 				</div>
 				<div class="usa-grid">
-					<div class="usa-width-two-thirds">
+					<div class="bbg__map-area__container " style="postion: relative;">
+						<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
 						<div id="chartdiv"></div>
 					</div>
-					<div class="usa-width-one-third">
-						<form>
-							<label for="options">Select an entity</label>
-							<select id="entity"  name="options" id="options">
-								<option value="voa">VOA</option>
-								<option value="rfa">RFA</option>
-								<option value="rferl">RFERL</option>
-								<option value="ocb">OCB</option>
-								<option value="mbn">MBN</option>
-							</select>
-						</form>
-					</div>
 				</div>
+
 				<div class="usa-grid">
 					<div class="country-details">
 						<div class="col-md-4">
@@ -91,6 +93,34 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
+
+				<div class="usa-grid">
+				</div>
+				<div class="usa-grid" style="margin-top: 3rem;">
+					<div class="usa-width-two-thirds">
+						<h2>Russia</h2>
+						<p class="detail" id="countryName">Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.</p>
+						<p><strong style="font-family: sans-serif;">LANGUAGES SERVED: </strong>Chechen, English, Russian, and Ukrainian</p>
+					</div>
+					<div class="usa-width-one-third">
+						<h5>VOA</h5>
+						<ul>
+							<li><a target="_blank" href="http://www.voanews.com">VOA English</a></li>
+							<li><a target="_blank" href="http://www.golos-ameriki.ru/">VOA Russian</a></li>
+							<li><a target="_blank" href="http://ukrainian.voanews.com/">VOA Ukraine</a></li>
+						</ul>
+						<h5>RFE/RL</h5>
+						<ul class="detail" id="subgroups">
+							<li><a target="_blank" href="http://www.rferl.org">RFERL English</a></li>
+							<li><a target="_blank" href="http://rus.azattyq.org/">RFERL Kazakh - Russian</a></li>
+							<li><a target="_blank" href="http://rus.azattyk.org/">RFERL Kyrgyz - Russian</a></li>
+							<li><a target="_blank" href="null">RFERL North Caucasus (Chechen)</a></li>
+							<li><a target="_blank" href="http://www.svoboda.org/">RFERL Russian</a></li>
+						</ul>
+					</div>
+
+				</div>
+
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
