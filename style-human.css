@@ -4162,6 +4162,20 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
+.bbg__2-column .bbg__entry__secondary-title {
+  font-size: 2.5rem;
+}
+@media screen and (min-width: 481px) {
+  .bbg__2-column .bbg__entry__secondary-title {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__2-column .bbg__entry__secondary-title {
+    font-size: 4rem;
+  }
+}
+
 /** INLINE LISTS */
 ul.bbg__article-content__list--inline {
   display: block;
@@ -6042,7 +6056,7 @@ article {
 }
 @media screen and (min-width: 1201px) {
   .bbg-banner .bbg-banner-box .bbg-banner-site-title {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 .bbg-banner .bbg-banner-box .bbg-banner-site-description {
@@ -6348,7 +6362,12 @@ section.usa-section.bbg-banner__section {
   color: #981b1e;
   display: block;
   font-weight: bold;
+  margin-bottom: 1rem;
   text-transform: uppercase;
+}
+.bbg__profile__intern .bbg__profile__intern__job-label a {
+  color: #981b1e;
+  text-decoration: underline;
 }
 
 .bbg__career-box .usa-width-two-thirds p {
@@ -7054,4 +7073,44 @@ div.appropriations-small > p.header {
   float: none !important;
   display: inline-block !important;
   vertical-align: top;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+  font-size: 11px;
+}
+@media screen and (min-width: 600px) {
+  #chartdiv {
+    height: 400px;
+  }
+}
+@media screen and (min-width: 900px) {
+  #chartdiv {
+    height: 500px;
+  }
+}
+
+.amcharts-legend-div {
+  position: fixed !important;
+  top: 520px !important;
+  padding: 10px;
+}
+
+.amcharts-chart-div > a {
+  display: none !important;
+}
+
+#loading {
+  display: none;
+  z-index: 9997;
+  position: fixed;
+  top: 20px;
+  left: 45%;
+  width: 50px;
+  height: 50px;
+}
+
+.country-details {
+  display: none;
 }

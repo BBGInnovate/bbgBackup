@@ -25,7 +25,13 @@
 		color: $color-secondary-darkest;
 		display: block;
 		font-weight: bold;
+		margin-bottom: $site-margins-small;
 		text-transform: uppercase;
+
+		a {
+			color: $color-secondary-darkest;
+			text-decoration: underline;
+		}
 	}
 }
 
