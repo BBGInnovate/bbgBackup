@@ -352,7 +352,6 @@ function bbginnovate_query_offset(&$query) {
 				'taxonomy' => 'category',
 				'field' => 'term_id',
 				'terms' => array(
-					get_cat_id("John's take"),
 					get_cat_id('Contact'),
 					get_cat_id('Quotation'),
 					get_cat_id('Employee'),

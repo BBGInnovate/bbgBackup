@@ -34,18 +34,37 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<div class="usa-grid-full">
 
-				<?php echo $pageContent; ?>
+				<div class="usa-grid">
+					<header class="page-header">
+
+						<?php if($post->post_parent) {
+							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent_link = get_permalink($post->post_parent);
+						?>
+						<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+
+						<?php } ?>
+
+						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+					</header><!-- .page-header -->
+
+					<?php echo $pageContent; ?>
+				</div>
 
 				<img id="loading" src="img/loading.gif" />
 				<div class="usa-grid">
-					<select id="entity">
-						<option value="voa">VOA</option>
-						<option value="rfa">RFA</option>
-						<option value="rferl">RFERL</option>
-						<option value="ocb">OCB</option>
-						<option value="mbn">MBN</option>
-						<option value="hb">HB</option>
-					</select>
+					<form>
+						<label for="options">Select an entity</label>
+						<select id="entity"  name="options" id="options">
+							<option value="voa">VOA</option>
+							<option value="rfa">RFA</option>
+							<option value="rferl">RFERL</option>
+							<option value="ocb">OCB</option>
+							<option value="mbn">MBN</option>
+						</select>
+					</form>
 				</div>
 
 				<div id="chartdiv"></div>
