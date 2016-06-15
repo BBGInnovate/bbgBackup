@@ -25,6 +25,7 @@ function grabData(entity) {
 				countries.push(country);
 			}
 
+			zoomDuration=0.2;
 			var map = AmCharts.makeChart( "chartdiv", {
 				type: "map",
 				borderColor: 'red',
@@ -44,6 +45,7 @@ function grabData(entity) {
 
 					selectable: true
 				},
+				zoomDuration:zoomDuration,
 				/*
 				 legend: {
 				 width: "100%",
