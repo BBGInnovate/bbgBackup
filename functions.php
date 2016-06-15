@@ -682,7 +682,6 @@ add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_cho
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
 	$feedFilepath = get_template_directory() . "/external-feed-cache/subgroupscache_".$entityID.".json";
-	echo "filepath " . $feedFilepath . "<BR>";
 	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
