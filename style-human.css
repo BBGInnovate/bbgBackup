@@ -5085,7 +5085,8 @@ article {
   margin: 0 auto;
   max-width: 600px;
 }
-.bbg__article-sidebar p {
+.bbg__article-sidebar p,
+.bbg__article-sidebar ol {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 90%;
   line-height: 1.5;
@@ -6262,7 +6263,7 @@ section.usa-section.bbg-banner__section {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 2rem;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.9;
   margin: 0;
 }
 
