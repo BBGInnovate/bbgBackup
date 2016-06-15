@@ -78,21 +78,6 @@ get_header();
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
-						/* @Check if number is odd or even
-						*  @var $pageTotal The number to check
-						*  Return BOOL (true/false) */
-						function checkNum($pageTotal){
-						  return ($pageTotal%2) ? TRUE : FALSE;
-						}
-						// Check function return
-						if ( checkNum($pageTotal) === TRUE ) {
-							// if TRUE
-							$containerClass .= ' bbg-grid--1-2-2';
-						} else {
-							// if FALSE
-							$containerClass .= ' bbg-grid--1-3-3';
-						}
-
 						if ( get_row_layout() != 'about_ribbon_page') {
 							// we wrap a  usa-grid container around every row.
 							echo '<!-- ROW ' . $counter . '-->';
@@ -104,6 +89,23 @@ get_header();
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 							$relatedPages = get_sub_field( 'about_muliticolumn_related_pages' );
 							$pageTotal = count ( $relatedPages );
+							// echo $pageTotal;
+
+							/* @Check if number is odd or even
+							*  @var $pageTotal The number to check
+							*  Return BOOL (true/false) */
+							function checkNum($pageTotal) {
+								return ($pageTotal%2) ? TRUE : FALSE;
+							}
+							// Check function return
+							if ( checkNum($pageTotal) === TRUE ) {
+								// if TRUE: number is odd
+								// echo "True, therefore odd";
+								$containerClass .= ' bbg-grid--1-3-3';
+							} else {
+								// if FALSE: number is even
+								$containerClass .= ' bbg-grid--1-2-2';
+							}
 
 							foreach ($relatedPages as $rPage) {
 								$rPageHeadline = $rPage->headline;
