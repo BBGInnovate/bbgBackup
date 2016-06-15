@@ -55,14 +55,17 @@ get_header(); ?>
 
 				<img id="loading" src="img/loading.gif" />
 				<div class="usa-grid">
-					<select id="entity" style="margin-bottom: 3rem;">
-						<option value="voa">VOA</option>
-						<option value="rfa">RFA</option>
-						<option value="rferl">RFERL</option>
-						<option value="ocb">OCB</option>
-						<option value="mbn">MBN</option>
-						<option value="hb">HB</option>
-					</select>
+					<form>
+						<label for="options">Dropdown label</label>
+						<select id="entity"  name="options" id="options">
+							<option value="voa">VOA</option>
+							<option value="rfa">RFA</option>
+							<option value="rferl">RFERL</option>
+							<option value="ocb">OCB</option>
+							<option value="mbn">MBN</option>
+							<option value="hb">HB</option>
+						</select>
+					</form>
 				</div>
 
 				<div id="chartdiv"></div>
