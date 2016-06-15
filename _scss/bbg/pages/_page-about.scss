@@ -72,11 +72,10 @@
 		display: block;
 		background-color: $color-gray-lightest;
 		border-radius: $border-radius;
-		// height:
 		padding: $site-margins;
 
 		@include media($large-screen) {
-			height: 28.8rem;
+			height: 44.1rem;
 		}
 	}
 
@@ -90,17 +89,17 @@
 		line-height: 1.7;
 		margin: 0;
 
-		@include media($medium-screen) {
+		/* @include media($medium-screen) {
 			font-size: 1.6rem;
 		}
 
 		@include media($medium-large-screen) {
 			font-size: 2rem;
-		}
+		}*/
 
 		@include media($large-screen) {
-			font-size: 2.3rem;
-			line-height: 2.1;
+			font-size: 2.5rem;
+			line-height: 2.2;
 		}
 	}
 

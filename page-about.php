@@ -75,6 +75,12 @@ get_header();
 					$pageTotal = 1;
 					$containerClass = "bbg__about__child ";
 
+					/* @Check if number of pages is odd or even
+					*  Return BOOL (true/false) */
+					function checkNum($pageTotal) {
+						return ($pageTotal%2) ? TRUE : FALSE;
+					}
+
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
@@ -91,19 +97,14 @@ get_header();
 							$pageTotal = count ( $relatedPages );
 							// echo $pageTotal;
 
-							/* @Check if number of pages is odd or even
-							*  Return BOOL (true/false) */
-							function checkNum($pageTotal) {
-								return ($pageTotal%2) ? TRUE : FALSE;
-							}
 							// Check function return
 							if ( checkNum($pageTotal) === TRUE ) {
 								// if TRUE: number is odd
 								// echo "True, therefore odd";
-								$containerClass .= ' bbg-grid--1-3-3';
+								$gridClass = 'bbg-grid--1-3-3';
 							} else {
 								// if FALSE: number is even
-								$containerClass .= ' bbg-grid--1-2-2';
+								$gridClass = 'bbg-grid--1-2-2';
 							}
 
 							foreach ($relatedPages as $rPage) {
@@ -122,7 +123,7 @@ get_header();
 								if ( have_posts() ) {
 									while ( have_posts() ) {
 										the_post();
-										$gridClass = $containerClass;
+										$grids = $gridClass;
 										$headline = $rPageHeadline; // custom field for secondary page headline
 										$tagline = $rPageTagline; // custom field for page tagline
 										$hideLink = $rHideLink;
@@ -137,21 +138,16 @@ get_header();
 
 						elseif ( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
-							$relatedPages = get_sub_field('about_umbrella_related_pages');
-							$pageTotal = count ( $relatedPages );
+							$umbrellaPages = get_sub_field('about_umbrella_related_pages');
+							$pageTotal = count ( $umbrellaPages );
 
-							/* @Check if number of pages is odd or even
-							*  Return BOOL (true/false) */
-							function checkNum($pageTotal) {
-								return ($pageTotal%2) ? TRUE : FALSE;
-							}
 							// Check function return
 							if ( checkNum($pageTotal) === TRUE ) {
 								// if TRUE: number is odd
-								$containerClass .= ' bbg-grid--1-3-3';
+								$containerClass = 'bbg-grid--1-3-3';
 							} else {
 								// if FALSE: number is even
-								$containerClass .= ' bbg-grid--1-2-2';
+								$containerClass = 'bbg-grid--1-2-2';
 							}
 
 							$labelText = get_sub_field('about_umbrella_label');
@@ -173,9 +169,9 @@ get_header();
 							echo "<div class='bbg__about__child__intro'>$introText</div>";
 							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
 
-							if ( $relatedPages ) {
+							if ( $umbrellaPages ) {
 								// Loop through all the grandchild pages
-								foreach ($relatedPages as $rp) {
+								foreach ($umbrellaPages as $rp) {
 									// Define all variables
 									$url = get_the_permalink($rp->ID);
 									$title = get_the_title($rp->ID);

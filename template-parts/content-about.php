@@ -10,7 +10,7 @@
 
 
 global $includePageDescription;
-global $gridClass;
+global $grids;
 global $headline;
 global $tagline;
 global $hideLink;
@@ -20,10 +20,10 @@ if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
 	$includeDescription = FALSE;
 }
 
-if ( ! isset ($gridClass) ) {
-	$gridClass = "bbg-grid--1-2-2";
+if ( ! isset ($grids) ) {
+	$grids = "bbg-grid--1-2-2";
 }
-$classNames = "bbg__about__excerpt " . "bbg__about__child--" . strtolower(get_the_title()) . " " . $gridClass;
+$classNames = "bbg__about__excerpt bbg__about__child " . "bbg__about__child--" . strtolower(get_the_title()) . " " . $grids;
 
 $postPermalink = esc_url( get_permalink() );
 if ( isset( $_GET['category_id'] ) ) {
