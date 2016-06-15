@@ -40,7 +40,7 @@ function fetchUrl($url) {
 	return $result;
 }
 function getFeed($url,$id) {
-	$feedFilepath = get_template_directory() . "/" . $id . ".xml";
+	$feedFilepath = get_template_directory() . "/external-feed-cache/" . $id . ".xml";
 	if ( fileExpired($feedFilepath,60)) { //one hour expiration
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
@@ -53,7 +53,7 @@ function getFeed($url,$id) {
 	return $json;
 }
 function getCSV($url,$id,$expirationMinutes) {
-	$feedFilepath = get_template_directory() . "/" . $id . ".csv";
+	$feedFilepath = get_template_directory() . "/external-feed-cache/" . $id . ".csv";
 	if ( $expirationMinutes<=0 || fileExpired($feedFilepath,$expirationMinutes)) { 
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
@@ -681,7 +681,8 @@ add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_cho
 
 function getEntityLinks($entityID) {
 	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
-	$feedFilepath = get_template_directory() . "/subgroupscache_".$entityID.".json";
+	$feedFilepath = get_template_directory() . "/external-feed-cache/subgroupscache_".$entityID.".json";
+	echo "filepath " . $feedFilepath . "<BR>";
 	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
