@@ -11,6 +11,7 @@
 
 global $includePageDescription;
 global $grids;
+global $specialMissionClass;
 global $headline;
 global $tagline;
 global $hideLink;
@@ -23,7 +24,13 @@ if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
 if ( ! isset ($grids) ) {
 	$grids = "bbg-grid--1-2-2";
 }
-$classNames = "bbg__about__excerpt bbg__about__child " . "bbg__about__child--" . strtolower(get_the_title()) . " " . $grids;
+$pageTitle = strtolower(get_the_title());
+
+if ( $specialMissionClass == TRUE && $pageTitle == "mission" ) {
+	$grids .= " bbg__about__excerpt-content--large";
+}
+
+$classNames = "bbg__about__excerpt bbg__about__child " . "bbg__about__child--" . $pageTitle . " " . $grids;
 
 $postPermalink = esc_url( get_permalink() );
 if ( isset( $_GET['category_id'] ) ) {
@@ -47,7 +54,6 @@ if ( $headline ) {
 			$linkLabel = '<h6 class="bbg-label">' . $link;
 
 			echo "<!-- Child page title -->";
-			// the_title( sprintf( $linkLabel, $postPermalink ), '</a></h6>' );
 			echo $linkLabel;
 			echo $pageName;
 			echo "</a></h6>";

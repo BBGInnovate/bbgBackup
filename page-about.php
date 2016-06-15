@@ -95,7 +95,7 @@ get_header();
 							/*** BEGIN DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 							$relatedPages = get_sub_field( 'about_muliticolumn_related_pages' );
 							$pageTotal = count ( $relatedPages );
-							// echo $pageTotal;
+							$largeNumber = FALSE;
 
 							// Check function return
 							if ( checkNum($pageTotal) === TRUE ) {
@@ -105,6 +105,10 @@ get_header();
 							} else {
 								// if FALSE: number is even
 								$gridClass = 'bbg-grid--1-2-2';
+							}
+
+							if ( $pageTotal == 5 ) {
+								$five = TRUE;
 							}
 
 							foreach ($relatedPages as $rPage) {
@@ -123,6 +127,7 @@ get_header();
 								if ( have_posts() ) {
 									while ( have_posts() ) {
 										the_post();
+										$specialMissionClass = $five;
 										$grids = $gridClass;
 										$headline = $rPageHeadline; // custom field for secondary page headline
 										$tagline = $rPageTagline; // custom field for page tagline
