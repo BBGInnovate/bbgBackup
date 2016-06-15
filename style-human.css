@@ -6347,7 +6347,12 @@ section.usa-section.bbg-banner__section {
   color: #981b1e;
   display: block;
   font-weight: bold;
+  margin-bottom: 1rem;
   text-transform: uppercase;
+}
+.bbg__profile__intern .bbg__profile__intern__job-label a {
+  color: #981b1e;
+  text-decoration: underline;
 }
 
 .bbg__career-box .usa-width-two-thirds p {
