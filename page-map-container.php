@@ -26,7 +26,6 @@ wp_reset_query();
 
 get_header(); ?>
 
-	<link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/css/ammap.css' type='text/css' media='all' />
 	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/worldLow.js'></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/entity-reach.js"></script>
@@ -38,32 +37,38 @@ get_header(); ?>
 				<?php echo $pageContent; ?>
 
 				<img id="loading" src="img/loading.gif" />
-				<select id="entity">
-					<option value="voa">VOA</option>
-					<option value="rfa">RFA</option>
-					<option value="rferl">RFERL</option>
-					<option value="ocb">OCB</option>
-					<option value="mbn">MBN</option>
-					<option value="hb">HB</option>
-				</select>
-				 <div id="chartdiv"></div>
-				    <div class="country-details">
-				        <div class="col-md-4">
-				            <h2>Groups</h2>
-				            <ul class="detail" id="groups">
+				<div class="usa-grid">
+					<select id="entity">
+						<option value="voa">VOA</option>
+						<option value="rfa">RFA</option>
+						<option value="rferl">RFERL</option>
+						<option value="ocb">OCB</option>
+						<option value="mbn">MBN</option>
+						<option value="hb">HB</option>
+					</select>
+				</div>
+
+				<div id="chartdiv"></div>
+
+				<div class="usa-grid">
+					<div class="country-details">
+						<div class="col-md-4">
+							<h2>Groups</h2>
+							<ul class="detail" id="groups">
 							</ul>
-				        </div>
-				        <div class="col-md-4">
-				            <h2>Subgroups</h2>
-				            <ul class="detail" id="subgroups">
-				            </ul>
-				        </div>
-				        <div class="col-md-4">
-				            <h2>Languages</h2>
-				            <ul class="detail" id="languages">
-				            </ul>
-				        </div>
-				    </div>
+						</div>
+						<div class="col-md-4">
+							<h2>Subgroups</h2>
+							<ul class="detail" id="subgroups">
+							</ul>
+						</div>
+						<div class="col-md-4">
+							<h2>Languages</h2>
+							<ul class="detail" id="languages">
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
