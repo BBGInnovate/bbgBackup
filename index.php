@@ -18,13 +18,11 @@ get_header(); ?>
 			<div class="usa-grid-full">
 
 			<?php if ( have_posts() ) : ?>
-
-				<header class="page-header">
-					<h6 class="bbg-label large">News + Information</h6>
-					<?php
-						//the_archive_title( '<h6 class="bbg-label large">', '</h6>' );
-					?>
-				</header><!-- .page-header -->
+				<div class="usa-grid">
+					<header class="page-header">
+						<h6 class="bbg-label large">News + Information</h6>
+					</header>
+				</div>
 
 
 				<?php /* Start the Loop */ 
@@ -91,8 +89,8 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php the_posts_navigation(); ?>
 				</div><!-- .usa-grid -->
+				<?php the_posts_navigation(); ?>
 			<?php else : ?>
 
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>

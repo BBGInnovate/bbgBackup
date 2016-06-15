@@ -192,7 +192,7 @@ get_header();
 
 						<h6 class="bbg-label"><a href="<?php echo $impactPortfolioPermalink; ?>">Impact stories</a></h6>
 
-						<div class="usa-grid-full">
+						<div class="usa-grid-full" style="margin-bottom: 1.5rem;">
 						<?php
 							$qParams=array(
 								'post_type' => array('post'),
@@ -247,7 +247,7 @@ get_header();
 										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
 									</header><!-- .entry-header -->
 
-									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt" style="">
+									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt">
 										<p><?php echo $excerpt; ?></p>
 									</div><!-- .bbg-portfolio__excerpt-title -->
 								</div>
@@ -335,7 +335,7 @@ get_header();
 						?>
 							<nav class="navigation posts-navigation" role="navigation">
 								<h2 class="screen-reader-text">Posts navigation</h2>
-								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_page_by_path('/news-info/page/2/'); ?>" >Read More</a></div></div>
+								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_page_by_path('news-info/page/2/'); ?>" >Read More</a></div></div>
 							</nav>	
 					</div>
 
