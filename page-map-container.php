@@ -26,9 +26,9 @@ wp_reset_query();
 
 get_header(); ?>
 
-	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/map-entity-reach.js"></script>
+	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/map-entity-reach.js'></script>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
