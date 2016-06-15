@@ -71,12 +71,12 @@
 			size: 2rem;
 			weight: 300;
 		}
-		line-height: 1.7;
+		line-height: 1.9;
 		margin: 0;
 	}
 }
 
-// Add special excerpt class there are exactly 5 pages including the Mission (not common but just in case!)
+// Add special excerpt class when there are exactly 5 pages including the Mission (not common but just in case!)
 .bbg__about__excerpt-content--large {
 	@include media($large-screen) {
 		height: 44.1rem;

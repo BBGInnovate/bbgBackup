@@ -363,7 +363,8 @@ article {
 	margin: 0 auto;
 	max-width: $article-max-width;
 
-	p {
+	p,
+	ol {
 		font-family: $font-sans;
 		font-size: 90%;
 		line-height: 1.5;
@@ -1205,13 +1206,13 @@ article {
 .bbg__ribbon--thin {
 	background-color: $color-gray-dark;
 	padding: 2rem auto;
-	
+
 	.bbg-label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;
 		font-size: 1.7rem;
-		padding: .5rem 1rem; 
+		padding: .5rem 1rem;
 
 		a {
 			color: #FFF;
@@ -1240,14 +1241,14 @@ article {
 			}
 			display: block;
 			min-height: 200px;
-			width: 100%; 
+			width: 100%;
 
 			@include media($small-screen) {
 				min-height: 275px;
 			}
 		}
 		@include media($medium-screen) {
-			display: flex; 
+			display: flex;
 			min-height: 200px;
 			padding-top: 0;
 
@@ -1256,14 +1257,14 @@ article {
 				margin-top: 0;
 				margin-right: 2rem;
 				min-height: 125px;
-				min-width: 50%; 
+				min-width: 50%;
 				width: auto;
 			}
 		}
 
 		@include media($medium-large-screen) {
 			.bbg__announcement__photo {
-				min-width: 33%; 
+				min-width: 33%;
 			}
 		}
 	}
@@ -1273,13 +1274,13 @@ article {
 .bbg__banner--thin {
 	background-color: $color-gray-lightest;
 	padding: 2rem auto;
-	
+
 	.bbg-label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;
 		font-size: 1.7rem;
-		padding: .5rem 1rem; 
+		padding: .5rem 1rem;
 
 		a {
 			color: #FFF;
@@ -1305,7 +1306,7 @@ article {
 			}
 			display: block;
 			min-height: 200px;
-			width: 100%; 
+			width: 100%;
 
 			@include media($small-screen) {
 				min-height: 275px;
@@ -1317,7 +1318,7 @@ article {
 		}
 
 		@include media($medium-screen) {
-			display: flex; 
+			display: flex;
 			min-height: 200px;
 			padding-top: 0;
 
@@ -1326,7 +1327,7 @@ article {
 				margin-top: 0;
 				margin-right: 2rem;
 				min-height: 125px;
-				min-width: 50%; 
+				min-width: 50%;
 				width: auto;
 			}
 
@@ -1337,7 +1338,7 @@ article {
 
 		@include media($medium-large-screen) {
 			.bbg__announcement__photo {
-				min-width: 33%; 
+				min-width: 33%;
 			}
 		}
 	}

@@ -100,7 +100,6 @@ get_header();
 							// Check function return
 							if ( checkNum($pageTotal) === TRUE ) {
 								// if TRUE: number is odd
-								// echo "True, therefore odd";
 								$gridClass = 'bbg-grid--1-3-3';
 							} else {
 								// if FALSE: number is even
