@@ -88,8 +88,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	<div class="usa-grid">
 
-	<?php echo bbginnovate_post_categories(); ?>
-	<!-- .bbg-label -->
+	<?php /*echo bbginnovate_post_categories();*/ ?>
 
 		<header class="entry-header">
 
@@ -98,9 +97,9 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 				$parent_link = get_permalink($post->post_parent);
 				?>
-				<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+				<h5 class="bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 			<?php } else{ ?>
-				<h5 class="bbg-label--mobile large"><?php the_title(); ?></h5>
+				<h5 class="bbg-label"><?php the_title(); ?></h5>
 			<?php } ?>
 
 
