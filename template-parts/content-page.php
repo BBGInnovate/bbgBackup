@@ -125,13 +125,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 
 			<?php
-			/*
-			$pageHeadline = get_field('headline');
 
-			if ( $pageHeadline ) {
-				echo "<h2>" . $pageHeadline . "</h2>";
+			$pageTagline = get_field('page_tagline');
+
+			if ( $pageTagline ) {
+				echo "<h2>" . $pageTagline . "</h2>";
 			}
-			*/
 
 			the_content();
 
