@@ -32,7 +32,7 @@ $headlineStr = "";
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main bbg__2-column" role="main">
 
 			<div class="usa-grid-full">
 
@@ -100,7 +100,7 @@ get_header(); ?>
 
 								<?php } else{ ?>
 									<!--<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>-->
-									<?php $headlineStr = "<h1>" . $headline . "</h1>"; ?>
+									<?php $headlineStr = "<h1 class='bbg__entry__secondary-title'>" . $headline . "</h1>"; ?>
 								<?php } ?>
 
 							</header><!-- .entry-header -->

@@ -4162,6 +4162,20 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
+.bbg__2-column .bbg__entry__secondary-title {
+  font-size: 2.5rem;
+}
+@media screen and (min-width: 481px) {
+  .bbg__2-column .bbg__entry__secondary-title {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__2-column .bbg__entry__secondary-title {
+    font-size: 4rem;
+  }
+}
+
 /** INLINE LISTS */
 ul.bbg__article-content__list--inline {
   display: block;
@@ -6042,7 +6056,7 @@ article {
 }
 @media screen and (min-width: 1201px) {
   .bbg-banner .bbg-banner-box .bbg-banner-site-title {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 .bbg-banner .bbg-banner-box .bbg-banner-site-description {
