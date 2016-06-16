@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
     if (jQuery('#downloadFile').length && jQuery('#file_download_list').length) {
         jQuery('#downloadFile').click(function() {
             console.log("download something");
-            url=jQuery('#entity_sites').val();
+            url=jQuery('#file_download_list').val();
             window.open(url,'_blank');
         });
     }

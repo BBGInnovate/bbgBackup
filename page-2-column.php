@@ -37,7 +37,7 @@ if( $sidebarInclude ){
 	if($rows) {
 		$s = '<form style="">';
 		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Download a previous year</label>';
-		$s .= '<select id="downloads" name="file_download_list" id="file_download_list" style="display: inline-block;">';
+		$s .= '<select name="file_download_list" id="file_download_list" style="display: inline-block;">';
 		$s .= '<option>Select a file to download</option>';
 
 		foreach( $rows as $row ) {
@@ -47,7 +47,7 @@ if( $sidebarInclude ){
 		$s .= '</select>';
 		$s .= '</form>';
 
-		$s .= '<button class="usa-button" id="entityUrlGo" style="width: 100%;">Download</button>';
+		$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
 		$sidebarDownloads = $s;
 	}
 }
