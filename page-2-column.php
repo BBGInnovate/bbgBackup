@@ -33,6 +33,8 @@ $headlineStr = "";
 $sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
 $sidebarDownloads = "";
 if( $sidebarInclude ){
+	$downloadsTitle = get_field( 'sidebar_downloads_title' );
+	$optionDefault = get_field ( 'sidebar_downloads_default' );
 	$rows = get_field('sidebar_downloads');
 	if ( $rows ) {
 		$s = '<form style="">';
