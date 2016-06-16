@@ -65,6 +65,15 @@ jQuery(document).ready(function() {
             window.open(url,'_blank');
         });
     }
+    if (jQuery('#downloadFile').length && jQuery('#file_download_list').length) {
+        jQuery('#downloadFile').click(function() {
+            console.log("download something");
+            url=jQuery('#entity_sites').val();
+            window.open(url,'_blank');
+        });
+    }
+
+
 
     if (jQuery("div[data-name='committee_members'] select").length) {
         console.log('found the field');

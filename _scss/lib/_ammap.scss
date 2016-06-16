@@ -1,7 +1,5 @@
 #chartdiv {
-	-moz-box-shadow:    inset 2px 0 10px #CCC;
-	-webkit-box-shadow: inset 2px 0 10px #CCC;
-	box-shadow:         inset 2px 0 10px #999;
+	box-shadow: inset 2px 0 3px #999;
 
 	border-radius: $border-radius;
 
@@ -13,6 +11,8 @@
 		height		: 250px;
 	}
 	@include media($medium-large-screen) {
+		box-shadow: inset 2px 0 10px #999;
+
 		height		: 400px;
 	}
 	/*

@@ -29,6 +29,32 @@ $headlineStr = "";
 //$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
 
 
+
+$sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
+$sidebarDownloads = "";
+if( $sidebarInclude ){
+	$rows = get_field('sidebar_downloads');
+	if($rows) {
+		$s = '<form style="">';
+		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Download a previous year</label>';
+		$s .= '<select id="downloads" name="file_download_list" id="file_download_list" style="display: inline-block;">';
+		$s .= '<option>Select a file to download</option>';
+
+		foreach( $rows as $row ) {
+			$s .= '<option value="' . $row['sidebar_download_file'] .'">' . $row["sidebar_download_title"] . '</option>';
+		}
+
+		$s .= '</select>';
+		$s .= '</form>';
+
+		$s .= '<button class="usa-button" id="entityUrlGo" style="width: 100%;">Download</button>';
+		$sidebarDownloads = $s;
+	}
+}
+
+
+
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -157,6 +183,8 @@ get_header(); ?>
 									if ( $secondaryColumnContent != "" ) {
 										echo $secondaryColumnContent;
 									}
+
+									echo $sidebarDownloads;
 								?>
 
 							</div><!-- .bbg__article-sidebar -->
@@ -183,7 +211,6 @@ get_header(); ?>
 
 
 					</article><!-- #post-## -->
-
 
 					<div class="bbg-post-footer">
 					<?php
