@@ -13,11 +13,13 @@
 		height		: 250px;
 	}
 	@include media($medium-large-screen) {
-		height		: 300px;
+		height		: 400px;
 	}
+	/*
 	@include media($large-screen) {
 		height		: 400px;
 	}
+	*/
 }
 
 .usa-grid .bbg__map-area__container {

@@ -4896,7 +4896,7 @@ img > a:focus,
 }
 
 .bbg__page-header__tagline {
-  color: #aeb0b5;
+  color: #757575;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.4rem;
   font-style: italic;
@@ -7062,6 +7062,11 @@ div.appropriations-small > p.header {
   font-size: 11px;
   height: 200px;
   width: 100%;
+  /*
+  @include media($large-screen) {
+  	height		: 400px;
+  }
+  */
 }
 @media screen and (min-width: 600px) {
   #chartdiv {
@@ -7069,11 +7074,6 @@ div.appropriations-small > p.header {
   }
 }
 @media screen and (min-width: 900px) {
-  #chartdiv {
-    height: 300px;
-  }
-}
-@media screen and (min-width: 1201px) {
   #chartdiv {
     height: 400px;
   }

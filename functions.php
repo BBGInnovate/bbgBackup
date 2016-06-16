@@ -9,7 +9,7 @@
 
 //can't 'DEFINE' an array, so we just set a var.  Note that this should be kept here and not called on 'init' else it won't be available globally.
 $STANDARD_POST_CATEGORY_EXCLUDES = array(
-	get_cat_id("John's take"),
+	get_cat_id("From the CEO"),
 	get_cat_id('Contact'),
 	get_cat_id('Quotation'),
 	get_cat_id('Employee'),
@@ -976,7 +976,7 @@ function getSoapboxStr($soap) {
 
 	foreach ($soapCategory as $c) {
 		$cat = get_category( $c );
-		if ($cat->slug == "johns-take") {
+		if ($cat->slug == "from-the-ceo") {
 			$isCEOPost = TRUE;
 			$soapHeaderText = "From the CEO";
 			$soapHeaderPermalink = get_category_link($cat->term_id);
