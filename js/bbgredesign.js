@@ -65,9 +65,10 @@ jQuery(document).ready(function() {
             window.open(url,'_blank');
         });
     }
+
+    /* used on the 2-column page, dropdown nav for file downloads */
     if (jQuery('#downloadFile').length && jQuery('#file_download_list').length) {
         jQuery('#downloadFile').click(function() {
-            console.log("download something");
             url=jQuery('#file_download_list').val();
             window.open(url,'_blank');
         });
