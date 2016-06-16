@@ -5267,13 +5267,15 @@ article {
   .bbg__article-sidebar.large {
     max-width: none;
     width: 33%;
+    /*
+    p, a, ul, li{
+    	font-size: 90%;
+    	line-height: 1.5;
+    }
+    */
   }
   .bbg__article-sidebar.large:first-child {
     margin-top: -1rem;
-  }
-  .bbg__article-sidebar.large p, .bbg__article-sidebar.large a, .bbg__article-sidebar.large ul, .bbg__article-sidebar.large li {
-    font-size: 90%;
-    line-height: 1.5;
   }
 }
 .bbg__article-sidebar--left {
