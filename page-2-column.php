@@ -13,6 +13,21 @@
    template name: 2-column
  */
 
+function formatBytes($bytes, $precision = 2) { 
+	$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+
+	$bytes = max($bytes, 0); 
+	$pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+	$pow = min($pow, count($units) - 1); 
+
+	// Uncomment one of the following alternatives
+	$bytes /= pow(1024, $pow);
+	// $bytes /= (1 << (10 * $pow)); 
+
+	return round($bytes, $precision) . ' ' . $units[$pow]; 
+} 
+
+
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
 $bannerAdjustStr="";
@@ -43,7 +58,9 @@ if( $sidebarInclude ){
 		$s .= '<option>' . $optionDefault . '</option>';
 
 		foreach( $rows as $row ) {
-			$s .= '<option value="' . $row['sidebar_download_file'] .'">' . $row["sidebar_download_title"] . '</option>';
+			$fileID = $row['sidebar_download_file']['ID']; 
+			$filesize = formatBytes(filesize( get_attached_file( $fileID ) ));
+			$s .= '<option value="' . $row['sidebar_download_file'] .'">' . $row["sidebar_download_title"] . " ($filesize) " . '</option>';
 		}
 
 		$s .= '</select>';
