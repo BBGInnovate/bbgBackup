@@ -1,7 +1,8 @@
 jQuery(function () {
 
 	var defaultEntity='voa'; //might fill this from a global JS var later.
-
+	//bbgConfig={};
+	//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
 	/* keep countries,map as global variables else they won't be available in the ajax callback */
 	countries=[];
 	map = AmCharts.makeChart( "chartdiv", {
@@ -24,9 +25,6 @@ jQuery(function () {
 		},
 		zoomDuration:0.2,
 		backgroundZoomsToTop: true, //water zooms out
-		"export": {
-			"enabled": true
-		}
 	} );
 
 	//if someone clicks a country that's already selected, zoom out.
@@ -36,6 +34,7 @@ jQuery(function () {
 			event.chart.zoomToGroup(countries);
 		} else {
 			window.selectedCountryID = event.mapObject.id;
+			getCountryDetails(event.mapObject.title);
 			//getAPIDataCallback(event.mapObject.title);
 		}
 	});
@@ -79,4 +78,43 @@ function grabData(entity) {
 			var err = textStatus + ", " + error;
 			alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
 		});
+}
+
+function getCountryDetails (countryName) {
+	jQuery('.detail').empty();
+
+	var groups = [];
+	var subgroups = [];
+	var languages = [];
+
+	jQuery.when(
+		jQuery.getJSON(bbgConfig.template_directory_uri+"/api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
+			groups = data.groups;
+		}),
+
+		jQuery.getJSON( bbgConfig.template_directory_uri+"/api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
+			subgroups = data.subgroups;
+		}),
+
+		jQuery.getJSON( bbgConfig.template_directory_uri+"/api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
+			languages = data.languages;
+		})
+
+	).then(function() {
+
+		for (var i = 0; i < groups.length; i++) {
+			jQuery('#groups').append('<li><a target="_blank" href="'+groups[i].website_url+'">'+groups[i].name+'</a></li>');
+		}
+
+		for (var i = 0; i < subgroups.length; i++) {
+			jQuery('#subgroups').append('<li><a target="_blank" href="'+subgroups[i].website_url+'">'+subgroups[i].name+'</a></li>');
+		}
+
+		for (var i = 0; i < languages.length; i++) {
+			jQuery('#languages').append('<li>'+languages[i].name+'</li>');
+		}
+
+		jQuery('.country-details').show();
+
+	});
 }
