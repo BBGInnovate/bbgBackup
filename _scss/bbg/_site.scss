@@ -364,10 +364,11 @@ article {
 	max-width: $article-max-width;
 
 	p,
+	ul,
 	ol {
 		font-family: $font-sans;
-		font-size: 90%;
-		line-height: 1.5;
+		//font-size: 90%;
+		//line-height: 1.5;
 		margin-top: 0;
 	}
 
@@ -557,6 +558,12 @@ article {
 		max-width: 17rem;
 		width: 18%;
 
+		p, a, ul, li{
+			font-size: 90%;
+			line-height: 1.5;
+		}
+
+
 		&.large{
 			max-width: none;
 			width: 33%;
@@ -565,12 +572,12 @@ article {
 				margin-top: -1rem;
 			}
 
-			p {
+			p, a, ul, li{
 				font-size: 90%;
+				line-height: 1.5;
 			}
 		}
 	}
-
 }
 
 .bbg__article-sidebar--left {

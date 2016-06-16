@@ -5086,10 +5086,9 @@ article {
   max-width: 600px;
 }
 .bbg__article-sidebar p,
+.bbg__article-sidebar ul,
 .bbg__article-sidebar ol {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 90%;
-  line-height: 1.5;
   margin-top: 0;
 }
 .bbg__article-sidebar .bbg__article-sidebar__tagline {
@@ -5261,6 +5260,10 @@ article {
     max-width: 17rem;
     width: 18%;
   }
+  .bbg__article-sidebar p, .bbg__article-sidebar a, .bbg__article-sidebar ul, .bbg__article-sidebar li {
+    font-size: 90%;
+    line-height: 1.5;
+  }
   .bbg__article-sidebar.large {
     max-width: none;
     width: 33%;
@@ -5268,8 +5271,9 @@ article {
   .bbg__article-sidebar.large:first-child {
     margin-top: -1rem;
   }
-  .bbg__article-sidebar.large p {
+  .bbg__article-sidebar.large p, .bbg__article-sidebar.large a, .bbg__article-sidebar.large ul, .bbg__article-sidebar.large li {
     font-size: 90%;
+    line-height: 1.5;
   }
 }
 .bbg__article-sidebar--left {
