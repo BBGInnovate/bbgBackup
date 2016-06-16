@@ -60,7 +60,7 @@ if( $sidebarInclude ){
 		foreach( $rows as $row ) {
 			$fileID = $row['sidebar_download_file']['ID']; 
 			$filesize = formatBytes(filesize( get_attached_file( $fileID ) ));
-			$s .= '<option value="' . $row['sidebar_download_file'] .'">' . $row["sidebar_download_title"] . " ($filesize) " . '</option>';
+			$s .= '<option value="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] . " ($filesize) " . '</option>';
 		}
 
 		$s .= '</select>';
