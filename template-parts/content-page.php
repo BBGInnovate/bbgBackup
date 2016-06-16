@@ -35,9 +35,12 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
-/*** Sidebar content ***/
-$includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+/**
+ ** Sidebar content **
+ **/
 
+// Sidebar items (links, quotes, individual downloads)
+$includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 if ( $includeSidebar ) {
 	// check if the flexible content field has rows of data
 	$sidebar = "";
@@ -125,7 +128,30 @@ if ( $includeSidebar ) {
 
 		$sidebar .= $s;
 	endif;
-} ?>
+}
+
+// Sidebar multiple downloads drop-down
+$sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
+$sidebarDownloads = "";
+if( $sidebarInclude ){
+	$rows = get_field( 'sidebar_downloads' );
+	if( $rows ) {
+		$s = '<form style="">';
+		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Download a previous year</label>';
+		$s .= '<select name="file_download_list" id="file_download_list" style="display: inline-block;">';
+		$s .= '<option>Select a file to download</option>';
+
+		foreach( $rows as $row ) {
+			$s .= '<option value="' . $row['sidebar_download_file'] .'">' . $row["sidebar_download_title"] . '</option>';
+		}
+
+		$s .= '</select>';
+		$s .= '</form>';
+
+		$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
+		$sidebarDownloads = $s;
+	}
+}?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
@@ -235,6 +261,12 @@ if ( $includeSidebar ) {
 				if ( $includeSidebar && $sidebarTitle != "" ) {
 					echo $sidebar;
 				}
+
+				if ( $secondaryColumnContent != "" ) {
+					echo $secondaryColumnContent;
+				}
+
+				echo $sidebarDownloads;
 			?>
 		</div><!-- .bbg__article-sidebar -->
 
