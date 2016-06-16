@@ -35,7 +35,97 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
-?>
+/*** Sidebar content ***/
+$includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+
+if ( $includeSidebar ) {
+	// check if the flexible content field has rows of data
+	$sidebar = "";
+	$s = "";
+
+	if ( have_rows('sidebar_items') ):
+		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+
+		if ( $sidebarTitle != "" ) {
+			$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+		}
+
+		while ( have_rows('sidebar_items') ) : the_row();
+
+			if ( get_row_layout() == 'sidebar_download_file' ) {
+
+				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
+				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+
+				$sidebarImage = "";
+				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
+					$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarDownloadDescription && $sidebarDownloadDescription != "") {
+					$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
+				}
+
+				$sidebarDownload = "";
+				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
+
+				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
+			} elseif (get_row_layout() == 'sidebar_quote'){
+
+				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
+				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
+				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
+
+				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
+			} else if (get_row_layout() == 'sidebar_external_link'){
+
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
+				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+				$sidebarDescription = "";
+				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+			} else if (get_row_layout() == 'sidebar_internal_link') {
+
+				$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title', false);
+				$sidebarInternalLocation = get_sub_field( 'sidebar_internal_location' );
+				$sidebarInternalDescription = get_sub_field( 'sidebar_internal_description', false);
+
+				// get data out of WP object
+				$url = get_permalink( $sidebarInternalLocation->ID ); // Use WP object ID to get permalink for link
+				$title = $sidebarInternalLocation->post_title; // WP object title
+
+				$sidebarSectionTitle = "";
+				// Set text for the internal link
+				if ($sidebarInternalTitle && $sidebarInternalTitle != "") {
+					// User-defined title
+					$sidebarSectionTitle = "<p>" . $sidebarInternalTitle . "</p>";
+				} else {
+					// WP object title (set above)
+					$sidebarSectionTitle = "<p>" . $title . "</p>";
+				}
+
+				$sidebarDescription = "";
+				// Set text for description beneath link
+				if ($sidebarInternalDescription && $sidebarInternalDescription != "") {
+					// User-defined description
+					$sidebarDescription = "<p>" . $sidebarInternalDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
+			}
+		endwhile;
+
+		$sidebar .= $s;
+	endif;
+} ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 
@@ -139,7 +229,13 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
-			<!-- <p>Sidebar info or widgets here? Maybe just display HTML text from an ACF custom field? Pullquotes?</p> -->
+			<?php
+				// Right sidebar
+				echo "<!-- Sidebar content -->";
+				if ( $includeSidebar && $sidebarTitle != "" ) {
+					echo $sidebar;
+				}
+			?>
 		</div><!-- .bbg__article-sidebar -->
 
 
