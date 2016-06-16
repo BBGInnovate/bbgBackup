@@ -138,7 +138,7 @@ if( $sidebarInclude ) {
 	$rows = get_field( 'sidebar_downloads' );
 	if( $rows ) {
 		$s = '<form style="">';
-		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">$downloadTitles</label>';
+		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $downloadTitles . '</label>';
 		$s .= '<select name="file_download_list" id="file_download_list" style="display: inline-block;">';
 		$s .= '<option>Select a download</option>';
 
