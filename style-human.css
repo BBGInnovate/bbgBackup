@@ -5260,7 +5260,7 @@ article {
     max-width: 17rem;
     width: 18%;
   }
-  .bbg__article-sidebar p, .bbg__article-sidebar a, .bbg__article-sidebar ul, .bbg__article-sidebar li {
+  .bbg__article-sidebar p, .bbg__article-sidebar a, .bbg__article-sidebar li {
     font-size: 90%;
     line-height: 1.5;
   }
@@ -5268,7 +5268,7 @@ article {
     max-width: none;
     width: 33%;
     /*
-    p, a, ul, li{
+    p, a, li{
     	font-size: 90%;
     	line-height: 1.5;
     }
