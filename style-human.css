@@ -820,6 +820,14 @@ body {
   }
 }
 
+.bbg__clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 /*MOVED FROM BELOW TO UPDATE FONTS*/
 .usa-button,
 .usa-button-primary,
@@ -5736,6 +5744,19 @@ article {
 }
 .bbg__article-sidebar.large .bbg-portfolio__excerpt div {
   margin-bottom: 0;
+}
+.bbg__article-sidebar.large .bbg__sidebar__secondary:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bbg__article-sidebar.large .bbg__sidebar__secondary .bbg__sidebar__secondary-image {
+  float: left;
+  margin-right: 2rem;
+  max-width: 150px;
+  width: 48%;
 }
 
 .bbg__entity-logo__press-release {
