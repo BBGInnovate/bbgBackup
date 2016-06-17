@@ -14,12 +14,13 @@ get_header(); ?>
 			<div class="usa-grid-full">
 
 			<?php if ( have_posts() ) : ?>
-
-				<header class="page-header">
-					<?php
-						the_archive_title( '<h6 class="bbg-label large">', '</h6>' );
-					?>
-				</header><!-- .page-header -->
+				<div class="usa-grid">
+					<header class="page-header">
+						<?php
+							the_archive_title( '<h6 class="bbg-label large">', '</h6>' );
+						?>
+					</header><!-- .page-header -->
+				</div>
 
 
 				<?php /* Start the Loop */ 
