@@ -63,7 +63,7 @@ get_header(); ?>
 			<div class="usa-grid-full">
 				<div class="usa-grid">
 					<form style="margin-bottom: 2rem; max-width: none;">
-						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Select an entity</label>
+						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
 						<select id="entity" name="options" id="options" style=" display: inline-block;">
 							<option value="voa">VOA</option>
 							<option value="rfa">RFA</option>
