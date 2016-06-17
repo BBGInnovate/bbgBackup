@@ -137,7 +137,7 @@ O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II
 <script type="text/javascript">
 	bbgConfig={};
 	bbgConfig.MAPBOX_API_KEY = '<?php echo MAPBOX_API_KEY; ?>';
-	bbgConfig.template_directory_uri = '<?php echo get_template_directory_uri(); ?>';
+	bbgConfig.template_directory_uri = '<?php echo get_template_directory_uri() . "/"; ?>';
 </script>
 
 
