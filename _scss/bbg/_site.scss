@@ -1177,7 +1177,11 @@ article {
 
 	@include media($medium-large-screen) {
 		.bbg__sidebar__primary-image {
+			float: none;
 			max-width: none;
+		}
+		.bbg__sidebar__primary-headline {
+			@include clearfix();
 		}
 	}
 }

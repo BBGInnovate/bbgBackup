@@ -5776,7 +5776,15 @@ article {
 }
 @media screen and (min-width: 900px) {
   .bbg__article-sidebar.large .bbg__sidebar__primary-image {
+    float: none;
     max-width: none;
+  }
+  .bbg__article-sidebar.large .bbg__sidebar__primary-headline:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
   }
 }
 
