@@ -50,11 +50,17 @@ get_header(); ?>
 
 					</header><!-- .page-header -->
 				</div>
+			</div><!-- div.usa-grid-full -->
 
-				<section id="page-intro" class="usa-section usa-grid bbg__about__intro" style="margin-bottom: 2rem;">
-					<?php echo $pageContent; ?>
-				</section>
+			<section class="usa-section">
+				<div class="usa-gridxxx">
+					<div class="bbg__map-area__container " style="postion: relative;">
+						<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
+						<div id="chartdiv"></div>
+					</div>
+				</div>
 
+			<div class="usa-grid-full">
 				<div class="usa-grid">
 					<form style="margin-bottom: 2rem; max-width: none;">
 						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">Select an entity</label>
@@ -67,12 +73,7 @@ get_header(); ?>
 						</select>
 					</form>
 				</div>
-				<div class="usa-grid">
-					<div class="bbg__map-area__container " style="postion: relative;">
-						<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
-						<div id="chartdiv"></div>
-					</div>
-				</div>
+
 
 				<div class="usa-grid">
 					<div class="country-details">
@@ -120,6 +121,11 @@ get_header(); ?>
 					</div>
 
 				</div>
+			</section>
+
+				<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
+					<?php echo $pageContent; ?>
+				</section>
 
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
