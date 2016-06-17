@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,bbgConfig) {
 	var defaultEntity='bbg'; //might fill this from a global JS var later.
 	//bbgConfig={};
 	//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
@@ -220,5 +220,5 @@
 
 		});
 	}
-})(jQuery);
+})(jQuery,bbgConfig);
 
