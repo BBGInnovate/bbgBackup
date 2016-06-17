@@ -77,10 +77,11 @@ get_header(); ?>
 				
 				<div class="usa-grid">
 					<div class="country-details">
+						<!--
 						<div class="col-md-4">
 							<h2>Fake Entity Data</h2>
 						</div>
-						<!--
+						
 						<div class="col-md-4">
 							<h2>Subgroups</h2>
 							<ul class="detail" id="subgroups">
