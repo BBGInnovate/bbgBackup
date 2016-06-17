@@ -61,8 +61,10 @@ if( $sidebarInclude ){
 
 		foreach( $rows as $row ) {
 			$fileID = $row['sidebar_download_file']['ID']; 
-			$filesize = formatBytes(filesize( get_attached_file( $fileID ) ));
-			$s .= '<option value="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] . " ($filesize) " . '</option>';
+			$file = get_attached_file( $fileID );
+			$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+			$filesize = formatBytes(filesize($file));
+			$s .= '<option value="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] . " ($ext $filesize) " . '</option>';
 		}
 
 		$s .= '</select>';
@@ -76,8 +78,10 @@ if( $sidebarInclude ){
 
 		foreach( $rows as $row ) {
 			$fileID = $row['sidebar_download_file']['ID']; 
-			$filesize = formatBytes(filesize( get_attached_file( $fileID ) ));
-			$s .= '<li><a href="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] .'</a>' . " ($filesize) " . '</li>';
+			$file = get_attached_file( $fileID );
+			$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+			$filesize = formatBytes(filesize($file));
+			$s .= '<li><a href="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] .'</a>' . " ($ext $filesize) " . '</li>';
 		}
 
 		$s .= '</ul>';
