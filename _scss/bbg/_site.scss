@@ -1150,6 +1150,12 @@ article {
 	}
 
 	.bbg__sidebar__primary {
+		@include clearfix();
+
+		.bbg__sidebar__primary-headline {
+			clear: none;
+		}
+
 		.bbg__sidebar__primary-image {
 			float: left;
 			margin-right: 2rem;

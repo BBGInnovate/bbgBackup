@@ -5745,6 +5745,16 @@ article {
 .bbg__article-sidebar.large .bbg-portfolio__excerpt div {
   margin-bottom: 0;
 }
+.bbg__article-sidebar.large .bbg__sidebar__primary:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-headline {
+  clear: none;
+}
 .bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-image {
   float: left;
   margin-right: 2rem;
