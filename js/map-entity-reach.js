@@ -219,6 +219,6 @@
 			$('.country-details').show();
 
 		});
-	});
+	}
 })(jQuery);
 
