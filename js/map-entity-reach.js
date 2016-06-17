@@ -1,5 +1,4 @@
 (function ($) {
-
 	var defaultEntity='bbg'; //might fill this from a global JS var later.
 	//bbgConfig={};
 	//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
@@ -84,74 +83,69 @@
 
 	//load our initial data
 	grabData(defaultEntity);
-});
 
-function grabData(entity) {
+	function grabData(entity) {
+		var url = '';
+		// this is an organization (BBG)
+		if (entity === 'bbg') {
+			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
+		// if there's an entity (group), get it by entity
+		} else {
+			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
+		}
 
+		$('#loading').show();
+		$.getJSON(url)
+			.done(function( data ) {
+				countries=[];
+				for (var i = 0; i < data.countries.length; i++) {
+					var country = data.countries[i];
+					var countryCode = data.countries[i].code;
+					country.id = countryCode;
+					country.color = '#DDDDDD';
+					if (country.region_ids) {
+						country.color = '#9F1D26';
+					}
+					countries.push(country);
+				}
+				map.dataProvider.areas = countries;
+				map.validateData();
 
-	var url = '';
-
-	// this is an organization (BBG)
-	if (entity === 'bbg') {
-		url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
-
-	// if there's an entity (group), get it by entity
-	} else {
-		url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
+				$('#loading').hide();
+			})
+			.fail(function( jqxhr, textStatus, error ) {
+				var err = textStatus + ", " + error;
+				alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
+			});
 	}
 
-	$('#loading').show();
-	$.getJSON(url)
-		.done(function( data ) {
-			countries=[];
-			for (var i = 0; i < data.countries.length; i++) {
-				var country = data.countries[i];
-				var countryCode = data.countries[i].code;
-				country.id = countryCode;
-				country.color = '#DDDDDD';
-				if (country.region_ids) {
-					country.color = '#9F1D26';
-				}
-				countries.push(country);
-			}
-			map.dataProvider.areas = countries;
-			map.validateData();
+	function getCountryDetails (countryName) {
+		$('.detail').empty();
+		$('.groups-and-subgroups').empty();
+		$('.languages-served').empty();
 
-			$('#loading').hide();
-		})
-		.fail(function( jqxhr, textStatus, error ) {
-			var err = textStatus + ", " + error;
-			alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
-		});
-}
+		var groups = [];
+		var subgroups = [];
+		var languages = [];
 
-function getCountryDetails (countryName) {
-	$('.detail').empty();
-	$('.groups-and-subgroups').empty();
-	$('.languages-served').empty();
+		// create a map of groups and subgroups
+		var groupMap = {};
+		var subgroupMap = {};
 
-	var groups = [];
-	var subgroups = [];
-	var languages = [];
+		$.when(
+			$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
+				groups = data.groups;
+			}),
 
-	// create a map of groups and subgroups
-	var groupMap = {};
-	var subgroupMap = {};
+			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
+				subgroups = data.subgroups;
+			}),
 
-	$.when(
-		$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
-			groups = data.groups;
-		}),
+			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
+				languages = data.languages;
+			})
 
-		$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
-			subgroups = data.subgroups;
-		}),
-
-		$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
-			languages = data.languages;
-		})
-
-	).then(function() {
+		).then(function() {
 
 			for (var i = 0; i < groups.length; i++) {
 				// map out the group_id to the group name
@@ -206,30 +200,25 @@ function getCountryDetails (countryName) {
 
 				// Append the Group Name (VOA, RFA, etc.)
 				$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
-
 				$('.groups-and-subgroups').append('<ul>');
 
 				// Loop through the corresponding subgroups and list out the Subgroup name
 				for (var i = 0; i < subgroupMap[key].length; i++) {
-
 					// if there's a URL, use href with the list item
 					if (subgroupMap[key][i].url) {
 						$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
-
 					// if no URL, just use regular list item
 					} else {
 						$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
-
 					}
 				}
 
 				$('.groups-and-subgroups').append('</ul>');
-
 				$('.groups-and-subgroups').append('<br>');
 			}
-
-
 			$('.country-details').show();
 
 		});
+	});
 })(jQuery);
+
