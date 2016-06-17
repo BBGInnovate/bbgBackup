@@ -558,7 +558,7 @@ article {
 		max-width: 17rem;
 		width: 18%;
 
-		p, a, li{
+		p, li{
 			font-size: 90%;
 			line-height: 1.5;
 		}
@@ -571,13 +571,6 @@ article {
 			&:first-child {
 				margin-top: -1rem;
 			}
-
-			/*
-			p, a, li{
-				font-size: 90%;
-				line-height: 1.5;
-			}
-			*/
 		}
 	}
 }

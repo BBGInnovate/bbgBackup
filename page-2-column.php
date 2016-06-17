@@ -41,8 +41,6 @@ $videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
-//$secondaryColumnContent = get_post_meta( get_the_ID(), 'secondary_column_content', true );
-
 
 
 $sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
@@ -51,7 +49,11 @@ if( $sidebarInclude ){
 	$downloadsTitle = get_field( 'sidebar_downloads_title' );
 	$optionDefault = get_field ( 'sidebar_downloads_default' );
 	$rows = get_field('sidebar_downloads');
-	if ( $rows ) {
+
+	$s = '';
+
+	if ( $rows && count($rows) >= 4 ) {
+		/* If there are 4 or more downloads, present the list as a dropdown */
 		$s = '<form style="">';
 		$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $downloadsTitle . '</label>';
 		$s .= '<select name="file_download_list" id="file_download_list" style="display: inline-block;">';
@@ -65,10 +67,23 @@ if( $sidebarInclude ){
 
 		$s .= '</select>';
 		$s .= '</form>';
-
 		$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
-		$sidebarDownloads = $s;
+	} elseif ( $rows ){
+		/* If there are less than 4 downloads, present the downloads as a list */
+		$s = '<div>';
+		$s .= '<h3>' . $downloadsTitle . '</h3>';
+		$s .= '<ul>';
+
+		foreach( $rows as $row ) {
+			$fileID = $row['sidebar_download_file']['ID']; 
+			$filesize = formatBytes(filesize( get_attached_file( $fileID ) ));
+			$s .= '<li><a href="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] .'</a>' . " ($filesize) " . '</li>';
+		}
+
+		$s .= '</ul>';
 	}
+
+	$sidebarDownloads = $s;
 }
 
 
