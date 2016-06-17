@@ -1,4 +1,4 @@
-$(function () {
+(function ($) {
 
 	var defaultEntity='bbg'; //might fill this from a global JS var later.
 	//bbgConfig={};
@@ -232,4 +232,4 @@ function getCountryDetails (countryName) {
 			$('.country-details').show();
 
 		});
-}
+})(jQuery);
