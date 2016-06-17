@@ -1,9 +1,12 @@
 (function ($,bbgConfig) {
+	$(document).ready(function() {
+
 	var defaultEntity='bbg'; //might fill this from a global JS var later.
 	//bbgConfig={};
 	//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
 	/* keep countries,map as global variables else they won't be available in the ajax callback */
 	countries=[];
+	fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
 	map = AmCharts.makeChart( "chartdiv", {
 		type: "map",
 		borderColor: 'red',
@@ -81,10 +84,12 @@
 
 	});
 
+
 	//load our initial data
 	grabData(defaultEntity);
 
 	function grabData(entity) {
+		console.log('grabData ' + entity);
 		var url = '';
 		// this is an organization (BBG)
 		if (entity === 'bbg') {
@@ -106,119 +111,124 @@
 					if (country.region_ids) {
 						country.color = '#9F1D26';
 					}
-					countries.push(country);
+						countries.push(country);
 				}
-				map.dataProvider.areas = countries;
-				map.validateData();
+					map.dataProvider.areas = countries;
+					map.validateData();
+					var entityDesc = 'Entity Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+					$('.detail').html(entityDesc);	
 
-				$('#loading').hide();
+					$('#loading').hide();
 			})
-			.fail(function( jqxhr, textStatus, error ) {
-				var err = textStatus + ", " + error;
-				alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
+				.fail(function( jqxhr, textStatus, error ) {
+					var err = textStatus + ", " + error;
+					alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
+				});
+		}
+
+		function getCountryDetails (countryName) {
+			$('.detail').empty();
+			$('.groups-and-subgroups').empty();
+			$('.languages-served').empty();
+
+			var groups = [];
+			var subgroups = [];
+			var languages = [];
+
+			// create a map of groups and subgroups
+			var groupMap = {};
+			var subgroupMap = {};
+
+			$.when(
+				$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
+					groups = data.groups;
+				}),
+
+				$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
+					subgroups = data.subgroups;
+				}),
+
+				$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
+					languages = data.languages;
+				})
+
+			).then(function() {
+
+				for (var i = 0; i < groups.length; i++) {
+					// map out the group_id to the group name
+					groupMap[groups[i].id] = {
+						name: groups[i].name,
+						url: groups[i].website_url
+					};
+
+					// instantiate the subgroup map with an empty array that is mapped to the group_id
+					subgroupMap[groups[i].id] = [];
+				}
+
+				for (var i = 0; i < subgroups.length; i++) {
+					// push the list of subgroups (as JSON objects) to the subgroupMap based on the group_id
+					subgroupMap[subgroups[i].group_id].push(
+						{
+							name: subgroups[i].name,
+							url: subgroups[i].website_url
+						}
+					);
+				}
+
+				var languagesString = '';
+				for (var i = 0; i < languages.length; i++) {
+
+					// if there's only one language, just show that language itself
+					if (languages.length === 1) {
+						languagesString = languages[i].name;
+
+					// if there's two languages, concatenate the two together with ' and ' in between
+					} else if (languages.length === 2) {
+						languagesString = languages[0].name + ' and ' + languages[1].name;
+
+					// if there's more than 2, comma separate them
+					} else {
+						// if it's not the last language, concatenate the language with a comma and a space
+						if (i !== (languages.length - 1)) {
+							languagesString += languages[i].name + ', ';
+
+						// if it's the last one, cut off the last comma from the previous concatenation and add the word and
+						// along with the last language
+						} else {
+							languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
+						}
+					}
+
+				}
+
+				$('.languages-served').text(languagesString);
+
+				for (key in subgroupMap) {
+
+					// Append the Group Name (VOA, RFA, etc.)
+					$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
+					$('.groups-and-subgroups').append('<ul>');
+
+					// Loop through the corresponding subgroups and list out the Subgroup name
+					for (var i = 0; i < subgroupMap[key].length; i++) {
+						// if there's a URL, use href with the list item
+						if (subgroupMap[key][i].url) {
+							$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
+						// if no URL, just use regular list item
+						} else {
+							$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
+						}
+					}
+
+					$('.groups-and-subgroups').append('</ul>');
+					$('.groups-and-subgroups').append('<br>');
+				}
+				$('.country-details').show();
+				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				$('.detail').html(countryDesc);
+
 			});
-	}
-
-	function getCountryDetails (countryName) {
-		$('.detail').empty();
-		$('.groups-and-subgroups').empty();
-		$('.languages-served').empty();
-
-		var groups = [];
-		var subgroups = [];
-		var languages = [];
-
-		// create a map of groups and subgroups
-		var groupMap = {};
-		var subgroupMap = {};
-
-		$.when(
-			$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
-				groups = data.groups;
-			}),
-
-			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
-				subgroups = data.subgroups;
-			}),
-
-			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
-				languages = data.languages;
-			})
-
-		).then(function() {
-
-			for (var i = 0; i < groups.length; i++) {
-				// map out the group_id to the group name
-				groupMap[groups[i].id] = {
-					name: groups[i].name,
-					url: groups[i].website_url
-				};
-
-				// instantiate the subgroup map with an empty array that is mapped to the group_id
-				subgroupMap[groups[i].id] = [];
-			}
-
-			for (var i = 0; i < subgroups.length; i++) {
-				// push the list of subgroups (as JSON objects) to the subgroupMap based on the group_id
-				subgroupMap[subgroups[i].group_id].push(
-					{
-						name: subgroups[i].name,
-						url: subgroups[i].website_url
-					}
-				);
-			}
-
-			var languagesString = '';
-			for (var i = 0; i < languages.length; i++) {
-
-				// if there's only one language, just show that language itself
-				if (languages.length === 1) {
-					languagesString = languages[i].name;
-
-				// if there's two languages, concatenate the two together with ' and ' in between
-				} else if (languages.length === 2) {
-					languagesString = languages[0].name + ' and ' + languages[1].name;
-
-				// if there's more than 2, comma separate them
-				} else {
-					// if it's not the last language, concatenate the language with a comma and a space
-					if (i !== (languages.length - 1)) {
-						languagesString += languages[i].name + ', ';
-
-					// if it's the last one, cut off the last comma from the previous concatenation and add the word and
-					// along with the last language
-					} else {
-						languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
-					}
-				}
-
-			}
-
-			$('.languages-served').text(languagesString);
-
-			for (key in subgroupMap) {
-
-				// Append the Group Name (VOA, RFA, etc.)
-				$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
-				$('.groups-and-subgroups').append('<ul>');
-
-				// Loop through the corresponding subgroups and list out the Subgroup name
-				for (var i = 0; i < subgroupMap[key].length; i++) {
-					// if there's a URL, use href with the list item
-					if (subgroupMap[key][i].url) {
-						$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
-					// if no URL, just use regular list item
-					} else {
-						$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
-					}
-				}
-
-				$('.groups-and-subgroups').append('</ul>');
-				$('.groups-and-subgroups').append('<br>');
-			}
-			$('.country-details').show();
-
-		});
-	}
+		}
+	});
 })(jQuery,bbgConfig);
 

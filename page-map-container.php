@@ -74,14 +74,13 @@ get_header(); ?>
 						</select>
 					</form>
 				</div>
-				<!--
+				
 				<div class="usa-grid">
 					<div class="country-details">
 						<div class="col-md-4">
-							<h2>Groups</h2>
-							<ul class="detail" id="groups">
-							</ul>
+							<h2>Fake Entity Data</h2>
 						</div>
+						<!--
 						<div class="col-md-4">
 							<h2>Subgroups</h2>
 							<ul class="detail" id="subgroups">
@@ -92,6 +91,7 @@ get_header(); ?>
 							<ul class="detail" id="languages">
 							</ul>
 						</div>
+						-->
 					</div>
 				</div>
 				
