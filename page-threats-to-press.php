@@ -109,13 +109,9 @@ if ( $includeQuotation ) {
 	$quotation .= '</div>';
 }
 
-
-
-
-
-
 $threats = array();
 foreach($threatsCSVArray as $t) {
+	$t = array_map('utf8_encode', $t);
 	$threats[] = array(
 		'country' => $t[0],
 		'name' => $t[1],
@@ -129,6 +125,7 @@ foreach($threatsCSVArray as $t) {
 		'longitude' => $t[9]
 	);
 }
+
 
 for ($i=0; $i < count($threats); $i++) {
 	$t = &$threats[$i];
@@ -181,9 +178,8 @@ for ($i=0; $i < count($threats); $i++) {
 	}
 }
 
-
 $threatsJSON = "<script type='text/javascript'>\n";
-$threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT) . ";";
+$threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT, 10) . ";";
 $threatsJSON .="</script>";
 get_header();
 echo $threatsJSON;
