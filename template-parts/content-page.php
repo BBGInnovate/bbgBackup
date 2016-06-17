@@ -62,7 +62,7 @@ if ( $includeSidebar ) {
 				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
 				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
 
-				$fileID = $sidebarDownloadLink['ID']; 
+				$fileID = $sidebarDownloadLink['ID'];
 				$file = get_attached_file( $fileID );
 				$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 				$filesize = formatBytes(filesize($file));
@@ -78,7 +78,7 @@ if ( $includeSidebar ) {
 				}
 
 				$sidebarDownload = "";
-				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . " ($ext $filesize)</a></h5>" . $sidebarDescription;
+				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . " ($ext, $filesize)</a></h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 			} elseif (get_row_layout() == 'sidebar_quote'){

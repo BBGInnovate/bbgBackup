@@ -45,11 +45,11 @@ if( $sidebarInclude ){
 		$s .= '<option>' . $optionDefault . '</option>';
 
 		foreach( $rows as $row ) {
-			$fileID = $row['sidebar_download_file']['ID']; 
+			$fileID = $row['sidebar_download_file']['ID'];
 			$file = get_attached_file( $fileID );
 			$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 			$filesize = formatBytes(filesize($file));
-			$s .= '<option value="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] . " ($ext $filesize) " . '</option>';
+			$s .= '<option value="' . $row['sidebar_download_file']['url'] .'">' . $row["sidebar_download_title"] . " ($ext, $filesize) " . '</option>';
 		}
 
 		$s .= '</select>';
@@ -62,7 +62,7 @@ if( $sidebarInclude ){
 		$s .= '<ul>';
 
 		foreach( $rows as $row ) {
-			$fileID = $row['sidebar_download_file']['ID']; 
+			$fileID = $row['sidebar_download_file']['ID'];
 			$file = get_attached_file( $fileID );
 			$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 			$filesize = formatBytes(filesize($file));
