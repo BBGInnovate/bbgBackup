@@ -1149,6 +1149,14 @@ article {
 		}
 	}
 
+	.bbg__sidebar__primary {
+		.bbg__sidebar__primary-image {
+			float: left;
+			margin-right: 2rem;
+			max-width: 150px;
+			width: 100%;
+		}
+	}
 
 	.bbg__sidebar__secondary {
 		@include clearfix();
@@ -1158,6 +1166,12 @@ article {
 			margin-right: 2rem;
 			max-width: 150px;
 			width: 48%;
+		}
+	}
+
+	@include media($medium-large-screen) {
+		.bbg__sidebar__primary-image {
+			max-width: none;
 		}
 	}
 }
