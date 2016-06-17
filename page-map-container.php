@@ -95,8 +95,6 @@ get_header(); ?>
 					</div>
 				</div>
 				
-				<div class="usa-grid">
-				</div>-->
 				<div class="usa-grid" style="margin-top: 3rem;">
 					<div class="usa-width-two-thirds">
 						<h2 id="country-name">Name</h2>
