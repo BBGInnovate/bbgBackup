@@ -105,12 +105,14 @@ get_header(); ?>
 					</div>
 					<div class="usa-width-one-third">
 						<div class="country-details">
-							<h5>Group</h5>
-							<ul>
-								<li><a target="_blank" href="http://www.voanews.com">Subgroup 1</a></li>
-								<li><a target="_blank" href="http://www.golos-ameriki.ru/">Subgroup 2</a></li>
-								<li><a target="_blank" href="http://ukrainian.voanews.com/">Subgroup 3</a></li>
-							</ul>
+							<div class=".groups-and-subgroups">
+								<h5>Group</h5>
+								<ul>
+									<li><a target="_blank" href="http://www.voanews.com">Subgroup 1</a></li>
+									<li><a target="_blank" href="http://www.golos-ameriki.ru/">Subgroup 2</a></li>
+									<li><a target="_blank" href="http://ukrainian.voanews.com/">Subgroup 3</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
