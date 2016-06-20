@@ -29,7 +29,7 @@
 		$id = str_replace("=", "_", $id);
 		//TODO: ideally this would use get_template_directory() from wordpress, but we're not in the wordpress context
 		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
-		if ( fileExpired($jsonFilepath, 10) ) { 	//1440 min = 1 day
+		if ( fileExpired($jsonFilepath, 1440) ) { 	//1440 min = 1 day
 			$result=fetchUrl($url);
 			file_put_contents($jsonFilepath, $result);
 		} else {
