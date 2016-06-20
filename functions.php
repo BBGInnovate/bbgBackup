@@ -100,6 +100,17 @@ function formatBytes($bytes, $precision = 2) {
 
 	return round($bytes, $precision) . ' ' . $units[$pow]; 
 } 
+
+class ArrayValue implements JsonSerializable {
+    //****** HELPER CLASS FOR SERIALIZING PHP TO JSON 
+    public function __construct(array $array) {
+        $this->array = $array;
+    }
+
+    public function jsonSerialize() {
+        return $this->array;
+    }
+}
 /****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
 
 

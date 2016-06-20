@@ -8,17 +8,6 @@
   template name: Threats to Press
  */
 
-/****** BEGIN HELPER CLASS FOR SERIALIZING PHP TO JSON ****/
-class ArrayValue implements JsonSerializable {
-    public function __construct(array $array) {
-        $this->array = $array;
-    }
-
-    public function jsonSerialize() {
-        return $this->array;
-    }
-}
-/****** END HELPER CLASS FOR SERIALIZING PHP TO JSON ****/
 
 /****** BEGIN HELPER FUNCTION SORT BY DATE ****/
 function threatDateCompare($a, $b) {
