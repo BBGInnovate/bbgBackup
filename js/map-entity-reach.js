@@ -118,202 +118,204 @@
 
 
 	});
+
+
+
+	// this function will set the endpoint based on the entity and then go fetch the countries
+	function grabData(entity) {
+
+		var url = '';
+		// this is an organization (BBG)
+		if (entity === 'bbg') {
+			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
+			// if there's an entity (group), get it by entity
+		} else {
+			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
+
+			getSubgroupsForEntity(entity);
+		}
+
+		$('#loading').show();
+
+		getCountries(url);
+
+
+	}
+
+	// this is the first ajax request made when the widget loads to populate all the countries BBG covers
+	function getCountries (url) {
+		$.getJSON(url)
+			.done(function( data ) {
+				countries=[];
+				for (var i = 0; i < data.countries.length; i++) {
+					var country = data.countries[i];
+					var countryCode = data.countries[i].code;
+					country.id = countryCode;
+
+					// this is the default color for non-BBG covered countries
+					country.color = '#DDDDDD';
+
+					// if the country has region_ids array, BBG has coverage there
+					if (country.region_ids) {
+						country.color = '#9F1D26';
+					}
+
+					countries.push(country);
+
+					// if the user is on a mobile device, build out the country list dropdown
+					if (isMobile) {
+						addCountryToDropdown(country);
+					}
+				}
+				map.dataProvider.areas = countries;
+				map.validateData();
+				var entityDesc = 'Entity Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				$('.detail').html(entityDesc);
+
+				$('#loading').hide();
+			})
+			.fail(function( jqxhr, textStatus, error ) {
+				var err = textStatus + ", " + error;
+				alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
+			});
+	}
+
+	// grabs the details for a country when selected
+	function getCountryDetails (countryName) {
+		$('.detail').empty();
+		$('.groups-and-subgroups').empty();
+		$('.languages-served').empty();
+
+		var groups = [];
+		var subgroups = [];
+		var languages = [];
+
+		// create a map of groups and subgroups
+		var groupMap = {};
+		var subgroupMap = {};
+
+		$.when(
+			$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
+				groups = data.groups;
+			}),
+
+			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
+				subgroups = data.subgroups;
+			}),
+
+			$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
+				languages = data.languages;
+			})
+
+		).then(function() {
+
+				for (var i = 0; i < groups.length; i++) {
+					// map out the group_id to the group name
+					groupMap[groups[i].id] = {
+						name: groups[i].name,
+						url: groups[i].website_url
+					};
+
+					// instantiate the subgroup map with an empty array that is mapped to the group_id
+					subgroupMap[groups[i].id] = [];
+				}
+
+				for (var i = 0; i < subgroups.length; i++) {
+					// push the list of subgroups (as JSON objects) to the subgroupMap based on the group_id
+					subgroupMap[subgroups[i].group_id].push(
+						{
+							name: subgroups[i].name,
+							url: subgroups[i].website_url
+						}
+					);
+				}
+
+				var languagesString = '';
+				for (var i = 0; i < languages.length; i++) {
+
+					// if there's only one language, just show that language itself
+					if (languages.length === 1) {
+						languagesString = languages[i].name;
+
+						// if there's two languages, concatenate the two together with ' and ' in between
+					} else if (languages.length === 2) {
+						languagesString = languages[0].name + ' and ' + languages[1].name;
+
+						// if there's more than 2, comma separate them
+					} else {
+						// if it's not the last language, concatenate the language with a comma and a space
+						if (i !== (languages.length - 1)) {
+							languagesString += languages[i].name + ', ';
+
+							// if it's the last one, cut off the last comma from the previous concatenation and add the word and
+							// along with the last language
+						} else {
+							languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
+						}
+					}
+
+				}
+
+				$('.languages-served').text(languagesString);
+
+				for (key in subgroupMap) {
+
+					// Append the Group Name (VOA, RFA, etc.)
+					$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
+					$('.groups-and-subgroups').append('<ul>');
+
+					// Loop through the corresponding subgroups and list out the Subgroup name
+					for (var i = 0; i < subgroupMap[key].length; i++) {
+						// if there's a URL, use href with the list item
+						if (subgroupMap[key][i].url) {
+							$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
+							// if no URL, just use regular list item
+						} else {
+							$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
+						}
+					}
+
+					$('.groups-and-subgroups').append('</ul>');
+					$('.groups-and-subgroups').append('<br>');
+				}
+				$('.country-details').show();
+				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				$('.detail').html(countryDesc);
+
+			});
+	}
+
+	// this function will make an ajax request to get the subgroups and then dynamically populate the dropdown
+	// for the purpose of loading the language services in a different tab
+	function getSubgroupsForEntity (entity) {
+		// reset the list
+		$('#subgroup-list').empty();
+
+		$.getJSON('http://api.bbg.gov/api/subgroups?group=' + entity)
+			.done(function( data ) {
+				for (var i = 0; i < data.subgroups.length; i++) {
+					var subgroup = data.subgroups[i];
+					$('#subgroup-list').append('<option value="'+subgroup.id+'" data-href="'+subgroup.website_url+'">'+subgroup.name+'</option>');
+				}
+			})
+			.fail(function( jqxhr, textStatus, error ) {
+				var err = textStatus + ", " + error;
+				alert("We're sorry, we were unable to load the data at this time.  Please check back shortly. (" + err + ")");
+			});
+	}
+
+	// this function will dynamically generate the dropdown list for the countries (on mobile devices)
+	function addCountryToDropdown (country) {
+		$('#country-list').append('<option value="'+country.code+'">'+country.name+'</option>');
+	}
+
+	// this function will return true if the user is on a mobile device or false otherwise
+	function isMobileDevice () {
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 })(jQuery,bbgConfig);
-
-
-// this function will set the endpoint based on the entity and then go fetch the countries
-function grabData(entity) {
-
-	var url = '';
-	// this is an organization (BBG)
-	if (entity === 'bbg') {
-		url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
-		// if there's an entity (group), get it by entity
-	} else {
-		url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
-
-		getSubgroupsForEntity(entity);
-	}
-
-	$('#loading').show();
-
-	getCountries(url);
-
-
-}
-
-// this is the first ajax request made when the widget loads to populate all the countries BBG covers
-function getCountries (url) {
-	$.getJSON(url)
-		.done(function( data ) {
-			countries=[];
-			for (var i = 0; i < data.countries.length; i++) {
-				var country = data.countries[i];
-				var countryCode = data.countries[i].code;
-				country.id = countryCode;
-
-				// this is the default color for non-BBG covered countries
-				country.color = '#DDDDDD';
-
-				// if the country has region_ids array, BBG has coverage there
-				if (country.region_ids) {
-					country.color = '#9F1D26';
-				}
-
-				countries.push(country);
-
-				// if the user is on a mobile device, build out the country list dropdown
-				if (isMobile) {
-					addCountryToDropdown(country);
-				}
-			}
-			map.dataProvider.areas = countries;
-			map.validateData();
-			var entityDesc = 'Entity Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
-			$('.detail').html(entityDesc);
-
-			$('#loading').hide();
-		})
-		.fail(function( jqxhr, textStatus, error ) {
-			var err = textStatus + ", " + error;
-			alert("We're sorry, we were unable to load the map data at this time.  Please check back shortly. (" + err + ")");
-		});
-}
-
-// grabs the details for a country when selected
-function getCountryDetails (countryName) {
-	$('.detail').empty();
-	$('.groups-and-subgroups').empty();
-	$('.languages-served').empty();
-
-	var groups = [];
-	var subgroups = [];
-	var languages = [];
-
-	// create a map of groups and subgroups
-	var groupMap = {};
-	var subgroupMap = {};
-
-	$.when(
-		$.getJSON(bbgConfig.template_directory_uri+"api.php?endpoint=api/groups/?country=" + countryName, function( data ) {
-			groups = data.groups;
-		}),
-
-		$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/subgroups/?country=" + countryName, function( data ) {
-			subgroups = data.subgroups;
-		}),
-
-		$.getJSON( bbgConfig.template_directory_uri+"api.php?endpoint=api/languages/?country=" + countryName, function( data ) {
-			languages = data.languages;
-		})
-
-	).then(function() {
-
-			for (var i = 0; i < groups.length; i++) {
-				// map out the group_id to the group name
-				groupMap[groups[i].id] = {
-					name: groups[i].name,
-					url: groups[i].website_url
-				};
-
-				// instantiate the subgroup map with an empty array that is mapped to the group_id
-				subgroupMap[groups[i].id] = [];
-			}
-
-			for (var i = 0; i < subgroups.length; i++) {
-				// push the list of subgroups (as JSON objects) to the subgroupMap based on the group_id
-				subgroupMap[subgroups[i].group_id].push(
-					{
-						name: subgroups[i].name,
-						url: subgroups[i].website_url
-					}
-				);
-			}
-
-			var languagesString = '';
-			for (var i = 0; i < languages.length; i++) {
-
-				// if there's only one language, just show that language itself
-				if (languages.length === 1) {
-					languagesString = languages[i].name;
-
-					// if there's two languages, concatenate the two together with ' and ' in between
-				} else if (languages.length === 2) {
-					languagesString = languages[0].name + ' and ' + languages[1].name;
-
-					// if there's more than 2, comma separate them
-				} else {
-					// if it's not the last language, concatenate the language with a comma and a space
-					if (i !== (languages.length - 1)) {
-						languagesString += languages[i].name + ', ';
-
-						// if it's the last one, cut off the last comma from the previous concatenation and add the word and
-						// along with the last language
-					} else {
-						languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
-					}
-				}
-
-			}
-
-			$('.languages-served').text(languagesString);
-
-			for (key in subgroupMap) {
-
-				// Append the Group Name (VOA, RFA, etc.)
-				$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
-				$('.groups-and-subgroups').append('<ul>');
-
-				// Loop through the corresponding subgroups and list out the Subgroup name
-				for (var i = 0; i < subgroupMap[key].length; i++) {
-					// if there's a URL, use href with the list item
-					if (subgroupMap[key][i].url) {
-						$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
-						// if no URL, just use regular list item
-					} else {
-						$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
-					}
-				}
-
-				$('.groups-and-subgroups').append('</ul>');
-				$('.groups-and-subgroups').append('<br>');
-			}
-			$('.country-details').show();
-			var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
-			$('.detail').html(countryDesc);
-
-		});
-}
-
-// this function will make an ajax request to get the subgroups and then dynamically populate the dropdown
-// for the purpose of loading the language services in a different tab
-function getSubgroupsForEntity (entity) {
-	// reset the list
-	$('#subgroup-list').empty();
-
-	$.getJSON('http://api.bbg.gov/api/subgroups?group=' + entity)
-		.done(function( data ) {
-			for (var i = 0; i < data.subgroups.length; i++) {
-				var subgroup = data.subgroups[i];
-				$('#subgroup-list').append('<option value="'+subgroup.id+'" data-href="'+subgroup.website_url+'">'+subgroup.name+'</option>');
-			}
-		})
-		.fail(function( jqxhr, textStatus, error ) {
-			var err = textStatus + ", " + error;
-			alert("We're sorry, we were unable to load the data at this time.  Please check back shortly. (" + err + ")");
-		});
-}
-
-// this function will dynamically generate the dropdown list for the countries (on mobile devices)
-function addCountryToDropdown (country) {
-	$('#country-list').append('<option value="'+country.code+'">'+country.name+'</option>');
-}
-
-// this function will return true if the user is on a mobile device or false otherwise
-function isMobileDevice () {
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-		return true;
-	} else {
-		return false;
-	}
-}

@@ -74,6 +74,17 @@ get_header(); ?>
 						</select>
 					</form>
 				</div>
+				<div class="usa-grid">
+					<select id="country-list">
+					<option value="0">Select a country...</option>
+					</select>
+					<br>
+					<br>
+					<select id="subgroup-list">
+					<option value="0">Select a subgroup...</option>
+					</select>
+					<button id="submit">Go</button>
+				</div>
 				
 				<div class="usa-grid">
 					<div class="country-details">
