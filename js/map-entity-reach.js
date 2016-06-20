@@ -185,9 +185,12 @@
 				map.validateData();
 				selectedEntity = $('#entity').val();
 				entityDesc='';
+				headerText='';
 				if (entities[selectedEntity] != null) {
 					entityDesc=entities[selectedEntity].description;
+					headerText=entities[selectedEntity].fullName;
 				}
+				$('#country-name').text(headerText);
 				$('.detail').html(entityDesc);
 
 				$('#loading').hide();

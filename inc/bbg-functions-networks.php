@@ -24,7 +24,8 @@ function getNetworkExcerptJS() {
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 				$e[$abbreviation] = array(
-					'description' => $description
+					'description' => $description,
+					'fullName' => $fullName
 				);
 			}
 		}
