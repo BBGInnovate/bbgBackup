@@ -67,8 +67,8 @@ $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 /*** get impact category ***/
 //$impactCat = get_category_by_slug('impact');
 //$impactPermalink = get_category_link($impactCat->term_id);
-$impactPermalink = get_permalink( get_page_by_path( 'impact-and-results' ) );
-$impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
+$impactPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results' ) );
+$impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio' ) );
 
 //$threatsCat=get_category_by_slug('threats-to-press');
 //$threatsPermalink = get_category_link($threatsCat->term_id);
@@ -271,7 +271,7 @@ get_header();
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'news-info' ) ) ?>">BBG News</a></h6>
+					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'news/news-info' ) ) ?>">BBG News</a></h6>
 				</div>
 				
 				<!-- Featured Post -->
@@ -335,7 +335,7 @@ get_header();
 						?>
 							<nav class="navigation posts-navigation" role="navigation">
 								<h2 class="screen-reader-text">Posts navigation</h2>
-								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news-info') ); ?>page/2" >Read More</a></div></div>
+								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news/news-info') ); ?>" >Read More</a></div></div>
 							</nav>	
 					</div>
 
