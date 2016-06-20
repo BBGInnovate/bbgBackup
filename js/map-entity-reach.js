@@ -291,7 +291,7 @@
 		// reset the list
 		$('#subgroup-list').empty();
 
-		$.getJSON('http://api.bbg.gov/api/subgroups?group=' + entity)
+		$.getJSON(bbgConfig.template_directory_uri + 'api.php?endpoint=api/subgroups?group=' + entity)
 			.done(function( data ) {
 				for (var i = 0; i < data.subgroups.length; i++) {
 					var subgroup = data.subgroups[i];
