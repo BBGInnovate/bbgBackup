@@ -1,4 +1,4 @@
-(function ($,bbgConfig) {
+(function ($,bbgConfig, entities) {
 
 	// find out if the user is on a mobile device or not (used for zoomDuration)
 	var isMobile = isMobileDevice();
@@ -183,7 +183,11 @@
 				}
 				map.dataProvider.areas = countries;
 				map.validateData();
-				var entityDesc = 'Entity Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				selectedEntity = $('#entity').val();
+				entityDesc='';
+				if (entities[selectedEntity] != null) {
+					entityDesc=entities[selectedEntity].description;
+				}
 				$('.detail').html(entityDesc);
 
 				$('#loading').hide();
@@ -338,4 +342,4 @@
 		}
 	}
 
-})(jQuery,bbgConfig);
+})(jQuery,bbgConfig, entities);
