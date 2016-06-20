@@ -6,8 +6,8 @@
 	$(document).ready(function() {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
-		bbgConfig={};
-		bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
+		//bbgConfig={};
+		//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
 		/* keep countries,map as global variables else they won't be available in the ajax callback */
 		countries=[];
 		fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
@@ -78,11 +78,14 @@
 
 		});
 
-		map.addListener('click', function (event) {
+		map.addListener('clickMapObject', function (event) {
 
 			if (!isMobile) {
 				map.zoomDuration = .2;
 			}
+
+			// set the country list value to the same as the map selection
+			$('#country-list').val(event.mapObject.id);
 		});
 
 
@@ -103,6 +106,11 @@
 
 			var mapObject = map.getObjectById(countryCode);
 			map.clickMapObject(mapObject);
+
+			// scroll to map viewport
+			$('html, body').animate({
+				scrollTop: $('.entry-title').offset().top
+			}, 500);
 
 		});
 
@@ -258,26 +266,32 @@
 
 				$('.languages-served').text(languagesString);
 
+				var groupAndSubgroupList = '';
 				for (key in subgroupMap) {
 
 					// Append the Group Name (VOA, RFA, etc.)
-					$('.groups-and-subgroups').append('<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>');
-					$('.groups-and-subgroups').append('<ul>');
+					groupAndSubgroupList += '<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>';
+					groupAndSubgroupList += '<ul>';
 
 					// Loop through the corresponding subgroups and list out the Subgroup name
 					for (var i = 0; i < subgroupMap[key].length; i++) {
 						// if there's a URL, use href with the list item
 						if (subgroupMap[key][i].url) {
-							$('.groups-and-subgroups').append('<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>');
+							groupAndSubgroupList += '<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>';
 							// if no URL, just use regular list item
 						} else {
-							$('.groups-and-subgroups').append('<li>'+subgroupMap[key][i].name+'</li>');
+							groupAndSubgroupList += '<li>'+subgroupMap[key][i].name+'</li>';
 						}
 					}
 
-					$('.groups-and-subgroups').append('</ul>');
-					$('.groups-and-subgroups').append('<br>');
+					groupAndSubgroupList += '</ul>';
+					groupAndSubgroupList += '<br>';
+
 				}
+
+				// populate the HTML element with the dynamically generated string
+				$('.groups-and-subgroups').html(groupAndSubgroupList);
+
 				$('.country-details').show();
 				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
 				$('.detail').html(countryDesc);
