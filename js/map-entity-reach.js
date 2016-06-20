@@ -97,6 +97,8 @@
 			var entity = $(this).val();
 			grabData(entity);
 
+			scrollToMap();
+
 
 		});
 
@@ -107,10 +109,7 @@
 			var mapObject = map.getObjectById(countryCode);
 			map.clickMapObject(mapObject);
 
-			// scroll to map viewport
-			$('html, body').animate({
-				scrollTop: $('.entry-title').offset().top
-			}, 500);
+			scrollToMap();
 
 		});
 
@@ -126,6 +125,13 @@
 
 
 	});
+
+	function scrollToMap() {
+		// scroll to map viewport
+		$('html, body').animate({
+			scrollTop: $('.entry-title').offset().top
+		}, 500);
+	}
 
 
 
