@@ -178,7 +178,7 @@ get_header();
 						echo '</section>';
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 
-						elseif( get_row_layout() == 'about_ribbon_page' ):
+						elseif ( get_row_layout() == 'about_ribbon_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE RIBBON ROW ***/
 							$labelText = get_sub_field('about_ribbon_label');
 							$labelLink = get_sub_field('about_ribbon_label_link');
@@ -234,9 +234,6 @@ get_header();
 
 		</main>
 	</div><!-- #primary .content-area -->
-	<div id="secondary" class="widget-area" role="complementary">
-	</div><!-- #secondary .widget-area -->
 </div><!-- #main .site-main -->
 
-<?php //get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -70,7 +70,7 @@ get_header();
 			<div id="page-children" class="usa-section usa-grid bbg__about__children">
 			<?php
 				// check if the flexible content field has rows of data
-				if( have_rows('about_flexible_page_rows') ):
+				if ( have_rows('about_flexible_page_rows') ):
 					$counter = 0;
 					$pageTotal = 1;
 					$containerClass = "bbg__about__child ";
@@ -259,18 +259,25 @@ get_header();
 				endif;
 			?>
 			</div>
-			<?php wp_reset_postdata(); ?>
 
-			<!-- Entity list -->
-			<section id="entities" class="usa-section bbg-staff">
-				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
-					<div class="usa-intro bbg__broadcasters__intro">
-						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
+			<?php
+				$showNetworks = get_field( 'about_networks_row' );
+				if ( $showNetworks ) { ?>
+
+				<!-- Entity list -->
+				<section id="entities" class="usa-section bbg-staff">
+					<div class="usa-grid">
+						<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
+						<div class="usa-intro bbg__broadcasters__intro">
+							<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
+						</div>
+						<?php echo outputBroadcasters('2'); ?>
 					</div>
-					<?php echo outputBroadcasters('2'); ?>
-				</div>
-			</section><!-- entity list -->
+				</section><!-- entity list -->
+			<?php
+				}
+			wp_reset_postdata();
+			?>
 
 		</main>
 	</div><!-- #primary .content-area -->
