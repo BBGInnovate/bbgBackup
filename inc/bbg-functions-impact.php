@@ -81,7 +81,7 @@
 
 		} 
 		if (count($impacts['influential'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">INFLUENTIAL</a></h3>';
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">BE INFLUENTIAL</a></h3>';
 			$s .= oneImpactStory($impacts['influential'][0]);
 		}
 		return $s;
