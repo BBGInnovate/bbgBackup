@@ -3,7 +3,7 @@
 
 function getNetworkExcerptJS() {
 	/* used on map container */
-	$entityParentPage = get_page_by_path('broadcasters');
+	$entityParentPage = get_page_by_path('networks');
 	$qParams=array(
 		'post_type' => array('page'),
 		'posts_per_page' => -1,
@@ -31,9 +31,8 @@ function getNetworkExcerptJS() {
 		}
 	}
 	wp_reset_postdata();
-
 	$s = "<script type='text/javascript'>\n";
-	$s .= "entities=" . json_encode(new ArrayValue($e), JSON_PRETTY_PRINT, 10) . ";";
+	$s .= "entities=" . json_encode(new ArrayValue($e), JSON_PRETTY_PRINT) . ";";
 	$s .="</script>";
 	
 	return $s; 
