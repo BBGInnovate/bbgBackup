@@ -1,8 +1,6 @@
 <?php
 /**
- * The custom home page for the Broadcasting Board of Governors.
- * It includes the mission, a portfolio of recent projects, recent blog posts and staff.
- *
+ * This is the template for legislation pages.
  * template name: Legislation
  *
  * @author Gigi Frias <gfrias@bbg.gov>

@@ -1,7 +1,5 @@
 <?php
 /**
- * The template for displaying all pages.
- *
  * This is the template that displays the BBG entity pages.
  * VOA, RFE/RL, OCB, RFA and MBN
  * Please note that this is the WordPress construct of pages

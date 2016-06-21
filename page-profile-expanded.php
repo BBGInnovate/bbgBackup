@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single profile posts.
+ * The template for displaying expaneded profile posts (e.g the CEO).
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *

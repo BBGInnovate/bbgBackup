@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying the BBG Portfolio.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
