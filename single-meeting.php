@@ -42,7 +42,12 @@ if ( have_posts() ) {
 	}
 	$eventStr="";
 	if ($eventbriteID) {
-		$eventStr='<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="' . $eventbriteIframeHeight . '" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>'; //
+		$iframeNarrowHeight = $eventbriteIframeHeight+75;
+		$eventStr='<style>';
+		$eventStr .= '#eventbriteContainer { width: 100%; text-align:left; height: ' . $eventbriteIframeHeight .'px;}';
+		$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
+		$eventStr .= '</style>';
+		$eventStr .= '<div id="eventbriteContainer"><iframe src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="100%" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>';  
 	}
 
 	$ogDescription = get_the_excerpt();
