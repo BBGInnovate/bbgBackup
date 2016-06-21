@@ -5483,6 +5483,12 @@ article {
   }
 }
 
+.tertiary-stories .bbg-label.small {
+  margin-bottom: 3rem;
+}
+.tertiary-stories .nav-previous {
+  margin-top: 1.5rem;
+}
 @media screen and (min-width: 900px) {
   .tertiary-stories {
     border-left: 1px dotted #CCC;
@@ -6108,7 +6114,7 @@ article {
 }
 @media screen and (min-width: 1201px) {
   .bbg-banner .bbg-banner-box .bbg-banner-site-title {
-    font-size: 5rem;
+    font-size: 5.5rem;
   }
 }
 .bbg-banner .bbg-banner-box .bbg-banner-site-description {

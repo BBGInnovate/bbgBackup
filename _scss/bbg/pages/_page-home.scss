@@ -9,7 +9,6 @@
 
 	@include media($medium-screen) {
 		height: $banner-image-height;
-		//margin-bottom: $site-margins * 2;
 	}
 
 	@include media($medium-large-screen) {
@@ -86,7 +85,7 @@
 			}
 
 			@include media($large-screen) {
-				font-size: 5rem;
+				font-size: 5.5rem;
 			}
 		}
 
@@ -258,6 +257,7 @@ section.usa-section.bbg-banner__section {
 		}
 	}
 }
+
 .bbg__home__recent-posts {
 	.bbg__secondary-stories {
 		@include media($medium-screen) {
