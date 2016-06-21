@@ -34,7 +34,11 @@ if ( have_posts() ) {
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
 
-
+	$eventBriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
+	$eventStr="";
+	if ($eventBriteID) {
+		$eventStr='<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid='.$eventBriteID.'&ref=etckt" frameborder="0" height="260" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a class="powered-by-eb" style="color: #dddddd; text-decoration: none;" target="_blank" href="http://www.eventbrite.com/r/etckt">Powered by Eventbrite</a></div></div>';
+	}
 
 	$ogDescription = get_the_excerpt();
 
@@ -144,7 +148,9 @@ get_header(); ?>
 					</div>
 
 					<div class="entry-content bbg__article-content">
-						<?php the_content(); ?>
+						<?php 
+						 echo $eventStr;
+						 the_content(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
