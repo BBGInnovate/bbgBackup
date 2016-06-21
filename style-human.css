@@ -6382,7 +6382,12 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__employee-profile__excerpt {
+  /* Switching from floats to inline-block so that we don't get weird wrapping
+     for profiles with different vertical heights. */
+  display: inline-block;
+  float: none;
   margin-bottom: 3rem;
+  vertical-align: top;
 }
 .bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__name {
   margin-top: 1rem;
