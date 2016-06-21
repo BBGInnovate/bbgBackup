@@ -23,7 +23,7 @@ if ( have_posts() ) {
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
-		$ogImage = $socialImage[0];
+		$ogImage = $socialImage[0];  
 	}
 
 	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
@@ -34,10 +34,15 @@ if ( have_posts() ) {
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
 
-	$eventBriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
+	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
+
+	$eventbriteIframeHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height', true );
+	if (!$eventbriteIframeHeight || $eventbriteIframeHeight=="") {
+		$eventbriteIframeHeight=270;
+	}
 	$eventStr="";
-	if ($eventBriteID) {
-		$eventStr='<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid='.$eventBriteID.'&ref=etckt" frameborder="0" height="260" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a class="powered-by-eb" style="color: #dddddd; text-decoration: none;" target="_blank" href="http://www.eventbrite.com/r/etckt">Powered by Eventbrite</a></div></div>';
+	if ($eventbriteID) {
+		$eventStr='<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="' . $eventbriteIframeHeight . '" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>'; //
 	}
 
 	$ogDescription = get_the_excerpt();
