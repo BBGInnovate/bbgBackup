@@ -4142,6 +4142,18 @@ body:not(.home) .bbg__main-navigation {
   margin: 0;
   max-width: 100%;
 }
+.bbg__article-content .bbg__interview p {
+  margin-top: .5rem;
+}
+.bbg__article-content .bbg__interview p strong {
+  display: block;
+  margin-top: 3rem;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-content .bbg__interview p strong {
+    margin-top: 4rem;
+  }
+}
 .bbg__article-content ul {
   width: 100%;
 }

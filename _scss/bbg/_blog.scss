@@ -153,6 +153,22 @@
 		max-width: 100%;
 	}
 
+	.bbg__interview {
+		p {
+			margin-top: .5rem;
+
+			strong {
+				display: block;
+				margin-top: $site-margins;
+
+				@include media($medium-large-screen) {
+					margin-top: 4rem;
+				}
+			}
+		}
+	}
+
+
 	ul {
 		width: 100%;
 	}
