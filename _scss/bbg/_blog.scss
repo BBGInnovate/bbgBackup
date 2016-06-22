@@ -155,11 +155,19 @@
 
 	.bbg__interview {
 		p {
-			margin-top: .5rem;
+			margin: {
+				top: .5rem;
+				bottom: .5rem;
+			}
 
+			/* Assumes Questions are wrapped in <strong/> */
 			strong {
 				display: block;
-				margin-top: $site-margins;
+				margin-top: $site-margins-medium;
+
+				@include media($medium-screen) {
+					margin-top: $site-margins;
+				}
 
 				@include media($medium-large-screen) {
 					margin-top: 4rem;
