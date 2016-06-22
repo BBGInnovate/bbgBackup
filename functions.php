@@ -1027,4 +1027,12 @@ function show_future_posts($posts) {
 	return $returnVal;
 }
 
+/*** AKAMAI is already including HTTP_X_FORWARDED_FOR but it can include >1 IP address.  HTTP_TRUE_CLIENT_IP seems to be flawless.  This filter is applied so that iThemes security blocks actual IP addresses and not Akamai IP addresses ***/
+function akamai_forwarding_callback( $headers ) {
+    // (maybe) modify $string
+    array_unshift($headers, 'HTTP_TRUE_CLIENT_IP');
+    return $headers;
+}
+add_filter( 'itsec_filter_remote_addr_headers', 'akamai_forwarding_callback', 10, 1 );
+
 ?>
