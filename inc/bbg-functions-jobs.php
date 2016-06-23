@@ -39,10 +39,29 @@
 				$month = $endDateObj[1];
 				$day = $endDateObj[2];
 				$endDateTimestamp = mktime(0, 0, 0, $month, $day, $year);
-				$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
+				//$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
+				$j['formatted_end_date'] = date('M/j/Y', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
 			}
 			usort($jobs, 'dCompare');
+
+/*
+<table class="usa-table-borderless">
+<thead>
+<tr>
+<th>Job</th>
+<th>Closing date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>International Broadcaster (Multimedia) (Indonesian)</td>
+<td>6/23/2016</td>
+</tr>
+*/
+			$s .= '<table class="usa-table-borderless">';
+			$s .= '<thead><tr><th scope="col">Job</th><th scope="col">Closing date</th></tr></thead>';
+			$s .= '<tbody>';
 
 			for ($i = 0; $i < count($jobs); $i++) {
 				$j = $jobs[$i];
@@ -52,10 +71,12 @@
 				$startDate = $j['start_date'];
 				$endDate = $j['formatted_end_date'];
 
-				$locations = $j['locations'];
 
+				$s .= '<tr><td>$title</td><td>$endDate</td></tr>';
+				/*
 				$s .= "<p><a href='$url' class='bbg__jobs-list__title'>$title</a><br/>";
 
+				$locations = $j['locations'];
 				if (count($locations)>1 || $locations[0] != "Washington, DC"){
 					$locationStr = "Location: ";
 					if (count($locations) > 1){
@@ -69,7 +90,10 @@
 				}
 				$s .= "Closes: $endDate<br/>";
 				$s .= "</p>";
+				*/
 			}
+			$s .= '</tbody></table>';
+
 			$s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 		}
 		return $s;
