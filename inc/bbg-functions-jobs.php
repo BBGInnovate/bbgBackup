@@ -40,7 +40,7 @@
 				$day = $endDateObj[2];
 				$endDateTimestamp = mktime(0, 0, 0, $month, $day, $year);
 				//$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
-				$j['formatted_end_date'] = date('M/j/Y', $endDateTimestamp);
+				$j['formatted_end_date'] = date('m/j/Y', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
 			}
 			usort($jobs, 'dCompare');
