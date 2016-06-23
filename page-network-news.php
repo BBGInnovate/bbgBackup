@@ -190,13 +190,7 @@ var geojson = [
 $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
-$geojson = 'var geojson = [
-	{
-		"type": "FeatureCollection",
-		"features": [
-';
-$geojsonGuts = "";
-
+$features = array();
 
 if ( $custom_query->have_posts() ) :
 		$counter = 0;
@@ -224,41 +218,33 @@ if ( $custom_query->have_posts() ) :
 			} else {
 				$mapHeadline = "<h5><a href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
 			}
-
-			$counter++;
-
-			if ($counter > 1){
-				$geojsonGuts .= ",";
-			}
-			$geojsonGuts .= '{
-			"type": "Feature",
-			"geometry": {
-				"type": "Point",
-				"coordinates": [
-					'. $location['lng'] .',
-					'. $location['lat'] .'
-				]
-			},
-			"properties": {
-				"title": "'. $mapHeadline .'",
-				"description": "'. $mapDescription .'",
-				"marker-color": "'. $pinColor .'",
-				"marker-size": "large",
-				"marker-symbol": ""
-			}
-		}';
-			
+			$features[] = array(
+				'type' => 'Feature',
+				'geometry' => array( 
+					'type' => 'Point',
+					'coordinates' => array($location['lng'],$location['lat'])
+				),
+				'properties' => array(
+					'title' => $mapHeadline,
+					'description' => $mapDescription,
+					'marker-color' => $pinColor,
+					'marker-size' => 'large', 
+					'marker-symbol' => ''
+				)
+			);
 		endwhile;
-		$geojson .= $geojsonGuts;
-		$geojson .= '	  ]
-	}
-];';
-		echo '<script type="text/javascript">';
-		echo $geojson;
-		echo '</script>';
+		$geojsonObj= array(array(
+			'type' => 'FeatureCollection',
+			'features' => $features
+		));
+		$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
+
+		echo "<script type='text/javascript'>\n";
+		echo "geojson = $geojsonStr";
+		echo "</script>";
+		echo $geojsonStr;
+
 endif; 
-
-
 
 ?>
 
