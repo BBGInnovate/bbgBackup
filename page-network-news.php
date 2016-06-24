@@ -242,7 +242,7 @@ if ( $custom_query->have_posts() ) :
 		echo "<script type='text/javascript'>\n";
 		echo "geojson = $geojsonStr";
 		echo "</script>";
-		echo $geojsonStr;
+		//echo $geojsonStr;
 
 endif; 
 
