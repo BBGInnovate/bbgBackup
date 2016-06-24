@@ -98,6 +98,7 @@ function formatBytes($bytes) {
 	$bytes /= pow(1000, $pow);
 	// $bytes /= (1 << (10 * $pow)); 
 
+	$precision = 2;
 	if ($pow < 2) {
 		$precision = 0;
 	}
