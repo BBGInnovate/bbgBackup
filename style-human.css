@@ -6418,6 +6418,9 @@ section.usa-section.bbg-banner__section {
   margin-bottom: 3rem;
   vertical-align: top;
 }
+.bbg__employee-profile__excerpt img {
+  width: 100%;
+}
 .bbg__employee-profile__excerpt .bbg__employee-profile__excerpt__name {
   margin-top: 1rem;
   margin-bottom: 0;
