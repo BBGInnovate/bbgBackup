@@ -18,7 +18,9 @@ if ($bannerPositionCSS) {
 }
 
 $videoUrl = get_field( 'featured_video_url', '', true );
+$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
 
@@ -199,6 +201,11 @@ get_header(); ?>
 
 								<?php
 									if ( $secondaryColumnContent != "" ) {
+
+										if ( $secondaryColumnLabel != "" ) {
+											echo '<h5 class="bbg__label small">' . $secondaryColumnLabel . '</h5>';
+										}
+
 										echo $secondaryColumnContent;
 									}
 
