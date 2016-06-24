@@ -2946,7 +2946,7 @@ a:focus .bbg__article-share__icon {
 }
 @media screen and (min-width: 900px) {
   .bbg__article-share {
-    float: left;
+    float: none;
     margin-top: -1%;
     margin-right: auto;
     margin-left: auto;
