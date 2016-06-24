@@ -265,7 +265,7 @@ get_header();
 				if ( $showNetworks ) { ?>
 
 				<!-- Entity list -->
-				<section id="entities" class="usa-section bbg-staff">
+				<section id="entities" class="usa-section bbg__staff">
 					<div class="usa-grid">
 						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 						<div class="usa-intro bbg__broadcasters__intro">

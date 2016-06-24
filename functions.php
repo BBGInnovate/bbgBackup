@@ -367,10 +367,10 @@ add_filter( 'user_contactmethods', 'bbg_extendAuthorContacts', 10, 1 );
 add_filter('get_avatar','change_avatar_css');
 
 function change_avatar_css($class) {
-	$class = str_replace("class='avatar", "class='avatar usa-avatar bbg-avatar", $class) ;
+	$class = str_replace("class='avatar", "class='avatar usa-avatar bbg__avatar", $class) ;
 
 	//Adding a second version because we're using WP User Avatar plugin and it uses double quotes
-	$class = str_replace('class="avatar', 'class="avatar usa-avatar bbg-avatar', $class) ;
+	$class = str_replace('class="avatar', 'class="avatar usa-avatar bbg__avatar', $class) ;
 	return $class;
 }
 
@@ -609,15 +609,15 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 		<!-- <div class="usa-grid"> -->
 			<div class="bbg__article-author">
 
-				<div class="bbg-avatar__container">
+				<div class="bbg__avatar__container">
 					<?php echo $avatar; ?>
 				</div>
 
 				<div class="bbg__author__text">
 
-					<h2 class="bbg-staff__author-name">
+					<h2 class="bbg__staff__author-name">
 						<a href="<?php echo $authorPath ?>" class="bbg__author-link"><?php echo $authorName; ?></a>
-					</h2><!-- .bbg-staff__author-name -->
+					</h2><!-- .bbg__staff__author-name -->
 
 					<div class="bbg__author-description">
 						<?php echo '<div class="bbg__author-occupation">' . $occupation . '</div>'; ?>
@@ -626,7 +626,7 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 							<?php echo $description; ?>
 						</div>
 
-					</div><!-- .bbg-staff__author-description -->
+					</div><!-- .bbg__staff__author-description -->
 
 					<div class="bbg__author-contact">
 						<?php
@@ -640,9 +640,9 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 							}
 							echo $authorEmail . $twitterLink;
 						?>
-					</div> <!-- .bbg-staff__author-contact -->
+					</div> <!-- .bbg__staff__author-contact -->
 
-				</div><!-- .bbg-staff__author__text -->
+				</div><!-- .bbg__staff__author__text -->
 		</div><!-- .bbg__article-author -->
 		<?php
 		do_action( 'bbg_post_author_bottom_card' );

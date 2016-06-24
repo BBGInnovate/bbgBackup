@@ -69,9 +69,9 @@ function outputBroadcasters($cols) {
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 
 				$s .= '<article class="bbg__entity'. $columnsClass .'">';
-				$s .=  '<div class="bbg-avatar__container bbg__entity__icon">';
+				$s .=  '<div class="bbg__avatar__container bbg__entity__icon">';
 				$s .=  '<a href="'.$link.'" tabindex="-1">';
-				$s .=  '<div class="bbg-avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
+				$s .=  '<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url('.$imgSrc.');"></div>';
 				$s .=  '</a></div>';
 				$s .=  '<div class="bbg__entity__text">';
 				$s .=  '<h2 class="bbg__entity__name"><a href="'.$link.'">'.$fullName.'</a></h2>';

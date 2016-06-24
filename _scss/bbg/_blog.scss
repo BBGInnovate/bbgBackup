@@ -441,7 +441,7 @@ ul.bbg__article-content__list--inline {
 		text-align: left;
 	}
 
-	.bbg-staff__author-name {
+	.bbg__staff__author-name {
 		font-weight: $font-bold;
 		margin-bottom: .5rem;
 	}
@@ -450,7 +450,7 @@ ul.bbg__article-content__list--inline {
 		margin-bottom: 1rem;
 
 		@include media($small-screen) {
-			margin-left: $bbg-team__icon-width + 10px;
+			margin-left: $bbg__team__icon-width + 10px;
 		}
 
 		.bbg__author-occupation {
@@ -481,7 +481,7 @@ ul.bbg__article-content__list--inline {
 		padding-left: 0;
 
 		@include media($small-screen) {
-			margin-left: $bbg-team__icon-width + 10px;
+			margin-left: $bbg__team__icon-width + 10px;
 		}
 
 		@include media($medium-screen) {

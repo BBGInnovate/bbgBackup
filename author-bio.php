@@ -77,14 +77,14 @@ wp_reset_query();
 
 
 		<header class="page-header usa-width-two-thirds">
-			<div class="bbg-avatar__container bbg-team__icon">
+			<div class="bbg__avatar__container bbg__team__icon">
 				<?php echo $avatar; ?>
 			</div>
 
-			<div class="bbg-staff__author__text">
+			<div class="bbg__staff__author__text">
 				<h1 class="bbg-author-name"><?php echo $authorName; ?></h1>
 
-				<div class="bbg-staff__author-description">
+				<div class="bbg__staff__author-description">
 
 						<?php
 						echo '<div class="bbg-author-occupation">' . $occupation . '</div>';

@@ -23,7 +23,7 @@
 		if ( $user->isActive=="on" ) {
 
 	?>
-	<div <?php post_class("bbg-grid--1-2-3 bbg-staff__author "); ?>>
+	<div <?php post_class("bbg-grid--1-2-3 bbg__staff__author "); ?>>
 
 		<?php 
 			if ($mode=="home") { 
@@ -32,7 +32,7 @@
 		?>
 
 
-		<div class="bbg-avatar__container--small">
+		<div class="bbg__avatar__container--small">
 			<?php if ($mode != "staff" || $postCounts[$user->ID] > 0): ?>
 				<a href="<?php echo $authorPath ?>">
 					<?php echo get_avatar( $user->user_email , apply_filters( 'change_avatar_css', 150) ); ?>
@@ -43,11 +43,11 @@
 			?>
 		</div>
 
-		<div class="bbg-staff__author__text">
+		<div class="bbg__staff__author__text">
 			
-			<h3 class="bbg-staff__author-name">
+			<h3 class="bbg__staff__author-name">
 				<?php if ($mode != "staff" || $postCounts[$user->ID] > 0): ?>
-					<a href="<?php echo $authorPath ?>" class="bbg-staff__author-link"><?php echo $authorName; ?></a>
+					<a href="<?php echo $authorPath ?>" class="bbg__staff__author-link"><?php echo $authorName; ?></a>
 				<?php else: 
 					echo $authorName;
 					endif; 
@@ -55,23 +55,23 @@
 			</h3>
 			
 			<?php if ( $authorOccupation!="" ) { ?>
-				<div class="bbg-staff__author-occupation"><?php echo $authorOccupation; ?></div>
+				<div class="bbg__staff__author-occupation"><?php echo $authorOccupation; ?></div>
 			<?php } ?>
 
 
 				<?php 
 					if ( $twitterHandle && $twitterHandle != '' ) {
 						$twitterHandle = str_replace("@", "", $twitterHandle);
-						$twitterLink = '<a href="//www.twitter.com/' . $twitterHandle. '" class="bbg-staff__author__contact-link twitter">@' . $twitterHandle . '</a> ';
+						$twitterLink = '<a href="//www.twitter.com/' . $twitterHandle. '" class="bbg__staff__author__contact-link twitter">@' . $twitterHandle . '</a> ';
 
 						if ( $addSeparator ) {
 							$twitterLink = '<span class="u--seperator"></span> ' . $twitterLink;
 						}
 					}
-					echo '<div class="bbg-staff__author-contact">' . $authorEmailLink . $twitterLink . '</div>';
+					echo '<div class="bbg__staff__author-contact">' . $authorEmailLink . $twitterLink . '</div>';
 				?>
-				<div class="bbg-staff__author-description">
-					<div class="bbg-staff__author-bio">
+				<div class="bbg__staff__author-description">
+					<div class="bbg__staff__author-bio">
 						<?php echo $authorDescription; ?>
 					</div>
 					<div class='clearAll'></div>

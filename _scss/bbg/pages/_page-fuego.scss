@@ -115,9 +115,9 @@
 	@include backgroundCover();
 	border-radius: 50%;
 	float: left;
-	height: $bbg-avatar-twitter;
+	height: $bbg__avatar-twitter;
 	vertical-align: middle;
-	width: $bbg-avatar-twitter;
+	width: $bbg__avatar-twitter;
 
 	&:focus {
 		background-color: transparent;
@@ -130,14 +130,14 @@
 		weight: bold;
 	}
 	margin-bottom: 0;
-	padding-left: $bbg-avatar-twitter + 10px;
+	padding-left: $bbg__avatar-twitter + 10px;
 }
 .bbg-fuego__twitter__author-handle {
 	margin: {
 		top: 0;
 		bottom: 0;
 	};
-	padding-left: $bbg-avatar-twitter + 10px;
+	padding-left: $bbg__avatar-twitter + 10px;
 }
 
 .bbg-fuego__twitter__tweet {
@@ -145,7 +145,7 @@
 		size: $lead-font-size;
 		weight: bold;
 	}
-	padding-left: $bbg-avatar-twitter + 10px;
+	padding-left: $bbg__avatar-twitter + 10px;
 	word-wrap: break-word;
 }
 
@@ -158,6 +158,6 @@
 }
 
 .bbg-fuego__twitter__quote-text {
-	padding-left: $bbg-avatar-twitter + 10px;
+	padding-left: $bbg__avatar-twitter + 10px;
 	word-wrap: break-word;
 }
