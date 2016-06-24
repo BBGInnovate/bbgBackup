@@ -502,7 +502,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 				$link = get_category_link( $selectedCategory->term_id );
 			}
 			if ($link) {
-				$output .= '<h5 class="entry-category bbg-label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
+				$output .= '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
 			}
 		}
 		return $output;
@@ -991,7 +991,7 @@ function getSoapboxStr($soap) {
 
 	$s .= '<div class="usa-width-one-half bbg__voice--featured">';
 	if ($soapHeaderPermalink != "") {
-		$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
+		$s .= '<h6 class="bbg__label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
 	}
 
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
