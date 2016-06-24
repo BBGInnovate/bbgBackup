@@ -4144,7 +4144,7 @@ body:not(.home) .bbg__main-navigation {
 }
 .bbg__article-content .bbg__interview p {
   margin-top: .5rem;
-  margin-bottom: 1rem;
+  margin-bottom: .75rem;
   /* Assumes Questions are wrapped in <strong/> */
 }
 .bbg__article-content .bbg__interview p strong {
@@ -4857,7 +4857,7 @@ img > a:focus,
   text-align: center;
 }
 
-.bbg-label {
+.bbg__label {
   background-color: #981b1e;
   color: #FFF;
   display: inline-block;
@@ -4869,11 +4869,11 @@ img > a:focus,
   padding: 0.5rem 1rem;
   text-transform: uppercase;
 }
-.bbg-label a {
+.bbg__label a {
   color: #FFF;
   text-decoration: underline;
 }
-.bbg-label--mobile {
+.bbg__label--mobile {
   background-color: transparent;
   color: #981b1e;
   display: block;
@@ -4882,43 +4882,43 @@ img > a:focus,
   margin-bottom: 1.5rem;
   padding: 0;
 }
-.bbg-label--mobile a {
+.bbg__label--mobile a {
   color: #981b1e;
 }
 @media screen and (min-width: 481px) {
-  .bbg-label {
+  .bbg__label {
     background-color: transparent;
     color: #981b1e;
     display: block;
     font-size: 2.5rem;
     padding: 0;
   }
-  .bbg-label--mobile {
+  .bbg__label--mobile {
     font-size: 3rem;
   }
-  .bbg-label a {
+  .bbg__label a {
     color: #981b1e;
   }
 }
-.bbg-label--mobile.small, .bbg-label.small {
+.bbg__label--mobile.small, .bbg__label.small {
   font-size: 1.3rem;
 }
 @media screen and (min-width: 481px) {
-  .bbg-label--mobile.small, .bbg-label.small {
+  .bbg__label--mobile.small, .bbg__label.small {
     font-size: 2rem;
   }
 }
-.bbg-label--mobile.large, .bbg-label.large {
+.bbg__label--mobile.large, .bbg__label.large {
   margin-bottom: 0;
   text-transform: uppercase;
 }
 @media screen and (min-width: 481px) {
-  .bbg-label--mobile.large, .bbg-label.large {
+  .bbg__label--mobile.large, .bbg__label.large {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
 }
-.bbg-label--mobile.large {
+.bbg__label--mobile.large {
   margin-bottom: 1rem;
 }
 
@@ -5502,7 +5502,7 @@ article {
   }
 }
 
-.tertiary-stories .bbg-label.small {
+.tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
 }
 .tertiary-stories .nav-previous {
@@ -5872,14 +5872,14 @@ article {
   background-color: #323a45;
   padding: 2rem auto;
 }
-.bbg__ribbon--thin .bbg-label {
+.bbg__ribbon--thin .bbg__label {
   background-color: #981b1e;
   color: #FFF;
   display: inline-block;
   font-size: 1.7rem;
   padding: .5rem 1rem;
 }
-.bbg__ribbon--thin .bbg-label a {
+.bbg__ribbon--thin .bbg__label a {
   color: #FFF;
 }
 .bbg__ribbon--thin p {
@@ -5933,14 +5933,14 @@ article {
   background-color: #f1f1f1;
   padding: 2rem auto;
 }
-.bbg__banner--thin .bbg-label {
+.bbg__banner--thin .bbg__label {
   background-color: #981b1e;
   color: #FFF;
   display: inline-block;
   font-size: 1.7rem;
   padding: .5rem 1rem;
 }
-.bbg__banner--thin .bbg-label a {
+.bbg__banner--thin .bbg__label a {
   color: #FFF;
 }
 .bbg__banner--thin p {
@@ -6003,7 +6003,7 @@ article {
 .bbg__ribbon p {
   color: #FFF;
 }
-.bbg__ribbon .bbg-label {
+.bbg__ribbon .bbg__label {
   background-color: #981b1e;
   color: #FFF;
   display: inline-block;
@@ -6011,7 +6011,7 @@ article {
   margin-bottom: 2rem;
   padding: 0.5rem 1rem;
 }
-.bbg__ribbon .bbg-label a {
+.bbg__ribbon .bbg__label a {
   color: #FFF;
   text-decoration: none;
 }

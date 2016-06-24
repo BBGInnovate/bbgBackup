@@ -94,7 +94,7 @@ img,
 	}
 }
 
-.bbg-label {
+.bbg__label {
 	background-color: $color-secondary-darkest;
 	color: #FFF;
 	display: inline-block;
@@ -801,7 +801,7 @@ article {
 }
 
 .tertiary-stories {
-	.bbg-label.small {
+	.bbg__label.small {
 		margin-bottom: $site-margins;
 	}
 
@@ -1257,7 +1257,7 @@ article {
 	background-color: $color-gray-dark;
 	padding: 2rem auto;
 
-	.bbg-label {
+	.bbg__label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;
@@ -1325,7 +1325,7 @@ article {
 	background-color: $color-gray-lightest;
 	padding: 2rem auto;
 
-	.bbg-label {
+	.bbg__label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;
@@ -1408,7 +1408,7 @@ article {
 		color: #FFF;
 	}
 
-	.bbg-label {
+	.bbg__label {
 		background-color: $color-secondary-darkest;
 		color: #FFF;
 		display: inline-block;

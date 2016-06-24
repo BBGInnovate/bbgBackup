@@ -58,7 +58,7 @@ if ( $includeSidebar ) {
 
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
 		if ($sidebarTitle != ""){
-			$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
@@ -313,7 +313,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 			}
 			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+			//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 			echo the_post_thumbnail( 'large-thumb' );
 
 			if ( $featuredImageCutline != "" ) {
@@ -338,7 +338,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
 		<?php echo bbginnovate_post_categories(); ?>
-		<!-- .bbg-label -->
+		<!-- .bbg__label -->
 
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
