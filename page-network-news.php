@@ -115,10 +115,15 @@ get_header(); ?>
 							}	
 							$s .= '</article>';
 							if ($counter == 1 || $counter == 5) {
+								if ($counter == 5) {
+									$idObj = get_category_by_slug($entitySlug); 
+				  					$id = $idObj->term_id;
+									$s .= '<article>' . '<a href="' . get_category_link($id) . '">All ' . strtoupper($entityString) . ' News</a></article>';
+								}
 								$s .= '</div>';
 							}
-
 						}
+
 					}
 					$s .= '</div></section>';
 					echo $s;
