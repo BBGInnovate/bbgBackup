@@ -1,7 +1,5 @@
 <?php
-define('WP_USE_THEMES', true);
-require ('../../wp-blog-header.php');
-
+require ('../../../wp-load.php');
 if ($_GET['endpoint'] == 'networkNews') {
 
 	$postsPerPage =20;
@@ -12,17 +10,16 @@ if ($_GET['endpoint'] == 'networkNews') {
 		,'posts_per_page' => $postsPerPage
 		,'post_status' => array('publish')
 	);
-
 	/*** late in the game we ran into a pagination issue, so we're running a second query here ***/
 	$custom_query_args= $qParams;
 	$custom_query = new WP_Query( $custom_query_args );
-
 	$features = array();
 
 	if ( $custom_query->have_posts() ) :
 			$counter = 0;
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				$id = get_the_ID();
+				
+				$id = 24067;
 				$location = get_post_meta( $id, 'map_location', true );
 				$storyLink = get_permalink();
 				$mapHeadline = get_post_meta( $id, 'map_headline', true );
@@ -64,11 +61,10 @@ if ($_GET['endpoint'] == 'networkNews') {
 				'type' => 'FeatureCollection',
 				'features' => $features
 			));
+			header('Content-Type: application/javascript');
+			header("Access-Control-Allow-Origin: *");
 			$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
-
-			echo "<script type='text/javascript'>\n";
 			echo "geojson = $geojsonStr";
-			echo "</script>";
 			//echo $geojsonStr;
 
 	endif; 
