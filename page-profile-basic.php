@@ -39,9 +39,12 @@ if ( have_posts() ) {
 
 	//Collapse the left column on mobile if it's empty.
 	$collapseColumnCSS = "";
+	/*
+	//No longer using this because we've adding sharing to the page
 	if ($email=="" && $twitterProfileHandle=="" && $phone==""){
 		$collapseColumnCSS = "bbg__article-sidebar--collapse";
 	}
+	*/
 
 	$active = get_post_meta( $id, 'active', true );
 	$formerCSS="";

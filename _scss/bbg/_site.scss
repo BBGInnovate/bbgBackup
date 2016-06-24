@@ -583,11 +583,14 @@ article {
 	max-width: 600px;
 	padding-bottom: $site-margins;
 
+	/*
+	//No longer using this becase we're showing the share links
 	&.bbg__article-sidebar--collapse {
 		height: 0;
 		line-height: 0;
 		padding: 0;
 	}
+	*/
 
 	@include media($medium-large-screen) {
 		border-bottom: none;

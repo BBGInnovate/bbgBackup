@@ -5310,11 +5310,14 @@ article {
   margin: 0 auto 3rem auto;
   max-width: 600px;
   padding-bottom: 3rem;
-}
-.bbg__article-sidebar--left.bbg__article-sidebar--collapse {
-  height: 0;
-  line-height: 0;
-  padding: 0;
+  /*
+  //No longer using this becase we're showing the share links
+  &.bbg__article-sidebar--collapse {
+  	height: 0;
+  	line-height: 0;
+  	padding: 0;
+  }
+  */
 }
 @media screen and (min-width: 900px) {
   .bbg__article-sidebar--left {
