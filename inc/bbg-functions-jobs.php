@@ -28,7 +28,7 @@
 			$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 		} else {
 			$jobSearchLink = 'https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
-			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
+			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuba Broadcasting. All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 			
 			//sort by end date, and add formatted end date
 			for ($i=0; $i < count($jobs); $i++) {
@@ -45,21 +45,7 @@
 			}
 			usort($jobs, 'dCompare');
 
-/*
-<table class="usa-table-borderless">
-<thead>
-<tr>
-<th>Job</th>
-<th>Closing date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>International Broadcaster (Multimedia) (Indonesian)</td>
-<td>6/23/2016</td>
-</tr>
-*/
-			$s .= '<table class="usa-table-borderless">';
+			$s .= '<table class="usa-table-borderless bbg__jobs__table">';
 			$s .= '<thead><tr><th scope="col">Job</th><th scope="col">Closing date</th></tr></thead>';
 			$s .= '<tbody>';
 
@@ -94,7 +80,7 @@
 			}
 			$s .= '</tbody></table>';
 
-			$s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
+			// $s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 		}
 		return $s;
 	}

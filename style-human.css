@@ -6421,6 +6421,10 @@ section.usa-section.bbg-banner__section {
   font-size: 90%;
 }
 
+.bbg__jobs__table {
+  margin-top: 0;
+}
+
 .bbg__profile__intern .bbg__profile__intern__job-label {
   color: #981b1e;
   display: block;
