@@ -138,9 +138,9 @@ get_header(); ?>
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg-label">
+							<h5 class="entry-category bbg__label">
 								<?php echo $occupation; ?>
-							</h5><!-- .bbg-label -->
+							</h5><!-- .bbg__label -->
 
 						</div>
 					</header><!-- .bbg__article-header -->

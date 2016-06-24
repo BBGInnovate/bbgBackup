@@ -19,7 +19,7 @@ if ( $includeSidebar ) {
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
 
 		if ( $sidebarTitle != "" ) {
-			$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
@@ -103,7 +103,7 @@ if ( $includeSidebar ) {
 	<div class="usa-grid">
 		<?php echo bbginnovate_post_categories(); ?>
 
-		<!-- .bbg-label -->
+		<!-- .bbg__label -->
 		<header class="entry-header">
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->

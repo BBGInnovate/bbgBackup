@@ -190,7 +190,7 @@ get_header();
 
 					<div class="usa-width-two-thirds">
 
-						<h6 class="bbg-label"><a href="<?php echo $impactPortfolioPermalink; ?>">Impact stories</a></h6>
+						<h6 class="bbg__label"><a href="<?php echo $impactPortfolioPermalink; ?>">Impact stories</a></h6>
 
 						<div class="usa-grid-full" style="margin-bottom: 1.5rem;">
 						<?php
@@ -241,7 +241,7 @@ get_header();
 					?>
 
 							<article class="bbg-portfolio__excerpt bbg__event-announcement" style="" >
-								<h6 class="bbg-label " style=" display: inline-block; margin-bottom: 1rem;"><?php echo $labelText ?></h6>
+								<h6 class="bbg__label " style=" display: inline-block; margin-bottom: 1rem;"><?php echo $labelText ?></h6>
 								<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
 									<header class="entry-header bbg-portfolio__excerpt-header">
 										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
@@ -271,7 +271,7 @@ get_header();
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'news/news-info' ) ) ?>">BBG News</a></h6>
+					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news/news-info' ) ) ?>">BBG News</a></h6>
 				</div>
 				
 				<!-- Featured Post -->
@@ -325,7 +325,7 @@ get_header();
 										$includeMeta=false;
 										$includeExcerpt=false;
 										if ($counter==3) {
-											echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg-label small">More news</h6></header>';
+											echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>';
 										}
 									}
 									get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
@@ -355,7 +355,7 @@ get_header();
 			<!-- Threats to Journalism.  -->
 			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
 				<div class="usa-grid">
-					<h6 class="bbg-label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
+					<h6 class="bbg__label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
 				</div>
 				
 				<!-- Headlines -->
@@ -427,7 +427,7 @@ get_header();
 			<!-- Entity list -->
 			<section id="entities" class="usa-section bbg-staff">
 				<div class="usa-grid">
-					<h6 class="bbg-label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
+					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 					<div class="usa-intro bbg__broadcasters__intro">
 						<h3 class="usa-font-lead">Every week, more than 226 million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
 					</div>

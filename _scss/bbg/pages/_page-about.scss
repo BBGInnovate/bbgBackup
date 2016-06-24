@@ -23,7 +23,7 @@
 .bbg__about__child {
 
 	@include media($medium-screen) {
-		.bbg-label {
+		.bbg__label {
 			font-size: 2rem;
 		}
 	}

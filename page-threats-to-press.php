@@ -185,7 +185,7 @@ echo $threatsJSON;
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg-label--mobile large">Threats to Press</h5>
+					<h5 class="bbg__label--mobile large">Threats to Press</h5>
 				</header><!-- .page-header -->
 			</div>
 
@@ -220,7 +220,7 @@ echo $threatsJSON;
 							$counter++;
 							//Add a check here to only show featured if it's not paginated.
 							if(  $counter==1 ){
-								echo '<h5 class="bbg-label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
+								echo '<h5 class="bbg__label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
@@ -229,7 +229,7 @@ echo $threatsJSON;
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								//echo '<h6 class="page-title bbg-label small">More news</h6>';
+								//echo '<h6 class="page-title bbg__label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4
@@ -251,7 +251,7 @@ echo $threatsJSON;
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
-						<h5 class="bbg-label">Fallen journalists</h5>
+						<h5 class="bbg__label">Fallen journalists</h5>
 					</div>
 
 					<div class="usa-grid">

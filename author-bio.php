@@ -121,7 +121,7 @@ wp_reset_query();
 if ( count( $projects ) ) {
 	$maxProjectsToShow=3;
 	echo '<div class="usa-width-one-third bbg-author-projects">';
-	echo '<h6 class="bbg-label small">Recent projects</h2>';
+	echo '<h6 class="bbg__label small">Recent projects</h2>';
 	echo '<ul class="bbg-author-projects__list">';
 	for ( $i=0; $i<min( $maxProjectsToShow, count( $projects ) ); $i++ ) {
 		$p=$projects[$i];
