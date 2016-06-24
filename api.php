@@ -1,4 +1,19 @@
 <?php
+
+	/** 
+
+	api.bbg.gov is firewalled to only allow certain IP addresses to reach it.  We allow clients to call this file and it 
+	serves as a proxy with some caching enabled.  For example. this will translate a call from
+
+	https://www.bbg.gov/wp-content/themes/bbgRedesign/api.php?endpoint=api/groups/?country=Russia
+
+	to
+	
+	http://api.bbg.gov/api/groups/?country=Russia	
+
+	***/
+
+
 	/****** UTILITY FUNCTIONS - KEEP UP TOP ****/
 	function fileExpired($filepath, $minutesToExpire) {
 		$expired = false;
@@ -28,7 +43,9 @@
 		$id = str_replace("&", "_", $id);
 		$id = str_replace("=", "_", $id);
 		//TODO: ideally this would use get_template_directory() from wordpress, but we're not in the wordpress context
-		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
+		// /Users/josephflowers/apacheapps/sasspress/wp-content/themes/bbgRedesign
+		// /var/www/wordpress/wp-content/themes/bbgRedesign
+		$jsonFilepath = "/Users/josephflowers/apacheapps/sasspress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
 		if ( fileExpired($jsonFilepath, 1440) ) { 	//1440 min = 1 day
 			$result=fetchUrl($url);
 			file_put_contents($jsonFilepath, $result);
