@@ -3071,6 +3071,11 @@ a:focus .bbg__article-share__icon {
   }
 }
 
+table th,
+table td {
+  border: 1px solid #aeb0b5;
+}
+
 .bbg__table-plain, .bbg__article__form--inline {
   display: block;
   margin: 0 auto;
@@ -3106,8 +3111,8 @@ a:focus .bbg__article-share__icon {
 }
 .bbg__table__money .bbg__table__row__total th,
 .bbg__table__money .bbg__table__row__total td {
-  background-color: #F1F1F1;
-  border-top: 1px solid #CCC;
+  background-color: #f1f1f1;
+  border-top: 1px solid #aeb0b5;
   font-weight: bold;
 }
 

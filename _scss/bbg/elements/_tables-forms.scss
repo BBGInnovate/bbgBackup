@@ -24,6 +24,11 @@
 	}
 }
 
+table th,
+table td {
+	border: 1px solid $color-gray-light;
+}
+
 .bbg__table-plain {
 	display: block;
 	margin: 0 auto;
@@ -65,8 +70,8 @@
 
 	.bbg__table__row__total th,
 	.bbg__table__row__total td {
-		background-color: #F1F1F1;
-		border-top: 1px solid #CCC;
+		background-color: $color-gray-lightest;
+		border-top: 1px solid $color-gray-light;
 		font-weight: bold;
 	}
 
