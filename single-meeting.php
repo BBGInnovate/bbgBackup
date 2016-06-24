@@ -152,9 +152,19 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-						<h3><?php the_date(); ?></h3>
-						<h5>Location: <?php echo $meetingLocation; ?></h5>
-						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
+						</ul>
 					</div>
 
 					<div class="entry-content bbg__article-content">
@@ -164,7 +174,10 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						
+						<h3><?php the_date(); ?></h3>
+						<h5>Location: <?php echo $meetingLocation; ?></h5>
+						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+
 						<?php
 							if( have_rows('board_meeting_related_documents') ):
 							 	echo '<h3 class="bbg__sidebar-label">Download</h3>';
