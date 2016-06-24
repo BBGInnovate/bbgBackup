@@ -806,7 +806,7 @@ body {
   content: " | ";
 }
 
-.readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
+.readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg__page-header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.6rem;
   font-weight: 300;
@@ -815,7 +815,7 @@ body {
   margin-bottom: 3rem;
 }
 @media screen and (min-width: 600px) {
-  .readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg-page__header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
+  .readin, .bbg-staff__author-bio, .single-post .bbg__article-content > p:first-of-type, .bbg__page-header-description, .page-template-page-board .content-area .usa-grid > p:first-of-type {
     font-size: 2rem;
   }
 }
@@ -5730,24 +5730,26 @@ article {
 /* PAGE HEADER STYLES                               */
 /* We used these on innovation.bbg.gov              */
 /* We currently only using them on the author pages */
-.bbg-page__header {
-  border-top: 1px solid #CCC;
+.bbg__page-header {
   border-bottom: 1px solid #CCC;
   margin: 0 0 3rem 0;
-  padding: 3rem;
+  padding-top: 1rem;
+  padding-right: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
 }
 
-.bbg-page__header-text {
+.bbg__page-header-text {
   clear: none;
   max-width: 600px;
 }
 
-.bbg-page__header-title {
+.bbg__page-header-title {
   clear: none;
   margin-bottom: 0;
 }
 
-.bbg-page__header-description {
+.bbg__page-header-description {
   clear: none;
   margin-top: 1rem;
   margin-bottom: 0;

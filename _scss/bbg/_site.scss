@@ -1084,26 +1084,30 @@ article {
 /* We used these on innovation.bbg.gov              */
 /* We currently only using them on the author pages */
 
-.bbg-page__header {
+.bbg__page-header {
 	border: {
-		top: $border-solid;
 		bottom: $border-solid;
 	}
 	margin: 0 0 $site-margins 0;
-	padding: $site-margins;
+	padding: {
+		top: $site-margins-small;
+		right: $site-margins;
+		bottom: $site-margins;
+		left: $site-margins;
+	}
 }
 
-.bbg-page__header-text {
+.bbg__page-header-text {
 	clear: none;
 	max-width: $article-max-width;
 }
 
-.bbg-page__header-title {
+.bbg__page-header-title {
 	clear: none;
 	margin-bottom: 0;
 }
 
-.bbg-page__header-description {
+.bbg__page-header-description {
 	@extend .readin;
 	clear: none;
 	margin: {

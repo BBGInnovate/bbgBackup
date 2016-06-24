@@ -73,7 +73,7 @@ wp_reset_query();
 ?>
 
 <div class="usa-section">
-	<div class="usa-grid clearAll bbg-page__header" >
+	<div class="usa-grid clearAll bbg__page-header" >
 
 
 		<header class="page-header usa-width-two-thirds">
@@ -115,7 +115,7 @@ wp_reset_query();
 
 				</div><!-- .author-description -->
 			</div><!-- .bbg-author-text -->
-		</header><!-- .bbg-page__header -->
+		</header><!-- .bbg__page-header -->
 							<?php
 
 if ( count( $projects ) ) {
