@@ -87,7 +87,7 @@ function getCSV($url,$id,$expirationMinutes) {
 	
 	return $csv;
 }
-function formatBytes($bytes, $precision = 2) { 
+function formatBytes($bytes) { 
 	$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
 	$bytes = max($bytes, 0); 
@@ -97,6 +97,10 @@ function formatBytes($bytes, $precision = 2) {
 	// Uncomment one of the following alternatives
 	$bytes /= pow(1000, $pow);
 	// $bytes /= (1 << (10 * $pow)); 
+
+	if ($pow < 2) {
+		$precision = 0;
+	}
 
 	return round($bytes, $precision) . ' ' . $units[$pow]; 
 } 
