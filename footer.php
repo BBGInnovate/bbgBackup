@@ -72,16 +72,6 @@
 		<?php if( have_rows('site_setting_footer_links', 'option') ): ?>
 			<div class="bbg__footer__sub">
 				<div class="usa-grid">
-				<!-- <nav class="usa-footer-nav usa-width-two-thirds">
-					<ul class="usa-unstyled-list usa-width-one-fourth usa-footer-primary-content">
-						<h4 class="usa-footer-primary-link">Resources</h4>
-						<li><a href="http://www.bbg.gov/about-the-agency/research-reports/foia/privacy-policy">Privacy Policy</a></li>
-						<li><a href="http://www.bbg.gov/about-the-agency/research-reports/foia/">FOIA</a></li>
-						<li><a href="http://www.bbg.gov/sitemap">Sitemap</a></li>
-						<li><a href="http://www.bbg.gov/open">Open Gov</a></li>
-					</ul>
-				</nav>
-				-->
 				<?php 
 					$counter=0;
 					while( have_rows('site_setting_footer_links', 'option') ): the_row(); 
