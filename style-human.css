@@ -6530,13 +6530,18 @@ section.usa-section.bbg-banner__section {
   }
 }
 
-@media screen and (min-width: 900px) {
-  .bbg__profile .bbg__article-content.bbg__article--no-featured-image,
-  .category-profile .bbg__article-content.bbg__article--no-featured-image {
-    margin-top: -100px;
-  }
+/*
+.bbg__profile,
+.category-profile {
+	@include media($medium-large-screen) {
+		.bbg__article-content.bbg__article--no-featured-image{
+			//this causes problems on post pages with no featured image.
+			//only needed for profile pages.
+			margin-top: $profile-photo-margin-large;
+		}
+	}
 }
-
+*/
 .bbg__profile-photo {
   margin: -60px auto 0;
   position: relative;
