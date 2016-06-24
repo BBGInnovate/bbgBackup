@@ -147,9 +147,7 @@ get_header(); ?>
 
 					<div class="bbg__article-sidebar--left">
 
-						<ul class="bbg__article-share ">
 						&nbsp;
-						</ul>
 					</div>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
@@ -171,6 +169,7 @@ get_header(); ?>
 							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
 						<?php } ?>
 
+						<ul class="bbg__article-share ">
 
 						<?php 
 						if ($email != ""){
@@ -184,6 +183,7 @@ get_header(); ?>
 							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
+						</ul>
 
 
 						<?php 

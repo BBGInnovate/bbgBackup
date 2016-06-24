@@ -168,6 +168,25 @@ get_header(); ?>
 
 					<div class="bbg__article-sidebar--left <?php echo $collapseColumnCSS; ?>">
 
+						&nbsp;
+					</div><!-- .bbg__article-sidebar--left -->
+
+					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
+						<?php the_content(); ?>
+						<?php echo $latestTweetsStr; ?>
+						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
+
+						<?php if($post->post_parent) {
+							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent_link = get_permalink($post->post_parent);
+						?>
+						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
+						<?php } ?>
+					</div><!-- .entry-content -->
+
+					<div class="bbg__article-sidebar">
+
 						<ul class="bbg__article-share ">
 						<?php 
 						if ($email!="" || $phone!=""){
@@ -189,25 +208,9 @@ get_header(); ?>
 							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
-						&nbsp;
 						</ul>
-					</div><!-- .bbg__article-sidebar--left -->
 
-					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-						<?php the_content(); ?>
-						<?php echo $latestTweetsStr; ?>
-						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
-						<?php } ?>
-					</div><!-- .entry-content -->
-
-					<div class="bbg__article-sidebar">
 						<?php 
 							
 							if ($resolution) {
