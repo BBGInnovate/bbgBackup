@@ -19,7 +19,7 @@ if ($_GET['endpoint'] == 'networkNews') {
 			$counter = 0;
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				
-				$id = 24067;
+				$id = $_GET['page_id'];
 				$location = get_post_meta( $id, 'map_location', true );
 				$storyLink = get_permalink();
 				$mapHeadline = get_post_meta( $id, 'map_headline', true );
