@@ -27,7 +27,11 @@
 }
 
 .bbg__jobs__table {
-	margin-top: 0;
+	font-size: 90%;
+	margin: {
+		top: 0;
+		bottom: $site-margins-large;
+	}
 }
 
 .bbg__profile__intern {

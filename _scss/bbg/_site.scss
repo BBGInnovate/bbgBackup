@@ -417,11 +417,13 @@ article {
 			font-size: 1.5rem;
 		}
 
+		/*
 		a[href$=".pdf"]{
 			&::after {
 				content: " (PDF)";
 			}
 		}
+		*/
 	}
 
 	.bbg__sidebar__download__description {
@@ -555,8 +557,8 @@ article {
 	.bbg__article-sidebar {
 		float: right;
 		font-family: $font-sans;
-		max-width: 17rem;
-		width: 18%;
+		//max-width: 17rem;
+		width: 30%;
 
 		p, li{
 			font-size: 90%;
@@ -593,7 +595,8 @@ article {
 		float: left;
 		margin-top: 0;
 		margin-right: $site-margins;
-		width: 20%;
+		/*width: 20%;*/
+		width: 6%;
 	}
 }
 

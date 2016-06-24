@@ -2956,20 +2956,16 @@ a:focus .bbg__article-share__icon {
 .bbg__article-share__link {
   display: inline-block;
   margin-right: 3px;
-  	/*
-  	@include media($medium-screen) {
-  		margin-right: 2rem;
-  	}
-  
-  	@include media($medium-large-screen) {
-  		display: block;
-  	}
-  	*/
 }
 .bbg__article-share__link a:hover,
 .bbg__article-share__link a:focus {
   background: none;
   text-decoration: none;
+}
+@media screen and (min-width: 900px) {
+  .bbg__article-share__link {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -5160,6 +5156,13 @@ article {
 }
 .bbg__article-sidebar .bbg__sidebar__download__title {
   clear: none;
+  /*
+  a[href$=".pdf"]{
+  	&::after {
+  		content: " (PDF)";
+  	}
+  }
+  */
 }
 @media screen and (min-width: 481px) {
   .bbg__article-sidebar .bbg__sidebar__download__title {
@@ -5171,9 +5174,6 @@ article {
     clear: both;
     font-size: 1.5rem;
   }
-}
-.bbg__article-sidebar .bbg__sidebar__download__title a[href$=".pdf"]::after {
-  content: " (PDF)";
 }
 .bbg__article-sidebar .bbg__sidebar__download__description {
   margin-top: 0;
@@ -5289,8 +5289,7 @@ article {
   .bbg__article-sidebar {
     float: right;
     font-family: "Lato", "Helvetica", "Arial", sans-serif;
-    max-width: 17rem;
-    width: 18%;
+    width: 30%;
   }
   .bbg__article-sidebar p, .bbg__article-sidebar li {
     font-size: 90%;
@@ -5322,7 +5321,8 @@ article {
     float: left;
     margin-top: 0;
     margin-right: 3rem;
-    width: 20%;
+    /*width: 20%;*/
+    width: 6%;
   }
 }
 
@@ -6427,7 +6427,9 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__jobs__table {
+  font-size: 90%;
   margin-top: 0;
+  margin-bottom: 6rem;
 }
 
 .bbg__profile__intern .bbg__profile__intern__job-label {
