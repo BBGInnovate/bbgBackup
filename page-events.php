@@ -94,7 +94,7 @@ get_header(); ?>
 			<!-- BEGIN HEADER RED LABEL -->
 			<div class="usa-grid">
 				<header class="page-header">
-					<h6 class="bbg-label--mobile large">
+					<h6 class="bbg__label--mobile large">
 						<?php if ($hasTeamFilter) {
 							echo "" . $teamCategory->cat_name. " events";
 						} else {
@@ -132,7 +132,7 @@ get_header(); ?>
 						echo '</div><!-- left column -->';
 						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 						echo '<header class="page-header">';
-						echo '<h6 class="page-title bbg-label small">More events</h6>';
+						echo '<h6 class="page-title bbg__label small">More events</h6>';
 						echo '</header>';
 
 						//These values are used for every excerpt >=4
@@ -179,7 +179,7 @@ get_header(); ?>
 				if (!is_paged()) {
 					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';
 					echo '<header class="page-header">';
-					echo '<h6 class="page-title bbg-label small">Upcoming events</h6>';
+					echo '<h6 class="page-title bbg__label small">Upcoming events</h6>';
 					echo '</header>';
 					while ( $future_events_query->have_posts() ) {
 						$future_events_query->the_post(); 

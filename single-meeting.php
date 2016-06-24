@@ -116,7 +116,7 @@ get_header(); ?>
 							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 						}
 						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-						//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+						//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 						echo the_post_thumbnail( 'large-thumb' );
 
 						echo '</div>';
@@ -144,7 +144,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg-label">Board meeting</h5><!-- .bbg-label -->
+							<h5 class="entry-category bbg__label">Board meeting</h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 

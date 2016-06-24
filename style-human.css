@@ -6302,7 +6302,7 @@ section.usa-section.bbg-banner__section {
 	Multi-column child styles
 *****/
 @media screen and (min-width: 600px) {
-  .bbg__about__child .bbg-label {
+  .bbg__about__child .bbg__label {
     font-size: 2rem;
   }
 }
@@ -6973,7 +6973,7 @@ div.appropriations-small > p.header {
   }
 }
 @media screen and (min-width: 481px) {
-  .bbg__impact-model .bbg-label {
+  .bbg__impact-model .bbg__label {
     background-color: #900;
     color: #FFF;
     display: inline-block;

@@ -23,7 +23,7 @@ get_header(); ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg-label--mobile large">Network news</h5>
+					<h5 class="bbg__label--mobile large">Network news</h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
@@ -82,7 +82,7 @@ get_header(); ?>
 					$s = '<section class="usa-section">';
 					$s .= '<div class="usa-grid">';
 					$entityPermalink = get_permalink( get_page_by_path( 'networks/' . $e ) );
-					$s .= '<h5 class="bbg-label small"><a href="' . $entityPermalink . '">'. $entityString .'</a></h5>';
+					$s .= '<h5 class="bbg__label small"><a href="' . $entityPermalink . '">'. $entityString .'</a></h5>';
 					$s .= '</div>';
 					$s .= '<div class="usa-grid">';
 					if (count($pressReleases)) {

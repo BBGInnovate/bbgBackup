@@ -424,9 +424,9 @@ get_header(); ?>
 									<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
 
 									<!-- .bbg__article-header__title -->
-									<h5 class="entry-category bbg-label">
+									<h5 class="entry-category bbg__label">
 										<?php echo $websiteName; ?>
-									</h5><!-- .bbg-label -->
+									</h5><!-- .bbg__label -->
 
 								</div>
 
@@ -535,7 +535,7 @@ get_header(); ?>
 											if (count($threats)) {
 												$maxThreatsStories=3;
 												echo '<aside class="bbg__article-sidebar__aside">';
-												echo '<h6 class="bbg-label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
+												echo '<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
 												echo '<ul class="bbg__rss__list">';	
 												for ( $i = 0; $i <= min( $maxRelatedStories, count($threats) ); $i++) {
 													$o = $threats[$i];

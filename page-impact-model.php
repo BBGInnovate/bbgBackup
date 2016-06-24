@@ -54,7 +54,7 @@ get_header(); ?>
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 									$parent_link = get_permalink($post->post_parent);
 								?>
-								<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+								<h5 class="entry-category bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 
 								<?php } ?>
 
@@ -129,7 +129,7 @@ get_header(); ?>
 								</div>
 
 								<div class="usa-grid">
-									<h6 class="bbg-label large">INFORM</h6>
+									<h6 class="bbg__label large">INFORM</h6>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-half">
@@ -165,7 +165,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h6 class="bbg-label large">ENGAGE / CONNECT</h6>
+									<h6 class="bbg__label large">ENGAGE / CONNECT</h6>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
@@ -207,7 +207,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h6 class="bbg-label large">BE INFLUENTIAL</h6>
+									<h6 class="bbg__label large">BE INFLUENTIAL</h6>
 									<h3>in support of freedom and democracy</h3>
 								</div>
 								<div class="usa-grid">
