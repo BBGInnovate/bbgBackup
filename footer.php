@@ -3,9 +3,11 @@
  * The template for displaying the footer.
  *
  * Contains the closing of the #content div and all content after.
+ * 
+ * Note that we're leveraging a repeater custom field in the footer.  It's in the 'homepage options'
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
+ * 
  * US Web Design Standards (alpha) includes 3 footers alternatives.
  * @link https://playbook.cio.gov/designstandards/footers/
  *
