@@ -163,7 +163,28 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 
-					<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+					<div class="bbg__article-sidebar--left">
+
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+
+
+
+					<div class="entry-content bbg__article-content largeXXX <?php echo $featuredImageClass; ?>">
 						<div class="bbg__profile__content">
 						<?php the_content(); ?>
 

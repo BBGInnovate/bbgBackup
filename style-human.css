@@ -5298,17 +5298,20 @@ article {
     float: right;
     font-family: "Lato", "Helvetica", "Arial", sans-serif;
     width: 30%;
+    		/*
+    		&.large{
+    			max-width: none;
+    			width: 33%;
+    
+    			&:first-child {
+    				margin-top: -1rem;
+    			}
+    		}
+    		*/
   }
   .bbg__article-sidebar p, .bbg__article-sidebar li {
     font-size: 90%;
     line-height: 1.5;
-  }
-  .bbg__article-sidebar.large {
-    max-width: none;
-    width: 33%;
-  }
-  .bbg__article-sidebar.large:first-child {
-    margin-top: -1rem;
   }
 }
 .bbg__article-sidebar--left {

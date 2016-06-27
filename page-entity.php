@@ -434,11 +434,28 @@ get_header(); ?>
 
 
 
+					<div class="bbg__article-sidebar--left">
+
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
+						</ul>
+
+					</div>
 
 
 
 
-							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+							<div class="entry-content bbg__article-content largeXXX <?php echo $featuredImageClass; ?>">
 								<div class="bbg__profile__content">
 								<?php /*echo $headlineStr;*/ ?>
 
@@ -447,7 +464,7 @@ get_header(); ?>
 
 								</div>
 
-							</div><!-- .entry-content ------------------------------------------------- -->
+							</div><!-- .entry-content -->
 
 
 
@@ -487,7 +504,6 @@ get_header(); ?>
 									<aside class="bbg__article-sidebar__aside">
 									<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
 									<ul class="bbg__article-share">
-									<ul>
 										<?php
 											if ($facebook!=""){
 												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
