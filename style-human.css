@@ -3335,7 +3335,8 @@ object {
 }
 
 .bbg__article-sidebar.large .leaflet-container div,
-.bbg__article-sidebar.large .leaflet-container p {
+.bbg__article-sidebar.large .leaflet-container p,
+.bbg__article-sidebar.large .leaflet-popup-pane div {
   margin-bottom: 0;
 }
 
