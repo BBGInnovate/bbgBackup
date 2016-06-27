@@ -23,7 +23,7 @@ get_header(); ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg__label--mobile large">Network news</h5>
+					<h5 class="bbg__label--mobile large">Network highlights</h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
