@@ -1,69 +1,54 @@
 <?php
 /**
- * This private page is a utility to show the number of pages built using a particualr template.
+ * The template for displaying highlights from across the 5 BBG entities.
+ * Features a banner map of recent headlines about the entities
+ * and a subsection for each of the entities.
+ *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package bbgRedesign
-   template name: Debugger
+ * @package bbginnovate
+  template name: Headlines Generator
  */
 
-get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<div class="usa-grid-full">
-				<?php 
-					$templates =  wp_get_theme()->get_page_templates();
-					
-					echo "<h3>Default Template (should be page.php)</h3>";
-					$args = array(
-						'post_type' => 'page',
-						'posts_per_page' => 9999,
-						'meta_query' => array(
-						    array(
-						        'key' => '_wp_page_template',
-						        'value' => 'default', // template name as stored in the dB
-						    )
-						),
-					);
-					$custom_query = new WP_Query($args);
-					if ($custom_query -> have_posts()) {
-						echo "<ul style='margin-left:20px'>";
-						while ( $custom_query -> have_posts() )  {
-							$custom_query -> the_post();
-							echo "<li><a target='_blank' href='" . get_permalink(get_the_id()) . "'>".get_the_title()."</a></li>";
-						}
-						echo "</ul>";
-					}
-					wp_reset_postdata();
+$pressReleases = array();
 
-					foreach ( $templates as $template_filename => $template_name ) {
-						echo "<h3>$template_name ($template_filename)</h3>";
-						$args = array(
-					        'post_type' => 'page',
-					        'posts_per_page' => 9999,
-					        'meta_query' => array(
-					            array(
-					                'key' => '_wp_page_template',
-					                'value' => $template_filename, // template name as stored in the dB
-					            )
-					        ),
-					    );
-						$custom_query = new WP_Query($args);
-						if ($custom_query -> have_posts()) {
-							echo "<ul style='margin-left:20px'>";
-							while ( $custom_query -> have_posts() )  {
-								$custom_query -> the_post();
-								echo "<li><a target='_blank' href='" . get_permalink(get_the_id()) . "'>".get_the_title()."</a></li>";
-							}
-							echo "</ul>";
-						}
-						wp_reset_postdata();
-					}
-				 ?>
-			</div><!-- .usa-grid-full -->
-		</main><!-- #main -->
-	</div><!-- #primary -->
+$cats = get_categories();
+//$slugs = ['voa-press-release','rferl-press-release','ocb-press-release','rfa-press-release','mbn-press-release'];
+foreach ($cats as $cat) {
+	$prCategoryID = $cat->term_id;
+	$qParams = array(
+		'post_type' => array('post'),
+		'posts_per_page' => 20,
+		'category__and' => array(
+								$prCategoryID
+						  ),
+		'orderby', 'date',
+		'order', 'DESC',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'post_format',
+				'field' => 'slug',
+				'terms' => 'post-format-quote',
+				'operator' => 'NOT IN'
 
-<?php /*get_sidebar();*/ ?>
-<?php get_footer(); ?>
+			)
+		)
+	);
+	$custom_query = new WP_Query($qParams);
+	if ($custom_query -> have_posts()) {
+		$counter=0;
+		while ( $custom_query -> have_posts() )  {
+			$counter++;
+			$custom_query->the_post();
+			$id = get_the_ID();
+			$url = get_permalink($id);
+			$title = get_the_title($id);
+			echo $cat->slug . "\t" . $counter . "\t" . $title . "\t" . $url . "\n";
+
+		}
+	}
+	wp_reset_postdata();
+	wp_reset_query();
+}
+?>
