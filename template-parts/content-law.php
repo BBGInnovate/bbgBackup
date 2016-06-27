@@ -7,6 +7,31 @@
  * @package bbginnovate
  */
 
+
+//Experimenting with adding the social share code to Pages
+//the title/headline field, followed by the URL and the author's twitter handle
+$twitterText = "";
+$twitterText .= html_entity_decode( get_the_title() );
+$twitterHandle = get_the_author_meta( 'twitterHandle' );
+$twitterHandle = str_replace( "@", "", $twitterHandle );
+if ( $twitterHandle && $twitterHandle != '' ) {
+	$twitterText .= " by @" . $twitterHandle;
+} else {
+	$authorDisplayName = get_the_author();
+	if ( $authorDisplayName && $authorDisplayName!='' ) {
+		$twitterText .= " by " . $authorDisplayName;
+	}
+}
+$twitterText .= " " . get_permalink();
+$hashtags="";
+//$hashtags="testhashtag1,testhashtag2";
+
+///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
+$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
+$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+
+
+
 /*** Sidebar content ***/
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 
@@ -111,6 +136,21 @@ if ( $includeSidebar ) {
 
 		<div class="usa-grid-full">
 			<div class="bbg__article-sidebar--left">
+
+				<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+				<ul class="bbg__article-share">
+					<li class="bbg__article-share__link facebook">
+						<a href="<?php echo $fbUrl; ?>">
+							<span class="bbg__article-share__icon facebook"></span>
+						</a>
+					</li>
+					<li class="bbg__article-share__link twitter">
+						<a href="<?php echo $twitterURL; ?>">
+							<span class="bbg__article-share__icon twitter"></span>
+						</a>
+					</li>
+				</ul>
+
 				<p></p>
 			</div><!-- .bbg__article-sidebar--left -->
 
