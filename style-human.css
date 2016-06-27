@@ -2955,7 +2955,7 @@ a:focus .bbg__article-share__icon {
 }
 
 @media screen and (min-width: 900px) {
-  .bbg__article-sidebar.large .bbg__article-share {
+  .bbg__article-sidebar .bbg__article-share {
     margin-left: initial;
   }
 }
