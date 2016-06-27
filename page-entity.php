@@ -485,8 +485,8 @@ get_header(); ?>
 									if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 									?>
 									<aside class="bbg__article-sidebar__aside">
-									<ul class="bbg__article-share">
 									<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
+									<ul class="bbg__article-share">
 									<ul>
 										<?php
 											if ($facebook!=""){

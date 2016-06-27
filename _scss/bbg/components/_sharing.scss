@@ -26,6 +26,13 @@ a:focus .bbg__article-share__icon {
 	}
 }
 
+.bbg__article-sidebar.large {
+	.bbg__article-share {
+		@include media($medium-large-screen) {
+			margin-left: initial;
+		}
+	}
+}
 
 /* Article share links */
 .bbg__article-share__link {
