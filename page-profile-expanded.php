@@ -230,7 +230,7 @@ get_header(); ?>
 
 					</div><!-- .entry-content -->
 
-					<div class="bbg__article-sidebar large">
+					<div class="bbg__article-sidebar largeXXX">
 						<ul class="bbg__article-share ">
 						<?php 
 						if ($email != "" || $phone != ""){

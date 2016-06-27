@@ -517,31 +517,29 @@ article {
 		}
 		width: 56%;
 
-		/*&.large{*/
-			/*
+		>* {
+			max-width: none;
+		}
+
+		p {
+			margin: {
+				right: 0;
+				left: 0;
+			}
+
+			strong {
+				font-family: $font-sans;
+			}
+		}
+
+		&.large{
 			border-right: $border-dotted;
-			/*
 			margin-left: 0;
 			padding-right: 2%;
 			width: 65%;
-			*/
 
-			>* {
-				max-width: none;
-			}
 
-			p {
-				margin: {
-					right: 0;
-					left: 0;
-				}
-
-				strong {
-					font-family: $font-sans;
-				}
-			}
-
-			/*.bbg__profile__content p:first-of-type {*/
+			/* Make the first paragraph larger */
 			.bbg__profile__content p:first-child {
 				font: {
 					size: 1.7rem;
@@ -553,7 +551,7 @@ article {
 					bottom: $site-margins;
 				}
 			}
-		/*}*/
+		}
 	}
 
 
@@ -568,7 +566,6 @@ article {
 			line-height: 1.5;
 		}
 
-		/*
 		&.large{
 			max-width: none;
 			width: 33%;
@@ -577,7 +574,6 @@ article {
 				margin-top: -1rem;
 			}
 		}
-		*/
 	}
 }
 
