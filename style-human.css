@@ -3334,6 +3334,9 @@ object {
   }
 }
 
+.bbg__article-sidebar .leaflet-container div,
+.bbg__article-sidebar .leaflet-container p,
+.bbg__article-sidebar .leaflet-popup-pane div,
 .bbg__article-sidebar.large .leaflet-container div,
 .bbg__article-sidebar.large .leaflet-container p,
 .bbg__article-sidebar.large .leaflet-popup-pane div {
