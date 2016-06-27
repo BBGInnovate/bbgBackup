@@ -144,14 +144,14 @@
 		font-size: 1.6rem;
 		line-height: 1.7;
 	}
+}
 
-	.bbg__about__grandchild__link {
-		font-family: $font-sans;
-		margin-left: 1rem;
-		page-break-inside: avoid;
-		text: {
-			align: right;
-			decoration: none;
-		}
+.bbg__about__grandchild__link {
+	font-family: $font-sans;
+	margin-left: 1rem;
+	page-break-inside: avoid;
+	text: {
+		align: right;
+		decoration: none;
 	}
 }
