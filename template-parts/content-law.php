@@ -49,7 +49,6 @@ if ( $includeSidebar ) {
 		}
 
 		if ( $sidebarContent != "" ) {
-			$sidebarContent = get_the_content();
 			$sidebarContent = apply_filters('the_content', $sidebarContent);
    			$sidebarContent = str_replace(']]>', ']]&gt;', $sidebarContent);
 			$s .= $sidebarContent;
