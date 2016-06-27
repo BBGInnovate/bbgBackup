@@ -20,7 +20,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 				<div class="usa-grid">
 					<header class="page-header">
-						<h6 class="bbg__label large">News + Information</h6>
+						<h6 class="bbg__label--mobile large">News + Information</h6>
 					</header>
 				</div>
 

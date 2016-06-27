@@ -17,7 +17,7 @@ get_header(); ?>
 				<div class="usa-grid">
 					<header class="page-header">
 						<?php
-							the_archive_title( '<h6 class="bbg__label large">', '</h6>' );
+							the_archive_title( '<h5 class="bbg__label--mobile large">', '</h5>' );
 						?>
 					</header><!-- .page-header -->
 				</div>
