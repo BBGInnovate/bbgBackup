@@ -125,6 +125,7 @@ get_header(); ?>
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
+				<div class="usa-grid">
 				<?php if($post->post_parent) {
 					//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 					$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
@@ -132,6 +133,7 @@ get_header(); ?>
 					?>
 					<h5 class="bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 				<?php } ?>
+				</div>
 
 				<?php
 					$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
