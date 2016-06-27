@@ -6511,9 +6511,18 @@ section.usa-section.bbg-banner__section {
     width: 50%;
   }
 }
+@media screen and (min-width: 900px) {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+}
 .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
   background-color: #757575;
   height: 200px;
+  margin-bottom: 0;
+  position: relative;
   width: 100%;
 }
 @media screen and (min-width: 600px) {
@@ -6521,6 +6530,13 @@ section.usa-section.bbg-banner__section {
     height: 100%;
     position: absolute;
     width: 50%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+    height: 200px;
+    position: relative;
+    width: 100%;
   }
 }
 

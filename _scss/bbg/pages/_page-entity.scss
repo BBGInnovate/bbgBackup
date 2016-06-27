@@ -29,17 +29,32 @@
 				}
 				width: 50%;
 			}
+			@include media($medium-large-screen) {
+				margin: {
+					right: 0;
+					left: 0;
+				}
+				width: 100%;
+			}
 		}
 
 		.bbg__contact-card__map {
 			background-color: $color-gray-medium;
 			height: 200px;
+			margin-bottom: 0;
+			position: relative;
 			width: 100%;
 
 			@include media($medium-screen) {
 				height: 100%;
 				position: absolute;
 				width: 50%;
+			}
+
+			@include media($medium-large-screen) {
+				height: 200px;
+				position: relative;
+				width: 100%;
 			}
 		}
 	}
