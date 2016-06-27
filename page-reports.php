@@ -39,28 +39,6 @@ get_header();
 				</header><!-- .page-header -->
 			</div>
 
-			<?php
-				/*$hideFeaturedImage = FALSE;
-				if ($videoUrl != "") {
-					echo featured_video($videoUrl);
-					$hideFeaturedImage = TRUE;
-				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-					echo '<div class="usa-grid-full">';
-					$featuredImageClass = "";
-					$featuredImageCutline = "";
-					$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
-					if ($thumbnail_image && isset($thumbnail_image[0])) {
-						$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-					}
-
-					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
-
-					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
-					echo '</div>';
-					echo '</div> <!-- usa-grid-full -->';
-				}*/
-			?><!-- .bbg__article-header__thumbnail -->
-
 			<!-- Page introduction (content) -->
 			<section id="page-intro" class="usa-section usa-grid bbg__about__intro">
 				<?php echo $pageContent; ?>
@@ -70,7 +48,7 @@ get_header();
 			<div id="page-children" class="usa-section usa-grid bbg__about__children">
 			<?php
 				// check if the flexible content field has rows of data
-				if( have_rows('about_flexible_page_rows') ):
+				if ( have_rows('about_flexible_page_rows') ):
 					$counter = 0;
 					$pageTotal = 1;
 					$containerClass = "bbg__about__child ";
