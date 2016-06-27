@@ -6611,13 +6611,13 @@ section.usa-section.bbg-banner__section {
 /* was using the .bbg__label for these */
 .bbg__profile-tagline {
   /*@extend .bbg__label;*/
+  color: #981b1e;
   display: inline-block;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 1.7rem;
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 1rem;
-  text-transform: uppercase;
 }
 .bbg__profile-tagline a {
   color: #981b1e;
@@ -6627,7 +6627,6 @@ section.usa-section.bbg-banner__section {
   .bbg__profile-tagline {
     display: block;
     font-size: 2.5rem;
-    padding: 0;
   }
 }
 

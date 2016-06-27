@@ -81,8 +81,7 @@
 .bbg__profile-tagline {
 	/*@extend .bbg__label;*/
 
-	//background-color: $color-secondary-darkest;
-	//color: #FFF;
+	color: $color-secondary-darkest;
 	display: inline-block;
 	font: {
 		family: $font-sans;
@@ -93,21 +92,16 @@
 		top: 0;
 		bottom: $site-margins-small;
 	}
-	//padding: .5rem $site-margins-small;
-	text-transform: uppercase;
+	//text-transform: uppercase;
 
 	a {
-		//color: #FFF;
 		color: $color-secondary-darkest;
 		text-decoration: underline;
 	}
 
 	@include media($small-screen) {
-		//background-color: transparent;
-		//color: $color-secondary-darkest;
 		display: block;
 		font-size: 2.5rem;
-		padding: 0;
 	}
 }
 
