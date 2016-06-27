@@ -42,9 +42,14 @@ if ( $includeSidebar ) {
 
 	if ( have_rows('sidebar_items') ):
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+		$sidebarDesc = get_post_meta( get_the_ID(), 'sidebar_description', true );
 
 		if ( $sidebarTitle != "" ) {
 			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+		}
+
+		if ( $sidebarDesc != "" ) {
+			$s .= $sidebarDesc;
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
