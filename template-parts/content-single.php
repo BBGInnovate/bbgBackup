@@ -408,7 +408,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
-			<?php echo $teamRoster; ?>
 			<?php 
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
@@ -423,6 +422,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					echo $sidebar;
 				}
 			?>
+
+			<?php echo $teamRoster; ?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
