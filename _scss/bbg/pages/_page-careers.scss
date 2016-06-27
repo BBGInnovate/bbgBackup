@@ -35,6 +35,11 @@
 		top: 0;
 		bottom: $site-margins-large;
 	}
+
+	td, 
+	th {
+		padding-left: 0;
+	}
 }
 
 .bbg__profile__intern {

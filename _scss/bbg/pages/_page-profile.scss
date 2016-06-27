@@ -26,6 +26,7 @@
 */
 
 
+
 .bbg__profile-photo {
 	margin: -60px auto 0;
 	position: relative;
@@ -72,6 +73,41 @@
 			clear: none;
 			text-align: left;
 		}
+	}
+}
+
+
+/* was using the .bbg__label for these */
+.bbg__profile-tagline {
+	/*@extend .bbg__label;*/
+
+	//background-color: $color-secondary-darkest;
+	//color: #FFF;
+	display: inline-block;
+	font: {
+		family: $font-sans;
+		size: 1.7rem;
+		weight: bold;
+	}
+	margin: {
+		top: 0;
+		bottom: $site-margins-small;
+	}
+	//padding: .5rem $site-margins-small;
+	text-transform: uppercase;
+
+	a {
+		//color: #FFF;
+		color: $color-secondary-darkest;
+		text-decoration: underline;
+	}
+
+	@include media($small-screen) {
+		//background-color: transparent;
+		//color: $color-secondary-darkest;
+		display: block;
+		font-size: 2.5rem;
+		padding: 0;
 	}
 }
 

@@ -165,7 +165,7 @@ get_header(); ?>
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg__label">
+							<h5 class="entry-category bbg__profile-tagline">
 								<?php echo $occupation; ?>
 							</h5><!-- .bbg__label -->
 
@@ -173,8 +173,8 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 
-					<div class="bbg__article-sidebar--left">
 
+					<div class="bbg__article-sidebar--left">
 						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
 						<ul class="bbg__article-share">
 							<li class="bbg__article-share__link facebook">
@@ -188,7 +188,6 @@ get_header(); ?>
 								</a>
 							</li>
 						</ul>
-
 					</div>
 
 
@@ -241,7 +240,6 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar largeXXX">
-						<ul class="bbg__article-share ">
 						<?php 
 						if ($email != "" || $phone != ""){
 						?>
@@ -250,7 +248,7 @@ get_header(); ?>
 							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
 						<?php } ?>
 
-
+						<ul class="bbg__article-share ">
 						<?php 
 						if ($email != ""){
 							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
@@ -263,7 +261,6 @@ get_header(); ?>
 							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
-						&nbsp;
 						</ul>
 						<?php echo $latestTweetsStr; ?>
 

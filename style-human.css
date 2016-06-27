@@ -5769,64 +5769,65 @@ article {
 /***************************************/
 /*    Misc post/page styles            */
 /*                                     */
+/* .bbg__article-sidebar.large {*/
 @media screen and (min-width: 900px) {
-  .bbg__article-sidebar.large .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
+  .bbg__article-sidebar .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
     margin-right: 0;
     margin-left: 0;
     width: 100%;
   }
 }
 @media screen and (min-width: 900px) {
-  .bbg__article-sidebar.large .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
+  .bbg__article-sidebar .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
     height: 200px;
     position: relative;
     width: 100%;
   }
 }
-.bbg__article-sidebar.large div {
+.bbg__article-sidebar div {
   margin-bottom: 3rem;
 }
-.bbg__article-sidebar.large .bbg-portfolio__excerpt {
+.bbg__article-sidebar .bbg-portfolio__excerpt {
   margin-bottom: 4rem;
 }
-.bbg__article-sidebar.large .bbg-portfolio__excerpt div {
+.bbg__article-sidebar .bbg-portfolio__excerpt div {
   margin-bottom: 0;
 }
-.bbg__article-sidebar.large .bbg__sidebar__primary:after {
+.bbg__article-sidebar .bbg__sidebar__primary:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-headline {
+.bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline {
   clear: none;
 }
-.bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-image {
+.bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-image {
   float: left;
   margin-right: 2rem;
   max-width: 150px;
   width: 100%;
 }
-.bbg__article-sidebar.large .bbg__sidebar__secondary:after {
+.bbg__article-sidebar .bbg__sidebar__secondary:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.bbg__article-sidebar.large .bbg__sidebar__secondary .bbg__sidebar__secondary-image {
+.bbg__article-sidebar .bbg__sidebar__secondary .bbg__sidebar__secondary-image {
   float: left;
   margin-right: 2rem;
   max-width: 150px;
   width: 48%;
 }
 @media screen and (min-width: 900px) {
-  .bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-image {
+  .bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-image {
     float: none;
     max-width: none;
   }
-  .bbg__article-sidebar.large .bbg__sidebar__primary .bbg__sidebar__primary-headline:after {
+  .bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline:after {
     content: ".";
     display: block;
     height: 0;
@@ -6451,6 +6452,10 @@ section.usa-section.bbg-banner__section {
   margin-top: 0;
   margin-bottom: 6rem;
 }
+.bbg__jobs__table td,
+.bbg__jobs__table th {
+  padding-left: 0;
+}
 
 .bbg__profile__intern .bbg__profile__intern__job-label {
   color: #981b1e;
@@ -6600,6 +6605,29 @@ section.usa-section.bbg-banner__section {
   .bbg__profile-title h1, .bbg__profile-title h5 {
     clear: none;
     text-align: left;
+  }
+}
+
+/* was using the .bbg__label for these */
+.bbg__profile-tagline {
+  /*@extend .bbg__label;*/
+  display: inline-block;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.bbg__profile-tagline a {
+  color: #981b1e;
+  text-decoration: underline;
+}
+@media screen and (min-width: 481px) {
+  .bbg__profile-tagline {
+    display: block;
+    font-size: 2.5rem;
+    padding: 0;
   }
 }
 

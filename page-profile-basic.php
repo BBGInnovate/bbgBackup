@@ -172,7 +172,7 @@ get_header(); ?>
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg__label">
+							<h5 class="entry-category bbg__profile-tagline">
 								<?php echo $occupation; ?>
 							</h5><!-- .bbg__label -->
 

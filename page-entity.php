@@ -432,8 +432,7 @@ get_header(); ?>
 
 									<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
 
-									<!-- .bbg__article-header__title -->
-									<h5 class="entry-category bbg__label">
+									<h5 class="entry-category bbg__profile-tagline">
 										<?php echo $websiteName; ?>
 									</h5><!-- .bbg__label -->
 
