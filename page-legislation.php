@@ -1,8 +1,6 @@
 <?php
 /**
- * The custom home page for the Broadcasting Board of Governors.
- * It includes the mission, a portfolio of recent projects, recent blog posts and staff.
- *
+ * This is the template for legislation pages.
  * template name: Legislation
  *
  * @author Gigi Frias <gfrias@bbg.gov>
@@ -41,7 +39,7 @@ get_header();
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
+					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
@@ -114,7 +112,7 @@ get_header();
 								// Output variables in HTML format
 								echo "<article class='bbg__about__excerpt bbg__about__child--" . strtolower(get_the_title()) . " $containerClass'>";
 								echo sprintf( "<a href='%s'>", $url );
-								echo "<h6 class='bbg-label'>" . $title . "</h6></a>";
+								echo "<h6 class='bbg__label'>" . $title . "</h6></a>";
 								echo "<div class='entry-content'>";
 								echo $excerpt;
 								echo "</div>";
@@ -145,9 +143,9 @@ get_header();
 							$introText = str_replace(']]>', ']]&gt;', $introText);
 
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a></h6>";
+								echo "<h6 class='bbg__label'><a href='$labelLink'>$labelText</a></h6>";
 							} else {
-								echo "<h6 class='bbg-label'>$labelText</h6>";
+								echo "<h6 class='bbg__label'>$labelText</h6>";
 							}
 
 							// show umbrella section intro text
@@ -206,9 +204,9 @@ get_header();
 									echo "<div>";
 
 										if ($labelLink) {
-											echo "<h6 class='bbg-label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
+											echo "<h6 class='bbg__label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
 										} else {
-											echo "<h6 class='bbg-label'>$labelText</h6>";
+											echo "<h6 class='bbg__label'>$labelText</h6>";
 										}
 
 										if ($headlineLink) {

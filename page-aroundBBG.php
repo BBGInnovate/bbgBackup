@@ -25,13 +25,13 @@ get_header();
 		<main id="content" class="site-content" role="main">
 
 			<div class="usa-grid-full">
-				<header class="page-header bbg-page__header" style="margin-bottom: 1.5rem;">
-					<div class="bbg-avatar__container bbg-team__icon">
-						<div class="bbg-avatar bbg-team__icon__image" style="background-image: url(<?php echo get_template_directory_uri() ?>/img/icon_trending.png);"></div>
+				<header class="page-header bbg__page-header" style="margin-bottom: 1.5rem;">
+					<div class="bbg__avatar__container bbg__team__icon">
+						<div class="bbg__avatar bbg__team__icon__image" style="background-image: url(<?php echo get_template_directory_uri() ?>/img/icon_trending.png);"></div>
 					</div>
-					<div class="usa-intro bbg-page__header-text bbg-team__text">
-						<h1 class="bbg-page__header-title">Trending</h1>
-						<h3 class="bbg-page__header-description">An auto-generated stream of conversations and links from the international media, innovation and policy communities.</h3>
+					<div class="usa-intro bbg__page-header-text bbg__team__text">
+						<h1 class="bbg__page-header-title">Trending</h1>
+						<h3 class="bbg__page-header-description">An auto-generated stream of conversations and links from the international media, innovation and policy communities.</h3>
 						<p>Powered by <a href="https://github.com/niemanlab/openfuego">Fuego</a></p>
 					</div>
 				</header><!-- .page-header -->

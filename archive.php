@@ -17,7 +17,7 @@ get_header(); ?>
 				<div class="usa-grid">
 					<header class="page-header">
 						<?php
-							the_archive_title( '<h6 class="bbg-label large">', '</h6>' );
+							the_archive_title( '<h5 class="bbg__label--mobile large">', '</h5>' );
 						?>
 					</header><!-- .page-header -->
 				</div>
@@ -43,7 +43,7 @@ get_header(); ?>
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								echo '<h6 class="page-title bbg__label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4
@@ -67,7 +67,7 @@ get_header(); ?>
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								echo '<h6 class="page-title bbg__label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4

@@ -28,7 +28,7 @@
 			$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 		} else {
 			$jobSearchLink = 'https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
-			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuban Broadcasting.</p>";
+			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuba Broadcasting. All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 			
 			//sort by end date, and add formatted end date
 			for ($i=0; $i < count($jobs); $i++) {
@@ -39,10 +39,15 @@
 				$month = $endDateObj[1];
 				$day = $endDateObj[2];
 				$endDateTimestamp = mktime(0, 0, 0, $month, $day, $year);
-				$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
+				//$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
+				$j['formatted_end_date'] = date('n/j/Y', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
 			}
 			usort($jobs, 'dCompare');
+
+			$s .= '<table class="usa-table-borderless bbg__jobs__table">';
+			$s .= '<thead><tr><th scope="col">Job</th><th scope="col">Closing date</th></tr></thead>';
+			$s .= '<tbody>';
 
 			for ($i = 0; $i < count($jobs); $i++) {
 				$j = $jobs[$i];
@@ -52,10 +57,12 @@
 				$startDate = $j['start_date'];
 				$endDate = $j['formatted_end_date'];
 
-				$locations = $j['locations'];
 
+				$s .= '<tr><td><a href="' . $url. '" class="bbg__jobs-list__title">' . $title . '</a></td><td>' . $endDate . '</td></tr>';
+				/*
 				$s .= "<p><a href='$url' class='bbg__jobs-list__title'>$title</a><br/>";
 
+				$locations = $j['locations'];
 				if (count($locations)>1 || $locations[0] != "Washington, DC"){
 					$locationStr = "Location: ";
 					if (count($locations) > 1){
@@ -69,8 +76,11 @@
 				}
 				$s .= "Closes: $endDate<br/>";
 				$s .= "</p>";
+				*/
 			}
-			$s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
+			$s .= '</tbody></table>';
+
+			// $s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 		}
 		return $s;
 	}
@@ -91,8 +101,8 @@
 		$custom_query = new WP_Query($qParams);
 
 		$epStr = '<section class="bbg__section" style="margin-top: 4rem;">';
-		$epStr .= '<h5 class="bbg-label small">Employee spotlight</h5>';
-		//$epStr .= '<h5 class="bbg-label small"><a href="/category/employee/">Employee spotlight</a></h5>';
+		$epStr .= '<h5 class="bbg__label small">Employee spotlight</h5>';
+		//$epStr .= '<h5 class="bbg__label small"><a href="/category/employee/">Employee spotlight</a></h5>';
 		//$epStr .= '<p class="" style="font-family: sans-serif;">This is a description that goes here and here.</p>';
 		$epStr .= '<div class="usa-grid-full">';
 		while ( $custom_query->have_posts() )  {

@@ -20,7 +20,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 				<div class="usa-grid">
 					<header class="page-header">
-						<h6 class="bbg-label large">News + Information</h6>
+						<h6 class="bbg__label--mobile large">News + Information</h6>
 					</header>
 				</div>
 
@@ -45,7 +45,7 @@ get_header(); ?>
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								echo '<h6 class="page-title bbg__label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4
@@ -69,7 +69,7 @@ get_header(); ?>
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg-label small">More news</h6>';
+								echo '<h6 class="page-title bbg__label small">More news</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4

@@ -8,6 +8,7 @@ a:focus .bbg__article-share__icon {
 		top: 0;
 		bottom: 1rem;
 	}
+
 	@include media ($medium-screen) {
 		margin: {
 			top: 0;
@@ -15,35 +16,38 @@ a:focus .bbg__article-share__icon {
 		}
 	}
 	@include media($medium-large-screen) {
-		float: left;
-		margin-top: -1%;
+		float: none;
+		margin: {
+			top: -1%;
+			right: auto;
+			left: auto;
+		}
 		/* Added to overwrite the existing margin-top applied to all UL tags by USDS :: GIGI */
 	}
 }
 
+.bbg__article-sidebar {
+	.bbg__article-share {
+		@include media($medium-large-screen) {
+			margin-left: initial;
+		}
+	}
+}
 
 /* Article share links */
 .bbg__article-share__link {
 	display: inline-block;
 	margin-right: 3px;
+
 	a:hover,
 	a:focus {
 		background: none;
 		text-decoration: none;
 	}
 
-	&:focus {
-
-	}
-	/*
-	@include media($medium-screen) {
-		margin-right: 2rem;
-	}
-
 	@include media($medium-large-screen) {
 		display: block;
 	}
-	*/
 }
 
 .bbg__article-sidebar.large {

@@ -1,12 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
+ * The template for containing maps created using our ammap.js Vector maps
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
@@ -44,7 +38,7 @@ echo getNetworkExcerptJS();
 							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 
 						<?php } ?>
 

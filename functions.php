@@ -87,16 +87,21 @@ function getCSV($url,$id,$expirationMinutes) {
 	
 	return $csv;
 }
-function formatBytes($bytes, $precision = 2) { 
+function formatBytes($bytes) { 
 	$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
 	$bytes = max($bytes, 0); 
-	$pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+	$pow = floor(($bytes ? log($bytes) : 0) / log(1000)); 
 	$pow = min($pow, count($units) - 1); 
 
 	// Uncomment one of the following alternatives
-	$bytes /= pow(1024, $pow);
+	$bytes /= pow(1000, $pow);
 	// $bytes /= (1 << (10 * $pow)); 
+
+	$precision = 2;
+	if ($pow < 2) {
+		$precision = 0;
+	}
 
 	return round($bytes, $precision) . ' ' . $units[$pow]; 
 } 
@@ -362,10 +367,10 @@ add_filter( 'user_contactmethods', 'bbg_extendAuthorContacts', 10, 1 );
 add_filter('get_avatar','change_avatar_css');
 
 function change_avatar_css($class) {
-	$class = str_replace("class='avatar", "class='avatar usa-avatar bbg-avatar", $class) ;
+	$class = str_replace("class='avatar", "class='avatar usa-avatar bbg__avatar", $class) ;
 
 	//Adding a second version because we're using WP User Avatar plugin and it uses double quotes
-	$class = str_replace('class="avatar', 'class="avatar usa-avatar bbg-avatar', $class) ;
+	$class = str_replace('class="avatar', 'class="avatar usa-avatar bbg__avatar', $class) ;
 	return $class;
 }
 
@@ -502,7 +507,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 				$link = get_category_link( $selectedCategory->term_id );
 			}
 			if ($link) {
-				$output .= '<h5 class="entry-category bbg-label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
+				$output .= '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
 			}
 		}
 		return $output;
@@ -604,15 +609,15 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 		<!-- <div class="usa-grid"> -->
 			<div class="bbg__article-author">
 
-				<div class="bbg-avatar__container">
+				<div class="bbg__avatar__container">
 					<?php echo $avatar; ?>
 				</div>
 
 				<div class="bbg__author__text">
 
-					<h2 class="bbg-staff__author-name">
+					<h2 class="bbg__staff__author-name">
 						<a href="<?php echo $authorPath ?>" class="bbg__author-link"><?php echo $authorName; ?></a>
-					</h2><!-- .bbg-staff__author-name -->
+					</h2><!-- .bbg__staff__author-name -->
 
 					<div class="bbg__author-description">
 						<?php echo '<div class="bbg__author-occupation">' . $occupation . '</div>'; ?>
@@ -621,7 +626,7 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 							<?php echo $description; ?>
 						</div>
 
-					</div><!-- .bbg-staff__author-description -->
+					</div><!-- .bbg__staff__author-description -->
 
 					<div class="bbg__author-contact">
 						<?php
@@ -635,9 +640,9 @@ if ( ! function_exists( 'bbg_post_author_bottom_card' ) ) :
 							}
 							echo $authorEmail . $twitterLink;
 						?>
-					</div> <!-- .bbg-staff__author-contact -->
+					</div> <!-- .bbg__staff__author-contact -->
 
-				</div><!-- .bbg-staff__author__text -->
+				</div><!-- .bbg__staff__author__text -->
 		</div><!-- .bbg__article-author -->
 		<?php
 		do_action( 'bbg_post_author_bottom_card' );
@@ -991,7 +996,7 @@ function getSoapboxStr($soap) {
 
 	$s .= '<div class="usa-width-one-half bbg__voice--featured">';
 	if ($soapHeaderPermalink != "") {
-		$s .= '<h6 class="bbg-label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
+		$s .= '<h6 class="bbg__label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
 	}
 
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
@@ -1026,5 +1031,13 @@ function show_future_posts($posts) {
 	}
 	return $returnVal;
 }
+
+/*** AKAMAI is already including HTTP_X_FORWARDED_FOR but it can include >1 IP address.  HTTP_TRUE_CLIENT_IP seems to be flawless.  This filter is applied so that iThemes security blocks actual IP addresses and not Akamai IP addresses ***/
+function akamai_forwarding_callback( $headers ) {
+    // (maybe) modify $string
+    array_unshift($headers, 'HTTP_TRUE_CLIENT_IP');
+    return $headers;
+}
+add_filter( 'itsec_filter_remote_addr_headers', 'akamai_forwarding_callback', 10, 1 );
 
 ?>

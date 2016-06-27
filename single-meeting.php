@@ -23,7 +23,7 @@ if ( have_posts() ) {
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
-		$ogImage = $socialImage[0];
+		$ogImage = $socialImage[0];  
 	}
 
 	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
@@ -34,7 +34,22 @@ if ( have_posts() ) {
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
 
+	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
 
+	$eventbriteIframeHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height', true );
+	if (!$eventbriteIframeHeight || $eventbriteIframeHeight=="") {
+		$eventbriteIframeHeight=270;
+	}
+	$eventStr="";
+	if ($eventbriteID) {
+		$iframeNarrowHeight = $eventbriteIframeHeight+75;
+		$eventStr='<style>';
+		$eventStr .= '#eventbriteContainer { width: 100%; text-align:left; height: ' . $eventbriteIframeHeight .'px;}';
+		$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
+		$eventStr .= '</style>';
+		$eventStr .= '<div id="eventbriteContainer"><iframe src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="100%" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>';
+		$eventStr .= "<button class='usa-button'><a style='color:white;text-decoration:none;' href='https://www.eventbrite.com/e/feaux-halloween-board-meeting-tickets-26165052376?ref=elink'>Register for this Event</button></a><BR>";
+	}
 
 	$ogDescription = get_the_excerpt();
 
@@ -102,7 +117,7 @@ get_header(); ?>
 							$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 						}
 						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-						//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+						//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 						echo the_post_thumbnail( 'large-thumb' );
 
 						echo '</div>';
@@ -130,7 +145,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg-label">Board meeting</h5><!-- .bbg-label -->
+							<h5 class="entry-category bbg__label">Board meeting</h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -138,17 +153,32 @@ get_header(); ?>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
-						<h3><?php the_date(); ?></h3>
-						<h5>Location: <?php echo $meetingLocation; ?></h5>
-						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
+						</ul>
 					</div>
 
 					<div class="entry-content bbg__article-content">
-						<?php the_content(); ?>
+						<?php 
+						 echo $eventStr;
+						 the_content(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						
+						<h3><?php the_date(); ?></h3>
+						<h5>Location: <?php echo $meetingLocation; ?></h5>
+						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+
 						<?php
 							if( have_rows('board_meeting_related_documents') ):
 							 	echo '<h3 class="bbg__sidebar-label">Download</h3>';
@@ -162,15 +192,6 @@ get_header(); ?>
 							    echo '</ul>';
 							endif;
 						?>
-						<?php /*
-						<ul class="bbg__profile__related-link__list">
-							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Minutes-of-Dec-16-2015.pdf" title="Download the BBG board meeting minutes from Feb. 26, 2016.">Board meeting minutes</a></li>
-							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Record-of-Decisions-2-26-2016.pdf">Record of Decisions</a></li>
-							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-Honoring-Almigdad-Mojalli.pdf">Resolution Honoring Almigdad Mojalli</a></li>
-							<li class="bbg__profile__related-link"><a href="http://www.bbg.gov/wp-content/media/2015/10/Resolution-VOA-Creole-30th-Anniversary.pdf">Resolution VOA Creole 30th Anniversary</a></li>
-						</ul>
-						*/ ?>
-
 					</div><!-- .bbg__article-sidebar -->
 
 				</div><!-- .usa-grid -->

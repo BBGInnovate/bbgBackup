@@ -73,18 +73,18 @@ wp_reset_query();
 ?>
 
 <div class="usa-section">
-	<div class="usa-grid clearAll bbg-page__header" >
+	<div class="usa-grid clearAll bbg__page-header" >
 
 
 		<header class="page-header usa-width-two-thirds">
-			<div class="bbg-avatar__container bbg-team__icon">
+			<div class="bbg__avatar__container bbg__team__icon">
 				<?php echo $avatar; ?>
 			</div>
 
-			<div class="bbg-staff__author__text">
+			<div class="bbg__staff__author__text">
 				<h1 class="bbg-author-name"><?php echo $authorName; ?></h1>
 
-				<div class="bbg-staff__author-description">
+				<div class="bbg__staff__author-description">
 
 						<?php
 						echo '<div class="bbg-author-occupation">' . $occupation . '</div>';
@@ -115,13 +115,13 @@ wp_reset_query();
 
 				</div><!-- .author-description -->
 			</div><!-- .bbg-author-text -->
-		</header><!-- .bbg-page__header -->
+		</header><!-- .bbg__page-header -->
 							<?php
 
 if ( count( $projects ) ) {
 	$maxProjectsToShow=3;
 	echo '<div class="usa-width-one-third bbg-author-projects">';
-	echo '<h6 class="bbg-label small">Recent projects</h2>';
+	echo '<h6 class="bbg__label small">Recent projects</h2>';
 	echo '<ul class="bbg-author-projects__list">';
 	for ( $i=0; $i<min( $maxProjectsToShow, count( $projects ) ); $i++ ) {
 		$p=$projects[$i];

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying the BBG Portfolio.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -72,7 +72,7 @@ get_header(); ?>
 			<?php if ( $custom_query->have_posts() ) : ?>
 
 				<header class="page-header">
-					<h5 class="bbg-label--mobile large">Portfolio</h5>
+					<h5 class="bbg__label--mobile large">Portfolio</h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>

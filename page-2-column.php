@@ -1,11 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying 2 column pages.  
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -23,7 +18,9 @@ if ($bannerPositionCSS) {
 }
 
 $videoUrl = get_field( 'featured_video_url', '', true );
+$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
 
@@ -99,9 +96,9 @@ get_header(); ?>
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 									$parent_link = get_permalink($post->post_parent);
 									?>
-									<h5 class="bbg-label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+									<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
 								<?php } else{ ?>
-									<h5 class="bbg-label--mobile large"><?php the_title(); ?></h5>
+									<h5 class="bbg__label--mobile large"><?php the_title(); ?></h5>
 								<?php } ?>
 
 
@@ -138,17 +135,17 @@ get_header(); ?>
 						<div class="usa-grid">
 
 							<header class="entry-header">
-								<!-- .bbg-label -->
+								<!-- .bbg__label -->
 								<?php if($post->post_parent) {
 									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 									$parent_link = get_permalink($post->post_parent);
 									?>
-									<!--<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>-->
+									<!--<h5 class="entry-category bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>-->
 									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 								<?php } else{ ?>
-									<!--<h5 class="entry-category bbg-label"><?php the_title(); ?></h5>-->
+									<!--<h5 class="entry-category bbg__label"><?php the_title(); ?></h5>-->
 									<?php $headlineStr = "<h1 class='bbg__entry__secondary-title'>" . $headline . "</h1>"; ?>
 								<?php } ?>
 
@@ -184,7 +181,7 @@ get_header(); ?>
 										$categoryUrl = get_category_link($relatedCategory->term_id);
 										$custom_query = new WP_Query( $qParams2 );
 										if ($custom_query -> have_posts()) {
-											echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
+											echo '<h6 class="bbg__label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
 											echo '<div class="usa-grid-full">';
 											while ( $custom_query -> have_posts() )  {
 												$custom_query->the_post();
@@ -204,6 +201,11 @@ get_header(); ?>
 
 								<?php
 									if ( $secondaryColumnContent != "" ) {
+
+										if ( $secondaryColumnLabel != "" ) {
+											echo '<h5 class="bbg__label small">' . $secondaryColumnLabel . '</h5>';
+										}
+
 										echo $secondaryColumnContent;
 									}
 

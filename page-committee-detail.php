@@ -1,11 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying committee detail pages.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -77,7 +72,7 @@ get_header(); ?>
 									$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 								}
 								echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-								//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+								//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 								echo the_post_thumbnail( 'large-thumb' );
 
 								echo '</div>';
@@ -94,13 +89,13 @@ get_header(); ?>
 						<div class="usa-grid">
 
 						<?php /* echo bbginnovate_post_categories(); */ ?>
-						<!-- .bbg-label -->
+						<!-- .bbg__label -->
 						<?php if($post->post_parent) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
 							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<h5 class="entry-category bbg-label"><a href="<?php echo $parent_link; ?>" title="A list of the BBG broadcasters."><?php echo $parent->post_title; ?></a></h6>
+						<h5 class="entry-category bbg__label"><a href="<?php echo $parent_link; ?>" title="A list of the BBG broadcasters."><?php echo $parent->post_title; ?></a></h6>
 
 						<?php } ?>
 

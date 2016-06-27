@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single profile posts.
+ * The template for displaying expaneded profile posts (e.g the CEO).
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -118,6 +118,16 @@ get_header(); ?>
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
+				<div class="usa-grid">
+				<?php if($post->post_parent) {
+					//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+					$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+					$parent_link = get_permalink($post->post_parent);
+					?>
+					<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+				<?php } ?>
+				</div>
+
 				<?php
 					$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
 					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -155,15 +165,35 @@ get_header(); ?>
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg-label">
+							<h5 class="entry-category bbg__profile-tagline">
 								<?php echo $occupation; ?>
-							</h5><!-- .bbg-label -->
+							</h5><!-- .bbg__label -->
 
 						</div>
 					</header><!-- .bbg__article-header -->
 
 
-					<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+
+					<div class="bbg__article-sidebar--left">
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+
+
+
+					<div class="entry-content bbg__article-content largeXXX <?php echo $featuredImageClass; ?>">
 						<div class="bbg__profile__content">
 						<?php the_content(); ?>
 
@@ -195,7 +225,7 @@ get_header(); ?>
 								$categoryUrl = get_category_link($relatedCategory->term_id);
 								$custom_query = new WP_Query( $qParams2 );
 								if ($custom_query -> have_posts()) {
-									echo '<h6 class="bbg-label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
+									echo '<h6 class="bbg__label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
 									echo '<div class="usa-grid-full">';
 									while ( $custom_query -> have_posts() )  {
 										$custom_query->the_post();
@@ -209,28 +239,28 @@ get_header(); ?>
 
 					</div><!-- .entry-content -->
 
-					<div class="bbg__article-sidebar large">
-						<ul class="bbg__article-share ">
+					<div class="bbg__article-sidebar largeXXX">
 						<?php 
-						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
+						if ($email != "" || $phone != ""){
 						?>
-						<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
+							<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
+						<?php } elseif ($twitterProfileHandle != "") {?>
+							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
 						<?php } ?>
 
-
+						<ul class="bbg__article-share ">
 						<?php 
-						if ($email!=""){
+						if ($email != ""){
 							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
 						}
-						if ($twitterProfileHandle!=""){
+						if ($twitterProfileHandle != ""){
 							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
 						}
 
-						if ($phone!=""){
+						if ($phone != ""){
 							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
 						}
 						?>
-						&nbsp;
 						</ul>
 						<?php echo $latestTweetsStr; ?>
 

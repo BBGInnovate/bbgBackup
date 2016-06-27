@@ -1,7 +1,5 @@
 <?php
 /**
- * The template for displaying all pages.
- *
  * This is the template that displays the BBG entity pages.
  * VOA, RFE/RL, OCB, RFA and MBN
  * Please note that this is the WordPress construct of pages
@@ -387,6 +385,15 @@ get_header(); ?>
 					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
+						<div class="usa-grid">
+						<?php if($post->post_parent) {
+							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent_link = get_permalink($post->post_parent);
+							?>
+							<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+						<?php } ?>
+						</div>
 
 						<?php
 							$hideFeaturedImage = FALSE;
@@ -425,10 +432,9 @@ get_header(); ?>
 
 									<?php echo '<h1 class="entry-title bbg__article-header__title">' . $fullName . '</h1>'; ?>
 
-									<!-- .bbg__article-header__title -->
-									<h5 class="entry-category bbg-label">
+									<h5 class="entry-category bbg__profile-tagline">
 										<?php echo $websiteName; ?>
-									</h5><!-- .bbg-label -->
+									</h5><!-- .bbg__label -->
 
 								</div>
 
@@ -436,11 +442,28 @@ get_header(); ?>
 
 
 
+							<div class="bbg__article-sidebar--left">
+
+								<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+								<ul class="bbg__article-share">
+									<li class="bbg__article-share__link facebook">
+										<a href="<?php echo $fbUrl; ?>">
+											<span class="bbg__article-share__icon facebook"></span>
+										</a>
+									</li>
+									<li class="bbg__article-share__link twitter">
+										<a href="<?php echo $twitterURL; ?>">
+											<span class="bbg__article-share__icon twitter"></span>
+										</a>
+									</li>
+								</ul>
+
+							</div>
 
 
 
 
-							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+							<div class="entry-content bbg__article-content largeXXX <?php echo $featuredImageClass; ?>">
 								<div class="bbg__profile__content">
 								<?php /*echo $headlineStr;*/ ?>
 
@@ -449,14 +472,14 @@ get_header(); ?>
 
 								</div>
 
-							</div><!-- .entry-content ------------------------------------------------- -->
+							</div><!-- .entry-content -->
 
 
 
 
 
 
-							<div class="bbg__article-sidebar large">
+							<div class="bbg__article-sidebar largeXXX">
 									<?php if ($entityMission!=""){ ?>
 									<aside class="bbg__article-sidebar__aside">
 										<!--<h3 class="bbg__sidebar-label"><?php echo $abbreviation; ?> Mission</h3>-->
@@ -487,9 +510,8 @@ get_header(); ?>
 									if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 									?>
 									<aside class="bbg__article-sidebar__aside">
-									<ul class="bbg__article-share">
 									<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
-									<ul>
+									<ul class="bbg__article-share">
 										<?php
 											if ($facebook!=""){
 												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
@@ -537,7 +559,7 @@ get_header(); ?>
 											if (count($threats)) {
 												$maxThreatsStories=3;
 												echo '<aside class="bbg__article-sidebar__aside">';
-												echo '<h6 class="bbg-label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
+												echo '<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
 												echo '<ul class="bbg__rss__list">';	
 												for ( $i = 0; $i <= min( $maxRelatedStories, count($threats) ); $i++) {
 													$o = $threats[$i];

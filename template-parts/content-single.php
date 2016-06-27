@@ -58,7 +58,7 @@ if ( $includeSidebar ) {
 
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
 		if ($sidebarTitle != ""){
-			$s = "<h5 class='bbg-label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
@@ -67,8 +67,14 @@ if ( $includeSidebar ) {
 
 				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
 				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
-				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+				$sidebarDownloadLinkObj = get_sub_field( 'sidebar_download_link' );
 				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+
+				$fileID = $sidebarDownloadLinkObj['ID'];
+				$sidebarDownloadLink = $sidebarDownloadLinkObj['url'];
+				$file = get_attached_file( $fileID );
+				$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+				$filesize = formatBytes(filesize($file));
 
 				$sidebarImage = "";
 				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
@@ -81,7 +87,7 @@ if ( $includeSidebar ) {
 				}
 
 				$sidebarDownload = "";
-				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a></h5>" . $sidebarDescription;
+				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a>  ($ext, $filesize) </h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 
@@ -143,7 +149,11 @@ if ( $includeMap && $mapLocation) {
 	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
 }
 
-
+$eventBriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
+$eventStr="";
+if ($eventBriteID) {
+	$eventStr='<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid='.$eventBriteID.'&ref=etckt" frameborder="0" height="260" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a class="powered-by-eb" style="color: #dddddd; text-decoration: none;" target="_blank" href="http://www.eventbrite.com/r/etckt">Powered by Eventbrite</a></div></div>';
+}
 
 // Include sidebar list of people who worked on the project
 $teamRoster = "";
@@ -309,7 +319,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 			}
 			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+			//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 			echo the_post_thumbnail( 'large-thumb' );
 
 			if ( $featuredImageCutline != "" ) {
@@ -334,7 +344,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 		<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
 		<?php echo bbginnovate_post_categories(); ?>
-		<!-- .bbg-label -->
+		<!-- .bbg__label -->
 
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
@@ -380,7 +390,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-			<?php echo $pageContent; ?>
+			<?php 
+				echo $eventStr;
+				echo $pageContent; 
+			?>
+
+
 
 			<?php
 				/* START CONTACT CARDS */

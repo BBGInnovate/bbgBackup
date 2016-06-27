@@ -22,6 +22,7 @@
 
 .bbg__article--no-featured-image {
 	margin-top: $site-margins;
+
 	@include media($medium-screen) {
 		margin-top: $site-margins-large;
 	}
@@ -152,6 +153,30 @@
 		margin: 0;
 		max-width: 100%;
 	}
+
+	.bbg__interview {
+		p {
+			margin: {
+				top: .5rem;
+				bottom: .75rem;
+			}
+
+			/* Assumes Questions are wrapped in <strong/> */
+			strong {
+				display: block;
+				margin-top: $site-margins-medium;
+
+				@include media($medium-screen) {
+					margin-top: $site-margins;
+				}
+
+				@include media($medium-large-screen) {
+					margin-top: 4rem;
+				}
+			}
+		}
+	}
+
 
 	ul {
 		width: 100%;
@@ -416,7 +441,7 @@ ul.bbg__article-content__list--inline {
 		text-align: left;
 	}
 
-	.bbg-staff__author-name {
+	.bbg__staff__author-name {
 		font-weight: $font-bold;
 		margin-bottom: .5rem;
 	}
@@ -425,7 +450,7 @@ ul.bbg__article-content__list--inline {
 		margin-bottom: 1rem;
 
 		@include media($small-screen) {
-			margin-left: $bbg-team__icon-width + 10px;
+			margin-left: $bbg__team__icon-width + 10px;
 		}
 
 		.bbg__author-occupation {
@@ -456,7 +481,7 @@ ul.bbg__article-content__list--inline {
 		padding-left: 0;
 
 		@include media($small-screen) {
-			margin-left: $bbg-team__icon-width + 10px;
+			margin-left: $bbg__team__icon-width + 10px;
 		}
 
 		@include media($medium-screen) {

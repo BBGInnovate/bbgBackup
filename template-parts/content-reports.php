@@ -45,7 +45,7 @@ if ( $headline ) {
 		// if ( $hideLink == FALSE ) {
 			$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
 			$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
-			$linkLabel = '<h6 class="bbg-label">' . $link;
+			$linkLabel = '<h6 class="bbg__label">' . $link;
 
 			echo "<!-- Child page title -->";
 			echo $linkLabel;
@@ -53,7 +53,7 @@ if ( $headline ) {
 			echo "</a></h6>";
 
 		/*} else {
-			echo "<h6 class='bbg-label'>$pageName</h6>";
+			echo "<h6 class='bbg__label'>$pageName</h6>";
 		}*/
 		?>
 

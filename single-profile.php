@@ -114,7 +114,7 @@ get_header(); ?>
 
 						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__profile-header__banner" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
+						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url('.$src[0].'); background-position: '.$bannerPosition.'">';
 						echo '</div>';
 						echo '</div> <!-- usa-grid-full -->';
 					}
@@ -138,37 +138,29 @@ get_header(); ?>
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg-label">
+							<h5 class="entry-category bbg__label">
 								<?php echo $occupation; ?>
-							</h5><!-- .bbg-label -->
+							</h5><!-- .bbg__label -->
 
 						</div>
 					</header><!-- .bbg__article-header -->
 
 					<div class="bbg__article-sidebar--left">
 
-						<ul class="bbg__article-share ">
-						<?php 
-						if ($email!="" || $twitterProfileHandle!="" || $phone!=""){
-						?>
-						<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
-						<?php } ?>
-
-
-						<?php 
-						if ($email!=""){
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
-						}
-						if ($twitterProfileHandle!=""){
-							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
-						}
-
-						if ($phone!=""){
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
-						}
-						?>
-						&nbsp;
+						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+						<ul class="bbg__article-share">
+							<li class="bbg__article-share__link facebook">
+								<a href="<?php echo $fbUrl; ?>">
+									<span class="bbg__article-share__icon facebook"></span>
+								</a>
+							</li>
+							<li class="bbg__article-share__link twitter">
+								<a href="<?php echo $twitterURL; ?>">
+									<span class="bbg__article-share__icon twitter"></span>
+								</a>
+							</li>
 						</ul>
+
 					</div>
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
@@ -181,6 +173,32 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
+
+						<?php 
+						if ($email != "" || $phone != ""){
+						?>
+							<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
+						<?php } elseif ($twitterProfileHandle != "") {?>
+							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
+						<?php } ?>
+
+						<ul class="bbg__article-share ">
+
+						<?php 
+						if ($email != ""){
+							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
+						}
+						if ($twitterProfileHandle != ""){
+							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+						}
+
+						if ($phone != ""){
+							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
+						}
+						?>
+						</ul>
+
+
 						<?php 
 							if ( $relatedLinksTag != "" ) {
 								$qParams2=array(

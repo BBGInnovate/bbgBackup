@@ -1,27 +1,27 @@
 //Small profile photos or icons
 //Used for staff profiles, team icons and comment gravatars(?)
-.bbg-avatar__container {
+.bbg__avatar__container {
 	margin: 0 auto;
-	max-width: $bbg-avatar-width;
+	max-width: $bbg__avatar-width;
 
 	@include media($small-screen) {
 		float: left;
 		margin: 0 1rem .5rem 0;
-		width: $bbg-team__icon-width;
+		width: $bbg__team__icon-width;
 	}
 }
 
-.bbg-avatar__container--small {
+.bbg__avatar__container--small {
 	float: left;
 	margin: 0 1rem .5rem 0;
-	max-width: $bbg-avatar-width-small;
+	max-width: $bbg__avatar-width-small;
 
 	@include media($medium-screen) {
-		max-width: $bbg-avatar-width-small * 1.5;
+		max-width: $bbg__avatar-width-small * 1.5;
 	}
 }
 
-.bbg-avatar {
+.bbg__avatar {
 	border-radius: 50%;
 	display: block;
 	margin: 0 auto;
@@ -35,12 +35,12 @@
 
 //Styles for the team icons
 .bbg__entity,
-.bbg-team {
+.bbg__team {
 	margin-bottom: $site-margins;
 }
 
 .bbg__entity__name,
-.bbg-team__name {
+.bbg__team__name {
 	clear: none;
 	font-size: 3rem;
 	margin-bottom: 0;
@@ -59,11 +59,11 @@
 }
 
 .bbg__entity__icon,
-.bbg-team__icon {
+.bbg__team__icon {
 	border-radius: 50%;
-	height: $bbg-team__icon-width;
+	height: $bbg__team__icon-width;
 	margin: 0 auto 2.5rem;
-	width: $bbg-team__icon-width;
+	width: $bbg__team__icon-width;
 
 	@include media($small-screen)  {
 		margin-bottom: 0;
@@ -72,14 +72,14 @@
 
 
 .bbg__entity__text,
-.bbg-team__text {
+.bbg__team__text {
 	@include media($small-screen) {
-		padding-left: $bbg-team__icon-width + 10px;
+		padding-left: $bbg__team__icon-width + 10px;
 	}
 }
 
 .bbg__entity__icon__image,
-.bbg-team__icon__image {
+.bbg__team__icon__image {
 	@include backgroundCover;
 	display: block;
 	height: 100%;
@@ -87,7 +87,7 @@
 }
 
 .bbg__entity__text-description,
-.bbg-team__text-description {
+.bbg__team__text-description {
 	clear: none;
 	font-family: $font-sans;
 	margin-top: 0;
@@ -98,18 +98,18 @@
 .bbg__article-sidebar.large {
 	@include media($medium-large-screen) {
 		.bbg__entity__icon,
-		.bbg-team__icon {
-			height: $bbg-avatar-small;
-			width: $bbg-avatar-small;
+		.bbg__team__icon {
+			height: $bbg__avatar-small;
+			width: $bbg__avatar-small;
 		}
 
 		.bbg__entity__text,
-		.bbg-team__text {
-			padding-left: $bbg-avatar-small + 10px;
+		.bbg__team__text {
+			padding-left: $bbg__avatar-small + 10px;
 		}
 
 		.bbg__entity__name,
-		.bbg-team__name {
+		.bbg__team__name {
 			font-size: 2.3rem;
 		}
 
@@ -125,7 +125,7 @@
 
 
 //staff page author profiles
-.bbg-staff__author {
+.bbg__staff__author {
 	margin-bottom: $site-margins;
 
 	@include media($medium-screen) {
@@ -133,19 +133,19 @@
 	}
 }
 
-.bbg-staff__author__text {
+.bbg__staff__author__text {
 	width: 100%;
 }
 
-.bbg-staff__author-bio {
+.bbg__staff__author-bio {
 }
 
-.bbg-staff__author-bio {
+.bbg__staff__author-bio {
 	@extend .readin;
 }
 
 
-.bbg-staff__author-name{
+.bbg__staff__author-name{
 	clear: none;
 	font-size: $h2-font-size * .8;
 	line-height: 1;
@@ -163,29 +163,29 @@
 	}
 }
 
-.bbg-staff__author-occupation {
+.bbg__staff__author-occupation {
 	font-weight: $font-light;
 	text-transform: uppercase;
 
 	@include media($small-screen) {
-		padding-left: $bbg-avatar-width-small * 1.5 + 10px;
+		padding-left: $bbg__avatar-width-small * 1.5 + 10px;
 		text-align: left;
 	}
 }
 
-.bbg-staff__author-contact {
+.bbg__staff__author-contact {
 	@include clearfix();
 	font-weight: $font-light;
 	margin-bottom: 1rem;
 
 	@include media($medium-screen) {
-		padding-left: $bbg-avatar-width-small * 1.5 + 10px;
+		padding-left: $bbg__avatar-width-small * 1.5 + 10px;
 	}
 }
 
 
 
-.bbg-staff__roster .bbg-staff__author-bio {
+.bbg__staff__roster .bbg__staff__author-bio {
 	font-size: $read-in-font-size * .8;
 	line-height: $base-line-height;
 }
@@ -209,7 +209,7 @@
 			top: 0;
 			bottom: .5rem;
 		}
-		padding-left: $bbg-team__icon-width + 10px;
+		padding-left: $bbg__team__icon-width + 10px;
 		text-align: left;
 	}
 }
@@ -225,7 +225,7 @@
 
 		margin: {
 			top: 2rem;
-			left: $bbg-team__icon-width + 10px;
+			left: $bbg__team__icon-width + 10px;
 		}
 		max-width: $article-max-width;
 	}
@@ -237,7 +237,7 @@
 	text-align: center;
 
 	@include media($small-screen) {
-		padding-left: $bbg-team__icon-width + 10px;
+		padding-left: $bbg__team__icon-width + 10px;
 		text-align: left;
 	}
 }
@@ -248,7 +248,7 @@
 	text-transform: uppercase;
 
 	@include media($small-screen) {
-		padding-left: $bbg-team__icon-width + 10px;
+		padding-left: $bbg__team__icon-width + 10px;
 		text-align: left;
 	}
 }
@@ -257,7 +257,7 @@
 	margin-top: 2rem;
 
 	@include media($small-screen) {
-		padding-left: $bbg-team__icon-width + 10px;
+		padding-left: $bbg__team__icon-width + 10px;
 	}
 
 	@include media($medium-screen) {

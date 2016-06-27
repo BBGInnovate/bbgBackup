@@ -62,7 +62,7 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 			echo $linkImage;
 
 			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-			//echo '<div style="position: absolute;"><h5 class="bbg-label">Label</h5></div>';
+			//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 			echo the_post_thumbnail( 'large-thumb' );
 			echo "</a>";
 

@@ -23,7 +23,7 @@ get_header(); ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg-label--mobile large">Network news</h5>
+					<h5 class="bbg__label--mobile large">Network news</h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
@@ -82,7 +82,7 @@ get_header(); ?>
 					$s = '<section class="usa-section">';
 					$s .= '<div class="usa-grid">';
 					$entityPermalink = get_permalink( get_page_by_path( 'networks/' . $e ) );
-					$s .= '<h5 class="bbg-label small"><a href="' . $entityPermalink . '">'. $entityString .'</a></h5>';
+					$s .= '<h5 class="bbg__label small"><a href="' . $entityPermalink . '">'. $entityString .'</a></h5>';
 					$s .= '</div>';
 					$s .= '<div class="usa-grid">';
 					if (count($pressReleases)) {
@@ -115,10 +115,15 @@ get_header(); ?>
 							}	
 							$s .= '</article>';
 							if ($counter == 1 || $counter == 5) {
+								if ($counter == 5) {
+									$idObj = get_category_by_slug($entitySlug); 
+				  					$id = $idObj->term_id;
+									$s .= '<article>' . '<a href="' . get_category_link($id) . '">Read more ' . strtoupper($entityString) . ' news »</a></article>';
+								}
 								$s .= '</div>';
 							}
-
 						}
+
 					}
 					$s .= '</div></section>';
 					echo $s;
@@ -141,62 +146,11 @@ $qParams=array(
 	,'post_status' => array('publish')
 );
 
-/*
-//Sample GeoJSON format
-var geojson = [
-	{
-		"type": "FeatureCollection",
-		"features": [
-		{
-			"type": "Feature",
-			"geometry": {
-				"type": "Point",
-				"coordinates": [
-					-77.016556,
-					38.887226
-				]
-			},
-			"properties": {
-				"title": "Africa Rizing HQ",
-				"description": "description could go here.",
-				"marker-color": "#F7941E",
-				"marker-size": "large",
-				"marker-symbol": "building"
-			}
-		},
-
-		{
-			"type": "Feature",
-			"geometry": {
-			"type": "Point",
-			"coordinates": [
-			  -0.200000,
-			  5.550000
-			]
-			},
-			"properties": {
-			"title": "Adam Martin (<a href='http://twitter.com/'>@adamjmartin</a>) — Accra, Ghana",
-			"description": "<img src='http://54.243.239.169/brian/africa.rizing/images/mugshot_adamjmartin.jpg' style='width: 30%; float: left; margin-right: 10px; '> #BOS #DCA #ACC Tweets on #beisbol #media #tech dir. of tech & innovation @BBGInnovate former #pubmedia @NPRTechTeam and @NPRNews always RadioBoston dot Com",
-			"marker-color": "#FBB040",
-			"marker-size": "large"
-			}
-		}
-	  ]
-	}
-];
-*/
-
 /*** late in the game we ran into a pagination issue, so we're running a second query here ***/
 $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
-$geojson = 'var geojson = [
-	{
-		"type": "FeatureCollection",
-		"features": [
-';
-$geojsonGuts = "";
-
+$features = array();
 
 if ( $custom_query->have_posts() ) :
 		$counter = 0;
@@ -224,41 +178,33 @@ if ( $custom_query->have_posts() ) :
 			} else {
 				$mapHeadline = "<h5><a href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
 			}
-
-			$counter++;
-
-			if ($counter > 1){
-				$geojsonGuts .= ",";
-			}
-			$geojsonGuts .= '{
-			"type": "Feature",
-			"geometry": {
-				"type": "Point",
-				"coordinates": [
-					'. $location['lng'] .',
-					'. $location['lat'] .'
-				]
-			},
-			"properties": {
-				"title": "'. $mapHeadline .'",
-				"description": "'. $mapDescription .'",
-				"marker-color": "'. $pinColor .'",
-				"marker-size": "large",
-				"marker-symbol": ""
-			}
-		}';
-			
+			$features[] = array(
+				'type' => 'Feature',
+				'geometry' => array( 
+					'type' => 'Point',
+					'coordinates' => array($location['lng'],$location['lat'])
+				),
+				'properties' => array(
+					'title' => $mapHeadline,
+					'description' => $mapDescription,
+					'marker-color' => $pinColor,
+					'marker-size' => 'large', 
+					'marker-symbol' => ''
+				)
+			);
 		endwhile;
-		$geojson .= $geojsonGuts;
-		$geojson .= '	  ]
-	}
-];';
-		echo '<script type="text/javascript">';
-		echo $geojson;
-		echo '</script>';
+		$geojsonObj= array(array(
+			'type' => 'FeatureCollection',
+			'features' => $features
+		));
+		$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
+
+		echo "<script type='text/javascript'>\n";
+		echo "geojson = $geojsonStr";
+		echo "</script>";
+		//echo $geojsonStr;
+
 endif; 
-
-
 
 ?>
 

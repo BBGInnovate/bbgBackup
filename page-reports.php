@@ -35,7 +35,7 @@ get_header();
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<?php the_title( '<h5 class="bbg-label--mobile large">', '</h5>' ); ?>
+					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
 				</header><!-- .page-header -->
 			</div>
 
@@ -142,9 +142,9 @@ get_header();
 							$introText = str_replace(']]>', ']]&gt;', $introText);
 
 							if ($labelLink) {
-								echo "<h6 class='bbg-label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
+								echo "<h6 class='bbg__label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
 							} else {
-								echo "<h6 class='bbg-label'>$labelText</h6>";
+								echo "<h6 class='bbg__label'>$labelText</h6>";
 							}
 
 							// show umbrella section intro text
@@ -213,9 +213,9 @@ get_header();
 									echo "<div>";
 
 										if ($labelLink) {
-											echo "<h6 class='bbg-label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
+											echo "<h6 class='bbg__label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
 										} else {
-											echo "<h6 class='bbg-label'>$labelText</h6>";
+											echo "<h6 class='bbg__label'>$labelText</h6>";
 										}
 
 										if ($headlineLink) {

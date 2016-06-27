@@ -6,7 +6,7 @@
 		}
 	}
 	@include media($small-screen) {
-		.bbg-label {
+		.bbg__label {
 			background-color: #900;
 			color: #FFF;
 			display: inline-block;

@@ -31,7 +31,7 @@
 	    $impacts = array(
 	    	'inform' => array(),
 	    	'engage' => array(),
-	    	'influential' => array()
+	    	'be-influential' => array()
 	    );
 		
 		$qParams=array(
@@ -39,7 +39,7 @@
 			'posts_per_page' => 100,
 			'category__in' => array(
 									get_cat_id('Engage'),
-									get_cat_id('Influential'),
+									get_cat_id('Be Influential'),
 									get_cat_id('Inform')
 							  ),
 			'orderby', 'date',
@@ -54,8 +54,8 @@
 				$id=get_the_ID();
 				if( has_category('inform')) {
 					$target = &$impacts['inform'];
-				} else if (has_category('influential')) {
-					$target = &$impacts['influential'];
+				} else if (has_category('be-influential')) {
+					$target = &$impacts['be-influential'];
 				} else if (has_category('engage')) {
 					$target = &$impacts['engage'];
 				}
@@ -68,7 +68,7 @@
 		$impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
 
 		$s  = ''; 
-		$s .= '<h5 class="bbg-label small"><a href="' . $impactPortfolioPermalink .'">' . $label .'</a></h5>';
+		$s .= '<h5 class="bbg__label small"><a href="' . $impactPortfolioPermalink .'">' . $label .'</a></h5>';
 		
 
 		if (count($impacts['inform'])) {
@@ -80,9 +80,9 @@
 			$s .= oneImpactStory($impacts['engage'][0]);
 
 		} 
-		if (count($impacts['influential'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">INFLUENTIAL</a></h3>';
-			$s .= oneImpactStory($impacts['influential'][0]);
+		if (count($impacts['be-influential'])) {
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">BE INFLUENTIAL</a></h3>';
+			$s .= oneImpactStory($impacts['be-influential'][0]);
 		}
 		return $s;
 	}
