@@ -517,11 +517,14 @@ article {
 		}
 		width: 56%;
 
-		&.large{
+		/*&.large{*/
+			/*
 			border-right: $border-dotted;
+			/*
 			margin-left: 0;
 			padding-right: 2%;
 			width: 65%;
+			*/
 
 			>* {
 				max-width: none;
@@ -550,7 +553,7 @@ article {
 					bottom: $site-margins;
 				}
 			}
-		}
+		/*}*/
 	}
 
 
