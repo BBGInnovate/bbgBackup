@@ -42,17 +42,17 @@ if ( $includeSidebar ) {
 
 	if ( have_rows('sidebar_items') ):
 		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
-		$sidebarDesc = get_post_meta( get_the_ID(), 'sidebar_description', true );
+		$sidebarContent = get_post_meta( get_the_ID(), 'sidebar_description', true );
 
 		if ( $sidebarTitle != "" ) {
 			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
 		}
 
-		if ( $sidebarDesc != "" ) {
-			$sidebarDesc = get_the_content();
-			$sidebarDesc = apply_filters('the_content', $sidebarDesc);
-   			$sidebarDesc = str_replace(']]>', ']]&gt;', $sidebarDesc);
-			$s .= $sidebarDesc;
+		if ( $sidebarContent != "" ) {
+			$sidebarContent = get_the_content();
+			$sidebarContent = apply_filters('the_content', $sidebarContent);
+   			$sidebarContent = str_replace(']]>', ']]&gt;', $sidebarContent);
+			$s .= $sidebarContent;
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
