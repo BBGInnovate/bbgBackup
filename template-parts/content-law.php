@@ -144,7 +144,6 @@ if ( $includeSidebar ) {
 
 		<div class="usa-grid-full">
 			<div class="bbg__article-sidebar--left">
-
 				<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
 				<ul class="bbg__article-share">
 					<li class="bbg__article-share__link facebook">
@@ -158,8 +157,6 @@ if ( $includeSidebar ) {
 						</a>
 					</li>
 				</ul>
-
-				<p></p>
 			</div><!-- .bbg__article-sidebar--left -->
 
 			<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">

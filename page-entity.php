@@ -414,6 +414,14 @@ get_header(); ?>
 
 						<div class="usa-grid">
 
+							<?php if($post->post_parent) {
+								//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+								$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+								$parent_link = get_permalink($post->post_parent);
+								?>
+								<h5 class="bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+							<?php } ?>
+
 							<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
 								<div class="bbg__profile-photo">
@@ -434,23 +442,23 @@ get_header(); ?>
 
 
 
-					<div class="bbg__article-sidebar--left">
+							<div class="bbg__article-sidebar--left">
 
-						<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
-						<ul class="bbg__article-share">
-							<li class="bbg__article-share__link facebook">
-								<a href="<?php echo $fbUrl; ?>">
-									<span class="bbg__article-share__icon facebook"></span>
-								</a>
-							</li>
-							<li class="bbg__article-share__link twitter">
-								<a href="<?php echo $twitterURL; ?>">
-									<span class="bbg__article-share__icon twitter"></span>
-								</a>
-							</li>
-						</ul>
+								<h3 class="bbg__sidebar-label bbg__contact-label">Share </h3>
+								<ul class="bbg__article-share">
+									<li class="bbg__article-share__link facebook">
+										<a href="<?php echo $fbUrl; ?>">
+											<span class="bbg__article-share__icon facebook"></span>
+										</a>
+									</li>
+									<li class="bbg__article-share__link twitter">
+										<a href="<?php echo $twitterURL; ?>">
+											<span class="bbg__article-share__icon twitter"></span>
+										</a>
+									</li>
+								</ul>
 
-					</div>
+							</div>
 
 
 
