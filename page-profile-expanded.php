@@ -118,6 +118,15 @@ get_header(); ?>
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
+
+				<?php if($post->post_parent) {
+					//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
+					$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+					$parent_link = get_permalink($post->post_parent);
+					?>
+					<h5 class="bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+				<?php } ?>
+
 				<?php
 					$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
 					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -144,14 +153,6 @@ get_header(); ?>
 
 
 				<div class="usa-grid">
-
-					<?php if($post->post_parent) {
-						//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-						$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-						$parent_link = get_permalink($post->post_parent);
-						?>
-						<h5 class="bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-					<?php } ?>
 
 					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
 
