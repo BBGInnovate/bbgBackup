@@ -4491,11 +4491,16 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 /************************************************/
 /*   TAGLINE FOR ARTICLE POSTS AND PAGES        */
 /*   Small gray type at the end of an article   */
-.bbg-tagline,
-.bbg-tagline a {
+.bbg__tagline,
+.bbg-tagline {
   color: #757575;
   font-size: 1.3rem;
   margin-bottom: 3rem;
+}
+.bbg__tagline a,
+.bbg-tagline a {
+  color: #323a45;
+  text-decoration: underline;
 }
 
 .bbg__tagline-link {

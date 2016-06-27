@@ -608,11 +608,16 @@ ul.bbg__article-content__list--inline {
 /*   TAGLINE FOR ARTICLE POSTS AND PAGES        */
 /*   Small gray type at the end of an article   */
 
-.bbg-tagline,
-.bbg-tagline a {
+.bbg__tagline,
+.bbg-tagline {
 	color: $color-gray-medium;
 	font-size: $small-font-size;
 	margin-bottom: $site-margins;
+
+	a {
+		color: $color-gray-dark;
+		text-decoration: underline;
+	}
 }
 
 .bbg__tagline-link {
