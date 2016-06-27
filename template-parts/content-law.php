@@ -49,6 +49,9 @@ if ( $includeSidebar ) {
 		}
 
 		if ( $sidebarDesc != "" ) {
+			$sidebarDesc = get_the_content();
+			$sidebarDesc = apply_filters('the_content', $sidebarDesc);
+   			$sidebarDesc = str_replace(']]>', ']]&gt;', $sidebarDesc);
 			$s .= $sidebarDesc;
 		}
 
