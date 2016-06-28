@@ -447,7 +447,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			?>
 
 			<?php 
-				if ( $includeSidebar && $sidebarTitle != "" ) {
+				if ( $includeSidebar ) {
 					echo $sidebar;
 				}
 			?>
