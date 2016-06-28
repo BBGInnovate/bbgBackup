@@ -24,34 +24,28 @@ if ( have_posts() ) {
 	$ogImage = $thumb['0'];
 
 	$socialImageID = get_post_meta( $id, 'social_image',true );
-	if ($socialImageID) {
+	if ( $socialImageID ) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
 
-	$bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
+	$bannerPosition = get_post_meta( $id, 'adjust_the_banner_image', true);
 
-	$occupation=get_post_meta( $id, 'occupation', true );
-	$email=get_post_meta( $id, 'email', true );
-	$phone=get_post_meta( $id, 'phone', true );
-	$twitterProfileHandle=get_post_meta( $id, 'twitter_handle', true );
-	$relatedLinksTag=get_post_meta( $id, 'related_links_tag', true );
-
-	//Collapse the left column on mobile if it's empty.
-	$collapseColumnCSS = "";
-	if ($email=="" && $twitterProfileHandle=="" && $phone==""){
-		$collapseColumnCSS = "bbg__article-sidebar--collapse";
-	}
+	$occupation = get_post_meta( $id, 'occupation', true );
+	$email = get_post_meta( $id, 'email', true );
+	$phone = get_post_meta( $id, 'phone', true );
+	$twitterProfileHandle = get_post_meta( $id, 'twitter_handle', true );
+	$relatedLinksTag = get_post_meta( $id, 'related_links_tag', true );
 
 	$active = get_post_meta( $id, 'active', true );
-	$formerCSS="";
-	if (!$active){
+	$formerCSS = "";
+	if ( !$active ){
 		$occupation = "(Former) " . $occupation;
-		$formerCSS=" bbg__former-member";
+		$formerCSS = " bbg__former-member";
 	}
 
 
-	$profilePhotoID=get_post_meta( $id, 'profile_photo', true );
+	$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
 	$profilePhoto = "";
 
 	if ($profilePhotoID) {
@@ -59,19 +53,21 @@ if ( have_posts() ) {
 		$profilePhoto = $profilePhoto[0];
 	}
 
-	$timelineUrl=get_post_meta( $id, 'timelinejs_url', true );
-	if ($timelineUrl!=""){
+	$timelineUrl = get_post_meta( $id, 'timelinejs_url', true );
+	if ($timelineUrl != ""){
 		$timelineUrl = '<iframe src="' . $timelineUrl . '" height="800" width="600" frameborder="0" class="bbg__iframe__timelinejs"></iframe>';
 	}
 
-	$latestTweetsStr="";
+	$latestTweetsStr = "";
 	if ($twitterProfileHandle != "") {
-		$showLatestTweets=get_post_meta( $id, 'show_latest_tweets', true );
+		$showLatestTweets = get_post_meta( $id, 'show_latest_tweets', true );
 		if ($showLatestTweets) {
-			$widgetID="730138164040507394";	//change this to bbg acct
-			$latestTweetsStr='<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'" data-screen-name="'.$twitterProfileHandle.'" >Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+			$widgetID = "730138164040507394";	//change this to bbg acct
+			$latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'" data-screen-name="'.$twitterProfileHandle.'" >Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 		}	
 	}
+
+	$resolution = get_field('board_resolution_of_honor');
 
 	$ogDescription = get_the_excerpt();
 
@@ -108,7 +104,7 @@ get_header(); ?>
 				}
 			}
 			$twitterText .= " " . get_permalink();
-			$hashtags="";
+			$hashtags = "";
 			//$hashtags="testhashtag1,testhashtag2";
 
 			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
@@ -204,7 +200,6 @@ get_header(); ?>
 							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<a href="<?php echo $parent_link; ?>" class="bbg__tagline-link">Back to <?php echo $parent->post_title; ?></a>
 						<?php } ?>
 						</div>
 
@@ -265,6 +260,11 @@ get_header(); ?>
 						<?php echo $latestTweetsStr; ?>
 
 						<?php 
+
+							if ($resolution) {
+								echo '<h3 class="bbg__sidebar-label">Resolution of Honor</h3>';
+								echo "<p><a href='" . $resolution['url'] ."'>" . $resolution['title'] .'</a></p>';
+							}
 
 							if ( $relatedLinksTag != "" ) {
 								$qParams2=array(

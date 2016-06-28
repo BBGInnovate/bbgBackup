@@ -1134,28 +1134,6 @@ article {
 
 /* .bbg__article-sidebar.large {*/
 .bbg__article-sidebar {
-	.bbg__contact-card {
-		&.bbg__contact-card--include-map {
-			.bbg__contact-card__text {
-				@include media($medium-large-screen) {
-					margin: {
-						right: 0;
-						left: 0;
-					}
-					width: 100%;
-				}
-			}
-
-			.bbg__contact-card__map {
-				@include media($medium-large-screen) {
-					height: 200px;
-					position: relative;
-					width: 100%;
-				}
-			}
-		}
-	}
-
 	div {
 		margin-bottom: $site-margins
 	}

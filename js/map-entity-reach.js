@@ -17,6 +17,14 @@
 			$('#country-list').hide();
 		}
 
+/*
+$color-primary-alt:          #02bfe7; //blue
+$color-primary-alt-dark:     #00a6d2;
+$color-primary-alt-darkest:  #046b99;
+$color-primary-alt-light:    #9bdaf1; // lighten($color-primary-alt, 60%)
+$color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
+*/
+
 		map = AmCharts.makeChart( "chartdiv", {
 			type: "map",
 			borderColor: 'red',
@@ -30,8 +38,9 @@
 				autoZoom: true,
 				color: "#DDDDDD",
 				colorSolid: "#7A1A21",
-				selectedColor: "#7A1A21",
-				rollOverColor: "#891E25",
+				//selectedColor: "#7A1A21",
+				selectedColor: "#DDDDDD",
+				//rollOverColor: "#891E25",
 				rollOverOutlineColor: "#FFFFFF",
 				selectable: true,
 				balloonText: '[[title]]'
@@ -172,6 +181,8 @@
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
 						country.color = '#9F1D26';
+						country.rollOverColor = "#891E25";
+						country.selectedColor = "#7A1A21";
 					}
 
 					countries.push(country);

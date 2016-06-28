@@ -1,7 +1,7 @@
 <?php 
 	//Grab the list of congressional committee members from the Sunlight Foundation's API
 	function getCongressionalCommittee($committeeID, $committeeTitle) {
-		$committeeFilepath = get_template_directory() . "/committeecache$committeeID.json";
+		$committeeFilepath = get_template_directory() . "/external-feed-cache/committeecache$committeeID.json";
 		if ( fileExpired($committeeFilepath, 1440) ) { 	//1440 min = 1 day
 			//use http://tryit.sunlightfoundation.com/congress to try out the api
 			$url="https://congress.api.sunlightfoundation.com/committees?apikey=" . SUNLIGHT_API_KEY . "&committee_id=$committeeID&fields=members";

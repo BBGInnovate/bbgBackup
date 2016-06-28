@@ -3212,6 +3212,35 @@ table td {
   margin-bottom: 1rem;
 }
 
+/* Adding half-column images */
+.bbg__article-content .alignleft,
+.bbg__article-content .alignright {
+  width: 100% !important;
+}
+@media screen and (min-width: 481px) {
+  .bbg__article-content .alignleft,
+  .bbg__article-content .alignright {
+    max-width: 300px;
+    width: 50% !important;
+  }
+}
+.bbg__article-content .alignleft .wp-caption-text, .bbg__article-content .alignleft .bbg__article-header__caption, .bbg__article-content .alignleft .bbg-banner__cutline,
+.bbg__article-content .alignright .wp-caption-text,
+.bbg__article-content .alignright .bbg__article-header__caption,
+.bbg__article-content .alignright .bbg-banner__cutline {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 300px;
+}
+@media screen and (min-width: 481px) {
+  .bbg__article-content .alignleft {
+    margin-right: 1.5rem;
+  }
+  .bbg__article-content .alignright {
+    margin-left: 1.5rem;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
@@ -4491,11 +4520,16 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 /************************************************/
 /*   TAGLINE FOR ARTICLE POSTS AND PAGES        */
 /*   Small gray type at the end of an article   */
-.bbg-tagline,
-.bbg-tagline a {
+.bbg__tagline,
+.bbg-tagline {
   color: #757575;
   font-size: 1.3rem;
   margin-bottom: 3rem;
+}
+.bbg__tagline a,
+.bbg-tagline a {
+  color: #323a45;
+  text-decoration: underline;
 }
 
 .bbg__tagline-link {
@@ -5770,20 +5804,6 @@ article {
 /*    Misc post/page styles            */
 /*                                     */
 /* .bbg__article-sidebar.large {*/
-@media screen and (min-width: 900px) {
-  .bbg__article-sidebar .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__text {
-    margin-right: 0;
-    margin-left: 0;
-    width: 100%;
-  }
-}
-@media screen and (min-width: 900px) {
-  .bbg__article-sidebar .bbg__contact-card.bbg__contact-card--include-map .bbg__contact-card__map {
-    height: 200px;
-    position: relative;
-    width: 100%;
-  }
-}
 .bbg__article-sidebar div {
   margin-bottom: 3rem;
 }

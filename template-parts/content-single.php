@@ -103,6 +103,7 @@ if ( $includeSidebar ) {
 
 				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
 				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkImage = get_sub_field( 'sidebar_link_image' );
 				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
 
 				$sidebarDescription = "";
@@ -110,7 +111,48 @@ if ( $includeSidebar ) {
 					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
 				}
 
-				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$sidebarImage = "";
+				if ($sidebarLinkImage && $sidebarLinkImage != ""){
+					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="" src="' . $sidebarLinkImage . '"/></a>';
+				}
+
+				$s .= '<div class="">' . $sidebarImage . '<h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+
+			} else if (get_row_layout() == 'sidebar_photo'){
+
+				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
+				$sidebarPhotoTitle = get_sub_field( 'sidebar_photo_title', false);
+				$sidebarPhotoDescription = get_sub_field( 'sidebar_photo_description', false);
+
+				$sidebarImage = "";
+				if ($sidebarPhotoImage && $sidebarPhotoImage != ""){
+					$sidebarPhotoImageSrc = $sidebarPhotoImage['sizes']['medium'];
+					$sidebarImage = '<img class="" src="' . $sidebarPhotoImageSrc . '"/>';
+				}
+				/* 
+				helpful for debugging
+				var_dump($sidebarPhotoImage);
+				foreach ($sidebarPhotoImage as $key=>$value) {
+					echo "$key -> $value<BR>";
+					if ($key == 'sizes') {
+						var_dump($value);
+					}
+				}
+				var_dump($sidebarPhotoImage['sizes']);
+				*/
+
+
+				$sidebarImageTitle = "";
+				if ($sidebarPhotoTitle && $sidebarPhotoTitle != ""){
+					$sidebarImageTitle = "<h5 class=''>" . $sidebarPhotoTitle . "</h5>";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarPhotoDescription && $sidebarPhotoDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarPhotoDescription . "</p>";
+				}
+
+				$s .= '<div class="">' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
 			}
 		endwhile;
 
@@ -408,7 +450,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
-			<?php echo $teamRoster; ?>
 			<?php 
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
@@ -419,10 +460,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			?>
 
 			<?php 
-				if ( $includeSidebar && $sidebarTitle != "" ) {
+				if ( $includeSidebar ) {
 					echo $sidebar;
 				}
 			?>
+
+			<?php echo $teamRoster; ?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
