@@ -65,8 +65,10 @@
 	}
 }
 
-
+.bbg__article-content .bbg__content__photo--align-left,
 .bbg__content__photo--align-left {
-	margin-right: $site-margins-medium;
-	width: 50% !important;
+	@include media($medium-screen) {
+		margin-right: $site-margins-medium;
+		width: 50% !important;
+	}
 }
