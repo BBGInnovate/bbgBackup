@@ -6491,11 +6491,6 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__career-box .usa-width-two-thirds p {
-  /* Adding these to fix greedy rule */
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 1.7;
-  /* */
   margin-top: 0;
 }
 @media screen and (min-width: 900px) {
@@ -6506,6 +6501,13 @@ section.usa-section.bbg-banner__section {
 }
 .bbg__career-box .usa-width-one-third h4, .bbg__career-box .usa-width-one-third .bbg__board__committee-list li a, .bbg__board__committee-list li .bbg__career-box .usa-width-one-third a {
   margin-top: 0;
+}
+
+/* Adding these to fix greedy rule */
+.bbg__article-content.large .bbg__profile__content .bbg__career-box .usa-width-two-thirds p {
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.7;
 }
 
 .bbg__contact-card {
