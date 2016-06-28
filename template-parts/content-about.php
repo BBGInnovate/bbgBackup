@@ -14,6 +14,7 @@ global $grids;
 global $specialMissionClass;
 global $headline;
 global $tagline;
+global $excerpt;
 
 $includeDescription = TRUE;
 if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
@@ -80,6 +81,14 @@ if ( $headline ) {
 				<?php
 					echo $link;
 					echo $tagline;
+				?>
+			</a>
+			</h3>
+		<?php } elseif (!$tagline && $excerpt) { ?>
+			<h3 class="bbg__about__child__second-headline">
+				<?php
+					echo $link;
+					echo $excerpt;
 				?>
 			</a>
 			</h3>
