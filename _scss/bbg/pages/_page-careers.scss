@@ -60,11 +60,6 @@
 .bbg__career-box {
 	.usa-width-two-thirds {
 		p {
-			/* Adding these to fix greedy rule */
-			font-size: 1.6rem;
-			font-weight: normal;
-			line-height: 1.7;
-			/* */
 			margin-top: 0;
 		}
 
@@ -79,4 +74,11 @@
 			margin-top: 0;
 		}
 	}
+}
+
+/* Adding these to fix greedy rule */
+.bbg__article-content.large .bbg__profile__content .bbg__career-box .usa-width-two-thirds p {
+	font-size: 1.6rem;
+	font-weight: normal;
+	line-height: 1.7;
 }
