@@ -90,7 +90,13 @@ if ( $headline ) {
 	<!-- Child page excerpt -->
 	<?php if ($includeDescription) { ?>
 		<div class="entry-content">
-			<?php echo $excerpt; ?>
+			<?php
+				if ($pageTitle == "mission") {
+					the_excerpt();
+				} else {
+					echo $excerpt;
+				}
+			?>
 		</div><!-- .bbg__about__excerpt-title -->
 	<?php } ?>
 
