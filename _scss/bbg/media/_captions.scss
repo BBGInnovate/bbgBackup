@@ -61,14 +61,20 @@
 	}
 }
 
-.bbg__article-content .bbg__content__photo--align-left,
-.bbg__content__photo--align-left {
+.bbg__article-content .bbg__content__photo,
+.bbg__content__photo {
 	width: 100% !important;
 
 	@include media($small-screen) {
-		margin-right: $site-margins-medium;
 		max-width: 300px;
 		width: 50% !important;
+
+		&.alignleft {
+			margin-right: $site-margins-medium;
+		}
+		&.alignright {
+			margin-left: $site-margins-medium;
+		}
 	}
 
 	.wp-caption-text {
