@@ -12,6 +12,7 @@ global $grids;
 global $specialMissionClass;
 global $headline;
 global $tagline;
+global $excerpt;
 global $includePageDescription;
 
 $includeDescription = TRUE;
@@ -89,7 +90,7 @@ if ( $headline ) {
 	<!-- Child page excerpt -->
 	<?php if ($includeDescription) { ?>
 		<div class="entry-content bbg__about__excerpt-content">
-			<?php the_excerpt(); ?>
+			<?php echo $excerpt; ?>
 		</div><!-- .bbg__about__excerpt-title -->
 	<?php } ?>
 
