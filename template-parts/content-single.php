@@ -391,14 +391,9 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
 
-			<?php 
-			// Exclude bylines on press releases
-			if (!in_category('Press Release')) { 
-			?>
-				<div class="entry-meta bbg__article-meta">
-					<?php bbginnovate_posted_on(); ?>
-				</div><!-- .bbg__article-meta -->
-			<?php } ?>
+			<div class="entry-meta bbg__article-meta">
+				<?php bbginnovate_posted_on(); ?>
+			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
 
 
