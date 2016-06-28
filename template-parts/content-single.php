@@ -103,6 +103,7 @@ if ( $includeSidebar ) {
 
 				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
 				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkImage = get_sub_field( 'sidebar_link_image' );
 				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
 
 				$sidebarDescription = "";
@@ -110,7 +111,12 @@ if ( $includeSidebar ) {
 					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
 				}
 
-				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$sidebarImage = "";
+				if ($sidebarLinkImage && $sidebarLinkImage != ""){
+					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="" src="' . $sidebarLinkImage . '"/></a>';
+				}
+
+				$s .= '<div class="">' . $sidebarImage . '<h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			}
 		endwhile;
 
