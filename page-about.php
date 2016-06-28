@@ -108,6 +108,8 @@ get_header();
 
 							if ( $pageTotal == 5 ) {
 								$five = TRUE;
+							} else {
+								$five = FALSE;
 							}
 
 							foreach ($relatedPages as $rPage) {
