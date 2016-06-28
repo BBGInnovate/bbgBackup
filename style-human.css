@@ -3212,6 +3212,11 @@ table td {
   margin-bottom: 1rem;
 }
 
+.bbg__content__photo--align-left {
+  margin-right: 1.5rem;
+  width: 50% !important;
+}
+
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
