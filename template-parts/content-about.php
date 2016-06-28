@@ -89,7 +89,7 @@ if ( $headline ) {
 
 	<!-- Child page excerpt -->
 	<?php if ($includeDescription) { ?>
-		<div class="entry-content bbg__about__excerpt-content">
+		<div class="entry-content">
 			<?php echo $excerpt; ?>
 		</div><!-- .bbg__about__excerpt-title -->
 	<?php } ?>
