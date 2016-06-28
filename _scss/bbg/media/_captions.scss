@@ -69,13 +69,13 @@
 		margin-right: $site-margins-medium;
 		max-width: 300px;
 		width: 50% !important;
+	}
 
-		.wp-caption-text {
-			margin: {
-				right: auto;
-				left: auto;
-			};
-			max-width: 300px; 
-		}
+	.wp-caption-text {
+		margin: {
+			right: auto;
+			left: auto;
+		};
+		max-width: 300px; 
 	}
 }
