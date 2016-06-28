@@ -207,6 +207,76 @@ get_header();
 						echo '</section>';
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 
+						elseif ( get_row_layout() == 'about_downloads_files' ):
+						/*** BEGIN DISPLAY OF DOWNLOAD LINKS ROW ***/
+							$downloadFiles = get_sub_field('about_downloads_file');
+							$totalFiles = count ( $downloadFiles );
+
+							// Check function return
+							if ( checkNum($totalFiles) === TRUE ) {
+								// if TRUE: number is odd
+								$containerClass = 'bbg-grid--1-3-3';
+							} else {
+								// if FALSE: number is even
+								$containerClass = 'bbg-grid--1-2-2';
+							}
+
+							$downloadsLabel = get_sub_field('about_downloads_label');
+							$downloadsImage = get_sub_field('about_downloads_image');
+							$downloadsIntro = get_sub_field('about_downloads_description');
+
+							//allow shortcodes in intro text
+							$downloadsIntro = apply_filters('the_content', $downloadsIntro);
+							$downloadsIntro = str_replace(']]>', ']]&gt;', $downloadsIntro);
+
+							if ($downloadsLabel) {
+								echo "<h6 class='bbg__label'>$downloadsLabel</h6>";
+							}
+
+							// show section image
+							if ($downloadsImage) {
+								// echo $downloadsImage;
+								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $downloadsImage .  "); height: 100%; min-height: 150px;'></div>";
+							}
+
+							// show umbrella section intro text
+							echo "<div class='bbg__about__child__intro'>$downloadsIntro</div>";
+							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
+
+							if ( $downloadFiles ) {
+								// Loop through all the grandchild pages
+								foreach ($downloadFiles as $file) {
+									// Define all variables
+									$fileName = $file['downloads_link_name'];
+									$fileURL = $file['downloads_file'];
+									$fileImageObject = $file['downloads_file_image'];
+										// retrieve ID from image object
+										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'mugshot' );
+									$fileDescription = $file['downloads_file_description'];
+									$fileDescription = apply_filters('the_content', $fileDescription);
+									$fileDescription = str_replace(']]>', ']]&gt;', $fileDescription);
+
+									// Output variables in HTML format
+									echo "<article class='$containerClass bbg__about__grandchild'>";
+										// Output file title/name
+										echo "<h3 class='bbg__about__grandchild__title'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a></h3>";
+										// Output file image
+										if ( $thumbSrc ) {
+											echo "<a href='" . $fileURL . "' target='_blank'>";
+												echo "<div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] . ");'></div>";
+											echo "</a>";
+										}
+										// Output file description
+										if ( $fileDescription ) {
+											echo $fileDescription;
+										}
+									echo "</article>";
+								}
+							}
+							echo '</div>';
+						echo '</section>';
+						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
+
 						elseif( get_row_layout() == 'about_ribbon_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE RIBBON ROW ***/
 							$labelText = get_sub_field('about_ribbon_label');
