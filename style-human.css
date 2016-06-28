@@ -6491,6 +6491,11 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__career-box .usa-width-two-thirds p {
+  /* Adding these to fix greedy rule */
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.7;
+  /* */
   margin-top: 0;
 }
 @media screen and (min-width: 900px) {

@@ -99,7 +99,7 @@ if ( $includeSidebar ) {
 
 				$s .= '<div class="bbg__quotation"><h5 class="bbg__quotation-text--large">“' . $sidebarQuotationText . '”</h5><p class="bbg__quotation-attribution__text"><span class="bbg__quotation-attribution__name">' . $sidebarQuotationSpeaker . ',</span><span class="bbg__quotation-attribution__credit"> ' . $sidebarQuotationSpeakerTitle ."</span></p></div>";
 
-			} else if (get_row_layout() == 'sidebar_link'){
+			} else if (get_row_layout() == 'sidebar_external_link'){
 
 				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
 				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
@@ -118,6 +118,34 @@ if ( $includeSidebar ) {
 
 				$s .= '<div class="">' . $sidebarImage . '<h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 
+			} else if (get_row_layout() == 'sidebar_internal_link') {
+
+				$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title', false);
+				$sidebarInternalLocation = get_sub_field( 'sidebar_internal_location' );
+				$sidebarInternalDescription = get_sub_field( 'sidebar_internal_description', false);
+
+				// get data out of WP object
+				$url = get_permalink( $sidebarInternalLocation->ID ); // Use WP object ID to get permalink for link
+				$title = $sidebarInternalLocation->post_title; // WP object title
+
+				$sidebarSectionTitle = "";
+				// Set text for the internal link
+				if ($sidebarInternalTitle && $sidebarInternalTitle != "") {
+					// User-defined title
+					$sidebarSectionTitle = "<p>" . $sidebarInternalTitle . "</p>";
+				} else {
+					// WP object title (set above)
+					$sidebarSectionTitle = "<p>" . $title . "</p>";
+				}
+
+				$sidebarDescription = "";
+				// Set text for description beneath link
+				if ($sidebarInternalDescription && $sidebarInternalDescription != "") {
+					// User-defined description
+					$sidebarDescription = "<p>" . $sidebarInternalDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			} else if (get_row_layout() == 'sidebar_photo'){
 
 				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
