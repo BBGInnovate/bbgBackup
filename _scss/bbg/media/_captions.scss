@@ -79,6 +79,15 @@
 			};
 			max-width: 300px; 
 		}
+
+		.size-medium {
+			width: 100%;
+
+			@include media($small-screen) {
+				width: 100%;
+			}
+		}
+
 	}
 
 	@include media($small-screen) {

@@ -2738,11 +2738,11 @@ fieldset {
 
 .size-medium {
   width: 100%;
-}
-@media screen and (min-width: 481px) {
-  .size-medium {
-    width: 50%;
+  /*
+  @include media($small-screen) {
+  	width: 50%;
   }
+  */
 }
 
 /*--------------------------------------------------------------
