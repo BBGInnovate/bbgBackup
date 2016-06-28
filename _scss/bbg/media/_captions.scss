@@ -61,20 +61,13 @@
 	}
 }
 
-.bbg__article-content .bbg__content__photo,
-.bbg__content__photo {
+.alignleft,
+.alignright {
 	width: 100% !important;
 
 	@include media($small-screen) {
 		max-width: 300px;
 		width: 50% !important;
-
-		&.alignleft {
-			margin-right: $site-margins-medium;
-		}
-		&.alignright {
-			margin-left: $site-margins-medium;
-		}
 	}
 
 	.wp-caption-text {
@@ -83,5 +76,14 @@
 			left: auto;
 		};
 		max-width: 300px; 
+	}
+}
+
+@include media($small-screen) {
+	.alignleft {
+		margin-right: $site-margins-medium;
+	}
+	.alignright {
+		margin-left: $site-margins-medium;
 	}
 }
