@@ -3216,6 +3216,7 @@ table td {
   .bbg__article-content .bbg__content__photo--align-left,
   .bbg__content__photo--align-left {
     margin-right: 1.5rem;
+    max-width: 300px;
     width: 50% !important;
   }
 }

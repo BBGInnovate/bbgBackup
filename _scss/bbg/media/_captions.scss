@@ -50,10 +50,6 @@
 	}
 }
 
-.bbg__mugshot__photo {
-
-}
-
 .bbg__mugshot__caption {
 	display: block;
 	font-family: $font-sans;
@@ -69,6 +65,7 @@
 .bbg__content__photo--align-left {
 	@include media($medium-screen) {
 		margin-right: $site-margins-medium;
+		max-width: 300px;
 		width: 50% !important;
 	}
 }
