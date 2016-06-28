@@ -117,6 +117,29 @@ if ( $includeSidebar ) {
 				}
 
 				$s .= '<div class="">' . $sidebarImage . '<h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+
+			} else if (get_row_layout() == 'sidebar_photo'){
+
+				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
+				$sidebarPhotoTitle = get_sub_field( 'sidebar_photo_title', false);
+				$sidebarPhotoDescription = get_sub_field( 'sidebar_photo_description', false);
+
+				$sidebarImage = "";
+				if ($sidebarPhotoImage && $sidebarPhotoImage != ""){
+					$sidebarImage = '<img class="" src="' . $sidebarPhotoImage . '"/>';
+				}
+
+				$sidebarImageTitle = "";
+				if ($sidebarPhotoTitle && $sidebarPhotoTitle != ""){
+					$sidebarImageTitle = "<h5 class=''>" . $sidebarPhotoTitle . "</h5>";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarPhotoDescription && $sidebarPhotoDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarPhotoDescription . "</p>";
+				}
+
+				$s .= '<div class="">' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
 			}
 		endwhile;
 

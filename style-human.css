@@ -3223,6 +3223,14 @@ table td {
     max-width: 300px;
     width: 50% !important;
   }
+  .bbg__article-content .bbg__content__photo--align-left .wp-caption-text, .bbg__article-content .bbg__content__photo--align-left .bbg__article-header__caption, .bbg__article-content .bbg__content__photo--align-left .bbg-banner__cutline,
+  .bbg__content__photo--align-left .wp-caption-text,
+  .bbg__content__photo--align-left .bbg__article-header__caption,
+  .bbg__content__photo--align-left .bbg-banner__cutline {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 300px;
+  }
 }
 
 /*--------------------------------------------------------------
