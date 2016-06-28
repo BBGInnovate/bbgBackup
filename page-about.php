@@ -130,7 +130,6 @@ get_header();
 										$grids = $gridClass;
 										$headline = $rPageHeadline; // custom field for secondary page headline
 										$tagline = $rPageTagline; // custom field for page tagline
-										$hideLink = $rHideLink;
 										$includePageDescription = TRUE;
 										get_template_part( 'template-parts/content-about', get_post_format() );
 									}

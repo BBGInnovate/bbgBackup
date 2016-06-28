@@ -14,7 +14,6 @@ global $grids;
 global $specialMissionClass;
 global $headline;
 global $tagline;
-global $hideLink;
 
 $includeDescription = TRUE;
 if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
@@ -64,20 +63,16 @@ if ( $headline ) {
 		?>
 
 		<!-- Child page thumbnail -->
-		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
-			<?php
-				echo $linkImage;
-
-				/* Set a default thumbnail image in case one isn't set */
-				$thumbnail = '<img src="' . get_template_directory_uri() . '/img/portfolio-project-default.png" alt="This is a default image." />';
-
-				if ( has_post_thumbnail() ) {
-					$thumbnail = the_post_thumbnail('medium-thumb');
-				}
-				echo $thumbnail;
-			?>
-			</a>
-		</div>
+		<?php
+			if ( has_post_thumbnail() ) {
+				echo '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+					echo $linkImage;
+						$thumbnail = the_post_thumbnail('medium-thumb');
+						echo $thumbnail;
+					echo '</a>';
+				echo '</div>';
+			}
+		?>
 
 		<!-- Child page headline text -->
 		<?php if ($tagline) { ?>
