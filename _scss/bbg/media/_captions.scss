@@ -61,29 +61,32 @@
 	}
 }
 
-.alignleft,
-.alignright {
-	width: 100% !important;
+/* Adding half-column images */
+.bbg__article-content {
+	.alignleft,
+	.alignright {
+		width: 100% !important;
+
+		@include media($small-screen) {
+			max-width: 300px;
+			width: 50% !important;
+		}
+
+		.wp-caption-text {
+			margin: {
+				right: auto;
+				left: auto;
+			};
+			max-width: 300px; 
+		}
+	}
 
 	@include media($small-screen) {
-		max-width: 300px;
-		width: 50% !important;
-	}
-
-	.wp-caption-text {
-		margin: {
-			right: auto;
-			left: auto;
-		};
-		max-width: 300px; 
-	}
-}
-
-@include media($small-screen) {
-	.alignleft {
-		margin-right: $site-margins-medium;
-	}
-	.alignright {
-		margin-left: $site-margins-medium;
+		.alignleft {
+			margin-right: $site-margins-medium;
+		}
+		.alignright {
+			margin-left: $site-margins-medium;
+		}
 	}
 }

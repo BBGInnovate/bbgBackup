@@ -3212,35 +3212,35 @@ table td {
   margin-bottom: 1rem;
 }
 
-.alignleft,
-.alignright {
+/* Adding half-column images */
+.bbg__article-content .alignleft,
+.bbg__article-content .alignright {
   width: 100% !important;
 }
 @media screen and (min-width: 481px) {
-  .alignleft,
-  .alignright {
+  .bbg__article-content .alignleft,
+  .bbg__article-content .alignright {
     max-width: 300px;
     width: 50% !important;
   }
 }
-.alignleft .wp-caption-text, .alignleft .bbg__article-header__caption, .alignleft .bbg-banner__cutline,
-.alignright .wp-caption-text,
-.alignright .bbg__article-header__caption,
-.alignright .bbg-banner__cutline {
+.bbg__article-content .alignleft .wp-caption-text, .bbg__article-content .alignleft .bbg__article-header__caption, .bbg__article-content .alignleft .bbg-banner__cutline,
+.bbg__article-content .alignright .wp-caption-text,
+.bbg__article-content .alignright .bbg__article-header__caption,
+.bbg__article-content .alignright .bbg-banner__cutline {
   margin-right: auto;
   margin-left: auto;
   max-width: 300px;
 }
-
 @media screen and (min-width: 481px) {
-  .alignleft {
+  .bbg__article-content .alignleft {
     margin-right: 1.5rem;
   }
-
-  .alignright {
+  .bbg__article-content .alignright {
     margin-left: 1.5rem;
   }
 }
+
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
