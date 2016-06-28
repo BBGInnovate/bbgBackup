@@ -113,6 +113,7 @@ get_header();
 							foreach ($relatedPages as $rPage) {
 								$rPageHeadline = $rPage->headline;
 								$rPageTagline = $rPage->page_tagline;
+								$rPageDescription = $rPage->about_include_exerpt;
 								$rPageExcerpt = my_excerpt($rPage->ID);
 								$rPageExcerpt = apply_filters('the_content', $rPageExcerpt);
 								$rPageExcerpt = str_replace(']]>', ']]&gt;', $rPageExcerpt);
@@ -133,7 +134,7 @@ get_header();
 										$headline = $rPageHeadline; // custom field for secondary page headline
 										$tagline = $rPageTagline; // custom field for page tagline
 										$excerpt = $rPageExcerpt; // define the page excerpt as back-up to tagline
-										$includePageDescription = TRUE;
+										$includePageDescription = $rPageDescription;
 										get_template_part( 'template-parts/content-about', get_post_format() );
 									}
 								}
