@@ -63,7 +63,9 @@
 
 .bbg__article-content .bbg__content__photo--align-left,
 .bbg__content__photo--align-left {
-	@include media($medium-screen) {
+	width: 100% !important;
+
+	@include media($small-screen) {
 		margin-right: $site-margins-medium;
 		max-width: 300px;
 		width: 50% !important;
