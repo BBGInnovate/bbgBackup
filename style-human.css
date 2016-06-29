@@ -3255,7 +3255,7 @@ table td {
 .bbg__article-content .alignnone,
 .bbg__article-content .aligncenter {
   max-width: 600px;
-  /*width: auto !important;*/
+  width: auto !important;
 }
 
 /*--------------------------------------------------------------

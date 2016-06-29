@@ -103,6 +103,5 @@
 /* Fixing the slignment on full-column photos in posts */
 .bbg__article-content .alignnone,
 .bbg__article-content .aligncenter {
-	max-width: $article-max-width;
-	/*width: auto !important;*/
+	width: auto !important;
 }
