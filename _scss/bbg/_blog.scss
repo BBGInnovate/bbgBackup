@@ -615,9 +615,14 @@ ul.bbg__article-content__list--inline {
 /*   Small gray type at the end of an article   */
 
 .bbg__tagline,
-.bbg-tagline {
+.bbg__tagline p,
+.bbg-tagline,
+.bbg-tagline p {
 	color: $color-gray-medium;
-	font-size: $small-font-size;
+	font: {
+		family: $font-sans;
+		size: 1.5rem;
+	}
 	margin-bottom: $site-margins;
 
 	a {
@@ -632,10 +637,15 @@ ul.bbg__article-content__list--inline {
 	max-width: $article-max-width;
 }
 
+
+
 .bbg__article-footer {
 	margin-top: $site-margins-large;
 }
 
+
+/* Moved to the tables-forms.scss */
+/*
 .usa-table,
 .usa-table-borderless {
 	font-size: $small-font-size;
@@ -644,6 +654,7 @@ ul.bbg__article-content__list--inline {
 		font-size: $base-font-size;
 	}
 }
+*/
 
 
 /* At the end of a post, add a small tagline credit for authors 

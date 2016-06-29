@@ -4537,13 +4537,18 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
 /*   TAGLINE FOR ARTICLE POSTS AND PAGES        */
 /*   Small gray type at the end of an article   */
 .bbg__tagline,
-.bbg-tagline {
+.bbg__tagline p,
+.bbg-tagline,
+.bbg-tagline p {
   color: #757575;
-  font-size: 1.3rem;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 1.5rem;
   margin-bottom: 3rem;
 }
 .bbg__tagline a,
-.bbg-tagline a {
+.bbg__tagline p a,
+.bbg-tagline a,
+.bbg-tagline p a {
   color: #323a45;
   text-decoration: underline;
 }
@@ -4558,17 +4563,17 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   margin-top: 6rem;
 }
 
+/* Moved to the tables-forms.scss */
+/*
 .usa-table,
 .usa-table-borderless {
-  font-size: 1.3rem;
-}
-@media screen and (min-width: 481px) {
-  .usa-table,
-  .usa-table-borderless {
-    font-size: 1.6rem;
-  }
-}
+	font-size: $small-font-size;
 
+	@include media($small-screen) {
+		font-size: $base-font-size;
+	}
+}
+*/
 /* At the end of a post, add a small tagline credit for authors 
 e.g. on the intern testimonial page */
 .bbg__post__author-tagline {
