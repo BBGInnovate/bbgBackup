@@ -113,10 +113,10 @@ if ( $includeSidebar ) {
 
 				$sidebarImage = "";
 				if ($sidebarLinkImage && $sidebarLinkImage != ""){
-					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="" src="' . $sidebarLinkImage . '"/></a>';
+					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarLinkImage . '"/></a>';
 				}
 
-				$s .= '<div class="">' . $sidebarImage . '<h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$s .= '<div class="bbg__sidebar__primary">' . $sidebarImage . '<h3 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h3>' . $sidebarDescription . '</div>';
 
 			} else if (get_row_layout() == 'sidebar_internal_link') {
 
