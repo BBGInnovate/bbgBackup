@@ -3251,9 +3251,11 @@ table td {
   }
 }
 
+/* Fixing the slignment on full-column photos in posts */
 .alignnone,
 .aligncenter {
-  width: auto;
+  max-width: 600px;
+  /*width: auto !important;*/
 }
 
 /*--------------------------------------------------------------
