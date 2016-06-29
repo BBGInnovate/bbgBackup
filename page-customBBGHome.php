@@ -271,7 +271,7 @@ get_header();
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
 				<div class="usa-grid">
-					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news/news-info' ) ) ?>">BBG News</a></h6>
+					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ) ?>">BBG News</a></h6>
 				</div>
 				
 				<!-- Featured Post -->
@@ -335,7 +335,7 @@ get_header();
 						?>
 							<nav class="navigation posts-navigation" role="navigation">
 								<h2 class="screen-reader-text">Posts navigation</h2>
-								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news/news-info') ); ?>" >Previous posts</a></div></div>
+								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news') ); ?>" >Previous posts</a></div></div>
 							</nav>	
 					</div>
 
