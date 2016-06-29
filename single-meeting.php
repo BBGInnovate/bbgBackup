@@ -120,14 +120,14 @@ get_header(); ?>
 						//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
 						echo the_post_thumbnail( 'large-thumb' );
 
-						echo '</div>';
-						echo '</div> <!-- usa-grid-full -->';
-
-						if ($featuredImageCutline != "") {
+						if ( $featuredImageCutline != "" ) {
 							echo '<div class="usa-grid">';
-								echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+								echo "<div class='wp-caption-text'>$featuredImageCutline</div>";
 							echo '</div> <!-- usa-grid -->';
 						}
+
+						echo '</div>';
+						echo '</div> <!-- usa-grid-full -->';
 					}
 				?><!-- .bbg__article-header__thumbnail -->
 
