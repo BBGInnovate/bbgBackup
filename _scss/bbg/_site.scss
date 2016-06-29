@@ -1326,6 +1326,11 @@ article {
 		}
 	}
 
+	.bbg__announcement__headline {
+		color: #FFF;
+
+	}
+
 	p {
 		color: #000;
 		font-family: $font-sans;
@@ -1350,10 +1355,6 @@ article {
 			@include media($small-screen) {
 				min-height: 275px;
 			}
-		}
-
-		.bbg__announcement__headline {
-			color: #fff;
 		}
 
 		.bbg__announcement__text {
