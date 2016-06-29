@@ -11,7 +11,7 @@
 $includeFile="single-standard.php";
 if ( in_category('Profile')) {
 	$includeFile="single-profile.php";
-} else if (in_category('Board Meetings') || in_category('Events')) {
+} else if (in_category('Board Meetings') || in_category('Event')) {
 	$includeFile="single-meeting.php";
 }
 include($includeFile);
