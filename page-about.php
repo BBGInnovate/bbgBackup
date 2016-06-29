@@ -174,6 +174,10 @@ get_header();
 								echo "<h6 class='bbg__label'>$labelText</h6>";
 							}
 
+							if ($imageURL) {
+								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $imageURL .  "); height: 100%; min-height: 150px;'></div>";
+							}
+
 							// show umbrella section intro text
 							echo "<div class='bbg__about__child__intro'>$introText</div>";
 							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
@@ -292,8 +296,8 @@ get_header();
 							$imageURL = get_sub_field('about_ribbon_image');
 
 							// allow shortcodes in intro text
-							$summary = apply_filters('the_content', $introText);
-							$summary = str_replace(']]>', ']]&gt;', $introText);
+							$summary = apply_filters('the_content', $summary);
+							$summary = str_replace(']]>', ']]&gt;', $summary);
 
 							echo "</div>"; // closes <div id="page-children" class="usa-section usa-grid bbg__about__children">
 							echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
@@ -316,9 +320,9 @@ get_header();
 										}
 
 										if ($headlineLink) {
-											echo "<h2><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
+											echo "<h2 class='bbg__announcement__headline'><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
 										} else {
-											echo "<h2>$headlineText</h2>";
+											echo "<h2 class='bbg__announcement__headline'>$headlineText</h2>";
 										}
 
 										echo $summary;

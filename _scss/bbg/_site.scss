@@ -1336,7 +1336,7 @@ article {
 		color: $color-primary-alt-darkest;
 	}
 
-	.bbg__announcement__flexbox{
+	.bbg__announcement__flexbox {
 		.bbg__announcement__photo {
 			background: {
 				color: #CCC;
@@ -1350,6 +1350,10 @@ article {
 			@include media($small-screen) {
 				min-height: 275px;
 			}
+		}
+
+		.bbg__announcement__headline {
+			color: #fff;
 		}
 
 		.bbg__announcement__text {

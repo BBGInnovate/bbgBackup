@@ -6035,6 +6035,9 @@ article {
     min-height: 275px;
   }
 }
+.bbg__banner--thin .bbg__announcement__flexbox .bbg__announcement__headline {
+  color: #fff;
+}
 .bbg__banner--thin .bbg__announcement__flexbox .bbg__announcement__text {
   padding: 0 3rem;
 }
