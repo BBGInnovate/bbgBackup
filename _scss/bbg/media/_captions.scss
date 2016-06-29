@@ -101,8 +101,8 @@
 }
 
 /* Fixing the slignment on full-column photos in posts */
-.alignnone,
-.aligncenter {
+.bbg__article-content .alignnone,
+.bbg__article-content .aligncenter {
 	max-width: $article-max-width;
 	/*width: auto !important;*/
 }
