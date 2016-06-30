@@ -150,7 +150,7 @@ if ( $includeSidebar ) {
 
 				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
 				$sidebarPhotoTitle = get_sub_field( 'sidebar_photo_title', false);
-				$sidebarPhotoDescription = get_sub_field( 'sidebar_photo_description', false);
+				$sidebarPhotoCaption = get_sub_field( 'sidebar_photo_caption', false);
 
 				$sidebarImage = "";
 				if ($sidebarPhotoImage && $sidebarPhotoImage != ""){
