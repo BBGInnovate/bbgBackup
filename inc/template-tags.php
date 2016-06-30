@@ -28,6 +28,11 @@ function bbginnovate_posted_on() {
 		//'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
+	/*
+	possible add: show datelines as X days ago, would use a permutation of this.
+	$posted_on = human_time_diff( get_the_time('U'), current_time('timestamp')) . " ago";
+	*/
+
 
 
 	$byline = "";
