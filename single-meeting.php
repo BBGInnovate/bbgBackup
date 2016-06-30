@@ -155,7 +155,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg__label"><?php echo $eventPageHeader; ?>: <?php echo $postDate; ?></h5><!-- .bbg__label -->
+							<h5 class="entry-category bbg__label"><a href="/news/events/"><?php echo $eventPageHeader; ?></a>: <?php echo $postDate; ?></h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
