@@ -129,16 +129,22 @@ get_header(); ?>
 				<div class="usa-grid">
 
 					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
-
-						<div class="bbg__profile-photo">
-							<img src="<?php echo $profilePhoto; ?>" class="bbg__profile-photo__image"/>
-						</div>
-						<div class="bbg__profile-title">
+						<?php 
+						$noProfilePhoto = "";
+						if ($profilePhotoID) { 
+						?>
+							<div class="bbg__profile-photo">
+								<img src="<?php echo $profilePhoto; ?>" class="bbg__profile-photo__image"/>
+							</div>
+						<?php } else {
+							$noProfilePhoto = "max-width: none;";
+						} ?>
+						<div class="bbg__profile-title" style="<?php echo $noProfilePhoto; ?>">
 
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 
 							<!-- .bbg__article-header__title -->
-							<h5 class="entry-category bbg__label">
+							<h5 class="entry-category bbg__profile-tagline">
 								<?php echo $occupation; ?>
 							</h5><!-- .bbg__label -->
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single profile posts.
+ * The template for displaying board meetings and events.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -33,6 +33,10 @@ if ( have_posts() ) {
 	$meetingLocation=get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
+	if ( $meetingTime != "") {
+		$meetingTime = $meetingTime . ", ";
+	}
+
 
 	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
 
@@ -55,6 +59,11 @@ if ( have_posts() ) {
 
 	rewind_posts();
 }
+$eventPageHeader = "Event";
+if (in_category("Board Meetings")) {
+	$eventPageHeader = "Board Meeting";
+}
+
 
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
@@ -96,6 +105,7 @@ get_header(); ?>
 			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+			$postDate = get_the_date();
 
 			?>
 
@@ -145,7 +155,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg__label">Board meeting</h5><!-- .bbg__label -->
+							<h5 class="entry-category bbg__label"><a href="/news/events/"><?php echo $eventPageHeader; ?></a>: <?php echo $postDate; ?></h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -175,13 +185,13 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h3><?php the_date(); ?></h3>
-						<h5>Location: <?php echo $meetingLocation; ?></h5>
+						<h5>WHEN: <?php echo $meetingTime; ?><br/><?php echo $postDate; ?></h5>
+						<h5>WHERE: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
 						<?php
 							if( have_rows('board_meeting_related_documents') ):
-							 	echo '<h3 class="bbg__sidebar-label">Download</h3>';
+							 	echo '<h3 class="bbg__sidebar-label">Downloads</h3>';
 							 	echo '<ul class="bbg__profile__related-link__list">';
 							    while ( have_rows('board_meeting_related_documents') ) : the_row();
 							        echo '<li class="bbg__profile__related-link">';

@@ -20,6 +20,8 @@
 }
 
 /* Moving the author guide link to the right for admins */
+/* Breaks dropdown menus for 'add new' */
+/*
 @media screen and (min-width: 900px) {
 	#wpadminbar .quicklinks ul {
 		width: 100%;
@@ -29,3 +31,4 @@
 		float: right;
 	}
 }
+*/
