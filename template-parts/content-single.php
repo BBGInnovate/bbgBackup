@@ -44,7 +44,25 @@ if ($dateline != "") {
 }
 
 
+$relatedProfileID = get_post_meta( get_the_ID(), 'statement_related_profile', true );
+$includeRelatedProfile = false; 
+if ($relatedProfileID) {
+	$includeRelatedProfile = true;
+	$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );
+	$profilePhoto = "";
 
+	if ($profilePhotoID) {
+		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+		$profilePhoto = $profilePhoto[0];
+	}
+	$twitterProfileHandle = get_post_meta( $relatedProfileID, 'twitter_handle', true );
+	$profileName = get_the_title($relatedProfileID);
+	$occupation = get_post_meta( $relatedProfileID, 'occupation', true );
+	$profileLink = get_page_link($relatedProfileID);
+	$profileExcerpt = my_excerpt($relatedProfileID); 
+
+	$relatedProfile = '<div class=""><img class="" src="'.$profilePhoto.'"/><h3 class="bbg__profile-excerpt__name"><a href="' . $profileLink . '">' . $profileName . '</a></h3><span class="bbg__profile-excerpt__occupation">' . $occupation . '</span><p class="">' . $profileExcerpt . '</p></div>';
+}
 
 //Include sidebar of Downloads, Links and/or Quotations
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
@@ -473,6 +491,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="bbg__article-sidebar">
+			
+			<?php 
+				if ($includeRelatedProfile) {
+					echo $relatedProfile;
+				}
+			?>
+
+
 			<?php 
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
