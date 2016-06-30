@@ -105,6 +105,7 @@ get_header(); ?>
 			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+			$postDate = get_the_date();
 
 			?>
 
@@ -154,7 +155,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg__label"><?php echo $eventPageHeader; ?>: <?php the_date(); ?></h5><!-- .bbg__label -->
+							<h5 class="entry-category bbg__label"><?php echo $eventPageHeader; ?>: <?php echo $postDate; ?></h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -184,7 +185,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h5><?php the_date(); ?></h5>
+						<h5><?php echo $postDate; ?></h5>
 						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
