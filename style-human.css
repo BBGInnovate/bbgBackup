@@ -3413,7 +3413,7 @@ object {
     margin: 0.8rem 1.5rem 0 0;
     padding: 0;
     width: 200px;
-    width: calc(100% - 730px);
+    width: calc(100% - 743px);
     z-index: 9990;
   }
 }

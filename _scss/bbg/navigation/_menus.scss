@@ -1,11 +1,8 @@
 /*****************************/
 // top nav menu
 .bbg-header__container__box {
-	//margin-bottom: $site-margins;
-
 	@include media($medium-large-screen) {
 		border-bottom: 1px solid #CCC;
-		//margin-bottom: 0;
 		width: 100%;
 	}
 }
@@ -26,7 +23,7 @@
 		margin: .8rem $site-margins-medium 0 0;
 		padding: 0;
 		width: 200px;
-		width: calc(100% - 730px);//740px is the width of the nav.
+		width: calc(100% - 743px);//740px is the width of the nav.
 		z-index: 9990;
 	}
 }
