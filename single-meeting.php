@@ -184,7 +184,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h5><?php echo $meetingTime; ?><?php the_date(); ?></h5>
+						<h5><?php the_date(); ?></h5>
 						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
