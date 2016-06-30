@@ -3,10 +3,10 @@
  *
  * Custom JS for the bbgWPtheme
  *
- * 
+ *
  */
-jQuery(document).ready(function() { 
-    // 
+jQuery(document).ready(function() {
+    //
     // create social networking pop-ups
     // link selector and pop-up window size
     var shareConfig = {
@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
             py = Math.floor(((screen.availHeight || 700) - shareConfig.Height) / 2);
 
         // open popup
-        var popup = window.open(t.parentElement.href, "social", 
+        var popup = window.open(t.parentElement.href, "social",
             "width="+shareConfig.Width+",height="+shareConfig.Height+
             ",left="+px+",top="+py+
             ",location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1");
@@ -66,7 +66,8 @@ jQuery(document).ready(function() {
         });
     }
 
-    /* used on the 2-column page, dropdown nav for file downloads */
+    /* used on the 2-column page, dropdown nav for sidebar */
+    // file downloads
     if (jQuery('#downloadFile').length && jQuery('#file_download_list').length) {
         jQuery('#downloadFile').click(function() {
             url=jQuery('#file_download_list').val();
@@ -74,11 +75,19 @@ jQuery(document).ready(function() {
         });
     }
 
+    if (jQuery('#internalLink').length && jQuery('#internal_links_list').length) {
+    // internal links
+        jQuery('#internalLink').click(function() {
+            url=jQuery('#internal_links_list').val();
+            window.open(url,'_self');
+        });
+    }
+
 
 
     if (jQuery("div[data-name='committee_members'] select").length) {
         console.log('found the field');
-        //jQuery("div[data-name='committee_members'] select").chosen();    
+        //jQuery("div[data-name='committee_members'] select").chosen();
     }
 
     /*
@@ -89,6 +98,6 @@ jQuery(document).ready(function() {
     }
     */
 
-  
-    
+
+
 });
