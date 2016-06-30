@@ -176,8 +176,8 @@ if ( $includeSidebar ) {
 				}
 
 				$sidebarDescription = "";
-				if ($sidebarPhotoDescription && $sidebarPhotoDescription != ""){
-					$sidebarDescription = "<p class=''>" . $sidebarPhotoDescription . "</p>";
+				if ($sidebarPhotoCaption && $sidebarPhotoCaption != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarPhotoCaption . "</p>";
 				}
 
 				$s .= '<div class="">' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
