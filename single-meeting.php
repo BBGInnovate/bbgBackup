@@ -33,6 +33,10 @@ if ( have_posts() ) {
 	$meetingLocation=get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
+	if ( $meetingTime != "") {
+		$meetingTime = $meetingTime . ", ";
+	}
+
 
 	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
 
@@ -55,6 +59,11 @@ if ( have_posts() ) {
 
 	rewind_posts();
 }
+$eventPageHeader = "Event";
+if (in_category("Board Meetings")) {
+	$eventPageHeader = "Board Meeting";
+}
+
 
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
@@ -145,7 +154,7 @@ get_header(); ?>
 
 						<div class="bbg__event-title">
 
-							<h5 class="entry-category bbg__label">Board meeting</h5><!-- .bbg__label -->
+							<h5 class="entry-category bbg__label"><?php echo $eventPageHeader; ?>: <?php the_date(); ?></h5><!-- .bbg__label -->
 							<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 							<!-- .bbg__article-header__title -->
 
@@ -175,7 +184,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
-						<h3><?php the_date(); ?></h3>
+						<h5><?php echo $meetingTime; ?><?php the_date(); ?></h5>
 						<h5>Location: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
