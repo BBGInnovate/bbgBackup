@@ -67,9 +67,9 @@ $linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', esc_url( get
 			echo '<h5 class="bbg__excerpt__event-date">' . get_the_date() . '</h5>';
 		} ?>
 
-		<?php /* if ($includeDate) { echo "bbg__excerpt-title--showDate"; }; */ ?>
-		<?php the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
-
+		
+		<?php /*the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); */?>
+		<h3 class="entry-title bbg-blog__excerpt-title--list <?php if ($includeDate) { echo 'bbg__excerpt-title--showDate'; }; ?>"><a href="<?php esc_url( get_permalink() );?>" rel="bookmark"><?php echo get_the_title(); ?></a></h3>
 
 	</header><!-- .bbg-blog__excerpt-header -->
 
