@@ -155,7 +155,7 @@ get_header(); ?>
 								$upcomingEvents .= "<a href='$permalink'>" . get_the_title() . "</a>";
 								$upcomingEvents .= '</article>';
 							}
-							$upcomingEvents .= '</div>'
+							$upcomingEvents .= '</div>';
 						}
 						echo $upcomingEvents;
 
