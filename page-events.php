@@ -72,7 +72,7 @@ if ($past_events_query->found_posts > $numPostsFirstPage) {
 }
 /**** END QUERY PAST EVENTS FOR MAIN PAGE LOOP ***/
 
-/**** QUERY FUTURE EVENTS  ***/
+/**** QUERY FUTURE EVENTS + BUILD STRING  ***/
 $qParamsUpcoming = array(
 	'post_type' => array('post')
 	,'cat' => get_cat_id('Event')
@@ -84,7 +84,31 @@ $qParamsUpcoming = array(
 );
 $future_events_query_args = $qParamsUpcoming;
 $future_events_query = new WP_Query( $future_events_query_args );
-/**** END QUERY FUTURE EVENTS  ***/
+
+$upcomingEvents = "";
+if (!is_paged()) {
+	$upcomingEvents .= '<div class="bbg__infobox">';
+	$upcomingEvents .= '<header class="page-header">';
+	$upcomingEvents .= '<h6 class="page-title bbg__label">Upcoming events</h6>';
+	$upcomingEvents .= '</header>';
+	while ( $future_events_query->have_posts() ) {
+		$future_events_query->the_post(); 
+		$counter++;
+		//we're not using get_template_part because of how future permalinks work
+		$upcomingEvents .= '<article id="post-' .get_the_ID() . '" ' . get_post_class($classNames) . '>';
+		global $post;
+		$my_post = clone $post;
+		$my_post->post_status = 'published';
+		$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+		$permalink = get_permalink($my_post);
+		$upcomingEvents .= "<a href='$permalink'>" . get_the_title() . "</a>";
+		$upcomingEvents .= '</article>';
+	}
+	$upcomingEvents .= '</div>';
+}
+wp_reset_query();
+wp_reset_postdata();
+/**** END  FUTURE EVENTS  ***/
 
 get_header(); ?>
 
@@ -135,30 +159,7 @@ get_header(); ?>
 						echo '</div><!-- left column -->';
 						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 
-
-						$upcomingEvents = "";
-						if (!is_paged()) {
-							$upcomingEvents .= '<div class="bbg__infobox">';
-							$upcomingEvents .= '<header class="page-header">';
-							$upcomingEvents .= '<h6 class="page-title bbg__label">Upcoming events</h6>';
-							$upcomingEvents .= '</header>';
-							while ( $future_events_query->have_posts() ) {
-								$future_events_query->the_post(); 
-								$counter++;
-								//we're not using get_template_part because of how future permalinks work
-								$upcomingEvents .= '<article id="post-' .get_the_ID() . '" ' . get_post_class($classNames) . '>';
-								global $post;
-								$my_post = clone $post;
-								$my_post->post_status = 'published';
-								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
-								$permalink = get_permalink($my_post);
-								$upcomingEvents .= "<a href='$permalink'>" . get_the_title() . "</a>";
-								$upcomingEvents .= '</article>';
-							}
-							$upcomingEvents .= '</div>';
-						}
 						echo $upcomingEvents;
-
 
 						echo '<header class="page-header">';
 						echo '<h6 class="page-title bbg__label small">Past events</h6>';
@@ -205,35 +206,7 @@ get_header(); ?>
 			?>
 			</div>
 			<!-- END NAVIGATION  -->
-			
-			<!-- BEGIN FUTURE EVENTS  -->
-			<div class="usa-grid">
-			<?php
-			/*
-				if (!is_paged()) {
-					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';
-					echo '<header class="page-header">';
-					echo '<h6 class="page-title bbg__label small">Upcoming events</h6>';
-					echo '</header>';
-					while ( $future_events_query->have_posts() ) {
-						$future_events_query->the_post(); 
-						$counter++;
-						//we're not using get_template_part because of how future permalinks work
-						echo '<article id="post-' .get_the_ID() . '" ' . get_post_class($classNames) . '>';
-						global $post;
-						$my_post = clone $post;
-						$my_post->post_status = 'published';
-						$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
-						$permalink = get_permalink($my_post);
-						echo "<a href='$permalink'>" . get_the_title() . "</a>";
-						echo '</article>';
-					}
-					echo '</section>';
-				}
-				*/
-			?>
-			</div>
-			<!-- END FUTURE EVENTS  -->
+		
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
