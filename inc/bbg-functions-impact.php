@@ -65,7 +65,7 @@
 	//	var_dump($impacts);
 		wp_reset_postdata();
 //https://bbgredesign.voanews.com/impact-and-results/impact-portfolio/
-		$impactPortfolioPermalink = get_permalink( get_page_by_path( 'impact-and-results/impact-portfolio' ) );
+		$impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio/' ) );
 
 		$s  = ''; 
 		$s .= '<h5 class="bbg__label small"><a href="' . $impactPortfolioPermalink .'">' . $label .'</a></h5>';
