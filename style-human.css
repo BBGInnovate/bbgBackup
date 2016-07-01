@@ -7280,13 +7280,17 @@ div.appropriations-small > p.header {
     display: none;
   }
 
-  .bbg__article-content p {
-    font-size: 1rem;
+  .bbg__article-content p, .bbg__article-content a, .bbg__article-content ul, .bbg__article-content li {
+    font-size: 1.3rem;
   }
 
   /* sidebars */
   .bbg__article-sidebar--left {
     display: none;
+  }
+
+  .bbg__article-sidebar p, .bbg__article-sidebar a, .bbg__article-sidebar ul, .bbg__article-sidebar li {
+    font-size: 1.3rem;
   }
 
   /* footer stuff */
