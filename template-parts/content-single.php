@@ -63,7 +63,7 @@ if ($relatedProfileID) {
 
 	$relatedProfile = '<div class="bbg__sidebar__primary">';
 	$relatedProfile .= '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'.$profilePhoto.'"/></a>';
-	$relatedProfile .= '<h3 class="bbg__profile-excerpt__name"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
+	$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
 	$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
 	$relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 }
