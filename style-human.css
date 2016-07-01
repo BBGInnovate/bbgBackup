@@ -6137,6 +6137,9 @@ article {
 .bbg__infobox ul li:after, .bbg__infobox ol li:after {
   margin-bottom: 0;
 }
+.bbg__infobox article {
+  margin-bottom: 1rem;
+}
 
 .bbg-banner {
   background-color: #f1f1f1;
