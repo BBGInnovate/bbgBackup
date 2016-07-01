@@ -140,7 +140,7 @@ get_header(); ?>
 						if (!is_paged()) {
 							$upcomingEvents .= '<div class="bbg__infobox">';
 							$upcomingEvents .= '<header class="page-header">';
-							$upcomingEvents .= '<h6 class="page-title bbg__label small">Upcoming events</h6>';
+							$upcomingEvents .= '<h6 class="page-title bbg__label">Upcoming events</h6>';
 							$upcomingEvents .= '</header>';
 							while ( $future_events_query->have_posts() ) {
 								$future_events_query->the_post(); 
