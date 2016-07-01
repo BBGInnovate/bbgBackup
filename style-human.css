@@ -7274,6 +7274,12 @@ div.appropriations-small > p.header {
 }
 
 @media print {
+  /* grids */
+  .usa-grid {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   /* banners */
   .bbg__article-header__banner, .bbg__article-header__banner--profile,
   .bbg__article-header__banner--profile {

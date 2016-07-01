@@ -1,4 +1,12 @@
 @media print {
+	/* grids */
+	.usa-grid {
+		padding: {
+			right: 0;
+			left: 0;
+		}
+	}
+
 	/* banners */
 	.bbg__article-header__banner,
 	.bbg__article-header__banner--profile {
