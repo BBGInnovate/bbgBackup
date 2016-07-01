@@ -2,4 +2,19 @@
 	.bbg__article-sidebar--left {
 		display: none;
 	}
+
+	/* footer stuff */
+	.bbg__footer__return-to-top__container {
+		display: none;
+	}
+
+	.usa-footer {
+		.usa-social-links,
+		.bbg__footer__sub {
+			display: none;
+		}
+		.usa-footer-logo-img {
+			width: 5rem;
+		}
+	}
 }

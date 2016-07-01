@@ -7277,6 +7277,19 @@ div.appropriations-small > p.header {
   .bbg__article-sidebar--left {
     display: none;
   }
+
+  /* footer stuff */
+  .bbg__footer__return-to-top__container {
+    display: none;
+  }
+
+  .usa-footer .usa-social-links,
+  .usa-footer .bbg__footer__sub {
+    display: none;
+  }
+  .usa-footer .usa-footer-logo-img {
+    width: 5rem;
+  }
 }
 /* start expanding the print styles */
 #chartdiv {
