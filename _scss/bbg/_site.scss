@@ -1463,6 +1463,7 @@ article {
 .bbg__infobox {
 	background-color: $color-gray-lightest;
 	border-radius: $border-radius;
+	margin-bottom: $site-margins;
 	padding: 2rem;
 
 	p, a, ul, li {
@@ -1471,5 +1472,9 @@ article {
 
 	ul li:after, ol li:after {
 		margin-bottom: 0;
+	}
+
+	article {
+		margin-bottom: $site-margins-small;
 	}
 }
