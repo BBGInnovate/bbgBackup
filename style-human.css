@@ -5594,10 +5594,10 @@ article {
   margin-bottom: 3rem;
 }
 .tertiary-stories .bbg__excerpt__event-date {
-  /*
-  color: $color-gray-medium;
-  text-transform: uppercase;
-  */
+  display: inline;
+}
+.tertiary-stories .bbg__excerpt__event-date:after {
+  content: " | ";
 }
 .tertiary-stories .nav-previous {
   margin-top: 1.5rem;
@@ -5611,6 +5611,9 @@ article {
 .tertiary-stories .bbg-blog__excerpt-title--list {
   font-size: 1.8rem;
   font-weight: 500;
+}
+.tertiary-stories .bbg-blog__excerpt-title--list.bbg__excerpt-title--showDate {
+  display: inline;
 }
 .tertiary-stories .bbg-blog__excerpt--list {
   margin-bottom: 1rem;

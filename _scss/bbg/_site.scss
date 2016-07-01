@@ -817,10 +817,11 @@ article {
 	}
 
 	.bbg__excerpt__event-date {
-		/*
-		color: $color-gray-medium;
-		text-transform: uppercase;
-		*/
+		display: inline;
+
+		&:after {
+			content: " | ";
+		}
 	}
 
 	.nav-previous {
@@ -835,6 +836,10 @@ article {
 	.bbg-blog__excerpt-title--list {
 		font-size: $h3-font-size * .9;
 		font-weight: 500;
+
+		&.bbg__excerpt-title--showDate {
+			display: inline;
+		}
 	}
 
 	.bbg-blog__excerpt--list {
