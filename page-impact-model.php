@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * A custom page for the impact model infographic.
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -76,7 +76,7 @@ get_header(); ?>
 									<div class="usa-width-one-half">
 										<img src="<?php echo get_template_directory_uri() ?>/img/impact/01_pie_free-press.png" alt="" class="bbg__impact-model__graphic large" >
 										<h3 class="bbg__big-type">6,233,903,487</h3>
-										<p class="bbg__infobox__tagline">people live in countries that have a press that is not free or partly free</p>
+										<p class="bbg__infobox__tagline">people live in countries that have a press that is partly free or not free</p>
 									</div>
 									<div class="usa-width-one-half">
 										<img src="<?php echo get_template_directory_uri() ?>/img/impact/02_pictograph_free-press.png" alt="" class="bbg__impact-model__graphic large" >
@@ -100,7 +100,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
 									<h1 class="bbg__impact-model__headline">How do we measure impact?</h1>
-									<p class="usa-font-lead">We measure impact across networks, across media, in more than 60 languages and in over 100 countries. Our shared mission provides the framework for a common standard to define and measure impact.</p>
+									<p class="usa-font-lead">We measure impact across networks, across media, in 61 languages and in more than 100 countries. Our shared mission provides the framework for a common standard to define and measure impact.</p>
 								</div>
 								<div class="usa-grid">
 									<div class="usa-width-one-third">
@@ -116,7 +116,7 @@ get_header(); ?>
 
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid">
-									<h2>IMPACT:</h2>
+									<h2>IMPACT</h2>
 									<p class="usa-font-lead">The guiding principle we use to drive our strategy, implementation and review cycle.</p>
 									<img src="<?php echo get_template_directory_uri() ?>/img/impact/03_cycle_impact.png" alt="" class="bbg__impact-model__graphic full" >
 								</div>
@@ -125,7 +125,7 @@ get_header(); ?>
 							<section class="usa-section bbg__impact-model__section">
 								<div class="usa-grid" style="margin-bottom: 6rem;">
 									<h2>IMPACT PILLARS + INDICATORS</h2>
-									<p class="usa-font-lead">Below are a illustrative sample of core and optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
+									<p class="usa-font-lead">Below are illustrative samples of core and optional indicators. The full impact model offers BBG networks 12 core and 28 optional indicators that they can use to fit with market conditions for each region. The indicators do not attempt to assess causality; they examine correlations.</p>
 								</div>
 
 								<div class="usa-grid">
@@ -214,7 +214,7 @@ get_header(); ?>
 									<div class="usa-width-one-third bbg__impact-model__subsection">
 										<img src="<?php echo get_template_directory_uri() ?>/img/impact/09a_influence_people.png" alt="" class="bbg__impact-model__graphic" >
 										<h3>People</h3>
-										<p>Increased audience's understanding of current events</p>
+										<p>Increased audience understanding of current events</p>
 									</div>
 									<div class="usa-width-one-third bbg__impact-model__subsection">
 										<img src="<?php echo get_template_directory_uri() ?>/img/impact/09b_influence_media.png" alt="" class="bbg__impact-model__graphic" >
@@ -258,7 +258,6 @@ get_header(); ?>
 						</div><!-- .usa-grid -->
 
 					</article><!-- #post-## -->
-	
 
 					<div class="bbg-post-footer">
 					<?php
