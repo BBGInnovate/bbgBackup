@@ -7280,6 +7280,10 @@ div.appropriations-small > p.header {
     display: none;
   }
 
+  .bbg__article-content p {
+    font-size: 1rem;
+  }
+
   /* sidebars */
   .bbg__article-sidebar--left {
     display: none;
