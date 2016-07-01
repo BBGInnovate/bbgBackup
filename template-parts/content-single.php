@@ -61,7 +61,11 @@ if ($relatedProfileID) {
 	$profileLink = get_page_link($relatedProfileID);
 	$profileExcerpt = my_excerpt($relatedProfileID); 
 
-	$relatedProfile = '<div class=""><img class="" src="'.$profilePhoto.'"/><h3 class="bbg__profile-excerpt__name"><a href="' . $profileLink . '">' . $profileName . '</a></h3><span class="bbg__profile-excerpt__occupation">' . $occupation . '</span><p class="">' . $profileExcerpt . '</p></div>';
+	$relatedProfile = '<div class="bbg__sidebar__primary">';
+	$relatedProfile .= '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'.$profilePhoto.'"/></a>';
+	$relatedProfile .= '<h3 class="bbg__profile-excerpt__name"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
+	$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
+	$relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 }
 
 //Include sidebar of Downloads, Links and/or Quotations
