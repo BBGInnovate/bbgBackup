@@ -46,7 +46,7 @@ if( $listsInclude ){
 				 	$f = '<div>';
 					 	$f .= '<form>';
 							$f .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $linksTitle . '</label>';
-							$f .= '<select name="internal_links_list" id="internal_links_list" style="display: inline-block;">';
+							$f .= '<select name="internal_links_list" class="internal_links_list" style="display: inline-block;">';
 								$f .= '<option>' . $linksDefault . '</option>';
 
 								foreach( $linkObjects as $link ) {
@@ -57,7 +57,7 @@ if( $listsInclude ){
 								}
 							$f .= '</select>';
 						$f .= '</form>';
-						$f .= '<button class="usa-button" id="internalLink" style="width: 100%;">Go</button>';
+						$f .= '<button class="usa-button" class="internalLink" style="width: 100%;">Go</button>';
 				} elseif ( $linkObjects ) {
 					// if the repeater has less than 4 rows, present them as a list
 					$f = '<div>';
@@ -86,7 +86,7 @@ if( $listsInclude ){
 				 	$s = '<div>';
 					 	$s = '<form style="">';
 							$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $downloadsTitle . '</label>';
-							$s .= '<select name="file_download_list" id="file_download_list" style="display: inline-block;">';
+							$s .= '<select name="file_download_list" class="file_download_list" style="display: inline-block;">';
 								$s .= '<option>' . $downloadsDefault . '</option>';
 
 								foreach( $downloadsFiles as $download ) {
@@ -99,7 +99,7 @@ if( $listsInclude ){
 
 							$s .= '</select>';
 						$s .= '</form>';
-						$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
+						$s .= '<button class="usa-button" class="downloadFile" style="width: 100%;">Download</button>';
 				} elseif ( $downloadsFiles ) {
 					// if the repeater has less than 4 rows, present them as a list
 					$s = '<div>';
@@ -119,11 +119,11 @@ if( $listsInclude ){
 					$s .= '</div>';
 			}
 			/*** END DISPLAY OF DOWNLOADABLE FILES ROW ***/
-
+			$sidebarLists .= $f . $s;
 	    endwhile;
 
 	    // set Sidebar Lists variable
-	    $sidebarLists = $f . $s;
+	    
 	// } else {
 	    // no layouts found
 	}

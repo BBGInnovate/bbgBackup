@@ -68,17 +68,16 @@ jQuery(document).ready(function() {
 
     /* used on the 2-column page, dropdown nav for sidebar */
     // file downloads
-    if (jQuery('#downloadFile').length && jQuery('#file_download_list').length) {
-        jQuery('#downloadFile').click(function() {
-            url=jQuery('#file_download_list').val();
+    if (jQuery('.downloadFile').length && jQuery('.file_download_list').length) {
+        jQuery('.downloadFile').click(function() {
+            url=jQuery(this).parent().find('.file_download_list').val();
             window.open(url,'_blank');
         });
     }
 
-    if (jQuery('#internalLink').length && jQuery('#internal_links_list').length) {
-    // internal links
-        jQuery('#internalLink').click(function() {
-            url=jQuery('#internal_links_list').val();
+    if (jQuery('.internalLink').length && jQuery('.internal_links_list').length) {
+        jQuery('.internalLink').click(function() {
+            url=jQuery(this).parent().find('.internal_links_list').val();
             window.open(url,'_self');
         });
     }
