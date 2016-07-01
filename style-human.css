@@ -802,6 +802,24 @@ body {
   }
 }
 
+.u--hide-medium-large {
+  display: inline;
+}
+@media screen and (min-width: 900px) {
+  .u--hide-medium-large {
+    display: none;
+  }
+}
+
+.u--show-medium-large {
+  display: none;
+}
+@media screen and (min-width: 900px) {
+  .u--show-medium-large {
+    display: inline;
+  }
+}
+
 .u--seperator:before {
   content: " | ";
 }
