@@ -818,11 +818,13 @@ article {
 	}
 
 	.bbg__excerpt__event-date {
-		color: $color-primary-darkest;
-		display: inline;
+		@include media($medium-large-screen) {
+			color: $color-primary-darkest;
+			display: inline;
 
-		&:after {
-			content: " | ";
+			&:after {
+				content: " | ";
+			}
 		}
 	}
 
@@ -840,7 +842,9 @@ article {
 		font-weight: 500;
 
 		&.bbg__excerpt-title--showDate {
-			display: inline;
+			@include media($medium-large-screen) {
+				display: inline;
+			}
 		}
 	}
 
