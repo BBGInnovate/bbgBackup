@@ -138,7 +138,8 @@ get_header(); ?>
 						//These values are used for every excerpt >=4
 						$includeImage = FALSE;
 						$includeMeta = FALSE;
-						$includeExcerpt=FALSE;
+						$includeExcerpt = FALSE;
+						$includeDate = TRUE;
 					}
 					get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 				}

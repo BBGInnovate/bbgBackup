@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the impact landing page.
+ * The template for displaying the impact portfolio page.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -148,8 +148,8 @@ get_header(); ?>
 					<div class="bbg__announcement__flexbox">
 							<div class="bbg__announcement__photo" style="background-image: url(<?php echo get_template_directory_uri() ?>/img/impact/measuring_impact_icon.png);"></div>
 							<div class="bbg__announcement__text">
-								<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'our-work/impact-and-results/measuring-impact/' ) ); ?>">Defining impact</a></h6>
-								<h2><a href="<?php echo get_permalink( get_page_by_path( 'our-work/impact-and-results/measuring-impact/' ) ); ?>">How do we measure BBG's impact?</a></h2>
+								<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'our-work/impact-and-results/' ) ); ?>">Defining impact</a></h6>
+								<h2><a href="<?php echo get_permalink( get_page_by_path( 'our-work/impact-and-results/' ) ); ?>">How do we measure BBG's impact?</a></h2>
 								<p>In spite of dozens of threats to our journalists and their families along with hazardous working conditions, BBG’s networks have growing impact.</p>
 							</div>
 						</div>
