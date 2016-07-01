@@ -716,7 +716,8 @@ article {
 }
 
 .bbg__excerpt__event-date {
-	color: $color-gray-medium;
+	//color: $color-gray-medium;
+	color: $color-secondary-darkest;
 	text-transform: uppercase;
 }
 
@@ -817,6 +818,7 @@ article {
 	}
 
 	.bbg__excerpt__event-date {
+		color: $color-primary-darkest;
 		display: inline;
 
 		&:after {

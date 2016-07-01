@@ -5491,7 +5491,7 @@ article {
 }
 
 .bbg__excerpt__event-date {
-  color: #757575;
+  color: #981b1e;
   text-transform: uppercase;
 }
 
@@ -5594,6 +5594,7 @@ article {
   margin-bottom: 3rem;
 }
 .tertiary-stories .bbg__excerpt__event-date {
+  color: #112e51;
   display: inline;
 }
 .tertiary-stories .bbg__excerpt__event-date:after {
