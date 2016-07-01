@@ -147,6 +147,31 @@ get_header(); ?>
 					get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 				}
 			?>
+
+			<?php
+				if (!is_paged()) {
+					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';
+					echo '<header class="page-header">';
+					echo '<h6 class="page-title bbg__label small">Upcoming events</h6>';
+					echo '</header>';
+					while ( $future_events_query->have_posts() ) {
+						$future_events_query->the_post(); 
+						$counter++;
+						//we're not using get_template_part because of how future permalinks work
+						echo '<article id="post-' .get_the_ID() . '" ' . get_post_class($classNames) . '>';
+						global $post;
+						$my_post = clone $post;
+						$my_post->post_status = 'published';
+						$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+						$permalink = get_permalink($my_post);
+						echo "<a href='$permalink'>" . get_the_title() . "</a>";
+						echo '</article>';
+					}
+					echo '</section>';
+				}
+			?>
+
+
 			</div><!-- right column -->
 			</div><!-- .usa-grid-full -->
 			<!-- END PAST EVENTS -->
@@ -180,6 +205,7 @@ get_header(); ?>
 			<!-- BEGIN FUTURE EVENTS  -->
 			<div class="usa-grid">
 			<?php
+			/*
 				if (!is_paged()) {
 					echo '<section style="margin-top:20px;" class="usa-section bbg-portfolio">';
 					echo '<header class="page-header">';
@@ -200,6 +226,7 @@ get_header(); ?>
 					}
 					echo '</section>';
 				}
+				*/
 			?>
 			</div>
 			<!-- END FUTURE EVENTS  -->
