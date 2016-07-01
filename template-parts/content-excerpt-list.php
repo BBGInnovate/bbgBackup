@@ -64,7 +64,7 @@ $linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', esc_url( get
 	<header class="entry-header bbg-blog__excerpt-header">
 		<?php if ($includeDate) {
 			/* Only on event page excerpts */
-			echo '<h5 class="bbg__excerpt__event-date">' . get_the_date() . '</h5>';
+			//echo '<h5 class="bbg__excerpt__event-date">' . get_the_date() . '</h5>';
 		?>
 
 		<?php the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
