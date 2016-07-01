@@ -7273,6 +7273,12 @@ div.appropriations-small > p.header {
   vertical-align: top;
 }
 
+@media print {
+  .bbg__article-sidebar--left {
+    display: none;
+  }
+}
+/* start expanding the print styles */
 #chartdiv {
   box-shadow: inset 2px 0 3px #999;
   /*border-radius: $border-radius;*/
