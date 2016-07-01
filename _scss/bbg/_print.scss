@@ -1,4 +1,11 @@
 @media print {
+	/* banners */
+	.bbg__article-header__banner,
+	.bbg__article-header__banner--profile {
+		display: none;
+	}
+
+	/* sidebars */
 	.bbg__article-sidebar--left {
 		display: none;
 	}
