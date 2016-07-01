@@ -5490,6 +5490,11 @@ article {
   text-decoration: underline;
 }
 
+.bbg__excerpt__event-date {
+  color: #757575;
+  text-transform: uppercase;
+}
+
 .bbg__excerpt-meta--featured {
   margin-bottom: 1.5rem;
 }
@@ -5587,6 +5592,12 @@ article {
 
 .tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
+}
+.tertiary-stories .bbg__excerpt__event-date {
+  /*
+  color: $color-gray-medium;
+  text-transform: uppercase;
+  */
 }
 .tertiary-stories .nav-previous {
   margin-top: 1.5rem;

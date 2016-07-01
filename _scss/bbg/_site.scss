@@ -715,6 +715,11 @@ article {
 	}
 }
 
+.bbg__excerpt__event-date {
+	color: $color-gray-medium;
+	text-transform: uppercase;
+}
+
 .bbg__excerpt-meta--featured {
 	margin-bottom: $site-margins-medium;
 }
@@ -809,6 +814,13 @@ article {
 .tertiary-stories {
 	.bbg__label.small {
 		margin-bottom: $site-margins;
+	}
+
+	.bbg__excerpt__event-date {
+		/*
+		color: $color-gray-medium;
+		text-transform: uppercase;
+		*/
 	}
 
 	.nav-previous {

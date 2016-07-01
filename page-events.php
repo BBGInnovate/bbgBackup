@@ -20,8 +20,8 @@ $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $postIDsUsed=array();
 
-$numPostsFirstPage=12;
-$numPostsSubsequentPages=11;
+$numPostsFirstPage=10;//12
+$numPostsSubsequentPages=9;//11
 
 
 $postsPerPage=$numPostsFirstPage;
@@ -127,19 +127,22 @@ get_header(); ?>
 				$counter = 0;
 				while ( $past_events_query->have_posts() ) {
 					$past_events_query->the_post(); 
+					$includeDate = TRUE;
+					$includeMeta = FALSE;
 					$counter++;
+
 					if( (!is_paged() && $counter == 3) || (is_paged() && $counter==2)){
 						echo '</div><!-- left column -->';
 						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 						echo '<header class="page-header">';
-						echo '<h6 class="page-title bbg__label small">More events</h6>';
+						echo '<h6 class="page-title bbg__label small">Past events</h6>';
 						echo '</header>';
 
 						//These values are used for every excerpt >=4
 						$includeImage = FALSE;
-						$includeMeta = FALSE;
+						//$includeMeta = FALSE;
 						$includeExcerpt = FALSE;
-						$includeDate = TRUE;
+						//$includeDate = TRUE;
 					}
 					get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 				}
