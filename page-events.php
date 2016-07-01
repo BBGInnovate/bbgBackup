@@ -138,7 +138,7 @@ get_header(); ?>
 
 						$upcomingEvents = "";
 						if (!is_paged()) {
-							$upcomingEvents .= '<div class="bbg__infobox">'
+							$upcomingEvents .= '<div class="bbg__infobox">';
 							$upcomingEvents .= '<header class="page-header">';
 							$upcomingEvents .= '<h6 class="page-title bbg__label small">Upcoming events</h6>';
 							$upcomingEvents .= '</header>';
