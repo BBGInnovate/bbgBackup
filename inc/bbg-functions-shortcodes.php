@@ -12,9 +12,9 @@
 
 	// Add shortcode reference for the "About the BBG"
 	function about_shortcode( $atts ) {
-	    // $a = shortcode_atts( array(
-	    //     'org' => 'Broadcasting Board of Governors',
-	    // ), $atts );
+	    /*$a = shortcode_atts( array(
+	        'org' => 'Broadcasting Board of Governors',
+	    ), $atts );*/
 
 	    $about = "<h4>About the BBG</h4>";
 			$about .= "<div class='bbg__tagline'>";
@@ -24,7 +24,7 @@
 	    return $about;
 	}
 
-	add_shortcode( 'about BBG', 'about_shortcode' );
+	add_shortcode( 'about', 'about_shortcode' );
 
 	// Add shortcode reference for BBG-wide audience numbers
 	function audience_shortcode( $atts ) {
