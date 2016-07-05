@@ -1,4 +1,4 @@
-<?php 
+<?php
 	// Add shortcode reference for the BBG mission
 	function mission_shortcode( $atts ) {
 	    $a = shortcode_atts( array(
@@ -9,6 +9,22 @@
 	}
 
 	add_shortcode( 'mission', 'mission_shortcode' );
+
+	// Add shortcode reference for the "About the BBG"
+	function about_shortcode( $atts ) {
+	    // $a = shortcode_atts( array(
+	    //     'org' => 'Broadcasting Board of Governors',
+	    // ), $atts );
+
+	    $about = "<h4>About the BBG</h4>";
+			$about .= "<div class='bbg__tagline'>";
+				$about .= "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
+			$about .= "</div>";
+
+	    return $about;
+	}
+
+	add_shortcode( 'about BBG', 'about_shortcode' );
 
 	// Add shortcode reference for BBG-wide audience numbers
 	function audience_shortcode( $atts ) {
