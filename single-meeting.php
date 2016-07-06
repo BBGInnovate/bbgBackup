@@ -184,7 +184,6 @@ if ( $includeSidebar ) {
 				var_dump($sidebarPhotoImage['sizes']);
 				*/
 
-
 				$sidebarImageTitle = "";
 				if ($sidebarPhotoTitle && $sidebarPhotoTitle != ""){
 					$sidebarImageTitle = "<h5 class=''>" . $sidebarPhotoTitle . "</h5>";
@@ -387,13 +386,13 @@ get_header(); ?>
 													$profileName = get_the_title( $pID );
 													$occupation = get_post_meta( $pID, 'occupation', true );
 													$profileLink = get_page_link( $pID );
-													$profileExcerpt = get_the_excerpt( $pID );
+													// $profileExcerpt = get_the_excerpt( $pID );
 
 													// $relatedProfile = '<div class="bbg__sidebar__primary">';
 													$relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
 													$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
 													$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
-													$relatedProfile .= '<p class="">' . $profileExcerpt . '</p>';
+													// $relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 												}
 
 												if ($includeProfile) {
