@@ -7,8 +7,17 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbginnovate
-  template name: Network Highlights
+  template name: Network Highlights 
  */
+
+$pageTitle="";
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$pageTitle = get_the_title();
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
 
 
 $pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
@@ -23,7 +32,7 @@ get_header(); ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg__label--mobile large">Network highlights</h5>
+					<h5 class="bbg__label--mobile large"><?php echo $pageTitle; ?></h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
@@ -39,7 +48,6 @@ get_header(); ?>
 				$entities = ['voa','rferl', 'ocb', 'rfa', 'mbn'];
 				foreach ($entities as $e) {
 					/**** START FETCH related press releases ****/
-					$entitySlug = $e . '-press-release';
 					$entityString = $e;
 					if ($entityString == 'rferl'){
 						$entityString = 'RFE/RL';
