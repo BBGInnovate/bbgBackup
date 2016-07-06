@@ -10,7 +10,6 @@
 if ( have_posts() ) {
 	the_post();
 
-
 	$metaAuthor = get_the_author();
 	$metaAuthorTwitter = get_the_author_meta( 'twitterHandle' );
 	$ogTitle = get_the_title();
@@ -23,20 +22,21 @@ if ( have_posts() ) {
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
-		$ogImage = $socialImage[0];  
+		$ogImage = $socialImage[0];
 	}
 
-	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
+	$bannerPosition = get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
 
-	$meetingTime=get_post_meta( get_the_ID(), 'board_meeting_time', true );
+	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
 	//$meetingDate=get_post_meta( get_the_ID(), 'board_meeting_date', true );
-	$meetingLocation=get_post_meta( get_the_ID(), 'board_meeting_location', true );
-	$meetingSummary=get_post_meta( get_the_ID(), 'board_meeting_summary', true );
+	$meetingLocation = get_post_meta( get_the_ID(), 'board_meeting_location', true );
+	$meetingSummary = get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 
 	if ( $meetingTime != "") {
 		$meetingTime = $meetingTime . ", ";
 	}
 
+	$meetingSpeakers = get_post_meta( get_the_ID(), 'board_meeting_speakers', true );
 
 	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
 
@@ -68,6 +68,106 @@ if (in_category("Board Meetings")) {
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
+/**
+ ** Sidebar content **
+ **/
+
+// Sidebar items (links, quotes, individual downloads)
+$includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+if ( $includeSidebar ) {
+	// check if the flexible content field has rows of data
+	$sidebar = "";
+	$s = "";
+
+	if ( have_rows('sidebar_items') ):
+		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+
+		if ( $sidebarTitle != "" ) {
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+		}
+
+		while ( have_rows('sidebar_items') ) : the_row();
+
+			if ( get_row_layout() == 'sidebar_download_file' ) {
+
+				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
+				$sidebarDownloadThumbnail = get_sub_field( 'sidebar_download_thumbnail' );
+				$sidebarDownloadLink = get_sub_field( 'sidebar_download_link' );
+				$sidebarDownloadDescription = get_sub_field( 'sidebar_download_description', false);
+
+				$fileID = $sidebarDownloadLink['ID'];
+				$file = get_attached_file( $fileID );
+				$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+				$filesize = formatBytes(filesize($file));
+
+				$sidebarImage = "";
+				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
+					$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarDownloadDescription && $sidebarDownloadDescription != "") {
+					$sidebarDescription = "<p class='bbg__sidebar__download__description'>" . $sidebarDownloadDescription . "</p>";
+				}
+
+				$sidebarDownload = "";
+				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . " ($ext, $filesize)</a></h5>" . $sidebarDescription;
+
+				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
+			} elseif (get_row_layout() == 'sidebar_quote'){
+
+				$sidebarQuotationText = get_sub_field( 'sidebar_quotation_text', false);
+				$sidebarQuotationSpeaker = get_sub_field( 'sidebar_quotation_speaker' );
+				$sidebarQuotationSpeakerTitle = get_sub_field( 'sidebar_quotation_speaker_title' );
+
+				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
+			} else if (get_row_layout() == 'sidebar_external_link'){
+
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
+				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+				$sidebarDescription = "";
+				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+			} else if (get_row_layout() == 'sidebar_internal_link') {
+
+				$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title', false);
+				$sidebarInternalLocation = get_sub_field( 'sidebar_internal_location' );
+				$sidebarInternalDescription = get_sub_field( 'sidebar_internal_description', false);
+
+				// get data out of WP object
+				$url = get_permalink( $sidebarInternalLocation->ID ); // Use WP object ID to get permalink for link
+				$title = $sidebarInternalLocation->post_title; // WP object title
+
+				$sidebarSectionTitle = "";
+				// Set text for the internal link
+				if ($sidebarInternalTitle && $sidebarInternalTitle != "") {
+					// User-defined title
+					$sidebarSectionTitle = "<p>" . $sidebarInternalTitle . "</p>";
+				} else {
+					// WP object title (set above)
+					$sidebarSectionTitle = "<p>" . $title . "</p>";
+				}
+
+				$sidebarDescription = "";
+				// Set text for description beneath link
+				if ($sidebarInternalDescription && $sidebarInternalDescription != "") {
+					// User-defined description
+					$sidebarDescription = "<p>" . $sidebarInternalDescription . "</p>";
+				}
+
+				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
+			}
+		endwhile;
+
+		$sidebar .= $s;
+	endif;
+}
+
 
 get_header(); ?>
 	<div id="primary" class="content-area">
@@ -84,7 +184,7 @@ get_header(); ?>
 
 			//Default adds a space above header if there's no image set
 			$featuredImageClass = " bbg__article--no-featured-image";
-				
+
 			//the title/headline field, followed by the URL and the author's twitter handle
 			$twitterText = "";
 			$twitterText .= html_entity_decode( get_the_title() );
@@ -103,8 +203,8 @@ get_header(); ?>
 			//$hashtags="testhashtag1,testhashtag2";
 
 			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
-			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
-			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+			$twitterURL = "//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
+			$fbUrl = "//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			$postDate = get_the_date();
 
 			?>
@@ -151,7 +251,7 @@ get_header(); ?>
 
 				<div class="usa-grid">
 
-					<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
+					<?php echo '<header class="entry-header bbg__article-header' . $featuredImageClass . '">'; ?>
 
 						<div class="bbg__event-title">
 
@@ -179,7 +279,7 @@ get_header(); ?>
 					</div>
 
 					<div class="entry-content bbg__article-content">
-						<?php 
+						<?php
 						 echo $eventStr;
 						 the_content(); ?>
 					</div><!-- .entry-content -->
@@ -189,8 +289,45 @@ get_header(); ?>
 						<h5>WHERE: <?php echo $meetingLocation; ?></h5>
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
+						<!-- Speakers -->
 						<?php
-							if( have_rows('board_meeting_related_documents') ):
+							// check if the flexible content field has rows of data
+							if ( have_rows('board_meeting_speakers') ) {
+								echo '<h3 class="bbg__sidebar-label">Speakers</h3>';
+							     // loop through the rows of data
+							    while ( have_rows('board_meeting_speakers') ) : the_row();
+							    	echo "<h5>we have speakers</h5>";
+
+							        if ( get_row_layout() == 'board_meeting_speakers_internal' ) {
+							        	echo "<p>we have internal speakers</p>";
+
+						        		if ( get_sub_field('bbg_speaker_name') ) {
+						        			echo count( get_sub_field('bbg_speaker_name') );
+						        			$profiles = get_sub_field('bbg_speaker_name');
+
+						        			foreach ( $profiles as $profile ) {
+						        				echo $profile['ID'];
+						        			}
+						        			// $profile = get_sub_field('bbg_speaker_name');
+							        		// echo $profile['ID'];
+							        		// $profileID = $profile->ID;
+
+							        		// echo "<p>here come the names</p>";
+							        		// echo '<ul>';
+
+									        // 		echo "<li>" . $profileID . "</li>";
+
+							        		// echo '</ul>';
+						        		}
+							        }
+
+							    endwhile;
+							}
+						?>
+
+						<!-- Related documents -->
+						<?php
+							if ( have_rows('board_meeting_related_documents') ):
 							 	echo '<h3 class="bbg__sidebar-label">Downloads</h3>';
 							 	echo '<ul class="bbg__profile__related-link__list">';
 							    while ( have_rows('board_meeting_related_documents') ) : the_row();
@@ -201,6 +338,19 @@ get_header(); ?>
 							    endwhile;
 							    echo '</ul>';
 							endif;
+						?>
+
+						<!-- Additional sidebar content -->
+						<?php
+							if ( $includeSidebar && $sidebarTitle != "" ) {
+								echo $sidebar;
+							}
+
+							if ( $secondaryColumnContent != "" ) {
+								echo $secondaryColumnContent;
+							}
+
+							echo $sidebarDownloads;
 						?>
 					</div><!-- .bbg__article-sidebar -->
 
