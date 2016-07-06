@@ -161,6 +161,41 @@ if ( $includeSidebar ) {
 				}
 
 				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
+			} else if (get_row_layout() == 'sidebar_photo'){
+
+				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
+				$sidebarPhotoTitle = get_sub_field( 'sidebar_photo_title', false);
+				$sidebarPhotoCaption = get_sub_field( 'sidebar_photo_caption', false);
+
+				$sidebarImage = "";
+				if ($sidebarPhotoImage && $sidebarPhotoImage != ""){
+					$sidebarPhotoImageSrc = $sidebarPhotoImage['sizes']['medium'];
+					$sidebarImage = '<img class="" src="' . $sidebarPhotoImageSrc . '"/>';
+				}
+				/*
+				helpful for debugging
+				var_dump($sidebarPhotoImage);
+				foreach ($sidebarPhotoImage as $key=>$value) {
+					echo "$key -> $value<BR>";
+					if ($key == 'sizes') {
+						var_dump($value);
+					}
+				}
+				var_dump($sidebarPhotoImage['sizes']);
+				*/
+
+
+				$sidebarImageTitle = "";
+				if ($sidebarPhotoTitle && $sidebarPhotoTitle != ""){
+					$sidebarImageTitle = "<h5 class=''>" . $sidebarPhotoTitle . "</h5>";
+				}
+
+				$sidebarDescription = "";
+				if ($sidebarPhotoCaption && $sidebarPhotoCaption != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarPhotoCaption . "</p>";
+				}
+
+				$s .= '<div class="">' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
 			}
 		endwhile;
 
