@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbginnovate
-  template name: Network News
+  template name: Network Highlights
  */
 
 
