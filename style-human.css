@@ -3172,6 +3172,11 @@ table td {
   padding-right: 6rem;
 }
 
+.input[type="radio"] + label {
+  display: inline-block !important;
+  margin-top: 1rem;
+}
+
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
