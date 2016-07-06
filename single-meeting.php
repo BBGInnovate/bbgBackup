@@ -315,7 +315,7 @@ get_header(); ?>
 
 												if ( $profileID ) {
 													$includeProfile = true;
-													$profilePhotoID = get_post_meta( $$pID, 'profile_photo', true );
+													$profilePhotoID = get_post_meta( $pID, 'profile_photo', true );
 													$profilePhoto = "";
 
 													if ($profilePhotoID) {
@@ -324,10 +324,10 @@ get_header(); ?>
 													}
 
 													$twitterProfileHandle = get_post_meta( $pID, 'twitter_handle', true );
-													$profileName = get_the_title($pID);
-													$occupation = get_post_meta( $$pID, 'occupation', true );
-													$profileLink = get_page_link($pID);
-													$profileExcerpt = my_excerpt($pID);
+													$profileName = get_the_title( $pID );
+													$occupation = get_post_meta( $pID, 'occupation', true );
+													$profileLink = get_page_link( $pID );
+													$profileExcerpt = get_the_excerpt( $pID );
 
 													// $relatedProfile = '<div class="bbg__sidebar__primary">';
 													$relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
