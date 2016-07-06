@@ -35,6 +35,7 @@ if ($currentPage > 1) {
 $hasTeamFilter=false;
 $mobileAppsPostContent="";
 
+$projectCatObj = get_category_by_slug('project'); 
 $qParams=array(
 	'post_type' => array('post')
 	,'cat' => $projectCatObj->term_id
