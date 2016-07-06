@@ -389,9 +389,8 @@ get_header(); ?>
 													// $profileExcerpt = get_the_excerpt( $pID );
 
 													// $relatedProfile = '<div class="bbg__sidebar__primary">';
-													$relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
-													$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
-													$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
+													// $relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
+													$relatedProfile = '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>' . '</a></h3>';
 													// $relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 												}
 
