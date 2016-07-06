@@ -296,31 +296,53 @@ get_header(); ?>
 								echo '<h3 class="bbg__sidebar-label">Speakers</h3>';
 							     // loop through the rows of data
 							    while ( have_rows('board_meeting_speakers') ) : the_row();
-							    	echo "<h5>we have speakers</h5>";
+							    	// echo "<h5>we have speakers</h5>";
 
+							        // show internal speaker list
 							        if ( get_row_layout() == 'board_meeting_speakers_internal' ) {
-							        	echo "<p>we have internal speakers</p>";
+							        	// echo "<p>we have internal speakers</p>";
 
 						        		if ( get_sub_field('bbg_speaker_name') ) {
-						        			echo count( get_sub_field('bbg_speaker_name') );
+						        			// echo count( get_sub_field('bbg_speaker_name') );
 						        			$profiles = get_sub_field('bbg_speaker_name');
 
-						        			foreach ( $profiles as $profile ) {
-						        				echo $profile['ID'];
-						        			}
-						        			// $profile = get_sub_field('bbg_speaker_name');
-							        		// echo $profile['ID'];
-							        		// $profileID = $profile->ID;
+					        				foreach ( $profiles as $profile ) {
+					        					$pID = $profile->ID;
+					        					// echo $pID;
 
-							        		// echo "<p>here come the names</p>";
-							        		// echo '<ul>';
+					        					$profileID = get_post_meta( $pID );
+												$includeProfile = false;
 
-									        // 		echo "<li>" . $profileID . "</li>";
+												if ( $profileID ) {
+													$includeProfile = true;
+													$profilePhotoID = get_post_meta( $profileID, 'profile_photo', true );
+													$profilePhoto = "";
 
-							        		// echo '</ul>';
+													if ($profilePhotoID) {
+														$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+														$profilePhoto = $profilePhoto[0];
+													}
+
+													$twitterProfileHandle = get_post_meta( $profileID, 'twitter_handle', true );
+													$profileName = get_the_title($profileID);
+													$occupation = get_post_meta( $profileID, 'occupation', true );
+													$profileLink = get_page_link($profileID);
+													$profileExcerpt = my_excerpt($profileID);
+
+													// $relatedProfile = '<div class="bbg__sidebar__primary">';
+													$relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
+													$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
+													$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
+													$relatedProfile .= '<p class="">' . $profileExcerpt . '</p>';
+												}
+
+												if ($includeProfile) {
+													echo $relatedProfile;
+												}
+
+					        				}
 						        		}
 							        }
-
 							    endwhile;
 							}
 						?>
