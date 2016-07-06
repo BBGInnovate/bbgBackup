@@ -365,6 +365,7 @@ get_header(); ?>
 						        			// echo count( get_sub_field('bbg_speaker_name') );
 						        			$profiles = get_sub_field('bbg_speaker_name');
 
+					        				echo "<ul class='usa-unstyled-list'>";
 					        				foreach ( $profiles as $profile ) {
 					        					$pID = $profile->ID;
 					        					// echo $pID;
@@ -390,9 +391,10 @@ get_header(); ?>
 
 													// $relatedProfile = '<div class="bbg__sidebar__primary">';
 													// $relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
-													$relatedProfile = '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
-													$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
-
+													$relatedProfile = '<li>';
+														$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
+														$relatedProfile .= '<h3 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h3>';
+													$relatedProfile .= '</li>';
 													// $relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 												}
 
@@ -401,6 +403,7 @@ get_header(); ?>
 												}
 
 					        				}
+					        				echo "</ul>";
 						        		}
 							        }
 							    endwhile;
