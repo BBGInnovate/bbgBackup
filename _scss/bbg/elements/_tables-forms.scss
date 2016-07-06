@@ -124,8 +124,7 @@ table td {
 }
 
 
-.input[type="radio"]+label {
+input[type="radio"] + label {
 	display: inline-block !important;
 	margin-top: $site-margins-small;
 }
-
