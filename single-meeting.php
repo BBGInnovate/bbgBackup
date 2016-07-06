@@ -355,52 +355,75 @@ get_header(); ?>
 								echo '<h3 class="bbg__sidebar-label">Speakers</h3>';
 							     // loop through the rows of data
 							    while ( have_rows('board_meeting_speakers') ) : the_row();
-							    	// echo "<h5>we have speakers</h5>";
 
 							        // show internal speaker list
 							        if ( get_row_layout() == 'board_meeting_speakers_internal' ) {
-							        	// echo "<p>we have internal speakers</p>";
 
 						        		if ( get_sub_field('bbg_speaker_name') ) {
-						        			// echo count( get_sub_field('bbg_speaker_name') );
 						        			$profiles = get_sub_field('bbg_speaker_name');
 
 					        				echo "<ul class='usa-unstyled-list'>";
 					        				foreach ( $profiles as $profile ) {
 					        					$pID = $profile->ID;
-					        					// echo $pID;
-
 					        					$profileID = get_post_meta( $pID );
 												$includeProfile = false;
 
 												if ( $profileID ) {
 													$includeProfile = true;
-													$profilePhotoID = get_post_meta( $pID, 'profile_photo', true );
+													/*$profilePhotoID = get_post_meta( $pID, 'profile_photo', true );
 													$profilePhoto = "";
 
 													if ($profilePhotoID) {
 														$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 														$profilePhoto = $profilePhoto[0];
-													}
+													}*/ // HIDING PHOTO
 
 													$twitterProfileHandle = get_post_meta( $pID, 'twitter_handle', true );
 													$profileName = get_the_title( $pID );
 													$occupation = get_post_meta( $pID, 'occupation', true );
 													$profileLink = get_page_link( $pID );
-													// $profileExcerpt = get_the_excerpt( $pID );
+													// $profileExcerpt = get_the_excerpt( $pID ); // HIDING EXCERPT
 
-													// $relatedProfile = '<div class="bbg__sidebar__primary">';
-													// $relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>';
+													// $relatedProfile = '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'. $profilePhoto .'"/></a>'; // HIDING PHOTO
 													$relatedProfile = '<li>';
 														$relatedProfile .= '<h5 class="bbg__sidebar__primary-headline"><a href="' . $profileLink . '">' . $profileName . '</a></h5>';
 														$relatedProfile .= '<span class="bbg__profile-excerpt__occupation">' . $occupation . '</span>';
 													$relatedProfile .= '</li>';
-													// $relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
+													// $relatedProfile .= '<p class="">' . $profileExcerpt . '</p>'; // HIDING EXCERPT
 												}
 
 												if ($includeProfile) {
 													echo $relatedProfile;
 												}
+
+					        				}
+					        				echo "</ul>";
+						        		// end internal speaker list
+						        		}
+							        } else if ( get_row_layout() == 'board_meeting_speakers_external' ) {
+							        // show external speaker list
+						        		if ( get_sub_field('meeting_speaker') ) {
+						        			$profiles = get_sub_field('meeting_speaker');
+
+					        				echo "<ul class='usa-unstyled-list'>";
+					        				foreach ( $profiles as $profile ) {
+					        					$speakerName = $profile["meeting_speaker_name"];
+					        					$speakerTitle = $profile["meeting_speaker_title"];
+					        					$speakerLink = $profile["meeting_speaker_url"];
+
+												if ( $speakerName && $speakerLink != "" ) {
+													$externalSpeaker = '<li>';
+														$externalSpeaker .= '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name"><a href="' . $speakerLink . '">' . $speakerName . '</a></h5>';
+														$externalSpeaker .= '<span class="bbg__profile-excerpt__occupation">' . $speakerTitle . '</span>';
+													$externalSpeaker .= '</li>';
+												} else {
+													$externalSpeaker = '<li>';
+														$externalSpeaker .= '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name">' . $speakerName . '</h5>';
+														$externalSpeaker .= '<span class="bbg__profile-excerpt__occupation">' . $speakerTitle . '</span>';
+													$externalSpeaker .= '</li>';
+												}
+
+												echo $externalSpeaker;
 
 					        				}
 					        				echo "</ul>";

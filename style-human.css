@@ -6865,6 +6865,10 @@ section.usa-section.bbg-banner__section {
   line-height: 1.5;
 }
 
+.bbg__profile-excerpt__name {
+  margin-bottom: 0.5rem;
+}
+
 .bbg__profile-excerpt__occupation {
   color: #757575;
   display: block;

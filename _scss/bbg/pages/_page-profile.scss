@@ -207,6 +207,13 @@
 	line-height: 1.5;
 }
 
+.bbg__profile-excerpt__name {
+	margin: {
+		// top: $site-margins-small;
+		bottom: $site-margins-small / 2;
+	}
+}
+
 .bbg__profile-excerpt__occupation {
 	color: $color-gray-medium;
 	display: block;
@@ -216,7 +223,6 @@
 	}
 	margin-bottom: $site-margins-small;
 }
-
 
 
 .page-template-page-board .content-area .usa-grid > p:first-of-type {
