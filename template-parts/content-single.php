@@ -68,7 +68,7 @@ if ($relatedProfileID) {
 	$relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 }
 
-include "../inc/shared_sidebar.php";
+include get_template_directory() . "/inc/shared_sidebar.php";
 
 
 //Include sidebar map 

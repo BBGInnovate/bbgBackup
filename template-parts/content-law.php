@@ -31,7 +31,7 @@ $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
-include "../inc/shared_sidebar.php";
+include get_template_directory() . "/inc/shared_sidebar.php";
 
 <article id="post-<?php the_ID(); ?>">
 	<div class="usa-grid">

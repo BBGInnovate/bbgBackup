@@ -68,7 +68,7 @@ if (in_category("Board Meetings")) {
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
-include "inc/shared_sidebar.php";
+include get_template_directory() . "/inc/shared_sidebar.php";
 
 // Sidebar multiple downloads drop-down
 $sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
