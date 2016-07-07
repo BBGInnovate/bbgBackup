@@ -370,7 +370,7 @@ get_header();
 									'post__in' => array($threatsToPressPost->ID)
 								);
 							} else {
-								$qParams=getThreatsPostQueryParams(1,$postIDsUsed);
+								$qParams=getThreatsPostQueryParams(1,$threatsUsedPosts);
 							}
 							query_posts($qParams);
 							if (have_posts()) {
