@@ -195,7 +195,9 @@ get_header(); ?>
 						<?php
 							// check if the flexible content field has rows of data
 							if ( have_rows('board_meeting_speakers') ) {
-								echo '<h3 class="bbg__sidebar-label">Speakers</h3>';
+								$speakersLabel = get_field('board_meeting_speaker_label');
+
+								echo '<h3 class="bbg__sidebar-label">' . $speakersLabel . '</h3>';
 							     // loop through the rows of data
 							    while ( have_rows('board_meeting_speakers') ) : the_row();
 
