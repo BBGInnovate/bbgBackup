@@ -364,6 +364,7 @@ get_header();
 
 						<?php
 							/* let's get our featured post, which is either selected in homepage settings or is most recent post */
+							$threatsUsedPosts = array();
 							if ($threatsToPressPost) {
 								$qParams=array(
 									'post__in' => array($threatsToPressPost->ID)
@@ -376,6 +377,7 @@ get_header();
 								while ( have_posts() ) : the_post();
 									$counter++;
 									$id = get_the_ID();
+									$threatsUsedPosts[] = $id;
 									$postIDsUsed[] = $id;
 									$permalink = get_the_permalink();
 									//$title = get_the_title( sprintf( '<h3 class="entry-title bbg-blog__excerpt-title--list"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
@@ -401,7 +403,7 @@ get_header();
 						<?php
 							/* BEWARE: sticky posts add a record */
 							$maxPostsToShow=6;
-							$qParams=getThreatsPostQueryParams($maxPostsToShow,$postIDsUsed);
+							$qParams=getThreatsPostQueryParams($maxPostsToShow,$threatsUsedPosts);
 							query_posts($qParams);
 							if ( have_posts() ) {
 								$counter = 0;
