@@ -333,7 +333,7 @@ get_header();
 							}
 							wp_reset_query();
 						?>
-							<nav class="navigation posts-navigation" role="navigation">
+							<nav class="navigation posts-navigation bbg__navigation__pagination" role="navigation">
 								<h2 class="screen-reader-text">Posts navigation</h2>
 								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news') ); ?>" >Previous posts</a></div></div>
 							</nav>	

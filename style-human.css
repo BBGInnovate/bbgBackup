@@ -3761,6 +3761,14 @@ body:not(.home) .bbg__main-navigation {
   background-image: url("img/arrow-next-hover.svg");
 }
 
+.bbg__navigation__pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 /** POST AUTHOR Previous/next links on project posts */
 .bbg__article__nav {
   display: block;
