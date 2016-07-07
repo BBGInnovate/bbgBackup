@@ -34,9 +34,9 @@
 	    	'be-influential' => array()
 	    );
 		
-	    $engageCategoryID = get_cat_id('Engage');
-	    $influentialCategoryID = get_cat_id('Be Influential');
-	    $informCategoryID = get_cat_id('Inform');
+	    $engageCategoryID = get_cat_ID('Engage');
+	    $influentialCategoryID = get_cat_ID('Be Influential');
+	    $informCategoryID = get_cat_ID('Inform');
 
 		$qParams=array(
 			'post_type' => array('post'),
