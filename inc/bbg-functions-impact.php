@@ -76,7 +76,6 @@
 		
 
 		if (count($impacts['inform'])) {
-			$informLink = get_category
 			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . get_category_link($informCategoryID) . '">INFORM</a></h3>';
 			$s .= oneImpactStory($impacts['inform'][0]);
 		} 
