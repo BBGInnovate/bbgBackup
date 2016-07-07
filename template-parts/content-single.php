@@ -272,7 +272,7 @@ endif;
 
 
 
-$entityCategories=['voa-press-release','rfa-press-release','mbn-press-release','ocb-press-release','rferl-press-release'];
+$entityCategories=['voa','rfa','mbn','ocb','rferl'];
 $entityLogo="";
 $entityLink="";
 if ( (in_category('Press Release') && in_category($entityCategories) ) || in_category('Project') ) {
