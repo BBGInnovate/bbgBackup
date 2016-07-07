@@ -257,18 +257,27 @@ get_header();
 								foreach ($downloadFiles as $file) {
 									// Define all variables
 									$fileName = $file['downloads_link_name'];
-									$fileURL = $file['downloads_file'];
+									// $fileURL = $file['downloads_file'];
 									$fileImageObject = $file['downloads_file_image'];
-										// retrieve ID from image object
+										// retrieve ID from image object and load "mugshot" size
 										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'mugshot' );
 									$fileDescription = $file['downloads_file_description'];
 									$fileDescription = apply_filters('the_content', $fileDescription);
 									$fileDescription = str_replace(']]>', ']]&gt;', $fileDescription);
 
+									// Files object array
+									$fileObj = $file['downloads_file'];
+										// file data
+										$fileID = $fileObj['ID'];
+										$fileURL = $fileObj['url'];
+										$file = get_attached_file( $fileID );
+										$fileExt = strtoupper( pathinfo($file, PATHINFO_EXTENSION) );
+										$fileSize = formatBytes( filesize($file) );
+
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__about__grandchild'>";
 										// Output file title/name
-										echo "<h3 class='bbg__about__grandchild__title'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a></h3>";
+										echo "<h3 class='bbg__about__grandchild__title'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a> <span class='bbg__file-size'>(" . $fileExt . ", " . $fileSize . ")</span></h3>";
 										// Output file image
 										if ( $thumbSrc ) {
 											echo "<a href='" . $fileURL . "' target='_blank'>";
