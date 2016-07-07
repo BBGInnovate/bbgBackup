@@ -51,7 +51,7 @@ include get_template_directory() . "/inc/shared_sidebar_downloads.php";
 			$hideFeaturedImage = TRUE;
 
 		//ELSE if a featured timeline is set, include it.
-		} elseif ( $timelineUrl != "" ) {
+		} /*elseif ( $timelineUrl != "" ) {
 			$urlParts = parse_url($timelineUrl); // Parse string as a URL
 			$domain = $urlParts['host']; 		// Get Domain. i.e. crunchify.com
 			$path = $urlParts['path'];			// Get Path. i.e. /path
@@ -64,7 +64,7 @@ include get_template_directory() . "/inc/shared_sidebar_downloads.php";
 			$hideFeaturedImage = TRUE;
 
 		//ELSE if a featured image is set, include it.
-		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+		} */ elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";
 			$featuredImageCutline = "";
@@ -158,6 +158,7 @@ include get_template_directory() . "/inc/shared_sidebar_downloads.php";
 		</div><!-- .bbg__article-sidebar -->
 
 
+
 		<footer class="entry-footer bbg-post-footer 1234">
 			<?php
 				edit_post_link(
@@ -172,4 +173,19 @@ include get_template_directory() . "/inc/shared_sidebar_downloads.php";
 			?>
 		</footer><!-- .entry-footer -->
 	</div><!-- .usa-grid -->
+
+	<?php if ( $timelineUrl != "" ) {
+		$urlParts = parse_url($timelineUrl); // Parse string as a URL
+		$domain = $urlParts['host']; 		// Get Domain. i.e. crunchify.com
+		$path = $urlParts['path'];			// Get Path. i.e. /path
+		$urlQuery = $urlParts['query'];		// Get query params (everything after the ?)
+
+		// Merge URL parts to generate complete URL
+		$timelineUrl = "//" . $domain . $path . "?" . $urlQuery;
+		// echo $timelineUrl;
+		echo featured_timeline($timelineUrl);
+		$hideFeaturedImage = TRUE;
+	} ?>
+
+
 </article><!-- #post-## -->

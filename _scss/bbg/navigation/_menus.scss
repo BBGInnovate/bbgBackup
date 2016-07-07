@@ -344,6 +344,9 @@ body:not(.home) {
 
 
 
+.bbg__navigation__pagination {
+	@include clearfix();
+}
 
 .comment-navigation,
 .posts-navigation,
@@ -402,13 +405,6 @@ body:not(.home) {
 		}
 	}
 }
-
-
-
-.bbg__navigation__pagination {
-	@include clearfix();
-}
-
 
 
 

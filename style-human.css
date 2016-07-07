@@ -3710,6 +3710,14 @@ body:not(.home) .bbg__main-navigation {
     display: block !important;
   }
 }
+.bbg__navigation__pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
@@ -3759,14 +3767,6 @@ body:not(.home) .bbg__main-navigation {
 .post-navigation .nav-next a:hover {
   background-image: url("img/arrow-next-hover.png");
   background-image: url("img/arrow-next-hover.svg");
-}
-
-.bbg__navigation__pagination:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
 }
 
 /** POST AUTHOR Previous/next links on project posts */
