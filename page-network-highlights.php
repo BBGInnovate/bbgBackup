@@ -52,6 +52,7 @@ get_header(); ?>
 					if ($entityString == 'rferl'){
 						$entityString = 'RFE/RL';
 					}
+					$entitySlug = $e;
 					$pressReleases = array();
 					if ($entitySlug != "") {
 						$prCategoryObj = get_category_by_slug($entitySlug );
@@ -61,7 +62,8 @@ get_header(); ?>
 								'post_type' => array('post'),
 								'posts_per_page' => 5,
 								'category__and' => array(
-														$prCategoryID
+														$prCategoryID,
+														get_cat_id('Press Release')
 												  ),
 								'orderby', 'date',
 								'order', 'DESC',
