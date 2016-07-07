@@ -54,7 +54,6 @@ if ( $includeSidebar ) {
 		}
 
 		while ( have_rows('sidebar_items') ) : the_row();
-
 			if ( get_row_layout() == 'sidebar_download_file' ) {
 
 				$sidebarDownloadTitle = get_sub_field( 'sidebar_download_title' );
@@ -90,6 +89,7 @@ if ( $includeSidebar ) {
 				$s .= '<div><h5>"' . $sidebarQuotationText . '"</h5><p>' . $sidebarQuotationSpeaker . ', ' . $sidebarQuotationSpeakerTitle ."</p></div>";
 			} else if (get_row_layout() == 'sidebar_external_link'){
 
+				/*
 				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
 				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
 				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
@@ -100,6 +100,24 @@ if ( $includeSidebar ) {
 				}
 
 				$s .= '<div class=""><h5 class=""><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				*/
+				$sidebarLinkTitle = get_sub_field( 'sidebar_link_title', false);
+				$sidebarLinkLink = get_sub_field( 'sidebar_link_link' );
+				$sidebarLinkImage = get_sub_field( 'sidebar_link_image' );
+				$sidebarLinkDescription = get_sub_field( 'sidebar_link_description', false);
+
+				$sidebarDescription = "";
+				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
+					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+				}
+
+				$sidebarImage = "";
+				if ($sidebarLinkImage && $sidebarLinkImage != ""){
+					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarLinkImage . '"/></a>';
+				}
+
+				$s .= '<div class="bbg__sidebar__primary">' . $sidebarImage . '<h3 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h3>' . $sidebarDescription . '</div>';
+				
 			} else if (get_row_layout() == 'sidebar_internal_link') {
 
 				$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title', false);
@@ -129,7 +147,6 @@ if ( $includeSidebar ) {
 
 				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			} else if (get_row_layout() == 'sidebar_photo'){
-
 				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
 				$sidebarPhotoTitle = get_sub_field( 'sidebar_photo_title', false);
 				$sidebarPhotoCaption = get_sub_field( 'sidebar_photo_caption', false);
