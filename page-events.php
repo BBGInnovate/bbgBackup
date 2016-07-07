@@ -147,7 +147,9 @@ get_header(); ?>
 			<!-- BEGIN PAST EVENTS -->
 			<div class="usa-grid">
 			<div class="bbg-grid--1-1-1-2 secondary-stories">
+
 			<?php 
+			echo '<div class="u--hide-medium-large">' . $upcomingEvents . '</div>';
 				$counter = 0;
 				while ( $past_events_query->have_posts() ) {
 					$past_events_query->the_post(); 
@@ -159,7 +161,7 @@ get_header(); ?>
 						echo '</div><!-- left column -->';
 						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 
-						echo $upcomingEvents;
+						echo '<div class="u--show-medium-large">' . $upcomingEvents . '</div>';
 
 						echo '<header class="page-header">';
 						echo '<h6 class="page-title bbg__label small">Past events</h6>';
