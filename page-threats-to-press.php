@@ -152,7 +152,7 @@ for ($i=0; $i < count($threats); $i++) {
 	$status = $t['status'];
 	if ($status == "Killed"){
 		if ($mugshot == "") {
-			$mugshot = "http://placehold.it/300x300";
+			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
 			$altText = "";
 		} else {
 			$altText = "Photo of $name";
