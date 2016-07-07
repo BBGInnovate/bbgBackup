@@ -115,14 +115,23 @@ foreach($threatsCSVArray as $t) {
 	);
 }
 
-
 for ($i=0; $i < count($threats); $i++) {
 	$t = &$threats[$i];
 	$dateStr = $t['date'];
 	$dateObj = explode("/", $dateStr);
-	$month = $dateObj[0];
-	$day = $dateObj[1];
-	$year = $dateObj[2];
+	if (count($dateObj) == 3) {
+		$month = $dateObj[0];
+		$day = $dateObj[1];
+		$year = $dateObj[2];
+	} elseif (count($dateObj) == 2) {
+		$month = $dateObj[0];
+		$day = 1;
+		$year = $dateObj[1];
+	} else {
+		$month=1;
+		$day=1;
+		$year=$dateObj[0];
+	}
 	$dateTimestamp = mktime(0, 0, 0, $month, $day, $year);
 	$t['dateTimestamp'] = $dateTimestamp;
 }
