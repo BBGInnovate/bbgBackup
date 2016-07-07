@@ -146,7 +146,7 @@ get_header(); ?>
 
 <?php
 
-$postsPerPage =20;
+$postsPerPage = 50;
 
 $qParams=array(
 	'post_type' => array('post')

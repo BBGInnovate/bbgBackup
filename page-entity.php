@@ -216,8 +216,7 @@ if ($prCategorySlug != "") {
 			'post_type' => array('post'),
 			'posts_per_page' => 5,
 			'category__and' => array(
-									$prCategoryID,
-									get_cat_id('Press Release')
+									$prCategoryID
 							  ),
 			'orderby', 'date',
 			'order', 'DESC',
