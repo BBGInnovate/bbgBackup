@@ -328,7 +328,8 @@ get_header();
 										echo $summary;
 
 									echo "</div>";
-								echo "</div>";
+								echo "</div><!-- .bbg__announcement__flexbox -->";
+							echo "</div><!-- .usa-grid -->";
 							// echo "</section>";
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE RIBBON ROW ***/
