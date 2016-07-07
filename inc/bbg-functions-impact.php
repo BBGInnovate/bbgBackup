@@ -34,13 +34,17 @@
 	    	'be-influential' => array()
 	    );
 		
+	    $engageCategoryID = get_cat_id('Engage');
+	    $influentialCategoryID = get_cat_id('Be Influential');
+	    $informCategoryID = get_cat_id('Inform');
+
 		$qParams=array(
 			'post_type' => array('post'),
 			'posts_per_page' => 100,
 			'category__in' => array(
-									get_cat_id('Engage'),
-									get_cat_id('Be Influential'),
-									get_cat_id('Inform')
+									$engageCategoryID,
+									$influentialCategoryID,
+									$informCategoryID
 							  ),
 			'orderby', 'date',
 			'order', 'DESC'
@@ -72,16 +76,17 @@
 		
 
 		if (count($impacts['inform'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">INFORM</a></h3>';
+			$informLink = get_category
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . get_category_link($informCategoryID) . '">INFORM</a></h3>';
 			$s .= oneImpactStory($impacts['inform'][0]);
 		} 
 		if (count($impacts['engage'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">ENGAGE</a></h3>';			
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'. get_category_link($engageCategoryID) . '">ENGAGE</a></h3>';			
 			$s .= oneImpactStory($impacts['engage'][0]);
 
 		} 
 		if (count($impacts['be-influential'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'.$impactPortfolioPermalink.'">BE INFLUENTIAL</a></h3>';
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . get_category_link($influentialCategoryID) . '">BE INFLUENTIAL</a></h3>';
 			$s .= oneImpactStory($impacts['be-influential'][0]);
 		}
 		return $s;
