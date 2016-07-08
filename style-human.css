@@ -6057,8 +6057,10 @@ article {
 
 .bbg__ribbon--thin {
   background-color: #323a45;
-  padding-top: 2rem;
+  padding-top: 0;
   padding-right: inherit;
+  padding-bottom: 0;
+  padding-left: inherit;
 }
 .bbg__ribbon--thin .bbg__label {
   background-color: #981b1e;

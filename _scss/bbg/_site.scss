@@ -1270,8 +1270,10 @@ article {
 	@extend .usa-grid-full;
 	background-color: $color-gray-dark;
 	padding: {
-		top: 2rem;
+		top: 0;
 		right: inherit;
+		bottom: 0;
+		left: inherit;
 	}
 
 	.bbg__label {
