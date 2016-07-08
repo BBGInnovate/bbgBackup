@@ -1271,7 +1271,11 @@ article {
 	margin: 0 -10%;
 	max-width: 110vw;
 
-	@include media($medium-screen) {
+	@include media($medium-large-screen) {
+		padding: 0 10%;
+	}
+
+	@include media($medium-large-screen) {
 		margin: 0 -50%;
 		max-width: none;
 	}

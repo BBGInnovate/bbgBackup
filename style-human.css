@@ -5999,7 +5999,12 @@ article {
   margin: 0 -10%;
   max-width: 110vw;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
+  .bbg__ribbon--thin {
+    padding: 0 10%;
+  }
+}
+@media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
     margin: 0 -50%;
     max-width: none;
