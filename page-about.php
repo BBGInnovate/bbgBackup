@@ -91,7 +91,7 @@ get_header();
 						} else {
 							// we wrap a  usa-grid container around every row.
 							echo '<!-- ROW ' . $counter . '-->';
-							echo '<section class="usa-grid-full bbg__about__children--row">';
+							echo '<section class="usa-grid-full bbg__about__children--row bbg__ribbon--thin">';
 						}
 
 						if ( get_row_layout() == 'about_multicolumn' ):
