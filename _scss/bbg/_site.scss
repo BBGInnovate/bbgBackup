@@ -1269,8 +1269,9 @@ article {
 .bbg__ribbon--thin {
 	background-color: $color-gray-dark;
 	margin: 0 -10%;
+	max-width: 110vw;
 
-	@include media($small-screen) {
+	@include media($medium-screen) {
 		margin: 0 -50%;
 		max-width: none;
 	}
