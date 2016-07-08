@@ -1268,8 +1268,11 @@ article {
 
 .bbg__ribbon--thin {
 	background-color: $color-gray-dark;
-	margin: 0 -50%;
-	max-width: none;
+
+	@include media($medium-screen) {
+		margin: 0 -50%;
+		max-width: none;
+	}
 
 	.bbg__label {
 		background-color: $color-secondary-darkest;
