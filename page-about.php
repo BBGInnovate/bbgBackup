@@ -308,7 +308,6 @@ get_header();
 							$summary = apply_filters('the_content', $summary);
 							$summary = str_replace(']]>', ']]&gt;', $summary);
 
-							echo "</div>"; // closes <div id="page-children" class="usa-section usa-grid bbg__about__children">
 							echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
 							echo "<!-- RIBBON: ROW ' . $counter . '-->"; // add row count
 							// echo "<section class='usa-section bbg__ribbon--thin'>"; // open ribbon container
@@ -347,7 +346,7 @@ get_header();
 					echo '<!-- END ROWS -->';
 				endif;
 			?>
-			</div>
+			</div> <!-- End id="page-children" -->
 
 			<?php
 				$showNetworks = get_field( 'about_networks_row' );
