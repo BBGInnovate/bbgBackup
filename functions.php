@@ -874,16 +874,18 @@ function getEntityData() {
 				}
 				*/
 				$featuredImageID=get_post_thumbnail_id($id);
-				$entities[] = array(
-					'abbreviation' => $abbreviation,
-					'description' => $description,
-					'link' => $link,
-					'imgSrc' => $imgSrc,
-					'entityLogo' => $entityLogo,
-					'featuredImageID' => $featuredImageID,
-					'featuredImageCutline' => $featuredImageCutline,
-					'bannerAdjustStr' => $bannerAdjustStr
-				);
+				if (!isset($_GET['img']) || $_GET['img'] == $abbreviation) {
+					$entities[] = array(
+						'abbreviation' => $abbreviation,
+						'description' => $description,
+						'link' => $link,
+						'imgSrc' => $imgSrc,
+						'entityLogo' => $entityLogo,
+						'featuredImageID' => $featuredImageID,
+						'featuredImageCutline' => $featuredImageCutline,
+						'bannerAdjustStr' => $bannerAdjustStr
+					);
+				}
 			}
 		}
 	}
