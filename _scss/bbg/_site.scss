@@ -1266,13 +1266,13 @@ article {
 	}
 }
 
-
-
-
-/* may remove this if you don't use it later */
 .bbg__ribbon--thin {
+	@extend .usa-grid-full;
 	background-color: $color-gray-dark;
-	padding: 2rem auto;
+	padding: {
+		top: 2rem;
+		right: inherit;
+	}
 
 	.bbg__label {
 		background-color: $color-secondary-darkest;

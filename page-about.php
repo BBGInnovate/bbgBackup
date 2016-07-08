@@ -88,6 +88,10 @@ get_header();
 							// we wrap a  usa-grid container around every row.
 							echo '<!-- ROW ' . $counter . '-->';
 							echo '<section class="usa-grid-full bbg__about__children--row">';
+						} else {
+							// we wrap a  usa-grid container around every row.
+							echo '<!-- ROW ' . $counter . '-->';
+							echo '<section class="usa-grid-full bbg__about__children--row">';
 						}
 
 						if ( get_row_layout() == 'about_multicolumn' ):
@@ -308,8 +312,8 @@ get_header();
 							$summary = apply_filters('the_content', $summary);
 							$summary = str_replace(']]>', ']]&gt;', $summary);
 
-							echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
-							echo "<!-- RIBBON: ROW ' . $counter . '-->"; // add row count
+							// echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
+							// echo "<!-- RIBBON: ROW $counter-->"; // add row count
 							// echo "<section class='usa-section bbg__ribbon--thin'>"; // open ribbon container
 
 							echo "<div class='usa-grid'>";
