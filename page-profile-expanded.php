@@ -30,6 +30,14 @@ if ( have_posts() ) {
 	}
 
 	$bannerPosition = get_post_meta( $id, 'adjust_the_banner_image', true);
+	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
+	$bannerAdjustStr = "";
+		if ($bannerPositionCSS) {
+			$bannerAdjustStr = $bannerPositionCSS;
+		} else if ($bannerPosition) {
+			$bannerAdjustStr = $bannerPosition;
+		}
+	$videoUrl = get_field( 'featured_video_url', '', true );
 
 	$occupation = get_post_meta( $id, 'occupation', true );
 	$email = get_post_meta( $id, 'email', true );
@@ -64,7 +72,7 @@ if ( have_posts() ) {
 		if ($showLatestTweets) {
 			$widgetID = "730138164040507394";	//change this to bbg acct
 			$latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="4" class="twitter-timeline" href="https://twitter.com/'.$twitterProfileHandle.'" data-widget-id="'.$widgetID.'" data-screen-name="'.$twitterProfileHandle.'" >Tweets by @'.$twitterProfileHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-		}	
+		}
 	}
 
 	$resolution = get_field('board_resolution_of_honor');
@@ -89,7 +97,7 @@ get_header(); ?>
 
 			//Default adds a space above header if there's no image set
 			$featuredImageClass = " bbg__article--no-featured-image";
-				
+
 			//the title/headline field, followed by the URL and the author's twitter handle
 			$twitterText = "";
 			$twitterText .= html_entity_decode( get_the_title() );
@@ -125,8 +133,12 @@ get_header(); ?>
 				</div>
 
 				<?php
-					$hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
-					if ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+					// $hideFeaturedImage = get_post_meta( $id, "hide_featured_image", true );
+					$hideFeaturedImage = FALSE;
+					if ($videoUrl != "") {
+						echo featured_video($videoUrl);
+						$hideFeaturedImage = TRUE;
+					} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 						echo '<div class="usa-grid-full">';
 						$featuredImageClass = "";
 						$featuredImageCutline="";
@@ -205,10 +217,10 @@ get_header(); ?>
 
 
 
-						<?php 
+						<?php
 							//Add blog posts below the main content
 							$relatedCategory=get_field('profile_related_category', $id);
-							
+
 							if ( $relatedCategory != "" ) {
 								$qParams2=array(
 									'post_type' => array('post'),
@@ -235,7 +247,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar largeXXX">
-						<?php 
+						<?php
 						if ($email != "" || $phone != ""){
 						?>
 							<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
@@ -244,22 +256,22 @@ get_header(); ?>
 						<?php } ?>
 
 						<ul class="bbg__article-share ">
-						<?php 
+						<?php
 						if ($email != ""){
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>'; 
+							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
 						}
 						if ($twitterProfileHandle != ""){
-							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>'; 
+							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
 						}
 
 						if ($phone != ""){
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>'; 
+							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>';
 						}
 						?>
 						</ul>
 						<?php echo $latestTweetsStr; ?>
 
-						<?php 
+						<?php
 
 							if ($resolution) {
 								echo '<h3 class="bbg__sidebar-label">Resolution of Honor</h3>';
