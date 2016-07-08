@@ -1272,7 +1272,7 @@ article {
 	max-width: 110vw;
 
 	@include media($medium-large-screen) {
-		padding: 0 10%;
+		margin: 0 -3rem 0 -10%;
 	}
 
 	@include media($medium-large-screen) {

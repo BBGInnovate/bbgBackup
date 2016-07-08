@@ -6001,7 +6001,7 @@ article {
 }
 @media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
-    padding: 0 10%;
+    margin: 0 -3rem 0 -10%;
   }
 }
 @media screen and (min-width: 900px) {
