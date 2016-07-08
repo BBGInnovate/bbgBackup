@@ -5996,6 +5996,7 @@ article {
 
 .bbg__ribbon--thin {
   background-color: #323a45;
+  margin: 0 -10%;
 }
 @media screen and (min-width: 600px) {
   .bbg__ribbon--thin {

@@ -1268,6 +1268,7 @@ article {
 
 .bbg__ribbon--thin {
 	background-color: $color-gray-dark;
+	margin: 0 -10%;
 
 	@include media($medium-screen) {
 		margin: 0 -50%;
