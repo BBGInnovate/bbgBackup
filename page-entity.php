@@ -260,17 +260,11 @@ $pageContent = str_replace("[press releases]", $s, $pageContent);
 $awards=array();
 $awardSlug=get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
 $qParams=array(
-	'post_type' => array('awards'),
 	'posts_per_page' => 5,
-	'orderby', 'date',
-	'order', 'DESC',
-	'tax_query' => array(
-	    array(
-            'taxonomy' => 'recipients',
-            'terms' => $awardSlug,
-            'field' => 'slug'
-	    )
-	)
+	'orderby' => 'date',
+	'order' => 'DESC',
+	'meta_key' => 'standardpost_award_recipient',
+	'meta_value' => $awardSlug
 );
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
@@ -278,24 +272,13 @@ if ($custom_query -> have_posts()) {
 		$custom_query->the_post();
 		$id=get_the_ID();
 
-		$yearTerms = get_the_terms( $id, 'awardyear' );
-		$awardYears=array();
-		foreach ( $yearTerms as $term ) {
-	        $awardYears[] = $term->name;
-	    }
-
-		$orgTerms = get_the_terms( $id, 'organizations' );
+		$awardYears  = get_post_meta( $id, 'standardpost_award_year' );
+		$orgTerms = get_field('standardpost_award_organization', $id );
 	    $organizations=array();
-	    foreach ( $orgTerms as $term ) {
-	        $organizations[] = $term->name;
-	    }
+	        $organizations[] = $orgTerms->name;
+	    
 
-		$recipients=array();
-		$recipientTerms = get_the_terms( $id, 'recipients' );
-		foreach ( $recipientTerms as $term ) {
-	        $recipients[] = $term->name;
-	    }
-
+		$recipients = get_post_meta( $id, 'standardpost_award_recipient' );
 		$awards[]=array(
 			'id'=>$id,
 			'url'=>get_permalink($id),
