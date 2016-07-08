@@ -1270,7 +1270,7 @@ article {
 	background-color: $color-gray-dark;
 	margin: 0 -10%;
 
-	@include media($medium-screen) {
+	@include media($small-screen) {
 		margin: 0 -50%;
 		max-width: none;
 	}
