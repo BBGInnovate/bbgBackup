@@ -1267,14 +1267,9 @@ article {
 }
 
 .bbg__ribbon--thin {
-	@extend .usa-grid-full;
 	background-color: $color-gray-dark;
-	padding: {
-		top: 0;
-		right: inherit;
-		bottom: 0;
-		left: inherit;
-	}
+	margin: 0 -50%;
+	max-width: none;
 
 	.bbg__label {
 		background-color: $color-secondary-darkest;
