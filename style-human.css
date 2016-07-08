@@ -5998,13 +5998,14 @@ article {
   background-color: #323a45;
   margin: 0 -10%;
   max-width: 110vw;
+  padding-right: 1rem;
 }
 @media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
     margin: 0 -3rem 0 -10%;
   }
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1201px) {
   .bbg__ribbon--thin {
     margin: 0 -50%;
     max-width: none;

@@ -1270,12 +1270,13 @@ article {
 	background-color: $color-gray-dark;
 	margin: 0 -10%;
 	max-width: 110vw;
+	padding-right: 1rem;
 
 	@include media($medium-large-screen) {
 		margin: 0 -3rem 0 -10%;
 	}
 
-	@include media($medium-large-screen) {
+	@include media($large-screen) {
 		margin: 0 -50%;
 		max-width: none;
 	}
