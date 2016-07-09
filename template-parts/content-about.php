@@ -23,10 +23,12 @@ if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
 if ( ! isset ($grids) ) {
 	$grids = "bbg-grid--1-2-2";
 }
-$pageTitle = strtolower(get_the_title());
+$pageTitle = strtolower( get_the_title() );
 
 if ( $specialMissionClass == TRUE && $pageTitle == "mission" ) {
 	$grids .= " bbg__about__excerpt-content--large";
+} elseif ( $pageTitle == "mission" ) {
+	$grids = "bbg-grid--1-1-1";
 }
 
 $classNames = "bbg__about__excerpt bbg__about__child " . "bbg__about__child--" . $pageTitle . " " . $grids;

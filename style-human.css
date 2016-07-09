@@ -6483,6 +6483,12 @@ section.usa-section.bbg-banner__section {
   line-height: 1.9;
   margin: 0;
 }
+@media screen and (min-width: 900px) {
+  .bbg__about__child--mission p {
+    font-size: 2rem;
+    line-height: 1.9;
+  }
+}
 
 @media screen and (min-width: 1201px) {
   .bbg__about__excerpt-content--large {

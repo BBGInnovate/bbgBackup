@@ -78,7 +78,7 @@ get_header();
 					/* @Check if number of pages is odd or even
 					*  Return BOOL (true/false) */
 					function checkNum($pageTotal) {
-						return ($pageTotal%2) ? TRUE : FALSE;
+						return ( $pageTotal%2 ) ? TRUE : FALSE;
 					}
 
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
@@ -101,28 +101,19 @@ get_header();
 							$pageTotal = count ( $relatedPages );
 							$largeNumber = FALSE;
 
-							// Check function return
-							if ( checkNum($pageTotal) === TRUE ) {
-								// if TRUE: number is odd
-								$gridClass = 'bbg-grid--1-3-3';
-							} else {
-								// if FALSE: number is even
-								$gridClass = 'bbg-grid--1-2-2';
-							}
-
 							if ( $pageTotal == 5 ) {
 								$five = TRUE;
 							} else {
 								$five = FALSE;
 							}
 
-							foreach ($relatedPages as $rPage) {
+							foreach ( $relatedPages as $rPage ) {
 								$rPageHeadline = $rPage->headline;
 								$rPageTagline = $rPage->page_tagline;
 								$rPageDescription = $rPage->about_include_exerpt;
-								$rPageExcerpt = my_excerpt($rPage->ID);
-								$rPageExcerpt = apply_filters('the_content', $rPageExcerpt);
-								$rPageExcerpt = str_replace(']]>', ']]&gt;', $rPageExcerpt);
+								$rPageExcerpt = my_excerpt( $rPage->ID );
+								$rPageExcerpt = apply_filters( 'the_content', $rPageExcerpt );
+								$rPageExcerpt = str_replace( ']]>', ']]&gt;', $rPageExcerpt );
 
 								$qParams = array(
 									'post_type' => 'page',
@@ -135,17 +126,38 @@ get_header();
 								if ( have_posts() ) {
 									while ( have_posts() ) {
 										the_post();
-										$specialMissionClass = $five;
-										$grids = $gridClass;
+
+										if ( get_the_title() == "Mission" ) {
+											$pageTotal = $pageTotal - 1;
+										}
+
+										// Check if total number of pages is odd or even
+										if ( checkNum($pageTotal) === TRUE ) {
+											// if TRUE: number is odd
+											$gridClass = 'bbg-grid--1-3-3';
+										} else {
+											// if FALSE: number is even
+											$gridClass = 'bbg-grid--1-2-2';
+										}
+										$grids = $gridClass; // pass grid class variable
+
+										$specialMissionClass = $five; // change mission dimensions when there are 5 items
+
 										$headline = $rPageHeadline; // custom field for secondary page headline
 										$tagline = $rPageTagline; // custom field for page tagline
 										$excerpt = $rPageExcerpt; // define the page excerpt as back-up to tagline
 										$includePageDescription = $rPageDescription;
 										get_template_part( 'template-parts/content-about', get_post_format() );
+
+										if ( get_the_title() == "Mission" ) {
+											echo "</section>";
+											echo '<section class="usa-grid-full bbg__about__children--row">';
+										}
 									}
 								}
 								wp_reset_query();
 							}
+
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 
