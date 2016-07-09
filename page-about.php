@@ -205,7 +205,7 @@ get_header();
 									$url = get_the_permalink($rp->ID);
 									$title = get_the_title($rp->ID);
 									$headline = $rp->headline;
-									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) , 'mugshot' );
+									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) , 'medium-thumb' );
 									$thumbPosition = $rp->adjust_the_banner_image;
 									$excerpt = my_excerpt($rp->ID);
 									$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";

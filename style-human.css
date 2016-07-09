@@ -6539,10 +6539,16 @@ section.usa-section.bbg-banner__section {
     margin-bottom: 1rem;
   }
 }
+@media screen and (min-width: 900px) {
+  .bbg__about__grandchild .bbg__about__grandchild__thumb {
+    min-height: 20rem;
+  }
+}
 @media screen and (min-width: 1201px) {
   .bbg__about__grandchild .bbg__about__grandchild__thumb {
     max-width: 50%;
     margin-bottom: 0;
+    min-height: 15rem;
   }
 }
 .bbg__about__grandchild p {

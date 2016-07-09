@@ -145,9 +145,14 @@
 			margin-bottom: 1rem;
 		}
 
+		@include media($medium-large-screen) {
+			min-height: 20rem;
+		}
+
 		@include media($large-screen) {
 			max-width: 50%;
 			margin-bottom: 0;
+			min-height: 15rem;
 		}
 	}
 
