@@ -43,9 +43,6 @@
 	margin-top: 1rem;
 }
 
-// .bbg__about__excerpt-content {
-// 	display: none;
-// }
 
 // Style the mission differently
 .bbg__about__child--mission {
@@ -140,6 +137,17 @@
 		}
 		height: 100%;
 		width: 25%;
+
+		@include media($medium-screen) {
+			min-height: 15rem;
+			width: 100%;
+			margin-bottom: 1rem;
+		}
+
+		@include media($large-screen) {
+			max-width: 50%;
+			margin-bottom: 0;
+		}
 	}
 
 	p {
