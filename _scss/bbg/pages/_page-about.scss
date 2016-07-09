@@ -139,6 +139,7 @@
 		width: 25%;
 
 		@include media($medium-screen) {
+			max-width: 100%;
 			min-height: 15rem;
 			width: 100%;
 			margin-bottom: 1rem;
