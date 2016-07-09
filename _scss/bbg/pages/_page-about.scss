@@ -67,17 +67,17 @@
 	p {
 		color: #000;
 		font: {
-			family: $font-serif;
-			size: 2rem;
+			family: $font-sans;
+			size: 2.5rem;
 			weight: 300;
 		}
-		line-height: 1.9;
+		line-height: 1.7;
 		margin: 0;
 	}
 
-	@include media($medium-large-screen) {
+	@include media($large-screen) {
 		p {
-			font-size: 2rem;
+			font-size: 3rem;
 			line-height: 1.9;
 		}
 	}
