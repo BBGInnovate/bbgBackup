@@ -336,6 +336,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php'; 
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
+require get_template_directory() . '/inc/bbg-custom-taxonomies.php';
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
 require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
 require get_template_directory() . '/inc/bbg-functions-contactCards.php';
