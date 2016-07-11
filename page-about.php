@@ -58,6 +58,12 @@ get_header();
 					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
 					echo '</div>';
 					echo '</div> <!-- usa-grid-full -->';
+
+					if ($featuredImageCutline != "") {
+						echo '<div class="usa-grid">';
+							echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
+						echo '</div> <!-- usa-grid -->';
+					}
 				}
 			?><!-- .bbg__article-header__thumbnail -->
 
