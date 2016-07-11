@@ -1,4 +1,4 @@
-<?php 
+<?php
 //Include sidebar of Downloads, Links and/or Quotations
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
 if ( $includeSidebar ) {
@@ -76,7 +76,7 @@ if ( $includeSidebar ) {
 					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarLinkImage . '"/></a>';
 				}
 
-				$s .= '<div class="bbg__sidebar__primary">' . $sidebarImage . '<h3 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h3>' . $sidebarDescription . '</div>';
+				$s .= '<div class="bbg__sidebar__primary">' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 
 			} else if (get_row_layout() == 'sidebar_internal_link') {
 
@@ -117,7 +117,7 @@ if ( $includeSidebar ) {
 					$sidebarPhotoImageSrc = $sidebarPhotoImage['sizes']['medium'];
 					$sidebarImage = '<img class="" src="' . $sidebarPhotoImageSrc . '"/>';
 				}
-				/* 
+				/*
 				helpful for debugging
 				var_dump($sidebarPhotoImage);
 				foreach ($sidebarPhotoImage as $key=>$value) {
