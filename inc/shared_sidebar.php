@@ -68,7 +68,7 @@ if ( $includeSidebar ) {
 
 				$sidebarDescription = "";
 				if ($sidebarLinkDescription && $sidebarLinkDescription != ""){
-					$sidebarDescription = "<p class=''>" . $sidebarLinkDescription . "</p>";
+					$sidebarDescription = "<p>" . $sidebarLinkDescription . "</p>";
 				}
 
 				$sidebarImage = "";
@@ -76,7 +76,7 @@ if ( $includeSidebar ) {
 					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarLinkImage . '"/></a>';
 				}
 
-				$s .= '<div class="bbg__sidebar__primary">' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$s .= '<div>' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 
 			} else if (get_row_layout() == 'sidebar_internal_link') {
 
@@ -105,7 +105,7 @@ if ( $includeSidebar ) {
 					$sidebarDescription = "<p>" . $sidebarInternalDescription . "</p>";
 				}
 
-				$s .= '<div class=""><h5 class=""><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$s .= '<div><h5 class="bbg__sidebar__primary-headline"><a href="' . $url . '">' . $sidebarSectionTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			} else if (get_row_layout() == 'sidebar_photo'){
 
 				$sidebarPhotoImage = get_sub_field( 'sidebar_photo_image' );
