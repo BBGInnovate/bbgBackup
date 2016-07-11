@@ -187,7 +187,7 @@ get_header();
 							$labelText = get_sub_field('about_umbrella_label');
 							$labelLink = get_sub_field('about_umbrella_label_link');
 							$introText = get_sub_field('about_umbrella_intro_text');
-							$imageURL = get_sub_field('about_umbrella_image');
+							// $imageURL = get_sub_field('about_umbrella_image');
 
 							//allow shortcodes in intro text
 							$introText = apply_filters('the_content', $introText);
@@ -199,9 +199,9 @@ get_header();
 								echo "<h6 class='bbg__label'>$labelText</h6>";
 							}
 
-							if ($imageURL) {
+							/*if ($imageURL) {
 								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $imageURL .  "); height: 100%; min-height: 150px;'></div>";
-							}
+							}*/
 
 							// show umbrella section intro text
 							echo "<div class='bbg__about__child__intro'>$introText</div>";
@@ -256,7 +256,7 @@ get_header();
 							}
 
 							$downloadsLabel = get_sub_field('about_downloads_label');
-							$downloadsImage = get_sub_field('about_downloads_image');
+							// $downloadsImage = get_sub_field('about_downloads_image');
 							$downloadsIntro = get_sub_field('about_downloads_description');
 
 							//allow shortcodes in intro text
@@ -268,10 +268,10 @@ get_header();
 							}
 
 							// show section image
-							if ($downloadsImage) {
+							/*if ($downloadsImage) {
 								// echo $downloadsImage;
 								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $downloadsImage .  "); height: 100%; min-height: 150px;'></div>";
-							}
+							}*/
 
 							// show umbrella section intro text
 							echo "<div class='bbg__about__child__intro'>$downloadsIntro</div>";
