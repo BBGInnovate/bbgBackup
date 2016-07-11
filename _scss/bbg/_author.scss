@@ -9,6 +9,10 @@
 		margin: 0 1rem .5rem 0;
 		width: $bbg__team__icon-width;
 	}
+
+	@include media($medium-screen) {
+		clear: left;
+	}
 }
 
 .bbg__avatar__container--small {

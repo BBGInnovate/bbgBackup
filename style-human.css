@@ -3830,6 +3830,11 @@ body:not(.home) .bbg__main-navigation {
     width: 100px;
   }
 }
+@media screen and (min-width: 600px) {
+  .bbg__avatar__container {
+    clear: left;
+  }
+}
 
 .bbg__avatar__container--small {
   float: left;
