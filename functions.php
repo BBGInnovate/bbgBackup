@@ -735,7 +735,7 @@ add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_c
 add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_choices');
 
 function getEntityLinks($entityID) {
-	$url="http://api.bbg.gov/api/subgroups?group=".$entityID;
+	$url="https://api.bbg.gov/api/subgroups?group=".$entityID;
 	$feedFilepath = get_template_directory() . "/external-feed-cache/subgroupscache_".$entityID.".json";
 	if ( fileExpired($feedFilepath, 1440)) {  // 1440 min = 1 day
 		$feedStr=fetchUrl($url);
@@ -983,7 +983,7 @@ function getSoapboxStr($soap) {
 			$isCEOPost = TRUE;
 			$soapHeaderText = "From the CEO";
 			$soapHeaderPermalink = get_category_link($cat->term_id);
-			$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
+			$mugshot = "/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
 			$mugshotName = "John Lansing";
 		} else if ($cat->slug == "speech") {
 			$isSpeech = true;

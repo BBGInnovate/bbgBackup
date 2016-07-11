@@ -58,7 +58,7 @@
 	//http://bbgredesign.voanews.com/api.php?endpoint=api/countries/?region_coutry=1
 	///$endpoint = str_replace("&", "?", $_GET['endpoint']);
 	$endpoint = $_GET['endpoint'];
-	$targetUrl = 'http://api.bbg.gov/' . $endpoint;
+	$targetUrl = 'https://api.bbg.gov/' . $endpoint;
 	header('Content-Type: application/json');
 	header("Access-Control-Allow-Origin: *");
 
