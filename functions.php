@@ -983,7 +983,7 @@ function getSoapboxStr($soap) {
 			$isCEOPost = TRUE;
 			$soapHeaderText = "From the CEO";
 			$soapHeaderPermalink = get_category_link($cat->term_id);
-			$mugshot = "https://bbgredesign.voanews.com/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
+			$mugshot = "/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
 			$mugshotName = "John Lansing";
 		} else if ($cat->slug == "speech") {
 			$isSpeech = true;
