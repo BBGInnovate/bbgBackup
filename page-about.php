@@ -56,6 +56,7 @@ get_header();
 					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
 					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
+					echo '</div>';
 
 					// Caption for featured image
 					if ($featuredImageCutline != "") {
@@ -64,7 +65,6 @@ get_header();
 						echo '</div> <!-- usa-grid -->';
 					}
 
-					echo '</div>';
 					echo '</div> <!-- usa-grid-full -->';
 
 				}
