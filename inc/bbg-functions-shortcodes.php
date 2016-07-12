@@ -87,27 +87,6 @@
 
 
 
-	// Add shortcode reference for BBG boilerplate
-	/*
-	function boilerplate_bbg_shortcode() {
-		// access site-wide variables
-		//global $post;
-
-		// set variables based on custom fields
-		$aboutBBG = get_field('site_setting_boilerplate_bbg','options','false');
-
-		if ($aboutBBG) {
-			$aboutBBG = "<h3>About the BBG</h3><p class='bbg__tagline'>" . $aboutBBG . "</p>";
-		}
-
-		// $number_of_languages = 61;
-		return $aboutBBG;
-	}
-	add_shortcode('about-bbg', 'boilerplate_bbg_shortcode');
-	*/
-
-
-
 	// Add shortcode reference for the number of total countries
 	function countries_shortcode() {
 		// access site-wide variables
