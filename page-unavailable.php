@@ -194,7 +194,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 				<div id="header" class="usa-grid-full bbg-header__container__box">
 					<div class="bbg-header__container">
 						<a href="https://www.bbg.gov/" rel="home" class="bbg-header__link">
-							<img src="http://localhost/innovationWP/bbg/wp-content/uploads/sites/2/2016/07/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
+							<img src="https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
 							<h1 class="bbg-header__site-title">Broadcasting <span class="bbg-header__site-title--breakline">Board of Governors</span></h1>
 						</a>
 					</div>
@@ -339,11 +339,11 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
     <script type="text/javascript">
         // jQuery(".bbg__site-alert").css("top", "30px");
     </script>
-    <script type="text/javascript" src="http://localhost/innovationWP/bbg/wp-content/themes/BBGredesign/js/skip-link-focus-fix.js?ver=20130115"></script>
-    <script type="text/javascript" src="http://localhost/innovationWP/bbg/wp-content/themes/BBGredesign/js/bbgredesign.js?ver=20160223"></script>
-    <script type="text/javascript" src="http://localhost/innovationWP/bbg/wp-content/themes/BBGredesign/js/18f.js?ver=20160223"></script>
-    <script type="text/javascript" src="http://localhost/innovationWP/bbg/wp-content/themes/BBGredesign/js/bbginnovate.js?ver=20160223"></script>
-    <script type="text/javascript" src="http://localhost/innovationWP/bbg/wp-includes/js/wp-embed.min.js?ver=4.5.2"></script>
+    <script type="text/javascript" src="https://bbgredesign.voanews.com/wp-includes/js/skip-link-focus-fix.js?ver=20130115"></script>
+    <script type="text/javascript" src="https://bbgredesign.voanews.com/wp-includes/js/bbgredesign.js?ver=20160223"></script>
+    <script type="text/javascript" src="https://bbgredesign.voanews.com/wp-includes/js/18f.js?ver=20160223"></script>
+    <script type="text/javascript" src="https://bbgredesign.voanews.com/wp-includes/js/bbginnovate.js?ver=20160223"></script>
+    <script type="text/javascript" src="https://bbgredesign.voanews.com/wp-includes/js/wp-embed.min.js?ver=4.5.2"></script>
     <script type="text/javascript">
         (function() {
             var request, b = document.body,
