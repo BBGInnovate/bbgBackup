@@ -27,6 +27,13 @@ if ( have_posts() ) {
 	}
 
 	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
+	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
+	$bannerAdjustStr = "";
+		if ($bannerPositionCSS) {
+			$bannerAdjustStr = $bannerPositionCSS;
+		} else if ($bannerPosition) {
+			$bannerAdjustStr = $bannerPosition;
+		}
 
 	$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 	$email=get_post_meta( get_the_ID(), 'email', true );

@@ -6571,9 +6571,9 @@ section.usa-section.bbg-banner__section {
 .bbg__about__grandchild__link {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-left: 1rem;
-  page-break-inside: avoid;
   text-align: right;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .bbg__employee-profile__excerpt {
