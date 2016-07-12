@@ -16,7 +16,10 @@
 			'org' => 'Broadcasting Board of Governors',
 		), $atts );*/
 
-		$aboutBBG = get_field('site_setting_boilerplate_bbg','options','true');
+		// access site-wide variables
+		global $post;
+
+		$aboutBBG = get_field('site_setting_boilerplate_bbg','options','false');
 		//echo $aboutBBG;
 
 		if ( !$aboutBBG || $aboutBBG = "" ) {
