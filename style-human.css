@@ -846,6 +846,10 @@ body {
   visibility: hidden;
 }
 
+.bbg__code {
+  font-family: Courier, monospace;
+}
+
 /*MOVED FROM BELOW TO UPDATE FONTS*/
 .usa-button,
 .usa-button-primary,
