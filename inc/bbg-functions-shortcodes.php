@@ -12,14 +12,24 @@
 
 	// Add shortcode reference for the "About the BBG"
 	function about_shortcode( $atts ) {
-	    /*$a = shortcode_atts( array(
-	        'org' => 'Broadcasting Board of Governors',
-	    ), $atts );*/
+		/*$a = shortcode_atts( array(
+			'org' => 'Broadcasting Board of Governors',
+		), $atts );*/
 
-	    $about = "<h4>About the BBG</h4>";
-			$about .= "<div class='bbg__tagline'>";
-				$about .= "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
-			$about .= "</div>";
+		// access site-wide variables
+		global $post;
+
+		$aboutBBG = get_field('site_setting_boilerplate_bbg','options','false');
+		//echo $aboutBBG;
+
+		if ( !$aboutBBG || $aboutBBG == "" ) {
+			$aboutBBG = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
+		}
+
+		$about = "<h4>About the BBG</h4>";
+		$about .= "<div class='bbg__tagline'>";
+			$about .= $aboutBBG;
+		$about .= "</div>";
 
 	    return $about;
 	}
@@ -67,12 +77,15 @@
 		global $post;
 
 		// set variables based on custom fields
-	    $number_of_languages = get_field('site_setting_total_languages','options','false');
+		$number_of_languages = get_field('site_setting_total_languages','options','false');
 
 		// $number_of_languages = 61;
 		return $number_of_languages . " languages";
 	}
 	add_shortcode('languages', 'languages_shortcode');
+
+
+
 
 	// Add shortcode reference for the number of total countries
 	function countries_shortcode() {
