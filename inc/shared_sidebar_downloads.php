@@ -1,6 +1,6 @@
-<?php 
+<?php
 // Sidebar multiple downloads drop-down
-$sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
+/*$sidebarInclude = get_field( 'sidebar_downloads_include', '', true);
 $sidebarDownloads = "";
 if( $sidebarInclude ) {
 	$downloadsTitle = get_field( 'sidebar_downloads_title' );
@@ -22,5 +22,5 @@ if( $sidebarInclude ) {
 		$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
 		$sidebarDownloads = $s;
 	}
-}
+}*/
 ?>
