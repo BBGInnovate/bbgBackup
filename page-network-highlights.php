@@ -37,7 +37,7 @@ get_header(); ?>
 				</header><!-- .page-header -->
 			</div>
 
-			<!-- this section holds the threats map and is populated later in the page by javascript -->
+			<!-- this section holds the map and is populated later in the page by javascript -->
 			<section class="usa-section">
 				<div id="map" class="bbg__map--banner"></div>
 			</section>
