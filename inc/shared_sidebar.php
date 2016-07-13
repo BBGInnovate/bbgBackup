@@ -264,7 +264,9 @@ if ( $listsInclude ) {
 		// Add all content types to the sidebar variable
 		$sidebar = $s;
 	}
-}
 
 echo $sidebar;
+
+}
+
 ?>
