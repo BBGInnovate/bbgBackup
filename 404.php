@@ -18,7 +18,7 @@ get_header(); ?>
 						<h1 class="page-title"><span style="color: #900;">404!</span> That page can’t be found.</h1>
 					</header><!-- .page-header -->
 
-					<h6 class="bbg__page-header__tagline">Here are some recent BBG highlights around the world.</h6>
+					<h6 class="bbg__page-header__tagline">But here are some recent BBG highlights from around the world.</h6>
 				</div>
 
 				<!-- this section holds the map and is populated later in the page by javascript -->
@@ -34,32 +34,11 @@ get_header(); ?>
 
 				<div class="page-content">
 
-					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-
-					<?php if ( bbginnovate_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'bbginnovate' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-					<?php endif; ?>
-
 					<?php
 						/* translators: %1$s: smiley */
 						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'bbginnovate' ), convert_smilies( ':)' ) ) . '</p>';
 						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 					?>
-
-					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
 
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
@@ -131,7 +110,7 @@ if ( $custom_query->have_posts() ) :
 			'type' => 'FeatureCollection',
 			'features' => $features
 		));
-		$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
+		$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT);
 
 		echo "<script type='text/javascript'>\n";
 		echo "geojson = $geojsonStr";
