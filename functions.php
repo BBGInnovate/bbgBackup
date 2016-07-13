@@ -1043,4 +1043,14 @@ function akamai_forwarding_callback( $headers ) {
 }
 add_filter( 'itsec_filter_remote_addr_headers', 'akamai_forwarding_callback', 10, 1 );
 
+/**
+ * Add private/draft/future/pending pages to parent dropdown. Used for Author Guide.  Found at http://wpsmith.net/2013/add-privatedraftfuturepending-pages-to-parent-dropdown-in-page-attributes-and-quick-edit/
+ */
+add_filter( 'page_attributes_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
+add_filter( 'quick_edit_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
+function wps_dropdown_pages_args_add_parents( $dropdown_args, $post = NULL ) {
+    $dropdown_args['post_status'] = array( 'publish', 'draft', 'pending', 'future', 'private', );
+    return $dropdown_args;
+}
+
 ?>
