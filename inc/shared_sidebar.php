@@ -174,6 +174,8 @@ if ( $listsInclude ) {
 					$sidebarDownloadsRows = get_sub_field( 'sidebar_downloads' );
 					$sidebarDownloadsTotal = count( $sidebarDownloadsRows );
 
+					$s .= "<h5 class='bbg_label'>" . $sidebarDownloadsTitle . "</h5>" ;
+
 					if ( $sidebarDownloadsTotal >= 4 ) {
 						$s .= '<form>';
 							$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $sidebarDownloadsTitle . '</label>';
@@ -215,6 +217,11 @@ if ( $listsInclude ) {
 									$file = get_attached_file( $fileID );
 									$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 									$size = formatBytes(filesize($file));
+
+									if ( $sidebarDownloadsLinkName == "" | !$sidebarDownloadsLinkName ) {
+										$name = $sidebarDownloadsLinkObj['title'];
+										$sidebarDownloadsLinkName = $name;
+									}
 
 								$s .= "<li><h5 class='bbg__sidebar__download__title'><a href='" . $fileLink . "'>" . $sidebarDownloadsLinkName . "</a> <span class='bbg__file-size'>(" . $ext . ", " . $size . ")</span>" . "</h5></li>";
 							}
