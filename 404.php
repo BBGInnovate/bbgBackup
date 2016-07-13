@@ -71,7 +71,7 @@ get_header(); ?>
 
 <?php
 
-$postsPerPage = 50;
+$postsPerPage = 10;
 
 $qParams=array(
 	'post_type' => array('post')
@@ -169,8 +169,6 @@ endif;
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
-//console.log(geojson[0].features[0].properties);
-//console.log('description: '+ geojson[0].features[0].properties['description'])
 
 var map = L.mapbox.map('map', 'mapbox.streets')
 //        .setView([-37.82, 175.215], 14);
