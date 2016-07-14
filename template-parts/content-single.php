@@ -167,6 +167,30 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 }
 
 
+/* Displaying award info -- not implemented yet*/
+$awardCategoryID = get_cat_id('Award');
+$isAward = has_category($awardCategoryID);
+
+$award = "";
+if ($isAward) {
+	$awardTitle = get_post_meta( get_the_ID(), 'standardpost_award_title', false );
+	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', false );
+	$awardYear = get_post_meta( get_the_ID(), 'standardpost_award_year', false );
+	$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+	//$awardOrganization = get_post_meta( get_the_ID(), 'standardpost_award_organization', false );
+	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', false );
+	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', false );
+	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', false );
+
+	//$award .= "<h3>Award: " . $awardTitle . "</h3>";
+	//$award .= "<h5>Network: " . $awardRecipient . "</h5>";
+	//$award .= "<h5>Network: " . $awardRecipient . "</h5>";
+
+}
+
+
+
+
 if ($isProject) {
 	//$categories=get_the_category();
 	$post_id = $post->ID; // current post ID
