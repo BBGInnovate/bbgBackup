@@ -5426,6 +5426,20 @@ article {
   .bbg__article-sidebar.large:first-child {
     margin-top: -1rem;
   }
+
+  /* Used for private author guide pages */
+  /* Flips the sidebar to the left */
+  .status-private .bbg__article-content.large {
+    border-right: none;
+    border-left: 1px dotted #CCC;
+    float: right;
+    margin-left: auto;
+    padding-right: 0;
+    padding-left: 2%;
+  }
+  .status-private .bbg__article-sidebar.large {
+    float: left;
+  }
 }
 .bbg__article-sidebar--left {
   border-bottom: 1px solid #CCC;
