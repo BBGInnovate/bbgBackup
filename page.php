@@ -22,6 +22,9 @@ get_header(); ?>
 					// IF the page is a law under the Legislation parent:
 					if ($parentID == 3243) {
 						get_template_part( 'template-parts/content-law', 'page' );
+					} elseif ($parentID == 29706) {
+						// IF the page is a mobile app project under the Apps parent:
+						get_template_part( 'template-parts/content-page-project', 'page' );
 					} else {
 						get_template_part( 'template-parts/content', 'page' );
 					}
