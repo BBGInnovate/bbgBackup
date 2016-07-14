@@ -111,8 +111,9 @@ table td {
 		display: table-row;
 	}
 
+	/*temporarily disabling because this breaks the forms on mobile apps */
 	legend {
-		display: table-caption;
+		/*display: table-caption;*/
 	}
 
 	div {
