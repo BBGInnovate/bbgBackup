@@ -282,7 +282,7 @@ get_header(); ?>
 						<!-- Related documents -->
 						<?php
 							if ( have_rows('board_meeting_related_documents') ):
-							 	echo '<h3 class="bbg__sidebar-label">Downloads</h3>';
+							 	echo '<h3 class="bbg__sidebar-label">Meeting documents</h3>';
 							 	echo '<ul class="bbg__profile__related-link__list">';
 							    while ( have_rows('board_meeting_related_documents') ) : the_row();
 							        echo '<li class="bbg__profile__related-link">';
