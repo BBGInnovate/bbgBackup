@@ -30,6 +30,7 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
+$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 ?>
@@ -90,6 +91,10 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 				echo "<!-- Sidebar content -->";
 					if ( $includeSidebar && $sidebarTitle != "" ) {
 						echo $sidebar;
+					}
+
+					if ( $listsInclude ) {
+						echo $sidebarDownloads;
 					}
 			echo "</div><!-- .bbg__article-sidebar -->";
 			?>

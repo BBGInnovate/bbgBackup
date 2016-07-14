@@ -262,10 +262,10 @@ if ( $listsInclude ) {
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
-		$sidebar = $s;
+		$sidebarDownloads = $s;
 	}
 
-echo $sidebar;
+// echo $sidebar;
 
 }
 

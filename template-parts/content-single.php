@@ -45,7 +45,7 @@ if ($dateline != "") {
 
 
 $relatedProfileID = get_post_meta( get_the_ID(), 'statement_related_profile', true );
-$includeRelatedProfile = false; 
+$includeRelatedProfile = false;
 if ($relatedProfileID) {
 	$includeRelatedProfile = true;
 	$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );
@@ -59,7 +59,7 @@ if ($relatedProfileID) {
 	$profileName = get_the_title($relatedProfileID);
 	$occupation = get_post_meta( $relatedProfileID, 'occupation', true );
 	$profileLink = get_page_link($relatedProfileID);
-	$profileExcerpt = my_excerpt($relatedProfileID); 
+	$profileExcerpt = my_excerpt($relatedProfileID);
 
 	$relatedProfile = '<div class="bbg__sidebar__primary">';
 	$relatedProfile .= '<a href="' . $profileLink . '"><img class="bbg__sidebar__primary-image" src="'.$profilePhoto.'"/></a>';
@@ -68,10 +68,12 @@ if ($relatedProfileID) {
 	$relatedProfile .= '<p class="">' . $profileExcerpt . '</p></div>';
 }
 
+$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
+
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 
-//Include sidebar map 
+//Include sidebar map
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
@@ -138,7 +140,7 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 	foreach ($entityCategories as $eCat) {
 		if ($entityLogo=="" && in_category($eCat)) {
 			$broadcastersPage=get_page_by_title('Our Broadcasters');
-			$args = array( 
+			$args = array(
 				'post_type'=> 'page',
 				'posts_per_page' => 1,
 				'post_parent' => $broadcastersPage->ID,
@@ -169,21 +171,21 @@ if ($isProject) {
 	//$categories=get_the_category();
 	$post_id = $post->ID; // current post ID
 	if (isset($_GET['category_id'])) {
-		$args = array( 
+		$args = array(
 			'category__and' => array($projectCategoryID,$_GET['category_id']),
 			'orderby'  => 'post_date',
 			'order'    => 'DESC',
 			'posts_per_page' => -1
 		);
 	} else {
-		$args = array( 
+		$args = array(
 			'category' => $projectCategoryID,
 			'orderby'  => 'post_date',
 			'order'    => 'DESC',
 			'posts_per_page' => -1
 		);
 	}
-	
+
 	$posts = get_posts( $args );
 	// get IDs of posts retrieved from get_posts
 	$ids = array();
@@ -197,7 +199,7 @@ if ($isProject) {
 		$previd = $ids[ $thisindex - 1 ];
 		$prevPost = get_post($previd);
 		$prevPostTitle = $prevPost->post_title;
-		
+
 		$prevPostPermalink=esc_url( get_permalink($previd) );
 		if (isset($_GET['category_id'])) {
 			$prevPostPermalink=add_query_arg('category_id', $_GET['category_id'], $prevPostPermalink);
@@ -252,7 +254,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 </style>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
-	
+
 
 	<?php
 		//If a featured video is set, include it.
@@ -311,7 +313,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 <!-- new -->
 
 		<div class="bbg__article-sidebar--left">
-			<?php 
+			<?php
 				if ($entityLogo!=""){
 					echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/></a>';
 				}
@@ -336,9 +338,9 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-			<?php 
+			<?php
 				echo $eventStr;
-				echo $pageContent; 
+				echo $pageContent;
 			?>
 
 
@@ -348,21 +350,21 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				renderContactCard($contactPostIDs);
 				/* END CONTACT CARDS */
-			?>			
+			?>
 		</div><!-- .entry-content -->
 
 
 
 		<div class="bbg__article-sidebar">
-			
-			<?php 
+
+			<?php
 				if ($includeRelatedProfile) {
 					echo $relatedProfile;
 				}
 			?>
 
 
-			<?php 
+			<?php
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
 					echo "<div id='map' class='bbg__locator-map'></div>";
@@ -371,9 +373,13 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				}
 			?>
 
-			<?php 
+			<?php
 				if ( $includeSidebar ) {
 					echo $sidebar;
+				}
+
+				if ( $listsInclude ) {
+					echo $sidebarDownloads;
 				}
 			?>
 

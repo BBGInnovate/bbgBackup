@@ -26,6 +26,8 @@ $headlineStr = "";
 
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
+include get_template_directory() . "/inc/shared_sidebar.php";
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -144,7 +146,7 @@ get_header(); ?>
 									}
 
 									if ( $listsInclude ) {
-										get_template_part( 'inc/shared_sidebar', get_post_format() );
+										echo $sidebarDownloads;
 									}
 								?>
 

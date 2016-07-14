@@ -64,9 +64,11 @@ if (in_category("Board Meetings")) {
 	$eventPageHeader = "Board Meeting";
 }
 
-
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
+
+// Add support for sidebar dropdown
+$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
