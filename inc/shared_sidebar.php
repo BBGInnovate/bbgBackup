@@ -11,20 +11,19 @@ if ( $includeSidebar ) {
 	$sidebar = "";
 	$s = "";
 
+	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
+	if ( $sidebarTitle != "" ) {
+		$s .= "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
+	}
+
+	$sidebarDescription = get_post_meta( get_the_ID(), 'sidebar_description', true );
+	if ( $sidebarDescription != "" ) {
+		$sidebarDescription = apply_filters('the_content', $sidebarDescription);
+		$sidebarDescription = str_replace(']]>', ']]&gt;', $sidebarDescription);
+		$s .= $sidebarDescription;
+	}
+
 	if ( have_rows('sidebar_items') ):
-
-		$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
-		if ( $sidebarTitle != "" ) {
-			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $sidebarTitle ."</h5>";
-		}
-
-		$sidebarContent = get_post_meta( get_the_ID(), 'sidebar_description', true );
-		if ( $sidebarContent != "" ) {
-			$sidebarContent = apply_filters('the_content', $sidebarContent);
-   			$sidebarContent = str_replace(']]>', ']]&gt;', $sidebarContent);
-			$s .= $sidebarContent;
-		}
-
 		while ( have_rows('sidebar_items') ) : the_row();
 			if ( get_row_layout() == 'sidebar_download_file' ) {
 			/* START DOWNLOAD FILES */
