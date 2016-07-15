@@ -147,8 +147,6 @@
 	}
 
 	.bbg__article-content__form-title {
-		font-size: 1.6rem;
-		/*
 		color: $color-gray-dark;
 		font-size: $h3-font-size;
 		line-height: $heading-line-height;
@@ -156,7 +154,6 @@
 			top: $site-margins-large;
 			bottom: 0;
 		}
-		*/
 	}
 
 	.bbg__article-content__image--extra-large {
@@ -228,6 +225,11 @@
 		}
 	}
 }
+
+.bbg__article-sidebar .bbg__article-content__form-title {
+	font-size: 1.6rem;
+}
+
 
 .bbg__2-column {
 	.bbg__entry__secondary-title {
