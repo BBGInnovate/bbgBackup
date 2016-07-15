@@ -112,14 +112,15 @@ table td {
 	}
 
 	/*temporarily disabling because this breaks the forms on mobile apps */
+	/*
 	legend {
-		/*display: table-caption;*/
+		display: table-caption;
 	}
-
+	*/
 	div {
 		display: table-cell;
 		padding: {
-			right: $site-margins-large;
+			right: $site-margins;
 		}
 	}
 }

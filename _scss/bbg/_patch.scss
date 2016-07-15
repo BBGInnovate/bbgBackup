@@ -30,17 +30,19 @@ li.usa-footer-primary-content {
 //Switching padding for margin to make 3 dropdowns fit in grid.
 .usa-input-grid {
 	@include media($medium-screen) {
-		margin-right: 5%;
+		margin-right: 0; //5%;
 		padding-right: 0;
 	}
 }
-
+/*
 .usa-input-grid:last-of-type {
 	@include media($medium-screen) {
 		margin-right: 0;
 	}
 }
+*/
 
+//Not sure we use this on the site now
 .usa-input-grid-small {
 	@include media($medium-screen) {
 		width: 30%;

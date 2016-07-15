@@ -3168,16 +3168,18 @@ table td {
 
 .bbg__article__form--inline {
   /*temporarily disabling because this breaks the forms on mobile apps */
+  /*
+  legend {
+  	display: table-caption;
+  }
+  */
 }
 .bbg__article__form--inline fieldset {
   display: table-row;
 }
-.bbg__article__form--inline legend {
-  /*display: table-caption;*/
-}
 .bbg__article__form--inline div {
   display: table-cell;
-  padding-right: 6rem;
+  padding-right: 3rem;
 }
 
 input[type="radio"] + label {
@@ -4811,17 +4813,18 @@ li.usa-footer-primary-content:last-child {
 
 @media screen and (min-width: 600px) {
   .usa-input-grid {
-    margin-right: 5%;
+    margin-right: 0;
     padding-right: 0;
   }
 }
 
-@media screen and (min-width: 600px) {
-  .usa-input-grid:last-of-type {
-    margin-right: 0;
-  }
+/*
+.usa-input-grid:last-of-type {
+	@include media($medium-screen) {
+		margin-right: 0;
+	}
 }
-
+*/
 @media screen and (min-width: 600px) {
   .usa-input-grid-small {
     width: 30%;
