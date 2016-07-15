@@ -15,7 +15,6 @@ if($post->post_parent) {
 	$parentTitle = $parent->post_title;
 }
 
-
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -24,16 +23,10 @@ get_header(); ?>
 			<div class="usa-grid-full">
 
 				<?php while ( have_posts() ) : the_post();
-					$parentID = wp_get_post_parent_id( $post_ID );
-
 					// IF the page is a law under the Legislation parent:
 					if ($parentTitle == "Legislation") {
-					//if ($parentID == 3243) {
 						get_template_part( 'template-parts/content-law', 'page' );
-					} /*elseif ($parentTitle == "Apps") {
-						// IF the page is a mobile app project under the Apps parent:
-						get_template_part( 'template-parts/content-page-project', 'page' );
-					} */ else {
+					} else {
 						get_template_part( 'template-parts/content', 'page' );
 					}
 				?>
