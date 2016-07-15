@@ -147,8 +147,9 @@ if ( $includeSidebar ) {
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
-		$sidebar .= $s;
+		
 	endif;
+	$sidebar = $s;
 }
 
 /**
