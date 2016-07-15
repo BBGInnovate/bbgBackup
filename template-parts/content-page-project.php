@@ -1,6 +1,7 @@
 <?php
 /**
  * Template part for displaying mobile app project in page.php.
+ * (Trying to merge this into main content-page.php)
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *

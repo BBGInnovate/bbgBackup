@@ -35,6 +35,31 @@ $hashtags="";
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
+
+// Include sidebar list of people who worked on the project
+$teamRoster = "";
+if( have_rows('project_team_members') ):
+
+	$s = "<div class='bbg__project-team'><h5 class='bbg__project-team__header'>Project team</h5>";
+	while ( have_rows('project_team_members') ) : the_row();
+
+		if ( get_row_layout() == 'team_member') {
+			$teamMemberName = get_sub_field( 'team_member_name' );
+			$teamMemberRole = get_sub_field( 'team_member_role' );
+			$teamMemberTwitterHandle = get_sub_field( 'team_member_twitter_handle' );
+
+			if ($teamMemberTwitterHandle && $teamMemberTwitterHandle != ""){
+				$teamMemberName = "<a href='https://twitter.com/" . $teamMemberTwitterHandle ."'>" . $teamMemberName . "</a>";
+			}
+
+			$s .= "<p><span class='bbg__project-team__name'>$teamMemberName,</span> <span class='bbg__project-team__role'>$teamMemberRole</span></p>";
+		}
+	endwhile;
+	$s .= "</div>";
+	$teamRoster .= $s;
+endif;
+
+
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 ?>
@@ -153,6 +178,8 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 				}
 
 				echo $sidebarDownloads;
+
+				echo $teamRoster;
 			?>
 		</div><!-- .bbg__article-sidebar -->
 
