@@ -165,6 +165,7 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 				}
 
 				echo $sidebarDownloads;
+				echo $teamRoster;
 			?>
 		</div><!-- .bbg__article-sidebar -->
 
