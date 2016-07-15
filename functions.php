@@ -77,37 +77,37 @@ function parse_csv ($csv_string, $delimiter = ",", $skip_empty_lines = true, $tr
 }
 function getCSV($url,$id,$expirationMinutes) {
 	$feedFilepath = get_template_directory() . "/external-feed-cache/" . $id . ".csv";
-	if ( $expirationMinutes<=0 || fileExpired($feedFilepath,$expirationMinutes)) { 
+	if ( $expirationMinutes<=0 || fileExpired($feedFilepath,$expirationMinutes)) {
 		$feedStr=fetchUrl($url);
 		file_put_contents($feedFilepath, $feedStr);
 	} else {
 		$feedStr=file_get_contents($feedFilepath);
 	}
 	$csv = parse_csv($feedStr);
-	
+
 	return $csv;
 }
-function formatBytes($bytes) { 
-	$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+function formatBytes($bytes) {
+	$units = array('B', 'KB', 'MB', 'GB', 'TB');
 
-	$bytes = max($bytes, 0); 
-	$pow = floor(($bytes ? log($bytes) : 0) / log(1000)); 
-	$pow = min($pow, count($units) - 1); 
+	$bytes = max($bytes, 0);
+	$pow = floor(($bytes ? log($bytes) : 0) / log(1000));
+	$pow = min($pow, count($units) - 1);
 
 	// Uncomment one of the following alternatives
 	$bytes /= pow(1000, $pow);
-	// $bytes /= (1 << (10 * $pow)); 
+	// $bytes /= (1 << (10 * $pow));
 
 	$precision = 2;
 	if ($pow < 2) {
 		$precision = 0;
 	}
 
-	return round($bytes, $precision) . ' ' . $units[$pow]; 
-} 
+	return round($bytes, $precision) . ' ' . $units[$pow];
+}
 
 class ArrayValue implements JsonSerializable {
-    //****** HELPER CLASS FOR SERIALIZING PHP TO JSON 
+    //****** HELPER CLASS FOR SERIALIZING PHP TO JSON
     public function __construct(array $array) {
         $this->array = $array;
     }
@@ -333,7 +333,7 @@ add_action( 'wp_footer', 'loggedInAlerts' );
 
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/extras.php'; 
+require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/bbg-custom-taxonomies.php';
@@ -758,7 +758,7 @@ function getEntityLinks($entityID) {
 add_action( 'init', 'my_add_excerpts_to_pages' );
 function my_add_excerpts_to_pages() {
     add_post_type_support( 'page', 'excerpt' );
-	
+
 	require "config_bbgWPtheme.php"; //originally we had this at the top of the file, but calling get_fields in functions.php before everything runs caused an issue with ACF where it would never return a post object, instead always an ID
 
 }
@@ -983,7 +983,7 @@ function getSoapboxStr($soap) {
 			$isCEOPost = TRUE;
 			$soapHeaderText = "From the CEO";
 			$soapHeaderPermalink = get_category_link($cat->term_id);
-			$mugshot = "/wp-content/media/2016/04/john_lansing_ceo-200x200.jpg";
+			$mugshot = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
 			$mugshotName = "John Lansing";
 		} else if ($cat->slug == "speech") {
 			$isSpeech = true;
