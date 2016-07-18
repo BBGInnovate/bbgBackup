@@ -192,25 +192,27 @@ if ($isAward) {
 	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', true );
 	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', true );
 
+	$award .='<div class="bbg__sidebar__primary">';
 	$awardLogoImage = "";
 	if ( $awardLogo ){
-		$awardLogoImage = wp_get_attachment_image_src( 25014 , 'small-thumb');
+		$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
 		$awardLogoImage = $awardLogoImage[0];
-		$awardLogoImage = '<img src="' . $awardLogoImage . '" />';
+		$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
 	}
 	$award .= $awardLogoImage;
 
-	$award .= "<h3>" . $awardTitle . " (" . $awardYear . ")" .	 "</h3>";
-	$award .='<h5 style="font-weight: normal;">'. $awardOrganization .'</h5>';
+	$award .= '<h2 class="bbg__sidebar__primary-headline">' . $awardTitle . " (" . $awardYear . ")" .	 "</h2>";
+	$award .='<p style="">'. $awardOrganization .'</p>';
 
 
 
 	if ( $awardLink && $awardLink != "" ){
-		$award .= '<h4><a href="' . $awardLink .'">' . $awardWinningWork . '</a> (' . $awardRecipient . ')</h4>';
+		$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a> (' . $awardRecipient . ')</h4>';
 	} else {
 		$award .= '<h4>' . $awardWinningWork . ' (' . $awardRecipient . ')</h4>';
 	}
 	$award .= '<p>' . $awardDescription . '</p>';
+	$award .= '</div>';
 }
 
 
