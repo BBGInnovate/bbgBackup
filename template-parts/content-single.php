@@ -172,20 +172,45 @@ $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
 
 $award = "";
+
+/*
+if ( in_category('Award') ) {
+}
+*/
+
 if ($isAward) {
-	$awardTitle = get_post_meta( get_the_ID(), 'standardpost_award_title', false );
-	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', false );
-	$awardYear = get_post_meta( get_the_ID(), 'standardpost_award_year', false );
+
+	$awardTitle = get_post_meta( get_the_ID(), 'standardpost_award_title', true );
+	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', true );
+	$awardYear = get_post_meta( get_the_ID(), 'standardpost_award_year', true );
 	$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
-	//$awardOrganization = get_post_meta( get_the_ID(), 'standardpost_award_organization', false );
-	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', false );
-	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', false );
-	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', false );
 
-	//$award .= "<h3>Award: " . $awardTitle . "</h3>";
-	//$award .= "<h5>Network: " . $awardRecipient . "</h5>";
-	//$award .= "<h5>Network: " . $awardRecipient . "</h5>";
+	$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
+	$awardOrganization = $awardOrganization -> name;
 
+	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
+	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', true );
+	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', true );
+
+	$awardLogoImage = "";
+	if ( $awardLogo ){
+		$awardLogoImage = wp_get_attachment_image_src( 25014 , 'small-thumb');
+		$awardLogoImage = $awardLogoImage[0];
+		$awardLogoImage = '<img src="' . $awardLogoImage . '" />';
+	}
+	$award .= $awardLogoImage;
+
+	$award .= "<h3>" . $awardTitle . " (" . $awardYear . ")" .	 "</h3>";
+	$award .='<h5 style="font-weight: normal;">'. $awardOrganization .'</h5>';
+
+
+
+	if ( $awardLink && $awardLink != "" ){
+		$award .= '<h4><a href="' . $awardLink .'">' . $awardWinningWork . '</a> (' . $awardRecipient . ')</h4>';
+	} else {
+		$award .= '<h4>' . $awardWinningWork . ' (' . $awardRecipient . ')</h4>';
+	}
+	$award .= '<p>' . $awardDescription . '</p>';
 }
 
 
@@ -408,6 +433,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			?>
 
 			<?php echo $teamRoster; ?>
+
+			<?php echo $award; ?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
