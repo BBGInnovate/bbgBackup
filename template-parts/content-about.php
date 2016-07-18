@@ -90,10 +90,10 @@ if ( $headline ) {
 	</header><!-- .entry-header -->
 
 	<!-- Child page excerpt -->
-	<?php if ($includeDescription) {
+	<?php /*if ($includeDescription) {
 		echo '<div class="entry-content bbg__about__excerpt-content">';
 			 echo $excerpt;
 		echo '</div><!-- .bbg__about__excerpt-title -->';
-	} ?>
+	}*/ ?>
 
 </article><!-- .bbg__about__excerpt -->
