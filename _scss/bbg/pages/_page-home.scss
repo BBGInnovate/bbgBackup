@@ -154,7 +154,7 @@
 	.bbg-social__list {
 		display: none;
 
-		@include media($medium-screen) {
+		@include media($large-screen) {
 			@include unstyled-list;
 			display: block;
 

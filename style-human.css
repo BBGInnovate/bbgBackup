@@ -6367,7 +6367,7 @@ article {
 .bbg-social__list {
   display: none;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1201px) {
   .bbg-social__list {
     display: block;
     list-style-type: none;
