@@ -174,12 +174,13 @@ get_header();
 			</section><!-- Responsive Banner -->
 
 
-			<div class="bbg-social__container">
-				<div class="bbg-social">
-					<ul class="bbg-social__list">
-						<li class="bbg-social__list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook"></a></li>
-						<li class="bbg-social__list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter"></a></li>
-						<li class="bbg-social__list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube"></a></li>
+			<div class="bbg__social__container">
+				<div class="bbg__social">
+					<h3 class="bbg__social-list__label">FOLLOW US</h3>
+					<ul class="bbg__social-list">
+						<li class="bbg__social-list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook" tabindex="-1"></a></li>
+						<li class="bbg__social-list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter" tabindex="-1"></a></li>
+						<li class="bbg__social-list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube" tabindex="-1"></a></li>
 					</ul>
 				</div>
 			</div>
