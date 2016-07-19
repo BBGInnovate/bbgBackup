@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<footer class="usa-footer usa-footer-medium usa-sans" role="contentinfo">
+	<footer class="usa-footer usa-footer-medium usa-sans" role="contentinfo" style="position: relative; z-index: 9990;">
 
 		<div class="usa-footer-secondary_section usa-footer-big-secondary-section">
 			<div class="usa-grid">
