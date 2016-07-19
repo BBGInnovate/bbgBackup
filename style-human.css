@@ -6336,60 +6336,69 @@ article {
   bottom: 0;
   left: 0;
 }
-.bbg-banner .bbg-social__container {
+
+.bbg-social__container {
+  /*
   max-width: 1200px;
   position: relative;
   width: 100%;
+  */
+  position: fixed;
+  top: 30%;
+  right: 0;
+  z-index: 0;
 }
-.bbg-banner .bbg-social {
+
+.bbg-social {
   max-width: 100%;
+  /*
   position: absolute;
-  right: 1.5rem;
-  top: 6rem;
-  padding: 0;
+  	right: 1.5rem;
+  	top: 6rem;
+  padding:0;
+  */
 }
 @media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-social {
+  .bbg-social {
     right: -50px;
   }
 }
-.bbg-banner .bbg-social__list {
+
+.bbg-social__list {
   display: none;
 }
 @media screen and (min-width: 600px) {
-  .bbg-banner .bbg-social__list {
+  .bbg-social__list {
     display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: block;
   }
-  .bbg-banner .bbg-social__list li {
+  .bbg-social__list li {
     display: list-item;
     margin: 0;
   }
-  .bbg-banner .bbg-social__list li:before {
+  .bbg-social__list li:before {
     display: none;
   }
-  .bbg-banner .bbg-social__list li:after {
+  .bbg-social__list li:after {
     display: none;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link {
+  .bbg-social__list .bbg-social__list__link {
     background-color: #FFF;
-    border-radius: 50%;
-    margin-bottom: 1rem;
+    border: 1px solid #CCC;
+    margin-bottom: 1px;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link :hover {
+  .bbg-social__list .bbg-social__list__link :hover {
     background-color: #FFF;
-    border-radius: 50%;
     box-shadow: 0px 0px 6px #000;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link :focus {
+  .bbg-social__list .bbg-social__list__link :focus {
     background-color: #fdff67;
-    border-radius: 50%;
     box-shadow: 0px 0px 6px #000;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a {
+  .bbg-social__list .bbg-social__list__link a {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 45px;
@@ -6397,20 +6406,20 @@ article {
     display: block;
     width: 40px;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-github {
+  .bbg-social__list .bbg-social__list__link a.bbg-icon-github {
     background-image: url(img/social-icons/png/github-mark.png);
     background-image: url(img/social-icons/svg/github-mark.svg);
     background-size: 30px;
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-youtube {
+  .bbg-social__list .bbg-social__list__link a.bbg-icon-youtube {
     background-image: url(img/social-icons/png/youtube15.png);
     background-image: url(img/social-icons/svg/youtube15.svg);
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter {
+  .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter {
     background-image: url(img/social-icons/png/twitter16.png);
     background-image: url(img/social-icons/svg/twitter16.svg);
   }
-  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-facebook {
+  .bbg-social__list .bbg-social__list__link a.bbg-icon-facebook {
     background-image: url(img/social-icons/png/facebook25.png);
     background-image: url(img/social-icons/svg/facebook25.svg);
   }

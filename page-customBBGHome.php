@@ -153,7 +153,7 @@ get_header();
 			?>
 
 			<!-- Responsive Banner -->
-			<section class="usa-section bbg-banner__section">
+			<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">
 				<div class="bbg-banner">
 					<div class="bbg-banner__gradient"></div>
 					<div class="usa-grid bbg-banner__container--home">
@@ -166,21 +166,23 @@ get_header();
 							</div>
 						</div>
 					</div>
-					<div class="bbg-social__container">
-						<div class="bbg-social">
-							<ul class="bbg-social__list">
-								<li class="bbg-social__list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook"></a></li>
-								<li class="bbg-social__list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter"></a></li>
-								<li class="bbg-social__list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube"></a></li>
-							</ul>
-						</div>
-					</div>
 				</div>
 
 				<div class="bbg-banner__cutline usa-grid">
 					<?php echo $bannerCutline; ?>	
 				</div>
 			</section><!-- Responsive Banner -->
+
+
+			<div class="bbg-social__container">
+				<div class="bbg-social">
+					<ul class="bbg-social__list">
+						<li class="bbg-social__list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook"></a></li>
+						<li class="bbg-social__list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter"></a></li>
+						<li class="bbg-social__list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube"></a></li>
+					</ul>
+				</div>
+			</div>
 
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
