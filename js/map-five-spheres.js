@@ -140,9 +140,12 @@ var entities={
 				maxZoomLevel: 4,
 				minZoomLevel:4,
 				zoomControlEnabled: false,
-				panControlEnabled: false
+				panControlEnabled: false,
+				homeButtonEnabled: false
 				//,buttonSize:0,
 			},
+			panEventsEnabled: false,
+			preventDragOut: true,
 			
 			zoomDuration:0,
 			backgroundZoomsToTop: false //water zooms out
