@@ -156,8 +156,9 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'large-thumb', 1040, 624, true );
 		add_image_size( 'medium-thumb', 600, 360, true );
-		add_image_size( 'small-thumb', 300, 180, true );
-		add_image_size( 'small-thumb-uncropped', 300, 300, false );
+		//add_image_size( 'small-thumb', 300, 180, true );
+		add_image_size( 'small-thumb', 330, 198, true ); //Fixing so that these fill the width of the sidebar
+		add_image_size( 'small-thumb-uncropped', 3330, 330, false );
 		//add_image_size( 'largest', 1200, 9999 ); // new size at our max breaking point
 		add_image_size( 'gigantic', 1900, 9999 ); // for some huge monitors
 		add_image_size( 'mugshot', 200, 200, true );

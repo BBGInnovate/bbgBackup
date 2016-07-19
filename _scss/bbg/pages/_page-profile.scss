@@ -129,6 +129,12 @@
 	&.rtl {
 		direction: rtl;
 	}
+
+	@include media($medium-large-screen) {
+		.bbg__rss__list-link {
+			margin-bottom: $site-margins-medium;
+		}
+	}
 }
 
 .bbg__article-sidebar__aside {

@@ -6873,6 +6873,11 @@ section.usa-section.bbg-banner__section {
 .bbg__rss__list.rtl {
   direction: rtl;
 }
+@media screen and (min-width: 900px) {
+  .bbg__rss__list .bbg__rss__list-link {
+    margin-bottom: 1.5rem;
+  }
+}
 
 .bbg__article-sidebar__aside {
   margin-bottom: 6rem;
