@@ -144,6 +144,7 @@ var entities={
 				homeButtonEnabled: false
 				//,buttonSize:0,
 			},
+			zoomOnDoubleClick: false,
 			panEventsEnabled: false,
 			preventDragOut: true,
 			
