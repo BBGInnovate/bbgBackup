@@ -166,6 +166,15 @@ get_header();
 							</div>
 						</div>
 					</div>
+					<div class="bbg-social__container">
+						<div class="bbg-social">
+							<ul class="bbg-social__list">
+								<li class="bbg-social__list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook"></a></li>
+								<li class="bbg-social__list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter"></a></li>
+								<li class="bbg-social__list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube"></a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 
 				<div class="bbg-banner__cutline usa-grid">

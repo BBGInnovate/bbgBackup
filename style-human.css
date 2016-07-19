@@ -6375,17 +6375,19 @@ article {
     display: none;
   }
   .bbg-banner .bbg-social__list .bbg-social__list__link {
-    background-color: #91C7DC;
+    background-color: #FFF;
     border-radius: 50%;
     margin-bottom: 1rem;
   }
   .bbg-banner .bbg-social__list .bbg-social__list__link :hover {
     background-color: #FFF;
     border-radius: 50%;
+    box-shadow: 0px 0px 6px #000;
   }
   .bbg-banner .bbg-social__list .bbg-social__list__link :focus {
-    background-color: #dce4ef;
+    background-color: #fdff67;
     border-radius: 50%;
+    box-shadow: 0px 0px 6px #000;
   }
   .bbg-banner .bbg-social__list .bbg-social__list__link a {
     background-position: center center;
@@ -6407,6 +6409,10 @@ article {
   .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-twitter {
     background-image: url(img/social-icons/png/twitter16.png);
     background-image: url(img/social-icons/svg/twitter16.svg);
+  }
+  .bbg-banner .bbg-social__list .bbg-social__list__link a.bbg-icon-facebook {
+    background-image: url(img/social-icons/png/facebook25.png);
+    background-image: url(img/social-icons/svg/facebook25.svg);
   }
 }
 
