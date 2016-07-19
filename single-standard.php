@@ -55,6 +55,7 @@ get_header(); ?>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 
+<!--
 <div id='promo'>
 	<div class='promoOffer'>
 		<div id='closeX'>X</div>
@@ -71,7 +72,9 @@ get_header(); ?>
 		<iframe class="tinyletterhider" name="tinyletterhider"></iframe>
 	</div>
 </div>
+-->
 <script type="text/javascript">
+	/*
 	var showOffer = true;
 	var documentHeight = jQuery(document).height();
 	var windowHeight = jQuery(window).height();
@@ -80,11 +83,9 @@ get_header(); ?>
 
 	jQuery(document).scroll(function() {
 		var y = jQuery(this).scrollTop();
-		/*
 		if (Cookies.get('promoOfferClosed') == 'true') {
 			showOffer=false;
 		}
-		*/
 		console.log("Doc height: " + documentHeight);
 		console.log("y: " + y);
 		console.log("deltaBottom: " + deltaBottom);
@@ -101,11 +102,9 @@ get_header(); ?>
 
 			//3 day expiration if they click the 'X' without subscribing
 			//but if the cookie is already set, that means they hit subscribe and then X, so stick with the original 365 and don't overwrite
-			/*
 			if (Cookies.get('promoOfferClosed') != 'true') {
 				Cookies.set('promoOfferClosed', 'true', { expires: 3 });
 			}
-			*/
 		})
 	});
 
@@ -120,11 +119,11 @@ get_header(); ?>
 			jQuery('.tinyletter-confirmation').slideDown();
 		});
 	})
+	*/
 </script>
 
-
 <style type="text/css">
-	/* ----------------- Newsletter promo styles -------------------*/
+/*
 #promo {
 	position: fixed; 
 	bottom: 0; 
@@ -201,4 +200,5 @@ get_header(); ?>
 		margin: 0 5px 0 0;
 	}
 }
+*/
 </style>
