@@ -365,7 +365,7 @@ get_header();
 
 
 			<!-- Threats to Journalism.  -->
-			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
+			<section id="threats-to-journalism" class="usa-section bbg__ribbon" style="position: relative;">
 				<div class="usa-grid">
 					<h6 class="bbg__label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
 				</div>
@@ -473,3 +473,25 @@ get_header();
 
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>
+
+
+<script type="text/javascript">
+function navSlide(){
+	var currentScroll = jQuery( "html" );
+	//console.log("Currently scrolled to: " + currentScroll.scrollTop());
+
+	var p = jQuery( "#threats-to-journalism" );
+	var offset = p.offset();
+	//console.log("#threats-to-journalism position: " + offset.top);
+
+	if (currentScroll.scrollTop() > offset.top){
+		//console.log("the Threats-to-press section should be at the top of the page");
+		jQuery(".bbg__social__container").hide();
+	} else {
+		//console.log("the Threats-to-press section is below the top of the page");
+		jQuery(".bbg__social__container").show();
+	}
+}
+
+jQuery(window).scroll(navSlide);
+</script>
