@@ -44,11 +44,20 @@ $entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
 
 $siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Explore the $abbreviation websites</h3><select name='entity_sites' id='entity_sites'>";
-$siteSelect .= "<option>Select a service</option>";
-foreach ($subgroups as $s) {
-	$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
+
+if ($count($subgroups) < 4) {
+	$siteSelect .= "<ul>";
+	foreach ($subgroups as $s) {
+		$siteSelect .= "<li class='bbg__article-sidebar__list--labeled'><a href='" . $s->website_url . "'>".$s->name."</a></li>";
+	}
+	$siteSelect .= "</ul>";
+} else {
+	$siteSelect .= "<option>Select a service</option>";
+	foreach ($subgroups as $s) {
+		$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
+	}
+	$siteSelect .= "</select><button class='usa-button' id='entityUrlGo'>Go</button>";
 }
-$siteSelect.="</select><button class='usa-button' id='entityUrlGo'>Go</button>";
 
 //Entity fast facts / by-the-numbers
 $budget = get_post_meta( $id, 'entity_budget', true );
