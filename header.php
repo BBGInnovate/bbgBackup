@@ -14,8 +14,10 @@ global $ogImage, $ogTitle, $ogDescription, $ogUrl;
 global $pageBodyID, $metaAuthor, $metaAuthorTwitter, $metaKeywords;
 global $templateName;
 
+$twitterCardType = "summary_large_image";
 if (! isset( $ogImage ) ) {
 	$ogImage=DEFAULT_IMAGE;
+	$twitterCardType = "summary";
 }
 
 if (! isset( $ogTitle ) ) {
@@ -87,7 +89,7 @@ $moveUSAbannerBecauseOfAlert = '';
 	<meta property="og:url" content="<?php echo $ogUrl; ?>" />
 
 	<!-- for Twitter -->
-	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:card" content="<?php echo $twitterCardType; ?>">
 	<meta name="twitter:site" content="@bbginnovate">
 	<?php echo $metaTwitter ?>
 	<meta property="twitter:title" content="<?php echo $ogTitle; ?>">
