@@ -84,7 +84,95 @@
 	}
 	add_shortcode('languages', 'languages_shortcode');
 
+	function appselector_shortcode($atts) {
+		$formType = "news";
+		if (isset($atts['type'])) {
+			$formType = $atts['type'];
+		}
+		$s = "";
+		if ($formType == 'news') {
+			$s .= '<p>Find the version of the app that''s best for you:<p>
+					<form class="bbg__article__form--inline">
+					<legend class="bbg__article-content__form-title"></legend>
+					<fieldset id="appSelect-os" class="usa-fieldset-inputs usa-sans"><label class="bbg__article__form-radio__label" for="appSelect-os">Select your OS:</label>
+					<div><input id="ios" name="os" type="radio" value="iOS" /><label for="ios">Apple iOS</label></div>
+					<div><input id="android" name="os" type="radio" value="Android" /><label for="android">Android</label></div></fieldset>
+					</form><form id="appSelect-smartphone-iOS" class="usa-form-large bbg__article__form style=">
+					<fieldset>
+					<div id="entities-iOS" class="usa-input-grid bbg__article__form-select--main"><label for="entity-iOS">Network</label><select name="entity">
+					<option disabled="disabled" selected="selected" value="">Select a Network</option>
+					</select></div>
+					<input class="usa-input-grid-large" name="btnGoIOS" type="button" value="Go to download site »" /></fieldset>
+					</form><form id="appSelect-smartphone-android" class="usa-form-large bbg__article__form style=">
+					<fieldset>
+					<div id="entities" class="usa-input-grid bbg__article__form-select--main"><label for="entity">Network</label><select id="entity" name="entity">
+					<option disabled="disabled" selected="selected" value="">Select a Network</option>
+					</select></div>
+					<div id="stores" class="usa-input-grid bbg__article__form-select--main"><label for="stores">Store</label><select id="store" name="store">
+					<option disabled="disabled" selected="selected" value="">Select a Store</option>
+					</select></div>
+					<div id="languages" class="usa-input-grid bbg__article__form-select--main"><label for="language">App language</label><select id="language" name="language">
+					<option disabled="disabled" selected="selected" value="">Select a language</option>
+					</select></div>
+					<input class="usa-input-grid-large" name="btnGo" type="button" value="Go to download site »" /></fieldset>
+					</form>
+				';
+		} else if ($formType == 'java') {
+			$s .= '
+				<form id="appSelect-java" class="usa-form-large bbg__article__form">
+				<legend class="bbg__article-content__form-title">Find the version of the app that''s best for you:</legend>
+				<fieldset>
+				<div id="entities" class="usa-input-grid bbg__article__form-select--main"><label for="entity" class="">Network</label><select id="entity" name="entity">
+				<option value="" disabled selected>Select a network</option>
+				</select></div>
+				<div id="stores" class="usa-input-grid bbg__article__form-select--main"><label for="stores" class="">Store</label><select id="store" name="store">
+				<option value="" disabled selected>Select a store</option>
+				</select></div>
+				<div id="languages" class="usa-input-grid bbg__article__form-select--main"><label for="language" class="">App language</label><select id="language" name="language">
+				<option value="" disabled selected>Select a language</option>
+				</select></div>
+				<input class="usa-input-grid-large" name="btnGo" type="button" value="Go to download site »" /></fieldset>
+				</form>';
+		} else if ($formType == 'sawa') {
+			$s .= '
+				<form id="appSelect-sawa" class="usa-form-large bbg__article__form">
+				<legend class="bbg__article-content__form-title">Find the version of the app that''s best for you:</legend>
+				<fieldset>
+				<div id="osList" class="usa-input-grid bbg__article__form-select--main"><label class="" for="os">OS</label><select id="os" name="os">
+				<option disabled="disabled" selected="selected" value="">Select an OS</option>
+				</select></div>
+				<div id="stores" class="usa-input-grid bbg__article__form-select--main"><label class="" for="stores">Store</label><select id="store" name="store">
+				<option disabled="disabled" selected="selected" value="">Select a store</option>
+				</select></div>
+				<div id="languages" class="usa-input-grid bbg__article__form-select--main"><label class="" for="language">App language</label><select id="language" name="language">
+				<option disabled="disabled" selected="selected" value="">Select a language</option>
+				</select></div>
+				<input class="usa-input-grid-large" name="btnGo" type="button" value="Go to download site »" /></fieldset>
+				</form>';
+		} else if ($formType == 'streamer') {
+			$s .= '
+				<form id="appSelect-streamer" class="usa-form-large bbg__article__form">
+				<legend class="bbg__article-content__form-title">Find the version of the app that''s best for you:</legend>
+				<fieldset>
+				<div id="osList" class="usa-input-grid bbg__article__form-select--main"><label for="os" class="usa-sr-only">OS</label>
+				<select id="os" name="os">
+				<option value="" disabled selected>Select an OS</option>
+				</select></div>
+				<div id="stores" class="usa-input-grid bbg__article__form-select--main"><label for="stores" class="usa-sr-only">Store</label>
+				<select id="store" name="store">
+				<option value="" disabled selected>Select a store</option>
+				</select></div>
+				<div id="languages" class="usa-input-grid bbg__article__form-select--main"><label for="language" class="usa-sr-only">App language</label>
+				<select id="language" name="language">
+				<option value="" disabled selected>Select a language</option>
+				</select></div>
+				<input name="btnGo" type="button" value="Download site" class="usa-input-grid-large" />
+				</fieldset>
+				</form>';
+		}
 
+	}
+	add_shortcode('appselector', 'appselector_shortcode');
 
 
 	// Add shortcode reference for the number of total countries
