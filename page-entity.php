@@ -47,7 +47,7 @@ $siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Explore the $abbrevi
 if (count($subgroups) < 4) {
 	$siteSelect .= "<ul class='bbg__rss__list'>";
 	foreach ($subgroups as $s) {
-		$siteSelect .= "<li class='bbg__rss__list-link'><a href='" . $s->website_url . "'>" . $s->name . "</a></li>";
+		$siteSelect .= "<li class='bbg__rss__list-link'><a target='_blank' href='" . $s->website_url . "'>" . $s->name . "</a></li>";
 	}
 	$siteSelect .= "</ul>";
 } else {
