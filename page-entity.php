@@ -553,7 +553,7 @@ get_header(); ?>
 												echo '<aside class="bbg__article-sidebar__aside">';
 												echo '<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
 												echo '<ul class="bbg__rss__list">';	
-												for ( $i = 0; $i <=min( $maxRelatedStories, count($threats) ); $i++) {
+												for ( $i = 0; $i <min( $maxRelatedStories, count($threats) ); $i++) {
 													$o = $threats[$i];
 													echo '<li class="bbg__rss__list-link">';
 													echo '<a href="' . $o['url'] . '">';
