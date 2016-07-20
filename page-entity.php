@@ -182,7 +182,7 @@ if ($address != "" || $phone != "" || $email != ""){
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
 $bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
-$videoUrl = "":
+$videoUrl = "";
 
 /**** BEGIN CREATING rssItems array *****/
 $entityJson = getFeed($rssFeed,$id);
