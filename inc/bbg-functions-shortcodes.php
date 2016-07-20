@@ -170,6 +170,7 @@
 				</fieldset>
 				</form>';
 		}
+		return $s;
 
 	}
 	add_shortcode('appselector', 'appselector_shortcode');
