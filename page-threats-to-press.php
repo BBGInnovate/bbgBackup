@@ -183,7 +183,6 @@ get_header();
 echo $threatsJSON;
 
 
-
  ?>
 
 	<div id="primary" class="content-area">
@@ -216,6 +215,97 @@ echo $threatsJSON;
 					?>
 				</div>
 			</section>
+
+
+			<?php
+				$featuredJournalists = "";
+
+				// check if the flexible content field has rows of data
+				if( have_rows('featured_journalists_section') ){
+
+				 	// loop through the rows of data
+				    while ( have_rows('featured_journalists_section') ) : the_row();
+
+						// display a sub field value
+						
+						//echo the_sub_field('featured_journalists_section_label');
+						$featuredJournalists .= '<section class="usa-section">';
+						$featuredJournalists .= '<div class="usa-grid-full">';
+						$featuredJournalists .= '<div class="usa-grid">';
+						$featuredJournalists .= '<header class="page-header">';
+						$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
+						$featuredJournalists .= '</header><!-- .page-header -->';
+						$featuredJournalists .= '</div>';
+
+						$featuredJournalists .= '<div class="usa-grid">';
+						$featuredJournalists .= '<div class="usa-width-one-third">';
+						$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>';
+						$featuredJournalists .= '</div>';
+						$featuredJournalists .= '<div class="usa-width-two-thirds">';
+						$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">Khadija Ismailova</a></h2>';
+						$featuredJournalists .= '<h4 class="bbg__profile__title">Investigative journalist & contributor, RFE/RL</h4>';
+						$featuredJournalists .= '<p class="bbg__profile__description">A Baku court sentenced investigative journalist and RFE/RL contributor Khadija Ismayilova to seven and a half years in prison on charges widely believed to be retribution for her reporting on corruption linked to Azeri President Ilham Aliyev and members of his family. Ismayilova was convicted on charges of criminal libel, tax evasion, illegal business activity, and abuse of power. She was barred from holding public office for three years and fined the equivalent of 300USD for court-related expenses. She was acquitted of the charge of incitement to suicide.</p>';
+						$featuredJournalists .= '</div>';
+						$featuredJournalists .= '</div>';
+					if ( have_rows('featured_journalist') ){
+						echo "<h1>dogs</h1>";
+
+					    while ( have_rows('featured_journalist') ) : the_row();
+							$relatedPages = get_sub_field( 'featured_journalist_profile' );
+
+							//var $cat = get_sub_field('featured_journalist_profile');
+							//var_dump(get_sub_field('featured_journalist_profile'));
+
+
+
+							foreach ( $relatedPages as $rPage ) {
+								/*
+								$rPageHeadline = $rPage->headline;
+								$rPageTagline = $rPage->page_tagline;
+								$rPageDescription = $rPage->about_include_exerpt;
+								$rPageExcerpt = my_excerpt( $rPage->ID );
+								$rPageExcerpt = apply_filters( 'the_content', $rPageExcerpt );
+								$rPageExcerpt = str_replace( ']]>', ']]&gt;', $rPageExcerpt );
+
+								$qParams = array(
+									'post_type' => 'page',
+									'post_status' => 'publish',
+									'post__in' => array( $rPage->ID )
+								);
+
+								query_posts( $qParams );
+
+								if ( have_posts() ) {
+									while ( have_posts() ) {
+										the_post();
+
+										$headline = $rPageHeadline; // custom field for secondary page headline
+										$tagline = $rPageTagline; // custom field for page tagline
+										$excerpt = $rPageExcerpt; // define the page excerpt as back-up to tagline
+										$includePageDescription = $rPageDescription;
+										get_template_part( 'template-parts/content-about', get_post_format() );
+
+									}
+								}
+								wp_reset_query();
+								*/
+							}
+
+
+
+							//echo "dogs";
+					    endwhile;
+					}
+
+				    endwhile;
+				$featuredJournalists .= '</div>';
+				$featuredJournalists .= '</section>';
+
+				} else {
+					echo "<h1>nope</h1>";
+				}
+
+			?>
 
 			<section class="usa-section">
 				<div class="usa-grid">
@@ -258,16 +348,17 @@ echo $threatsJSON;
 			</section>
 			<?php endif; ?>
 
+
 			<section class="usa-section">
 				<div class="usa-grid-full">
 					<div class="usa-grid">
 						<header class="page-header">
-							<h5 class="bbg__label">Missing journalists</h5>
+							<h5 class="bbg__label">Jailed journalists</h5>
 						</header><!-- .page-header -->
 					</div>
 					<div class="usa-grid">
 						<div class="usa-width-one-third">
-							<a href="/threats-to-press/khadija-ismailova/"><img src="https://placehold.it/500x500" class="bbg__profile-grid__profile__mugshot"/></a>
+							<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>
 						</div>
 						<div class="usa-width-two-thirds">
 							<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">Khadija Ismailova</a></h2>
@@ -280,6 +371,7 @@ Ismayilova was convicted on charges of criminal libel, tax evasion, illegal busi
 				</div>
 			</section>
 
+<?php echo $featuredJournalists; ?>
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
@@ -288,14 +380,6 @@ Ismayilova was convicted on charges of criminal libel, tax evasion, illegal busi
 					</div>
 
 					<div class="usa-grid">
-						<!--
-						<div class="bbg__profile-grid__profile usa-width-one-sixth">
-							<img src="https://bbgredesign.voanews.com/wp-content/media/2016/06/mugshot__Mukarram_Khan_Aatif__VOA__01-17-12.jpg" class="bbg__profile-grid__profile__mugshot"/>
-							<h4 class="bbg__profile-grid__profile__name">Mukarram Khan Aatif</h4>
-							<h5 class="bbg__profile-grid__profile__dates">Killed Jan. 17, 2012</h5>
-							<p class="bbg__profile-grid__profile__description"></p>
-						</div>
-						-->
 						<div id="memorialWall">
 							<?php echo $wall; ?>
 						</div>
