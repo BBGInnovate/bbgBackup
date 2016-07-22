@@ -1,6 +1,18 @@
 // Sidebar
 .bbg__sidebar__table {
+	font-size: 90%;
+	margin: {
+		top: 0;
+		bottom: $site-margins-large;
+	}
+
+	td,
+	th {
+		padding-left: 0;
+	}
+
 	td:nth-of-type(3) {
-	   text-align: right;
+	 	padding-left: .25rem;
+		// text-align: right;
 	}
 }

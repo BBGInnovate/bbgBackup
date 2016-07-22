@@ -3067,8 +3067,17 @@ a:focus .bbg__article-share__icon {
   }
 }
 
+.bbg__sidebar__table {
+  font-size: 90%;
+  margin-top: 0;
+  margin-bottom: 6rem;
+}
+.bbg__sidebar__table td,
+.bbg__sidebar__table th {
+  padding-left: 0;
+}
 .bbg__sidebar__table td:nth-of-type(3) {
-  text-align: right;
+  padding-left: .25rem;
 }
 
 /** ---------------
