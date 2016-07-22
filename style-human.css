@@ -3067,6 +3067,10 @@ a:focus .bbg__article-share__icon {
   }
 }
 
+.bbg__sidebar__table td:nth-of-type(3) {
+  text-align: right;
+}
+
 /** ---------------
  * TABLES
  ------------------ */
