@@ -200,18 +200,21 @@ if ($isAward) {
 		$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
 	}
 	$award .= $awardLogoImage;
-
-	$award .= '<h2 class="bbg__sidebar__primary-headline">' . $awardTitle . " (" . $awardYear . ")" .	 "</h2>";
-	$award .='<p style="">'. $awardOrganization .'</p>';
-
-
-
 	if ( $awardLink && $awardLink != "" ){
 		$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a> (' . $awardRecipient . ')</h4>';
 	} else {
-		$award .= '<h4>' . $awardWinningWork . ' (' . $awardRecipient . ')</h4>';
+		$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . ' (' . $awardRecipient . ')</h4>';
 	}
-	$award .= '<p>' . $awardDescription . '</p>';
+	/*
+	$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardTitle . " (" . $awardYear . ")" .	 "</h4>";
+	$award .='<p style=""><strong>Presented by: </strong>'. $awardOrganization .'</p>';
+	*/
+	$award .= '<p><strong>Award: </strong>' . $awardTitle . " (" . $awardYear . ")" .	 "<br/>";
+	$award .='<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
+
+
+
+	//$award .= '<p>' . $awardDescription . '</p>';
 	$award .= '</div>';
 }
 
@@ -392,6 +395,13 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			<?php
 				echo $eventStr;
 				echo $pageContent;
+
+				if ($awardDescription && $awardDescription!= ""){
+					echo '<h3>About the award</h3>';
+					echo '<div class="bbg__tagline">';
+					echo $awardDescription;
+					echo '</div>';
+				}
 			?>
 
 

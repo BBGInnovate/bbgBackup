@@ -7,7 +7,7 @@
  * @package bbginnovate
   template name: Threats to Press
  */
-
+ 
 
 /****** BEGIN HELPER FUNCTION SORT BY DATE ****/
 function threatDateCompare($a, $b) {
@@ -198,8 +198,9 @@ echo $threatsJSON;
 				</header><!-- .page-header -->
 			</div>
 
-			<section class="usa-section">
+			<section class="usa-section" style="position: relative;">
 					<div id="map-threats" class="bbg__map--banner"></div>
+					<img id="resetZoom" src="/wp-content/themes/bbgRedesign/img/home.png" class="bbg__map__button"/>
 					<div class="usa-grid">
 						<p class="bbg__article-header__caption">This map tracks the courageous journalists reporting for Voice of America, Radio Free Europe/Radio Liberty, Radio and TV Marti, Middle East Broadcasting Networks (Alhurra and Radio Sawa), and Radio Free Asia, and the threats that they face on a regular basis. </p>
 					</div>
@@ -256,6 +257,29 @@ echo $threatsJSON;
 				</div><!-- .usa-grid -->
 			</section>
 			<?php endif; ?>
+
+			<section class="usa-section">
+				<div class="usa-grid-full">
+					<div class="usa-grid">
+						<header class="page-header">
+							<h5 class="bbg__label">Missing journalists</h5>
+						</header><!-- .page-header -->
+					</div>
+					<div class="usa-grid">
+						<div class="usa-width-one-third">
+							<a href="/threats-to-press/khadija-ismailova/"><img src="https://placehold.it/500x500" class="bbg__profile-grid__profile__mugshot"/></a>
+						</div>
+						<div class="usa-width-two-thirds">
+							<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">Khadija Ismailova</a></h2>
+							<h4 class="bbg__profile__title">Investigative journalist & contributor, RFE/RL</h4>
+							<p class="bbg__profile__description">A Baku court sentenced investigative journalist and RFE/RL contributor Khadija Ismayilova to seven and a half years in prison on charges widely believed to be retribution for her reporting on corruption linked to Azeri President Ilham Aliyev and members of his family.
+Ismayilova was convicted on charges of criminal libel, tax evasion, illegal business activity, and abuse of power. She was barred from holding public office for three years and fined the equivalent of 300USD for court-related expenses. She was acquitted of the charge of incitement to suicide.</p>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
@@ -360,6 +384,7 @@ echo $threatsJSON;
 				map.scrollWheelZoom.disable();
 
 				function centerMap(){
+					//console.log('centeringMap');
 					map.fitBounds(markers.getBounds());
 				}
 				centerMap();
@@ -371,6 +396,10 @@ echo $threatsJSON;
 						centerMap();
 				  }, 500, "some unique string");
 				}
+
+				jQuery( "#resetZoom" ).click(function() {
+					centerMap();
+				});
 
 				//Wait for the window resize to 'end' before executing a function---------------
 				var waitForFinalEvent = (function () {
@@ -391,6 +420,18 @@ echo $threatsJSON;
 				});
 
 				resizeStuffOnResize();
+
+				/*
+				//Test if zoomed in
+				//Could be used for hiding or graying the home/reset button
+				function zoomLevel(){
+					console.log('check zoom: ' + map.getZoom());
+					return map.getZoom();
+				}
+
+				map.on('click', zoomLevel);
+				markers.on('click', zoomLevel);
+				*/
 			</script>
 		</main><!-- #main -->
 	</div><!-- #primary -->

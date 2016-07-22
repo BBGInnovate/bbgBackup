@@ -3425,6 +3425,21 @@ object {
   margin-bottom: 0;
 }
 
+.bbg__map__button {
+  background-color: #FFF;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px;
+  position: absolute;
+  top: 8rem;
+  left: 1rem;
+  z-index: 9999;
+}
+.bbg__map__button:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
 /*****************************/
 @media screen and (min-width: 900px) {
   .bbg-header__container__box {
