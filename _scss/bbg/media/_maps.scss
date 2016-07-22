@@ -29,4 +29,9 @@
 		top: 8rem;
 		left: 1rem;
 	z-index: 9999;
+
+	&:hover {
+		cursor: pointer;
+		cursor: hand;
+	};
 }

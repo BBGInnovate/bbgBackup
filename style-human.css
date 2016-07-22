@@ -3431,6 +3431,10 @@ object {
   left: 1rem;
   z-index: 9999;
 }
+.bbg__map__button:hover {
+  cursor: pointer;
+  cursor: hand;
+}
 
 /*****************************/
 @media screen and (min-width: 900px) {
