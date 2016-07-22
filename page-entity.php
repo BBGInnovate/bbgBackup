@@ -286,6 +286,7 @@ if ($custom_query -> have_posts()) {
 		$id=get_the_ID();
 
 		$awardYears  = get_post_meta( $id, 'standardpost_award_year' );
+		$awardTitle = get_post_meta( $id, 'standardpost_award_title' );
 		$orgTerms = get_field('standardpost_award_organization', $id );
 	    $organizations=array();
 	        $organizations[] = $orgTerms->name;
@@ -298,6 +299,7 @@ if ($custom_query -> have_posts()) {
 			'title'=> get_the_title($id),
 			'excerpt'=> get_the_excerpt(),
 			'awardYears'=> $awardYears,
+			'awardTitle'=> $awardTitle,
 			'organizations'=> $organizations,
 			'recipients'=> $recipients
 		);
@@ -319,7 +321,7 @@ if (count($awards)) {
 		$s.= '<div class="bbg__post-excerpt bbg__award__excerpt">';
 		$s.= '<h3 class="bbg__award-excerpt__title"><a href="'.$url.'">'.$title.'</a></h3>';
 		$s.= '<p class="bbg__award-excerpt__source">';
-		$s.= '<span class="bbg__award-excerpt__org">' . join($organizations) . '</span>, ';
+		$s.= '<span class="bbg__award-excerpt__org">' . $awardTitle . ', ' . join($organizations) . '</span>, ';
 		$s.= join($awardYears);
 		$s.= '</p>';
 		$s.= '<p>'.$a['excerpt'].'</p>';
