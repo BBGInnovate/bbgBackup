@@ -13,13 +13,13 @@ if ( have_posts() ) {
 	the_post();
 
 	$metaAuthor = get_the_author();
-	$metaAuthorTwitter = get_the_author_meta( 'twitterHandle' );
-	$ogTitle = get_the_title();
-
 	$metaKeywords = strip_tags(get_the_tag_list('',', ',''));
 
+	$ogTitle = get_the_title();
+	$ogDescription = get_the_excerpt();
 	$id = get_the_ID();
 
+	/**** CREATE OG:IMAGE *****/
 	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'Full' );
 	$ogImage = $thumb['0'];
 
@@ -28,23 +28,27 @@ if ( have_posts() ) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
-
+	
+	/**** CREATE $bannerAdjustStr *****/
 	$bannerPosition = get_post_meta( $id, 'adjust_the_banner_image', true);
 	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
 	$bannerAdjustStr = "";
-		if ($bannerPositionCSS) {
-			$bannerAdjustStr = $bannerPositionCSS;
-		} else if ($bannerPosition) {
-			$bannerAdjustStr = $bannerPosition;
-		}
+	if ($bannerPositionCSS) {
+		$bannerAdjustStr = $bannerPositionCSS;
+	} else if ($bannerPosition) {
+		$bannerAdjustStr = $bannerPosition;
+	}
+	// Grab a featured video, which will replace featured image, if we have it.
 	$videoUrl = get_field( 'featured_video_url', '', true );
 
+	/**** CREATE $bannerAdjustStr - allows adjustments to background div with image *****/
 	$occupation = get_post_meta( $id, 'occupation', true );
 	$email = get_post_meta( $id, 'email', true );
 	$phone = get_post_meta( $id, 'phone', true );
 	$twitterProfileHandle = get_post_meta( $id, 'twitter_handle', true );
 	$relatedLinksTag = get_post_meta( $id, 'related_links_tag', true );
 
+	/**** CREATE $formerCSS - applies black and white to retired board members ***/
 	$active = get_post_meta( $id, 'active', true );
 	$formerCSS = "";
 	if ( !$active ){
@@ -52,10 +56,9 @@ if ( have_posts() ) {
 		$formerCSS = " bbg__former-member";
 	}
 
-
+	/*** Get the profile photo mugshot ***/
 	$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
 	$profilePhoto = "";
-
 	if ($profilePhotoID) {
 		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 		$profilePhoto = $profilePhoto[0];
@@ -76,9 +79,6 @@ if ( have_posts() ) {
 	}
 
 	$resolution = get_field('board_resolution_of_honor');
-
-	$ogDescription = get_the_excerpt();
-
 	rewind_posts();
 }
 
@@ -100,22 +100,8 @@ get_header(); ?>
 
 			//the title/headline field, followed by the URL and the author's twitter handle
 			$twitterText = "";
-			$twitterText .= html_entity_decode( get_the_title() );
-			$twitterHandle = get_the_author_meta( 'twitterHandle' );
-			$twitterHandle = str_replace( "@", "", $twitterHandle );
-			if ( $twitterHandle && $twitterHandle != '' ) {
-				$twitterText .= " by @" . $twitterHandle;
-			} else {
-				$authorDisplayName = get_the_author();
-				if ( $authorDisplayName && $authorDisplayName!='' ) {
-					$twitterText .= " by " . $authorDisplayName;
-				}
-			}
+			$twitterText .= "Profile of " . html_entity_decode( get_the_title() );
 			$twitterText .= " " . get_permalink();
-			$hashtags = "";
-			//$hashtags="testhashtag1,testhashtag2";
-
-			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
