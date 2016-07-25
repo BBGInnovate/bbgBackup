@@ -191,9 +191,12 @@
 
 .bbg__profile-excerpt {
 	@include clearfix();
+	@extend .usa-width-one-half;
+
 	margin-bottom: $site-margins;
 }
 
+/* not sure we're using this anymore */
 .bbg__profile-excerpt__photo-container {
 	float: left;
 	margin: {
@@ -203,6 +206,17 @@
 	max-width: 150px;
 	width: 30%;
 }
+
+.bbg__profile-excerpt__photo {
+	float: left;
+	margin: {
+		top: $site-margins-small;
+		right: $site-margins-small;
+	}
+	max-width: 150px;
+	width: 30%;
+}
+
 
 .bbg__former-member {
 	-webkit-filter: grayscale(1);
@@ -215,7 +229,6 @@
 
 .bbg__profile-excerpt__name {
 	margin: {
-		// top: $site-margins-small;
 		bottom: $site-margins-small / 2;
 	}
 }

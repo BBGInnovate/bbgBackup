@@ -256,13 +256,15 @@ echo $threatsJSON;
 							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
 							$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
 
+							$profileOccupation .= '<span class=".bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
+
 							if ($profilePhoto) {
 								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
 								$profilePhoto = $profilePhoto[0];
 								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
 							}
 
-							$featuredJournalists .= '<div class="usa-width-one-half bbg__profile-featured__profile">';
+							$featuredJournalists .= '<div class="bbg__profile-excerpt">';
 
 							//$featuredJournalists .= '<div class="usa-grid">';
 							/*
@@ -272,8 +274,7 @@ echo $threatsJSON;
 							*/
 							//$featuredJournalists .= '<div class="usa-width-two-thirds">';
 							$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
-							$featuredJournalists .= '<h5 class="bbg__profile__title">' . $profileOccupation .'</h5>';
-							$featuredJournalists .= '<p class="bbg__profile__description">' . $profilePhoto . $profileExcerpt . '</p>';
+							$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
 							//$featuredJournalists .= '</div>';
 							//$featuredJournalists .= '</div>';
 

@@ -69,9 +69,9 @@
 					//Only show a profile photo if it's set.
 					if ($profilePhoto!=""){
 						$b.=  '<a href="' . get_the_permalink() . '">';
-							$b.=  '<div class="bbg__profile-excerpt__photo-container">';
+							//$b.=  '<div class="bbg__profile-excerpt__photo-container">';
 								$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo' . $formerCSS . '" alt="Photo of BBG Governor '. get_the_title() .'"/>';
-							$b.=  '</div>';
+							//$b.=  '</div>';
 						$b.=  '</a>';
 					}
 

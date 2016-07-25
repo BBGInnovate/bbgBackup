@@ -59,17 +59,6 @@ get_header(); ?>
 
 						<div class="usa-grid">
 							<header class="entry-header">
-								<!--
-								<?php if($post->post_parent) {
-									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-									$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-									$parent_link = get_permalink($post->post_parent);
-								?>
-								<h5 class="entry-category bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-	
-								<?php } ?>
-								-->
-
 								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 							</header><!-- .entry-header -->
 						</div>

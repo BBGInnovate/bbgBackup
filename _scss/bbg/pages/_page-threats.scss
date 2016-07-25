@@ -84,14 +84,8 @@
 	vertical-align: top;
 }
 
-.bbg__profile-featured__profile {
-	@extend .usa-width-one-half;
-
-	.bbg__profile-featured__profile__mugshot {
-		float: left;
-		margin-right: 1.5rem;
-		max-width: 33%;
-	}
+.bbg__profile-featured__profile__mugshot {
+	float: left;
+	margin-right: 1.5rem;
+	max-width: 33%;
 }
-
-
