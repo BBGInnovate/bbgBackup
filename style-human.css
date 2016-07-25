@@ -6988,14 +6988,17 @@ section.usa-section.bbg-banner__section {
 }
 
 /* not sure we're using this anymore */
+/*
 .bbg__profile-excerpt__photo-container {
-  float: left;
-  margin-top: 1rem;
-  margin-right: 1rem;
-  max-width: 150px;
-  width: 30%;
+	float: left;
+	margin: {
+		top: $site-margins-small;
+		right: $site-margins-small;
+	}
+	max-width: 150px;
+	width: 30%;
 }
-
+*/
 .bbg__profile-excerpt__photo {
   float: left;
   margin-top: 1rem;
