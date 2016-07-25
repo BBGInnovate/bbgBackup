@@ -218,9 +218,8 @@ echo $threatsJSON;
 
 
 			<?php
-				/*
 				$featuredJournalists = "";
-
+$profilePhoto = "";
 				// check if the flexible content field has rows of data
 				if( have_rows('featured_journalists_section') ){
 
@@ -239,8 +238,6 @@ echo $threatsJSON;
 						$featuredJournalists .= '</div>';
 
 					if ( have_rows('featured_journalist') ){
-						echo "<h1>dogs</h1>";
-
 					    while ( have_rows('featured_journalist') ) : the_row();
 							$relatedPages = get_sub_field( 'featured_journalist_profile' );
 							//post_title
@@ -251,16 +248,33 @@ echo $threatsJSON;
 							//echo $relatedPages ->ID;
 							//echo $relatedPages ->post_excerpt;
 							//echo $relatedPages ->first_name;
-							//echo $relatedPages ->profile_photo;
-							$profileTitle = $relatedPages ->post_title;
+							//echo $relatedPages ->profile_photo;//23796
 
+							$profileTitle = $relatedPages ->post_title;
+							$profileName = $relatedPages ->first_name . " " . $relatedPages ->last_name;
+							$profileOccupation = $relatedPages ->occupation;
+							$profilePhoto = $relatedPages ->profile_photo;
+
+
+							if ($profilePhoto) {
+								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
+								$profilePhoto = $profilePhoto[0];
+								$profilePhoto = '<a href="/threats-to-press/khadija-ismailova/"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
+							} else {
+								//$profilePhoto = "monkeys";
+							}
+
+							//echo $profilePhoto;
 							$featuredJournalists .= '<div class="usa-grid">';
 							$featuredJournalists .= '<div class="usa-width-one-third">';
-							$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>';
+							//$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>';
+							//$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
+							$featuredJournalists .= $profilePhoto;
 							$featuredJournalists .= '</div>';
 							$featuredJournalists .= '<div class="usa-width-two-thirds">';
-							$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileTitle .'</a></h2>';
-							$featuredJournalists .= '<h4 class="bbg__profile__title">Investigative journalist & contributor, RFE/RL</h4>';
+							//$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileTitle .'</a></h2>';
+							$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileName .'</a></h2>';
+							$featuredJournalists .= '<h4 class="bbg__profile__title">' . $profileOccupation .'</h4>';
 							$featuredJournalists .= '<p class="bbg__profile__description">A Baku court sentenced investigative journalist and RFE/RL contributor Khadija Ismayilova to seven and a half years in prison on charges widely believed to be retribution for her reporting on corruption linked to Azeri President Ilham Aliyev and members of his family. Ismayilova was convicted on charges of criminal libel, tax evasion, illegal business activity, and abuse of power. She was barred from holding public office for three years and fined the equivalent of 300USD for court-related expenses. She was acquitted of the charge of incitement to suicide.</p>';
 							$featuredJournalists .= '</div>';
 							$featuredJournalists .= '</div>';
@@ -276,7 +290,6 @@ echo $threatsJSON;
 				} else {
 					//echo "<h1>nope</h1>";
 				}
-				*/
 
 			?>
 
@@ -349,7 +362,7 @@ Ismayilova was convicted on charges of criminal libel, tax evasion, illegal busi
 			*/
 			?>
 
-<?php /*echo $featuredJournalists;*/ ?>
+<?php echo $featuredJournalists; ?>
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
