@@ -93,8 +93,8 @@ if (!is_paged()) {
 	$upcomingEvents .= '</header>';
 	while ( $future_events_query->have_posts() ) {
 		$future_events_query->the_post(); 
-		//we're not using get_template_part because of how future permalinks work
-		$upcomingEvents .= '<article id="post-' .get_the_ID() . '" >';
+		//we're not using get_template_part because of how future permalinks work 
+		$upcomingEvents .= '<article id="post-' .get_the_ID() . '" class="' . implode(" ", get_post_class()) . '">';
 		global $post;
 		$my_post = clone $post;
 		$my_post->post_status = 'published';
