@@ -251,8 +251,6 @@ echo $threatsJSON;
 							$profileTitle = $relatedPages ->post_title;
 							$profileName = $relatedPages ->first_name . " " . $relatedPages ->last_name;
 							$profileOccupation = $relatedPages ->occupation;
-
-							echo "<h1>" . $profileOccupation . "</h1>";
 							$profilePhoto = $relatedPages ->profile_photo;
 							$profileUrl = get_permalink($relatedPages->ID);
 							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
