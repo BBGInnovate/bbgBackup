@@ -227,18 +227,20 @@ echo $threatsJSON;
 				 	// loop through the rows of data
 				    while ( have_rows('featured_journalists_section') ) : the_row();
 
-						// display a sub field value
-						
+					// display a sub field value
+					$featuredJournalistsSectionLabel = get_sub_field('featured_journalists_section_label');
+
+					if ( have_rows('featured_journalist') ){
 						//echo the_sub_field('featured_journalists_section_label');
 						$featuredJournalists .= '<section class="usa-section">';
 						$featuredJournalists .= '<div class="usa-grid-full">';
 						$featuredJournalists .= '<div class="usa-grid">';
 						$featuredJournalists .= '<header class="page-header">';
-						$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
+						//$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
+						$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
 						$featuredJournalists .= '</header><!-- .page-header -->';
 						$featuredJournalists .= '</div>';
 
-					if ( have_rows('featured_journalist') ){
 					    while ( have_rows('featured_journalist') ) : the_row();
 							$relatedPages = get_sub_field( 'featured_journalist_profile' );
 							//post_title
@@ -287,11 +289,11 @@ echo $threatsJSON;
 
 
 					    endwhile;
+						$featuredJournalists .= '</div>';
+						$featuredJournalists .= '</section>';
 					}
 
 				    endwhile;
-				$featuredJournalists .= '</div>';
-				$featuredJournalists .= '</section>';
 
 				} else {
 					//echo "<h1>nope</h1>";
