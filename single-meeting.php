@@ -12,34 +12,39 @@ if ( have_posts() ) {
 
 	$metaAuthor = get_the_author();
 	$metaAuthorTwitter = get_the_author_meta( 'twitterHandle' );
-	$ogTitle = get_the_title();
-
 	$metaKeywords = strip_tags(get_the_tag_list('',', ',''));
+	$ogTitle = get_the_title();
+	$ogDescription = get_the_excerpt();
 
+	/**** CREATE OG:IMAGE *****/
 	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'Full' );
 	$ogImage = $thumb['0'];
-
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
 
+	/**** CREATE $bannerAdjustStr *****/
 	$bannerPosition = get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
+	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
+	$bannerAdjustStr = "";
+	if ($bannerPositionCSS) {
+		$bannerAdjustStr = $bannerPositionCSS;
+	} else if ($bannerPosition) {
+		$bannerAdjustStr = $bannerPosition;
+	}
 
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
-	//$meetingDate=get_post_meta( get_the_ID(), 'board_meeting_date', true );
 	$meetingLocation = get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary = get_post_meta( get_the_ID(), 'board_meeting_summary', true );
-
 	if ( $meetingTime != "") {
 		$meetingTime = $meetingTime . ", ";
 	}
-
 	$meetingSpeakers = get_post_meta( get_the_ID(), 'board_meeting_speakers', true );
 
+	/*** CREATE EVENTBRITE IFRAME ****/
 	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
-
 	$eventbriteIframeHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height', true );
 	if (!$eventbriteIframeHeight || $eventbriteIframeHeight=="") {
 		$eventbriteIframeHeight=270;
@@ -55,7 +60,6 @@ if ( have_posts() ) {
 		$eventStr .= "<button class='usa-button'><a style='color:white;text-decoration:none;' href='https://www.eventbrite.com/e/feaux-halloween-board-meeting-tickets-26165052376?ref=elink'>Register for this Event</button></a><BR>";
 	}
 
-	$ogDescription = get_the_excerpt();
 
 	rewind_posts();
 }
@@ -91,21 +95,7 @@ get_header(); ?>
 			//the title/headline field, followed by the URL and the author's twitter handle
 			$twitterText = "";
 			$twitterText .= html_entity_decode( get_the_title() );
-			$twitterHandle = get_the_author_meta( 'twitterHandle' );
-			$twitterHandle = str_replace( "@", "", $twitterHandle );
-			if ( $twitterHandle && $twitterHandle != '' ) {
-				$twitterText .= " by @" . $twitterHandle;
-			} else {
-				$authorDisplayName = get_the_author();
-				if ( $authorDisplayName && $authorDisplayName!='' ) {
-					$twitterText .= " by " . $authorDisplayName;
-				}
-			}
-			$twitterText .= " " . get_permalink();
-			$hashtags="";
-			//$hashtags="testhashtag1,testhashtag2";
-
-			///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
+			$twitterText .= " by @bbggov " . get_permalink();
 			$twitterURL = "//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl = "//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			$postDate = get_the_date();
