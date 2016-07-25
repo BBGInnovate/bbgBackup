@@ -219,7 +219,8 @@ echo $threatsJSON;
 
 			<?php
 				$featuredJournalists = "";
-$profilePhoto = "";
+				$profilePhoto = "";
+
 				// check if the flexible content field has rows of data
 				if( have_rows('featured_journalists_section') ){
 
@@ -254,12 +255,17 @@ $profilePhoto = "";
 							$profileName = $relatedPages ->first_name . " " . $relatedPages ->last_name;
 							$profileOccupation = $relatedPages ->occupation;
 							$profilePhoto = $relatedPages ->profile_photo;
+							$profileUrl = get_permalink($relatedPages->ID);
+							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
+							$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
+
+							//echo $profileUrl;
 
 
 							if ($profilePhoto) {
 								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
 								$profilePhoto = $profilePhoto[0];
-								$profilePhoto = '<a href="/threats-to-press/khadija-ismailova/"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
+								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
 							} else {
 								//$profilePhoto = "monkeys";
 							}
@@ -273,9 +279,9 @@ $profilePhoto = "";
 							$featuredJournalists .= '</div>';
 							$featuredJournalists .= '<div class="usa-width-two-thirds">';
 							//$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileTitle .'</a></h2>';
-							$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileName .'</a></h2>';
+							$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h2>';
 							$featuredJournalists .= '<h4 class="bbg__profile__title">' . $profileOccupation .'</h4>';
-							$featuredJournalists .= '<p class="bbg__profile__description">A Baku court sentenced investigative journalist and RFE/RL contributor Khadija Ismayilova to seven and a half years in prison on charges widely believed to be retribution for her reporting on corruption linked to Azeri President Ilham Aliyev and members of his family. Ismayilova was convicted on charges of criminal libel, tax evasion, illegal business activity, and abuse of power. She was barred from holding public office for three years and fined the equivalent of 300USD for court-related expenses. She was acquitted of the charge of incitement to suicide.</p>';
+							$featuredJournalists .= '<p class="bbg__profile__description">' . $profileExcerpt . '</p>';
 							$featuredJournalists .= '</div>';
 							$featuredJournalists .= '</div>';
 
