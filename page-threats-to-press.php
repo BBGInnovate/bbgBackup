@@ -335,35 +335,9 @@ echo $threatsJSON;
 			</section>
 			<?php endif; ?>
 
-			<?php
-			/*
-			<!--
-			<section class="usa-section">
-				<div class="usa-grid-full">
-					<div class="usa-grid">
-						<header class="page-header">
-							<h5 class="bbg__label">Jailed journalists</h5>
-						</header>
-					</div>
-					<div class="usa-grid">
-						<div class="usa-width-one-third">
-							<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>
-						</div>
-						<div class="usa-width-two-thirds">
-							<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">Khadija Ismailova</a></h2>
-							<h4 class="bbg__profile__title">Investigative journalist & contributor, RFE/RL</h4>
-							<p class="bbg__profile__description">A Baku court sentenced investigative journalist and RFE/RL contributor Khadija Ismayilova to seven and a half years in prison on charges widely believed to be retribution for her reporting on corruption linked to Azeri President Ilham Aliyev and members of his family.
-Ismayilova was convicted on charges of criminal libel, tax evasion, illegal business activity, and abuse of power. She was barred from holding public office for three years and fined the equivalent of 300USD for court-related expenses. She was acquitted of the charge of incitement to suicide.</p>
-						</div>
 
-					</div>
-				</div>
-			</section>
-			-->
-			*/
-			?>
+			<?php echo $featuredJournalists; ?>
 
-<?php echo $featuredJournalists; ?>
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">
