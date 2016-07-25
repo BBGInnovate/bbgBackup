@@ -11,7 +11,6 @@ if ( have_posts() ) {
 	the_post();
 
 	$metaAuthor = get_the_author();
-	$metaAuthorTwitter = get_the_author_meta( 'twitterHandle' );
 	$metaKeywords = strip_tags(get_the_tag_list('',', ',''));
 	$ogTitle = get_the_title();
 	$ogDescription = get_the_excerpt();

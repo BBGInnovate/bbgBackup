@@ -17,21 +17,7 @@ $timelineUrl = get_post_meta( get_the_ID(), 'featured_timeline_url', true );
 //the title/headline field, followed by the URL and the author's twitter handle
 $twitterText = "";
 $twitterText .= html_entity_decode( get_the_title() );
-$twitterHandle = get_the_author_meta( 'twitterHandle' );
-$twitterHandle = str_replace( "@", "", $twitterHandle );
-if ( $twitterHandle && $twitterHandle != '' ) {
-	$twitterText .= " by @" . $twitterHandle;
-} else {
-	$authorDisplayName = get_the_author();
-	if ( $authorDisplayName && $authorDisplayName!='' ) {
-		$twitterText .= " by " . $authorDisplayName;
-	}
-}
-$twitterText .= " " . get_permalink();
-$hashtags="";
-//$hashtags="testhashtag1,testhashtag2";
-
-///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
+$twitterText .= " by @bbggov " . get_permalink();
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 

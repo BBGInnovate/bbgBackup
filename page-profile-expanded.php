@@ -98,7 +98,7 @@ get_header(); ?>
 			//the title/headline field, followed by the URL and the author's twitter handle
 			$twitterText = "";
 			$twitterText .= "Profile of " . html_entity_decode( get_the_title() );
-			$twitterText .= " " . get_permalink();
+			$twitterText .= " by @bbggov " . get_permalink();
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
