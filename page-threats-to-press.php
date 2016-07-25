@@ -259,10 +259,10 @@ echo $threatsJSON;
 							if ($profilePhoto) {
 								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
 								$profilePhoto = $profilePhoto[0];
-								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot" style="float: left; margin-right: 1.5rem;"/></a>';
+								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
 							}
 
-							$featuredJournalists .= '<div class="usa-width-one-half">';
+							$featuredJournalists .= '<div class="usa-width-one-half bbg__profile-featured__profile">';
 
 							//$featuredJournalists .= '<div class="usa-grid">';
 							/*
