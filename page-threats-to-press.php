@@ -241,17 +241,12 @@ echo $threatsJSON;
 						$featuredJournalists .= '</header><!-- .page-header -->';
 						$featuredJournalists .= '</div>';
 
+						$featuredJournalists .= '<div class="usa-grid">';
+
 					    while ( have_rows('featured_journalist') ) : the_row();
-							$relatedPages = get_sub_field( 'featured_journalist_profile' );
-							//post_title
-							//post_excerpt
-							//url
-							//
 							//var_dump(get_sub_field('featured_journalist_profile'));
-							//echo $relatedPages ->ID;
-							//echo $relatedPages ->post_excerpt;
-							//echo $relatedPages ->first_name;
-							//echo $relatedPages ->profile_photo;//23796
+							$relatedPages = get_sub_field( 'featured_journalist_profile' );
+
 
 							$profileTitle = $relatedPages ->post_title;
 							$profileName = $relatedPages ->first_name . " " . $relatedPages ->last_name;
@@ -261,34 +256,31 @@ echo $threatsJSON;
 							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
 							$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
 
-							//echo $profileUrl;
-
-
 							if ($profilePhoto) {
 								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
 								$profilePhoto = $profilePhoto[0];
-								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
-							} else {
-								//$profilePhoto = "monkeys";
+								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot" style="float: left; margin-right: 1.5rem;"/></a>';
 							}
 
-							//echo $profilePhoto;
-							$featuredJournalists .= '<div class="usa-grid">';
+							$featuredJournalists .= '<div class="usa-width-one-half">';
+
+							//$featuredJournalists .= '<div class="usa-grid">';
+							/*
 							$featuredJournalists .= '<div class="usa-width-one-third">';
-							//$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="https://bbgredesign.voanews.com/wp-content/media/2016/05/mugshot__khadija-ismayilova-600.jpg" class="bbg__profile-grid__profile__mugshot"/></a>';
-							//$featuredJournalists .= '<a href="/threats-to-press/khadija-ismailova/"><img src="' . $profilePhoto . '" class="bbg__profile-grid__profile__mugshot"/></a>';
 							$featuredJournalists .= $profilePhoto;
 							$featuredJournalists .= '</div>';
-							$featuredJournalists .= '<div class="usa-width-two-thirds">';
-							//$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="/threats-to-press/khadija-ismailova/">'. $profileTitle .'</a></h2>';
-							$featuredJournalists .= '<h2 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h2>';
-							$featuredJournalists .= '<h4 class="bbg__profile__title">' . $profileOccupation .'</h4>';
-							$featuredJournalists .= '<p class="bbg__profile__description">' . $profileExcerpt . '</p>';
-							$featuredJournalists .= '</div>';
-							$featuredJournalists .= '</div>';
+							*/
+							//$featuredJournalists .= '<div class="usa-width-two-thirds">';
+							$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
+							$featuredJournalists .= '<h5 class="bbg__profile__title">' . $profileOccupation .'</h5>';
+							$featuredJournalists .= '<p class="bbg__profile__description">' . $profilePhoto . $profileExcerpt . '</p>';
+							//$featuredJournalists .= '</div>';
+							//$featuredJournalists .= '</div>';
 
+							$featuredJournalists .= '</div>';
 
 					    endwhile;
+						$featuredJournalists .= '</div>';
 						$featuredJournalists .= '</div>';
 						$featuredJournalists .= '</section>';
 					}
