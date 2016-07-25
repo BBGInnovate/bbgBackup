@@ -146,9 +146,9 @@
 					//Only show a profile photo if it's set.
 					if ($profilePhoto!=""){
 						$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">';
-							$b.=  '<div class="bbg__profile-excerpt__photo-container">';
+							//$b.=  '<div class="bbg__profile-excerpt__photo-container">';
 								$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .', ' . $occupation .'"/>';
-							$b.=  '</div>';
+							//$b.=  '</div>';
 						$b.=  '</a>';
 					}
 
