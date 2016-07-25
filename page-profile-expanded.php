@@ -38,10 +38,11 @@ if ( have_posts() ) {
 	} else if ($bannerPosition) {
 		$bannerAdjustStr = $bannerPosition;
 	}
+	
 	// Grab a featured video, which will replace featured image, if we have it.
 	$videoUrl = get_field( 'featured_video_url', '', true );
 
-	/**** CREATE $bannerAdjustStr - allows adjustments to background div with image *****/
+	/**** Get profile fields *****/
 	$occupation = get_post_meta( $id, 'occupation', true );
 	$email = get_post_meta( $id, 'email', true );
 	$phone = get_post_meta( $id, 'phone', true );
@@ -64,11 +65,7 @@ if ( have_posts() ) {
 		$profilePhoto = $profilePhoto[0];
 	}
 
-	$timelineUrl = get_post_meta( $id, 'timelinejs_url', true );
-	if ($timelineUrl != ""){
-		$timelineUrl = '<iframe src="' . $timelineUrl . '" height="800" width="600" frameborder="0" class="bbg__iframe__timelinejs"></iframe>';
-	}
-
+	/*** Generate the code for the latest tweets that we use in the sidebar ***/
 	$latestTweetsStr = "";
 	if ($twitterProfileHandle != "") {
 		$showLatestTweets = get_post_meta( $id, 'show_latest_tweets', true );
@@ -289,9 +286,6 @@ get_header(); ?>
 						?>
 
 					</div><!-- .bbg__article-sidebar -->
-
-				<?php echo $timelineUrl; ?>
-
 				</div><!-- .usa-grid -->
 
 			</article><!-- #post-## -->
