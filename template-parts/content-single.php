@@ -19,6 +19,7 @@ $featuredImageClass = " bbg__article--no-featured-image";
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
+//Dateline not automatically included - if the user checked the custom field, prepare it.
 $dateline = "";
 $includeDateline = get_post_meta( get_the_ID(), 'include_dateline', true );
 if ( in_category('Press Release') && $includeDateline ){
@@ -27,14 +28,11 @@ if ( in_category('Press Release') && $includeDateline ){
 	$dateline .= " — </span>";
 }
 
-
-
+//place dateline immediately inside first paragraph tag for formatting purposes
 $pageContent = get_the_content();
 $pageContent = apply_filters('the_content', $pageContent);
 $pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 if ($dateline != "") {
-	//place dateline immediately inside first paragraph tag
-	//$pageContent = str_replace('<p>', '<p>'.$dateline, $pageContent);
 	$needle="<p>";
 	$replaceNeedle="<p>".$dateline;
 	$pos = strpos($pageContent, $needle);
@@ -44,6 +42,7 @@ if ($dateline != "") {
 }
 
 
+//if the user has selected a related profile, it will show up in the right sidebar
 $relatedProfileID = get_post_meta( get_the_ID(), 'statement_related_profile', true );
 $includeRelatedProfile = false;
 if ($relatedProfileID) {
@@ -102,6 +101,7 @@ if ( $includeMap && $mapLocation) {
 	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
 }
 
+/*** For Events, there is often an eventBriteID that has been entered - render the iFrame ***/
 $eventBriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
 $eventStr="";
 if ($eventBriteID) {
@@ -132,7 +132,7 @@ if( have_rows('project_team_members') ):
 endif;
 
 
-
+/**** If this press release is categorized as one of the entities, get the entity logo ****/
 $entityCategories=['voa','rfa','mbn','ocb','rferl'];
 $entityLogo="";
 $entityLink="";
@@ -166,17 +166,11 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 	}
 }
 
-
 /* Displaying award info -- not implemented yet*/
 $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
 
 $award = "";
-
-/*
-if ( in_category('Award') ) {
-}
-*/
 
 if ($isAward) {
 
@@ -211,14 +205,9 @@ if ($isAward) {
 	*/
 	$award .= '<p><strong>Award: </strong>' . $awardTitle . " (" . $awardYear . ")" .	 "<br/>";
 	$award .='<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
-
-
-
 	//$award .= '<p>' . $awardDescription . '</p>';
 	$award .= '</div>';
 }
-
-
 
 
 if ($isProject) {
@@ -285,27 +274,13 @@ $twitterText = "";
 $twitterText .= html_entity_decode( get_the_title() );
 $twitterHandle = get_the_author_meta( 'twitterHandle' );
 $twitterHandle = str_replace( "@", "", $twitterHandle );
-if ( $twitterHandle && $twitterHandle != '' ) {
-	$twitterText .= " by @" . $twitterHandle;
-} else {
-	$authorDisplayName = get_the_author();
-	if ( $authorDisplayName && $authorDisplayName!='' ) {
-		$twitterText .= " by " . $authorDisplayName;
-	}
-}
+$twitterText .= " by @bbggov";
 $twitterText .= " " . get_permalink();
-$hashtags="";
-//$hashtags="testhashtag1,testhashtag2";
 
-///$twitterURL="//twitter.com/intent/tweet?url=" . urlencode(get_permalink()) . "&text=" . urlencode($ogDescription) . "&hashtags=" . urlencode($hashtags);
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 ?>
-
-<style>
-
-</style>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 
@@ -361,9 +336,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
 
-
-
-
 <!-- new -->
 
 		<div class="bbg__article-sidebar--left">
@@ -389,8 +361,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		</div><!-- .bbg__article-sidebar--left -->
 
-
-
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 			<?php
 				echo $eventStr;
@@ -403,8 +373,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					echo '</div>';
 				}
 			?>
-
-
 
 			<?php
 				/* START CONTACT CARDS */
