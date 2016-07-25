@@ -12,57 +12,60 @@ if ( have_posts() ) {
 
 
 	$metaAuthor = get_the_author();
-	$ogTitle = get_the_title();
-
 	$metaKeywords = strip_tags(get_the_tag_list('',', ',''));
 
+	/**** CREATE OG TAGS ***/
+	$ogDescription = get_the_excerpt();
+	$ogTitle = get_the_title();
 	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'Full' );
 	$ogImage = $thumb['0'];
-
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
-
+	
+	/**** CREATE $bannerAdjustStr *****/
 	$bannerPosition=get_post_meta( get_the_ID(), 'adjust_the_banner_image', true);
 	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
 	$bannerAdjustStr = "";
-		if ($bannerPositionCSS) {
-			$bannerAdjustStr = $bannerPositionCSS;
-		} else if ($bannerPosition) {
-			$bannerAdjustStr = $bannerPosition;
-		}
+	if ($bannerPositionCSS) {
+		$bannerAdjustStr = $bannerPositionCSS;
+	} else if ($bannerPosition) {
+		$bannerAdjustStr = $bannerPosition;
+	}
 
+	/**** Get profile fields *****/
 	$occupation=get_post_meta( get_the_ID(), 'occupation', true );
 	$email=get_post_meta( get_the_ID(), 'email', true );
 	$phone=get_post_meta( get_the_ID(), 'phone', true );
 	$twitterProfileHandle=get_post_meta( get_the_ID(), 'twitter_handle', true );
 	$relatedLinksTag=get_post_meta( get_the_ID(), 'related_links_tag', true );
 
+	/**** Adjustments for retired employees ***/
 	$active = get_post_meta( get_the_ID(), 'active', true );
 	if (!$active){
 		$occupation = "(Former) " . $occupation;
 	}
 
+	/*** Get the profile photo mugshot ***/
 	$profilePhotoID=get_post_meta( get_the_ID(), 'profile_photo', true );
 	$profilePhoto = "";
-
 	if ($profilePhotoID) {
 		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
 		$profilePhoto = $profilePhoto[0];
 	}
 
+	/*** Get extra details for interns ***/
 	$internTagline = "";
 	$internDate = get_post_meta( get_the_ID(), 'intern_date', true );
-
 	if ( $internDate ) {
 		$internName = get_the_title();
 		$internTagline = "<p class='bbg__post__author-tagline'>— " . $internName . ", " . $internDate . "</p>";
 	}
 
 
-	$ogDescription = get_the_excerpt();
+	
 
 	rewind_posts();
 }
