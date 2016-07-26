@@ -69,6 +69,9 @@ $qParams=array(
 $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
+/* Map options */
+$trailingDays = get_post_meta( $id, 'threats_to_press_map_trailing_days', true );
+$maxClusterRadius = get_post_meta( $id, 'threats_to_press_map_maximum_cluster_radius', true );
 
 
 /* Adding optional quotation to the bottom of the page */
@@ -150,6 +153,8 @@ for ($i=0; $i < count($threats); $i++) {
 	$name = $t['name'];
 	$date = $t['date'];
 	$status = $t['status'];
+
+
 	if ($status == "Killed"){
 		if ($mugshot == "") {
 			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
@@ -176,8 +181,19 @@ for ($i=0; $i < count($threats); $i++) {
 	}
 }
 
+$threatsFilteredByDate = [];
+for ($i=0; $i<count($threats); $i++) {
+	$t = $threats[$i];
+	$str = time() - (($t['dateTimestamp']));
+	$daysSinceThreat = floor($str/3600/24);
+	//echo " days since " . date('m/d/Y', $t['dateTimestamp']) . " is " . $daysSinceThreat . "<BR>"; 
+	if ($daysSinceThreat <= $trailingDays) {
+		$threatsFilteredByDate[] = $threats[$i];
+	}
+}
+//echo "showing " . count($threatsFilteredByDate) . " threats <BR>";
 $threatsJSON = "<script type='text/javascript'>\n";
-$threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT, 10) . ";";
+$threatsJSON .= "threats=" . json_encode(new ArrayValue($threatsFilteredByDate), JSON_PRETTY_PRINT, 10) . ";";
 $threatsJSON .="</script>";
 get_header();
 echo $threatsJSON;
@@ -384,12 +400,17 @@ echo $threatsJSON;
 					
 					background-color: rgba(255, 0, 0, 0.6) !important;
 				}
+				.marker-cluster-killed div {
+					background-color: rgba(0, 0, 0, 1) !important;
+					color:#FFF;
+				}
 			</style>
 
 			<script type="text/javascript">
 				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 				var map = L.mapbox.map('map-threats', 'mapbox.emerald');
 				var markers = new L.MarkerClusterGroup({
+					maxClusterRadius: <?php echo $maxClusterRadius; ?>,
 					iconCreateFunction: function (cluster) {
 						var childCount = cluster.getChildCount();
 						var c = ' marker-cluster-';
@@ -400,6 +421,13 @@ echo $threatsJSON;
 						} else {
 						    c += 'large';
 						}
+						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+					}
+				});
+				var killedMarkers = new L.MarkerClusterGroup({
+					iconCreateFunction: function (cluster) {
+						var childCount = cluster.getChildCount();
+						var c = ' marker-cluster-killed';
 						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
 					}
 				});
@@ -418,7 +446,8 @@ echo $threatsJSON;
 						});
 						var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
 						marker.bindPopup(titleLink + t.description);
-						marker.addTo(map);
+						killedMarkers.addLayer(marker);
+						//marker.addTo(map);
 
 					} else {
 						if ( t.status == "Threatened") {
@@ -444,6 +473,7 @@ echo $threatsJSON;
 				}
 
 			    map.addLayer(markers);
+			    map.addLayer(killedMarkers);
 
 				//Disable the map scroll/zoom so that you can scroll the page.
 				map.scrollWheelZoom.disable();
