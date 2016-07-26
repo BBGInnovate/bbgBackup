@@ -7397,7 +7397,7 @@ div.appropriations-small > p.header {
 }
 
 .bbg__map--banner {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   height: 300px;
   width: 100%;
 }
@@ -7444,11 +7444,15 @@ div.appropriations-small > p.header {
   filter: grayscale(1);
   width: 100%;
 }
+.bbg__profile-grid__profile .bbg__profile-grid__profile__mugshot:hover {
+  -webkit-filter: none;
+  filter: none;
+}
 .bbg__profile-grid__profile .bbg__profile-grid__profile__dates {
   color: #999;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__description {
-  color: #F1F1F1;
+  color: #f1f1f1;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 90%;
 }
@@ -7467,6 +7471,7 @@ div.appropriations-small > p.header {
     margin-right: 0;
   }
 }
+/* Fallen journalists memorial wall */
 .bbg__profile-grid__profile {
   float: none !important;
   display: inline-block !important;

@@ -1,5 +1,5 @@
 .bbg__map--banner {
-	background-color: #F1F1F1;
+	background-color: $color-gray-lightest;
 	height: 300px;
 	width: 100%;
 
@@ -37,7 +37,7 @@
 
 .bbg__memorial {
 	.usa-grid-full {
-		background-color: #f1f1f1;
+		background-color: $color-gray-lightest;
 		padding-top: 2rem;
 	}
 }
@@ -49,6 +49,11 @@
 		-webkit-filter: grayscale(1);
 		filter: grayscale(1);
 		width: 100%;
+
+		&:hover{
+			-webkit-filter: none;
+			filter: none;
+		}
 	}
 
 	.bbg__profile-grid__profile__name {
@@ -59,7 +64,7 @@
 	}
 
 	.bbg__profile-grid__profile__description {
-		color: #F1F1F1;
+		color: $color-gray-lightest;
 		font-family: $font-sans;
 		font-size: 90%;
 	}
@@ -77,6 +82,7 @@
 	}
 }
 
+/* Fallen journalists memorial wall */
 .bbg__profile-grid__profile {
 	@extend .usa-width-one-sixth;
 	float: none !important;
