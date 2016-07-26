@@ -404,28 +404,43 @@ echo $threatsJSON;
 					}
 				});
 
+
 				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
 					var t = threats[i];
 					if (t.status == "Killed"){
 						markerColor = "#000";
-					} else if ( t.status == "Threatened") {
-						markerColor = "#900";
-					} else if ( t.status == "Missing") {
-						markerColor = "#999";
+						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
+							icon: L.mapbox.marker.icon({
+								'marker-symbol': '', 
+								'marker-color': markerColor
+							})
+						});
+						var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
+						marker.bindPopup(titleLink + t.description);
+						marker.addTo(map);
+
 					} else {
-						//check this pin to see what the status is
-						markerColor = "#931fe5";
+						if ( t.status == "Threatened") {
+							markerColor = "#900";
+						} else if ( t.status == "Missing") {
+							markerColor = "#999";
+						} else {
+							//check this pin to see what the status is
+							markerColor = "#931fe5";
+						}
+						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
+							icon: L.mapbox.marker.icon({
+								'marker-symbol': '', 
+								'marker-color': markerColor
+							})
+						});
+						var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
+						marker.bindPopup(titleLink + t.description);
+						markers.addLayer(marker);
 					}
-					var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
-						icon: L.mapbox.marker.icon({
-							'marker-symbol': '', 
-							'marker-color': markerColor
-						})
-					});
-					var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
-					marker.bindPopup(titleLink + t.description);
-					markers.addLayer(marker);
+
+					
 				}
 
 			    map.addLayer(markers);
