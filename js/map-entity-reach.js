@@ -13,17 +13,21 @@
 		fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
 
 		// hide the countries dropdown list if user isnt on a mobile device
+
+		// this is now hidden with media query
+		/*
 		if (!isMobile) {
 			$('#country-list').hide();
 		}
+		*/
 
-/*
-$color-primary-alt:          #02bfe7; //blue
-$color-primary-alt-dark:     #00a6d2;
-$color-primary-alt-darkest:  #046b99;
-$color-primary-alt-light:    #9bdaf1; // lighten($color-primary-alt, 60%)
-$color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
-*/
+		/*
+		 $color-primary-alt:          #02bfe7; //blue
+		 $color-primary-alt-dark:     #00a6d2;
+		 $color-primary-alt-darkest:  #046b99;
+		 $color-primary-alt-light:    #9bdaf1; // lighten($color-primary-alt, 60%)
+		 $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
+		 */
 
 		map = AmCharts.makeChart( "chartdiv", {
 			type: "map",
@@ -62,18 +66,31 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
-
-
-			if (window.selectedCountryID && window.selectedCountryID==event.mapObject.id) {
-				window.selectedCountryID = "";
-				event.chart.zoomToGroup(countries);
-			} else {
-				window.selectedCountryID = event.mapObject.id;
-				getCountryDetails(event.mapObject.title);
-				//getAPIDataCallback(event.mapObject.title);
+			if (!isMobile) {
+				map.zoomDuration = .2;
 			}
 
+			// only make AJAX calls for stuff we have data for
+			for (var i = 0; i < countries.length; i++) {
+				if (event.mapObject.id === countries[i].code && countries[i].region_ids) {
+					if (window.selectedCountryID && window.selectedCountryID==event.mapObject.id) {
+						window.selectedCountryID = "";
+						event.chart.zoomToGroup(countries);
+					} else {
+						window.selectedCountryID = event.mapObject.id;
+						getCountryDetails(event.mapObject.title);
+						//getAPIDataCallback(event.mapObject.title);
+					}
+				}
+			}
+
+			// hide any entity details if shown
+			$('.entity-details').hide();
+
 			$('#country-name').text(event.mapObject.title);
+
+			// set the country list value to the same as the map selection
+			$('#country-list').val(event.mapObject.id);
 		});
 
 
@@ -85,16 +102,6 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 			//}, 1000);
 
 
-		});
-
-		map.addListener('clickMapObject', function (event) {
-
-			if (!isMobile) {
-				map.zoomDuration = .2;
-			}
-
-			// set the country list value to the same as the map selection
-			$('#country-list').val(event.mapObject.id);
 		});
 
 
@@ -109,6 +116,31 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 			scrollToMap();
 
 
+		});
+
+		$('.entity-buttons button').on('click', function () {
+			var entity = $(this).text().toLowerCase();
+
+			var fullName = entities[entity].fullName;
+
+			// reset buttons
+			$('.entity-buttons button').removeClass('active');
+
+			// hide any country details divs
+			$('.country-details').hide();
+
+			// show the entity details div
+			$('.entity-details').text(entities[entity].description).show();
+
+			// add the active class so it looks like it's selected
+			$(this).addClass('active');
+
+			// added this in to fix the zoom duration when clicking from entity to entity
+			map.zoomDuration = 0;
+
+			grabData(entity);
+
+			scrollToMap();
 		});
 
 		// this event listener is for select countries through the drop-down (for mobile devices)
@@ -128,9 +160,22 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 			window.open(url, '_blank');
 		});
 
+		// preview the subgroups on the map
+		$('#view-on-map').on('click', function () {
+			var subgroupId = $('#subgroup-list').val();
+
+			var url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries?subgroup=' + subgroupId;
+
+			getCountries(url);
+		});
+
+
 
 		//load our initial data
-		grabData(defaultEntity);
+		//grabData(defaultEntity);
+
+		// click on the first element of entity-buttons class (BBG)
+		$('.entity-buttons :first').click();
 
 
 	});
@@ -152,10 +197,14 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 		if (entity === 'bbg') {
 			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
 			// if there's an entity (group), get it by entity
+
+			$('.subgroup-block').hide();
 		} else {
 			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
 
 			getSubgroupsForEntity(entity);
+
+			$('.subgroup-block').show();
 		}
 
 		$('#loading').show();
@@ -175,26 +224,46 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 					var countryCode = data.countries[i].code;
 					country.id = countryCode;
 
-					// this is the default color for non-BBG covered countries
-					country.color = '#DDDDDD';
+
 
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
 						country.color = '#9F1D26';
 						country.rollOverColor = "#891E25";
 						country.selectedColor = "#7A1A21";
+
+
+					// NO COVERAGE here
+					} else {
+						// this is the default color for non-BBG covered countries
+						country.color = '#DDDDDD';
+						country.rollOverColor = "#B7B7B7";
+
+						// these zoom levels will prevent zoom on countries that are not covered
+						country.zoomLatitude = map.zoomLatitude();
+						country.zoomLongitude = map.zoomLongitude();
+						country.zoomLevel = map.zoomLevel();
+
 					}
+
 
 					countries.push(country);
 
 					// if the user is on a mobile device, build out the country list dropdown
-					if (isMobile) {
+					// * now being controlled through media query
+				//	if (isMobile) {
 						addCountryToDropdown(country);
-					}
+				//	}
 				}
+
+
 				map.dataProvider.areas = countries;
 				map.validateData();
-				selectedEntity = $('#entity').val();
+
+				// this is for selecting from dropdown
+				//selectedEntity = $('#entity').val();
+
+				selectedEntity = $('.entity-buttons .active').text().toLowerCase();
 				entityDesc='';
 				headerText='';
 				if (entities[selectedEntity] != null) {
@@ -290,10 +359,12 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 
 				$('.languages-served').text(languagesString);
 
+
 				var groupAndSubgroupList = '';
 				for (key in subgroupMap) {
 
 					// Append the Group Name (VOA, RFA, etc.)
+					groupAndSubgroupList += '<div class="'+groupMap[key].name+'-block">';
 					groupAndSubgroupList += '<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>';
 					groupAndSubgroupList += '<ul>';
 
@@ -310,11 +381,19 @@ $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
 
 					groupAndSubgroupList += '</ul>';
 					groupAndSubgroupList += '<br>';
+					groupAndSubgroupList += '</div>';
 
 				}
 
 				// populate the HTML element with the dynamically generated string
 				$('.groups-and-subgroups').html(groupAndSubgroupList);
+
+				// grab the subgroup block by the entity name that's selected
+				//var entityName = $('#entity').val().toUpperCase();
+				var entityName = $('.entity-buttons .active').text().toUpperCase();
+
+				// prepend it in the list so it's prioritized based on entity selected
+				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
 
 				$('.country-details').show();
 				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;

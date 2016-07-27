@@ -50,6 +50,15 @@ echo getNetworkExcerptJS();
 
 			<section class="usa-section">
 				<div class="usa-gridxxx">
+					<div class="btn-group entity-buttons" role="group" aria-label="...">
+				        <button type="button" class="btn btn-default">BBG</button>
+				        <button type="button" class="btn btn-default">VOA</button>
+				        <button type="button" class="btn btn-default">RFA</button>
+				        <button type="button" class="btn btn-default">RFERL</button>
+				        <button type="button" class="btn btn-default">OCB</button>
+				        <button type="button" class="btn btn-default">MBN</button>
+				        <button type="button" class="btn btn-default">HB</button>
+				    </div>
 					<div class="bbg__map-area__container " style="postion: relative;">
 						<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
 						<div id="chartdiv"></div>
@@ -57,6 +66,7 @@ echo getNetworkExcerptJS();
 				</div>
 
 			<div class="usa-grid-full">
+				<!-- 
 				<div class="usa-grid">
 					<form style="margin-bottom: 2rem; max-width: none;">
 						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
@@ -70,6 +80,7 @@ echo getNetworkExcerptJS();
 						</select>
 					</form>
 				</div>
+				-->
 				<div class="usa-grid">
 					<select id="country-list">
 					<option value="0">Select a country...</option>
