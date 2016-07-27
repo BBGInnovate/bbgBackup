@@ -218,7 +218,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					<div id="map-threats" class="bbg__map--banner"></div>
 					<img id="resetZoom" src="/wp-content/themes/bbgRedesign/img/home.png" class="bbg__map__button"/>
 					<div class="usa-grid">
-						<p class="bbg__article-header__caption">$threatsMapCaption</p>
+						<p class="bbg__article-header__caption"><?php echo $threatsMapCaption ?></p>
 					</div>
 			</section>
 
