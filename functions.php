@@ -324,8 +324,9 @@ function enqueueAdminStyles() {
 
 	//wp_enqueue_script( 'qtipjs', 'https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.js', array('jquery'), '20160223', true );
 	//wp_enqueue_style( 'qtipcss', 'https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.css', array(), '20160403' );
-	wp_register_style('jqtooltipcss', get_template_directory_uri() . '/css/jquery.qtip.css', null, false, true);
-	wp_register_script('jqtooltipjs', get_template_directory_uri() . '/js/vendor/jquery.qtip.js', null, false, true);
+	wp_enqueue_script('qtipjs', get_template_directory_uri() . '/js/vendor/jquery.qtip.js', array('jquery'), '20160223', true );
+	wp_enqueue_style('qtipcss', get_template_directory_uri() . '/css/jquery.qtip.css', array(), '20160403');
+	
 	
 
 }
