@@ -7582,3 +7582,19 @@ div.appropriations-small > p.header {
 .country-details {
   display: none;
 }
+
+/*** TODO - make this use real variables ***/
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #country-list {
+    display: block;
+  }
+
+  /* show it on small screens */
+}
+@media screen and (min-width: 401px) {
+  #country-list {
+    display: none;
+  }
+
+  /* hide it elsewhere */
+}
