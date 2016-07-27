@@ -96,12 +96,7 @@
 
 		// zoom in on the new entity once it's updated
 		map.addListener('dataUpdated', function (event) {
-
-			//setTimeout(function () {
-			event.chart.zoomToGroup(countries);
-			//}, 1000);
-
-
+			event.chart.zoomToGroup(countries);	
 		});
 
 
@@ -119,7 +114,10 @@
 		});
 
 		$('.entity-buttons button').on('click', function () {
+			
 			var entity = $(this).text().toLowerCase();
+			$('.entity-buttons button').removeClass('selected');
+			$(this).addClass('selected');
 
 			var fullName = entities[entity].fullName;
 
