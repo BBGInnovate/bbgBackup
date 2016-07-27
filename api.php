@@ -45,7 +45,8 @@
 		//TODO: ideally this would use get_template_directory() from wordpress, but we're not in the wordpress context
 		// /Users/josephflowers/apacheapps/sasspress/wp-content/themes/bbgRedesign
 		// /var/www/wordpress/wp-content/themes/bbgRedesign
-		$jsonFilepath = "/Users/josephflowers/apacheapps/sasspress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
+		//$jsonFilepath = "/Users/josephflowers/apacheapps/sasspress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
+		$jsonFilepath = "/var/www/wordpress/wp-content/themes/bbgRedesign" . "/external-feed-cache/" . $id . ".json";
 		if ( fileExpired($jsonFilepath, 1440) ) { 	//1440 min = 1 day
 			$result=fetchUrl($url);
 			file_put_contents($jsonFilepath, $result);
