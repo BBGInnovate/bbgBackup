@@ -80,6 +80,8 @@ $moveUSAbannerBecauseOfAlert = '';
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-title" content="BBG" />
+
 	<!-- for Facebook -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="website" />
