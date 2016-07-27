@@ -7,7 +7,7 @@
  * @package bbginnovate
   template name: Threats to Press
  */
- 
+
 
 /****** BEGIN HELPER FUNCTION SORT BY DATE ****/
 function threatDateCompare($a, $b) {
@@ -20,8 +20,8 @@ function threatDateCompare($a, $b) {
 $spreadsheetKey = "1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo";
 $spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/pubhtml";
 $csvUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/export?gid=0&format=csv";
-$threatsCSVArray = getCSV($csvUrl,'threats',10);
-array_shift($threatsCSVArray); //our first row contained headers
+$threatsCSVArray = getCSV( $csvUrl,'threats',10 );
+array_shift( $threatsCSVArray ); //our first row contained headers
 
 
 $pageContent = "";
@@ -32,8 +32,8 @@ if ( have_posts() ) :
 		$pageContent = get_the_content();
 		$pageTitle = get_the_title();
 		$pageExcerpt = get_the_excerpt();
-		$pageContent = apply_filters('the_content', $pageContent);
-		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+		$pageContent = apply_filters( 'the_content', $pageContent );
+		$pageContent = str_replace( ']]>', ']]&gt;', $pageContent );
 	endwhile;
 endif;
 wp_reset_postdata();
@@ -41,24 +41,24 @@ wp_reset_query();
 
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-$numPostsFirstPage=6;
-$numPostsSubsequentPages=6;
+$numPostsFirstPage = 6;
+$numPostsSubsequentPages = 6;
 
-$threatsCat=get_category_by_slug('threats-to-press');
-$threatsPermalink = get_category_link($threatsCat->term_id);
+$threatsCat = get_category_by_slug( 'threats-to-press' );
+$threatsPermalink = get_category_link( $threatsCat->term_id );
 
 
-$postsPerPage=$numPostsFirstPage;
-$offset=0;
-if ($currentPage > 1) {
-	$postsPerPage=$numPostsSubsequentPages;
-	$offset=$numPostsFirstPage + ($currentPage-2)*$numPostsSubsequentPages;
+$postsPerPage = $numPostsFirstPage;
+$offset = 0;
+if ( $currentPage > 1 ) {
+	$postsPerPage = $numPostsSubsequentPages;
+	$offset = $numPostsFirstPage + ( $currentPage-2 ) * $numPostsSubsequentPages;
 }
 
-$hasTeamFilter=false;
-$mobileAppsPostContent="";
+$hasTeamFilter = false;
+$mobileAppsPostContent = "";
 
-$qParams=array(
+$qParams = array(
 	'post_type' => array('post')
 	,'cat' => get_cat_id('Threats to Press')
 	,'posts_per_page' => $postsPerPage
@@ -66,7 +66,7 @@ $qParams=array(
 	,'post_status' => array('publish')
 );
 
-$custom_query_args= $qParams;
+$custom_query_args = $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
 /* Map options */
@@ -83,10 +83,10 @@ if ( $includeQuotation ) {
 	$quotationSpeaker = get_field( 'quotation_speaker', '', false );
 	$quotationTagline = get_field( 'quotation_tagline', '', false );
 
-	$quoteMugshotID=get_field( 'quotation_mugshot', '', false );
+	$quoteMugshotID = get_field( 'quotation_mugshot', '', false );
 	$quoteMugshot = "";
 
-	if ($quoteMugshotID) {
+	if ( $quoteMugshotID ) {
 		$quoteMugshot = wp_get_attachment_image_src( $quoteMugshotID , 'mugshot');
 		$quoteMugshot = $quoteMugshot[0];
 		$quoteMugshot = '<img src="' . $quoteMugshot .'" class="bbg__quotation-attribution__mugshot">';
@@ -118,7 +118,7 @@ foreach($threatsCSVArray as $t) {
 	);
 }
 
-for ($i=0; $i < count($threats); $i++) {
+for ( $i=0; $i < count($threats); $i++ ) {
 	$t = &$threats[$i];
 	$dateStr = $t['date'];
 	$dateObj = explode("/", $dateStr);
@@ -138,7 +138,7 @@ for ($i=0; $i < count($threats); $i++) {
 	$dateTimestamp = mktime(0, 0, 0, $month, $day, $year);
 	$t['dateTimestamp'] = $dateTimestamp;
 }
-usort($threats, 'threatDateCompare');
+usort( $threats, 'threatDateCompare' );
 
 $wall = "";
 $journalist = "";
@@ -146,7 +146,7 @@ $journalistName = "";
 $mugshot = "";
 $altText = "";
 
-for ($i=0; $i < count($threats); $i++) {
+for ( $i=0; $i < count($threats); $i++ ) {
 	$t = &$threats[$i];
 	$mugshot = $t['mugshot'];
 	$link = $t['link'];
@@ -154,9 +154,8 @@ for ($i=0; $i < count($threats); $i++) {
 	$date = $t['date'];
 	$status = $t['status'];
 
-
-	if ($status == "Killed"){
-		if ($mugshot == "") {
+	if ( $status == "Killed" ){
+		if ( $mugshot == "" ) {
 			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
 			$altText = "";
 		} else {
@@ -186,7 +185,7 @@ for ($i=0; $i<count($threats); $i++) {
 	$t = $threats[$i];
 	$str = time() - (($t['dateTimestamp']));
 	$daysSinceThreat = floor($str/3600/24);
-	//echo " days since " . date('m/d/Y', $t['dateTimestamp']) . " is " . $daysSinceThreat . "<BR>"; 
+	//echo " days since " . date('m/d/Y', $t['dateTimestamp']) . " is " . $daysSinceThreat . "<BR>";
 	if ($daysSinceThreat <= $trailingDays) {
 		$threatsFilteredByDate[] = $threats[$i];
 	}
@@ -197,6 +196,8 @@ $threatsJSON .= "threats=" . json_encode(new ArrayValue($threatsFilteredByDate),
 $threatsJSON .="</script>";
 get_header();
 echo $threatsJSON;
+
+$threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 
 
  ?>
@@ -217,7 +218,7 @@ echo $threatsJSON;
 					<div id="map-threats" class="bbg__map--banner"></div>
 					<img id="resetZoom" src="/wp-content/themes/bbgRedesign/img/home.png" class="bbg__map__button"/>
 					<div class="usa-grid">
-						<p class="bbg__article-header__caption">This map tracks the courageous journalists reporting for Voice of America, Radio Free Europe/Radio Liberty, Radio and TV Marti, Middle East Broadcasting Networks (Alhurra and Radio Sawa), and Radio Free Asia, and the threats that they face on a regular basis. </p>
+						<p class="bbg__article-header__caption">$threatsMapCaption</p>
 					</div>
 			</section>
 
@@ -341,7 +342,7 @@ echo $threatsJSON;
 								$includeExcerpt=FALSE;
 							}
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-							
+
 						?>
 					<?php endwhile; ?>
 						</div><!-- .bbg-grid right column -->
@@ -377,7 +378,7 @@ echo $threatsJSON;
 				</div>
 			</section>
 
-		
+
 			<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 			<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 
@@ -393,11 +394,11 @@ echo $threatsJSON;
 				}
 				/*experimenting with styling the clusters*/
 				.marker-cluster-medium div {
-					
+
 					background-color: rgba(255, 100, 0, 0.6) !important;
 				}
 				.marker-cluster-large div {
-					
+
 					background-color: rgba(255, 0, 0, 0.6) !important;
 				}
 				.marker-cluster-killed div {
@@ -440,7 +441,7 @@ echo $threatsJSON;
 						markerColor = "#000";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
-								'marker-symbol': '', 
+								'marker-symbol': '',
 								'marker-color': markerColor
 							})
 						});
@@ -460,7 +461,7 @@ echo $threatsJSON;
 						}
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
-								'marker-symbol': '', 
+								'marker-symbol': '',
 								'marker-color': markerColor
 							})
 						});
@@ -469,7 +470,7 @@ echo $threatsJSON;
 						markers.addLayer(marker);
 					}
 
-					
+
 				}
 
 			    map.addLayer(markers);
