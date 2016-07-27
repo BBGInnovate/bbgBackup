@@ -240,9 +240,12 @@
 						country.rollOverColor = "#B7B7B7";
 
 						// these zoom levels will prevent zoom on countries that are not covered
+						
 						country.zoomLatitude = map.zoomLatitude();
 						country.zoomLongitude = map.zoomLongitude();
-						country.zoomLevel = map.zoomLevel();
+						if (AmCharts.isReady) {
+							country.zoomLevel = map.zoomLevel();
+						}
 
 					}
 

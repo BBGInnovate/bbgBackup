@@ -21,6 +21,9 @@ wp_reset_query();
 get_header();
 echo getNetworkExcerptJS();
  ?>
+<style>
+	.btn-default.selected {background:green;}
+</style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
@@ -29,7 +32,6 @@ echo getNetworkExcerptJS();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="usa-grid-full">
-
 				<div class="usa-grid">
 					<header class="page-header">
 
@@ -45,11 +47,11 @@ echo getNetworkExcerptJS();
 						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 					</header><!-- .page-header -->
-				</div>
+				</div><!-- div.usa-grid -->
 			</div><!-- div.usa-grid-full -->
 
 			<section class="usa-section">
-				<div class="usa-gridxxx">
+				<div class="usa-grid">
 					<div class="btn-group entity-buttons" role="group" aria-label="...">
 				        <button type="button" class="btn btn-default">BBG</button>
 				        <button type="button" class="btn btn-default">VOA</button>
@@ -57,87 +59,57 @@ echo getNetworkExcerptJS();
 				        <button type="button" class="btn btn-default">RFERL</button>
 				        <button type="button" class="btn btn-default">OCB</button>
 				        <button type="button" class="btn btn-default">MBN</button>
-				        <button type="button" class="btn btn-default">HB</button>
 				    </div>
-					<div class="bbg__map-area__container " style="postion: relative;">
-						<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
-						<div id="chartdiv"></div>
-					</div>
+				</div>
+				<div class="usa-grid">
+					<BR>
+					<h2 id="country-name"></h2>
+					<p class="detail" ></p>
 				</div>
 
-			<div class="usa-grid-full">
-				<!-- 
-				<div class="usa-grid">
-					<form style="margin-bottom: 2rem; max-width: none;">
-						<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
-						<select id="entity" name="options" id="options" style=" display: inline-block;">
-							<option value="bbg">BBG</option>
-							<option value="voa">VOA</option>
-							<option value="rfa">RFA</option>
-							<option value="rferl">RFERL</option>
-							<option value="ocb">OCB</option>
-							<option value="mbn">MBN</option>
+				<div class="bbg__map-area__container " style="postion: relative;">
+					<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
+					<div id="chartdiv"></div>
+				</div>
+
+				<div class="usa-grid-full">
+					<div class="usa-grid">
+						<select id="country-list">
+						<option value="0">Select a country...</option>
 						</select>
-					</form>
-				</div>
-				-->
-				<div class="usa-grid">
-					<select id="country-list">
-					<option value="0">Select a country...</option>
-					</select>
-					<br>
-					<br>
-					<select id="subgroup-list">
-					<option value="0">Select a subgroup...</option>
-					</select>
-					<button id="submit">Go</button>
-				</div>
-				
-				<div class="usa-grid">
-					<div class="country-details">
-						<!--
-						<div class="col-md-4">
-							<h2>Fake Entity Data</h2>
+						<br>
+						<br>
+						<div class="subgroup-block">
+							<select id="subgroup-list">
+								<option value="0">Select a subgroup...</option>
+							</select>
+							<button id="view-on-map">View on Map</button>
+							<button id="submit">Go</button>
 						</div>
-						
-						<div class="col-md-4">
-							<h2>Subgroups</h2>
-							<ul class="detail" id="subgroups">
-							</ul>
-						</div>
-						<div class="col-md-4">
-							<h2>Languages</h2>
-							<ul class="detail" id="languages">
-							</ul>
-						</div>
-						-->
 					</div>
-				</div>
-				
-				<div class="usa-grid" style="margin-top: 3rem;">
-					<div class="usa-width-two-thirds">
-						<h2 id="country-name">Name</h2>
-						<p class="detail" >Description</p>
-						<p><strong style="font-family: sans-serif;">LANGUAGES SERVED: </strong><span class="languages-served">a, b, and c</span></p>
+					
+					<div class="usa-grid">
+						<div class="entity-details"></div>
+						<div class="country-details"></div>
 					</div>
-					<div class="usa-width-one-third">
-						<div class="country-details">
-							<div class="groups-and-subgroups">
-								<h5>Group</h5>
-								<ul>
-									<li><a target="_blank" href="http://www.voanews.com">Subgroup 1</a></li>
-									<li><a target="_blank" href="http://www.golos-ameriki.ru/">Subgroup 2</a></li>
-									<li><a target="_blank" href="http://ukrainian.voanews.com/">Subgroup 3</a></li>
-								</ul>
+					
+					<div class="usa-grid" style="margin-top: 3rem;">
+						<div class="usa-width-two-thirds">
+							
+						</div>
+						<div class="usa-width-one-third">
+							<div class="country-details">
+								<div class="groups-and-subgroups"></div>
+								<p><span><strong>Languages Served: </strong></span><span class="languages-served"></span></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-				<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
-					<?php echo $pageContent; ?>
-				</section>
+			<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
+				<?php echo $pageContent; ?>
+			</section>
 
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
@@ -145,3 +117,18 @@ echo getNetworkExcerptJS();
 
 <?php /*get_sidebar();*/ ?>
 <?php get_footer(); ?>
+<!-- 
+<div class="usa-grid">
+	<form style="margin-bottom: 2rem; max-width: none;">
+		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
+		<select id="entity" name="options" id="options" style=" display: inline-block;">
+			<option value="bbg">BBG</option>
+			<option value="voa">VOA</option>
+			<option value="rfa">RFA</option>
+			<option value="rferl">RFERL</option>
+			<option value="ocb">OCB</option>
+			<option value="mbn">MBN</option>
+		</select>
+	</form>
+</div>
+-->
