@@ -77,12 +77,12 @@ echo getNetworkExcerptJS();
 							<li>MBN</li>
 						</ul>
 						-->
-						<button type="button" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button>
-						<button type="button" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button>
-						<button type="button" class=" btn-default rfa"><span class="bbg__map__button-text">RFA</span></button>
-						<button type="button" class=" btn-default rferl"><span class="bbg__map__button-text">RFERL</span></button>
-						<button type="button" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button>
-						<button type="button" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
+						<button type="button" title="BBG" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button>
+						<button type="button" title="VOA" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button>
+						<button type="button" title="RFA" class=" btn-default rfa"><span class="bbg__map__button-text">RFA</span></button>
+						<button type="button" title="RFERL" class=" btn-default rferl"><span class="bbg__map__button-text">RFERL</span></button>
+						<button type="button" title="OCB" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button>
+						<button type="button" title="MBN" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
 					</div>
 				</div>
 

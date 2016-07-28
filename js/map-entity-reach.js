@@ -115,6 +115,7 @@
 		});
 
 		$('.entity-buttons button').on('click', function () {
+		//$('.entity-buttons li').on('click', function () {
 			
 			var entity = $(this).text().toLowerCase();
 			$('.entity-buttons button').removeClass('selected');

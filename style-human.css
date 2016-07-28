@@ -7599,10 +7599,10 @@ div.appropriations-small > p.header {
 }
 /* temp button styles */
 .entity-buttons button {
-  background-color: #999;
+  background-color: #CCC;
   background-size: cover;
   height: 4rem;
-  margin-right: 0;
+  margin-right: .3rem;
   width: 4rem;
 }
 .entity-buttons button.selected {
