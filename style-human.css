@@ -4868,6 +4868,10 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
+.usa-grid {
+  padding: 0 2rem;
+}
+
 .usa-footer-big nav .usa-footer-primary-link {
   cursor: pointer;
 }
@@ -7602,7 +7606,7 @@ div.appropriations-small > p.header {
   background-color: #CCC;
   background-size: cover;
   height: 4rem;
-  margin-right: .3rem;
+  margin-right: .5rem;
   width: 4rem;
 }
 .entity-buttons button.selected {
@@ -7651,6 +7655,11 @@ div.appropriations-small > p.header {
 @media screen and (min-width: 600px) {
   .entity-buttons button {
     background: #999;
+    border-bottom: none;
+    border-radius: 0;
+    border-right: 1px solid #FFF;
+    margin-bottom: 0;
+    margin-right: 0;
     height: auto;
     width: auto;
   }

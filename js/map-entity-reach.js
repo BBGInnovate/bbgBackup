@@ -180,11 +180,14 @@
 
 	});
 
+	//Temporarily disabling the scroll
 	function scrollToMap() {
 		// scroll to map viewport
+		/*
 		$('html, body').animate({
 			scrollTop: $('.entry-title').offset().top
 		}, 500);
+		*/
 	}
 
 
