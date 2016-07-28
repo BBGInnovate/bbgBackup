@@ -231,8 +231,12 @@
 
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
+						/*
 						country.color = '#9F1D26';
 						country.rollOverColor = "#891E25";
+						*/
+						country.color = '#0071bc';
+						country.rollOverColor = "#205493";
 						country.selectedColor = "#7A1A21";
 
 
