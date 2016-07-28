@@ -86,14 +86,14 @@ echo getNetworkExcerptJS();
 						<div class="usa-gridxxx" style="">
 							<div class="usa-width-one-thirdxx">
 								<div class="country-details">
-									<p><span><strong>Languages Served: </strong></span><span class="languages-served"></span></p>
+									<p><span style="font-family: sans-serif; font-weight: bold;">Languages supported: </span><span class="languages-served"></span></p>
 									<div class="groups-and-subgroups"></div>
 								</div>
 							</div>
 						</div>
 
 						<div class="subgroup-block" style="margin-top: 2rem;">
-							<h4>Select a VOA language</h4>
+							<h4>Select a [VOA] language</h4>
 							<select id="subgroup-list">
 								<option value="0">Select a subgroup...</option>
 							</select>
