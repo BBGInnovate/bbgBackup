@@ -55,7 +55,7 @@
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/youtube15.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/youtube15.png" width="26" height="39"></image>
 							</svg>
 						</a>
-						<a href="http://www.bbg.gov/category/press-release/feed/">
+						<a href="http://www.bbg.gov/blog/category/press-release/feed/">
 							<svg width="26" height="39" role="img" aria-label="RSS">
 								<title>RSS</title>
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/rss25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/rss25.png" width="26" height="39"></image>
