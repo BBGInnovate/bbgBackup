@@ -8,12 +8,12 @@
 	width		: 100%;
 
 	@include media($medium-screen) {
-		height		: 250px;
+		height		: 400px;
 	}
 	@include media($medium-large-screen) {
 		box-shadow: inset 2px 0 10px #999;
 
-		height		: 400px;
+		height		: 500px;
 	}
 	/*
 	@include media($large-screen) {
@@ -58,11 +58,9 @@
 }
 
 /*** TODO - make this use real variables ***/
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    #country-list { display: block; }  /* show it on small screens */
-}
+#country-list { display: block; }  /* show it on small screens */
 
-@media screen and (min-width: 401px) {
-    #country-list { display: none; }   /* hide it elsewhere */
+@include media($small-screen) {
+	#country-list { display: none; }   /* hide it elsewhere */
 }
 

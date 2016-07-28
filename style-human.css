@@ -7538,13 +7538,13 @@ div.appropriations-small > p.header {
 }
 @media screen and (min-width: 600px) {
   #chartdiv {
-    height: 250px;
+    height: 400px;
   }
 }
 @media screen and (min-width: 900px) {
   #chartdiv {
     box-shadow: inset 2px 0 10px #999;
-    height: 400px;
+    height: 500px;
   }
 }
 
@@ -7584,14 +7584,12 @@ div.appropriations-small > p.header {
 }
 
 /*** TODO - make this use real variables ***/
-@media screen and (min-width: 0px) and (max-width: 400px) {
-  #country-list {
-    display: block;
-  }
-
-  /* show it on small screens */
+#country-list {
+  display: block;
 }
-@media screen and (min-width: 401px) {
+
+/* show it on small screens */
+@media screen and (min-width: 481px) {
   #country-list {
     display: none;
   }
