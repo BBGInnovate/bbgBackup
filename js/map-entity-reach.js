@@ -10,7 +10,8 @@
 		//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
 		/* keep countries,map as global variables else they won't be available in the ajax callback */
 		countries=[];
-		fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
+		//fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
+		fakeDetail="xxxx";
 
 		// hide the countries dropdown list if user isnt on a mobile device
 
@@ -397,7 +398,7 @@
 				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
 
 				$('.country-details').show();
-				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				var countryDesc = ''; //'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
 				$('.detail').html(countryDesc);
 
 			});
