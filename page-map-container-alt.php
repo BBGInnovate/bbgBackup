@@ -22,7 +22,9 @@ get_header();
 echo getNetworkExcerptJS();
  ?>
 <style>
-	.btn-default.selected {background:green;}
+/*temp styles */
+	button, [type="button"] {background: #999;}
+	.btn-default.selected {background: #0071bc;}
 </style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
