@@ -75,14 +75,16 @@ echo getNetworkExcerptJS();
 						</div>
 					</div>
 					<div class="usa-width-one-third">
-						<h2 id="country-name"></h2>
-						<p class="detail"  style="font-family: sans-serif; "></p>
 
 						<div class="usa-gridxxx">
 							<select id="country-list">
 							<option value="0">Select a country...</option>
 							</select>
 						</div>
+
+
+						<h2 id="country-name"></h2>
+						<p class="detail"  style="font-family: sans-serif; "></p>
 
 
 						<div class="usa-gridxxx" style="">
