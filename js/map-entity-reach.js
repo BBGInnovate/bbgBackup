@@ -382,7 +382,7 @@
 					}
 
 					groupAndSubgroupList += '</ul>';
-					groupAndSubgroupList += '<br>';
+					//groupAndSubgroupList += '<br>';
 					groupAndSubgroupList += '</div>';
 
 				}

@@ -74,7 +74,7 @@ echo getNetworkExcerptJS();
 					</div>
 					<div class="usa-width-one-third">
 						<h2 id="country-name"></h2>
-						<p class="detail" ></p>
+						<p class="detail"  style="font-family: sans-serif; "></p>
 
 						<div class="usa-gridxxx">
 							<select id="country-list">
@@ -86,7 +86,7 @@ echo getNetworkExcerptJS();
 						<div class="usa-gridxxx" style="">
 							<div class="usa-width-one-thirdxx">
 								<div class="country-details">
-									<p><span style="font-family: sans-serif; font-weight: bold;">Languages supported: </span><span class="languages-served"></span></p>
+									<p style="font-family: sans-serif; "><span style="font-family: sans-serif; font-weight: bold;">Languages supported: </span><span class="languages-served"></span></p>
 									<div class="groups-and-subgroups"></div>
 								</div>
 							</div>
