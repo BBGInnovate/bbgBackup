@@ -80,13 +80,6 @@ echo getNetworkExcerptJS();
 							<select id="country-list">
 							<option value="0">Select a country...</option>
 							</select>
-							<div class="subgroup-block">
-								<select id="subgroup-list">
-									<option value="0">Select a subgroup...</option>
-								</select>
-								<button id="view-on-map">View on Map</button>
-								<button id="submit">Go</button>
-							</div>
 						</div>
 
 
@@ -98,6 +91,16 @@ echo getNetworkExcerptJS();
 								</div>
 							</div>
 						</div>
+
+						<div class="subgroup-block" style="margin-top: 2rem;">
+							<h4>Select a VOA language</h4>
+							<select id="subgroup-list">
+								<option value="0">Select a subgroup...</option>
+							</select>
+							<button id="view-on-map">View on Map</button>
+							<button id="submit">Go</button>
+						</div>
+
 
 					</div>
 
