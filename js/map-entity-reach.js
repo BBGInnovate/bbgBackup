@@ -273,7 +273,7 @@
 					headerText=entities[selectedEntity].fullName;
 				}
 				$('#country-name').text(headerText);
-				$('.detail').html(entityDesc);
+				$('.detail').html(entityDesc + ' <a href="/networks/voa"> Learn more »</a>');
 
 				$('#loading').hide();
 			})

@@ -23,8 +23,19 @@ echo getNetworkExcerptJS();
  ?>
 <style>
 /*temp styles */
+/*
 	button, [type="button"] {background: #999;}
 	.btn-default.selected {background: #0071bc;}
+
+	.entity-buttons button {
+		height: 3rem;
+		margin-right: 0;
+	}
+
+	.bbg__map__button-text {
+		display: none;
+	}
+	*/
 </style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
@@ -57,21 +68,30 @@ echo getNetworkExcerptJS();
 
 				<div class="usa-grid">
 					<div class="btn-group entity-buttons" role="group" aria-label="...">
-				        <button type="button" class="btn btn-default">BBG</button>
-				        <button type="button" class="btn btn-default">VOA</button>
-				        <button type="button" class="btn btn-default">RFA</button>
-				        <button type="button" class="btn btn-default">RFERL</button>
-				        <button type="button" class="btn btn-default">OCB</button>
-				        <button type="button" class="btn btn-default">MBN</button>
-				    </div>
+						<!--
+						<ul class="bbg__map_buttons">
+							<li>BBG</li>
+							<li>VOA</li>
+							<li>RFA</li>
+							<li>RFERL</li>
+							<li>MBN</li>
+						</ul>
+						-->
+						<button type="button" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button>
+						<button type="button" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button>
+						<button type="button" class=" btn-default rfa"><span class="bbg__map__button-text">RFA</span></button>
+						<button type="button" class=" btn-default rferl"><span class="bbg__map__button-text">RFERL</span></button>
+						<button type="button" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button>
+						<button type="button" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
+					</div>
 				</div>
 
 
 				<div class="usa-grid">
 					<div class="usa-width-two-thirds">
 						<div class="bbg__map-area__container " style="postion: relative;">
-							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" />
 							<div id="chartdiv"></div>
+							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
 						</div>
 					</div>
 					<div class="usa-width-one-third">
