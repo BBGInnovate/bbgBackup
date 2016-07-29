@@ -91,11 +91,9 @@ echo getNetworkExcerptJS();
 
 					<div class="usa-width-one-third">
 
-						<div class="" style="margin-bottom: 3rem;">
-							<select id="country-list">
-								<option value="0">Select a country...</option>
-							</select>
-						</div>
+						<select id="country-list" style="margin-bottom: 3rem;">
+							<option value="0">Select a country...</option>
+						</select>
 
 						<div class="">
 							<h2 id="country-name"></h2>
@@ -120,7 +118,7 @@ echo getNetworkExcerptJS();
 
 				</div><!-- div.usa-grid -->
 
-			</section>
+			</section><!-- map -->
 
 
 
