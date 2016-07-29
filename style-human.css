@@ -4868,6 +4868,10 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
+.usa-grid {
+  padding: 0 2rem;
+}
+
 .usa-footer-big nav .usa-footer-primary-link {
   cursor: pointer;
 }
@@ -7525,7 +7529,7 @@ div.appropriations-small > p.header {
 }
 /* start expanding the print styles */
 #chartdiv {
-  box-shadow: inset 2px 0 3px #999;
+  border: 1px solid #CCC;
   /*border-radius: $border-radius;*/
   font-size: 11px;
   height: 200px;
@@ -7538,13 +7542,12 @@ div.appropriations-small > p.header {
 }
 @media screen and (min-width: 600px) {
   #chartdiv {
-    height: 250px;
+    height: 400px;
   }
 }
 @media screen and (min-width: 900px) {
   #chartdiv {
-    box-shadow: inset 2px 0 10px #999;
-    height: 400px;
+    height: 500px;
   }
 }
 
@@ -7584,17 +7587,103 @@ div.appropriations-small > p.header {
 }
 
 /*** TODO - make this use real variables ***/
-@media screen and (min-width: 0px) and (max-width: 400px) {
-  #country-list {
-    display: block;
-  }
-
-  /* show it on small screens */
+#country-list {
+  display: block;
 }
-@media screen and (min-width: 401px) {
+
+/* show it on small screens */
+@media screen and (min-width: 481px) {
   #country-list {
     display: none;
   }
 
   /* hide it elsewhere */
+}
+/* temp button styles */
+.entity-buttons button {
+  background-color: #CCC;
+  background-size: cover;
+  height: 4rem;
+  margin-right: .5rem;
+  width: 4rem;
+}
+.entity-buttons button.selected {
+  background-color: #FFF;
+  box-shadow: 0px 0px 3px #CCC;
+}
+.entity-buttons button.bbg {
+  background-image: url("img/logo_bbg.png");
+}
+.entity-buttons button.bbg.selected {
+  background-image: url("img/logo_bbg--selected.png");
+}
+.entity-buttons button.voa {
+  background-image: url("img/logo_voa.png");
+}
+.entity-buttons button.voa.selected {
+  background-image: url("img/logo_voa--selected.png");
+}
+.entity-buttons button.rfa {
+  background-image: url("img/logo_rfa.png");
+}
+.entity-buttons button.rfa.selected {
+  background-image: url("img/logo_rfa--selected.png");
+}
+.entity-buttons button.rferl {
+  background-image: url("img/logo_rferl.png");
+}
+.entity-buttons button.rferl.selected {
+  background-image: url("img/logo_rferl--selected.png");
+}
+.entity-buttons button.ocb {
+  background-image: url("img/logo_ocb.png");
+}
+.entity-buttons button.ocb.selected {
+  background-image: url("img/logo_ocb--selected.png");
+}
+.entity-buttons button.mbn {
+  background-image: url("img/logo_mbn.png");
+}
+.entity-buttons button.mbn.selected {
+  background-image: url("img/logo_mbn--selected.png");
+}
+.entity-buttons button .bbg__map__button-text {
+  display: none;
+}
+
+.bbg__map__entity-buttons__instructions {
+  color: #666;
+  font-weight: normal;
+}
+
+@media screen and (min-width: 600px) {
+  .entity-buttons button {
+    background: #999;
+    border-bottom: none;
+    border-radius: 0;
+    border-right: 1px solid #FFF;
+    margin-bottom: 0;
+    margin-right: 0;
+    height: auto;
+    width: auto;
+  }
+  .entity-buttons button.selected {
+    background: #0071bc;
+  }
+  .entity-buttons button .bbg__map__button-text {
+    display: block;
+  }
+  .entity-buttons button.bbg, .entity-buttons button.voa, .entity-buttons button.rfa, .entity-buttons button.rferl, .entity-buttons button.ocb, .entity-buttons button.mbn {
+    background-image: none;
+  }
+  .entity-buttons button.bbg.selected, .entity-buttons button.voa.selected, .entity-buttons button.rfa.selected, .entity-buttons button.rferl.selected, .entity-buttons button.ocb.selected, .entity-buttons button.mbn.selected {
+    background: #0071bc;
+  }
+
+  .bbg__map__entity-buttons__instructions {
+    clear: none;
+    color: #666;
+    display: inline;
+    font-weight: normal;
+  }
 }

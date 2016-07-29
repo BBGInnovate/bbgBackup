@@ -10,7 +10,8 @@
 		//bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
 		/* keep countries,map as global variables else they won't be available in the ajax callback */
 		countries=[];
-		fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
+		//fakeDetail="Following economic and political turmoil during President Boris YELTSIN's term (1991-99), Russia shifted toward a centralized authoritarian state under the leadership of President Vladimir PUTIN (2000-2008, 2012-present) in which the regime seeks to legitimize its rule through managed elections, populist appeals, a foreign policy focused on enhancing the country's geopolitical influence, and commodity-based economic growth. Russia faces a largely subdued rebel movement in Chechnya and some other surrounding regions, although violence still occurs throughout the North Caucasus.";
+		fakeDetail="xxxx";
 
 		// hide the countries dropdown list if user isnt on a mobile device
 
@@ -114,6 +115,7 @@
 		});
 
 		$('.entity-buttons button').on('click', function () {
+		//$('.entity-buttons li').on('click', function () {
 			
 			var entity = $(this).text().toLowerCase();
 			$('.entity-buttons button').removeClass('selected');
@@ -178,11 +180,14 @@
 
 	});
 
+	//Temporarily disabling the scroll
 	function scrollToMap() {
 		// scroll to map viewport
+		/*
 		$('html, body').animate({
 			scrollTop: $('.entry-title').offset().top
 		}, 500);
+		*/
 	}
 
 
@@ -226,9 +231,14 @@
 
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
+						/*
 						country.color = '#9F1D26';
 						country.rollOverColor = "#891E25";
 						country.selectedColor = "#7A1A21";
+						*/
+						country.color = '#0071bc';
+						country.rollOverColor = "#205493";
+						country.selectedColor = "#112e51";
 
 
 					// NO COVERAGE here
@@ -272,7 +282,7 @@
 					headerText=entities[selectedEntity].fullName;
 				}
 				$('#country-name').text(headerText);
-				$('.detail').html(entityDesc);
+				$('.detail').html(entityDesc + ' <a href="/networks/voa"> Learn more »</a>');
 
 				$('#loading').hide();
 			})
@@ -381,7 +391,7 @@
 					}
 
 					groupAndSubgroupList += '</ul>';
-					groupAndSubgroupList += '<br>';
+					//groupAndSubgroupList += '<br>';
 					groupAndSubgroupList += '</div>';
 
 				}
@@ -397,7 +407,7 @@
 				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
 
 				$('.country-details').show();
-				var countryDesc = 'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
+				var countryDesc = ''; //'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
 				$('.detail').html(countryDesc);
 
 			});

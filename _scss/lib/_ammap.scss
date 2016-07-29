@@ -1,5 +1,6 @@
 #chartdiv {
-	box-shadow: inset 2px 0 3px #999;
+	border: 1px solid #CCC;
+	//box-shadow: inset 2px 0 3px #999;
 
 	/*border-radius: $border-radius;*/
 
@@ -8,18 +9,14 @@
 	width		: 100%;
 
 	@include media($medium-screen) {
-		height		: 250px;
+		height		: 400px;
 	}
 	@include media($medium-large-screen) {
-		box-shadow: inset 2px 0 10px #999;
+		//border: 1px solid #F1F1F1;
+		//box-shadow: inset 2px 0 10px #999;
 
-		height		: 400px;
+		height		: 500px;
 	}
-	/*
-	@include media($large-screen) {
-		height		: 400px;
-	}
-	*/
 }
 
 .usa-grid .bbg__map-area__container {
@@ -58,11 +55,142 @@
 }
 
 /*** TODO - make this use real variables ***/
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    #country-list { display: block; }  /* show it on small screens */
+#country-list { display: block; }  /* show it on small screens */
+
+@include media($small-screen) {
+	#country-list { display: none; }   /* hide it elsewhere */
 }
 
-@media screen and (min-width: 401px) {
-    #country-list { display: none; }   /* hide it elsewhere */
+
+
+
+/* temp button styles */
+
+.entity-buttons button {
+	background-color: #CCC;
+	background-size: cover;
+	height: 4rem;
+	margin-right: .5rem;
+	width: 4rem;
+
+	&.selected {
+		background-color: #FFF;
+		box-shadow: 0px 0px 3px #CCC;
+	}
+
+	&.bbg {
+		background-image: url('img/logo_bbg.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_bbg--selected.png');
+		}
+	}
+
+	&.voa {
+		background-image: url('img/logo_voa.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_voa--selected.png');
+		}
+	}
+
+	&.rfa {
+		background-image: url('img/logo_rfa.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_rfa--selected.png');
+		}
+	}
+
+	&.rferl {
+		background-image: url('img/logo_rferl.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_rferl--selected.png');
+		}
+	}
+
+	&.ocb {
+		background-image: url('img/logo_ocb.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_ocb--selected.png');
+		}
+	}
+
+	&.mbn {
+		background-image: url('img/logo_mbn.png');
+		//background-image: url('img/search.svg');
+
+		&.selected {
+			//background-color: #FFF;
+			background-image: url('img/logo_mbn--selected.png');
+		}
+	}
+
+
+	.bbg__map__button-text {
+		display: none;
+	}
 }
 
+
+.bbg__map__entity-buttons__instructions {
+	color: #666;
+	font-weight: normal;
+}
+
+
+@include media($medium-screen) {
+	.entity-buttons button {
+		background: #999;
+
+		border-bottom: none;
+		border-radius: 0;
+		border-right: 1px solid #FFF;
+		margin-bottom: 0;
+		margin-right: 0;
+
+		height: auto;
+		width: auto;
+
+		&.selected {
+			background: #0071bc;
+		}
+
+		.bbg__map__button-text {
+			display: block;
+		}
+
+		&.bbg,
+		&.voa,
+		&.rfa,
+		&.rferl,
+		&.ocb,
+		&.mbn {
+			background-image: none;
+
+			&.selected {
+				background: #0071bc;
+			}
+		}
+
+	}
+
+	.bbg__map__entity-buttons__instructions {
+		clear: none;
+		color: #666;
+		display: inline;
+		font-weight: normal;
+	}
+}
