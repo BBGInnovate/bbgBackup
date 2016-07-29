@@ -67,16 +67,22 @@ echo getNetworkExcerptJS();
 			<section class="usa-section">
 
 				<div class="usa-grid">
-					<div class="btn-group entity-buttons" role="group" aria-label="...">
-						<!--
-						<ul class="bbg__map_buttons">
-							<li>BBG</li>
-							<li>VOA</li>
-							<li>RFA</li>
-							<li>RFERL</li>
-							<li>MBN</li>
-						</ul>
-						-->
+<!-- 
+<div class="usa-grid">
+	<form style="margin-bottom: 2rem; max-width: none;">
+		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
+		<select id="entity" name="options" id="options" style=" display: inline-block;">
+			<option value="bbg">BBG</option>
+			<option value="voa">VOA</option>
+			<option value="rfa">RFA</option>
+			<option value="rferl">RFERL</option>
+			<option value="ocb">OCB</option>
+			<option value="mbn">MBN</option>
+		</select>
+	</form>
+</div>
+-->
+					<div class="btn-group entity-buttons" role="group" aria-label="..." style="display: inline; clear: none;">
 						<button type="button" title="BBG" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button><!--
 						--><button type="button" title="VOA" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button><!--
 						--><button type="button" title="RFA" class=" btn-default rfa"><span class="bbg__map__button-text">RFA</span></button><!--
@@ -84,6 +90,7 @@ echo getNetworkExcerptJS();
 						--><button type="button" title="OCB" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button><!--
 						--><button type="button" title="MBN" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
 					</div>
+					<h5 class="bbg__map__entity-buttons__instructions" style=""> (Select a network) </h5>
 				</div>
 
 
@@ -130,13 +137,6 @@ echo getNetworkExcerptJS();
 
 
 				</div>
-
-				<!--
-				<div class="usa-grid">
-					<h2 id="country-name"></h2>
-					<p class="detail" ></p>
-				</div>
-				-->
 
 				<div class="usa-grid-full">
 					<!--
@@ -187,18 +187,3 @@ echo getNetworkExcerptJS();
 
 <?php /*get_sidebar();*/ ?>
 <?php get_footer(); ?>
-<!-- 
-<div class="usa-grid">
-	<form style="margin-bottom: 2rem; max-width: none;">
-		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
-		<select id="entity" name="options" id="options" style=" display: inline-block;">
-			<option value="bbg">BBG</option>
-			<option value="voa">VOA</option>
-			<option value="rfa">RFA</option>
-			<option value="rferl">RFERL</option>
-			<option value="ocb">OCB</option>
-			<option value="mbn">MBN</option>
-		</select>
-	</form>
-</div>
--->

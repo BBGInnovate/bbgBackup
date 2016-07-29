@@ -80,6 +80,7 @@
 
 	&.selected {
 		background-color: #FFF;
+		box-shadow: 0px 0px 3px #CCC;
 	}
 
 	&.bbg {
@@ -149,13 +150,16 @@
 }
 
 
+.bbg__map__entity-buttons__instructions {
+	color: #666;
+	font-weight: normal;
+}
+
 
 @include media($medium-screen) {
 	.entity-buttons button {
 		background: #999;
 
-		//background-color: #FFF;
-		//border: 1px solid #CCC;
 		border-bottom: none;
 		border-radius: 0;
 		border-right: 1px solid #FFF;
@@ -186,5 +190,12 @@
 			}
 		}
 
+	}
+
+	.bbg__map__entity-buttons__instructions {
+		clear: none;
+		color: #666;
+		display: inline;
+		font-weight: normal;
 	}
 }

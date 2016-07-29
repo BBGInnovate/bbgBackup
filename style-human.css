@@ -7611,6 +7611,7 @@ div.appropriations-small > p.header {
 }
 .entity-buttons button.selected {
   background-color: #FFF;
+  box-shadow: 0px 0px 3px #CCC;
 }
 .entity-buttons button.bbg {
   background-image: url("img/logo_bbg.png");
@@ -7652,6 +7653,11 @@ div.appropriations-small > p.header {
   display: none;
 }
 
+.bbg__map__entity-buttons__instructions {
+  color: #666;
+  font-weight: normal;
+}
+
 @media screen and (min-width: 600px) {
   .entity-buttons button {
     background: #999;
@@ -7674,5 +7680,12 @@ div.appropriations-small > p.header {
   }
   .entity-buttons button.bbg.selected, .entity-buttons button.voa.selected, .entity-buttons button.rfa.selected, .entity-buttons button.rferl.selected, .entity-buttons button.ocb.selected, .entity-buttons button.mbn.selected {
     background: #0071bc;
+  }
+
+  .bbg__map__entity-buttons__instructions {
+    clear: none;
+    color: #666;
+    display: inline;
+    font-weight: normal;
   }
 }
