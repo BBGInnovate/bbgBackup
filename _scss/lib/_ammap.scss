@@ -12,16 +12,11 @@
 		height		: 400px;
 	}
 	@include media($medium-large-screen) {
-		border: 1px solid #F1F1F1;
-		box-shadow: inset 2px 0 10px #999;
+		//border: 1px solid #F1F1F1;
+		//box-shadow: inset 2px 0 10px #999;
 
 		height		: 500px;
 	}
-	/*
-	@include media($large-screen) {
-		height		: 400px;
-	}
-	*/
 }
 
 .usa-grid .bbg__map-area__container {

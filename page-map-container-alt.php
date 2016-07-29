@@ -23,19 +23,6 @@ echo getNetworkExcerptJS();
  ?>
 <style>
 /*temp styles */
-/*
-	button, [type="button"] {background: #999;}
-	.btn-default.selected {background: #0071bc;}
-
-	.entity-buttons button {
-		height: 3rem;
-		margin-right: 0;
-	}
-
-	.bbg__map__button-text {
-		display: none;
-	}
-	*/
 </style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
@@ -67,21 +54,21 @@ echo getNetworkExcerptJS();
 			<section class="usa-section">
 
 				<div class="usa-grid">
-<!-- 
-<div class="usa-grid">
-	<form style="margin-bottom: 2rem; max-width: none;">
-		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
-		<select id="entity" name="options" id="options" style=" display: inline-block;">
-			<option value="bbg">BBG</option>
-			<option value="voa">VOA</option>
-			<option value="rfa">RFA</option>
-			<option value="rferl">RFERL</option>
-			<option value="ocb">OCB</option>
-			<option value="mbn">MBN</option>
-		</select>
-	</form>
-</div>
--->
+					<!-- 
+					<div class="usa-grid">
+						<form style="margin-bottom: 2rem; max-width: none;">
+							<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
+							<select id="entity" name="options" id="options" style=" display: inline-block;">
+								<option value="bbg">BBG</option>
+								<option value="voa">VOA</option>
+								<option value="rfa">RFA</option>
+								<option value="rferl">RFERL</option>
+								<option value="ocb">OCB</option>
+								<option value="mbn">MBN</option>
+							</select>
+						</form>
+					</div>
+					-->
 					<div class="btn-group entity-buttons" role="group" aria-label="..." style="display: inline; clear: none;">
 						<button type="button" title="BBG" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button><!--
 						--><button type="button" title="VOA" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button><!--
@@ -101,26 +88,23 @@ echo getNetworkExcerptJS();
 							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
 						</div>
 					</div>
+
 					<div class="usa-width-one-third">
 
-						<div class="usa-gridxxx">
-							<select id="country-list" style="margin-bottom: 3rem;">
-							<option value="0">Select a country...</option>
+						<div class="" style="margin-bottom: 3rem;">
+							<select id="country-list">
+								<option value="0">Select a country...</option>
 							</select>
 						</div>
 
+						<div class="">
+							<h2 id="country-name"></h2>
+							<p class="detail"  style="font-family: sans-serif; "></p>
+						</div>
 
-						<h2 id="country-name"></h2>
-						<p class="detail"  style="font-family: sans-serif; "></p>
-
-
-						<div class="usa-gridxxx" style="">
-							<div class="usa-width-one-thirdxx">
-								<div class="country-details">
-									<p style="font-family: sans-serif; "><span style="font-family: sans-serif; font-weight: bold;">Languages supported: </span><span class="languages-served"></span></p>
-									<div class="groups-and-subgroups"></div>
-								</div>
-							</div>
+						<div class="country-details">
+							<p style="font-family: sans-serif; "><strong>Languages supported: </strong><span class="languages-served"></span></p>
+							<div class="groups-and-subgroups"></div>
 						</div>
 
 						<div class="subgroup-block" style="margin-top: 2rem;">
@@ -128,51 +112,14 @@ echo getNetworkExcerptJS();
 							<select id="subgroup-list">
 								<option value="0">Select a subgroup...</option>
 							</select>
-							<button id="view-on-map">View on Map</button>
-							<button id="submit">Go</button>
+							<button id="view-on-map">View on map</button>
+							<button id="submit">Visit site</button>
 						</div>
 
+					</div><!-- div.usa-width-one-third -->
 
-					</div>
+				</div><!-- div.usa-grid -->
 
-
-				</div>
-
-				<div class="usa-grid-full">
-					<!--
-					<div class="usa-grid">
-						<select id="country-list">
-						<option value="0">Select a country...</option>
-						</select>
-						<br>
-						<br>
-						<div class="subgroup-block">
-							<select id="subgroup-list">
-								<option value="0">Select a subgroup...</option>
-							</select>
-							<button id="view-on-map">View on Map</button>
-							<button id="submit">Go</button>
-						</div>
-					</div>
-					
-					<div class="usa-grid">
-						<div class="entity-details"></div>
-						<div class="country-details"></div>
-					</div>
-
-					<div class="usa-grid" style="margin-top: 3rem;">
-						<div class="usa-width-two-thirds">
-							
-						</div>
-						<div class="usa-width-one-third">
-							<div class="country-details">
-								<div class="groups-and-subgroups"></div>
-								<p><span><strong>Languages Served: </strong></span><span class="languages-served"></span></p>
-							</div>
-						</div>
-					</div>
-					-->
-				</div>
 			</section>
 
 

@@ -7547,8 +7547,6 @@ div.appropriations-small > p.header {
 }
 @media screen and (min-width: 900px) {
   #chartdiv {
-    border: 1px solid #F1F1F1;
-    box-shadow: inset 2px 0 10px #999;
     height: 500px;
   }
 }

@@ -234,10 +234,11 @@
 						/*
 						country.color = '#9F1D26';
 						country.rollOverColor = "#891E25";
+						country.selectedColor = "#7A1A21";
 						*/
 						country.color = '#0071bc';
 						country.rollOverColor = "#205493";
-						country.selectedColor = "#7A1A21";
+						country.selectedColor = "#112e51";
 
 
 					// NO COVERAGE here
