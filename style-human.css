@@ -7534,11 +7534,6 @@ div.appropriations-small > p.header {
   font-size: 11px;
   height: 200px;
   width: 100%;
-  /*
-  @include media($large-screen) {
-  	height		: 400px;
-  }
-  */
 }
 @media screen and (min-width: 600px) {
   #chartdiv {
