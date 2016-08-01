@@ -3,7 +3,7 @@
  * The custom home page for the Broadcasting Board of Governors.
  * It includes:
  *      - the mission
- *      - a portfolio of recent impact stories, 
+ *      - a portfolio of recent impact stories,
  *      - recent stories,
  *      - an optional soapbox for senior leadership commentary,
  *      - updates on threats to press around the world
@@ -169,13 +169,13 @@ get_header();
 				</div>
 
 				<div class="bbg-banner__cutline usa-grid">
-					<?php echo $bannerCutline; ?>	
+					<?php echo $bannerCutline; ?>
 				</div>
 			</section><!-- Responsive Banner -->
 
 
 			<div class="bbg__social__container">
-				<!--
+
 				<div class="bbg__social">
 					<h3 class="bbg__social-list__label">FOLLOW US</h3>
 					<ul class="bbg__social-list">
@@ -184,7 +184,7 @@ get_header();
 						<li class="bbg__social-list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube" tabindex="-1"></a></li>
 					</ul>
 				</div>
-				-->
+
 			</div>
 
 			<!-- Site introduction -->
@@ -235,8 +235,8 @@ get_header();
 					</div>
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
-					<?php 
-						if ($featuredEvent && $showFeaturedEvent) { 
+					<?php
+						if ($featuredEvent && $showFeaturedEvent) {
 
 							$id = $featuredEvent->ID;
 							$labelText = $featuredEventLabel;
@@ -249,7 +249,7 @@ get_header();
 								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
 								$eventPermalink = get_permalink($my_post);
 							}
-							
+
 							$eventTitle = $featuredEvent->post_title;
 							$excerpt = my_excerpt($id);
 					?>
@@ -258,7 +258,7 @@ get_header();
 								<h6 class="bbg__label " style=" display: inline-block; margin-bottom: 1rem;"><?php echo $labelText ?></h6>
 								<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
 									<header class="entry-header bbg-portfolio__excerpt-header">
-										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>		
+										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>
 									</header><!-- .entry-header -->
 
 									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt">
@@ -267,7 +267,7 @@ get_header();
 								</div>
 							</article>
 
-					<?php } else { 
+					<?php } else {
 						$q=getRandomQuote('allEntities', $postIDsUsed);
 						if ($q) {
 							$postIDsUsed[] = $q["ID"];
@@ -287,7 +287,7 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ) ?>">BBG News</a></h6>
 				</div>
-				
+
 				<!-- Featured Post -->
 				<div class="usa-grid-full">
 				<?php
@@ -313,7 +313,7 @@ get_header();
 				</div><!-- . usa-grid-full Featured post -->
 
 				<!-- Headlines -->
-				<div class="usa-grid bbg__ceo-post"> 
+				<div class="usa-grid bbg__ceo-post">
 					<div class="usa-width-one-half bbg__secondary-stories">
 						<?php
 							/* BEWARE: sticky posts add a record */
@@ -350,7 +350,7 @@ get_header();
 							<nav class="navigation posts-navigation bbg__navigation__pagination" role="navigation">
 								<h2 class="screen-reader-text">Posts navigation</h2>
 								<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news') ); ?>" >Previous posts</a></div></div>
-							</nav>	
+							</nav>
 					</div>
 
 
@@ -358,7 +358,7 @@ get_header();
 						if ($soap) {
 							$s = getSoapboxStr($soap);
 							echo $s;
-						} 
+						}
 					?>
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
@@ -371,9 +371,9 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg__label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
 				</div>
-				
+
 				<!-- Headlines -->
-				<div class="usa-grid"> 
+				<div class="usa-grid">
 					<div class="bbg-grid--1-2-2">
 
 						<?php
