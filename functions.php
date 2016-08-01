@@ -473,6 +473,11 @@ function featured_video ($url) {
 		$return = apply_filters('the_content',$url);
 	} else {
 		//if(strpos($code, 'youtu.be') !== false || strpos($code, 'youtube.com') !== false)
+		if(strpos($url, 'youtu.be') !== false) {
+			//https://youtu.be/SOME_KEY
+			$key = array_pop(explode("/",$url));
+			$url = "https://www.youtube.com/watch?v=" . $key;
+		}
 		$url = str_replace("watch?v=", "embed/", $url);	//youtube
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container'>";
