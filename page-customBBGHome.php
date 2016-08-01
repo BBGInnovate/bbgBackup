@@ -175,7 +175,7 @@ get_header();
 
 
 			<div class="bbg__social__container">
-
+				<?php if (isset($_GET['social'])): ?>
 				<div class="bbg__social">
 					<h3 class="bbg__social-list__label">FOLLOW US</h3>
 					<ul class="bbg__social-list">
@@ -184,7 +184,7 @@ get_header();
 						<li class="bbg__social-list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube" tabindex="-1"></a></li>
 					</ul>
 				</div>
-
+				<?php endif; ?>
 			</div>
 
 			<!-- Site introduction -->
