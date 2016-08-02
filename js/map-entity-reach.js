@@ -3,6 +3,10 @@
 	// find out if the user is on a mobile device or not (used for zoomDuration)
 	var isMobile = isMobileDevice();
 
+	var colorBase = '#0071bc',
+		colorRollOver = '#205493',
+		colorSelected = '#112e51';
+
 	$(document).ready(function() {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
@@ -67,6 +71,10 @@
 
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
+
+			// hide the div until it loads
+			$('.usa-width-one-third').hide();
+
 			if (!isMobile) {
 				map.zoomDuration = .2;
 			}
@@ -93,7 +101,7 @@
 				// hide any entity details if shown
 				$('.entity-details').hide();
 
-				$('#country-name').text(event.mapObject.title);
+				$('#country-name').text('Loading ' + event.mapObject.title + ' ...');
 
 				// set the country list value to the same as the map selection
 				$('#country-list').val(event.mapObject.id);
@@ -107,7 +115,6 @@
 
 			// this will prevent the countries that are not covered from zooming in on click
 			for (var i = 0; i < map.dataProvider.areas.length; i++) {
-				//console.log(map.dataProvider.areas[i]);
 				if (map.dataProvider.areas[i].region_ids == null) {
 					map.dataProvider.areas[i].autoZoomReal = false;
 				}
@@ -130,10 +137,23 @@
 
 		$('.entity-buttons button').on('click', function () {
 
+			// hide the right panel
+			$('.usa-width-one-third').hide();
+
+			// hide the subgroup 'view on map' and 'go' buttons
+			$('.subgroup-block button').hide();
+
 			var entity = $(this).text().toLowerCase();
+
+			var fullName = entities[entity].fullName;
+
+			$('#country-name').text('Loading ' + fullName + ' ...');
+
+
 			$('.entity-buttons button').removeClass('selected');
 			$(this).addClass('selected');
 
+			/*
 			if (entity == 'bbg'){
 				//setColors(base, rollover, selected)
 				setColors('#9F1D26', "#891E25", "#7A1A21");
@@ -148,11 +168,16 @@
 			} else if (entity == 'mbn'){
 				setColors('#ee433d', "#EE4223", "#BB3530");
 			} else {
-				/* there shouldn't be any here */
+				// there shouldn't be any here
 				setColors('#9F1D26', "#891E25", "#7A1A21");
 			}
-//
-			var fullName = entities[entity].fullName;
+			*/
+
+
+			var buttonColor = $('.selected').css('background-color');
+			colorBase = buttonColor;
+			colorRollOver = shadeColor(buttonColor, -30);
+			colorSelected = shadeColor(buttonColor, -50);
 
 			// reset buttons
 			$('.entity-buttons button').removeClass('active');
@@ -202,6 +227,11 @@
 			getCountries(url);
 		});
 
+
+		$('#subgroup-list').on('change', function () {
+			$('.subgroup-block button').show();
+		});
+
 		//load our initial data
 		//grabData(defaultEntity);
 
@@ -214,10 +244,10 @@
 	function scrollToMap() {
 		// scroll to map viewport
 		/*
-		$('html, body').animate({
-			scrollTop: $('.entry-title').offset().top
-		}, 500);
-		*/
+		 $('html, body').animate({
+		 scrollTop: $('.entry-title').offset().top
+		 }, 500);
+		 */
 	}
 
 
@@ -247,16 +277,6 @@
 
 	}
 
-	var colorBase = '#0071bc',
-		colorRollOver = "#205493"
-		colorSelected = "#112e51";
-
-	function setColors(base, rollover, selected){
-		colorBase = base;
-		colorRollOver = rollover;
-		colorSelected = selected;
-	}
-
 	// this is the first ajax request made when the widget loads to populate all the countries BBG covers
 	function getCountries (url) {
 		$.getJSON(url)
@@ -272,10 +292,10 @@
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
 						/*
-						country.color = '#9F1D26';
-						country.rollOverColor = "#891E25";
-						country.selectedColor = "#7A1A21";
-						*/
+						 country.color = '#9F1D26';
+						 country.rollOverColor = "#891E25";
+						 country.selectedColor = "#7A1A21";
+						 */
 						country.color = colorBase;
 						country.rollOverColor = colorRollOver;
 						country.selectedColor = colorSelected;
@@ -434,10 +454,11 @@
 				// prepend it in the list so it's prioritized based on entity selected
 				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
 
-				$('.country-details').show();
+
 				var countryDesc = ''; //'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
 				$('.detail').html(countryDesc);
 
+				$('.country-details').show();
 			});
 	}
 
@@ -498,5 +519,22 @@
 			return 'an';
 		}
 	}
+
+	function shadeColor(color, percent) {
+		var range = color.substring(4, color.length - 1);
+		var rangeArr = range.split(',');
+
+		var r = parseInt(rangeArr[0]) + percent;
+		var g = parseInt(rangeArr[1]) + percent;
+		var b = parseInt(rangeArr[2]) + percent;
+
+		var newColor = 'rgb(' + r + ',' + g + ',' + b  + ')';
+		return newColor;
+	}
+
+	$(document).ajaxStop(function () {
+		$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
+		$('.usa-width-one-third').show();
+	});
 
 })(jQuery,bbgConfig, entities);
