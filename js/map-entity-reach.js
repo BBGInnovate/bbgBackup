@@ -107,7 +107,7 @@
 
 			// this will prevent the countries that are not covered from zooming in on click
 			for (var i = 0; i < map.dataProvider.areas.length; i++) {
-				console.log(map.dataProvider.areas[i]);
+				//console.log(map.dataProvider.areas[i]);
 				if (map.dataProvider.areas[i].region_ids == null) {
 					map.dataProvider.areas[i].autoZoomReal = false;
 				}
@@ -115,24 +115,37 @@
 		});
 
 
+
+
 		$('#entity').on('change', function () {
 			//map.zoomToLongLat(1, 14.0671, 10.7988, false);
 			map.zoomDuration = 0;
 
-
 			var entity = $(this).val();
 			grabData(entity);
 
-			scrollToMap();
-
-
+			//scrollToMap();
 		});
+
 
 		$('.entity-buttons button').on('click', function () {
 
 			var entity = $(this).text().toLowerCase();
 			$('.entity-buttons button').removeClass('selected');
 			$(this).addClass('selected');
+
+			if (entity == 'bbg'){
+				//setColors(base, rollover, selected)
+				setColors('#9F1D26', "#891E25", "#7A1A21");
+			} else if (entity == 'voa'){
+				setColors('#0071bc', "#205493", "#112e51");
+			} else if (entity == 'rfa'){
+				setColors('#4aa564', "#94bfa2", "#2e8540");
+			} else if (entity == 'rferl'){
+				setColors('#FF9214', "#FFAF17", "#CC7510");
+			} else {
+				setColors('#9F1D26', "#891E25", "#7A1A21");
+			}
 
 			var fullName = entities[entity].fullName;
 
@@ -155,7 +168,7 @@
 
 			grabData(entity);
 
-			scrollToMap();
+			//scrollToMap();
 		});
 
 		// this event listener is for select countries through the drop-down (for mobile devices)
@@ -184,22 +197,22 @@
 			getCountries(url);
 		});
 
-
-
 		//load our initial data
 		//grabData(defaultEntity);
 
 		// click on the first element of entity-buttons class (BBG)
 		$('.entity-buttons :first').click();
 
-
 	});
 
+	/* Do we need this scroll? */
 	function scrollToMap() {
 		// scroll to map viewport
+		/*
 		$('html, body').animate({
 			scrollTop: $('.entry-title').offset().top
 		}, 500);
+		*/
 	}
 
 
@@ -229,6 +242,16 @@
 
 	}
 
+	var colorBase = '#0071bc',
+		colorRollOver = "#205493"
+		colorSelected = "#112e51";
+
+	function setColors(base, rollover, selected){
+		colorBase = base;
+		colorRollOver = rollover;
+		colorSelected = selected;
+	}
+
 	// this is the first ajax request made when the widget loads to populate all the countries BBG covers
 	function getCountries (url) {
 		$.getJSON(url)
@@ -243,17 +266,20 @@
 
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
+						/*
 						country.color = '#9F1D26';
 						country.rollOverColor = "#891E25";
 						country.selectedColor = "#7A1A21";
-
+						*/
+						country.color = colorBase;
+						country.rollOverColor = colorRollOver;
+						country.selectedColor = colorSelected;
 
 						// NO COVERAGE here
 					} else {
 						// this is the default color for non-BBG covered countries
 						country.color = '#DDDDDD';
 						country.rollOverColor = "#B7B7B7";
-
 					}
 
 

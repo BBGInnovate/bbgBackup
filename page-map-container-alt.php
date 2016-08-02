@@ -87,9 +87,9 @@ echo getNetworkExcerptJS();
 							<div id="chartdiv"></div>
 							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
 						</div>
-					</div>
+					</div><!--
 
-					<div class="usa-width-one-third">
+					--><div class="usa-width-one-third">
 
 						<select id="country-list" style="margin-bottom: 3rem;">
 							<option value="0">Select a country...</option>
