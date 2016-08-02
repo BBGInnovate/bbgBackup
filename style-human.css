@@ -7670,9 +7670,35 @@ div.appropriations-small > p.header {
   }
   .entity-buttons button.bbg, .entity-buttons button.voa, .entity-buttons button.rfa, .entity-buttons button.rferl, .entity-buttons button.ocb, .entity-buttons button.mbn {
     background-image: none;
+    /*
+    &.selected {
+    	background: #0071bc;
+    }
+    */
   }
-  .entity-buttons button.bbg.selected, .entity-buttons button.voa.selected, .entity-buttons button.rfa.selected, .entity-buttons button.rferl.selected, .entity-buttons button.ocb.selected, .entity-buttons button.mbn.selected {
-    background: #0071bc;
+  .entity-buttons button.selected.bbg {
+    background-image: none;
+    background-color: #981b1e;
+  }
+  .entity-buttons button.selected.voa {
+    background-image: none;
+    background-color: #0071bc;
+  }
+  .entity-buttons button.selected.rfa {
+    background-image: none;
+    background-color: #2e8540;
+  }
+  .entity-buttons button.selected.rferl {
+    background-image: none;
+    background-color: orange;
+  }
+  .entity-buttons button.selected.ocb {
+    background-image: none;
+    background-color: red;
+  }
+  .entity-buttons button.selected.mbn {
+    background-image: none;
+    background-color: red;
   }
 
   .bbg__map__entity-buttons__instructions {

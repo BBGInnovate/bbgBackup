@@ -180,10 +180,44 @@
 		&.mbn {
 			background-image: none;
 
+			/*
 			&.selected {
 				background: #0071bc;
 			}
+			*/
 		}
+
+	&.selected {
+		&.bbg {
+			background-image: none;
+			background-color: $color-secondary-darkest;
+		}
+
+		&.voa {
+			background-image: none;
+			background-color: $color-primary;
+		}
+
+		&.rfa {
+			background-image: none;
+			background-color: $color-green;
+		}
+
+		&.rferl {
+			background-image: none;
+			background-color: orange;
+		}
+
+		&.ocb {
+			background-image: none;
+			background-color: red;
+		}
+
+		&.mbn {
+			background-image: none;
+			background-color: red;
+		}
+	}
 
 	}
 
