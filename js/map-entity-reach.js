@@ -3,6 +3,10 @@
 	// find out if the user is on a mobile device or not (used for zoomDuration)
 	var isMobile = isMobileDevice();
 
+	var colorBase = '#0071bc',
+		colorRollOver = '#205493',
+		colorSelected = '#112e51';
+
 	$(document).ready(function() {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
@@ -17,10 +21,10 @@
 
 		// this is now hidden with media query
 		/*
-		if (!isMobile) {
-			$('#country-list').hide();
-		}
-		*/
+		 if (!isMobile) {
+		 $('#country-list').hide();
+		 }
+		 */
 
 		/*
 		 $color-primary-alt:          #02bfe7; //blue
@@ -67,9 +71,14 @@
 
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
+
+			// hide the div until it loads
+			$('.usa-width-one-third').hide();
+
 			if (!isMobile) {
 				map.zoomDuration = .2;
 			}
+
 
 			// only make AJAX calls for stuff we have data for
 			for (var i = 0; i < countries.length; i++) {
@@ -83,45 +92,92 @@
 						//getAPIDataCallback(event.mapObject.title);
 					}
 				}
+
 			}
 
-			// hide any entity details if shown
-			$('.entity-details').hide();
 
-			$('#country-name').text(event.mapObject.title);
+			// if it's a country that's covered (if it has region_ids)
+			if (event.mapObject.region_ids) {
+				// hide any entity details if shown
+				$('.entity-details').hide();
 
-			// set the country list value to the same as the map selection
-			$('#country-list').val(event.mapObject.id);
+				$('#country-name').text('Loading ' + event.mapObject.title + ' ...');
+
+				// set the country list value to the same as the map selection
+				$('#country-list').val(event.mapObject.id);
+			}
 		});
 
 
 		// zoom in on the new entity once it's updated
 		map.addListener('dataUpdated', function (event) {
-			event.chart.zoomToGroup(countries);	
+			event.chart.zoomToGroup(countries);
+
+			// this will prevent the countries that are not covered from zooming in on click
+			for (var i = 0; i < map.dataProvider.areas.length; i++) {
+				if (map.dataProvider.areas[i].region_ids == null) {
+					map.dataProvider.areas[i].autoZoomReal = false;
+				}
+			}
 		});
+
+
 
 
 		$('#entity').on('change', function () {
 			//map.zoomToLongLat(1, 14.0671, 10.7988, false);
 			map.zoomDuration = 0;
 
-
 			var entity = $(this).val();
 			grabData(entity);
 
-			scrollToMap();
-
-
+			//scrollToMap();
 		});
 
+
 		$('.entity-buttons button').on('click', function () {
-		//$('.entity-buttons li').on('click', function () {
-			
+
+			// hide the right panel
+			$('.usa-width-one-third').hide();
+
+			// hide the subgroup 'view on map' and 'go' buttons
+			$('.subgroup-block button').hide();
+
 			var entity = $(this).text().toLowerCase();
+
+			var fullName = entities[entity].fullName;
+
+			$('#country-name').text('Loading ' + fullName + ' ...');
+
+
 			$('.entity-buttons button').removeClass('selected');
 			$(this).addClass('selected');
 
-			var fullName = entities[entity].fullName;
+			/*
+			if (entity == 'bbg'){
+				//setColors(base, rollover, selected)
+				setColors('#9F1D26', "#891E25", "#7A1A21");
+			} else if (entity == 'voa'){
+				setColors('#0071bc', "#205493", "#112e51");
+			} else if (entity == 'rfa'){
+				setColors('#4aa564', "#94bfa2", "#2e8540");
+			} else if (entity == 'rferl'){
+				setColors('#FF9214', "#FFAF17", "#CC7510");
+			} else if (entity == 'ocb'){
+				setColors('#653792', "#42245F", "#42245F");
+			} else if (entity == 'mbn'){
+				setColors('#ee433d', "#EE4223", "#BB3530");
+			} else {
+				// there shouldn't be any here
+				setColors('#9F1D26', "#891E25", "#7A1A21");
+			}
+			*/
+
+
+			var buttonColor = $('.selected').css('background-color');
+			colorBase = buttonColor;
+			colorRollOver = shadeColor(buttonColor, -30);
+			colorSelected = shadeColor(buttonColor, -50);
 
 			// reset buttons
 			$('.entity-buttons button').removeClass('active');
@@ -130,7 +186,7 @@
 			$('.country-details').hide();
 
 			// show the entity details div
-			$('.entity-details').text(entities[entity].description).show();
+			$('.entity-details').html('<p>' + entities[entity].description + '<p>' + 'Website: <a target="_blank" href='+entities[entity].url+'>'+entities[entity].url+'</a>').show();
 
 			// add the active class so it looks like it's selected
 			$(this).addClass('active');
@@ -138,9 +194,11 @@
 			// added this in to fix the zoom duration when clicking from entity to entity
 			map.zoomDuration = 0;
 
+			window.selectedCountryID = '';
+
 			grabData(entity);
 
-			scrollToMap();
+			//scrollToMap();
 		});
 
 		// this event listener is for select countries through the drop-down (for mobile devices)
@@ -170,6 +228,9 @@
 		});
 
 
+		$('#subgroup-list').on('change', function () {
+			$('.subgroup-block button').show();
+		});
 
 		//load our initial data
 		//grabData(defaultEntity);
@@ -177,17 +238,16 @@
 		// click on the first element of entity-buttons class (BBG)
 		$('.entity-buttons :first').click();
 
-
 	});
 
-	//Temporarily disabling the scroll
+	/* Do we need this scroll? */
 	function scrollToMap() {
 		// scroll to map viewport
 		/*
-		$('html, body').animate({
-			scrollTop: $('.entry-title').offset().top
-		}, 500);
-		*/
+		 $('html, body').animate({
+		 scrollTop: $('.entry-title').offset().top
+		 }, 500);
+		 */
 	}
 
 
@@ -232,41 +292,29 @@
 					// if the country has region_ids array, BBG has coverage there
 					if (country.region_ids) {
 						/*
-						country.color = '#9F1D26';
-						country.rollOverColor = "#891E25";
-						country.selectedColor = "#7A1A21";
-						*/
-						country.color = '#0071bc';
-						country.rollOverColor = "#205493";
-						country.selectedColor = "#112e51";
+						 country.color = '#9F1D26';
+						 country.rollOverColor = "#891E25";
+						 country.selectedColor = "#7A1A21";
+						 */
+						country.color = colorBase;
+						country.rollOverColor = colorRollOver;
+						country.selectedColor = colorSelected;
 
-
-					// NO COVERAGE here
+						// NO COVERAGE here
 					} else {
 						// this is the default color for non-BBG covered countries
 						country.color = '#DDDDDD';
 						country.rollOverColor = "#B7B7B7";
-
-						// these zoom levels will prevent zoom on countries that are not covered
-						
-						country.zoomLatitude = map.zoomLatitude();
-						country.zoomLongitude = map.zoomLongitude();
-						if (AmCharts.isReady) {
-							country.zoomLevel = map.zoomLevel();
-						}
-
 					}
 
 
 					countries.push(country);
 
-					// if the user is on a mobile device, build out the country list dropdown
-					// * now being controlled through media query
-				//	if (isMobile) {
-						addCountryToDropdown(country);
-				//	}
+
 				}
 
+
+				addCountriesToDropdown(countries);
 
 				map.dataProvider.areas = countries;
 				map.validateData();
@@ -282,7 +330,7 @@
 					headerText=entities[selectedEntity].fullName;
 				}
 				$('#country-name').text(headerText);
-				$('.detail').html(entityDesc + ' <a href="/networks/voa"> Learn more »</a>');
+				$('.detail').html(entityDesc);
 
 				$('#loading').hide();
 			})
@@ -406,10 +454,11 @@
 				// prepend it in the list so it's prioritized based on entity selected
 				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
 
-				$('.country-details').show();
+
 				var countryDesc = ''; //'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
 				$('.detail').html(countryDesc);
 
+				$('.country-details').show();
 			});
 	}
 
@@ -421,10 +470,17 @@
 
 		$.getJSON(bbgConfig.template_directory_uri + 'api.php?endpoint=api/subgroups?group=' + entity)
 			.done(function( data ) {
+				var subgroupListString = '';
+				var selectedEntity = $('.entity-buttons .active').text();
+				var article = getArticleByEntity(selectedEntity);
+				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity + ' service...</option>';
 				for (var i = 0; i < data.subgroups.length; i++) {
 					var subgroup = data.subgroups[i];
-					$('#subgroup-list').append('<option value="'+subgroup.id+'" data-href="'+subgroup.website_url+'">'+subgroup.name+'</option>');
+					subgroupListString += '<option value="'+subgroup.id+'" data-href="'+subgroup.website_url+'">'+subgroup.name+'</option>';
 				}
+
+				$('#subgroup-list').html(subgroupListString);
+
 			})
 			.fail(function( jqxhr, textStatus, error ) {
 				var err = textStatus + ", " + error;
@@ -433,8 +489,18 @@
 	}
 
 	// this function will dynamically generate the dropdown list for the countries (on mobile devices)
-	function addCountryToDropdown (country) {
-		$('#country-list').append('<option value="'+country.code+'">'+country.name+'</option>');
+	function addCountriesToDropdown (countriesDropdown) {
+		$('#country-list').empty();
+		var countryListString = '';
+
+		countryListString += '<option value="0">Select a country...</option>';
+		for (var i = 0; i < countriesDropdown.length; i++) {
+			var country = countriesDropdown[i];
+			countryListString += '<option value="'+country.code+'">'+country.name+'</option>';
+		}
+
+		$('#country-list').html(countryListString);
+
 	}
 
 	// this function will return true if the user is on a mobile device or false otherwise
@@ -445,5 +511,30 @@
 			return false;
 		}
 	}
+
+	function getArticleByEntity (entity) {
+		if (entity === 'VOA') {
+			return 'a';
+		} else {
+			return 'an';
+		}
+	}
+
+	function shadeColor(color, percent) {
+		var range = color.substring(4, color.length - 1);
+		var rangeArr = range.split(',');
+
+		var r = parseInt(rangeArr[0]) + percent;
+		var g = parseInt(rangeArr[1]) + percent;
+		var b = parseInt(rangeArr[2]) + percent;
+
+		var newColor = 'rgb(' + r + ',' + g + ',' + b  + ')';
+		return newColor;
+	}
+
+	$(document).ajaxStop(function () {
+		$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
+		$('.usa-width-one-third').show();
+	});
 
 })(jQuery,bbgConfig, entities);

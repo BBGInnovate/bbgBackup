@@ -43,7 +43,7 @@
 #loading {
 	display: none;
 	z-index: 9997;
-	position: relative;// fixed;
+	position: absolute;// fixed;
 	top: 300px;
 	left: 5%;
 	width: 50px;
@@ -150,6 +150,9 @@
 	font-weight: normal;
 }
 
+.bbg__map-area__text {
+	padding: $site-margins-medium;
+}
 
 @include media($medium-screen) {
 	.entity-buttons button {
@@ -180,10 +183,44 @@
 		&.mbn {
 			background-image: none;
 
+			/*
 			&.selected {
 				background: #0071bc;
 			}
+			*/
 		}
+
+	&.selected {
+		&.bbg {
+			background-image: none;
+			background-color: $color-secondary-darkest;
+		}
+
+		&.voa {
+			background-image: none;
+			background-color: $color-primary;
+		}
+
+		&.rfa {
+			background-image: none;
+			background-color: $color-green;
+		}
+
+		&.rferl {
+			background-image: none;
+			background-color: orange;
+		}
+
+		&.ocb {
+			background-image: none;
+			background-color: #653792;
+		}
+
+		&.mbn {
+			background-image: none;
+			background-color: #BB3530;
+		}
+	}
 
 	}
 
@@ -192,5 +229,11 @@
 		color: #666;
 		display: inline;
 		font-weight: normal;
+	}
+	.bbg__map-area__text {
+		padding: {
+			bottom: 0;
+			left: 0;
+		};
 	}
 }

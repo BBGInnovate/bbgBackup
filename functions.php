@@ -472,7 +472,24 @@ function featured_video ($url) {
 	if(strpos($url, 'facebook.com')) {
 		$return = apply_filters('the_content',$url);
 	} else {
-		//if(strpos($code, 'youtu.be') !== false || strpos($code, 'youtube.com') !== false)
+		if(strpos($url, 'youtu.be') !== false) {
+			//URL's of the youtu.be form, which are what you get click share, don't naturally embed.  let's transform them.
+			//Convert url's like https://youtu.be/SOME_KEY and https://youtu.be/SOME_KEY?t=55s to https://www.youtube.com?v=SOME_KEY&start=55
+			$o = explode("/",$url);
+			$key = array_pop($o);
+			$timeSeconds=0;
+			if (strpos($key,'?t=') !== false) {
+				$o = explode("?",$key);
+				$timeStr = array_pop($o);
+				$o = explode("=",$timeStr);
+				$timeSecondsStr=array_pop($o);
+				$timeSeconds = str_replace("s","",$timeSecondsStr);
+			}
+			$url = "https://www.youtube.com/watch?v=" . $key;
+			if ($timeSeconds > 0) {
+				$url .= "&start=" . $timeSeconds;
+			}
+		}
 		$url = str_replace("watch?v=", "embed/", $url);	//youtube
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container'>";

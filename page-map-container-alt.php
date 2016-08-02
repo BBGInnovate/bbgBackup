@@ -77,45 +77,45 @@ echo getNetworkExcerptJS();
 						--><button type="button" title="OCB" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button><!--
 						--><button type="button" title="MBN" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
 					</div>
-					<h5 class="bbg__map__entity-buttons__instructions" style=""> (Select a network) </h5>
+					<!--<h5 class="bbg__map__entity-buttons__instructions" style=""> (Select a network) </h5>-->
 				</div>
 
 
 				<div class="usa-grid">
-					<div class="usa-width-two-thirds">
-						<div class="bbg__map-area__container " style="postion: relative;">
-							<div id="chartdiv"></div>
-							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
-						</div>
-					</div>
+					<div class="usa-grid-full" style="background-color: #F1F1F1;">
+						<div class="usa-width-two-thirds">
+							<div class="bbg__map-area__container " style="position: relative; background-color: #FFF;">
+								<div id="chartdiv"></div>
+								<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
+							</div>
+						</div><!--
 
-					<div class="usa-width-one-third">
+						--><div class="usa-width-one-third bbg__map-area__text" style="">
 
-						<select id="country-list" style="margin-bottom: 3rem;">
-							<option value="0">Select a country...</option>
-						</select>
-
-						<div class="">
-							<h2 id="country-name"></h2>
-							<p class="detail"  style="font-family: sans-serif; "></p>
-						</div>
-
-						<div class="country-details">
-							<p style="font-family: sans-serif; "><strong>Languages supported: </strong><span class="languages-served"></span></p>
-							<div class="groups-and-subgroups"></div>
-						</div>
-
-						<div class="subgroup-block" style="margin-top: 2rem;">
-							<h4>Select a [VOA] language</h4>
-							<select id="subgroup-list">
-								<option value="0">Select a subgroup...</option>
+							<select id="country-list" style="margin-bottom: 3rem;">
+								<option value="0">Select a country...</option>
 							</select>
-							<button id="view-on-map">View on map</button>
-							<button id="submit">Visit site</button>
-						</div>
 
-					</div><!-- div.usa-width-one-third -->
+							<div class="">
+								<h2 id="country-name"></h2>
+								<p class="detail"  style="font-family: sans-serif; "></p>
+							</div>
 
+							<div class="country-details">
+								<p style="font-family: sans-serif; "><strong>Languages supported: </strong><span class="languages-served"></span></p>
+								<div class="groups-and-subgroups"></div>
+							</div>
+
+							<div class="subgroup-block" style="margin-top: 2rem;">
+								<select id="subgroup-list">
+									<option value="0">Select a subgroup...</option>
+								</select>
+								<button id="view-on-map">View on map</button>
+								<button id="submit">Visit site</button>
+							</div>
+
+						</div><!-- div.usa-width-one-third -->
+					</div><!-- .usa-grid-full -->
 				</div><!-- div.usa-grid -->
 
 			</section><!-- map -->
