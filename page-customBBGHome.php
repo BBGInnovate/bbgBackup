@@ -14,6 +14,39 @@
  */
 
 //helper function used only in this template
+
+function getTwoRandomImpactPostIDs($used) {
+	/* get two of the most recent 6 impact posts for use on the homepage */
+	$qParams = array(
+		'post_type'=> 'post',
+		'post_status' => 'publish',
+		'cat' => get_cat_id('impact'),
+		'post__not_in' => $used,
+		'posts_per_page' => 6,
+		'orderby' => 'post_date',
+		'order' => 'desc',
+
+	);
+	$custom_query = new WP_Query( $qParams );
+	$allIDs = [];
+	if ( $custom_query->have_posts() ) :
+		while ( $custom_query->have_posts() ) : $custom_query->the_post();
+			$allIDs[]= get_the_ID();
+		endwhile;
+	endif;
+	
+	if (count($allIDs) > 2) {
+		shuffle($allIDs);
+		$ids = [];
+		$ids[]= array_pop($allIDs);
+		$ids[]= array_pop($allIDs);
+	} else {
+		$ids = $allIDs;
+	}
+
+	return $ids;
+}
+
 function getRecentPostQueryParams($numPosts, $used, $catExclude) {
 	$qParams=array(
 		'post_type' => array('post'),
@@ -208,13 +241,15 @@ get_header();
 
 						<div class="usa-grid-full" style="margin-bottom: 1.5rem;">
 						<?php
+
+							$impactPostIDs = getTwoRandomImpactPostIDs($postIDsUsed);
+
 							$qParams=array(
 								'post_type' => array('post'),
 								'posts_per_page' => 2,
 								'orderby' => 'post_date',
 								'order' => 'desc',
-								'cat' => get_cat_id('Impact'),
-								'post__not_in' => $postIDsUsed
+								'post__in' => $impactPostIDs
 							);
 							query_posts($qParams);
 							if ( have_posts() ) :
