@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 
 // This is required to be sure Walker_Category_Checklist class is available
 require_once ABSPATH . 'wp-admin/includes/template.php';
+
 class Walker_Category_Checklist_With_Tooltip extends Walker_Category_Checklist {
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		if ( empty( $args['taxonomy'] ) ) {
@@ -50,6 +51,7 @@ add_filter( 'wp_terms_checklist_args', 'apply_category_walker', 10, 2);
 
 function apply_category_walker( $args, $post_id ) {
 	$args['walker'] = new Walker_Category_Checklist_With_Tooltip;
+	$args['checked_ontop'] = false;
 	return $args;
 }
 

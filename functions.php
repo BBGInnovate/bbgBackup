@@ -326,8 +326,8 @@ function enqueueAdminStyles() {
 	//wp_enqueue_style( 'qtipcss', 'https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.css', array(), '20160403' );
 	wp_enqueue_script('qtipjs', get_template_directory_uri() . '/js/vendor/jquery.qtip.js', array('jquery'), '20160223', true );
 	wp_enqueue_style('qtipcss', get_template_directory_uri() . '/css/jquery.qtip.css', array(), '20160403');
-	
-	
+
+
 
 }
 
@@ -342,7 +342,7 @@ function loggedInAlerts() {
 }
 
 function adminFooter() {
-	
+
 	echo '<script type="text/javascript">';
 	echo 'jQuery(document).ready(function() {';
 	echo 'jQuery("label").qtip();';
@@ -370,7 +370,7 @@ require get_template_directory() . '/inc/bbg-functions-quotations.php';
 require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
 require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
 require get_template_directory() . '/inc/bbg-functions-category-tooltip.php';
-
+require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php';
 
 /**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
