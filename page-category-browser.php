@@ -13,6 +13,16 @@ $pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
 if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
+$pageContent = "";
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$pageContent = get_the_content();
+		//$pageContent = apply_filters('the_content', $pageContent);
+   		//$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
 
 
 /***** BEGIN PROJECT PAGINATION LOGIC 
@@ -35,9 +45,11 @@ if ($currentPage > 1) {
 $hasTeamFilter=false;
 $mobileAppsPostContent="";
 
-$categorySlug =  get_post_meta( get_the_ID(), 'category_browser_category_slug', true );
+$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
+$paginationLabel=  get_post_meta( get_the_ID(), 'category_browser_pagination_label', true );
 
-$projectCatObj = get_category_by_slug($categorySlug); 
+
+$projectCatObj = get_category_by_slug($categoryToBrowse->slug); 
 $qParams=array(
 	'post_type' => array('post')
 	,'cat' => $projectCatObj->term_id
@@ -112,8 +124,8 @@ get_header(); ?>
 					echo '<nav class="navigation posts-navigation" role="navigation">';
 					echo '<h2 class="screen-reader-text">Event navigation</h2>';
 					echo '<div class="nav-links">';
-					$nextLink=get_next_posts_link('Older Events', $totalPages);
-					$prevLink=get_previous_posts_link('Newer Events');
+					$nextLink=get_next_posts_link('Older ' . $paginationLabel, $totalPages);
+					$prevLink=get_previous_posts_link('Newer ' . $paginationLabel);
 					if ($nextLink != "") {
 						echo '<div class="nav-previous">';
 						echo $nextLink;
@@ -140,6 +152,10 @@ get_header(); ?>
 
 
 			</div><!-- .usa-grid-full -->
+			<?php 
+				//we are not applying the_content filter, so shortcodes won't be processed and paragraph tags won't be added 
+				echo $pageContent; 
+			?>
 
 
 		</main><!-- #main -->
