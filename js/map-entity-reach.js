@@ -143,10 +143,15 @@
 				setColors('#4aa564', "#94bfa2", "#2e8540");
 			} else if (entity == 'rferl'){
 				setColors('#FF9214', "#FFAF17", "#CC7510");
+			} else if (entity == 'ocb'){
+				setColors('#653792', "#42245F", "#42245F");
+			} else if (entity == 'mbn'){
+				setColors('#ee433d', "#EE4223", "#BB3530");
 			} else {
+				/* there shouldn't be any here */
 				setColors('#9F1D26', "#891E25", "#7A1A21");
 			}
-
+//
 			var fullName = entities[entity].fullName;
 
 			// reset buttons

@@ -7694,7 +7694,7 @@ div.appropriations-small > p.header {
   }
   .entity-buttons button.selected.ocb {
     background-image: none;
-    background-color: red;
+    background-color: #653792;
   }
   .entity-buttons button.selected.mbn {
     background-image: none;
