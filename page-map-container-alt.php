@@ -83,7 +83,7 @@ echo getNetworkExcerptJS();
 
 				<div class="usa-grid">
 					<div class="usa-width-two-thirds">
-						<div class="bbg__map-area__container " style="postion: relative;">
+						<div class="bbg__map-area__container " style="position: relative;">
 							<div id="chartdiv"></div>
 							<img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" />
 						</div>

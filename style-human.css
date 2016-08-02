@@ -7570,7 +7570,7 @@ div.appropriations-small > p.header {
 #loading {
   display: none;
   z-index: 9997;
-  position: relative;
+  position: absolute;
   top: 300px;
   left: 5%;
   width: 50px;
