@@ -7651,6 +7651,10 @@ div.appropriations-small > p.header {
   font-weight: normal;
 }
 
+.bbg__map-area__text {
+  padding: 1.5rem;
+}
+
 @media screen and (min-width: 600px) {
   .entity-buttons button {
     background: #999;
@@ -7706,5 +7710,10 @@ div.appropriations-small > p.header {
     color: #666;
     display: inline;
     font-weight: normal;
+  }
+
+  .bbg__map-area__text {
+    padding-bottom: 0;
+    padding-left: 0;
   }
 }

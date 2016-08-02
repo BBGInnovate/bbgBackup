@@ -150,6 +150,9 @@
 	font-weight: normal;
 }
 
+.bbg__map-area__text {
+	padding: $site-margins-medium;
+}
 
 @include media($medium-screen) {
 	.entity-buttons button {
@@ -226,5 +229,11 @@
 		color: #666;
 		display: inline;
 		font-weight: normal;
+	}
+	.bbg__map-area__text {
+		padding: {
+			bottom: 0;
+			left: 0;
+		};
 	}
 }
