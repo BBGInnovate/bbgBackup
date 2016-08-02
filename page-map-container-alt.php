@@ -106,7 +106,6 @@ echo getNetworkExcerptJS();
 						</div>
 
 						<div class="subgroup-block" style="margin-top: 2rem;">
-							<h4>Select a [VOA] language</h4>
 							<select id="subgroup-list">
 								<option value="0">Select a subgroup...</option>
 							</select>
