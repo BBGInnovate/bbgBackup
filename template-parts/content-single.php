@@ -188,22 +188,22 @@ if ($isAward) {
 
 	$award .='<div class="bbg__sidebar__primary">';
 	$awardLogoImage = "";
+
 	if ( $awardLogo ){
 		$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
 		$awardLogoImage = $awardLogoImage[0];
 		$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
 	}
 	$award .= $awardLogoImage;
+
 	if ( $awardLink && $awardLink != "" ){
-		$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a> (' . $awardRecipient . ')</h4>';
+		$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
 	} else {
-		$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . ' (' . $awardRecipient . ')</h4>';
+		$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
 	}
-	/*
-	$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardTitle . " (" . $awardYear . ")" .	 "</h4>";
-	$award .='<p style=""><strong>Presented by: </strong>'. $awardOrganization .'</p>';
-	*/
-	$award .= '<p><strong>Award: </strong>' . $awardTitle . " (" . $awardYear . ")" .	 "<br/>";
+
+	$award .= '<p><strong>Network: </strong>' . $awardRecipient . '<br/>';
+	$award .= '<p><strong>Award: </strong>' . $awardTitle . ' (' . $awardYear . ')' . '<br/>';
 	$award .='<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
 	//$award .= '<p>' . $awardDescription . '</p>';
 	$award .= '</div>';
