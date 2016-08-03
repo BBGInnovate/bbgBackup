@@ -45,18 +45,30 @@ if ($currentPage > 1) {
 $hasTeamFilter=false;
 $mobileAppsPostContent="";
 
-$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
 $paginationLabel=  get_post_meta( get_the_ID(), 'category_browser_pagination_label', true );
+$category_browser_type = get_post_meta( get_the_ID(), 'category_browser_type', true );
 
 
-$projectCatObj = get_category_by_slug($categoryToBrowse->slug); 
-$qParams=array(
-	'post_type' => array('post')
-	,'cat' => $projectCatObj->term_id
-	,'posts_per_page' => $postsPerPage
-	,'offset' => $offset
-	,'post_status' => array('publish')
-);
+if ($category_browser_type == "Page Children") {
+	/*** USED FOR APPS LANDING PAGE ****/
+	$qParams=array(
+		'post_type' => array('page'),
+		'posts_per_page' => -1,
+		'post_parent' => get_the_ID(),
+		'order' => 'DESC'
+	);
+} else {
+	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
+	$projectCatObj = get_category_by_slug($categoryToBrowse->slug); 
+	$qParams=array(
+		'post_type' => array('post')
+		,'cat' => $projectCatObj->term_id
+		,'posts_per_page' => $postsPerPage
+		,'offset' => $offset
+		,'post_status' => array('publish')
+	);
+}
+
 
 /*** late in the game we ran into a pagination issue, so we're running a second query here ***/
 $custom_query_args= $qParams;
