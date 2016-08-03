@@ -89,7 +89,7 @@ if ($audience != "") {
 	$audience = '<li><span class="bbg__article-sidebar__list-label">Audience estimate: </span>'. $audience . '</li>';
 }
 if ($appLink != "") {
-	$appLink = '<h3><a href="https://innovation.bbg.gov/mobileapps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
+	$appLink = '<h3><a href="https://www.bbg.gov/apps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
 }
 
 
