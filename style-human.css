@@ -7571,7 +7571,7 @@ div.appropriations-small > p.header {
   display: none;
   z-index: 9997;
   position: absolute;
-  top: 300px;
+  bottom: 5%;
   left: 5%;
   width: 50px;
   height: 50px;

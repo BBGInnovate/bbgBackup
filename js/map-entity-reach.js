@@ -176,8 +176,8 @@
 
 			var buttonColor = $('.selected').css('background-color');
 			colorBase = buttonColor;
-			colorRollOver = shadeColor(buttonColor, -30);
-			colorSelected = shadeColor(buttonColor, -50);
+			colorRollOver = shadeColor(buttonColor, 30);
+			colorSelected = shadeColor(buttonColor, -30);
 
 			// reset buttons
 			$('.entity-buttons button').removeClass('active');
