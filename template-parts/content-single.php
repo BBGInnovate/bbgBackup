@@ -203,9 +203,8 @@ if ($isAward) {
 	}
 
 	$award .= '<p><strong>Network: </strong>' . $awardRecipient . '<br/>';
-	$award .= '<p><strong>Award: </strong>' . $awardTitle . ' (' . $awardYear . ')' . '<br/>';
-	$award .='<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
-	//$award .= '<p>' . $awardDescription . '</p>';
+	$award .= '<strong>Award: </strong>' . $awardTitle . ' (' . $awardYear . ')' . '<br/>';
+	$award .= '<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
 	$award .= '</div>';
 }
 
