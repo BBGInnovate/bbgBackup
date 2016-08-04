@@ -68,7 +68,8 @@
 
 
 .country-label-tooltip::before {
-    border-color: #c91f2c transparent;
+    //border-color: #c91f2c transparent;
+    border-color: #333 transparent;
     border-style: solid;
     border-width: 0 0 70px 30px;
     bottom: 39px;
