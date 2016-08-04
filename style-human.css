@@ -7834,3 +7834,15 @@ div.appropriations-small > p.header {
   text-align: center;
   width: 50%;
 }
+
+#country-name {
+  text-align: center;
+  background-color: #333;
+  color: #FFF;
+  display: inline-block;
+  line-height: 1.2;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  width: auto;
+}
