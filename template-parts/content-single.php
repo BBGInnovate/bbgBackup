@@ -175,39 +175,41 @@ $award = "";
 if ($isAward) {
 
 	$awardTitle = get_post_meta( get_the_ID(), 'standardpost_award_title', true );
-	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', true );
 	$awardYear = get_post_meta( get_the_ID(), 'standardpost_award_year', true );
-	$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', true );
+	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', true );
+	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', true );
 
 	$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
 	$awardOrganization = $awardOrganization -> name;
-
+	$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+	$awardOrgUrl = get_post_meta( get_the_ID(), 'standardpost_award_org_url', true );
 	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
-	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', true );
-	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', true );
+
 
 	$award .='<div class="bbg__sidebar__primary">';
-	$awardLogoImage = "";
+		$awardLogoImage = "";
 
-	if ( $awardLogo ){
-		$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
-		$awardLogoImage = $awardLogoImage[0];
-		$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
-	}
-	$award .= $awardLogoImage;
+		if ( $awardLogo ){
+			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+			$awardLogoImage = $awardLogoImage[0];
+			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+		}
 
-	if ( $awardLink && $awardLink != "" ){
-		$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
-	} else {
-		$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
-	}
+		// $award .= $awardLogoImage;
 
-	$award .= '<p><strong>Network: </strong>' . $awardRecipient . '<br/>';
-	$award .= '<strong>Award: </strong>' . $awardTitle . ' (' . $awardYear . ')' . '<br/>';
-	$award .= '<strong>Presented by: </strong>'. $awardOrganization .'<br/>';
+		// Award-winning work with link to work if it exists
+		if ( $awardLink && $awardLink != "" ){
+			$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
+		} else {
+			$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
+		}
+
+		$award .= '<p><strong>Network: </strong>' . $awardRecipient . '<br/>';
+		$award .= '<strong>Award: </strong>' . $awardYear . $awardTitle . '<br/>';
+		$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
 	$award .= '</div>';
 }
-
 
 if ($isProject) {
 	//$categories=get_the_category();
@@ -281,7 +283,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 
-
 	<?php
 		//If a featured video is set, include it.
 		//ELSE if a featured image is set, include it.
@@ -333,8 +334,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
 
-<!-- new -->
-
 		<div class="bbg__article-sidebar--left">
 			<?php
 				if ($entityLogo!=""){
@@ -363,15 +362,17 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				echo $eventStr;
 				echo $pageContent;
 
+				/* START AWARD ORGANIZATION */
 				if ($awardDescription && $awardDescription!= ""){
-					echo '<h3>About the award</h3>';
+					echo $awardLogoImage;
+					echo '<h3>About ' . $awardOrganization . '</h3>';
 					echo '<div class="bbg__tagline">';
-					echo $awardDescription;
+						echo $awardDescription;
 					echo '</div>';
 				}
-			?>
 
-			<?php
+				/* END AWARD ORGANIZATION */
+
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				renderContactCard($contactPostIDs);
@@ -379,18 +380,12 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 			?>
 		</div><!-- .entry-content -->
 
-
-
 		<div class="bbg__article-sidebar">
-
 			<?php
 				if ($includeRelatedProfile) {
 					echo $relatedProfile;
 				}
-			?>
 
-
-			<?php
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
 					echo "<h4>" . $mapHeadline . "</h4>";
@@ -398,9 +393,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 						echo "<p>" . $mapDescription . "</p>";
 					echo "</div>";
 				}
-			?>
 
-			<?php
 				if ( $includeSidebar ) {
 					echo $sidebar;
 				}
@@ -408,19 +401,15 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				if ( $listsInclude ) {
 					echo $sidebarDownloads;
 				}
+
+				echo $teamRoster;
+
+				echo $award;
 			?>
-
-			<?php echo $teamRoster; ?>
-
-			<?php echo $award; ?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
 
 	</div><!-- .usa-grid -->
-
-	<!-- <footer class="entry-footer bbg__article-footer">
-		<?php bbginnovate_entry_footer(); ?>
-	</footer> --><!-- .entry-footer -->
 </article><!-- #post-## -->
 
 <?php
