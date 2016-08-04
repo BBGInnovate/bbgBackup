@@ -283,8 +283,8 @@
 	}
 
 	function updateCountryName(newName) {
-		$('#country-name').text(fullName);
-		$('#country-name-panel').text(fullName);
+		$('#country-name').text(newName);
+		$('#country-name-panel').text(newName);
 	}
 
 
