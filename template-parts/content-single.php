@@ -193,7 +193,8 @@ if ($isAward) {
 		if ( $awardLogo ){
 			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
 			$awardLogoImage = $awardLogoImage[0];
-			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+			// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
 		}
 
 		// $award .= $awardLogoImage;
@@ -363,14 +364,15 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				echo $pageContent;
 
 				/* START AWARD ORGANIZATION */
-				if ($awardDescription && $awardDescription!= ""){
-					echo $awardLogoImage;
-					echo '<h3>About ' . $awardOrganization . '</h3>';
-					echo '<div class="bbg__tagline">';
-						echo $awardDescription;
-					echo '</div>';
-				}
-
+				echo '<div class="bbg__profile-excerpt">';
+					if ($awardDescription && $awardDescription!= ""){
+						echo '<h3>About ' . $awardOrganization . '</h3>';
+						echo $awardLogoImage;
+						// echo '<div class="bbg__tagline">';
+						echo '<p><span class="bbg__profile-excerpt__occupation bbg__tagline">' . $awardDescription . '</span></p>';
+						// echo '</div>';
+					}
+				echo '</div>';
 				/* END AWARD ORGANIZATION */
 
 				/* START CONTACT CARDS */
