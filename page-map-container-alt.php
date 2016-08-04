@@ -105,6 +105,7 @@ echo getNetworkExcerptJS();
 							<div class="country-details">
 								<p style="font-family: sans-serif; "><strong>Languages supported: </strong><span class="languages-served"></span></p>
 								<div class="groups-and-subgroups"></div>
+
 							</div>
 
 							<div class="subgroup-block" style="margin-top: 2rem;">
@@ -114,6 +115,7 @@ echo getNetworkExcerptJS();
 								<button id="view-on-map">View on map</button>
 								<button id="submit">Visit site</button>
 							</div>
+							<div class="col-md-12 other-subgroups"></div>
 
 						</div><!-- div.usa-width-one-third -->
 					</div><!-- .usa-grid-full -->
