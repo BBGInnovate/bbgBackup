@@ -128,7 +128,7 @@
 				// hide any entity details if shown
 				$('.entity-details').hide();
 
-				$('#country-name').text(event.mapObject.title);
+				updateCountryName(event.mapObject.title);
 
 				// set the country list value to the same as the map selection
 				$('#country-list').val(event.mapObject.id);
@@ -178,7 +178,8 @@
 
 			var fullName = entities[entity].fullName;
 
-			$('#country-name').text(fullName);
+			updateCountryName(fullName);
+			
 
 
 			$('.entity-buttons button').removeClass('selected');
@@ -281,6 +282,11 @@
 		 */
 	}
 
+	function updateCountryName(newName) {
+		$('#country-name').text(fullName);
+		$('#country-name-panel').text(fullName);
+	}
+
 
 
 	// this function will set the endpoint based on the entity and then go fetch the countries
@@ -360,7 +366,8 @@
 					entityDesc=entities[selectedEntity].description;
 					headerText=entities[selectedEntity].fullName;
 				}
-				$('#country-name').text(headerText);
+				updateCountryName(headerText);
+				
 				$('.detail').html(entityDesc);
 
 				$('#loading').hide();

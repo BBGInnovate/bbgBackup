@@ -98,7 +98,7 @@ echo getNetworkExcerptJS();
 							</select>
 
 							<div class="">
-								<h2 id="country-name"></h2>
+								<h2 id="country-name-panel"></h2>
 								<p class="detail"  style="font-family: sans-serif; "></p>
 							</div>
 
