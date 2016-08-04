@@ -372,7 +372,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 						echo '<h3>About ' . $awardOrganization . '</h3>';
 						echo $awardLogoImage;
 						// echo '<div class="bbg__tagline">';
-						echo '<p><span class="bbg__profile-excerpt__occupation bbg__tagline">' . $awardDescription . '</span></p>';
+						echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
 						// echo '</div>';
 					}
 				echo '</div>';
