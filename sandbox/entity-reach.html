@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BBG Map</title>
+
+    <link rel="stylesheet" href="css/styles.css "/>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="bower_components/ammap/dist/ammap/maps/js/worldLow.js"></script>
+
+    <script>
+        var bbgConfig={};
+        bbgConfig.template_directory_uri = 'https://www.bbg.gov/wp-content/themes/bbgRedesign/';
+
+        var entities={
+            "bbg": {
+                "description": "This is the BBG description",
+                "fullName": "Broadcasting Board of Governors",
+                "url": "http://www.bbg.gov"
+            },
+            "ocb": {
+                "description": "OCB oversees Radio and Television Mart\u00ed at its headquarters in Miami, Florida. Combined with the online platform, martinoticias.com, the Mart\u00eds are a one-of-a-kind service that brings unbiased, objective information to all Cubans.",
+                "fullName": "Office of Cuba Broadcasting",
+                "url": "http://www.ocb.gov"
+            },
+            "rfa": {
+                "description": "RFA journalists provide uncensored, fact-based news to citizens of these countries, among the world\u2019s worst media environments. \r\n",
+                "fullName": "Radio Free Asia",
+                "url": "http://www.rfa.gov"
+            },
+            "mbn": {
+                "description": "MBN is the non-profit news organization that operates Alhurra Television, Radio Sawa and MBN Digital reaching audiences in 22 countries across the Middle East and North Africa. ",
+                "fullName": "Middle East Broadcasting Networks",
+                "url": "http://www.mbn.gov"
+            },
+            "rferl": {
+                "description": "RFE\/RL reaches 123.6 million people in 28 languages and in 23 countries, including Afghanistan, Iran, Pakistan, Russia, and Ukraine.",
+                "fullName": "Radio Free Europe \/ Radio Liberty",
+                "url": "http://www.rferl.gov"
+            },
+            "voa": {
+                "description": "Voice of America provides trusted and objective news and information in 45 languages to a measured weekly audience of more than 187 million people around the world.",
+                "fullName": "Voice of America",
+                "url": "http://www.voa.gov"
+            },
+            "hb": {
+                "description": "",
+                "fullName": "",
+                "url": ""
+            }
+        };
+    </script>
+
+
+    <script src="js/map-entity-reach.js"></script>
+</head>
+<body>
+    <h1 class="entry-title">Entity Reach</h1>
+    <img id="loading" src="img/loading.gif" />
+
+<!--
+    <select id="entity">
+        <option value="bbg">BBG</option>
+        <option value="voa">VOA</option>
+        <option value="rfa">RFA</option>
+        <option value="rferl">RFERL</option>
+        <option value="ocb">OCB</option>
+        <option value="mbn">MBN</option>
+        <option value="hb">HB</option>
+    </select>
+    <br>
+-->
+    <div class="btn-group entity-buttons" role="group" aria-label="...">
+        <button type="button" class="btn btn-default bbg">BBG</button>
+        <button type="button" class="btn btn-default voa">VOA</button>
+        <button type="button" class="btn btn-default rfa">RFA</button>
+        <button type="button" class="btn btn-default rferl">RFERL</button>
+        <button type="button" class="btn btn-default ocb">OCB</button>
+        <button type="button" class="btn btn-default mbn">MBN</button>
+        <button type="button" class="btn btn-default">HB</button>
+    </div>
+
+    <div class="col-md-8">
+        <div id="chartdiv"></div>
+        <h4 class="country-label-tooltip" id="country-name"></h4>
+    </div>
+
+    <div class="col-md-4">
+        <h4 id="country-name"></h4>
+
+
+        <div class="usa-width-one-third">
+        <select id="country-list">
+            <option value="0">Select a country...</option>
+        </select>
+        <br>
+        <br>
+        <div class="subgroup-block">
+            <select id="subgroup-list">
+                <option value="0">Select a subgroup...</option>
+            </select>
+            <button id="view-on-map">View on Map</button>
+            <button id="submit">Go</button>
+        </div>
+
+
+        <div class="entity-details">
+
+        </div>
+
+        <div class="country-details">
+            <div class="col-md-12 groups-and-subgroups">
+
+            </div>
+
+            <p><span><strong>Languages Served: </strong></span><span class="languages-served"></span></p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
