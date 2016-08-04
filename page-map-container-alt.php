@@ -84,7 +84,7 @@ echo getNetworkExcerptJS();
 				<div class="usa-grid">
 					<div class="usa-grid-full" style="background-color: #F1F1F1;">
 						<div class="usa-width-two-thirds">
-							<div class="bbg__map-area__container " style="position: relative; background-color: #FFF;">
+							<div class="bbg__map-area__container " style="position: relative; ">
 								<div id="chartdiv"></div>
 								 <h4 class="country-label-tooltip"><span id="country-name"></span></h4>
 								<!-- <img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" /> -->
