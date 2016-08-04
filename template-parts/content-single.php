@@ -206,8 +206,9 @@ if ($isAward) {
 			$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
 		}
 
-		$award .= '<p><strong>Network: </strong>' . $awardRecipient . '<br/>';
-		$award .= '<strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
+		$award .= '<p><strong>Winning network: </strong>' . $awardRecipient . '</p>';
+
+		$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
 		$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
 	$award .= '</div>';
 }
