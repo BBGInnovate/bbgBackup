@@ -2454,7 +2454,7 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.bbg_footer_social-link, .usa-link-facebook, .usa-link-twitter, .usa-link-youtube, .usa-link-rss {
+.bbg_footer_social-link {
   margin: 2.5rem 1rem 1.5rem 0;
   background-position: center center;
   background-repeat: no-repeat;
@@ -2467,36 +2467,39 @@ li.usa-footer-primary-content:last-child {
   width: 4.4rem;
 }
 @media screen and (min-width: 600px) {
-  .bbg_footer_social-link, .usa-link-facebook, .usa-link-twitter, .usa-link-youtube, .usa-link-rss {
+  .bbg_footer_social-link {
     margin: 0 0 0 1rem;
     left: 1.2rem;
   }
 }
-.bbg_footer_social-link span, .usa-link-facebook span, .usa-link-twitter span, .usa-link-youtube span, .usa-link-rss span {
+.bbg_footer_social-link span {
   position: absolute;
   left: -999em;
 }
 
-.usa-link-facebook {
-  background-image: url("img/social-icons/png/facebook25.png");
-  background-image: url("img/social-icons/svg/facebook25.svg");
+/* .usa-link-facebook {
+  @extend .bbg_footer_social-link;
+  background-image: url('img/social-icons/png/facebook25.png');
+  background-image: url('img/social-icons/svg/facebook25.svg');
 }
 
 .usa-link-twitter {
-  background-image: url("img/social-icons/png/twitter16.png");
-  background-image: url("img/social-icons/svg/twitter16.svg");
+  @extend .bbg_footer_social-link;
+  background-image: url('img/social-icons/png/twitter16.png');
+  background-image: url('img/social-icons/svg/twitter16.svg');
 }
 
 .usa-link-youtube {
-  background-image: url("img/social-icons/png/youtube15.png");
-  background-image: url("img/social-icons/svg/youtube15.svg");
+  @extend .bbg_footer_social-link;
+  background-image: url('img/social-icons/png/youtube15.png');
+  background-image: url('img/social-icons/svg/youtube15.svg');
 }
 
 .usa-link-rss {
-  background-image: url("img/social-icons/png/rss25.png");
-  background-image: url("img/social-icons/svg/rss25.svg");
-}
-
+  @extend .bbg_footer_social-link;
+  background-image: url('img/social-icons/png/rss25.png');
+  background-image: url('img/social-icons/svg/rss25.svg');
+} */
 @media screen and (min-width: 600px) {
   form {
     max-width: 32rem;
