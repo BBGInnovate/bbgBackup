@@ -2478,23 +2478,23 @@ li.usa-footer-primary-content:last-child {
 }
 
 .usa-link-facebook {
-  background-image: url("/img/social-icons/png/facebook25.png");
-  background-image: url("/img/social-icons/svg/facebook25.svg");
+  background-image: url("img/social-icons/png/facebook25.png");
+  background-image: url("img/social-icons/svg/facebook25.svg");
 }
 
 .usa-link-twitter {
-  background-image: url("/img/social-icons/png/twitter16.png");
-  background-image: url("/img/social-icons/svg/twitter16.svg");
+  background-image: url("img/social-icons/png/twitter16.png");
+  background-image: url("img/social-icons/svg/twitter16.svg");
 }
 
 .usa-link-youtube {
-  background-image: url("/img/social-icons/png/youtube15.png");
-  background-image: url("/img/social-icons/svg/youtube15.svg");
+  background-image: url("img/social-icons/png/youtube15.png");
+  background-image: url("img/social-icons/svg/youtube15.svg");
 }
 
 .usa-link-rss {
-  background-image: url("/img/social-icons/png/rss25.png");
-  background-image: url("/img/social-icons/svg/rss25.svg");
+  background-image: url("img/social-icons/png/rss25.png");
+  background-image: url("img/social-icons/svg/rss25.svg");
 }
 
 @media screen and (min-width: 600px) {
