@@ -366,17 +366,15 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				echo $eventStr;
 				echo $pageContent;
 
-				/* START AWARD ORGANIZATION */
-				echo '<div>';
-					if ($awardDescription && $awardDescription!= ""){
+				/* START AWARD INFO */
+				if ( $awardDescription && $awardDescription!= "" ) {
+					echo '<div class="usa-grid-full bbg__contact-box">';
 						echo '<h3>About ' . $awardOrganization . '</h3>';
 						echo $awardLogoImage;
-						// echo '<div class="bbg__tagline">';
 						echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
-						// echo '</div>';
-					}
-				echo '</div>';
-				/* END AWARD ORGANIZATION */
+					echo '</div>';
+				}
+				/* END AWARD INFO */
 
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
