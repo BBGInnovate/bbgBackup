@@ -3,6 +3,9 @@
 	// find out if the user is on a mobile device or not (used for zoomDuration)
 	var isMobile = isMobileDevice();
 
+	// this global variable is used to determine whether or not the current item selected is an entity or country
+	var entitySelection = true;
+
 	var colorBase = '#0071bc',
 		colorRollOver = '#205493',
 		colorSelected = '#112e51';
@@ -60,7 +63,6 @@
 				cornerRadius: 4,
 				fillColor: "#FFFFFF"
 			},
-
 			zoomControl: {
 				maxZoomLevel: 6
 			},
@@ -69,8 +71,33 @@
 		} );
 
 
+		map.addListener('positionChanged', function () {
+
+			// hide the tooltip if the position of the map changes (user drags the map)
+			$('.country-label-tooltip').hide();
+
+		});
+
+		map.addListener('zoomCompleted', function () {
+
+			// if this was not an entity selected (country), show the tooltip
+			if (entitySelection === false) {
+				$('.country-label-tooltip').show();
+			}
+
+		});
+
+
+
+
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
+
+			// an entity is not selected
+			entitySelection = false;
+
+			// hide the tooltip for now, it will be reshown after animation is done
+			$('.country-label-tooltip').hide();
 
 			// hide the div until it loads
 			$('.usa-width-one-third').hide();
@@ -101,7 +128,7 @@
 				// hide any entity details if shown
 				$('.entity-details').hide();
 
-				$('#country-name').text('Loading ' + event.mapObject.title + ' ...');
+				$('#country-name').text(event.mapObject.title);
 
 				// set the country list value to the same as the map selection
 				$('#country-list').val(event.mapObject.id);
@@ -137,6 +164,10 @@
 
 		$('.entity-buttons button').on('click', function () {
 
+			entitySelection = true;
+
+			$('.country-label-tooltip').hide();
+
 			// hide the right panel
 			$('.usa-width-one-third').hide();
 
@@ -147,7 +178,7 @@
 
 			var fullName = entities[entity].fullName;
 
-			$('#country-name').text('Loading ' + fullName + ' ...');
+			$('#country-name').text(fullName);
 
 
 			$('.entity-buttons button').removeClass('selected');
@@ -176,8 +207,8 @@
 
 			var buttonColor = $('.selected').css('background-color');
 			colorBase = buttonColor;
-			colorRollOver = shadeColor(buttonColor, 30);
-			colorSelected = shadeColor(buttonColor, -30);
+			colorRollOver = shadeColor(buttonColor, -30);
+			colorSelected = shadeColor(buttonColor, -50);
 
 			// reset buttons
 			$('.entity-buttons button').removeClass('active');
@@ -344,6 +375,7 @@
 	function getCountryDetails (countryName) {
 		$('.detail').empty();
 		$('.groups-and-subgroups').empty();
+		$('.other-subgroups').empty();
 		$('.languages-served').empty();
 
 		var groups = [];
@@ -420,6 +452,8 @@
 
 
 				var groupAndSubgroupList = '';
+				var groupsAndSubgroups = $('.groups-and-subgroups');
+
 				for (key in subgroupMap) {
 
 					// Append the Group Name (VOA, RFA, etc.)
@@ -445,14 +479,26 @@
 				}
 
 				// populate the HTML element with the dynamically generated string
-				$('.groups-and-subgroups').html(groupAndSubgroupList);
+				groupsAndSubgroups.html(groupAndSubgroupList);
 
 				// grab the subgroup block by the entity name that's selected
 				//var entityName = $('#entity').val().toUpperCase();
 				var entityName = $('.entity-buttons .active').text().toUpperCase();
 
-				// prepend it in the list so it's prioritized based on entity selected
-				$('.groups-and-subgroups').prepend($('.' + entityName + '-block'));
+
+				// for entity specific selections, the groups are listed out with their subgroups
+				// in priority of what is selected
+				if (entityName !== 'BBG') {
+					// prepend it in the list so it's prioritized based on entity selected
+					var primaryEntityBlock = $('.' + entityName + '-block');
+
+					// set the other subgroups to the rest of the data (replace all with the primary entity block
+					// to get the difference of the rest
+					$('.other-subgroups').html(groupsAndSubgroups.html().replace(primaryEntityBlock.html(), ''));
+
+					groupsAndSubgroups.html(primaryEntityBlock);
+				}
+
 
 
 				var countryDesc = ''; //'Country Desc Updated ' + (new Date()).getTime() + ' ' + fakeDetail;
@@ -533,7 +579,7 @@
 	}
 
 	$(document).ajaxStop(function () {
-		$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
+		//$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
 		$('.usa-width-one-third').show();
 	});
 
