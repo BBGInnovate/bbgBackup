@@ -423,22 +423,29 @@ function bbginnovate_query_offset(&$query) {
 	/* note that is_home really means 'blog index page' ... which is not necessarily the homepage */
 
 	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() )) {
+		
+		$termsToExclude =  array(
+			get_cat_id('Contact'),
+			get_cat_id('Quotation'),
+			get_cat_id('Employee'),
+			get_cat_id('Intern Testimonial')
+		);
+
+		if (!($query->is_archive())) {
+			array_push($termsToExclude, get_cat_id('Award'));
+		}
+
 		$tax_query = array(
 			//'relation' => 'OR',
 			array(
 				'taxonomy' => 'category',
 				'field' => 'term_id',
-				'terms' => array(
-					get_cat_id('Contact'),
-					get_cat_id('Quotation'),
-					get_cat_id('Employee'),
-					get_cat_id('Intern Testimonial')
-				),
-				'operator' => 'NOT IN',
+				'terms' => $termsToExclude,
+				'operator' => 'NOT IN'
 			)
 		);
 		$query->set( 'tax_query', $tax_query );
-	}
+	} 
 	if ( ! ($query->is_home() &&  $query->is_main_query()) ) {
 		return;
 	}
