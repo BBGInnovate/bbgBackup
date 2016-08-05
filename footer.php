@@ -38,10 +38,10 @@
 				<div class="usa-footer-contact-links usa-width-one-half">
 					<div class="usa-social-links">
 						<a class="bbg_footer_social-link usa-link-facebook" href="https://www.facebook.com/BBGgov/">
-							<svg width="39" height="59" role="img" aria-label="Facebook">
+							<!-- <svg width="39" height="59" role="img" aria-label="Facebook">
 								<title>Facebook</title>
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/facebook25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/facebook25.png"  width="39" height="59"></image>
-							</svg>
+							</svg> -->
 						</a>
 						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov">
 							<svg width="39" height="59" role="img" aria-label="Twitter">

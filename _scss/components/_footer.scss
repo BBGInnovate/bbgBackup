@@ -309,7 +309,7 @@ li.usa-footer-primary-content {
   $background-height: 3rem; // Height of icon within hit area.
   $hit-area: 4.4rem; // Link hit target is 44 x 44 pixels following Apple iOS
                      // Human Interface Guidelines.
-  @include margin(2.5rem 1rem 1.5rem 0);
+  @include margin(1.5rem 1rem 1.5rem 0);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto $background-height;
@@ -330,13 +330,13 @@ li.usa-footer-primary-content {
   }
 }
 
-/* .usa-link-facebook {
+.usa-link-facebook {
   @extend .bbg_footer_social-link;
   background-image: url('img/social-icons/png/facebook25.png');
   background-image: url('img/social-icons/svg/facebook25.svg');
 }
 
-.usa-link-twitter {
+/* .usa-link-twitter {
   @extend .bbg_footer_social-link;
   background-image: url('img/social-icons/png/twitter16.png');
   background-image: url('img/social-icons/svg/twitter16.svg');
