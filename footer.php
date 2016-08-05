@@ -30,7 +30,7 @@
 			<div class="usa-grid" itemscope itemtype="https://schema.org/GovernmentOffice">
 				<div class="usa-footer-logo usa-width-one-half">
 					<a href="<?php echo site_url(); ?>">
-						<img itemprop="image" class="usa-footer-logo-img" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Broadcasting Board of Governors logo">
+						<img itemprop="image" role="img" aria-label="BBG logo" class="usa-footer-logo-img" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Broadcasting Board of Governors logo">
 						<h3 itemprop="name" class="usa-footer-logo-heading">Broadcasting Board of Governors</h3>
 					</a>
 				</div>
@@ -43,31 +43,31 @@
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/facebook25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/facebook25.png"  width="39" height="59"></image>
 							</svg> -->
 						</a>
-						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov">
-							<svg width="39" height="59" role="img" aria-label="Twitter">
+						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov" role="img" aria-label="Twitter">
+							<!-- <svg width="39" height="59" role="img" aria-label="Twitter">
 							<title>Twitter</title>
 							<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/twitter16.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/twitter16.png" width="39" height="59"></image>
-							</svg>
+							</svg> -->
 						</a>
-						<a class="bbg_footer_social-link usa-link-youtube" href="https://www.youtube.com/user/bbgtunein">
-							<svg width="39" height="59" role="img" aria-label="YouTube">
+						<a class="bbg_footer_social-link usa-link-youtube" href="https://www.youtube.com/user/bbgtunein" role="img" aria-label="YouTube">
+							<!-- <svg width="39" height="59" role="img" aria-label="YouTube">
 								<title>YouTube</title>
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/youtube15.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/youtube15.png" width="39" height="59"></image>
-							</svg>
+							</svg> -->
 						</a>
-						<a class="bbg_footer_social-link usa-link-rss" href="http://www.bbg.gov/blog/category/press-release/feed/">
-							<svg width="39" height="59" role="img" aria-label="RSS">
+						<a class="bbg_footer_social-link usa-link-rss" href="http://www.bbg.gov/blog/category/press-release/feed/" role="img" aria-label="RSS">
+							<!-- <svg width="39" height="59" role="img" aria-label="RSS">
 								<title>RSS</title>
 								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/rss25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/rss25.png" width="39" height="59"></image>
-							</svg>
+							</svg> -->
 						</a>
 					</div>
 
 					<address itemscope itemtype="https://schema.org/GovernmentOffice">
 						<h3 class="usa-footer-contact-heading">Contact the BBG</h3>
-						<p itemprop="address">330 Independence Avenue, SW<br/>Washington, DC 20237</p>
-						<p itemprop="telephone"><a href="tel=+01-202-203-4000">(202) 203-4000</a></p>
-						<a itemprop="email" href="mailto:publicaffairs@bbg.gov">publicaffairs@bbg.gov</a>
+						<p itemprop="address" aria-label="address">330 Independence Avenue, SW<br/>Washington, DC 20237</p>
+						<p itemprop="telephone" aria-label="telephone"><a href="tel=+01-202-203-4000">(202) 203-4000</a></p>
+						<a itemprop="email" aria-label="email"> href="mailto:publicaffairs@bbg.gov">publicaffairs@bbg.gov</a>
 					</address>
 				</div>
 			</div>

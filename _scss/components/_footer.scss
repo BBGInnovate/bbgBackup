@@ -310,9 +310,11 @@ li.usa-footer-primary-content {
   $hit-area: 4.4rem; // Link hit target is 44 x 44 pixels following Apple iOS
                      // Human Interface Guidelines.
   @include margin(1.5rem 1rem 1.5rem 0);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: auto $background-height;
+  background: {
+  	position: center 100%;
+  	repeat: no-repeat;
+  	size: auto $background-height;
+  }
   display: inline-block;
   height: $hit-area;
   left: -1.6rem; // relative left positioning
@@ -336,7 +338,7 @@ li.usa-footer-primary-content {
   background-image: url('img/social-icons/svg/facebook25.svg');
 }
 
-/* .usa-link-twitter {
+.usa-link-twitter {
   @extend .bbg_footer_social-link;
   background-image: url('img/social-icons/png/twitter16.png');
   background-image: url('img/social-icons/svg/twitter16.svg');
@@ -352,4 +354,4 @@ li.usa-footer-primary-content {
   @extend .bbg_footer_social-link;
   background-image: url('img/social-icons/png/rss25.png');
   background-image: url('img/social-icons/svg/rss25.svg');
-} */
+}

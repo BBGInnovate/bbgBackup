@@ -2454,9 +2454,9 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-.bbg_footer_social-link, .usa-link-facebook {
+.bbg_footer_social-link, .usa-link-facebook, .usa-link-twitter, .usa-link-youtube, .usa-link-rss {
   margin: 1.5rem 1rem 1.5rem 0;
-  background-position: center center;
+  background-position: center 100%;
   background-repeat: no-repeat;
   background-size: auto 3rem;
   display: inline-block;
@@ -2467,12 +2467,12 @@ li.usa-footer-primary-content:last-child {
   width: 4.4rem;
 }
 @media screen and (min-width: 600px) {
-  .bbg_footer_social-link, .usa-link-facebook {
+  .bbg_footer_social-link, .usa-link-facebook, .usa-link-twitter, .usa-link-youtube, .usa-link-rss {
     margin: 0 0 0 1rem;
     left: 1.2rem;
   }
 }
-.bbg_footer_social-link span, .usa-link-facebook span {
+.bbg_footer_social-link span, .usa-link-facebook span, .usa-link-twitter span, .usa-link-youtube span, .usa-link-rss span {
   position: absolute;
   left: -999em;
 }
@@ -2482,23 +2482,21 @@ li.usa-footer-primary-content:last-child {
   background-image: url("img/social-icons/svg/facebook25.svg");
 }
 
-/* .usa-link-twitter {
-  @extend .bbg_footer_social-link;
-  background-image: url('img/social-icons/png/twitter16.png');
-  background-image: url('img/social-icons/svg/twitter16.svg');
+.usa-link-twitter {
+  background-image: url("img/social-icons/png/twitter16.png");
+  background-image: url("img/social-icons/svg/twitter16.svg");
 }
 
 .usa-link-youtube {
-  @extend .bbg_footer_social-link;
-  background-image: url('img/social-icons/png/youtube15.png');
-  background-image: url('img/social-icons/svg/youtube15.svg');
+  background-image: url("img/social-icons/png/youtube15.png");
+  background-image: url("img/social-icons/svg/youtube15.svg");
 }
 
 .usa-link-rss {
-  @extend .bbg_footer_social-link;
-  background-image: url('img/social-icons/png/rss25.png');
-  background-image: url('img/social-icons/svg/rss25.svg');
-} */
+  background-image: url("img/social-icons/png/rss25.png");
+  background-image: url("img/social-icons/svg/rss25.svg");
+}
+
 @media screen and (min-width: 600px) {
   form {
     max-width: 32rem;
