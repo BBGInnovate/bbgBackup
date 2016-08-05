@@ -4,7 +4,7 @@
 	var isMobile = isMobileDevice();
 
 	// this global variable is used to determine whether or not the current item selected is an entity or country
-	var entitySelection = true;
+	var hideCountryLabel = true;
 
 	var colorBase = '#0071bc',
 		colorRollOver = '#205493',
@@ -78,12 +78,13 @@
 
 		});
 
-		map.addListener('zoomCompleted', function () {
+		map.addListener('zoomCompleted', function (event) {
 
 			// if this was not an entity selected (country), show the tooltip
-			if (entitySelection === false) {
+			if (hideCountryLabel === false && event.chart.zoomLevel() > 1) {
 				$('.country-label-tooltip').show();
 			}
+
 
 		});
 
@@ -94,13 +95,14 @@
 		map.addListener("clickMapObject", function (event) {
 
 			// an entity is not selected
-			entitySelection = false;
+			hideCountryLabel = false;
 
 			// hide the tooltip for now, it will be reshown after animation is done
 			$('.country-label-tooltip').hide();
 
 			// hide the div until it loads
 			$('.usa-width-one-third').hide();
+			$('.other-subgroups').hide();
 
 			if (!isMobile) {
 				map.zoomDuration = .2;
@@ -113,6 +115,8 @@
 					if (window.selectedCountryID && window.selectedCountryID==event.mapObject.id) {
 						window.selectedCountryID = "";
 						event.chart.zoomToGroup(countries);
+
+						resetView();
 					} else {
 						window.selectedCountryID = event.mapObject.id;
 						getCountryDetails(event.mapObject.title);
@@ -164,12 +168,15 @@
 
 		$('.entity-buttons button').on('click', function () {
 
-			entitySelection = true;
+			hideCountryLabel = true;
 
 			$('.country-label-tooltip').hide();
 
 			// hide the right panel
 			$('.usa-width-one-third').hide();
+
+			// remove the other subgroups info
+			$('.other-subgroups').hide();
 
 			// hide the subgroup 'view on map' and 'go' buttons
 			$('.subgroup-block button').hide();
@@ -179,8 +186,6 @@
 			var fullName = entities[entity].fullName;
 
 			updateCountryName(fullName);
-			
-
 
 			$('.entity-buttons button').removeClass('selected');
 			$(this).addClass('selected');
@@ -282,11 +287,6 @@
 		 */
 	}
 
-	function updateCountryName(newName) {
-		$('#country-name').text(newName);
-		$('#country-name-panel').text(newName);
-	}
-
 
 
 	// this function will set the endpoint based on the entity and then go fetch the countries
@@ -367,7 +367,6 @@
 					headerText=entities[selectedEntity].fullName;
 				}
 				updateCountryName(headerText);
-				
 				$('.detail').html(entityDesc);
 
 				$('#loading').hide();
@@ -585,9 +584,31 @@
 		return newColor;
 	}
 
+	function resetView () {
+		// show entity stuff here
+		$('.usa-width-one-third').show();
+		setTimeout(function() {
+			$('.entity-details').show();
+		}, 1000);
+
+		$('.country-details').hide();
+
+
+		// resets current selected object to nothing;
+		map.selectObject();
+
+		hideCountryLabel = true;
+	}
+
+	function updateCountryName(newName) {
+		$('#country-name').text(newName);
+		$('#country-name-panel').text(newName);
+	}
+
 	$(document).ajaxStop(function () {
 		//$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
 		$('.usa-width-one-third').show();
+		$('.other-subgroups').show();
 	});
 
 })(jQuery,bbgConfig, entities);
