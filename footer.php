@@ -67,7 +67,7 @@
 						<h3 class="usa-footer-contact-heading">Contact the BBG</h3>
 						<p itemprop="address" aria-label="address">330 Independence Avenue, SW<br/>Washington, DC 20237</p>
 						<p itemprop="telephone" aria-label="telephone"><a href="tel=+01-202-203-4000">(202) 203-4000</a></p>
-						<a itemprop="email" aria-label="email"> href="mailto:publicaffairs@bbg.gov">publicaffairs@bbg.gov</a>
+						<a itemprop="email" aria-label="email" href="mailto:publicaffairs@bbg.gov">publicaffairs@bbg.gov</a>
 					</address>
 				</div>
 			</div>
