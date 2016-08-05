@@ -75,7 +75,7 @@ if ($category_browser_type == "Page Children") {
 
 	if ($awardYear != '' || $entity != '') {
 		$meta_query = array (
-			'relation' => 'OR'
+			'relation' => 'AND'
 		);
 
 		if ($awardYear != '') {
