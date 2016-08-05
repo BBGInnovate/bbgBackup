@@ -589,9 +589,12 @@
 		$('.usa-width-one-third').show();
 		setTimeout(function() {
 			$('.entity-details').show();
+			var selectedEntity = $('.entity-buttons .active').text().toLowerCase();
+			$('#country-name-panel').text(entities[selectedEntity].fullName);
 		}, 1000);
 
 		$('.country-details').hide();
+
 
 
 		// resets current selected object to nothing;
