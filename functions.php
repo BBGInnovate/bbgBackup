@@ -1099,4 +1099,11 @@ function wps_dropdown_pages_args_add_parents( $dropdown_args, $post = NULL ) {
     return $dropdown_args;
 }
 
+function filter_query_vars( $qvars ) {
+	$qvars[] = 'awardyear';
+	$qvars[] = 'entity';
+	return $qvars;
+}
+add_filter( 'query_vars', 'filter_query_vars' , 10, 1 );
+
 ?>
