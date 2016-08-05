@@ -37,30 +37,10 @@
 
 				<div class="usa-footer-contact-links usa-width-one-half">
 					<div class="usa-social-links">
-						<a class="bbg_footer_social-link usa-link-facebook" href="https://www.facebook.com/BBGgov/" role="img" aria-label="Facebook">
-							<!-- <svg width="39" height="59" role="img" aria-label="Facebook">
-								<title>Facebook</title>
-								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/facebook25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/facebook25.png"  width="39" height="59"></image>
-							</svg> -->
-						</a>
-						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov" role="img" aria-label="Twitter">
-							<!-- <svg width="39" height="59" role="img" aria-label="Twitter">
-							<title>Twitter</title>
-							<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/twitter16.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/twitter16.png" width="39" height="59"></image>
-							</svg> -->
-						</a>
-						<a class="bbg_footer_social-link usa-link-youtube" href="https://www.youtube.com/user/bbgtunein" role="img" aria-label="YouTube">
-							<!-- <svg width="39" height="59" role="img" aria-label="YouTube">
-								<title>YouTube</title>
-								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/youtube15.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/youtube15.png" width="39" height="59"></image>
-							</svg> -->
-						</a>
-						<a class="bbg_footer_social-link usa-link-rss" href="http://www.bbg.gov/blog/category/press-release/feed/" role="img" aria-label="RSS">
-							<!-- <svg width="39" height="59" role="img" aria-label="RSS">
-								<title>RSS</title>
-								<image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo get_template_directory_uri() ?>/img/social-icons/svg/rss25.svg" src="<?php echo get_template_directory_uri() ?>/img/social-icons/png/rss25.png" width="39" height="59"></image>
-							</svg> -->
-						</a>
+						<a class="bbg_footer_social-link usa-link-facebook" href="https://www.facebook.com/BBGgov/" role="img" aria-label="Facebook"></a>
+						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov" role="img" aria-label="Twitter"></a>
+						<a class="bbg_footer_social-link usa-link-youtube" href="https://www.youtube.com/user/bbgtunein" role="img" aria-label="YouTube"></a>
+						<a class="bbg_footer_social-link usa-link-rss" href="http://www.bbg.gov/blog/category/press-release/feed/" role="img" aria-label="RSS"></a>
 					</div>
 
 					<address itemscope itemtype="https://schema.org/GovernmentOffice">
