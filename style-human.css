@@ -3282,6 +3282,37 @@ input[type="radio"] + label {
   margin-top: 1rem;
 }
 
+/** ---------------
+ * RESPONSIVE SVGs
+ ------------------ */
+.bbg__svg__container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.bbg__svg__content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* .container {
+    width: 50%;
+    height: 0;
+    padding-top: 48%;
+    position: relative;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
