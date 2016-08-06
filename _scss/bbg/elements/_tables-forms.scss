@@ -84,10 +84,14 @@ table td {
 .bbg__sidebar__table {
 	@extend .usa-table-borderless;
 
-	font-size: $caption-font-size;
+	font-size: $small-font-size;
 
 	caption {
 		@extend h3;
+	}
+
+	th {
+		@extend h5;
 	}
 }
 

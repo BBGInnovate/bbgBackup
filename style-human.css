@@ -1777,7 +1777,7 @@ ul li, ol li {
   margin-top: 0.75em;
 }
 
-h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, .bbg__sidebar__table caption + ul, h3 + ol, .bbg__sidebar__table caption + ol, h4 + ul, .bbg__board__committee-list li a + ul, h4 + ol, .bbg__board__committee-list li a + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol, p + ul, p + ol {
+h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, .bbg__sidebar__table caption + ul, h3 + ol, .bbg__sidebar__table caption + ol, h4 + ul, .bbg__board__committee-list li a + ul, h4 + ol, .bbg__board__committee-list li a + ol, h5 + ul, .bbg__sidebar__table th + ul, h5 + ol, .bbg__sidebar__table th + ol, h6 + ul, h6 + ol, p + ul, p + ol {
   margin-top: 0;
 }
 
@@ -1893,7 +1893,7 @@ a:focus {
   outline: 0;
 }
 
-h1, h2, h3, .bbg__sidebar__table caption, h4, .bbg__board__committee-list li a, h5, h6 {
+h1, h2, h3, .bbg__sidebar__table caption, h4, .bbg__board__committee-list li a, h5, .bbg__sidebar__table th, h6 {
   clear: both;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   line-height: 1.3;
@@ -1921,7 +1921,7 @@ h4, .bbg__board__committee-list li a {
   font-weight: 700;
 }
 
-h5 {
+h5, .bbg__sidebar__table th {
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -2081,7 +2081,7 @@ p a,
   background-color: #d6d7d9;
   color: #212121;
 }
-.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button .bbg__sidebar__table caption, .bbg__sidebar__table .usa-accordion button caption, .usa-accordion button h4, .usa-accordion button .bbg__board__committee-list li a, .bbg__board__committee-list li .usa-accordion button a, .usa-accordion button h5, .usa-accordion button h6,
+.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button .bbg__sidebar__table caption, .bbg__sidebar__table .usa-accordion button caption, .usa-accordion button h4, .usa-accordion button .bbg__board__committee-list li a, .bbg__board__committee-list li .usa-accordion button a, .usa-accordion button h5, .usa-accordion button .bbg__sidebar__table th, .bbg__sidebar__table .usa-accordion button th, .usa-accordion button h6,
 .usa-accordion-bordered button h1,
 .usa-accordion-bordered button h2,
 .usa-accordion-bordered button h3,
@@ -2091,6 +2091,8 @@ p a,
 .usa-accordion-bordered button .bbg__board__committee-list li a,
 .bbg__board__committee-list li .usa-accordion-bordered button a,
 .usa-accordion-bordered button h5,
+.usa-accordion-bordered button .bbg__sidebar__table th,
+.bbg__sidebar__table .usa-accordion-bordered button th,
 .usa-accordion-bordered button h6 {
   margin: 0;
 }
@@ -3315,7 +3317,7 @@ table td {
 }
 
 .bbg__sidebar__table {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 /** ---------------
@@ -4432,7 +4434,11 @@ body:not(.home) .bbg__main-navigation {
 .bbg__article-content .bbg__board__committee-list li a + ol,
 .bbg__board__committee-list li .bbg__article-content a + ol,
 .bbg__article-content h5 + ul,
+.bbg__article-content .bbg__sidebar__table th + ul,
+.bbg__sidebar__table .bbg__article-content th + ul,
 .bbg__article-content h5 + ol,
+.bbg__article-content .bbg__sidebar__table th + ol,
+.bbg__sidebar__table .bbg__article-content th + ol,
 .bbg__article-content h6 + ul,
 .bbg__article-content h6 + ol,
 .bbg__article-content p + ul,
@@ -5120,6 +5126,7 @@ h3,
 h4,
 .bbg__board__committee-list li a,
 h5,
+.bbg__sidebar__table th,
 h6 {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: .5rem;
@@ -5132,6 +5139,7 @@ h3,
 h4,
 .bbg__board__committee-list li a,
 h5,
+.bbg__sidebar__table th,
 h6 {
   color: #112e51;
 }
@@ -7030,7 +7038,7 @@ section.usa-section.bbg-banner__section {
 .bbg__profile-title {
   text-align: center;
 }
-.bbg__profile-title h1, .bbg__profile-title h5 {
+.bbg__profile-title h1, .bbg__profile-title h5, .bbg__profile-title .bbg__sidebar__table th, .bbg__sidebar__table .bbg__profile-title th {
   margin: 0;
   text-align: center;
 }
@@ -7040,7 +7048,7 @@ section.usa-section.bbg-banner__section {
     max-width: 77%;
     text-align: left;
   }
-  .bbg__profile-title h1, .bbg__profile-title h5 {
+  .bbg__profile-title h1, .bbg__profile-title h5, .bbg__profile-title .bbg__sidebar__table th, .bbg__sidebar__table .bbg__profile-title th {
     clear: none;
     text-align: left;
   }
@@ -7534,6 +7542,8 @@ div.appropriations-small > p.header {
 .bbg__impact-model .bbg__impact-model__subsection .bbg__board__committee-list li a,
 .bbg__board__committee-list li .bbg__impact-model .bbg__impact-model__subsection a,
 .bbg__impact-model .bbg__impact-model__subsection h5,
+.bbg__impact-model .bbg__impact-model__subsection .bbg__sidebar__table th,
+.bbg__sidebar__table .bbg__impact-model .bbg__impact-model__subsection th,
 .bbg__impact-model .bbg__impact-model__subsection p {
   margin: 0 auto;
   max-width: 200px;
