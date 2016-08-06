@@ -3,6 +3,7 @@
  ------------------ */
 
  .bbg__svg__container {
+ 	@extende .usa-grid;
 	display: inline-block;
 	position: relative;
 	width: 100%;
@@ -12,6 +13,7 @@
 }
 
 .bbg__svg__content {
+ 	@extend .usa-grid-full;
 	display: inline-block;
 	position: absolute;
 	top: 0;
