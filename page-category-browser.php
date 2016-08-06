@@ -60,13 +60,42 @@ if ($category_browser_type == "Page Children") {
 } else {
 	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
 	$projectCatObj = get_category_by_slug($categoryToBrowse->slug); 
+	
+	$awardYear = get_query_var('awardyear','');
+	$entity = get_query_var('entity','');
+
 	$qParams=array(
 		'post_type' => array('post')
 		,'cat' => $projectCatObj->term_id
 		,'posts_per_page' => $postsPerPage
 		,'offset' => $offset
 		,'post_status' => array('publish')
+
 	);
+
+	if ($awardYear != '' || $entity != '') {
+		$meta_query = array (
+			'relation' => 'AND'
+		);
+
+		if ($awardYear != '') {
+			$meta_query[] = array( 
+				'key' => 'standardpost_award_year',
+				'value' => $awardYear,
+				'compare' => '='
+			); 
+		} 
+		if ($entity != '') {
+		
+			$meta_query[] = array( 
+				'key' => 'standardpost_award_recipient',
+				'value' => $entity,
+				'compare' => '='
+			); 
+
+		}
+		$qParams['meta_query'] = $meta_query;
+	}
 }
 
 
