@@ -1777,7 +1777,7 @@ ul li, ol li {
   margin-top: 0.75em;
 }
 
-h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol, h4 + ul, .bbg__board__committee-list li a + ul, h4 + ol, .bbg__board__committee-list li a + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol, p + ul, p + ol {
+h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, .bbg__sidebar__table caption + ul, h3 + ol, .bbg__sidebar__table caption + ol, h4 + ul, .bbg__board__committee-list li a + ul, h4 + ol, .bbg__board__committee-list li a + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol, p + ul, p + ol {
   margin-top: 0;
 }
 
@@ -1851,13 +1851,13 @@ table th, table td {
   padding: 1.5rem;
 }
 
-.usa-table-borderless thead tr {
+.usa-table-borderless thead tr, .bbg__sidebar__table thead tr {
   background-color: transparent;
 }
-.usa-table-borderless thead tr th {
+.usa-table-borderless thead tr th, .bbg__sidebar__table thead tr th {
   border-top: 0;
 }
-.usa-table-borderless th, .usa-table-borderless td {
+.usa-table-borderless th, .bbg__sidebar__table th, .usa-table-borderless td, .bbg__sidebar__table td {
   border-left: 0;
   border-right: 0;
 }
@@ -1893,7 +1893,7 @@ a:focus {
   outline: 0;
 }
 
-h1, h2, h3, h4, .bbg__board__committee-list li a, h5, h6 {
+h1, h2, h3, .bbg__sidebar__table caption, h4, .bbg__board__committee-list li a, h5, h6 {
   clear: both;
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   line-height: 1.3;
@@ -1911,7 +1911,7 @@ h2 {
   font-weight: 700;
 }
 
-h3 {
+h3, .bbg__sidebar__table caption {
   font-size: 2rem;
   font-weight: 700;
 }
@@ -2081,10 +2081,12 @@ p a,
   background-color: #d6d7d9;
   color: #212121;
 }
-.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button h4, .usa-accordion button .bbg__board__committee-list li a, .bbg__board__committee-list li .usa-accordion button a, .usa-accordion button h5, .usa-accordion button h6,
+.usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button .bbg__sidebar__table caption, .bbg__sidebar__table .usa-accordion button caption, .usa-accordion button h4, .usa-accordion button .bbg__board__committee-list li a, .bbg__board__committee-list li .usa-accordion button a, .usa-accordion button h5, .usa-accordion button h6,
 .usa-accordion-bordered button h1,
 .usa-accordion-bordered button h2,
 .usa-accordion-bordered button h3,
+.usa-accordion-bordered button .bbg__sidebar__table caption,
+.bbg__sidebar__table .usa-accordion-bordered button caption,
 .usa-accordion-bordered button h4,
 .usa-accordion-bordered button .bbg__board__committee-list li a,
 .bbg__board__committee-list li .usa-accordion-bordered button a,
@@ -3232,20 +3234,23 @@ a:focus .bbg__article-share__icon {
  * TABLES
  ------------------ */
 .type-post .usa-table,
-.type-post .usa-table-borderless {
+.type-post .usa-table-borderless,
+.type-post .bbg__sidebar__table {
   margin: 0 auto 3rem auto;
   min-width: auto;
   max-width: 600px;
   width: 100%;
 }
 .type-post .usa-table.bbg-full-width,
-.type-post .usa-table-borderless.bbg-full-width {
+.type-post .usa-table-borderless.bbg-full-width,
+.type-post .bbg-full-width.bbg__sidebar__table {
   min-width: 100%;
   max-width: auto;
 }
 
 .usa-table,
 .usa-table-borderless,
+.bbg__sidebar__table,
 .bbg__table-plain,
 .bbg__article__form--inline {
   font-size: 1.3rem;
@@ -3253,6 +3258,7 @@ a:focus .bbg__article-share__icon {
 @media screen and (min-width: 481px) {
   .usa-table,
   .usa-table-borderless,
+  .bbg__sidebar__table,
   .bbg__table-plain,
   .bbg__article__form--inline {
     font-size: 1.6rem;
@@ -3306,6 +3312,10 @@ table td {
 
 .bbg__table__caption {
   margin-bottom: 0;
+}
+
+.bbg__sidebar__table {
+  font-size: 1.2rem;
 }
 
 /** ---------------
@@ -4393,10 +4403,12 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
-.bbg__article-content > h3,
+.bbg__article-content > h3, .bbg__sidebar__table .bbg__article-content > caption,
 .bbg__article-content > h4,
 .bbg__board__committee-list li .bbg__article-content > a,
-.bbg__article-content .bbg__profile__content > h3 {
+.bbg__article-content .bbg__profile__content > h3,
+.bbg__article-content .bbg__sidebar__table .bbg__profile__content > caption,
+.bbg__sidebar__table .bbg__article-content .bbg__profile__content > caption {
   margin-top: 2em;
   /*text-transform: uppercase;*/
 }
@@ -4408,7 +4420,11 @@ body:not(.home) .bbg__main-navigation {
 .bbg__article-content h2 + ul,
 .bbg__article-content h2 + ol,
 .bbg__article-content h3 + ul,
+.bbg__article-content .bbg__sidebar__table caption + ul,
+.bbg__sidebar__table .bbg__article-content caption + ul,
 .bbg__article-content h3 + ol,
+.bbg__article-content .bbg__sidebar__table caption + ol,
+.bbg__sidebar__table .bbg__article-content caption + ol,
 .bbg__article-content h4 + ul,
 .bbg__article-content .bbg__board__committee-list li a + ul,
 .bbg__board__committee-list li .bbg__article-content a + ul,
@@ -4829,18 +4845,7 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   margin-top: 6rem;
 }
 
-/* Moved to the tables-forms.scss */
-/*
-.usa-table,
-.usa-table-borderless {
-	font-size: $small-font-size;
-
-	@include media($small-screen) {
-		font-size: $base-font-size;
-	}
-}
-*/
-/* At the end of a post, add a small tagline credit for authors 
+/* At the end of a post, add a small tagline credit for authors
 e.g. on the intern testimonial page */
 .bbg__post__author-tagline {
   text-align: right;
@@ -5111,6 +5116,7 @@ ol li:before {
 h1,
 h2,
 h3,
+.bbg__sidebar__table caption,
 h4,
 .bbg__board__committee-list li a,
 h5,
@@ -5122,6 +5128,7 @@ h6 {
 h1,
 h2,
 h3,
+.bbg__sidebar__table caption,
 h4,
 .bbg__board__committee-list li a,
 h5,
@@ -5132,6 +5139,7 @@ h6 {
 h1 a,
 h2 a,
 h3 a,
+.bbg__sidebar__table caption a,
 h4 a,
 .bbg__board__committee-list li a a {
   color: #205493;
@@ -7521,7 +7529,7 @@ div.appropriations-small > p.header {
 .bbg__impact-model .bbg__impact-model__subsection {
   margin-bottom: 3rem;
 }
-.bbg__impact-model .bbg__impact-model__subsection h3,
+.bbg__impact-model .bbg__impact-model__subsection h3, .bbg__impact-model .bbg__impact-model__subsection .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__impact-model .bbg__impact-model__subsection caption,
 .bbg__impact-model .bbg__impact-model__subsection h4,
 .bbg__impact-model .bbg__impact-model__subsection .bbg__board__committee-list li a,
 .bbg__board__committee-list li .bbg__impact-model .bbg__impact-model__subsection a,

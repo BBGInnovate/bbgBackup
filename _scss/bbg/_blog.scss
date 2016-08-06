@@ -651,20 +651,7 @@ ul.bbg__article-content__list--inline {
 }
 
 
-/* Moved to the tables-forms.scss */
-/*
-.usa-table,
-.usa-table-borderless {
-	font-size: $small-font-size;
-
-	@include media($small-screen) {
-		font-size: $base-font-size;
-	}
-}
-*/
-
-
-/* At the end of a post, add a small tagline credit for authors 
+/* At the end of a post, add a small tagline credit for authors
 e.g. on the intern testimonial page */
 .bbg__post__author-tagline {
 	text-align: right;

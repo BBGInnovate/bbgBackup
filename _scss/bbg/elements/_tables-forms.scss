@@ -58,13 +58,13 @@ table td {
 
 	td,
 	th {
-		padding: 1rem; 
+		padding: 1rem;
 	}
 
 	@include media($medium-screen) {
 		td,
 		th {
-			padding: 1.5rem; 
+			padding: 1.5rem;
 		}
 	}
 
@@ -79,6 +79,16 @@ table td {
 
 .bbg__table__caption {
 	margin-bottom: 0;
+}
+
+.bbg__sidebar__table {
+	@extend .usa-table-borderless;
+
+	font-size: $caption-font-size;
+
+	caption {
+		@extend h3;
+	}
 }
 
 
