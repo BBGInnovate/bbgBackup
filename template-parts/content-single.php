@@ -367,7 +367,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				echo $pageContent;
 
 				/* START AWARD INFO */
-				if ( $awardDescription && $awardDescription!= "" ) {
+				if ( isset($awardDescription) && $awardDescription!= "" ) {
 					echo '<div class="usa-grid-full bbg__contact-box">';
 						echo '<h3>About ' . $awardOrganization . '</h3>';
 						echo $awardLogoImage;
