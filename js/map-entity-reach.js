@@ -100,6 +100,8 @@
 			// hide the tooltip for now, it will be reshown after animation is done
 			$('.country-label-tooltip').hide();
 
+			checkCountryLabelPosition(event.chart.selectedObject.name);
+
 			// hide the div until it loads
 			$('.usa-width-one-third').hide();
 			$('.other-subgroups').hide();
@@ -223,7 +225,7 @@
 			$('.country-details').hide();
 
 			// show the entity details div
-			$('.entity-details').html('<p>' + entities[entity].description + '<p>' + 'Website: <a target="_blank" href='+entities[entity].url+'>'+entities[entity].url+'</a>').show();
+			$('.entity-details').html('<p>' + entities[entity].description + '<p>' + 'Website: <a target="_blank" href="'+entities[entity].url+'">'+entities[entity].url+'</a>').show();
 
 			// add the active class so it looks like it's selected
 			$(this).addClass('active');
@@ -587,15 +589,15 @@
 	function resetView () {
 		// show entity stuff here
 		$('.usa-width-one-third').show();
+
+		// slight delay for purpose of better UI appearance with zoom duration
 		setTimeout(function() {
 			$('.entity-details').show();
 			var selectedEntity = $('.entity-buttons .active').text().toLowerCase();
 			$('#country-name-panel').text(entities[selectedEntity].fullName);
-		}, 1000);
+		}, 100);
 
 		$('.country-details').hide();
-
-
 
 		// resets current selected object to nothing;
 		map.selectObject();
@@ -606,6 +608,27 @@
 	function updateCountryName(newName) {
 		$('#country-name').text(newName);
 		$('#country-name-panel').text(newName);
+	}
+
+	// these countries require special left position adjustments
+	function checkCountryLabelPosition(country) {
+
+		var leftPos = '';
+		switch(country) {
+			case 'Chile':
+				leftPos = '19%';
+				break;
+			case 'Croatia':
+				leftPos = '22.5%';
+				break;
+			case 'Vietnam':
+				leftPos = '27%';
+				break;
+			default:
+				leftPos = '25%';
+		}
+
+		$('.country-label-tooltip').css('left', leftPos);
 	}
 
 	$(document).ajaxStop(function () {
