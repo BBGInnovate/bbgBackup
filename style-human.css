@@ -7796,43 +7796,48 @@ div.appropriations-small > p.header {
   width: 4rem;
 }
 .entity-buttons button.selected {
-  background-color: #FFF;
   box-shadow: 0px 0px 3px #CCC;
 }
 .entity-buttons button.bbg {
   background-image: url("img/logo_bbg.png");
 }
 .entity-buttons button.bbg.selected {
+  background-color: #981b1e;
   background-image: url("img/logo_bbg--selected.png");
 }
 .entity-buttons button.voa {
   background-image: url("img/logo_voa.png");
 }
 .entity-buttons button.voa.selected {
+  background-color: #0071bc;
   background-image: url("img/logo_voa--selected.png");
 }
 .entity-buttons button.rfa {
   background-image: url("img/logo_rfa.png");
 }
 .entity-buttons button.rfa.selected {
+  background-color: #2e8540;
   background-image: url("img/logo_rfa--selected.png");
 }
 .entity-buttons button.rferl {
   background-image: url("img/logo_rferl.png");
 }
 .entity-buttons button.rferl.selected {
+  background-color: orange;
   background-image: url("img/logo_rferl--selected.png");
 }
 .entity-buttons button.ocb {
   background-image: url("img/logo_ocb.png");
 }
 .entity-buttons button.ocb.selected {
+  background-color: #653792;
   background-image: url("img/logo_ocb--selected.png");
 }
 .entity-buttons button.mbn {
   background-image: url("img/logo_mbn.png");
 }
 .entity-buttons button.mbn.selected {
+  background-color: #BB3530;
   background-image: url("img/logo_mbn--selected.png");
 }
 .entity-buttons button .bbg__map__button-text {
