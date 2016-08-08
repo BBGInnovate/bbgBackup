@@ -91,14 +91,16 @@ echo getNetworkExcerptJS();
 							</div>
 						</div><!--
 
-						--><div class="usa-width-one-third bbg__map-area__text" style="">
-
+						-->
+						
+						<div class="usa-width-one-third bbg__map-area__text" style="">
+							<h2 id="country-name-panel"></h2>
 							<select id="country-list" style="margin-bottom: 3rem;">
 								<option value="0">Select a country...</option>
 							</select>
 
 							<div class="">
-								<h2 id="country-name-panel"></h2>
+								
 								<p class="detail"  style="font-family: sans-serif; "></p>
 							</div>
 
