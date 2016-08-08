@@ -22,13 +22,16 @@ function getNetworkExcerptJS() {
 				$abbreviation=str_replace("/", "",$abbreviation);
 				$description=get_post_meta( $id, 'entity_description', true );
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
+				$url = get_post_meta( $id, 'entity_site_url', true );
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 				$e[$abbreviation] = array(
 					'description' => $description,
-					'fullName' => $fullName
+					'fullName' => $fullName,
+					'url' -> $url
 				);
 			}
 		}
+		$e['voa']
 	}
 	wp_reset_postdata();
 	$e['bbg'] = array(
