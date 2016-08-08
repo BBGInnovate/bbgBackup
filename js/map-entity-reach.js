@@ -599,6 +599,9 @@
 
 		$('.country-details').hide();
 
+		// reset the subgroup list
+		$('#subgroup-list').val(0);
+
 		// resets current selected object to nothing;
 		map.selectObject();
 
