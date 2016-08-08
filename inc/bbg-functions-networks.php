@@ -31,7 +31,6 @@ function getNetworkExcerptJS() {
 				);
 			}
 		}
-		$e['voa']
 	}
 	wp_reset_postdata();
 	$e['bbg'] = array(
