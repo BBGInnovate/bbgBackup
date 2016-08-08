@@ -27,7 +27,7 @@ function getNetworkExcerptJS() {
 				$e[$abbreviation] = array(
 					'description' => $description,
 					'fullName' => $fullName,
-					'url' -> $url
+					'url' => $url
 				);
 			}
 		}
