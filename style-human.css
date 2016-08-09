@@ -3541,8 +3541,10 @@ object {
   overflow: hidden;
 }
 
-.embed-container.c-span {
-  /* padding-bottom: 59.5%; */
+@media screen and (min-width: 900px) {
+  .embed-container.c-span {
+    padding-bottom: 59.5%;
+  }
 }
 
 .embed-container iframe,
