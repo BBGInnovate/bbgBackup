@@ -232,51 +232,49 @@
 }
 
 .country-label-tooltip::before {
-//border-color: #c91f2c transparent;
-    border-color: #333 transparent;
-    border-style: solid;
-    border-width: 0 0 70px 25px;
-    bottom: 39px;
-    content: "";
-//margin: 0 20px 0 auto; 
-    position: absolute;
-    right: 0;
-    left:  calc(50% - 20px);
-    width: 20px;
+	border-color: #FFF transparent;
+	border-style: solid;
+	border-width: 0 0 30px 25px;
+	bottom: 39px;
+	content: "";
+	position: absolute;
+	right: 0;
+	left:  calc(50% - 20px);
+	width: 20px;
 }
 .country-label-tooltip::after {
-    border-color: transparent;
-    border-style: solid;
-    border-width: 0 0 140px 55px;
-    bottom: -140px;
-    content: "";
-    position: absolute;
-    right: 85px;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 0 0 140px 55px;
+	bottom: -140px;
+	content: "";
+	position: absolute;
+	right: 85px;
 }
 .country-label-tooltip {
-    /*background: #c91f2c none repeat scroll 0 0;*/
-    color: #fff;
-    font-family: Arial,sans-serif;
-    height: auto;
-    margin: 50px 0 0 0;
-    pointer-events: none;
-    /*position: relative;*/
-    padding: 5px;
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    text-align: center;
-    width: 50%;
+	/*background: #c91f2c none repeat scroll 0 0;*/
+	height: auto;
+	margin: 20px 0 0 0;
+	pointer-events: none;
+	/*position: relative;*/
+	padding: 5px;
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	text-align: center;
+	width: 50%;
 }
 
 #country-name {
-    text-align: center;
-    background-color: #333;
-    color: #FFF; 
-    display: inline-block;
-    line-height: 1.2;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-    width: auto;
+	background-color: #FFF;
+	border-radius: $border-radius;
+	box-shadow: 0px 0px 3px #888;
+	color: #000; 
+	font-family: Arial,sans-serif;
+	display: inline-block;
+	line-height: 1.2;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	width: auto;
 }
