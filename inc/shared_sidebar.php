@@ -77,7 +77,7 @@ if ( $includeSidebar ) {
 				if ($sidebarLinkImage && $sidebarLinkImage != ""){
 					
 					$sidebarImageSrc = $sidebarLinkImage['sizes']['medium'];
-					$sidebarImage = '<a href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarImageSrc . '"/></a>';
+					$sidebarImage = '<a target="blank" href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarImageSrc . '"/></a>';
 				}
 
 				$s .= '<div>' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
