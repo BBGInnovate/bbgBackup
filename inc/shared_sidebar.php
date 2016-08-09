@@ -80,7 +80,7 @@ if ( $includeSidebar ) {
 					$sidebarImage = '<a target="blank" href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarImageSrc . '"/></a>';
 				}
 
-				$s .= '<div>' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
+				$s .= '<div>' . $sidebarImage . '<h5 class="bbg__sidebar__primary-headline"><a target="blank" href="' . $sidebarLinkLink . '">' . $sidebarLinkTitle . '</a></h5>' . $sidebarDescription . '</div>';
 			/* END EXTERNAL LINKS */
 			} else if (get_row_layout() == 'sidebar_internal_link') {
 			/* START INTERNAL LINKS */
