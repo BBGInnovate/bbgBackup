@@ -3541,6 +3541,10 @@ object {
   overflow: hidden;
 }
 
+.embed-container.c-span {
+  padding-bottom: 59.25%;
+}
+
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {

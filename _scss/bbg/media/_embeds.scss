@@ -49,12 +49,16 @@ object {
 	overflow: hidden;
 }
 
+.embed-container.c-span {
+	padding-bottom: 59.25%;
+}
+
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {
 	height: 100%;
 	position: absolute;
-		top: 0;
+		top: 0; 
 		left: 0;
 	width: 100%;
 }
