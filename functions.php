@@ -501,9 +501,9 @@ function featured_video ($url) {
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
 
 		$extraClass = "";
-		if(strpos($code, 'facebook') !== false) {
+		if(strpos($url, 'facebook') !== false) {
 			$extraClass = 'facebook';
-		} else if(strpos($code, 'c-span') !== false) {
+		} else if(strpos($url, 'c-span') !== false) {
 			$extraClass = 'c-span';
 		}
 
