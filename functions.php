@@ -499,7 +499,15 @@ function featured_video ($url) {
 		}
 		$url = str_replace("watch?v=", "embed/", $url);	//youtube
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
-		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container'>";
+
+		$extraClass = "";
+		if(strpos($code, 'facebook') !== false) {
+			$extraClass = 'facebook';
+		} else if(strpos($code, 'c-span') !== false) {
+			$extraClass = 'c-span';
+		}
+
+		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container $extraClass'>";
 		$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
 		$return.="</div></div>";
 	}
