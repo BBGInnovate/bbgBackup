@@ -114,7 +114,9 @@ foreach($threatsCSVArray as $t) {
 		'network' => $t[6],
 		'link' => $t[7],
 		'latitude' => $t[8],
-		'longitude' => $t[9]
+		'longitude' => $t[9],
+		'headline' => $t[10]
+
 	);
 }
 
@@ -465,7 +467,11 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 								'marker-color': markerColor
 							})
 						});
-						var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
+						var headline = t.name;
+						if (t.headine != "") {
+							headline = t.headline;
+						}
+						var titleLink = "<h5><a href='" + t.link + "'>" + t.headline + "</a></h5>";
 						marker.bindPopup(titleLink + t.description);
 						markers.addLayer(marker);
 					}
