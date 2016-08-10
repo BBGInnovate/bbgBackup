@@ -148,15 +148,17 @@ endif;
 <script type="text/javascript">
 L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
-var map = L.mapbox.map('map', 'mapbox.light')
+var map = L.mapbox.map('map', 'mapbox.emerald')
 
 /*
+var map = L.mapbox.map('map', 'mapbox.emerald')
 var map = L.mapbox.map('map', 'mapbox.satellite')
 var map = L.mapbox.map('map', 'mapbox.streets')
 var map = L.mapbox.map('map', 'mapbox.dark')
 var map = L.mapbox.map('map', 'mapbox.light')
 var map = L.mapbox.map('map', 'mapbox.outdoors')
 var map = L.mapbox.map('map', 'mapbox.satellite-outdoors')
+
 */
 //        .setView([-37.82, 175.215], 14);
 
