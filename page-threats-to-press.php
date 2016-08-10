@@ -468,7 +468,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 							})
 						});
 						var headline = t.name;
-						if (t.headine != "") {
+						if (t.headline != "") {
 							headline = t.headline;
 						}
 						var titleLink = "<h5><a href='" + t.link + "'>" + headline + "</a></h5>";
