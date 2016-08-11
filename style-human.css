@@ -7871,10 +7871,29 @@ div.appropriations-small > p.header {
 .bbg__map-area__text {
   padding: 0;
 }
+.bbg__map-area__text .bbg__map-area__country-name {
+  font-size: 2.25rem;
+}
 .bbg__map-area__text .entity-details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 90%;
   line-height: 1.4;
+}
+.bbg__map-area__text .bbg__map-area__list-item {
+  line-height: 1;
+}
+.bbg__map-area__text .subgroup-block {
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map-area__text .bbg__map-area__country-name {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__map-area__text .bbg__map-area__country-name {
+    font-size: 3rem;
+  }
 }
 
 @media screen and (min-width: 900px) {

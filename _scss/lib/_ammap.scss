@@ -167,10 +167,34 @@
 	//padding: $site-margins-medium;
 	padding: 0;
 
+	.bbg__map-area__country-name {
+		font-size: 2.25rem;
+	}
+
 	.entity-details p {
 		font-family: $font-sans;
 		font-size: 90%;
 		line-height: 1.4;
+	}
+
+	.bbg__map-area__list-item {
+		line-height: 1;
+	}
+
+	.subgroup-block {
+		margin-bottom: $site-margins;
+	}
+
+	@include media($medium-screen) {
+		.bbg__map-area__country-name {
+			font-size: 2.5rem;
+		}
+	}
+
+	@include media($medium-large-screen) {
+		.bbg__map-area__country-name {
+			font-size: 3rem;
+		}
 	}
 }
 

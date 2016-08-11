@@ -467,13 +467,13 @@
 					// Append the Group Name (VOA, RFA, etc.)
 					groupAndSubgroupList += '<div class="'+groupMap[key].name+'-block">';
 					groupAndSubgroupList += '<h3><a target="_blank" href="'+groupMap[key].url+'">'+groupMap[key].name+'</a></h3>';
-					groupAndSubgroupList += '<ul>';
+					groupAndSubgroupList += '<ul class="bbg__map-area__list">';
 
 					// Loop through the corresponding subgroups and list out the Subgroup name
 					for (var i = 0; i < subgroupMap[key].length; i++) {
 						// if there's a URL, use href with the list item
 						if (subgroupMap[key][i].url) {
-							groupAndSubgroupList += '<li><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>';
+							groupAndSubgroupList += '<li class="bbg__map-area__list-item"><a target="_blank" href="'+subgroupMap[key][i].url+'">'+subgroupMap[key][i].name+'</a></li>';
 							// if no URL, just use regular list item
 						} else {
 							groupAndSubgroupList += '<li>'+subgroupMap[key][i].name+'</li>';

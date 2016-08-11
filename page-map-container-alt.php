@@ -97,7 +97,7 @@ echo getNetworkExcerptJS();
 
 						<div class="usa-width-one-third bbg__map-area__text" style="">
 
-							<h2 id="country-name-panel"></h2>
+							<h2 id="country-name-panel" class="bbg__map-area__country-name"></h2>
 
 							<div class="entity-details">
 								<p class="detail"></p>
