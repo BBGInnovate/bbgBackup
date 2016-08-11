@@ -40,6 +40,10 @@ if ($entityLogoID) {
 
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
+$entityCategoryObj = get_category_by_slug($entityCategorySlug);
+$entityAwardsPageLink = get_permalink( get_page_by_path( 'awards' ) );
+$entityAwardsLinkFiltered = add_query_arg('entity', $entityCategorySlug, $entityAwardsPageLink);
+
 $entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
 
@@ -277,7 +281,8 @@ $qParams=array(
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'meta_key' => 'standardpost_award_recipient',
-	'meta_value' => $awardSlug
+	'meta_value' => $awardSlug,
+	'category__not_in' => $catExclude
 );
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
@@ -328,17 +333,16 @@ if (count($awards)) {
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
 	}
+	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " awards</a><BR>";
 }
 $pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
 
 /**** START FETCH threats to press ****/
-$entityRegularSlug=str_replace("-press-release", "", $prCategorySlug);
 $threats=array();
 $threatsCategoryObj=get_category_by_slug("threats-to-press");
 $threatsCategoryID=$threatsCategoryObj->term_id;
-if ($entityRegularSlug != "") {
-	$entityCategoryObj=get_category_by_slug($entityRegularSlug);
+if ($entity_category_slug != "") {
 	if (is_object($entityCategoryObj)) {
 		$entityCategoryID=$entityCategoryObj->term_id;
 		$qParams=array(
