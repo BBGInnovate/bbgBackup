@@ -38,11 +38,12 @@ if ($entityLogoID) {
 	$entityLogo = $entityLogoObj[0];
 }
 
+$awardSlug=get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
 $entityCategoryObj = get_category_by_slug($entityCategorySlug);
 $entityAwardsPageLink = get_permalink( get_page_by_path( 'awards' ) );
-$entityAwardsLinkFiltered = add_query_arg('entity', $entityCategorySlug, $entityAwardsPageLink);
+$entityAwardsLinkFiltered = add_query_arg('entity', $awardSlug, $entityAwardsPageLink);
 
 $entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
@@ -280,7 +281,6 @@ $pageContent = str_replace("[press releases]", $s, $pageContent);
 
 /**** START FETCH AWARDS ****/
 $awards=array();
-$awardSlug=get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
 $qParams=array(
 	'posts_per_page' => 5,
 	'orderby' => 'date',
