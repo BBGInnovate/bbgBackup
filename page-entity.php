@@ -269,6 +269,10 @@ if (count($pressReleases)) {
 		$s.= '<p>'.$pr['excerpt'].'</p>';
 		$s.= '</div>';
 	}
+	$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
+	$entityCategoryLink = get_category_link($entityCategoryObj->term_id);
+	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " highlights »</a>";
+	$s .= "</div>";
 }
 $pageContent = str_replace("[press releases]", $s, $pageContent);
 /**** END FETCH related press releases ****/
@@ -282,7 +286,7 @@ $qParams=array(
 	'order' => 'DESC',
 	'meta_key' => 'standardpost_award_recipient',
 	'meta_value' => $awardSlug,
-	'category__not_in' => $catExclude
+	'category__not_in' => get_cat_id('Award')
 );
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
@@ -333,7 +337,9 @@ if (count($awards)) {
 		$s.= '<p>'.$a['excerpt'].'</p>';
 		$s.= '</div>';
 	}
-	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " awards</a><BR>";
+	$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
+	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " awards »</a>";
+	$s .= "</div>";
 }
 $pageContent = str_replace("[awards]", $s, $pageContent);
 /**** END FETCH AWARDS ****/
