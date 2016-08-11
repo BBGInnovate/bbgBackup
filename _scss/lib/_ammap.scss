@@ -55,11 +55,13 @@
 }
 
 /*** TODO - make this use real variables ***/
-#country-list { display: block; }  /* show it on small screens */
+/*#country-list { display: block; }  /* show it on small screens */
 
+/*
 @include media($small-screen) {
-	#country-list { display: none; }   /* hide it elsewhere */
+	#country-list { display: none; }
 }
+*/
 
 
 
@@ -136,7 +138,25 @@
 		display: none;
 	}
 }
+.bbg__map-area {
+	position: relative;
 
+	@include media($medium-screen) {
+		#country-list {
+			margin-bottom: 0;
+			min-width: 180px;
+			position: absolute;
+				bottom: 1.5rem;
+				left: 1.5rem;
+			width: 33%;
+		}
+	}
+	@include media($medium-large-screen) {
+		#country-list {
+			display: none;
+		}
+	}
+}
 
 .bbg__map__entity-buttons__instructions {
 	color: #666;
@@ -144,10 +164,17 @@
 }
 
 .bbg__map-area__text {
-	padding: $site-margins-medium;
+	//padding: $site-margins-medium;
+	padding: 0;
+
+	.entity-details p {
+		font-family: $font-sans;
+		font-size: 90%;
+		line-height: 1.4;
+	}
 }
 
-@include media($medium-screen) {
+@include media($medium-large-screen) {
 	.entity-buttons button {
 		background: #999;
 
@@ -175,12 +202,6 @@
 		&.ocb,
 		&.mbn {
 			background-image: none;
-
-			/*
-			&.selected {
-				background: #0071bc;
-			}
-			*/
 		}
 
 	&.selected {
@@ -223,12 +244,14 @@
 		display: inline;
 		font-weight: normal;
 	}
+	/*
 	.bbg__map-area__text {
 		padding: {
 			bottom: 0;
 			left: 0;
 		};
 	}
+	*/
 }
 
 .country-label-tooltip::before {

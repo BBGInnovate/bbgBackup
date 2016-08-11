@@ -7781,18 +7781,12 @@ div.appropriations-small > p.header {
 }
 
 /*** TODO - make this use real variables ***/
-#country-list {
-  display: block;
+/*#country-list { display: block; }  /* show it on small screens */
+/*
+@include media($small-screen) {
+	#country-list { display: none; }
 }
-
-/* show it on small screens */
-@media screen and (min-width: 481px) {
-  #country-list {
-    display: none;
-  }
-
-  /* hide it elsewhere */
-}
+*/
 /* temp button styles */
 .entity-buttons button {
   background-color: #CCC;
@@ -7850,16 +7844,40 @@ div.appropriations-small > p.header {
   display: none;
 }
 
+.bbg__map-area {
+  position: relative;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map-area #country-list {
+    margin-bottom: 0;
+    min-width: 180px;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 33%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__map-area #country-list {
+    display: none;
+  }
+}
+
 .bbg__map__entity-buttons__instructions {
   color: #666;
   font-weight: normal;
 }
 
 .bbg__map-area__text {
-  padding: 1.5rem;
+  padding: 0;
+}
+.bbg__map-area__text .entity-details p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 90%;
+  line-height: 1.4;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .entity-buttons button {
     background: #999;
     border-bottom: none;
@@ -7878,11 +7896,6 @@ div.appropriations-small > p.header {
   }
   .entity-buttons button.bbg, .entity-buttons button.voa, .entity-buttons button.rfa, .entity-buttons button.rferl, .entity-buttons button.ocb, .entity-buttons button.mbn {
     background-image: none;
-    /*
-    &.selected {
-    	background: #0071bc;
-    }
-    */
   }
   .entity-buttons button.selected.bbg {
     background-image: none;
@@ -7916,10 +7929,14 @@ div.appropriations-small > p.header {
     font-weight: normal;
   }
 
+  /*
   .bbg__map-area__text {
-    padding-bottom: 0;
-    padding-left: 0;
+  	padding: {
+  		bottom: 0;
+  		left: 0;
+  	};
   }
+  */
 }
 .country-label-tooltip::before {
   border-color: #FFF transparent;

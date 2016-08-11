@@ -82,25 +82,25 @@ echo getNetworkExcerptJS();
 
 
 				<div class="usa-grid">
-					<div class="usa-grid-full" style="background-color: #F1F1F1;">
-						<div class="usa-width-two-thirds">
+					<div class="usa-grid-full" style="/*background-color: #F1F1F1;*/">
+						<div class="usa-width-two-thirds bbg__map-area">
 							<div class="bbg__map-area__container " style="position: relative; background-color: #FFF;">
 								<div id="chartdiv"></div>
 								 <h4 class="country-label-tooltip"><span id="country-name"></span></h4>
-								<!-- <img id="loading" src="<?php echo get_template_directory_uri(); ?>/img/loading.gif" style="z-index=9999" /> -->
 							</div>
+							<select id="country-list">
+								<option value="0">Select a country...</option>
+							</select>
 						</div><!--
 
 						-->
 
 						<div class="usa-width-one-third bbg__map-area__text" style="">
+
 							<h2 id="country-name-panel"></h2>
-							<select id="country-list" style="margin-bottom: 3rem;">
-								<option value="0">Select a country...</option>
-							</select>
 
 							<div class="entity-details">
-								<p class="detail"  style="font-family: sans-serif; "></p>
+								<p class="detail"></p>
 							</div>
 
 							<div class="country-details">
