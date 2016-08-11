@@ -245,7 +245,8 @@ if ($prCategorySlug != "") {
 					'operator' => 'NOT IN'
 
 				)
-			)
+			),
+			'category__not_in' => get_cat_id('Award')
 		);
 		$custom_query = new WP_Query($qParams);
 		if ($custom_query -> have_posts()) {
@@ -285,8 +286,7 @@ $qParams=array(
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'meta_key' => 'standardpost_award_recipient',
-	'meta_value' => $awardSlug,
-	'category__not_in' => get_cat_id('Award')
+	'meta_value' => $awardSlug
 );
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
