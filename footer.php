@@ -40,7 +40,7 @@
 						<a class="bbg_footer_social-link usa-link-facebook" href="https://www.facebook.com/BBGgov/" role="img" aria-label="Facebook"></a>
 						<a class="bbg_footer_social-link usa-link-twitter" href="https://twitter.com/BBGgov" role="img" aria-label="Twitter"></a>
 						<a class="bbg_footer_social-link usa-link-youtube" href="https://www.youtube.com/user/bbgtunein" role="img" aria-label="YouTube"></a>
-						<a class="bbg_footer_social-link usa-link-rss" href="http://www.bbg.gov/blog/category/press-release/feed/" role="img" aria-label="RSS"></a>
+						<a class="bbg_footer_social-link usa-link-rss" href="https://www.bbg.gov/category/press-release/feed/" role="img" aria-label="RSS"></a>
 					</div>
 
 					<address itemscope itemtype="https://schema.org/GovernmentOffice">
