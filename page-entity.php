@@ -272,7 +272,7 @@ if (count($pressReleases)) {
 	}
 	$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
 	$entityCategoryLink = get_category_link($entityCategoryObj->term_id);
-	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " highlights »</a>";
+	$s .= "<a href='$entityCategoryLink'>View all " . $abbreviation . " highlights »</a>";
 	$s .= "</div>";
 }
 $pageContent = str_replace("[press releases]", $s, $pageContent);
