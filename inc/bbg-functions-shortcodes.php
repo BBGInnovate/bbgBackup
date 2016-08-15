@@ -36,7 +36,7 @@
 			}
 
         } else {
-        	$entityParentPage = get_page_by_path('broadcasters');
+        	$entityParentPage = get_page_by_path('networks');
 
 			$qParams = array(
 				'post_type' => array('page'),
