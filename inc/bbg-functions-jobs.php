@@ -58,7 +58,7 @@
 				$endDate = $j['formatted_end_date'];
 
 
-				$s .= '<tr><td><a href="' . $url. '" class="bbg__jobs-list__title">' . $title . '</a></td><td>' . $endDate . '</td></tr>';
+				$s .= '<tr><td><a target="_blank" href="' . $url. '" class="bbg__jobs-list__title">' . $title . '</a></td><td>' . $endDate . '</td></tr>';
 				/*
 				$s .= "<p><a href='$url' class='bbg__jobs-list__title'>$title</a><br/>";
 
