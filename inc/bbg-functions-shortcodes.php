@@ -12,23 +12,62 @@
 
 	// Add shortcode reference for the "About the BBG"
 	function about_shortcode( $atts ) {
-		/*$a = shortcode_atts( array(
-			'org' => 'Broadcasting Board of Governors',
-		), $atts );*/
+		$atts = shortcode_atts( array(
+			'name' => 'BBG',
+		), $atts );
 
-		// access site-wide variables
-		global $post;
+/*		// access site-wide variables
+		global $post;*/
 
-		$aboutBBG = get_field('site_setting_boilerplate_bbg','options','false');
-		//echo $aboutBBG;
+		$orgName = 'bbg';
+		$boilerplate = '';
 
-		if ( !$aboutBBG || $aboutBBG == "" ) {
-			$aboutBBG = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
-		}
+		if ( ! empty( $atts['name'] ) ) {
+	        $orgName = strtolower( $atts['name'] );
+	    }
 
-		$about = "<h4>About the BBG</h4>";
+        if ( $orgName === 'bbg' ) {
+			$fullName = "the BBG";
+			$boilerplate = get_field('site_setting_boilerplate_bbg','options','false'); // Load BBG description from 'BBG Settings' custom field
+
+			// Set default description for "About BBG" in case field is empty
+			if ( ! $boilerplate || $boilerplate == "" ) {
+				$boilerplate = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
+			}
+
+        } else {
+        	$entityParentPage = get_page_by_path('broadcasters');
+
+			$qParams = array(
+				'post_type' => array('page'),
+				'posts_per_page' => -1,
+				'post_parent' => $entityParentPage->ID,
+				'orderby' => 'meta_value_num',
+				'meta_key' => 'entity_year_established',
+				'order' => 'ASC'
+			);
+
+			$custom_query = new WP_Query($qParams);
+			if ( $custom_query -> have_posts() ) {
+				while ( $custom_query -> have_posts() )  {
+					$custom_query -> the_post();
+					$id = get_the_ID();
+
+					$abbreviation = strtolower( get_post_meta( $id, 'entity_abbreviation', true ) );
+					$abbreviation = str_replace( "/", "", $abbreviation );
+
+					if ( $abbreviation == $orgName ) {
+						$fullName = strtoupper( $abbreviation );
+						$boilerplate = get_post_meta( $id, 'entity_boilerplate_description', true );
+					}
+				}
+			}
+			wp_reset_postdata();
+        }
+
+		$about = "<h4>About " . $fullName . "</h4>";
 		$about .= "<div class='bbg__tagline'>";
-			$about .= $aboutBBG;
+			$about .= $boilerplate;
 		$about .= "</div>";
 
 	    return $about;
