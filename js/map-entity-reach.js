@@ -238,7 +238,7 @@
 			grabData(entity);
 
 			// if the entity is OCB, hide the subgroup block since there's only one service in there
-			if (entity === 'ocb') {
+			if (entity === 'ocb' || entity === 'bbg') {
 				$('.subgroup-block').hide();
 
 				// re-show in case it's a different entity
@@ -348,7 +348,6 @@
 						country.rollOverColor = colorRollOver;
 						country.selectedColor = colorSelected;
 
-						countries.push(country);
 
 
 						// NO COVERAGE here
@@ -357,6 +356,8 @@
 						country.color = '#DDDDDD';
 						country.rollOverColor = "#B7B7B7";
 					}
+
+					countries.push(country);
 
 
 				}
@@ -558,8 +559,11 @@
 
 		countryListString += '<option value="0">Select a country...</option>';
 		for (var i = 0; i < countriesDropdown.length; i++) {
-			var country = countriesDropdown[i];
-			countryListString += '<option value="'+country.code+'">'+country.name+'</option>';
+			// if we have data for it
+			if (countriesDropdown[i].region_ids) {
+				var country = countriesDropdown[i];
+				countryListString += '<option value="'+country.code+'">'+country.name+'</option>';
+			}
 		}
 
 		$('#country-list').html(countryListString);
