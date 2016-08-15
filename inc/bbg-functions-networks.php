@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 function getNetworkExcerptJS() {
@@ -9,7 +9,7 @@ function getNetworkExcerptJS() {
 		'posts_per_page' => -1,
 		'post_parent' => $entityParentPage->ID
 	);
-	
+
 	$e = array();
 	$custom_query = new WP_Query($qParams);
 	if ($custom_query -> have_posts()) {
@@ -23,7 +23,7 @@ function getNetworkExcerptJS() {
 				$description=get_post_meta( $id, 'entity_description', true );
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
 				$url = get_post_meta( $id, 'entity_site_url', true );
-				
+
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 				$e[$abbreviation] = array(
 					'description' => $description,
@@ -44,12 +44,12 @@ function getNetworkExcerptJS() {
 	$entityJson = str_replace("\/", "/", $entityJson);
 	$s .= "entities=" . $entityJson . ";";
 	$s .="</script>";
-	
-	return $s; 
+
+	return $s;
 }
-	
+
 function outputBroadcasters($cols) {
-	$entityParentPage = get_page_by_path('broadcasters');
+	$entityParentPage = get_page_by_path('networks');
 	$qParams=array(
 		'post_type' => array('page'),
 		'posts_per_page' => -1,
