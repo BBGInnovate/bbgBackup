@@ -53,11 +53,12 @@
 					$custom_query -> the_post();
 					$id = get_the_ID();
 
+					$entityAbbr = get_post_meta( $id, 'entity_abbreviation', true );
 					$abbreviation = strtolower( get_post_meta( $id, 'entity_abbreviation', true ) );
 					$abbreviation = str_replace( "/", "", $abbreviation );
 
 					if ( $abbreviation == $orgName ) {
-						$fullName = strtoupper( $abbreviation );
+						$fullName = $entityAbbr;
 						$boilerplate = get_post_meta( $id, 'entity_boilerplate_description', true );
 					}
 				}
