@@ -36,7 +36,8 @@ function getNetworkExcerptJS() {
 	wp_reset_postdata();
 	$e['bbg'] = array(
 		'description' => 'The mission of the Broadcasting Board of Governors is to inform, engage, and connect people around the world in support of freedom and democracy.',
-		'fullName' => 'Broadcasting Board of Governors'
+		'fullName' => 'Broadcasting Board of Governors',
+		'url' => 'https://www.bbg.gov'
 	);
 	$s = "<script type='text/javascript'>\n";
 	$entityJson = json_encode(new ArrayValue($e), JSON_PRETTY_PRINT);
