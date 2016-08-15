@@ -178,7 +178,7 @@
 			$('.usa-width-one-third').hide();
 
 			// remove the other subgroups info
-			$('.other-subgroups').hide();
+			$('.other-subgroups').empty();
 
 			// hide the subgroup 'view on map' and 'go' buttons
 			$('.subgroup-block button').hide();
@@ -193,24 +193,24 @@
 			$(this).addClass('selected');
 
 			/*
-			if (entity == 'bbg'){
-				//setColors(base, rollover, selected)
-				setColors('#9F1D26', "#891E25", "#7A1A21");
-			} else if (entity == 'voa'){
-				setColors('#0071bc', "#205493", "#112e51");
-			} else if (entity == 'rfa'){
-				setColors('#4aa564', "#94bfa2", "#2e8540");
-			} else if (entity == 'rferl'){
-				setColors('#FF9214', "#FFAF17", "#CC7510");
-			} else if (entity == 'ocb'){
-				setColors('#653792', "#42245F", "#42245F");
-			} else if (entity == 'mbn'){
-				setColors('#ee433d', "#EE4223", "#BB3530");
-			} else {
-				// there shouldn't be any here
-				setColors('#9F1D26', "#891E25", "#7A1A21");
-			}
-			*/
+			 if (entity == 'bbg'){
+			 //setColors(base, rollover, selected)
+			 setColors('#9F1D26', "#891E25", "#7A1A21");
+			 } else if (entity == 'voa'){
+			 setColors('#0071bc', "#205493", "#112e51");
+			 } else if (entity == 'rfa'){
+			 setColors('#4aa564', "#94bfa2", "#2e8540");
+			 } else if (entity == 'rferl'){
+			 setColors('#FF9214', "#FFAF17", "#CC7510");
+			 } else if (entity == 'ocb'){
+			 setColors('#653792', "#42245F", "#42245F");
+			 } else if (entity == 'mbn'){
+			 setColors('#ee433d', "#EE4223", "#BB3530");
+			 } else {
+			 // there shouldn't be any here
+			 setColors('#9F1D26', "#891E25", "#7A1A21");
+			 }
+			 */
 
 
 			var buttonColor = $('.selected').css('background-color');
@@ -236,6 +236,15 @@
 			window.selectedCountryID = '';
 
 			grabData(entity);
+
+			// if the entity is OCB, hide the subgroup block since there's only one service in there
+			if (entity === 'ocb') {
+				$('.subgroup-block').hide();
+
+				// re-show in case it's a different entity
+			} else {
+				$('.subgroup-block').show();
+			}
 
 			//scrollToMap();
 		});
@@ -339,15 +348,15 @@
 						country.rollOverColor = colorRollOver;
 						country.selectedColor = colorSelected;
 
+						countries.push(country);
+
+
 						// NO COVERAGE here
 					} else {
 						// this is the default color for non-BBG covered countries
 						country.color = '#DDDDDD';
 						country.rollOverColor = "#B7B7B7";
 					}
-
-
-					countries.push(country);
 
 
 				}
