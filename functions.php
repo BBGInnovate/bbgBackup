@@ -544,12 +544,17 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 			/* impact is an exception */
 			foreach ( $categories as $category ) {
 				if ( $category->name == "Impact" ) {
-					$selectedCategory=$category;
-					$impact=true;
+					$selectedCategory = $category;
+					$impact = true;
 					break;
-				} else if ($category->name == "BBG") {
-					$selectedCategory=$category;
-					break;
+				}
+			}
+			if ( !$selectedCategory ) {
+				foreach ( $categories as $category ) {
+					if ( $category->name == "BBG" ) {
+						$selectedCategory = $category;
+						break;
+					}
 				}
 			}
 
@@ -558,7 +563,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 					$selectedCategory = $category;
 				}
 			}
-			$link=false;
+			$link = false;
 			if ($impact) {
 				$link = get_permalink( get_page_by_path( "/our-work/impact-and-results/" ) );
 			} else if ($selectedCategory) {
