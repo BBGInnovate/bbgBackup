@@ -549,7 +549,6 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 					break;
 				} else if ($category->name == "BBG") {
 					$selectedCategory=$category;
-					$impact=true;
 					break;
 				}
 			}
