@@ -25,7 +25,7 @@ function fileExpired($filepath, $minutesToExpire) {
 	} else {
 		$secondsDiff = time() - filemtime( $filepath );
 		$minutesDiff = $secondsDiff/60;
-		if ($minutesDiff > 30) {
+		if ($minutesDiff > $minutesToExpire) {
 			$expired = true;
 		}
 	}
