@@ -874,7 +874,7 @@ body {
 }
 
 .u--hide-medium-large {
-  display: inline;
+  display: inherit;
 }
 @media screen and (min-width: 900px) {
   .u--hide-medium-large {
@@ -887,7 +887,7 @@ body {
 }
 @media screen and (min-width: 900px) {
   .u--show-medium-large {
-    display: inline;
+    display: inherit;
   }
 }
 

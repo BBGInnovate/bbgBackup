@@ -28,13 +28,13 @@
 	margin-bottom: $site-margins-large; 
 
 	@include media($medium-screen) {
-		margin-bottom: 0;
+		margin-bottom: 0; 
 	}
 }
 
 //hide things at medium-large and wider
 .u--hide-medium-large {
-	display:inline;
+	display:inherit;
 	@include media($medium-large-screen) {
 		display: none;
 	}
@@ -44,7 +44,7 @@
 .u--show-medium-large {
 	display:none;
 	@include media($medium-large-screen) {
-		display: inline;
+		display: inherit;
 	}
 }
 
