@@ -43,25 +43,12 @@ if ( have_posts() ) {
 	$meetingSpeakers = get_post_meta( get_the_ID(), 'board_meeting_speakers', true );
 
 	/*** CREATE EVENTBRITE IFRAME ****/
-	$eventbriteID = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_id', true );
-	$eventbriteIframeHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height', true );
-	if (!$eventbriteIframeHeight || $eventbriteIframeHeight=="") {
-		$eventbriteIframeHeight=270;
+	$eventStr = "";
+	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
+	if ($eventbriteUrl && $eventbriteUrl != "") {
+		$eventStr="<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
 	}
-	$eventStr="";
-	if ($eventbriteID) {
-		$iframeNarrowHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height_mobile', true );
-		if (!$iframeNarrowHeight || $iframeNarrowHeight=="") {
-			$iframeNarrowHeight=220;
-		}
-		$eventStr='<style>';
-		$eventStr .= '#eventbriteContainer { width: 100%; text-align:left; height: ' . $eventbriteIframeHeight .'px;}';
-		//$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
-		$eventStr .= '</style>';
-		$eventStr .= '<div id="eventbriteContainer" class="u--show-medium-large"><iframe src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="100%" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>';
-		$eventStr .= "<div class='u--hide-medium-large'><button class='usa-button '><a style='color:white;text-decoration:none;' href='https://www.eventbrite.com/e/feaux-halloween-board-meeting-tickets-26165052376?ref=elink'>Register for this Event</button></a></div><BR>";
-	}
-
+	
 
 	rewind_posts();
 }
@@ -175,13 +162,16 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content">
 						<?php
-						 echo $eventStr;
+						 //echo $eventStr;
 						 the_content(); ?>
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
 						<h5>WHEN: <?php echo $meetingTime; ?><br/><?php echo $postDate; ?></h5>
 						<h5>WHERE: <?php echo $meetingLocation; ?></h5>
+
+						<?php echo $eventStr; ?>
+
 						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
 
 						<!-- Speakers -->
