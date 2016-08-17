@@ -37,6 +37,10 @@ if ( have_posts() ) {
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
 	$meetingLocation = get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary = get_post_meta( get_the_ID(), 'board_meeting_summary', true );
+	$meetingContactTagline = get_post_meta( get_the_ID(), 'board_meeting_contact_tagline', true );
+	if (!$meetingContactTagline || $meetingContactTagline == "") {
+		$meetingContactTagline = "For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.";
+	}
 	if ( $meetingTime != "") {
 		$meetingTime = $meetingTime . ", ";
 	}
@@ -172,7 +176,7 @@ get_header(); ?>
 
 						<?php echo $eventStr; ?>
 
-						<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at (202) 203-4400 or by e-mail at pubaff@bbg.gov.</p>
+						<p class="bbg-tagline bbg-tagline--main"><?php echo $meetingContactTagline; ?></p>
 
 						<!-- Speakers -->
 						<?php
