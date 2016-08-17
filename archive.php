@@ -56,7 +56,7 @@ get_header(); ?>
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 							*/
 													//Add a check here to only show featured if it's not paginated.
-						if (  (!is_paged() && $counter==1) ){
+						if (  (!is_paged() && $counter==1 || is_category('BBG360')) ){
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 						} else {
 							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
