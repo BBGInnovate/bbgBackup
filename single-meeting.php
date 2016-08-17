@@ -52,9 +52,8 @@ if ( have_posts() ) {
 	if ($eventbriteID) {
 		$iframeNarrowHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height_mobile', true );
 		if (!$iframeNarrowHeight || $iframeNarrowHeight=="") {
-			$eventbriteIframeHeight=220;
+			$iframeNarrowHeight=220;
 		}
-		$iframeNarrowHeight = $eventbriteIframeHeight+75;
 		$eventStr='<style>';
 		$eventStr .= '#eventbriteContainer { width: 100%; text-align:left; height: ' . $eventbriteIframeHeight .'px;}';
 		//$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
