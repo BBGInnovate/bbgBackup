@@ -5,10 +5,12 @@
  * @var [boolean]
  */
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+$sidebar = "";
+$sidebarDownloads = "";
 if ( $includeSidebar ) {
 
 	// check if the flexible content field has rows of data
-	$sidebar = "";
+	
 	$s = "";
 
 	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );

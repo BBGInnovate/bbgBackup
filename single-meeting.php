@@ -289,9 +289,11 @@ get_header(); ?>
 								echo $sidebar;
 							}
 
+							/* JBF commenting this out on 8/17/2016 ... remove permanently if no side effects 
 							if ( $secondaryColumnContent != "" ) {
 								echo $secondaryColumnContent;
 							}
+							*/
 
 							echo $sidebarDownloads;
 						?>
