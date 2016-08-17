@@ -52,10 +52,12 @@ if ( have_posts() ) {
 	if ($eventbriteUrl && $eventbriteUrl != "") {
 		$eventStr="<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
 	}
-	
 
 	rewind_posts();
 }
+
+include get_template_directory() . "/inc/shared_sidebar.php";
+
 $eventPageHeader = "Event";
 if (in_category("Board Meetings")) {
 	$eventPageHeader = "Board Meeting";
@@ -283,13 +285,15 @@ get_header(); ?>
 						<!-- Additional sidebar content -->
 						<?php
 							echo "<!-- Sidebar content -->";
-							if ( $includeSidebar && $sidebarTitle != "" ) {
+							if ( $includeSidebar) {
 								echo $sidebar;
 							}
 
+							/* JBF commenting this out on 8/17/2016 ... remove permanently if no side effects 
 							if ( $secondaryColumnContent != "" ) {
 								echo $secondaryColumnContent;
 							}
+							*/
 
 							echo $sidebarDownloads;
 						?>

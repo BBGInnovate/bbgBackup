@@ -5,10 +5,12 @@
  * @var [boolean]
  */
 $includeSidebar = get_post_meta( get_the_ID(), 'sidebar_include', true );
+$sidebar = "";
+$sidebarDownloads = "";
 if ( $includeSidebar ) {
 
 	// check if the flexible content field has rows of data
-	$sidebar = "";
+	
 	$s = "";
 
 	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
@@ -165,7 +167,12 @@ if ( $listsInclude ) {
 	$dropdownTitle = get_field( 'sidebar_dropdown_title' );
 
 	if ( have_rows('sidebar_dropdown_content') ) {
-		$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $dropdownTitle ."</h5>";
+		
+		$s = "";
+		if ($dropdownTitle && $dropdownTitle != "") {
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $dropdownTitle ."</h5>";	
+		}
+		
 
 		while ( have_rows('sidebar_dropdown_content') ) : the_row();
 
