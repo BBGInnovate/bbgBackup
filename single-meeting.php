@@ -50,13 +50,17 @@ if ( have_posts() ) {
 	}
 	$eventStr="";
 	if ($eventbriteID) {
+		$iframeNarrowHeight = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_iframe_height_mobile', true );
+		if (!$iframeNarrowHeight || $iframeNarrowHeight=="") {
+			$eventbriteIframeHeight=220;
+		}
 		$iframeNarrowHeight = $eventbriteIframeHeight+75;
 		$eventStr='<style>';
 		$eventStr .= '#eventbriteContainer { width: 100%; text-align:left; height: ' . $eventbriteIframeHeight .'px;}';
-		$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
+		//$eventStr .= '@media  (max-width: 480px) { #eventbriteContainer { height:'.$iframeNarrowHeight.'px;} }';
 		$eventStr .= '</style>';
-		$eventStr .= '<div id="eventbriteContainer"><iframe src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="100%" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>';
-		//$eventStr .= "<button class='usa-button'><a style='color:white;text-decoration:none;' href='https://www.eventbrite.com/e/feaux-halloween-board-meeting-tickets-26165052376?ref=elink'>Register for this Event</button></a><BR>";
+		$eventStr .= '<div id="eventbriteContainer" class="u--show-medium-large"><iframe src="//eventbrite.com/tickets-external?eid='.$eventbriteID.'&ref=etckt" frameborder="0" height="100%" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe></div>';
+		$eventStr .= "<button class='usa-button u--hide-medium-large'><a style='color:white;text-decoration:none;' href='https://www.eventbrite.com/e/feaux-halloween-board-meeting-tickets-26165052376?ref=elink'>Register for this Event</button></a><BR>";
 	}
 
 
