@@ -139,7 +139,7 @@ $entityLink="";
 if ( (in_category('Press Release') && in_category($entityCategories) ) || in_category('Project') ) {
 	foreach ($entityCategories as $eCat) {
 		if ($entityLogo=="" && in_category($eCat)) {
-			$broadcastersPage=get_page_by_title('Our Broadcasters');
+			$broadcastersPage=get_page_by_title('Our Networks');
 			$args = array(
 				'post_type'=> 'page',
 				'posts_per_page' => 1,
