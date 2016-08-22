@@ -16,9 +16,6 @@
 			'name' => 'BBG',
 		), $atts );
 
-/*		// access site-wide variables
-		global $post;*/
-
 		$orgName = 'bbg';
 		$boilerplate = '';
 
@@ -28,11 +25,12 @@
 
         if ( $orgName === 'bbg' ) {
 			$fullName = "the BBG";
-			$boilerplate = get_field('site_setting_boilerplate_bbg','options','false'); // Load BBG description from 'BBG Settings' custom field
+			$boilerplate = get_field( 'site_setting_boilerplate_bbg', 'options', 'false') ; // Load BBG description from 'BBG Settings' custom field
+			$boilerplate = apply_filters('the_content', $boilerplate);
 
 			// Set default description for "About BBG" in case field is empty
 			if ( ! $boilerplate || $boilerplate == "" ) {
-				$boilerplate = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of 226 million in more than 100 countries and in 61 languages.";
+				$boilerplate = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of [audience] in more than [countries] and in [languages].";
 			}
 
         } else {
@@ -76,16 +74,21 @@
 
 	add_shortcode( 'about', 'about_shortcode' );
 
-	// Add shortcode reference for BBG-wide audience numbers
+	/**
+	 * Add shortcode reference for BBG-wide audience numbers
+	 * @param  Array $split includes the total audience number + a split by media type
+	 * @return Text
+	 * Returns the audience numbers based on the parameter from the custom field set on 'BBG settings'
+	 */
 	function audience_shortcode( $atts ) {
 		// access site-wide variables
 		global $post;
 
 	    // set variables based on custom fields
-	    $total = get_field('site_setting_unduplicated_audience','options','false');
-		$tv = get_field('site_setting_tv_audience','options','false');
-		$radio = get_field('site_setting_radio_audience','options','false');
-		$internet = get_field('site_setting_internet_audience','options','false');
+	    $total = get_field( 'site_setting_unduplicated_audience', 'options', 'false' );
+		$tv = get_field( 'site_setting_tv_audience', 'options', 'false' );
+		$radio = get_field( 'site_setting_radio_audience', 'options', 'false' );
+		$internet = get_field( 'site_setting_internet_audience', 'options', 'false' );
 		// set a default audience variable
 		$selectedAudienceType = 'total';
 		// change audience variable if passed from shortcode
@@ -110,20 +113,45 @@
 
 	add_shortcode( 'audience', 'audience_shortcode' );
 
-
-	// Add shortcode reference for the number of supported languages
+	/**
+	 * Add shortcode reference for the number of supported languages
+	 * @return Text
+	 * Returns total number of languages from custom field set in 'BBG Settings'
+	 */
 	function languages_shortcode() {
 		// access site-wide variables
 		global $post;
 
 		// set variables based on custom fields
-		$number_of_languages = get_field('site_setting_total_languages','options','false');
+		$number_of_languages = get_field( 'site_setting_total_languages', 'options', 'false' );
 
 		// $number_of_languages = 61;
 		return $number_of_languages . " languages";
 	}
 	add_shortcode('languages', 'languages_shortcode');
 
+	/**
+	 * Add shortcode reference for the number of total countries
+	 * @return Text
+	 * Returns total number of countries covered from custom field set in 'BBG settings'
+	 */
+	function countries_shortcode() {
+		// access site-wide variables
+		global $post;
+
+		// set variables based on custom fields
+	    $number_of_countries = get_field( 'site_setting_total_countries', 'options', 'false' );
+
+		//$number_of_countries = 100;
+		return $number_of_countries . " countries";
+	}
+	add_shortcode('countries', 'countries_shortcode');
+
+	/**
+	 * Shortcode for selecting/downloading apps
+	 * @param  $formType
+	 * @return Returns a form for downloading the correct type of apps
+	 */
 	function appselector_shortcode($atts) {
 		$formType = "news";
 		if (isset($atts['type'])) {
@@ -214,19 +242,4 @@
 
 	}
 	add_shortcode('appselector', 'appselector_shortcode');
-
-
-	// Add shortcode reference for the number of total countries
-	function countries_shortcode() {
-		// access site-wide variables
-		global $post;
-
-		// set variables based on custom fields
-	    $number_of_countries = get_field('site_setting_total_countries','options','false');
-
-		//$number_of_countries = 100;
-		return $number_of_countries . " countries";
-	}
-	add_shortcode('countries', 'countries_shortcode');
-
 ?>
