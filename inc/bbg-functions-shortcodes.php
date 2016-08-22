@@ -26,7 +26,7 @@
         if ( $orgName === 'bbg' ) {
 			$fullName = "the BBG";
 			$boilerplate = get_field( 'site_setting_boilerplate_bbg', 'options', 'false') ; // Load BBG description from 'BBG Settings' custom field
-			$boilerplate = apply_filters('the_content', $boilerplate);
+			$boilerplate = apply_filters('the_content', $boilerplate); // allowing shortcodes in the boilerplate entry
 
 			// Set default description for "About BBG" in case field is empty
 			if ( ! $boilerplate || $boilerplate == "" ) {
@@ -58,6 +58,7 @@
 					if ( $abbreviation == $orgName ) {
 						$fullName = $entityAbbr;
 						$boilerplate = get_post_meta( $id, 'entity_boilerplate_description', true );
+						$boilerplate = apply_filters('the_content', $boilerplate); // allowing shortcodes in the boilerplate entry
 					}
 				}
 			}
