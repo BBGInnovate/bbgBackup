@@ -48,7 +48,9 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid" style="margin-bottom: 3rem">
-					<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
+					<?php 
+						/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
+					?>
 					<?php
 						echo '<h3 class="usa-font-lead">';
 						echo $pageContent; // or $pageExcerpt
