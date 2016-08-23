@@ -74,7 +74,8 @@ get_header(); ?>
 										'operator' => 'NOT IN'
 
 									)
-								)
+								),
+								'category__not_in' => get_cat_id('Award')
 							);
 							$custom_query = new WP_Query($qParams);
 							if ($custom_query -> have_posts()) {
