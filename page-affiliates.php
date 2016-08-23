@@ -11,9 +11,13 @@
  */
 
 $pageTitle="";
+$pageContent = "";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageTitle = get_the_title();
+		$pageContent = get_the_content();
+		$pageContent = apply_filters( 'the_content', $pageContent );
+		$pageContent = str_replace( ']]>', ']]&gt;', $pageContent );
 	endwhile;
 endif;
 wp_reset_postdata();
@@ -40,6 +44,17 @@ get_header(); ?>
 			<!-- this section holds the map and is populated later in the page by javascript -->
 			<section class="usa-section">
 				<div id="map" class="bbg__map--banner"></div>
+			</section>
+
+			<section class="usa-section">
+				<div class="usa-grid" style="margin-bottom: 3rem">
+					<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
+					<?php
+						echo '<h3 class="usa-font-lead">';
+						echo $pageContent; // or $pageExcerpt
+						echo '</h3>';
+					?>
+				</div>
 			</section>
 
 		</main><!-- #main -->
