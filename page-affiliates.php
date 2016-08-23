@@ -42,8 +42,10 @@ get_header(); ?>
 			</div>
 
 			<!-- this section holds the map and is populated later in the page by javascript -->
-			<section class="usa-section">
+			<section class="usa-section" style="position: relative;">
 				<div id="map" class="bbg__map--banner"></div>
+				<img id="resetZoom" src="<?php echo get_template_directory_uri(); ?>/img/home.png" class="bbg__map__button"/>
+					
 			</section>
 
 			<section class="usa-section">
@@ -142,7 +144,7 @@ var map = L.mapbox.map('map', 'mapbox.emerald')
 //        .setView([-37.82, 175.215], 14);
 
     var markers = new L.MarkerClusterGroup({
-    	maxClusterRadius:20,
+    	maxClusterRadius:40,
 		iconCreateFunction: function (cluster) {
 			var childCount = cluster.getChildCount();
 			var c = ' marker-cluster-';
@@ -190,6 +192,9 @@ var map = L.mapbox.map('map', 'mapbox.emerald')
 			centerMap();
 	  }, 500, "some unique string");
 	}
+	jQuery( "#resetZoom" ).click(function() {
+		centerMap();
+	});
 
 	//Wait for the window resize to 'end' before executing a function---------------
 	var waitForFinalEvent = (function () {
