@@ -44,8 +44,37 @@ get_header(); ?>
 			<!-- this section holds the map and is populated later in the page by javascript -->
 			<section class="usa-section" style="position: relative;">
 				<div id="map" class="bbg__map--banner"></div>
+
+				
 				<img id="resetZoom" src="<?php echo get_template_directory_uri(); ?>/img/home.png" class="bbg__map__button"/>
-					
+<!--
+				<img id="filter_radio" src="<?php echo get_template_directory_uri(); ?>/img/Studio-mic-icon.png" style="width:30px; height:30px; cursor:pointer;"/>Radio
+				<img id="filter_television" src="<?php echo get_template_directory_uri(); ?>/img/tv-icon.png" style="width:30px; height:30px; cursor:pointer;"/>TV
+				<img id="filter_mobile" src="<?php echo get_template_directory_uri(); ?>/img/iPhone-Icon.png" style="width:30px; height:30px; cursor:pointer;"/>Mobile
+				<img id="filter_internet" src="<?php echo get_template_directory_uri(); ?>/img/3d-glasses-icon.png" style="width:30px; height:30px; cursor:pointer;"/>Internet
+
+				"864930000" => "Radio",
+		"864930001" => "TV",
+		"864930002" => "Newspaper",
+		"864930003" => "Satellite",
+		"864930004" => "Web",
+		"864930005" => "Mobile",
+		"864930006" => "Other",
+				-->
+				<style> 
+					.mapFilters label { margin-left:15px; }
+				</style>
+				<div align="center" class="mapFilters">
+					<input type="radio" name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_tv" value="tv" /><label for="delivery_tv"> TV</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_web" value="web" /><label for="delivery_web"> Web</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_other" value="other" /><label for="delivery_other"> Other</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_satellite" value="satellite" /><label for="delivery_satellite"> Satellite</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_newspaper" value="newspaper" /><label for="delivery_newspaper"> Newspaper</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_mobile" value="mobile" /><label for="delivery_mobile"> Mobile</label>
+
+				</div>
 			</section>
 
 			<section class="usa-section">
@@ -94,7 +123,8 @@ get_header(); ?>
 					'description' => "<strong>Location: </strong>$city<BR><strong>Delivery Platform: </strong>$platform<BR>",
 					'marker-color' => "#344998",
 					'marker-size' => 'large', 
-					'marker-symbol' => ''
+					'marker-symbol' => '',
+					'platform' => $platform
 				)
 			);
 		}
@@ -114,9 +144,6 @@ get_header(); ?>
 
 ?>
 
-
-
-
 <?php /* include map stuff -------------------------------------------------- */ ?>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
@@ -126,25 +153,37 @@ get_header(); ?>
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
 <style>
+
 	.marker-cluster-small {
-		background-color: rgba(255, 255, 255, 0.6) !important;
+		background-color: rgba(241, 211, 87, 0);
 	}
 	.marker-cluster-small div {
-		background-color: rgba(255, 0, 0, 0.6) !important;
+		background-color: rgba(240, 194, 12, 1);
 	}
+
+	.marker-cluster-medium {
+		background-color: rgba(253, 156, 115, 0);
+	}
+	.marker-cluster-medium div {
+		background-color: rgba(241, 128, 23, 1);
+	}
+
+	.marker-cluster-large { 
+		background-color: rgba(255, 0, 0, 0);
+	}
+	.marker-cluster-large div {
+		background-color: rgba(255, 0, 0, 1);
+	}
+
 </style>
 
 <script type="text/javascript">
-L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+	L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 
-//console.log(geojson[0].features[0].properties);
-//console.log('description: '+ geojson[0].features[0].properties['description'])
-
-var map = L.mapbox.map('map', 'mapbox.emerald')
-//        .setView([-37.82, 175.215], 14);
+	var map = L.mapbox.map('map', 'mapbox.emerald');
 
     var markers = new L.MarkerClusterGroup({
-    	maxClusterRadius:40,
+    	maxClusterRadius:35,
 		iconCreateFunction: function (cluster) {
 			var childCount = cluster.getChildCount();
 			var c = ' marker-cluster-';
@@ -159,19 +198,66 @@ var map = L.mapbox.map('map', 'mapbox.emerald')
 		}
 	});
 
+//, 'marker-color': geojson[0].features[i].properties['marker-color']
+            	
+    var iconImages= {};
+    iconImages["Radio"] = "Studio-mic-icon.png";
+    iconImages["TV"] = "tv-icon.png";
+    iconImages["Newspaper"] = "3d-glasses-icon.png";
+    iconImages["Satellite"] = "3d-glasses-icon.png";
+    iconImages["Web"] = "modem-icon.png";
+    iconImages["Mobile"] = "iPhone-Icon.png";
+    iconImages["Other"] = "webcam-icon.png";
+
+    var deliveryLayers = {}
+
+    for (var key in iconImages) {
+    	if (false && iconImages.hasOwnProperty(key)) {
+    		 deliveryLayers[key] = new L.MarkerClusterGroup({
+		    	maxClusterRadius:35,
+				iconCreateFunction: function (cluster) {
+					var childCount = cluster.getChildCount();
+					var c = ' marker-cluster-';
+					if (childCount < 10) {
+					    c += 'small';
+					} else if (childCount < 100) {
+					    c += 'medium';
+					} else {
+					    c += 'large';
+					}
+					return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+				}
+			});
+
+
+    	}
+    }
+
     for (var i = 0; i < geojson[0].features.length; i++) {
         var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
+        var platform = geojson[0].features[i].properties['platform'];
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
-            icon: L.mapbox.marker.icon({
-            	'marker-symbol': '', 
-            	'marker-color': geojson[0].features[i].properties['marker-color']
+            icon: L.icon({
+            	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
+            	"iconSize": [20, 20],
+          		"iconAnchor": [10, 10]
+           	})
+        });
+         var markerCopy = L.marker(new L.LatLng(coords[1], coords[0]), {
+            icon: L.icon({
+            	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
+            	"iconSize": [20, 20],
+          		"iconAnchor": [10, 10]
            	})
         });
         var popupText = title + description;
         marker.bindPopup(popupText);
         markers.addLayer(marker);
+        //deliveryLayers[platform].addLayer(markerCopy);
+
+
     }
 
     map.addLayer(markers);
