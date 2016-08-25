@@ -5,6 +5,7 @@
 
 	// this global variable is used to determine whether or not the current item selected is an entity or country
 	var hideCountryLabel = true;
+	var hideServiceLabel = true;
 
 	var colorBase = '#0071bc',
 		colorRollOver = '#205493',
@@ -85,6 +86,10 @@
 				$('.country-label-tooltip').show();
 			}
 
+			if (hideServiceLabel === false) {
+				$('.service-label').show();
+			}
+
 
 		});
 
@@ -97,8 +102,16 @@
 			// an entity is not selected
 			hideCountryLabel = false;
 
+			hideServiceLabel = true;
+
+			// hide the service label
+			$('.service-label').hide();
+
 			// hide the tooltip for now, it will be reshown after animation is done
 			$('.country-label-tooltip').hide();
+
+			$('.groups-and-subgroups').show();
+			$('.other-subgroups').show();
 
 			checkCountryLabelPosition(event.chart.selectedObject.name);
 
@@ -172,7 +185,11 @@
 
 			hideCountryLabel = true;
 
+			hideServiceLabel = true;
+
 			$('.country-label-tooltip').hide();
+
+			$('.service-label').hide();
 
 			// hide the right panel
 			$('.usa-width-one-third').hide();
@@ -224,6 +241,8 @@
 			// hide any country details divs
 			$('.country-details').hide();
 
+			$('.languages-served-block').hide();
+
 			// show the entity details div
 			$('.entity-details').html('<p>' + entities[entity].description + '<p>' + 'Website: <a target="_blank" href="'+entities[entity].url+'">'+entities[entity].url+'</a>').show();
 
@@ -270,9 +289,21 @@
 		$('#view-on-map').on('click', function () {
 			var subgroupId = $('#subgroup-list').val();
 
+			hideCountryLabel = true;
+
+			$('.groups-and-subgroups').hide();
+			$('.other-subgroups').hide();
+
+			$('.service-label').text($("#subgroup-list>option:selected").html());
+			hideServiceLabel = false;
+
 			var url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries?subgroup=' + subgroupId;
 
 			getCountries(url);
+
+			var subgroupUrl = bbgConfig.template_directory_uri + 'api.php?endpoint=api/languages?subgroup=' + subgroupId;
+
+			getSupportedLanguagesBySubgroup(subgroupUrl);
 		});
 
 
@@ -440,33 +471,10 @@
 					);
 				}
 
-				var languagesString = '';
-				for (var i = 0; i < languages.length; i++) {
-
-					// if there's only one language, just show that language itself
-					if (languages.length === 1) {
-						languagesString = languages[i].name;
-
-						// if there's two languages, concatenate the two together with ' and ' in between
-					} else if (languages.length === 2) {
-						languagesString = languages[0].name + ' and ' + languages[1].name;
-
-						// if there's more than 2, comma separate them
-					} else {
-						// if it's not the last language, concatenate the language with a comma and a space
-						if (i !== (languages.length - 1)) {
-							languagesString += languages[i].name + ', ';
-
-							// if it's the last one, cut off the last comma from the previous concatenation and add the word and
-							// along with the last language
-						} else {
-							languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
-						}
-					}
-
-				}
+				var languagesString = generateLanguagesSupportedString(languages);
 
 				$('.languages-served').text(languagesString);
+				$('.languages-served-block').show();
 
 
 				var groupAndSubgroupList = '';
@@ -647,10 +655,61 @@
 		$('.country-label-tooltip').css('left', leftPos);
 	}
 
+
+	function generateLanguagesSupportedString(languages) {
+
+		var languagesString = '';
+
+		for (var i = 0; i < languages.length; i++) {
+
+			// if there's only one language, just show that language itself
+			if (languages.length === 1) {
+				languagesString = languages[i].name;
+
+				// if there's two languages, concatenate the two together with ' and ' in between
+			} else if (languages.length === 2) {
+				languagesString = languages[0].name + ' and ' + languages[1].name;
+
+				// if there's more than 2, comma separate them
+			} else {
+				// if it's not the last language, concatenate the language with a comma and a space
+				if (i !== (languages.length - 1)) {
+					languagesString += languages[i].name + ', ';
+
+					// if it's the last one, cut off the last comma from the previous concatenation and add the word and
+					// along with the last language
+				} else {
+					languagesString = languagesString.substring(0, languagesString.length - 2) + ', and ' + languages[i].name;
+				}
+			}
+
+		}
+
+		return languagesString;
+	}
+
+	function getSupportedLanguagesBySubgroup(subgroupUrl) {
+
+		$.ajax({
+			url: subgroupUrl,
+			success: function (result) {
+				var languagesString = generateLanguagesSupportedString(result.languages);
+
+				$('.languages-served').text(languagesString);
+				$('.languages-served-block').show();
+			}
+		});
+	}
+
+
 	$(document).ajaxStop(function () {
 		//$('#country-name').text($('#country-name').text().replace('Loading ', '').replace(' ...', ''));
 		$('.usa-width-one-third').show();
-		$('.other-subgroups').show();
+
+		// don't show subgroups if a service is the focal point
+		if (hideServiceLabel === true) {
+			$('.other-subgroups').show();
+		}
 	});
 
 })(jQuery,bbgConfig, entities);
