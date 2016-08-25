@@ -443,7 +443,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					if (t.headline != "") {
 						headline = t.headline;
 					}
-					var titleLink = "<h5>" + headline = "</h5>";
+					var titleLink = "<h5>" + headline + "</h5>";
 					if (t.link != "") {
 						titleLink="<h5><a href='" + t.link + "'>" + headline + "</a></h5>";	
 					}
