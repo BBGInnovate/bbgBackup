@@ -116,7 +116,6 @@ foreach($threatsCSVArray as $t) {
 		'latitude' => $t[8],
 		'longitude' => $t[9],
 		'headline' => $t[10]
-
 	);
 }
 
@@ -439,6 +438,16 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
 					var t = threats[i];
+
+					var headline = t.name;
+					if (t.headline != "") {
+						headline = t.headline;
+					}
+					var titleLink = "<h5>" + headline = "</h5>";
+					if (t.link != "") {
+						titleLink="<h5><a href='" + t.link + "'>" + headline + "</a></h5>";	
+					}
+
 					if (t.status == "Killed"){
 						markerColor = "#000";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
@@ -447,7 +456,6 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 								'marker-color': markerColor
 							})
 						});
-						var titleLink = "<h5><a href='" + t.link + "'>" + t.name + "</a></h5>";
 						marker.bindPopup(titleLink + t.description);
 						killedMarkers.addLayer(marker);
 						//marker.addTo(map);
@@ -467,11 +475,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 								'marker-color': markerColor
 							})
 						});
-						var headline = t.name;
-						if (t.headline != "") {
-							headline = t.headline;
-						}
-						var titleLink = "<h5><a href='" + t.link + "'>" + headline + "</a></h5>";
+						
 						marker.bindPopup(titleLink + t.description);
 						markers.addLayer(marker);
 					}
