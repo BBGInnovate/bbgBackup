@@ -145,8 +145,8 @@ get_header(); ?>
 ?>
 
 <?php /* include map stuff -------------------------------------------------- */ ?>
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
+<script src="https://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
 <!-- <link rel="stylesheet" href="http://ghybs.github.io/Leaflet.FeatureGroup.SubGroup/examples/screen.css" /> -->
 <link rel="stylesheet" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-beta.2.0/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-beta.2.0/dist/MarkerCluster.Default.css" />
