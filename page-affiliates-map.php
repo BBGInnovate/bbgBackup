@@ -50,7 +50,7 @@ foreach ($allAffiliates as $a) {
 		$headline = "<h5>" . $title . "</h5>";
 		if ($url != "") {
 			if (strpos($url, "http") === false) {
-				echo "fixing " . $url . "<BR>";
+				///echo "fixing " . $url . "<BR>";
 				$url = "http://" . $url;
 			}
 			$headline = "<h5><a target='_blank' href='" . $url . "'>" . $title . "</a></h5>";
