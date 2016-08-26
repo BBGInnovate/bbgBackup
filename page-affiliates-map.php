@@ -333,7 +333,7 @@ get_header(); ?>
 
 	resizeStuffOnResize();
 
-	function setSelectedPlatform(platform) {
+	function setSelectedPlatform(platform, displayMode) {
 		for (var p in deliveryLayers) {
 			if (deliveryLayers.hasOwnProperty(p)) {
 				map.removeLayer(deliveryLayers[p]);
@@ -348,15 +348,20 @@ get_header(); ?>
 		} else {
 			map.addLayer(deliveryLayers[platform]);
 		}
+		//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
+		if (displayMode=='select') {
+			centerMap();	
+		}
+		
 	}
 
 	jQuery( document ).ready(function() {
 		jQuery('input[type=radio][name=deliveryPlatform]').change(function() {
-			setSelectedPlatform(this.value);
+			setSelectedPlatform(this.value, 'radio');
 		});
 		jQuery('select[name=deliverySelect]').change(function() {
 			var selectedPlatform = jQuery(this).val();
-			setSelectedPlatform(selectedPlatform);
+			setSelectedPlatform(selectedPlatform,'select');
 		});
 	});
 
