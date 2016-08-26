@@ -152,7 +152,7 @@ get_header(); ?>
 <link rel="stylesheet" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-beta.2.0/dist/MarkerCluster.Default.css" />
 <script src="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-beta.2.0/dist/leaflet.markercluster-src.js"></script>
 <script src="https://cdn.rawgit.com/ghybs/Leaflet.FeatureGroup.SubGroup/v1.0.0/dist/leaflet.featuregroup.subgroup-src.js"></script>
-
+<script src="https://cdn.rawgit.com/jseppi/Leaflet.MakiMarkers/master/Leaflet.MakiMarkers.js"></script>
 
 <style>
 
@@ -181,8 +181,8 @@ get_header(); ?>
 
 <script type="text/javascript">
 	//var tilesetUrl = 'https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=<?php echo MAPBOX_API_KEY; ?>';
-	var tilesetUrl = 'https://a.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}@2x.png?access_token=pk.eyJ1IjoiYmJnd2ViZGV2IiwiYSI6ImNpcDVvY3VqYjAwbmx1d2tyOXlxdXhxcHkifQ.cD-q14aQKbS6gjG2WO-4nw';
-
+	var mbToken = '<?php echo MAPBOX_API_KEY; ?>';
+	var tilesetUrl = 'https://a.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}@2x.png?access_token='+mbToken;
 	var attribStr = '&copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>  &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 	//https://b.tiles.mapbox.com/v4/mapbox.emerald/2/0/1.png
 	var tiles = L.tileLayer(tilesetUrl, {
@@ -220,28 +220,45 @@ get_header(); ?>
     iconImages["mobile"] = "iPhone-Icon.png";
     iconImages["other"] = "webcam-icon.png";
 
+    var maki = {};
+    maki["radio"] = {"name": "music", "color":"#ccc"};
+    maki["tv"] = {"name": "aerialway", "color":"#b0b"};
+    maki["newspaper"] = {"name": "library", "color":"#ccc"};
+    maki["satellite"] = {"name": "heliport", "color":"#ccc"};
+    maki["web"] = {"name": "ferry", "color":"#ccc"};
+    maki["mobile"] = {"name": "pitch", "color":"#ccc"};
+    maki["other"] = {"name": "fuel", "color":"#ccc"};
+
 	var deliveryLayers={};    
     for (var deliveryPlatform in iconImages) {
      	if (iconImages.hasOwnProperty(deliveryPlatform)) {
-     	//	console.log("creating group in " + deliveryPlatform);
      		var newLayer = L.featureGroup.subGroup(mcg);
-     	//	console.log("layer is " + newLayer);
      		newLayer.addTo(map);
      		deliveryLayers[deliveryPlatform] = newLayer;
      	}
     }
   
+    //First, specify your Mapbox API access token
+	L.MakiMarkers.accessToken = mbToken;
+
+	// An array of icon names can be found in L.MakiMarkers.icons or at https://www.mapbox.com/maki/
     for (var i = 0; i < geojson[0].features.length; i++) {
         var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
         var platform = geojson[0].features[i].properties['platform'].toLowerCase();
+
+
+
+        var icon = L.MakiMarkers.icon({icon: maki[platform].name, color: maki[platform].color, size: "m"});
+  //       var oldIcon = L.icon({
+		// 	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
+		// 	"iconSize": [20, 20],
+		// 	"iconAnchor": [10, 10]
+		// });
+
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
-            icon: L.icon({
-            	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
-            	"iconSize": [20, 20],
-          		"iconAnchor": [10, 10]
-           	})
+            icon:icon
         });
        
         var popupText = title + description;
