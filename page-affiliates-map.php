@@ -29,6 +29,59 @@ if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
 
+$string = file_get_contents( get_template_directory() . "/external-feed-cache/affiliates.json");
+$allAffiliates = json_decode($string, true);
+$counter=0;
+
+foreach ($allAffiliates as $a) {
+	$counter++;
+	if ($counter < 3000) {
+		//$title = "<h5><a href='#'>" . $a[0] . "</a></h5>";
+		$title = $a[0];
+		$lat = $a[1];
+		$lon = $a[2];
+		$city = $a[3];
+		$country = $a[4];
+		$freq = $a[5];
+		$url = $a[6];
+		$smurl = $a[7];
+		$platform = $a[8];
+
+		$headline = "<h5>" . $title . "</h5>";
+		if ($url != "") {
+			if (strpos($url, "http") === false) {
+				echo "fixing " . $url . "<BR>";
+				$url = "http://" . $url;
+			}
+			$headline = "<h5><a target='_blank' href='" . $url . "'>" . $title . "</a></h5>";
+		}
+
+
+		$features[] = array(
+			'type' => 'Feature',
+			'geometry' => array( 
+				'type' => 'Point',
+				'coordinates' => array($lon,$lat)
+			),
+			'properties' => array(
+				'title' => $headline,
+				'description' => "<strong>Location: </strong>$city<BR><strong>Delivery Platform: </strong>$platform<BR>",
+				'marker-color' => "#344998",
+				'marker-size' => 'large', 
+				'marker-symbol' => '',
+				'platform' => $platform
+			)
+		);
+	}
+}
+
+$geojsonObj= array(array(
+	'type' => 'FeatureCollection',
+	'features' => $features
+));
+$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
+
+
 get_header(); ?>
 
 
@@ -94,47 +147,6 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-
-	$string = file_get_contents( get_template_directory() . "/external-feed-cache/affiliates.json");
-	$allAffiliates = json_decode($string, true);
-	$counter=0;
-
-	foreach ($allAffiliates as $a) {
-		$counter++;
-		if ($counter < 3000) {
-			$title = "<h5><a href='#'>" . $a[0] . "</a></h5>";
-			$lat = $a[1];
-			$lon = $a[2];
-			$city = $a[3];
-			$country = $a[4];
-			$freq = $a[5];
-			$url = $a[6];
-			$smurl = $a[7];
-			$platform = $a[8];
-
-			$features[] = array(
-				'type' => 'Feature',
-				'geometry' => array( 
-					'type' => 'Point',
-					'coordinates' => array($lon,$lat)
-				),
-				'properties' => array(
-					'title' => $title,
-					'description' => "<strong>Location: </strong>$city<BR><strong>Delivery Platform: </strong>$platform<BR>",
-					'marker-color' => "#344998",
-					'marker-size' => 'large', 
-					'marker-symbol' => '',
-					'platform' => $platform
-				)
-			);
-		}
-	}
-
-	$geojsonObj= array(array(
-		'type' => 'FeatureCollection',
-		'features' => $features
-	));
-	$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
 
 	echo "<script type='text/javascript'>\n";
 	echo "geojson = $geojsonStr";
