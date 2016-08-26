@@ -118,7 +118,7 @@ get_header(); ?>
 				<style> 
 					#mapFilters label { margin-left:15px; }
 				</style>
-				<div align="center" id="mapFilters">
+				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_tv" value="tv" /><label for="delivery_tv"> TV</label>
@@ -127,6 +127,19 @@ get_header(); ?>
 					<input type="radio" name="deliveryPlatform" id="delivery_satellite" value="satellite" /><label for="delivery_satellite"> Satellite</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_newspaper" value="newspaper" /><label for="delivery_newspaper"> Newspaper</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_mobile" value="mobile" /><label for="delivery_mobile"> Mobile</label>
+				</div>
+				<div align="center" id="mapFilters" class="u--hide-medium-large">
+					<p></p><h3>Select a delivery platform</h3>
+					<select name="deliverySelect">
+						<option value="all">All</option>
+						<option value="radio">Radio</option>
+						<option value="tv">TV</option>
+						<option value="web">Web</option>
+						<option value="other">Other</option>
+						<option value="satellite">Satellite</option>
+						<option value="newspaper">Newspaper</option>
+						<option value="mobile">Mobile</option>
+					</select>
 				</div>
 			</section>
 
@@ -320,26 +333,31 @@ get_header(); ?>
 
 	resizeStuffOnResize();
 
-	// A $( document ).ready() block.
-	jQuery( document ).ready(function() {
-		jQuery('input[type=radio][name=deliveryPlatform]').change(function() {
+	function setSelectedPlatform(platform) {
+		for (var p in deliveryLayers) {
+			if (deliveryLayers.hasOwnProperty(p)) {
+				map.removeLayer(deliveryLayers[p]);
+			}
+		}
+		if (this.value == "all") {
 			for (var p in deliveryLayers) {
 				if (deliveryLayers.hasOwnProperty(p)) {
-					map.removeLayer(deliveryLayers[p]);
+					map.addLayer(deliveryLayers[p]);
 				}
 			}
-			if (this.value == "all") {
-				for (var p in deliveryLayers) {
-					if (deliveryLayers.hasOwnProperty(p)) {
-						map.addLayer(deliveryLayers[p]);
-					}
-				}
-			} else {
-				map.addLayer(deliveryLayers[this.value]);
-			}
-			//centerMap();
+		} else {
+			map.addLayer(deliveryLayers[platform]);
+		}
+	}
+
+	jQuery( document ).ready(function() {
+		jQuery('input[type=radio][name=deliveryPlatform]').change(function() {
+			setSelectedPlatform(this.value);
 		});
-		
+		jQuery('select[name=deliverySelect]').change(function() {
+			var selectedPlatform = jQuery(this).val();
+			setSelectedPlatform(selectedPlatform);
+		});
 	});
 
 
