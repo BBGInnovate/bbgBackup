@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 	function outputBoardMembers($showActive) {
 		//$showActive should be a 0 or 1 passed in a 'active' in the shortcode
 		$boardPage=get_page_by_title('The Board');
@@ -99,7 +99,7 @@
 
 	function outputSeniorManagement($type) {
 		//$boardPage=get_page_by_title('Senior Management');
-		$boardPage=get_page_by_title('IBB Management');
+		$boardPage=get_page_by_title('Management Team');
 		$thePostID=$boardPage->ID;
 
 		$qParams=array(
