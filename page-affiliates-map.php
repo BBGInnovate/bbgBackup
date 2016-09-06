@@ -332,16 +332,17 @@ get_header(); ?>
 	});
 
 	resizeStuffOnResize();
-
+console.log('test');
 	function setSelectedPlatform(platform, displayMode) {
 		for (var p in deliveryLayers) {
 			if (deliveryLayers.hasOwnProperty(p)) {
 				map.removeLayer(deliveryLayers[p]);
 			}
 		}
-		if (this.value == "all") {
+		if (platform == "all") {
 			for (var p in deliveryLayers) {
 				if (deliveryLayers.hasOwnProperty(p)) {
+					console.log('adding layer ' + p);
 					map.addLayer(deliveryLayers[p]);
 				}
 			}
