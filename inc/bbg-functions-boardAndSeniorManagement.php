@@ -98,31 +98,20 @@
 
 
 	function outputSeniorManagement($type) {
-		//$boardPage=get_page_by_title('Senior Management');
 		$boardPage=get_page_by_title('Management Team');
 		$thePostID=$boardPage->ID;
 
-		$qParams=array(
-			'post_type' => array('page')
-			,'post_status' => array('publish')
-			,'post_parent' => $thePostID
-			,'orderby' => 'meta_value'
-			,'meta_key' => 'last_name'
-			,'order' => 'ASC'
-			,'posts_per_page' => 100
-		);
-		$custom_query = new WP_Query($qParams);
+		if ($type=='ibb') {
+			$ids = get_field( "senior_management_management_team_ordered", $thePostID, true);
+		} else if ($type=='broadcast') {
+			$ids = get_field( "senior_management_network_leaders_ordered", $thePostID, true);
+		}
 
-		$boardStr="";
-		$ceoStr="";
-		$granteeStr="";
+		$peopleStr="";
 
-		while ( $custom_query->have_posts() )  {
-			$custom_query->the_post();
-			$id=get_the_ID();
+		foreach ($ids as $id) {
 			$active=get_post_meta( $id, 'active', true );
 			if ($active){
-				$isCEO=get_post_meta( $id, 'ceo', true );
 				$isGrantee=get_post_meta( $id, 'grantee_leadership', true );
 				$occupation=get_post_meta( $id, 'occupation', true );
 				$email=get_post_meta( $id, 'email', true );
@@ -136,16 +125,16 @@
 					$profilePhoto = $profilePhoto[0];
 				}
 
-				$profileName = get_the_title(); // . ', ' . $occupation;
+				$profileName = get_the_title($id); // . ', ' . $occupation;
 
 				$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
 					$b.=  '<h3 class="bbg__profile-excerpt__name">';
-						$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
+						$b.=  '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
 					$b.=  '</h3>';
 
 					//Only show a profile photo if it's set.
 					if ($profilePhoto!=""){
-						$b.=  '<a href="' . get_the_permalink() . '" title="Read a full profile of ' . $profileName . '">';
+						$b.=  '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">';
 							//$b.=  '<div class="bbg__profile-excerpt__photo-container">';
 								$b.=  '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of '. $profileName .', ' . $occupation .'"/>';
 							//$b.=  '</div>';
@@ -154,26 +143,16 @@
 
 					$b.=  '<p class="bbg__profile-excerpt__text">';
 						$b.=  '<span class="bbg__profile-excerpt__occupation">'. $occupation . '</span>';
-						$b.=  get_the_excerpt();
+						$b.=  my_excerpt($id);
 					$b.=  '</p>';
 				$b.=  '</div><!-- .bbg__profile-excerpt__profile -->';
 
-				if ($isCEO) {
-					$ceoStr=$b;
-				} else if ($isGrantee) {
-					$granteeStr.=$b;
-				} else {
-					$boardStr.=$b;
-				}
+				$peopleStr .= $b;
 			}
 		}
 		$s = '';
 		$s .= '<div class="usa-grid-full">';
-		if ($type=='ibb') {
-			$s .=  $ceoStr . $boardStr;
-		} else if ($type=='broadcast') {
-			$s .= $granteeStr;
-		}
+		$s .=  $peopleStr;
 		$s .= '</div>';
 
 		return $s;
