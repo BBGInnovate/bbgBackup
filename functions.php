@@ -359,6 +359,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/bbg-custom-taxonomies.php';
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
+require get_template_directory() . '/inc/bbg-functions-bizOpps.php';
 require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
 require get_template_directory() . '/inc/bbg-functions-contactCards.php';
 require get_template_directory() . '/inc/bbg-functions-impact.php';
