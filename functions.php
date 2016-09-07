@@ -422,7 +422,7 @@ add_action('pre_get_posts', 'bbginnovate_query_offset', 1 );
 function bbginnovate_query_offset(&$query) {
 	/* note that is_home really means 'blog index page' ... which is not necessarily the homepage */
 
-	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() )) {
+	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() ||  $query->is_feed() )) {
 		
 		$termsToExclude =  array(
 			get_cat_id('Contact'),
