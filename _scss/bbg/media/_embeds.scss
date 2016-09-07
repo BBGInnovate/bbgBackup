@@ -51,7 +51,7 @@ object {
 
 .embed-container.c-span {
 	@include media($medium-large-screen) {
-	 padding-bottom: 59.5%; 
+	 padding-bottom: 59.5%;
 	}
 }
 
@@ -60,7 +60,7 @@ object {
 .embed-container embed {
 	height: 100%;
 	position: absolute;
-		top: 0; 
+		top: 0;
 		left: 0;
 	width: 100%;
 }
@@ -96,11 +96,9 @@ object {
 .fb_iframe_widget_fluid_desktop,
 .fb_iframe_widget_fluid_desktop span,
 .fb_iframe_widget_fluid_desktop iframe {
-	margin: 0 auto;
+	margin: 0 auto 3rem;
 	display: block !important;
 }
-
-
 
 /*********************************/
 /*   IFRAMES FOR TIMELINEJS      */
