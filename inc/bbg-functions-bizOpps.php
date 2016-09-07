@@ -72,8 +72,11 @@
 				//var_dump($j);
 				$id = $o['id'];
 				$title = $o['subject'];
-				$lastPostedDateObj = explode("T", $o['lastPostedDate']);
-				$lastPostedDate = $lastPostedDateObj[0];
+				$lastPostedDateObj = DateTime::createFromFormat(
+					DateTime::ISO8601,
+					$o['lastPostedDate']
+				);
+				$lastPostedDate = $lastPostedDateObj->format('n/j/Y');
 				$solutionNumber = $o['solutionNumber'];
 				$link = 'https://www.fbo.gov/index?s=opportunity&mode=form&id=' . $id . '&tab=core&_cview=0';
 				$s .= '<tr><td><a target="_blank" href="' . $link . '" class="bbg__jobs-list__title">' . $title . '</a></td><td>' . $lastPostedDate . '</td></tr>';
