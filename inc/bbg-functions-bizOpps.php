@@ -55,7 +55,7 @@
 		$opps = getBizOpps();
 		$fboSearchLink = 'https://www.fbo.gov/index?s=agency&mode=form&tab=notices&id=50e78d8b5e1bacce4caf0f645e07e253';
 		$s = "";
-		$s .= "View all business opportunities at <a target='_blank' href='$fboSearchLink'>fbo.gov</a>.<BR>";\
+		///$s .= "View all business opportunities at <a target='_blank' href='$fboSearchLink'>fbo.gov</a>.<BR>";\
 
 		array_splice($opps, 5); //show the most recent 5 
 
