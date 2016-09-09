@@ -1,1 +1,7 @@
-<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><title>tv15</title><rect x="1.75" y="3.954" width="11.25" height="7.046" rx="1" ry="1"/><path d="M11.5,5a1,1,0,1,0,1,1A1,1,0,0,0,11.5,5Zm0,1.5A.5.5,0,1,1,12,6,.5.5,0,0,1,11.5,6.5Z" fill="#fff"/><rect x="4.202" y="2.927" width="5.45" height="1" rx="0.5" ry="0.5" transform="translate(4.452 -3.894) rotate(45)"/><rect x="5.348" y="2.927" width="5.45" height="1" rx="0.5" ry="0.5" transform="translate(16.205 0.141) rotate(135)"/><rect x="3" y="5" width="7" height="5" rx="0.5" ry="0.5" fill="#fff"/><rect x="11" y="8" width="1" height="2" rx="0.5" ry="0.5" fill="#fff"/></svg>
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+  <title>Mapbox-icons</title>
+  <path d="M13,5a1,1,0,0,0-1-1H3A1,1,0,0,0,2,5v5a1,1,0,0,0,1,1h9a1,1,0,0,0,1-1ZM10,9.5a.5.5,0,0,1-.5.5h-6A.5.5,0,0,1,3,9.5v-4A.5.5,0,0,1,3.5,5h6a.5.5,0,0,1,.5.5Z"/>
+  <path d="M11.5,5a1,1,0,1,0,1,1A1,1,0,0,0,11.5,5Zm0,1.5A.5.5,0,1,1,12,6,.5.5,0,0,1,11.5,6.5Z" fill="#fff"/>
+  <path d="M9.557,1.971,7.375,4,5.436,1.971" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10"/>
+  <path d="M11.5,8.381V9.632" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10"/>
+</svg>

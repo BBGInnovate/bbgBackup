@@ -1,1 +1,9 @@
-<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"><title>antenna-11</title><polyline points="6.336 7.012 4 10 5.5 3.25 7 10 4.667 6.996" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.498" cy="3.618" r="1"/><path d="M3.021,1.618a2.31,2.31,0,0,0,0,4" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/><path d="M4.007,2.649a1.155,1.155,0,0,0,0,2" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/><path d="M7.976,1.618a2.31,2.31,0,0,1,0,4" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/><path d="M6.993,2.649a1.155,1.155,0,0,1,0,2" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/></svg>
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11">
+  <title>Mapbox-icons</title>
+  <path d="M6.336,7.012,4,10,5.5,3.25,7,10,4.667,7" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6,3.618a.5.5,0,1,1-.5-.5A.5.5,0,0,1,6,3.618Z" fill="none" stroke="#000" stroke-miterlimit="10"/>
+  <path d="M3.022,5.618a2.31,2.31,0,0,1,0-4" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M4.007,4.649a1.155,1.155,0,0,1,0-2" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M7.976,1.618a2.31,2.31,0,0,1,0,4" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M6.993,2.649a1.155,1.155,0,0,1,0,2" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+</svg>

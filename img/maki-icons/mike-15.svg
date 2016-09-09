@@ -1,1 +1,8 @@
-<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><title>mike-15</title><rect x="5" y="2" width="5" height="8" rx="2.5" ry="2.5"/><path d="M9.5,12H8V11H7v1H5.5a.5.5,0,0,0,0,1h4a.5.5,0,0,0,0-1Z"/><path d="M11.5,7.5v-2a.5.5,0,0,0-1,0v2a3,3,0,1,1-6,0v-2a.5.5,0,0,0-1,0v2a4,4,0,1,0,8,0Z"/><polygon points="6 5 5 5 5 5 6 5 6 5" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/><polygon points="6 7 5 7 5 7 6 7 6 7" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/></svg>
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+  <title>Mapbox-icons</title>
+  <path d="M7.5,10h0A2.5,2.5,0,0,1,5,7.5v-3A2.5,2.5,0,0,1,7.5,2h0A2.5,2.5,0,0,1,10,4.5v3A2.5,2.5,0,0,1,7.5,10Z"/>
+  <path d="M10,13.5a.5.5,0,0,1-.5.5h-4a.5.5,0,0,1,0-1H7V12H8v1H9.5A.5.5,0,0,1,10,13.5Z"/>
+  <path d="M6,5H6Z" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M6,7H6Z" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M11.476,6.487l.024.728s.2,4.4-4,4.4-4-4.225-4-4.225L3.519,6.5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

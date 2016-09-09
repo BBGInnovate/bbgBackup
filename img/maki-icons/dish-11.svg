@@ -1,1 +1,8 @@
-<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"><title>dish-11</title><path d="M4.5,9H4V8H3V9H2.5a.5.5,0,0,0,0,1h2a.5.5,0,0,0,0-1Z"/><path d="M5.029,6.68l-.828-.8V5.723a.5.5,0,0,1,.5-.491H5.18a.5.5,0,0,1,.5.491v.466a.5.5,0,0,1-.5.491Z" fill="#fff"/><path d="M5.181,5.606a.119.119,0,0,1,.121.116v.466a.119.119,0,0,1-.121.116l-.6-.582A.119.119,0,0,1,4.7,5.606h.484m0-.75H4.7a.87.87,0,0,0-.871.866v.319l.23.221.6.582.218.21h.3a.87.87,0,0,0,.871-.866V5.723a.87.87,0,0,0-.871-.866Z"/><path d="M4.828,8.5A2.576,2.576,0,0,1,2.522,4.777a.5.5,0,0,1,.35-.268.473.473,0,0,1,.1-.01.5.5,0,0,1,.328.123l3.03,2.638a.5.5,0,0,1-.045.789A2.559,2.559,0,0,1,4.828,8.5Z" fill="#fff"/><path d="M2.969,5,6,7.637A2.076,2.076,0,0,1,2.969,5m0-1a1,1,0,0,0-.9.554A3.076,3.076,0,0,0,6.565,8.462a1,1,0,0,0,.091-1.579L3.626,4.246A1,1,0,0,0,2.969,4Z"/><path d="M3.8,2.633A3.057,3.057,0,0,1,8.439,6.615" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/><path d="M4.992,3.6a1.529,1.529,0,0,1,2.3,2.01" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/></svg>
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11">
+  <title>Mapbox-icons</title>
+  <path d="M5,9.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1H3V8H4V9h.5A.5.5,0,0,1,5,9.5Z"/>
+  <path d="M2.969,5,6,7.637A2.076,2.076,0,0,1,2.969,5m0-1a1,1,0,0,0-.9.554A3.076,3.076,0,0,0,6.565,8.462a1,1,0,0,0,.091-1.579L3.626,4.246A1,1,0,0,0,2.969,4Z"/>
+  <path d="M4.7,5.606h.484a.119.119,0,0,1,.121.116v.466" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.75"/>
+  <path d="M3.8,2.633A3.057,3.057,0,0,1,8.439,6.615" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M4.992,3.6a1.529,1.529,0,0,1,2.3,2.01" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+</svg>

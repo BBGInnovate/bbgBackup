@@ -1,1 +1,7 @@
-<svg id="Icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"><title>mike-11</title><rect x="3.952" y="2" width="3.096" height="4.953" rx="1.548" ry="1.548"/><polygon points="5 4 4 4 4 4 5 4 5 4" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.977,5.4V4.167a.31.31,0,0,0-.619,0V5.4a1.857,1.857,0,0,1-3.715,0V4.167a.31.31,0,0,0-.619,0V5.4a2.477,2.477,0,0,0,4.953,0Z"/><rect x="4" y="8" width="3" height="1" rx="0.5" ry="0.5"/><rect x="5" y="7.5" width="1" height="1.5"/></svg>
+<svg id="Icons" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11">
+  <title>Mapbox-icons</title>
+  <path d="M5.5,6.5h0A1.61,1.61,0,0,1,3.89,4.89V2.958A1.61,1.61,0,0,1,5.5,1.347h0a1.61,1.61,0,0,1,1.61,1.61V4.89A1.61,1.61,0,0,1,5.5,6.5Z"/>
+  <path d="M7,9.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1H5V8H6V9h.5A.5.5,0,0,1,7,9.5Z"/>
+  <path d="M5,3H5Z" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75"/>
+  <path d="M8.061,4.7l.015.469S8.2,8,5.5,8A2.52,2.52,0,0,1,2.924,5.279l.013-.572" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
