@@ -38,6 +38,7 @@ $hasTeamFilter=false;
 if ($showFeaturedEvent && $featuredEvent) {
 	$qParamsFirst=array(
 		'p' => $featuredEvent->ID
+		,'post_status' => array('publish','future')
 	);
 } else {
 	$qParamsFirst=array(
