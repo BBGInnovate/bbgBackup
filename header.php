@@ -59,6 +59,7 @@ $ogDescription = str_replace('"','&qout;',$ogDescription);
 $sitewideAlert = get_field('sitewide_alert', 'option');
 $sitewideAlertText = get_field('sitewide_alert_text', 'option');
 $sitewideAlertLink = get_field('sitewide_alert_link', 'option');
+$sitewideAlertNewWindow = get_field('sitewide_alert_new_window', 'option');
 $moveUSAbannerBecauseOfAlert = '';
 
 ?><!DOCTYPE html>
@@ -191,7 +192,12 @@ O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II
 			$moveUSAbannerBecauseOfAlert = " bbg__site-alert--active";
 			echo '<div class="bbg__site-alert">';
 			if ($sitewideAlertLink != "") {
-				echo "<span class='bbg__site-alert__text'><a href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
+				
+				$targetStr="";
+				if ($sitewideAlertNewWindow && $sitewideAlertNewWindow != "") {
+					$targetStr = " target ='_blank' "	
+				}
+				echo "<span class='bbg__site-alert__text'><a $targetStr href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
 			} else {
 				echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
 			}
