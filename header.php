@@ -195,7 +195,7 @@ O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II
 				
 				$targetStr="";
 				if ($sitewideAlertNewWindow && $sitewideAlertNewWindow != "") {
-					$targetStr = " target ='_blank' "	
+					$targetStr = " target ='_blank' ";
 				}
 				echo "<span class='bbg__site-alert__text'><a $targetStr href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
 			} else {
