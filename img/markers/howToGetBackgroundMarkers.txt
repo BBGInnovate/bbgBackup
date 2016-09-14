@@ -1,0 +1,3 @@
+to get other markers, change f00 below to another hex color
+
+https://api.mapbox.com/v4/marker/pin-m+f00@2x.png?access_token=pk.eyJ1IjoiYmJnd2ViZGV2IiwiYSI6ImNpcDVvY3VqYjAwbmx1d2tyOXlxdXhxcHkifQ.cD-q14aQKbS6gjG2WO-4nw
