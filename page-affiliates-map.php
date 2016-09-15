@@ -24,8 +24,6 @@ wp_reset_postdata();
 wp_reset_query();
 
 
-echo "<style>.leaflet-shadow-pane img { max-width:none !important; }</style>";
-
 $pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
 if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
@@ -235,21 +233,30 @@ get_header(); ?>
 			return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
 		}
 	});
-            	
-    var icons = {};
-    icons["radio"] = {"name": "antenna", "width": "14", "height": "19"};
 
-    icons["tv"] = {"name": "tv", "width": "16", "height": "15"};
-    icons["satellite"] = {"name": "satellite", "width": "15", "height": "15"};
-    ///still in progress
-    icons["newspaper"] = {"name": "antenna", "width": "12", "height": "20"};
-    icons["web"] = {"name": "antenna", "width": "12", "height": "20"};
-    icons["mobile"] = {"name": "antenna", "width": "12", "height": "20"};
-    icons["other"] = {"name": "antenna", "width": "12", "height": "20"};
+//, 'marker-color': geojson[0].features[i].properties['marker-color']
+            	
+    var iconImages= {};
+    iconImages["radio"] = "Studio-mic-icon.png";
+    iconImages["tv"] = "tv-icon.png";
+    iconImages["newspaper"] = "3d-glasses-icon.png";
+    iconImages["satellite"] = "3d-glasses-icon.png";
+    iconImages["web"] = "modem-icon.png";
+    iconImages["mobile"] = "iPhone-Icon.png";
+    iconImages["other"] = "webcam-icon.png";
+
+    var maki = {};
+    maki["radio"] = {"name": "music", "color":"#ccc"};
+    maki["tv"] = {"name": "aerialway", "color":"#b0b"};
+    maki["newspaper"] = {"name": "library", "color":"#ccc"};
+    maki["satellite"] = {"name": "heliport", "color":"#ccc"};
+    maki["web"] = {"name": "ferry", "color":"#ccc"};
+    maki["mobile"] = {"name": "pitch", "color":"#ccc"};
+    maki["other"] = {"name": "fuel", "color":"#ccc"};
 
 	var deliveryLayers={};    
-    for (var deliveryPlatform in icons) {
-     	if (icons.hasOwnProperty(deliveryPlatform)) {
+    for (var deliveryPlatform in iconImages) {
+     	if (iconImages.hasOwnProperty(deliveryPlatform)) {
      		var newLayer = L.featureGroup.subGroup(mcg);
      		newLayer.addTo(map);
      		deliveryLayers[deliveryPlatform] = newLayer;
@@ -268,26 +275,12 @@ get_header(); ?>
 
 
 
-       //to do the gray marker we leverage the leaflet 'shadow' options
-       var shadowUrl = '<?php echo get_template_directory_uri(); ?>/img/markers/markerGray.png';  
-       var shadowWidth=30;
-       var shadowHeight=70;
-
-       // var icon = L.MakiMarkers.icon({icon: maki[platform].name, color: maki[platform].color, size: "m"});
-       var iconWidth=icons[platform].width;
-       var iconHeight=icons[platform].height;
-
-        var icon = new L.Icon({
-			// iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-			// shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-			iconUrl: '<?php echo get_template_directory_uri(); ?>/img/markers/'+icons[platform].name+'.png',
-			shadowUrl: shadowUrl,
-			iconSize: [iconWidth, iconHeight],
-			popupAnchor: [1, -34],
-			shadowSize: [shadowWidth, shadowHeight],
-			iconAnchor: [iconWidth/2,iconHeight/2+shadowHeight/4],
-			shadowAnchor: [shadowWidth/2,shadowHeight/2]
-		});
+        var icon = L.MakiMarkers.icon({icon: maki[platform].name, color: maki[platform].color, size: "m"});
+  //       var oldIcon = L.icon({
+		// 	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
+		// 	"iconSize": [20, 20],
+		// 	"iconAnchor": [10, 10]
+		// });
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
             icon:icon
