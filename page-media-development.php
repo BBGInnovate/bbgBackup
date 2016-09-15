@@ -28,59 +28,86 @@ $pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
 if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
+ 
+$postsPerPage = 50;
 
-$string = file_get_contents( get_template_directory() . "/external-feed-cache/affiliates.json");
-$allAffiliates = json_decode($string, true);
-$counter=0;
+$qParams=array(
+	'post_type' => array('post')
+	,'cat' => get_cat_id('Media Development Map')
+	,'posts_per_page' => $postsPerPage
+	,'post_status' => array('publish')
+);
 
-foreach ($allAffiliates as $a) {
-	$counter++;
-	if ($counter < 3000) {
-		//$title = "<h5><a href='#'>" . $a[0] . "</a></h5>";
-		$title = $a[0];
-		$lat = $a[1];
-		$lon = $a[2];
-		$city = $a[3];
-		$country = $a[4];
-		$freq = $a[5];
-		$url = $a[6];
-		$smurl = $a[7];
-		$platform = $a[8];
+/*** late in the game we ran into a pagination issue, so we're running a second query here ***/
+$custom_query_args= $qParams;
+$custom_query = new WP_Query( $custom_query_args );
 
-		$headline = "<h5>" . $title . "</h5>";
-		if ($url != "") {
-			if (strpos($url, "http") === false) {
-				///echo "fixing " . $url . "<BR>";
-				$url = "http://" . $url;
+$features = array();
+
+if ( $custom_query->have_posts() ) :
+		$counter = 0;
+		$imgCounter=0;
+		while ( $custom_query->have_posts() ) : $custom_query->the_post();
+			$id = get_the_ID();
+			$location = get_post_meta( $id, 'media_dev_coordinates', true );
+			$storyLink = get_permalink();
+			$mapHeadline = get_post_meta( $id, 'media_dev_name_of_training', true );
+			$trainingYear = get_post_meta( $id, 'media_dev_years', true );
+
+			$mapHeadline = "<h5><a target='blank' href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
+
+			//media_dev_country,
+			$country = get_post_meta( $id, 'media_dev_country', true );
+			$description = get_post_meta( $id, 'media_dev_description', true );
+			$participants = get_post_meta( $id, 'media_dev_number_of_participants', true );
+			$trainingDate = get_post_meta( $id, 'media_dev_date', true );
+			$trainingPhoto = get_field( 'media_dev_photo', $id, true );
+ 			
+			$mapDescription = get_post_meta( $id, 'media_dev_description', true );
+			//$mapDate = get_the_date();
+			
+			$popupBody = "<span class='bbg__map__infobox__date' style='font-weight:bold;'>" . $trainingDate . " in " . $country . "</span>";
+			//echo "<pre>"; var_dump($trainingPhoto); echo "</pre>"; die(); 
+			
+			if ($trainingPhoto) {
+				$imgCounter++;
+				$trainingPhotoUrl = $trainingPhoto['sizes']['medium'];
+				//we need to give the width and height so that the scrolling happens properly the first time image laods
+				$w = $trainingPhoto['sizes']['medium-width'];
+				$h = $trainingPhoto['sizes']['medium-height'];
+				$popupBody .= "<BR><BR><img width='$w' height='$h' src='$trainingPhotoUrl'>";
 			}
-			$headline = "<h5><a target='_blank' href='" . $url . "'>" . $title . "</a></h5>";
-		}
+			$popupBody .= "<BR><BR>" . $mapDescription;
 
+			$pinColor = "#FF0000";
+			
+			$features[] = array(
+				'type' => 'Feature',
+				'geometry' => array( 
+					'type' => 'Point',
+					'coordinates' => array($location['lng'],$location['lat'])
+				),
+				'properties' => array(
+					'title' => $mapHeadline,
+					'description' => $popupBody,
+					'marker-color' => $pinColor,
+					'marker-size' => 'large', 
+					'marker-symbol' => ''
+				)
+			);
+		endwhile;
+		$geojsonObj= array(array(
+			'type' => 'FeatureCollection',
+			'features' => $features
+		));
+		$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
 
-		$features[] = array(
-			'type' => 'Feature',
-			'geometry' => array( 
-				'type' => 'Point',
-				'coordinates' => array($lon,$lat)
-			),
-			'properties' => array(
-				'title' => $headline,
-				'description' => "<strong>Location: </strong>$city<BR><strong>Delivery Platform: </strong>$platform<BR>",
-				'marker-color' => "#344998",
-				'marker-size' => 'large', 
-				'marker-symbol' => '',
-				'platform' => $platform
-			)
-		);
-	}
-}
+		echo "<script type='text/javascript'>\n";
+		echo "geojson = $geojsonStr";
+		echo "</script>";
+		//echo $geojsonStr;
 
-$geojsonObj= array(array(
-	'type' => 'FeatureCollection',
-	'features' => $features
-));
-$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
-
+endif; 
 
 get_header(); ?>
 
@@ -101,44 +128,28 @@ get_header(); ?>
 
 				
 				<img id="resetZoom" src="<?php echo get_template_directory_uri(); ?>/img/home.png" class="bbg__map__button"/>
-<!--
-				<img id="filter_radio" src="<?php echo get_template_directory_uri(); ?>/img/Studio-mic-icon.png" style="width:30px; height:30px; cursor:pointer;"/>Radio
-				<img id="filter_television" src="<?php echo get_template_directory_uri(); ?>/img/tv-icon.png" style="width:30px; height:30px; cursor:pointer;"/>TV
-				<img id="filter_mobile" src="<?php echo get_template_directory_uri(); ?>/img/iPhone-Icon.png" style="width:30px; height:30px; cursor:pointer;"/>Mobile
-				<img id="filter_internet" src="<?php echo get_template_directory_uri(); ?>/img/3d-glasses-icon.png" style="width:30px; height:30px; cursor:pointer;"/>Internet
 
-				"864930000" => "Radio",
-		"864930001" => "TV",
-		"864930002" => "Newspaper",
-		"864930003" => "Satellite",
-		"864930004" => "Web",
-		"864930005" => "Mobile",
-		"864930006" => "Other",
-				-->
 				<style> 
 					#mapFilters label { margin-left:15px; }
 				</style>
 				<div align="center" id="mapFilters" class="u--show-medium-large">
-					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_tv" value="tv" /><label for="delivery_tv"> TV</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_web" value="web" /><label for="delivery_web"> Web</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_other" value="other" /><label for="delivery_other"> Other</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_satellite" value="satellite" /><label for="delivery_satellite"> Satellite</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_newspaper" value="newspaper" /><label for="delivery_newspaper"> Newspaper</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_mobile" value="mobile" /><label for="delivery_mobile"> Mobile</label>
+					<input type="radio" checked name="trainingYear" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2016" value="2016" /><label for="trainingYear_2016"> 2016</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2015" value="2015" /><label for="trainingYear_2015"> 2015</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2014" value="2014" /><label for="trainingYear_2014"> 2014</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2013" value="2013" /><label for="trainingYear_2013"> 2013</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2012" value="2012" /><label for="trainingYear_2012"> 2012</label>
+					
 				</div>
 				<div align="center" id="mapFilters" class="u--hide-medium-large">
-					<p></p><h3>Select a delivery platform</h3>
-					<select name="deliverySelect">
+					<p></p><h3>Select a year</h3>
+					<select name="trainingSelect">
 						<option value="all">All</option>
-						<option value="radio">Radio</option>
-						<option value="tv">TV</option>
-						<option value="web">Web</option>
-						<option value="other">Other</option>
-						<option value="satellite">Satellite</option>
-						<option value="newspaper">Newspaper</option>
-						<option value="mobile">Mobile</option>
+						<option value="2016">Radio</option>
+						<option value="2015">TV</option>
+						<option value="2014">Web</option>
+						<option value="2013">Other</option>
+						<option value="2012">Satellite</option>
 					</select>
 				</div>
 			</section>
@@ -236,27 +247,16 @@ get_header(); ?>
 
 //, 'marker-color': geojson[0].features[i].properties['marker-color']
             	
-    var iconImages= {};
-    iconImages["radio"] = "Studio-mic-icon.png";
-    iconImages["tv"] = "tv-icon.png";
-    iconImages["newspaper"] = "3d-glasses-icon.png";
-    iconImages["satellite"] = "3d-glasses-icon.png";
-    iconImages["web"] = "modem-icon.png";
-    iconImages["mobile"] = "iPhone-Icon.png";
-    iconImages["other"] = "webcam-icon.png";
-
     var maki = {};
-    maki["radio"] = {"name": "music", "color":"#ccc"};
-    maki["tv"] = {"name": "aerialway", "color":"#b0b"};
-    maki["newspaper"] = {"name": "library", "color":"#ccc"};
-    maki["satellite"] = {"name": "heliport", "color":"#ccc"};
-    maki["web"] = {"name": "ferry", "color":"#ccc"};
-    maki["mobile"] = {"name": "pitch", "color":"#ccc"};
-    maki["other"] = {"name": "fuel", "color":"#ccc"};
+    maki["2016"] = {"name": "music", "color":"#f00"};
+    maki["2015"] = {"name": "aerialway", "color":"#b0b"};
+    maki["2014"] = {"name": "library", "color":"#ccc"};
+    maki["2013"] = {"name": "heliport", "color":"#ccc"};
+    maki["2012"] = {"name": "ferry", "color":"#ccc"};
 
 	var deliveryLayers={};    
-    for (var deliveryPlatform in iconImages) {
-     	if (iconImages.hasOwnProperty(deliveryPlatform)) {
+    for (var deliveryPlatform in maki) {
+     	if (maki.hasOwnProperty(deliveryPlatform)) {
      		var newLayer = L.featureGroup.subGroup(mcg);
      		newLayer.addTo(map);
      		deliveryLayers[deliveryPlatform] = newLayer;
@@ -271,28 +271,32 @@ get_header(); ?>
         var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
-        var platform = geojson[0].features[i].properties['platform'].toLowerCase();
 
-
-
-        var icon = L.MakiMarkers.icon({icon: maki[platform].name, color: maki[platform].color, size: "m"});
-  //       var oldIcon = L.icon({
-		// 	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
-		// 	"iconSize": [20, 20],
-		// 	"iconAnchor": [10, 10]
-		// });
+        var icon = L.MakiMarkers.icon({icon: maki["2016"].name, color: maki["2016"].color, size: "m"});
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
             icon:icon
         });
        
         var popupText = title + description;
-        marker.bindPopup(popupText);
-        var targetLayer = deliveryLayers[platform.toLowerCase()];
+       	
+       	//rather than just use html, do this - http://stackoverflow.com/questions/10889954/images-size-in-leaflet-cloudmade-popups-dont-seem-to-count-to-determine-popu
+       	var divNode = document.createElement('DIV');
+		divNode.innerHTML =popupText;
+        marker.bindPopup(divNode);
+        
+        var targetLayer = deliveryLayers["2016"];
         marker.addTo(targetLayer);
     }
 
     map.addLayer(mcg);
+
+    map.on('popupopen', function(e) {
+	  var marker = e.popup._source;
+	  
+	  //setTimeout(function() {console.log(e.popup);},500);
+	});
+
 
 	map.scrollWheelZoom.disable();
 
@@ -332,7 +336,6 @@ get_header(); ?>
 	});
 
 	resizeStuffOnResize();
-console.log('test');
 	function setSelectedPlatform(platform, displayMode) {
 		for (var p in deliveryLayers) {
 			if (deliveryLayers.hasOwnProperty(p)) {
@@ -357,13 +360,16 @@ console.log('test');
 	}
 
 	jQuery( document ).ready(function() {
-		jQuery('input[type=radio][name=deliveryPlatform]').change(function() {
+		jQuery('input[type=radio][name=trainingYear]').change(function() {
 			setSelectedPlatform(this.value, 'radio');
 		});
-		jQuery('select[name=deliverySelect]').change(function() {
+		jQuery('select[name=trainingYear]').change(function() {
 			var selectedPlatform = jQuery(this).val();
 			setSelectedPlatform(selectedPlatform,'select');
 		});
+
+		
+
 	});
 
 
@@ -373,20 +379,3 @@ console.log('test');
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
-
-
-<?php /*
-
-			$pinColor = "#981b1e";
-			if (has_category('VOA')){
-				$pinColor = "#344998";
-				$mapHeadline = "<h5><a href='". $storyLink ."'>VOA | " . $mapHeadline . '</a></h5>';
-			} elseif (has_category('RFA')){
-				$pinColor = "#009c50";
-				$mapHeadline = "<h5><a href='". $storyLink ."'>RFA | " . $mapHeadline . '</a></h5>';
-			} elseif (has_category('RFE/RL')){
-				$pinColor = "#ea6828";
-				$mapHeadline = "<h5><a href='". $storyLink ."'>RFE/RL | " . $mapHeadline . '</a></h5>';
-			} else {
-				$mapHeadline = "<h5><a href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
-			}*/ ?>
