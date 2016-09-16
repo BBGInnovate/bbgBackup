@@ -75,9 +75,9 @@ if ( $custom_query->have_posts() ) :
 				//we need to give the width and height so that the scrolling happens properly the first time image laods
 				$w = $trainingPhoto['sizes']['medium-width'];
 				$h = $trainingPhoto['sizes']['medium-height'];
-				$popupBody .= "<BR><BR><img width='$w' height='$h' src='$trainingPhotoUrl'>";
+				$popupBody .= "<div class='u--show-medium-large'><BR><BR><img src='$trainingPhotoUrl'></div>";
 			}
-			$popupBody .= "<BR><BR>" . $mapDescription;
+			$popupBody .= "<BR><BR>" . $mapDescription . " &nbsp;&nbsp;<a style='font-weight:bold;' href='$storyLink' target='_blank'>Read More &gt; &gt;</a>";
 
 			$pinColor = "#FF0000";
 			
@@ -90,6 +90,7 @@ if ( $custom_query->have_posts() ) :
 				'properties' => array(
 					'title' => $mapHeadline,
 					'description' => $popupBody,
+					'year' => $trainingYear,
 					'marker-color' => $pinColor,
 					'marker-size' => 'large', 
 					'marker-symbol' => ''
@@ -125,7 +126,9 @@ get_header(); ?>
 			<!-- this section holds the map and is populated later in the page by javascript -->
 			<section class="usa-section" style="position: relative;">
 				<div id="map" class="bbg__map--banner"></div>
-
+				<div class="usa-grid">
+					<p class="bbg__article-header__caption">This map displays the training opportunities that the BBG has offered over on a year by year basis.</p>
+				</div>
 				
 				<img id="resetZoom" src="<?php echo get_template_directory_uri(); ?>/img/home.png" class="bbg__map__button"/>
 
@@ -145,11 +148,11 @@ get_header(); ?>
 					<p></p><h3>Select a year</h3>
 					<select name="trainingSelect">
 						<option value="all">All</option>
-						<option value="2016">Radio</option>
-						<option value="2015">TV</option>
-						<option value="2014">Web</option>
-						<option value="2013">Other</option>
-						<option value="2012">Satellite</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+						<option value="2014">2014</option>
+						<option value="2013">2013</option>
+						<option value="2012">2012</option>
 					</select>
 				</div>
 			</section>
@@ -248,9 +251,9 @@ get_header(); ?>
 //, 'marker-color': geojson[0].features[i].properties['marker-color']
             	
     var maki = {};
-    maki["2016"] = {"name": "music", "color":"#f00"};
-    maki["2015"] = {"name": "aerialway", "color":"#b0b"};
-    maki["2014"] = {"name": "library", "color":"#ccc"};
+    maki["2016"] = {"name": "library", "color":"#f00"};
+    maki["2015"] = {"name": "library", "color":"#f00"};
+    maki["2014"] = {"name": "library", "color":"#b0b"};
     maki["2013"] = {"name": "heliport", "color":"#ccc"};
     maki["2012"] = {"name": "ferry", "color":"#ccc"};
 
@@ -271,8 +274,9 @@ get_header(); ?>
         var coords = geojson[0].features[i].geometry.coordinates;
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
-
-        var icon = L.MakiMarkers.icon({icon: maki["2016"].name, color: maki["2016"].color, size: "m"});
+        var year = geojson[0].features[i].properties['year'];
+        console.log('year is ' + year);
+        var icon = L.MakiMarkers.icon({icon: maki[year].name, color: maki[year].color, size: "m"});
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
             icon:icon
@@ -285,18 +289,11 @@ get_header(); ?>
 		divNode.innerHTML =popupText;
         marker.bindPopup(divNode);
         
-        var targetLayer = deliveryLayers["2016"];
+        var targetLayer = deliveryLayers[year];
         marker.addTo(targetLayer);
     }
 
     map.addLayer(mcg);
-
-    map.on('popupopen', function(e) {
-	  var marker = e.popup._source;
-	  
-	  //setTimeout(function() {console.log(e.popup);},500);
-	});
-
 
 	map.scrollWheelZoom.disable();
 
@@ -345,7 +342,6 @@ get_header(); ?>
 		if (platform == "all") {
 			for (var p in deliveryLayers) {
 				if (deliveryLayers.hasOwnProperty(p)) {
-					console.log('adding layer ' + p);
 					map.addLayer(deliveryLayers[p]);
 				}
 			}
@@ -353,9 +349,9 @@ get_header(); ?>
 			map.addLayer(deliveryLayers[platform]);
 		}
 		//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
-		if (displayMode=='select') {
+		//if (displayMode=='select') {
 			centerMap();	
-		}
+		//}
 		
 	}
 
@@ -363,13 +359,13 @@ get_header(); ?>
 		jQuery('input[type=radio][name=trainingYear]').change(function() {
 			setSelectedPlatform(this.value, 'radio');
 		});
-		jQuery('select[name=trainingYear]').change(function() {
+		jQuery('select[name=trainingSelect]').change(function() {
 			var selectedPlatform = jQuery(this).val();
 			setSelectedPlatform(selectedPlatform,'select');
 		});
 
 		
-
+ 
 	});
 
 
