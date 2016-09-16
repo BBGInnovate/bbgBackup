@@ -43,18 +43,20 @@ $custom_query_args= $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
 $features = array();
+$years = array();
 
 if ( $custom_query->have_posts() ) :
 		$counter = 0;
 		$imgCounter=0;
+		$trainingByYear=array();
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'media_dev_coordinates', true );
 			$storyLink = get_permalink();
-			$mapHeadline = get_post_meta( $id, 'media_dev_name_of_training', true );
+			$trainingName = get_post_meta( $id, 'media_dev_name_of_training', true );
 			$trainingYear = get_post_meta( $id, 'media_dev_years', true );
 
-			$mapHeadline = "<h5><a target='blank' href='". $storyLink ."'>" . $mapHeadline . '</a></h5>';
+			$mapHeadline = "<h5><a target='blank' href='". $storyLink ."'>" . $trainingName . '</a></h5>';
 
 			//media_dev_country,
 			$country = get_post_meta( $id, 'media_dev_country', true );
@@ -64,6 +66,23 @@ if ( $custom_query->have_posts() ) :
 			$trainingPhoto = get_field( 'media_dev_photo', $id, true );
  			
 			$mapDescription = get_post_meta( $id, 'media_dev_description', true );
+
+			$years = explode(",", $trainingYear);
+			for ($i=0; $i < count($years); $i++) {
+				$year = $years[$i];
+				$o = array(
+					'title' => $trainingName,
+					'country' => $country,
+					'trainingDate' => $trainingDate,
+					'storyLink' => $storyLink
+				);
+				if (!isset($trainingByYear[$year])) {
+					$trainingByYear[$year] = array();
+				}
+				array_push($trainingByYear[$year],  $o);
+
+			}
+
 			//$mapDate = get_the_date();
 			
 			$popupBody = "<span class='bbg__map__infobox__date' style='font-weight:bold;'>" . $trainingDate . " in " . $country . "</span>";
@@ -97,6 +116,40 @@ if ( $custom_query->have_posts() ) :
 				)
 			);
 		endwhile;
+
+		$s = "";
+		for ($i=2012; $i<2030; $i++) {
+			if (isset($trainingByYear[$i])) {
+				//echo "<h3>" . $i , "</h3>";
+				$s.='<div class="usa-accordion bbg__committee-list">';
+				$s.='<ul class="usa-unstyled-list">';
+				$s.='<li>';
+				$s.='<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-'.$i.'">';
+				$s.= $i . " Trainings";
+				$s.='</button>';
+				$s.='<div id="collapsible-'.$i.'" aria-hidden="true" class="usa-accordion-content">';
+
+				$yearContent=$trainingByYear[$i];
+				for ($j=0; $j <count($yearContent); $j++) {
+					$o = $yearContent[$j];
+					$link =$o['storyLink'];
+					$title = $o['title'];
+					$trainingDate = $o['trainingDate'];
+					$country = $o['country'];
+					$s .= "<a href='$storyLink'>$title</a> in $country<BR>";
+				}
+				$s.= '</div>';
+				$s.= '</li>';
+				$s.= '</ul>';
+				$s.= '</div>';
+			}
+		}
+		$trainingStr=$s;
+
+
+		// echo "<pre>";
+		// var_dump($trainingByYear);
+		// echo "</pre>";
 		$geojsonObj= array(array(
 			'type' => 'FeatureCollection',
 			'features' => $features
@@ -160,7 +213,7 @@ get_header(); ?>
 			<section class="usa-section">
 				<div class="usa-grid" style="margin-bottom: 3rem">
 					<?php 
-						/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
+						echo $trainingStr;/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
 					?>
 					<?php
 						echo '<h3 class="usa-font-lead">';
