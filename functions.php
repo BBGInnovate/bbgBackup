@@ -499,6 +499,7 @@ function featured_video ($url) {
 			}
 		}
 		$url = str_replace("watch?v=", "embed/", $url);	//youtube
+		$url = str_replace("&start=", "?start=", $url);	//this line fixes the case where they did youtube.com?v=xxx&start=123
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
 
 		$extraClass = "";
