@@ -83,12 +83,17 @@ article h3 {
 						$restStartPosition = $pos+3;
 						$restOfSnippet = substr($snippet, $pos+3);
 						$description = $restOfSnippet;
+
 						if (isset($r['pagemap']) && isset($r['pagemap']['metatags']) && (count($r['pagemap']['metatags'][0]) > 0) && isset($r['pagemap']['metatags'][0]['og:description'])) {
 							$description = $r['pagemap']['metatags'][0]['og:description'];
 						}
 						if (isset($r['pagemap']) && isset($r['pagemap']['cse_thumbnail']) && (count($r['pagemap']['cse_thumbnail'][0]) > 0) && isset($r['pagemap']['cse_thumbnail'][0]['src'])) {
 							$thumb = $r['pagemap']['cse_thumbnail'][0]['src'];
 						}
+
+						$title = str_replace("Mart?", "Martí", $title);
+						$description = str_replace("Mart?", "Martí", $description);
+
 						?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 							<header class="entry-header bbg-blog__excerpt-header">
