@@ -489,6 +489,7 @@ function featured_video ($url) {
 			if (strpos($key,'?t=') !== false) {
 				$o = explode("?",$key);
 				$timeStr = array_pop($o);
+				$key = $o[0];
 				$o = explode("=",$timeStr);
 				$timeSecondsStr=array_pop($o);
 				$timeSeconds = str_replace("s","",$timeSecondsStr);
