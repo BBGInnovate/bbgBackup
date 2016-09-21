@@ -44,7 +44,7 @@ article h3 {
 					<?php 
 					
 						$url = site_url() . "/google-custom-search/?search=" . $searchQuery;
-							echo "<header class='page-header'><h1 class='page-title bbg__label--mobile large'>Test Google Search</h1></header><form action='$url' method='GET'><input type='text' name='search'></form>";
+							echo "<header class='page-header'><h1 class='page-title bbg__label--mobile large'>Test Google Search</h1></header><form action='$url' method='GET'><input type='text' name='search' value='$searchQuery'></form>";
 					if ($searchQuery == "") {
 						die();
 					}
