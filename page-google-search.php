@@ -45,6 +45,12 @@ article h3 {
 				</div>
 				<div class="usa-grid">
 				<?php
+					$prevLink = "";
+					$nextLink = "";
+					$baseUrl = "";
+					$prevIndex = 0;
+					$nextIndex = 0;
+
 					if (isset($_GET['testsearch'])) {
 						$filepath = get_template_directory() . "/external-feed-cache/googleSearchCache.json";
 						$output=file_get_contents($filepath);
@@ -55,16 +61,44 @@ article h3 {
 						$cx = GOOGLE_SITE_SEARCH_CX;
 						$siteUrl = "www.bbg.gov";
 						$searchQuery = $_GET['search'];
-						$url = "https://www.googleapis.com/customsearch/v1?q=" . $searchQuery;
-						$url .= "&cx=".$cx."&siteSearch=".$siteUrl."&key=".$apiKey;
+						$apiUrl = "https://www.googleapis.com/customsearch/v1?q=" . $searchQuery;
+						$apiUrl .= "&cx=".$cx."&siteSearch=".$siteUrl."&key=".$apiKey;
+						$baseUrl = site_url() . "/google-custom-search/?search=" . $searchQuery;
 
+						if (isset($_GET['start'])) {
+
+							$start = $_GET['start'];
+							$apiUrl .= "&start=" . $start;
+							$prevIndex = $start - 10;
+							if ($prevIndex <= 1) {
+								$prevUrl = $baseUrl;
+							} else {
+								$prevUrl = $baseUrl . "&start=" . $prevIndex;	
+							}
+							$prevLink = "<a href=\"$prevUrl\" >Previous</a>";
+						}
 						$ch = curl_init(); 
-						curl_setopt($ch, CURLOPT_URL, $url); 
+						curl_setopt($ch, CURLOPT_URL, $apiUrl); 
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 						$output = curl_exec($ch); 
-						curl_close($ch);  
+						curl_close($ch);
+
+
 					}
 					$results = json_decode($output, true);
+					
+					if (isset($results['queries']['nextPage']) && isset($results['queries']['nextPage'][0])) {
+						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
+						$nextLink = "<a href=\"$nextUrl\" >Next</a>";
+					}
+
+//<nav class="navigation posts-navigation" role="navigation">
+//	<h2 class="screen-reader-text">Posts navigation</h2>
+//	<div class="nav-links"><div class="nav-previous"><a href="https://www.bbg.gov/page/3/?s=research" >Older posts</a></div><div class="nav-next"><a href="https://www.bbg.gov/?s=research" >Newer posts</a></div></div>
+//</nav>
+
+					
+
 					foreach ($results['items'] as $r) {
 						$title = $r['title'];
 						$link = $r['link'];
@@ -111,9 +145,24 @@ article h3 {
 							</div><!-- .entry-summary -->
 						</article>
 				<?php 								
-					}
+					}	//end foreach $reulsts as $r
 				?>
 				</div><!-- .usa-grid -->
+				<?php 
+					if ($prevLink != "" || $nextLink != "") {
+						echo '<nav class="navigation posts-navigation" role="navigation">';
+						echo '	<h2 class="screen-reader-text">Posts navigation</h2>';
+						echo '	<div class="nav-links">';
+						if ($prevLink != "") {
+							echo '<div class="nav-previous">' . $prevLink . '</div>';
+						}
+						if ($nextLink != "") {
+							echo '<div class="nav-next">' . $nextLink . '</div>';
+						}
+						echo '	</div>';
+						echo '</nav>';
+					}
+				?>
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
