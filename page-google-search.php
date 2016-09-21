@@ -102,7 +102,11 @@ article h3 {
 						$totalResults = $results['queries']['request'][0]['totalResults'];
 					}
 					$endResultLabel = min($totalResults, $firstResultLabel+9);
-					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel . " of about " . $totalResults . "</em>";
+
+					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel;
+					if ($totalResults > $endResultLabel) {
+						echo " of about " . $totalResults . "</em>";
+					}
 
 					if (isset($results['queries']['nextPage']) && isset($results['queries']['nextPage'][0])) {
 						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
