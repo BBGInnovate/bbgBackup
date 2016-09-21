@@ -108,7 +108,7 @@ article h3 {
 						$about = "about";
 					}
 
-					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel . " of $about $endResultLabel";
+					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel . " of $about $endResultLabel </em>";
 					
 					
 
