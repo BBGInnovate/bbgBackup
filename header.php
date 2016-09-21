@@ -48,11 +48,13 @@ if (! isset( $ogUrl ) ) {
 }
 
 /* remove smart quotes from title */
-$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);  
+//$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);  
+$ogTitle = convertSmartQuotes($ogTitle);
 
 /* remove html tags, smart quotes and trailing ellipses from description */
 $ogDescription = wp_strip_all_tags($ogDescription); 
-$ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription); 
+//$ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription); 
+$ogDescription = convertSmartQuotes($ogDescription);
 $ogDescription = str_replace("[&hellip;]", "...", $ogDescription); 
 $ogDescription = str_replace('"','&qout;',$ogDescription);
 

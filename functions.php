@@ -370,6 +370,7 @@ require get_template_directory() . '/inc/bbg-functions-networks.php';
 require get_template_directory() . '/inc/bbg-functions-quotations.php';
 require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
 require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
+require get_template_directory() . '/inc/bbg-functions-utilities.php';
 require get_template_directory() . '/inc/bbg-functions-category-tooltip.php';
 //require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php';
 
