@@ -145,8 +145,8 @@ article h3 {
 							$thumb = $r['pagemap']['cse_thumbnail'][0]['src'];
 						}
 
-						$title = str_replace("Mart?", "Martí", $title);
-						$description = str_replace("Mart?", "Martí", $description);
+						// $title = str_replace("Mart?", "Martí", $title);
+						// $description = str_replace("Mart?", "Martí", $description);
 
 						?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
