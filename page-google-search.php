@@ -52,6 +52,7 @@ article h3 {
 					<header class="page-header">
 						<h1 class="page-title bbg__label--mobile large">Search Results for: <span><?php echo $searchQuery; ?></span></h1>
 					</header><!-- .entry-header -->
+
 				</div>
 				<div class="usa-grid">
 				<?php
@@ -60,7 +61,7 @@ article h3 {
 					$baseUrl = "";
 					$prevIndex = 0;
 					$nextIndex = 0;
-
+					$firstResultLabel=1;
 					if (isset($_GET['testsearch'])) {
 						$filepath = get_template_directory() . "/external-feed-cache/googleSearchCache.json";
 						$output=file_get_contents($filepath);
@@ -74,9 +75,10 @@ article h3 {
 						$apiUrl = "https://www.googleapis.com/customsearch/v1?q=" . $searchQuery;
 						$apiUrl .= "&cx=".$cx."&siteSearch=".$siteUrl."&key=".$apiKey;
 						$baseUrl = site_url() . "/google-custom-search/?search=" . $searchQuery;
+						
 						if (isset($_GET['start'])) {
-
 							$start = $_GET['start'];
+							$firstResultLabel = $start;
 							$apiUrl .= "&start=" . $start;
 							$prevIndex = $start - 10;
 							if ($prevIndex <= 1) {
@@ -92,10 +94,16 @@ article h3 {
 						$output = curl_exec($ch); 
 						curl_close($ch);
 
-
 					}
+
 					$results = json_decode($output, true);
-					
+					$totalResults = 0;
+					if (isset($results['queries']['request']) && isset($results['queries']['request'][0])) {
+						$totalResults = $results['queries']['request'][0]['totalResults'];
+					}
+					$endResultLabel = min($totalResults, $firstResultLabel+9);
+					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel . " of about " . $totalResults . "</em>";
+
 					if (isset($results['queries']['nextPage']) && isset($results['queries']['nextPage'][0])) {
 						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
 						$nextLink = "<a href=\"$nextUrl\" >Next</a>";
