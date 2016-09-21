@@ -35,10 +35,20 @@ article h3 {
 	/* font-weight:normal; */
 }
 </style>
+
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="usa-grid-full">
 				<div class="usa-grid">
+					<?php 
+					if ($searchQuery == "") {
+						$url = site_url() . "/google-custom-search/?search=" . $searchQuery;
+							echo "<header class='page-header'><h1 class='page-title bbg__label--mobile large'>Test Google Search</h1></header><form action='$url' method='GET'><input type='text' name='search'></form>";
+						die();
+					}
+					
+				?>
 					<header class="page-header">
 						<h1 class="page-title bbg__label--mobile large">Search Results for: <span><?php echo $searchQuery; ?></span></h1>
 					</header><!-- .entry-header -->
@@ -60,11 +70,10 @@ article h3 {
 						$apiKey = GOOGLE_SITE_SEARCH_API_KEY;
 						$cx = GOOGLE_SITE_SEARCH_CX;
 						$siteUrl = "www.bbg.gov";
-						$searchQuery = $_GET['search'];
+						$searchQuery = urlencode(($_GET['search']));
 						$apiUrl = "https://www.googleapis.com/customsearch/v1?q=" . $searchQuery;
 						$apiUrl .= "&cx=".$cx."&siteSearch=".$siteUrl."&key=".$apiKey;
 						$baseUrl = site_url() . "/google-custom-search/?search=" . $searchQuery;
-
 						if (isset($_GET['start'])) {
 
 							$start = $_GET['start'];
@@ -91,13 +100,6 @@ article h3 {
 						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
 						$nextLink = "<a href=\"$nextUrl\" >Next</a>";
 					}
-
-//<nav class="navigation posts-navigation" role="navigation">
-//	<h2 class="screen-reader-text">Posts navigation</h2>
-//	<div class="nav-links"><div class="nav-previous"><a href="https://www.bbg.gov/page/3/?s=research" >Older posts</a></div><div class="nav-next"><a href="https://www.bbg.gov/?s=research" >Newer posts</a></div></div>
-//</nav>
-
-					
 
 					foreach ($results['items'] as $r) {
 						$title = $r['title'];
