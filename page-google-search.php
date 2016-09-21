@@ -105,8 +105,9 @@ article h3 {
 
 					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel;
 					if ($totalResults > $endResultLabel) {
-						echo " of about " . $totalResults . "</em>";
+						echo " of about " . $totalResults;
 					}
+					echo "</em>";
 
 					if (isset($results['queries']['nextPage']) && isset($results['queries']['nextPage'][0])) {
 						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
