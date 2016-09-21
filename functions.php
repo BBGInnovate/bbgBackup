@@ -557,6 +557,15 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 
 			if ( !$selectedCategory ) {
 				foreach ( $categories as $category ) {
+					if ( $category->name == "From the CEO" ) {
+						$selectedCategory = $category;
+						break;
+					}
+				}
+			}
+
+			if ( !$selectedCategory ) {
+				foreach ( $categories as $category ) {
 					if ( $category->name == "Impact" ) {
 						$selectedCategory = $category;
 						$impact = true;
