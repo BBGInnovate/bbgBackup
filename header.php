@@ -56,7 +56,7 @@ $ogDescription = wp_strip_all_tags($ogDescription);
 //$ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription); 
 $ogDescription = convertSmartQuotes($ogDescription);
 $ogDescription = str_replace("[&hellip;]", "...", $ogDescription); 
-$ogDescription = str_replace('"','&qout;',$ogDescription);
+$ogDescription = str_replace('"','&quot;',$ogDescription);
 
 $sitewideAlert = get_field('sitewide_alert', 'option');
 $sitewideAlertText = get_field('sitewide_alert_text', 'option');
