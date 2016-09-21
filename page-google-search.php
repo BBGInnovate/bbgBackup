@@ -147,7 +147,8 @@ article h3 {
 
 						// $title = str_replace("Mart?", "Martí", $title);
 						// $description = str_replace("Mart?", "Martí", $description);
-
+						$description = str_replace("&qout;", '"', $description);	//fixes a legacy bug
+						$description = str_replace("&quot;", '"', $description);
 						?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 							<header class="entry-header bbg-blog__excerpt-header">
