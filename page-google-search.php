@@ -42,9 +42,10 @@ article h3 {
 			<div class="usa-grid-full">
 				<div class="usa-grid">
 					<?php 
-					if ($searchQuery == "") {
+					
 						$url = site_url() . "/google-custom-search/?search=" . $searchQuery;
 							echo "<header class='page-header'><h1 class='page-title bbg__label--mobile large'>Test Google Search</h1></header><form action='$url' method='GET'><input type='text' name='search'></form>";
+					if ($searchQuery == "") {
 						die();
 					}
 					
