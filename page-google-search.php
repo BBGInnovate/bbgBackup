@@ -103,11 +103,15 @@ article h3 {
 					}
 					$endResultLabel = min($totalResults, $firstResultLabel+9);
 
-					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel;
+					$about= "";
 					if ($totalResults > $endResultLabel) {
-						echo " of about " . $totalResults;
+						$about = "about";
 					}
-					echo "</em>";
+
+					echo "<em>Showing results " . $firstResultLabel . "-" . $endResultLabel . " of $about $endResultLabel";
+					
+					
+
 
 					if (isset($results['queries']['nextPage']) && isset($results['queries']['nextPage'][0])) {
 						$nextUrl = $baseUrl . "&start=" . $results['queries']['nextPage'][0]['startIndex'];	
