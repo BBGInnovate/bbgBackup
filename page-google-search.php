@@ -95,9 +95,16 @@ article h3 {
 						$output = curl_exec($ch); 
 						curl_close($ch);
 
+
+
 					}
 
 					$results = json_decode($output, true);
+
+					if (isset($results['error'])) {
+						echo "There was an error connecting to search servers - please contact the system adminstrator";
+						die();
+					}
 					$totalResults = 0;
 					if (isset($results['queries']['request']) && isset($results['queries']['request'][0])) {
 						$totalResults = $results['queries']['request'][0]['totalResults'];
