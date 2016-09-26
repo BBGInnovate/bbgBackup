@@ -52,7 +52,7 @@ if ( $custom_query->have_posts() ) :
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'media_dev_coordinates', true );
-			$storyLink = get_permalink();
+			$storyLink = get_permalink($id);
 			$trainingName = get_post_meta( $id, 'media_dev_name_of_training', true );
 			$trainingYear = get_post_meta( $id, 'media_dev_years', true );
 
@@ -212,13 +212,11 @@ get_header(); ?>
 
 			<section class="usa-section">
 				<div class="usa-grid" style="margin-bottom: 3rem">
-					<?php 
-						echo $trainingStr;/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
-					?>
 					<?php
 						echo '<h3 class="usa-font-lead">';
 						echo $pageContent; // or $pageExcerpt
 						echo '</h3>';
+						echo $trainingStr;/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
 					?>
 				</div>
 			</section>
@@ -328,7 +326,6 @@ get_header(); ?>
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
         var year = geojson[0].features[i].properties['year'];
-        console.log('year is ' + year);
         var icon = L.MakiMarkers.icon({icon: maki[year].name, color: maki[year].color, size: "m"});
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
