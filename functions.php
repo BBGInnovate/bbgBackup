@@ -14,7 +14,8 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Quotation'),
 	get_cat_id('Employee'),
 	get_cat_id('Intern Testimonial'),
-	get_cat_id('Award')
+	get_cat_id('Award'),
+	get_cat_id('Impact')
 );
 
 /****** UTILITY FUNCTIONS - KEEP UP TOP ****/
