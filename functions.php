@@ -15,7 +15,8 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Employee'),
 	get_cat_id('Intern Testimonial'),
 	get_cat_id('Award'),
-	get_cat_id('Impact')
+	get_cat_id('Impact'),
+	get_cat_id('Media Development Map')
 );
 
 /****** UTILITY FUNCTIONS - KEEP UP TOP ****/
@@ -431,9 +432,11 @@ function bbginnovate_query_offset(&$query) {
 			get_cat_id('Contact'),
 			get_cat_id('Quotation'),
 			get_cat_id('Employee'),
-			get_cat_id('Intern Testimonial')
+			get_cat_id('Intern Testimonial'),
+			get_cat_id('Impact')
 		);
 
+		//don't allow the awards on our news page - which is our 'is_home'
 		if (!($query->is_archive()) || $query->query['category_name'] != 'Award') {
 			array_push($termsToExclude, get_cat_id('Award'));
 		}
