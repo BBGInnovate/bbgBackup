@@ -136,6 +136,7 @@ if ( $custom_query->have_posts() ) :
 					$title = $o['title'];
 					$trainingDate = $o['trainingDate'];
 					$country = $o['country'];
+					$storyLink = $o['storyLink'];
 					$s .= "<a href='$storyLink'>$title</a> in $country<BR>";
 				}
 				$s.= '</div>';
