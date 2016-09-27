@@ -18,6 +18,7 @@ if ( have_posts() ) :
 		$pageContent = get_the_content();
 		$pageContent = apply_filters('the_content', $pageContent);
 		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+		$ogDescription = get_the_excerpt(); //get_the_excerpt()
 	endwhile;
 endif;
 wp_reset_postdata();
