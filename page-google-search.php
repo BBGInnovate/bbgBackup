@@ -34,6 +34,11 @@ article {
 article h3 {
 	/* font-weight:normal; */
 }
+.searchlink {
+	font-size: 14px;
+	font-weight: normal;
+	color:#006621;
+}
 </style>
 
 
@@ -161,7 +166,8 @@ article h3 {
 						?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 							<header class="entry-header bbg-blog__excerpt-header">
-								<h3 class="entry-title "><a href="<?php echo $link; ?>" rel="bookmark"><?php echo $title; ?></a></h3>
+								<h3 class="entry-title "><a href="<?php echo $link; ?>" rel="bookmark"><?php echo $title; ?></a><div class='searchlink'><?php echo $link; ?></div></h3>
+								
 								<div class="entry-meta bbg__excerpt-meta">
 									<span class="posted-on">
 										<time class="entry-date published" ></time>
