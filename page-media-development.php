@@ -206,7 +206,6 @@ get_header(); ?>
 					<input type="radio" name="trainingYear" id="trainingYear_2015" value="2015" /><label for="trainingYear_2015"> 2015</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2014" value="2014" /><label for="trainingYear_2014"> 2014</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2013" value="2013" /><label for="trainingYear_2013"> 2013</label>
-					<input type="radio" name="trainingYear" id="trainingYear_2012" value="2012" /><label for="trainingYear_2012"> 2012</label>
 					
 				</div>
 				<div align="center" id="mapFilters" class="u--hide-medium-large">
@@ -217,7 +216,6 @@ get_header(); ?>
 						<option value="2015">2015</option>
 						<option value="2014">2014</option>
 						<option value="2013">2013</option>
-						<option value="2012">2012</option>
 					</select>
 				</div>
 			</section>
