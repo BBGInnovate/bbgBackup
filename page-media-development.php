@@ -361,7 +361,7 @@ get_header(); ?>
         var icon = L.MakiMarkers.icon({icon: maki[year].name, color: maki[year].color, size: "m"});
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
-            icon:icon
+           // icon:icon
         });
        
         var popupText = title + description;
