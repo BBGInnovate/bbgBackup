@@ -10,6 +10,15 @@
   template name: Media Development
  */
 
+
+$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
+$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
+$headline = get_field( 'headline', '', true );
+$headlineStr = "";
+
+$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
+
 $pageTitle="";
 $pageContent = "";
 if ( have_posts() ) :
@@ -179,7 +188,7 @@ get_header(); ?>
 
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main bbg__2-column" role="main">
 
 			<div class="usa-grid">
 				<header class="page-header">
@@ -220,16 +229,39 @@ get_header(); ?>
 				</div>
 			</section>
 
-			<section class="usa-section">
-				<div class="usa-grid" style="margin-bottom: 3rem">
-					<?php
-						echo '<h3 class="usa-font-lead">';
-						echo $pageContent; // or $pageExcerpt
-						echo '</h3>';
-						echo $trainingStr;/*<h2 class="entry-title bbg-blog__excerpt-title--featured"> echo $pageTitle; </h2> */
-					?>
+			<div class="usa-grid">	
+				<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
+					<div class="bbg__profile__content">
+						<?php
+							echo $headlineStr;
+							echo $pageContent;
+
+						?>
+					</div>
 				</div>
-			</section>
+				<div class="bbg__article-sidebar large">
+
+					<?php
+						if ( $secondaryColumnContent != "" ) {
+
+							if ( $secondaryColumnLabel != "" ) {
+								echo '<h5 class="bbg__label small">' . $secondaryColumnLabel . '</h5>';
+							}
+
+							echo $secondaryColumnContent;
+						}
+
+						if ( $listsInclude ) {
+							echo $sidebarDownloads;
+						}
+						echo $trainingStr;
+					?>
+
+				</div><!-- .bbg__article-sidebar -->
+			</div>
+
+
+			
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
