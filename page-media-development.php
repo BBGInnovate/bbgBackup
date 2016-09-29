@@ -236,16 +236,6 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php
-
-	echo "<script type='text/javascript'>\n";
-	echo "geojson = $geojsonStr";
-	echo "</script>";
-	//echo $geojsonStr;
-	//http://gis.stackexchange.com/questions/182442/whats-the-most-appropriate-way-to-load-mapbox-studio-tiles-in-leaflet
-
-?>
-
 <?php /* include map stuff -------------------------------------------------- */ ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.3/leaflet.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.3/leaflet.js"></script>
