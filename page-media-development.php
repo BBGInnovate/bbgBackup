@@ -29,7 +29,7 @@ if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
  
-$postsPerPage = 50;
+$postsPerPage = 999;
 
 $qParams=array(
 	'post_type' => array('post')
