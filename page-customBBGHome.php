@@ -22,7 +22,7 @@ function getTwoRandomImpactPostIDs($used) {
 		'post_status' => 'publish',
 		'cat' => get_cat_id('impact'),
 		'post__not_in' => $used,
-		'posts_per_page' => 6,
+		'posts_per_page' => 12,
 		'orderby' => 'post_date',
 		'order' => 'desc',
 
