@@ -83,7 +83,11 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 		?>
 		<!--</a>-->
 <div class="usa-grid">
-		<?php the_title( sprintf( $linkH2, $postPermalink ), '</a></h2>' ); ?>
+		<?php 
+			//the_title( sprintf( $linkH2, $postPermalink ), '</a></h2>' );
+			the_title( $linkH2, '</a></h2>' );
+
+		 ?>
 
 
 		<?php if ($includeMetaFeatured){ ?>
