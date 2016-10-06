@@ -440,7 +440,7 @@ function bbginnovate_query_offset(&$query) {
 		if (!($query->is_archive()) || $query->query['category_name'] != 'Award') {
 			array_push($termsToExclude, get_cat_id('Award'));
 		}
-		if (!($query->is_archive()) || $query->query['category_name'] != 'Impact') {
+		if (!($query->is_archive()) || (strpos($query->query['category_name'], 'impact') === false) ) {
 			array_push($termsToExclude, get_cat_id('Impact'));
 		}
 
