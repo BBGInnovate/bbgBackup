@@ -433,13 +433,15 @@ function bbginnovate_query_offset(&$query) {
 			get_cat_id('Quotation'),
 			get_cat_id('Employee'),
 			get_cat_id('Intern Testimonial'),
-			get_cat_id('Impact'),
 			get_cat_id('Media Development Map')
 		);
 
 		//don't allow the awards on our news page - which is our 'is_home'
 		if (!($query->is_archive()) || $query->query['category_name'] != 'Award') {
 			array_push($termsToExclude, get_cat_id('Award'));
+		}
+		if (!($query->is_archive()) || $query->query['category_name'] != 'Impact') {
+			array_push($termsToExclude, get_cat_id('Impact'));
 		}
 
 		$tax_query = array(
