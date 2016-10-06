@@ -437,10 +437,12 @@ function bbginnovate_query_offset(&$query) {
 		);
 
 		//don't allow the awards on our news page - which is our 'is_home'
-		if (!($query->is_archive()) || $query->query['category_name'] != 'Award') {
+		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'award') {
 			array_push($termsToExclude, get_cat_id('Award'));
 		}
-		if (!($query->is_archive()) || (strpos($query->query['category_name'], 'impact') === false) ) {
+
+		//don't allow impact stories on the news page either
+		if (!($query->is_archive()) || (strpos(strtolower($query->query['category_name']), 'impact') === false) ) {
 			array_push($termsToExclude, get_cat_id('Impact'));
 		}
 
