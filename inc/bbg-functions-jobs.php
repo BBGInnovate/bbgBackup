@@ -3,14 +3,28 @@
 	function getJobs() {
 		$jobsFilepath = get_template_directory() . "/external-feed-cache/jobcache.json";
 		if ( fileExpired($jobsFilepath, 90)  ) {  //1440 min = 1 day
-			$jobsUrl="https://api.usa.gov/jobs/search.json?organization_ids=IB00";
-			$result=fetchUrl($jobsUrl);
+			$jobsUrl = 'https://data.usajobs.gov/api/search?Organization=IB00';
+			$apiKey = USAJOBS_API_KEY;
+			$host = 'data.usajobs.gov';
+			$ch = curl_init();
+			$timeout = 5;
+			curl_setopt($ch, CURLOPT_URL, $jobsUrl);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+			//curl_setopt($ch,CURLOPT_USERAGENT,$apiUsername);
+
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+				'Authorization-Key: ' . $apiKey,
+				'Host: ' . $host
+			));
+
+			$result = curl_exec($ch);
+			curl_close($ch);
 			file_put_contents($jobsFilepath, $result);
 		} else {
 			$result=file_get_contents($jobsFilepath);
 		}
 		$jobs = json_decode($result, true);
-
 		return $jobs;
 	}
 
@@ -21,66 +35,39 @@
 	}    
 	
 	function outputJoblist() {
-		$jobs = getJobs();
+		$jobsObj = getJobs();
 		$s = "";
-
-		if (count($jobs)==0) {
+		if ($jobsObj['SearchResult']['SearchResultCount'] ==0) {
 			$s = "No federal job opportunities are currently available on <a href='https://www.usajobs.gov/'>USAjobs.gov</a>.<BR>";
 		} else {
 			$jobSearchLink = 'https://www.usajobs.gov/Search?keyword=Broadcasting+Board+of+Governors&amp;Location=&amp;AutoCompleteSelected=&amp;search=Search';
 			$s = "<p class='bbg__article-sidebar__tagline'>Includes job postings from the International Broadcasting Bureau, Voice of America and Office of Cuba Broadcasting. All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
-			
+			$jobs = $jobsObj['SearchResult']['SearchResultItems'];
 			//sort by end date, and add formatted end date
+			$fixedJobs = array();
 			for ($i=0; $i < count($jobs); $i++) {
-				$j = &$jobs[$i];
-				$endDateStr = $j['end_date'];
-				$endDateObj = explode("-", $endDateStr);
-				$year = $endDateObj[0];
-				$month = $endDateObj[1];
-				$day = $endDateObj[2];
-				$endDateTimestamp = mktime(0, 0, 0, $month, $day, $year);
-				//$j['formatted_end_date'] = date('F j, o', $endDateTimestamp);
+				$j = &$jobs[$i]['MatchedObjectDescriptor'];
+				$dateObj = date_parse($j['PositionEndDate']);
+				$endDateTimestamp = mktime(0, 0, 0, $dateObj['month'], $dateObj['day'], $dateObj['year']);
 				$j['formatted_end_date'] = date('n/j/Y', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
+				$fixedJobs[] = $j;
 			}
+			$jobs = $fixedJobs;
 			usort($jobs, 'dCompare');
-
 			$s .= '<table class="usa-table-borderless bbg__jobs__table">';
 			$s .= '<thead><tr><th scope="col">Job</th><th scope="col">Closing date</th></tr></thead>';
 			$s .= '<tbody>';
 
 			for ($i = 0; $i < count($jobs); $i++) {
 				$j = $jobs[$i];
-				//var_dump($j);
-				$url = $j['url'];
-				$title = $j['position_title'];
-				$startDate = $j['start_date'];
+				$url = $j['PositionURI'];
+				$title = $j['PositionTitle'];
 				$endDate = $j['formatted_end_date'];
-
-
 				$s .= '<tr><td><a target="_blank" href="' . $url. '" class="bbg__jobs-list__title">' . $title . '</a></td><td>' . $endDate . '</td></tr>';
-				/*
-				$s .= "<p><a href='$url' class='bbg__jobs-list__title'>$title</a><br/>";
-
-				$locations = $j['locations'];
-				if (count($locations)>1 || $locations[0] != "Washington, DC"){
-					$locationStr = "Location: ";
-					if (count($locations) > 1){
-						$locationStr = "Locations: ";
-					}
-
-					for ($k = 0; $k < count($locations); $k++) {
-						$loc = $locations[$k];
-						$s .= "$loc<br/>";
-					}
-				}
-				$s .= "Closes: $endDate<br/>";
-				$s .= "</p>";
-				*/
+				
 			}
 			$s .= '</tbody></table>';
-
-			// $s .= "<p class='bbg__article-sidebar__tagline'>All federal job opportunities are available on <a target='_blank' href='$jobSearchLink'>USAjobs.gov</a></p>";
 		}
 		return $s;
 	}
