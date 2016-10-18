@@ -21,6 +21,10 @@ $videoUrl = get_field( 'featured_video_url', '', true );
 $secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 
+$challenges = get_field( 'hot_spot_challenges', '', true );
+$priorities = get_field( 'hot_spot_strategic_priorities', '', true );
+$programming = get_field( 'hot_spot_special_programming', '', true );
+
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
 
@@ -33,153 +37,120 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main bbg__2-column" role="main">
 			<div class="usa-grid-full">
-
-				<?php while ( have_posts() ) : the_post();
-					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
-				?>
+				<?php while ( have_posts() ) : the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
-
+						<div class="usa-grid-full">
+							<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2016/10/AP_325918556026.jpg); background-position: center top"></div>
+						</div> <!-- usa-grid-full --><!-- .bbg__article-header__thumbnail -->
 						<div class="usa-grid">
-							<header class="page-header">
-
-								<?php if( $post->post_parent ) {
-									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-									$parent = $wpdb->get_row( "SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent" );
-									$parent_link = get_permalink( $post->post_parent );
-									?>
-									<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-								<?php } else { ?>
-									<h5 class="bbg__label--mobile large"><?php the_title(); ?></h5>
-								<?php } ?>
-
-							</header><!-- .page-header -->
-						</div>
-
-						<?php
-							$hideFeaturedImage = FALSE;
-							if ( $videoUrl != "" ) {
-								echo featured_video($videoUrl);
-								$hideFeaturedImage = TRUE;
-							} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-								echo '<div class="usa-grid-full">';
-									$featuredImageClass = "";
-									$featuredImageCutline = "";
-									$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
-									if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
-										$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-									}
-
-									$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
-
-									echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerAdjustStr . '">';
-									echo '</div>';
-								echo '</div> <!-- usa-grid-full -->';
-							}
-						?><!-- .bbg__article-header__thumbnail -->
-
-						<div class="usa-grid">
-
-							<header class="entry-header">
-								<!-- .bbg__label -->
-								<?php if ( $post->post_parent ) {
-									//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-									$parent = $wpdb->get_row( "SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent" );
-									$parent_link = get_permalink($post->post_parent);
-									?>
-									<!--<h5 class="entry-category bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>-->
-									<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-
-								<?php } else { ?>
-									<!--<h5 class="entry-category bbg__label"><?php the_title(); ?></h5>-->
-									<?php $headlineStr = "<h1 class='bbg__entry__secondary-title'>" . $headline . "</h1>"; ?>
-								<?php } ?>
-
-							</header><!-- .entry-header -->
-
-							<div class="entry-content bbg__article-content large <?php echo $featuredImageClass; ?>">
-								<div class="bbg__profile__content">
-									<?php
-										echo $headlineStr;
-										the_content();
-									?>
+							<header class="entry-header bbg__article-header">
+								<div class="bbg__profile-photo">
+									<img src="https://bbgredesign.voanews.com/wp-content/media/2016/10/russia2.jpg" class="bbg__profile-photo__image">
 								</div>
-
-								<?php
-									//Add blog posts below the main content
-									$relatedCategory=get_field('related_category_posts', $id);
-
-									if ( $relatedCategory != "" ) {
-										$qParams2 = array(
-											'post_type' => array('post'),
-											'posts_per_page' => 2,
-											'cat' => $relatedCategory->term_id,
-											'orderby' => 'date',
-											'order' => 'DESC'
-										);
-										$categoryUrl = get_category_link($relatedCategory->term_id);
-										$custom_query = new WP_Query( $qParams2 );
-
-										if ( $custom_query -> have_posts() ) {
-											echo '<h6 class="bbg__label"><a href="' . $categoryUrl . '">' . $relatedCategory->name . '</a></h6>';
-											echo '<div class="usa-grid-full">';
-												while ( $custom_query -> have_posts() )  {
-													$custom_query->the_post();
-													get_template_part( 'template-parts/content-portfolio', get_post_format() );
-												}
-											echo '</div>';
-										}
-										wp_reset_postdata();
-									}
-								?>
-							</div><!-- .entry-content -->
-
-							<div class="bbg__article-sidebar large">
-
-								<?php
-									if ( $secondaryColumnContent != "" ) {
-
-										if ( $secondaryColumnLabel != "" ) {
-											echo '<h5 class="bbg__label small">' . $secondaryColumnLabel . '</h5>';
-										}
-
-										echo $secondaryColumnContent;
-									}
-
-									if ( $listsInclude ) {
-										echo $sidebarDownloads;
-									}
-								?>
-
-							</div><!-- .bbg__article-sidebar -->
+								<div class="bbg__profile-title">
+									<h1 class="entry-title bbg__article-header__title">Russia</h1>
+									<h5 class="entry-category bbg__profile-tagline">
+										<a href="http://www.voanews.com">Hot Spots</a>									</h5><!-- .bbg__label -->
+								</div>
+							</header>
 						</div>
+						<div class="readin">
+							<?php
+								the_content();
+							?>
+						</div>
+						<div class="bbg__article-content large">
+							
+							<h2>Challenges</h2>
+<?php echo $challenges; ?>
 
-						<div class="usa-grid">
-							<footer class="entry-footer bbg-post-footer 1234">
-								<?php
-									edit_post_link(
-										sprintf(
-											/* translators: %s: Name of current post */
-											esc_html__( 'Edit %s', 'bbginnovate' ),
-											the_title( '<span class="screen-reader-text">"', '"</span>', false )
-										),
-										'<span class="edit-link">',
-										'</span>'
-									);
-								?>
-							</footer><!-- .entry-footer -->
-						</div><!-- .usa-grid -->
 
+<h2>Strategic Priorities</h2>
+<?php echo $priorities; ?>
+
+<h2 >Languages Served</h2>
+<table class="usa-table-borderless bbg__jobs__table">
+<tbody>
+<tr>
+<td>
+<h4>Russian</h4>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://rus.azattyq.org" class="bbg__jobs-list__title">Қазақстан (RFERL Kazakh)</a></td>
+<td>rus.azattyq.org</td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://rus.azattyk.org" class="bbg__jobs-list__title">Киргизия (RFERL Kyrgyz)</a></td>
+<td>rus.azattyk.org</td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://svoboda.org" class="bbg__jobs-list__title">Россия (RFERL Russian)</a></td>
+<td>svoboda.org</td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://www.golos-ameriki.ru/" class="bbg__jobs-list__title">ГОЛОС АМЕРИКИ (VOA Russian)</a></td>
+<td>golos-ameriki.ru</td>
+</tr>
+<tr>
+<td>
+<h4>Ukranian</h4>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://ukrainian.voanews.com/" class="bbg__jobs-list__title">Голос Америки</a></td>
+<td>ukrainian.voanews.com</td>
+</tr>
+<tr>
+<td>
+<h4>English</h4>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://www.rferl.org/" class="bbg__jobs-list__title">RFERL English</a></td>
+<td>rferl.org</td>
+</tr>
+<tr>
+<td><a target="_blank" href="http://www.voanews.com/" class="bbg__jobs-list__title">VOA English</a></td>
+<td>voanews.com</td>
+</tr>
+</tbody>
+</table>
+<h2 >Special Programming</h2>
+<?php echo $programming; ?>
+
+						</div><!-- .bbg__article-sidebar -->
+						<div class="bbg__article-sidebar large">
+							
+							<div>
+							<h5 class="bbg__label small">Press Freedom</h5>
+							introduce the notion of press freedom here
+							<ul>
+							 	<li>Russia: 83</li>
+							 	<li>make this dynamic</li>
+							</ul>
+							<aside class="bbg__article-sidebar__aside">
+							<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>
+							<ul class="bbg__rss__list">
+							 	<li class="bbg__rss__list-link"><a href="https://bbgredesign.voanews.com/blog/2016/06/08/voa-journalists-attacked-in-turkey/">VOA journalists attacked in Turkey</a></li>
+							 	<li class="bbg__rss__list-link"><a href="https://bbgredesign.voanews.com/blog/2016/05/25/voice-of-america-journalist-arrested-and-beaten-in-angola/">make this dynamic</a></li>
+							</ul>
+							</aside>
+							<h5 class="bbg__label small">By the numbers</h5>
+							<img src="https://placehold.it/300x400" />
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</div>
+							<h5 class="bbg__label small"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/impact-portfolio/">News from our Networks</a></h5>
+							<article class="bbg__article post-26419 page type-page status-publish has-post-thumbnail hentry"><header class="entry-header bbg-portfolio__excerpt-header ">
+							<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium " style="margin-bottom: 1rem;"><a tabindex="-1 " href="https://bbgredesign.voanews.com/blog/2016/03/20/the-martis-coverage-reaches-cubans-on-the-island/ "><img class="attachment-small-thumb size-small-thumb wp-post-image " src="https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-300x180.png " sizes="(max-width: 300px) 100vw, 300px " srcset="https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-300x180.png 300w, https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-600x360.png 600w " alt="Two people looking at a computer screen " width="300 " height="180 " /></a></div>
+							<p class=" "><a href="https://bbgredesign.voanews.com/blog/2016/03/20/the-martis-coverage-reaches-cubans-on-the-island/ ">The Martí’s coverage reaches Cubans on the island</a></p>
+							</header><!-- .entry-header -->
+							</article><!-- .bbg-portfolio__excerpt -->
+						</div><!-- .bbg__article-sidebar -->
 					</article><!-- #post-## -->
-
-					<div class="bbg-post-footer">
-					<?php
-						// If comments are open or we have at least one comment, load up the comment template.
-						if ( comments_open() || get_comments_number() ) :
-							comments_template();
-						endif;
-					?>
-					</div>
-
 				<?php endwhile; // End of the loop. ?>
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
