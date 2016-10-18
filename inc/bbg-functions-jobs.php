@@ -49,7 +49,7 @@
 				$j = &$jobs[$i]['MatchedObjectDescriptor'];
 				$dateObj = date_parse($j['PositionEndDate']);
 				$endDateTimestamp = mktime(0, 0, 0, $dateObj['month'], $dateObj['day'], $dateObj['year']);
-				$j['formatted_end_date'] = date('n/j/Y', $endDateTimestamp);
+				$j['formatted_end_date'] = date('m/d/Y', $endDateTimestamp);
 				$j['endDateTimestamp'] = $endDateTimestamp;
 				$fixedJobs[] = $j;
 			}
