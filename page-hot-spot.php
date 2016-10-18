@@ -62,65 +62,43 @@ get_header(); ?>
 						<div class="bbg__article-content large">
 							
 							<h2>Challenges</h2>
-<?php echo $challenges; ?>
+							<?php echo $challenges; ?>
+							<h2>Strategic Priorities</h2>
+							<?php echo $priorities; ?>
 
+							<h2 >Languages Served</h2>
+							<table class="usa-table-borderless bbg__jobs__table">
+							<tbody>
 
-<h2>Strategic Priorities</h2>
-<?php echo $priorities; ?>
-
-<h2 >Languages Served</h2>
-<table class="usa-table-borderless bbg__jobs__table">
-<tbody>
-<tr>
-<td>
-<h4>Russian</h4>
-</td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://rus.azattyq.org" class="bbg__jobs-list__title">Қазақстан (RFERL Kazakh)</a></td>
-<td>rus.azattyq.org</td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://rus.azattyk.org" class="bbg__jobs-list__title">Киргизия (RFERL Kyrgyz)</a></td>
-<td>rus.azattyk.org</td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://svoboda.org" class="bbg__jobs-list__title">Россия (RFERL Russian)</a></td>
-<td>svoboda.org</td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://www.golos-ameriki.ru/" class="bbg__jobs-list__title">ГОЛОС АМЕРИКИ (VOA Russian)</a></td>
-<td>golos-ameriki.ru</td>
-</tr>
-<tr>
-<td>
-<h4>Ukranian</h4>
-</td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://ukrainian.voanews.com/" class="bbg__jobs-list__title">Голос Америки</a></td>
-<td>ukrainian.voanews.com</td>
-</tr>
-<tr>
-<td>
-<h4>English</h4>
-</td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://www.rferl.org/" class="bbg__jobs-list__title">RFERL English</a></td>
-<td>rferl.org</td>
-</tr>
-<tr>
-<td><a target="_blank" href="http://www.voanews.com/" class="bbg__jobs-list__title">VOA English</a></td>
-<td>voanews.com</td>
-</tr>
-</tbody>
-</table>
-<h2 >Special Programming</h2>
-<?php echo $programming; ?>
+							<?php while( have_rows('hot_spot_languages') ): the_row(); ?>
+								<tr>
+									<td><h4><?php the_sub_field('hot_spot_language_name'); ?></h4></td>
+									<td></td>
+								</tr>
+								<?php 
+								if( have_rows('hot_spot_language_sites') ): ?>
+									<?php 
+									while( have_rows('hot_spot_language_sites') ): 
+										the_row();
+										$link = get_sub_field('hot_spot_site_url');
+										$serviceInLanguage = get_sub_field('hot_spot_language_site_name_in_language');
+										$serviceInEnglish = get_sub_field('hot_spot_site_name_in_english');
+										$serviceName = $serviceInLanguage;
+										if ($serviceInEnglish != "") {
+											$serviceName .= " &nbsp;&nbsp;&nbsp;($serviceInEnglish)";
+										}
+									?>
+										<tr>
+											<td><a target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
+											<td><?php echo str_replace("http://", "", $link); ?></td>
+										</tr>
+									<?php endwhile; ?>
+								<?php endif; ?>
+							<?php endwhile; ?>
+							</tbody>
+							</table>
+							<h2 >Special Programming</h2>
+							<?php echo $programming; ?>
 
 						</div><!-- .bbg__article-sidebar -->
 						<div class="bbg__article-sidebar large">
