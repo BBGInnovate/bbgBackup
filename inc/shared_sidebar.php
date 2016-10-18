@@ -244,29 +244,42 @@ if ( $listsInclude ) {
 				$s .= "</div>";
 			} elseif ( get_row_layout() == 'sidebar_dropdown_internal_links' ) {
 				$s .= "<div class='bbg__sidebar__download'>";
-					$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title' );
-					$sidebarInternalDefault = get_sub_field( 'sidebar_internal_default' );
-					$sidebarInternalRows = get_sub_field( 'sidebar_internal_objects' );
-
+				$sidebarInternalTitle = get_sub_field( 'sidebar_internal_title' );
+				$sidebarInternalDefault = get_sub_field( 'sidebar_internal_default' );
+				$sidebarInternalRows = get_sub_field( 'sidebar_internal_objects' );
+				if (count($sidebarInternalRows) < 5) {
 					$s .= "<h5 class='bbg_label'>" . $sidebarInternalTitle . "</h5>" ;
-
 					$s .= "<ul class='bbg__article-sidebar__list--labeled'>";
-						foreach( $sidebarInternalRows as $link ) {
-							// Internal link option name
-							$sidebarInternalLinkName = $link['internal_links_title'];
-							// Internal WP object
-							$sidebarInternalLinkObj = $link['internal_links_url'];
-								// link details
-								$url = get_permalink( $sidebarInternalLinkObj->ID ); // Use WP object ID to get permalink for link
-
-								if ( $sidebarInternalLinkName == "" | !$sidebarInternalLinkName ) {
-									$title = $sidebarInternalLinkObj->post_title; // WP object title
-									$sidebarInternalLinkName = $title;
-								}
-
-							$s .= "<li><h5 class='bbg__sidebar__download__title'><a href='" . $url . "'>" . $sidebarInternalLinkName . "</a></h5></li>";
+					foreach( $sidebarInternalRows as $link ) {
+						$sidebarInternalLinkName = $link['internal_links_title'];
+						$sidebarInternalLinkObj = $link['internal_links_url'];
+						$url = get_permalink( $sidebarInternalLinkObj->ID ); 
+						if ( $sidebarInternalLinkName == "" | !$sidebarInternalLinkName ) {
+							$title = $sidebarInternalLinkObj->post_title; // WP object title
+							$sidebarInternalLinkName = $title;
 						}
+						$s .= "<li><h5 class='bbg__sidebar__download__title'><a href='" . $url . "'>" . $sidebarInternalLinkName . "</a></h5></li>";
+					}
 					$s .= "</ul>";
+				} else {
+					$s .= '<form >';
+					$s .= '<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold; margin-top: 0;">' . $sidebarInternalTitle . '</label>';
+					$s .= '<select name="internal_links_list" class="internal_links_list" style="display: inline-block;">';
+					$s .= '<option>Select a link</option>';
+					foreach( $sidebarInternalRows as $link ) {
+						$sidebarInternalLinkName = $link['internal_links_title'];
+						$sidebarInternalLinkObj = $link['internal_links_url'];
+						$url = get_permalink( $sidebarInternalLinkObj->ID ); 
+						if ( $sidebarInternalLinkName == "" | !$sidebarInternalLinkName ) {
+							$title = $sidebarInternalLinkObj->post_title; // WP object title
+							$sidebarInternalLinkName = $title;
+						}
+						$s .= '<option value="' . $url . '">' . $sidebarInternalLinkName . '</option>';
+					}
+					$s .= '</select>';
+					$s .= '</form>';
+					$s .= '<button class="usa-button internalLink" style="width: 100%;">Go</button>';
+				}
 				$s .= "</div>";
 			}
 		endwhile;

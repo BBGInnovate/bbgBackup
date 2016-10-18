@@ -75,14 +75,13 @@ jQuery(document).ready(function() {
         });
     }
 
-    if (jQuery('#internalLink').length && jQuery('#internal_links_list').length) {
-        jQuery('#internalLink').click(function() {
-            url=jQuery(this).parent().find('#internal_links_list').val();
+    /* deliberately using a class rather than ID in case we have two on the same page */
+    if (jQuery('.internal_links_list').length) {
+        jQuery('.internalLink').click(function() {
+            url=jQuery(this).parent().find('.internal_links_list').val();
             window.open(url,'_self');
         });
     }
-
-
 
     if (jQuery("div[data-name='committee_members'] select").length) {
         console.log('found the field');
