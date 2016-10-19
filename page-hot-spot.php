@@ -8,25 +8,13 @@
    template name: Hot Spot
  */
 
-$bannerPosition = get_field( 'adjust_the_banner_image', '', true);
-$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
-$bannerAdjustStr="";
-if ($bannerPositionCSS) {
-	$bannerAdjustStr = $bannerPositionCSS;
-} elseif ($bannerPosition) {
-	$bannerAdjustStr = $bannerPosition;
-}
-
-$videoUrl = get_field( 'featured_video_url', '', true );
-$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
-$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
-
 $challenges = get_field( 'hot_spot_challenges', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
 $programming = get_field( 'hot_spot_special_programming', '', true );
-
+$programming = get_field( 'hot_spot_special_programming', '', true );
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
+
 
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
@@ -104,12 +92,19 @@ get_header(); ?>
 						<div class="bbg__article-sidebar large">
 							
 							<div>
-							<h5 class="bbg__label small">Press Freedom</h5>
-							introduce the notion of press freedom here
-							<ul>
-							 	<li>Russia: 83</li>
-							 	<li>make this dynamic</li>
-							</ul>
+							<?php 
+								if( have_rows('hot_spot_press_freedom_numbers') ):
+									echo '<h5 class="bbg__label small">Press Freedom</h5>';
+									echo '<ul>';
+									while ( have_rows('hot_spot_press_freedom_numbers') ) : the_row();
+										$countryName = get_sub_field('hot_spot_press_freedom_country_name');
+										$freedomIndex = get_sub_field('hot_spot_press_freedom_index');
+										echo "<li>$countryName ($freedomIndex)</li>";
+									endwhile;
+									echo '</ul>';
+								else:
+								endif;
+							?>
 							<aside class="bbg__article-sidebar__aside">
 							<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>
 							<ul class="bbg__rss__list">
