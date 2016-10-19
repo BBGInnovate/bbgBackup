@@ -9,6 +9,7 @@
  */
 
 $challenges = get_field( 'hot_spot_challenges', '', true );
+$tag = get_field( 'hot_spot_tag', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
 $programming = get_field( 'hot_spot_special_programming', '', true );
 $mapImage = get_field( 'hot_spot_map_image', '', true );
@@ -123,12 +124,38 @@ get_header(); ?>
 								<img src="https://placehold.it/300x400" />
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 								</div>
-								<h5 class="bbg__label small"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/impact-portfolio/">News from our Networks</a></h5>
-								<article class="bbg__article post-26419 page type-page status-publish has-post-thumbnail hentry"><header class="entry-header bbg-portfolio__excerpt-header ">
-								<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium " style="margin-bottom: 1rem;"><a tabindex="-1 " href="https://bbgredesign.voanews.com/blog/2016/03/20/the-martis-coverage-reaches-cubans-on-the-island/ "><img class="attachment-small-thumb size-small-thumb wp-post-image " src="https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-300x180.png " sizes="(max-width: 300px) 100vw, 300px " srcset="https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-300x180.png 300w, https://bbgredesign.voanews.com/wp-content/media/2016/03/Screen-Shot-2016-03-20-at-8.45.01-PM-600x360.png 600w " alt="Two people looking at a computer screen " width="300 " height="180 " /></a></div>
-								<p class=" "><a href="https://bbgredesign.voanews.com/blog/2016/03/20/the-martis-coverage-reaches-cubans-on-the-island/ ">The Martí’s coverage reaches Cubans on the island</a></p>
-								</header><!-- .entry-header -->
-								</article><!-- .bbg-portfolio__excerpt -->
+								<?php 
+
+									$qParams2=array(
+										'post_type' => array('post'),
+										'posts_per_page' => 3,
+										'tag' => $tag -> slug,
+										'orderby' => 'date',
+										'order' => 'DESC'
+									);
+									$custom_query = new WP_Query( $qParams2 );
+									if ($custom_query -> have_posts()) {
+										echo '<h5 class="bbg__label small"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/impact-portfolio/">News from our Networks</a></h5>';
+										while ( $custom_query -> have_posts() )  {
+											$custom_query->the_post();
+											$url = get_the_permalink();
+											$title = get_the_title();
+											$id = get_the_ID();
+											$thumb = get_the_post_thumbnail( $id, 'small-thumb' );
+
+											$s = '';
+											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+											$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+											$s .=			'<a tabindex="-1" href="' . $url . '">' . $thumb . '</a>';
+											$s .=		'</div>';
+											$s .=		'<p class=""><a href="'.$url.'">' . $title . '</a></p><BR>';
+											$s .=	'</header><!-- .entry-header -->';
+											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+											echo $s;
+										}
+									}
+								?>
 							</div><!-- .bbg__article-sidebar -->
 						</div>
 					</article><!-- #post-## -->
