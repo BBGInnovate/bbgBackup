@@ -11,11 +11,12 @@
 $challenges = get_field( 'hot_spot_challenges', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
 $programming = get_field( 'hot_spot_special_programming', '', true );
-$programming = get_field( 'hot_spot_special_programming', '', true );
+$mapImage = get_field( 'hot_spot_map_image', '', true );
 $headline = get_field( 'headline', '', true );
 $headlineStr = "";
-
-
+$featuredImagesData = get_field( 'hot_spot_rotating_featured_images', '', true );
+$randomFeaturedImage = $featuredImagesData[array_rand($featuredImagesData)];
+$featuredImageSrc = $randomFeaturedImage['hot_spot_rotating_featured_image']['sizes']['large-thumb'];
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
 include get_template_directory() . "/inc/shared_sidebar.php";
@@ -28,12 +29,12 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
 						<div class="usa-grid-full">
-							<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2016/10/AP_325918556026.jpg); background-position: center top"></div>
+							<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner--profile" style="background-image: url(<?php echo $featuredImageSrc; ?>); background-position: center top"></div>
 						</div> <!-- usa-grid-full --><!-- .bbg__article-header__thumbnail -->
 						<div class="usa-grid">
 							<header class="entry-header bbg__article-header">
 								<div class="bbg__profile-photo">
-									<img src="https://bbgredesign.voanews.com/wp-content/media/2016/10/russia2.jpg" class="bbg__profile-photo__image">
+									<img src="<?php echo $mapImage['sizes']['medium']; ?>" class="bbg__profile-photo__image">
 								</div>
 								<div class="bbg__profile-title">
 									<h1 class="entry-title bbg__article-header__title">Russia</h1>
