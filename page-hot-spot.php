@@ -13,8 +13,7 @@ $tag = get_field( 'hot_spot_tag', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
 $programming = get_field( 'hot_spot_special_programming', '', true );
 $mapImage = get_field( 'hot_spot_map_image', '', true );
-$headline = get_field( 'headline', '', true );
-$headlineStr = "";
+$mapImageSrc = $mapImage['sizes']['medium'];
 $featuredImagesData = get_field( 'hot_spot_rotating_featured_images', '', true );
 $randomFeaturedImage = $featuredImagesData[array_rand($featuredImagesData)];
 $featuredImageSrc = $randomFeaturedImage['hot_spot_rotating_featured_image']['sizes']['large-thumb'];
@@ -22,6 +21,58 @@ $featuredImageBackgroundPosition = $randomFeaturedImage['hot_spot_rotating_featu
 
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 $pressFreedomIntro = get_field( 'site_setting_press_freedom_intro', 'options', 'false' );
+
+/**** create 'NEWS FROM NETWORKS' array ***/
+$nnn_query_args=array(
+	'post_type' => array('post'),
+	'posts_per_page' => 3,
+	'tag' => $tag -> slug,
+	'orderby' => 'date',
+	'order' => 'DESC'
+);
+$newsFromNetworks = array();
+$custom_query = new WP_Query( $nnn_query_args );
+if ($custom_query -> have_posts()) {
+	while ( $custom_query -> have_posts() )  {
+		$custom_query->the_post();
+		$newsFromNetworks[] = array(
+			'url' => get_the_permalink(),
+			'title' => get_the_title(),
+			'id' => get_the_ID(),
+			'thumb' => get_the_post_thumbnail( $id, 'small-thumb' )
+		);
+	}
+}
+/**** done creating 'NEWS FROM NETWORKS' array ***/
+
+/**** create 'THREATS TO PRESS' array ***/
+$ttp_query_args = array(
+	'post_type' => array('post')
+	,'cat' => get_cat_id('Threats to Press')
+	,'tag' => $tag -> slug
+	,'posts_per_page' => 3
+	,'post_status' => array('publish')
+	,'orderby', 'date'
+	,'order', 'DESC'
+);
+
+$threatsToPress = array();
+$ttp_query = new WP_Query( $ttp_query_args );
+if ($ttp_query -> have_posts()) {
+	
+	while ( $ttp_query -> have_posts() )  {
+		$ttp_query->the_post();
+		$threatsToPress[] = array(
+			'url' => get_the_permalink(),
+			'title' => get_the_title(),
+			'id' => get_the_ID(),
+			'thumb' => get_the_post_thumbnail( $id, 'small-thumb' ),
+			'excerpt' => get_the_excerpt($id) 
+		);
+	}
+}
+/**** done creating 'NEWS FROM NETWORKS' array ***/
+
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
@@ -38,12 +89,12 @@ get_header(); ?>
 						<div class="usa-grid">
 							<header class="entry-header bbg__article-header">
 								<div class="bbg__profile-photo">
-									<img src="<?php echo $mapImage['sizes']['medium']; ?>" class="bbg__profile-photo__image">
+									<img src="<?php echo $mapImageSrc; ?>" class="bbg__profile-photo__image">
 								</div>
 								<div class="bbg__profile-title">
 									<h1 class="entry-title bbg__article-header__title"><?php echo get_the_title(); ?></h1>
 									<h5 class="entry-category bbg__profile-tagline">
-										<a href="/hot-spots/">Hot Spots</a>									</h5><!-- .bbg__label -->
+										<a href="<?php echo get_permalink( get_page_by_path( 'hot-spots' ) ); ?>">Hot Spots</a>									</h5><!-- .bbg__label -->
 								</div>
 							</header>
 						</div>
@@ -97,7 +148,6 @@ get_header(); ?>
 
 							</div><!-- .bbg__article-sidebar -->
 							<div class="bbg__article-sidebar large">
-								
 								<div>
 								<?php 
 									if( have_rows('hot_spot_press_freedom_numbers') ):
@@ -113,48 +163,65 @@ get_header(); ?>
 									else:
 									endif;
 								?>
-								<aside class="bbg__article-sidebar__aside">
-								<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>
-								<ul class="bbg__rss__list">
-								 	<li class="bbg__rss__list-link"><a href="https://bbgredesign.voanews.com/blog/2016/06/08/voa-journalists-attacked-in-turkey/">VOA journalists attacked in Turkey</a></li>
-								 	<li class="bbg__rss__list-link"><a href="https://bbgredesign.voanews.com/blog/2016/05/25/voice-of-america-journalist-arrested-and-beaten-in-angola/">make this dynamic</a></li>
-								</ul>
-								</aside>
+
+								<?php 
+								if (count($threatsToPress) > 0) {
+									$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
+									echo '<aside class="bbg__article-sidebar__aside">';
+									echo '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
+									$i=0;
+									foreach ($threatsToPress as $n) {
+										$s = ''; 
+										$i++;
+										if ($i == 1) {
+											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+											$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+											$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
+											$s .=		'</div>';
+											$s .=		'<p>';
+											$s .= '<a href="'.$n['url'] . '"><h4>' . $n['title'] . '</h4></a>';
+											if ($n['excerpt'] != '') {
+												$s .= $n['excerpt'];
+											}
+											$s .= '</p><BR>';
+											$s .=	'</header><!-- .entry-header -->';
+											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+										} else {
+											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+											$s .=		'<p class=""><a href="'.$n['url'] . '">' . $n['title'] . '</a></p>';
+											$s .=	'</header><!-- .entry-header -->';
+											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+										}
+										echo $s;
+									}
+									echo '</aside>';
+								}
+								
+								?>
 								<h5 class="bbg__label small">By the numbers</h5>
 								<img src="https://placehold.it/300x400" />
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 								</div>
+
 								<?php 
-
-									$qParams2=array(
-										'post_type' => array('post'),
-										'posts_per_page' => 3,
-										'tag' => $tag -> slug,
-										'orderby' => 'date',
-										'order' => 'DESC'
-									);
-									$custom_query = new WP_Query( $qParams2 );
-									if ($custom_query -> have_posts()) {
-										echo '<h5 class="bbg__label small"><a href="https://bbgredesign.voanews.com/our-work/impact-and-results/impact-portfolio/">News from our Networks</a></h5>';
-										while ( $custom_query -> have_posts() )  {
-											$custom_query->the_post();
-											$url = get_the_permalink();
-											$title = get_the_title();
-											$id = get_the_ID();
-											$thumb = get_the_post_thumbnail( $id, 'small-thumb' );
-
-											$s = '';
-											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
-											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
-											$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
-											$s .=			'<a tabindex="-1" href="' . $url . '">' . $thumb . '</a>';
-											$s .=		'</div>';
-											$s .=		'<p class=""><a href="'.$url.'">' . $title . '</a></p><BR>';
-											$s .=	'</header><!-- .entry-header -->';
-											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
-											echo $s;
-										}
+								if (count($newsFromNetworks) > 0) {
+									echo '<h5 class="bbg__label small">News from our Networks</h5>';
+									foreach ($newsFromNetworks as $n) {
+										$s = ''; 
+										$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+										$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+										$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+										$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
+										$s .=		'</div>';
+										$s .=		'<p class=""><a href="'.$n['url'] . '">' . $n['title'] . '</a></p><BR>';
+										$s .=	'</header><!-- .entry-header -->';
+										$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+										echo $s;
 									}
+								}
+								
 								?>
 							</div><!-- .bbg__article-sidebar -->
 						</div>
