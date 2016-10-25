@@ -5810,17 +5810,23 @@ article {
 
   /* Used for private author guide pages */
   /* Flips the sidebar to the left */
-  .status-private .bbg__article-content.large {
-    border-right: none;
-    border-left: 1px dotted #CCC;
-    float: right;
-    margin-left: auto;
-    padding-right: 0;
-    padding-left: 2%;
-  }
-  .status-private .bbg__article-sidebar.large {
-    float: left;
-  }
+  /*
+  .status-private {
+  	.bbg__article-content.large{
+  		border-right: none;
+  		border-left: $border-dotted;
+  		float: right;
+  		margin-left: auto;
+  		padding: {
+  			right: 0;
+  			left: 2%;
+  		}
+  	}
+  	.bbg__article-sidebar.large {
+  		float: left;
+  	}
+  } 
+  */
 }
 .bbg__article-sidebar--left {
   border-bottom: 1px solid #CCC;
