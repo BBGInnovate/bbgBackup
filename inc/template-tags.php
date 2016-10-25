@@ -22,11 +22,16 @@ function bbginnovate_posted_on() {
 		esc_html( get_the_date() )
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'bbginnovate' ),
-		$time_string
-		//'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+
+	if (in_category('Media Development Map')) {
+		$posted_on = get_post_meta( get_the_ID(), 'media_dev_date', true );
+	} else {
+		$posted_on = sprintf(
+			esc_html_x( '%s', 'post date', 'bbginnovate' ),
+			$time_string
+			//'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		);
+	}
 
 	/*
 	possible add: show datelines as X days ago, would use a permutation of this.
