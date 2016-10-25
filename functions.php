@@ -552,60 +552,73 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 		$output     = '';
 		$selectedCategory=false;
 		$impact=false;
+		$suppressOutput = false;
 		if ( $categories ) {
 
-			/* JBF 8/19 - we could have also directly called yoast_get_primary_term_id() but I'd like this to work even if the plug is disabled */
-			$primaryCategoryID = get_post_meta( get_the_ID(), '_yoast_wpseo_primary_category', true );
-			if ($primaryCategoryID && $primaryCategoryID != "") {
-				foreach ( $categories as $category ) {
-					if ( $category->term_id == $primaryCategoryID ) {
-						$selectedCategory = $category;
-						break;
-					}
-				}	
-			}
 
 			if ( !$selectedCategory ) {
 				foreach ( $categories as $category ) {
-					if ( $category->name == "From the CEO" ) {
-						$selectedCategory = $category;
+					if ( $category->name == "Media Development Map" ) {
+						$suppressOutput = true;
 						break;
 					}
 				}
 			}
+			if (!$suppressOutput) {
 
-			if ( !$selectedCategory ) {
-				foreach ( $categories as $category ) {
-					if ( $category->name == "Impact" ) {
-						$selectedCategory = $category;
-						$impact = true;
-						break;
+				/* JBF 8/19 - we could have also directly called yoast_get_primary_term_id() but I'd like this to work even if the plug is disabled */
+				$primaryCategoryID = get_post_meta( get_the_ID(), '_yoast_wpseo_primary_category', true );
+				if ($primaryCategoryID && $primaryCategoryID != "") {
+					foreach ( $categories as $category ) {
+						if ( $category->term_id == $primaryCategoryID ) {
+							$selectedCategory = $category;
+							break;
+						}
+					}	
+				}
+
+				if ( !$selectedCategory ) {
+					foreach ( $categories as $category ) {
+						if ( $category->name == "From the CEO" ) {
+							$selectedCategory = $category;
+							break;
+						}
 					}
 				}
-			}
 
-			if ( !$selectedCategory ) {
-				foreach ( $categories as $category ) {
-					if ( $category->name == "BBG" ) {
-						$selectedCategory = $category;
-						break;
+				if ( !$selectedCategory ) {
+					foreach ( $categories as $category ) {
+						if ( $category->name == "Impact" ) {
+							$selectedCategory = $category;
+							$impact = true;
+							break;
+						}
 					}
 				}
-			}
 
-			if ( !$selectedCategory ) {
-				foreach ( $categories as $category ) {
-					$selectedCategory = $category;
+				if ( !$selectedCategory ) {
+					foreach ( $categories as $category ) {
+						if ( $category->name == "BBG" ) {
+							$selectedCategory = $category;
+							break;
+						}
+					}
 				}
-			}
-			$link = false;
-			if ($impact) {
-				$link = get_permalink( get_page_by_path( "/our-work/impact-and-results/" ) );
-			} else if ($selectedCategory) {
-				$link = get_category_link( $selectedCategory->term_id );
-			}
-			if ($link) {
-				$output .= '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
+
+				if ( !$selectedCategory ) {
+					foreach ( $categories as $category ) {
+						$selectedCategory = $category;
+					}
+				}
+				$link = false;
+				if ($impact) {
+					$link = get_permalink( get_page_by_path( "/our-work/impact-and-results/" ) );
+				} else if ($selectedCategory) {
+					$link = get_category_link( $selectedCategory->term_id );
+				}
+				if ($link) {
+					$output .= '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'bbginnovate' ), $selectedCategory->name ) ) . '">' . $selectedCategory->cat_name . '</a></h5>' . $separator;
+				}
 			}
 		}
 		return $output;
