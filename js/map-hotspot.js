@@ -1,94 +1,131 @@
+var colors = {
+	iran: "#83c2ba",
+	russia: "#ebdb8b",
+	china: "#a791b4",
+	cuba: "#85c5e3",
+	cve: "#C9B7AD"
+}
 var spheres = {
-	cuba: {
-		comprisedOf: ['Cuba'],
-		influences: ['Venezuela','Colombia','Ecuador','Peru','Bolivia'],
-		color: '#db8383',
-		color2: '#c57575'
+	cve: {
+		comprisedOf: ['Russia'],
+		influences: [
+			'Afghanistan','Armenia','Azerbaijan','Bahrain','Bangladesh','Brunei','Cambodia','Taiwan','East Timor','Indonesia','Iran','Iraq','Israel','Palestine','Japan','Jordan','Kazakhstan','Kuwait','Kyrgyzstan','Laos','Lebanon','Malaysia','Maldives','Myanmar','North Korea','Oman','Pakistan','Philippines','Qatar','Russia','Saudi Arabia','Singapore','South Korea','Sri Lanka','Syria','Tajikistan','Thailand','Taiwan','Turkey','Turkmenistan','United Arab Emirates','Uzbekistan','Vietnam','Yemen',
+			'Papua New Guinea',
+			'Albania','Andorra','Austria','Belarus','Belgium','Bosnia and Herzegovina','Bulgaria','Croatia','Cyprus','Czech Republic','Denmark','Estonia','Finland','France','Georgia','Germany','Greece','Hungary','Ireland','Italy','Latvia','Liechtenstein','Lithuania','Luxembourg','Republic of Macedonia','Malta','Moldova','Monaco','Montenegro','Netherlands','Norway','Poland','Portugal','Romania','Russia','San Marino','Serbia','Slovakia','Slovenia','Spain','Sweden','Switzerland','Turkey','Ukraine','United Kingdom','Vatican City',
+			'Egypt','Morocco','Libya','Algeria','Mali','Mauritania', 'Chad', 'Western Sahara', 'Sudan','Eritrea','Ethiopia','Somalia', 'Cameroon', 'CÃ´te d\'Ivoire', 'Benin', 'Ghana','Togo', 'Liberia', 'Niger', 'Burkina Faso', 'Senegal', 'Nigeria', 'Guinea', 'Sierra Leone', 'Gambia'
+		],
+		color: colors['cve'],
+		color2: colors['cve'],
+		label: "Countering Violent Extremism"
 	},
 	iran: {
 		comprisedOf: ['Iran'],
 		influences: ['Armenia','Azerbaijan','Turkey','Syria','Jordan','Israel','Afghanistan','Pakistan','Cyprus'],
-		color: "#83c2ba",
-		color2: "#689b94" 
+		color: colors['iran'],
+		color2: colors['iran'],
+		label: "Iran"
 	},
 	russia: {
 		comprisedOf: ['Russia', 'Svalbard and Jan Mayen'],
 		influences: ['Estonia','Latvia','Lithuania','Belarus','Moldova','Syria','Kazakhstan','Uzbekistan','Turkmenistan','Tajikistan','Kyrgyzstan','Azerbaijan','Armenia','Georgia'],
-		color: "#ebdb8b",
-		color2: "#d3c57d"
-	}
+		color: colors['russia'],
+		color2: colors['russia'],
+		label: "Russia"
+	},
+	china: {
+		comprisedOf: ['China'],
+		influences: [
+			'Argentina','Bolivia','Brazil','Chile','Colombia','Ecuador','French Guiana','Guyana','Paraguay','Peru','Suriname','Uruguay','Venezuela',
+			'Angola','Benin','Botswana','Burkina Faso','Burundi','Cameroon','Cape Verde','Central African Republic','Chad','Comoros','Republic of Congo','Democratic Republic of Congo','CÃ´te d\'Ivoire','Djibouti','Equatorial Guinea','Eritrea','Ethiopia','Gabon','Gambia','Ghana','Guinea','Guinea-Bissau','Kenya','Lesotho','Liberia','Madagascar','Malawi','Mali','Mauritania','Mauritius','Mozambique','Namibia','Niger','Nigeria','Rwanda','São Tomé and Príncipe','Senegal','Seychelles','Sierra Leone','Somalia','South Africa','South Sudan','Sudan','Swaziland','Tanzania','Togo','Uganda','Western Sahara','Zambia','Zimbabwe',
+			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama'],
+		color: colors['china'],
+		color2: colors['china'],
+		label: "China"
+	},
+	cuba: {
+		comprisedOf: ['Cuba'],
+		influences: ['Venezuela','Colombia','Ecuador','Peru','Bolivia'],
+		color: colors['cuba'],
+		color2: colors['cuba'],
+		label: "Cuba"
+	},
 };
 fullCountryList = AmCharts.maps.worldLow.svg.g.path;
-
 cMap = {};
-
 for (var i = 0; i < fullCountryList.length; i++) {
 	c = fullCountryList[i];
 	cMap[c.title] = c.id;
 }
-
-
-
-// areas:[
-// 				  { "id": "AU", "color": "#CC0000" },
-// 				  { "id": "US", "color": "#00CC00" },
-// 				  { "id": "FR", "color": "#0000CC" }
-// 				]
-areas = [];
 sMap = {};
 for (var key in spheres) {
 	if (spheres.hasOwnProperty(key)) {
 		s = spheres[key];
-		for (var i=0; i < s.comprisedOf.length; i++) {
-			var countryName = s.comprisedOf[i];
+		var sphereCountries = s.comprisedOf.concat(s.influences);
+		for (var i=0; i < sphereCountries.length; i++) {
+			var countryName = sphereCountries[i];
 			if (cMap.hasOwnProperty(countryName)) {
 				var countryID = cMap[countryName];
 				sMap[countryID] = key;
-				var a = {
-					id: countryID,
-					title: countryName,
-					color: s.color,
-					groupId: key
-				}
-				areas.push(a);
-			} else {
-				console.log("no match for " + countryName);
-			}
-		}
-		for (var i=0; i < s.influences.length; i++) {
-			var countryName = s.influences[i];
-			if (cMap.hasOwnProperty(countryName)) {
-				var countryID = cMap[countryName];
-				sMap[countryID] = key;
-				var a = {
-					id: countryID,
-					title: countryName,
-					color: s.color2,
-					groupId: key
-				}
-				areas.push(a);
-			} else {
-				console.log("no match for " + countryName);
 			}
 		}
 	}
 }
 
+jQuery( document ).ready(function() {
+ 	//color the legend
+    jQuery('.china').css('background-color', colors['china']);
+    jQuery('.cuba').css('background-color', colors['cuba']);
+    jQuery('.iran').css('background-color', colors['iran']);
+    jQuery('.russia').css('background-color', colors['russia']);
+    jQuery('.cve').css('background-color', colors['cve']);
+
+    jQuery('#mapFilters input').click(function(e) {
+    	var selectedSphere = jQuery(this).val();
+    	setActiveSphere(selectedSphere);
+    });
+
+
+});
+
+function getAreas(selectedSphere) {
+	var areas = [];
+	for (var key in spheres) {
+		if (spheres.hasOwnProperty(key)) {
+			s = spheres[key];
+			if (selectedSphere == "all" || selectedSphere == key) {
+				var sphereCountries = s.comprisedOf.concat(s.influences);
+				for (var i=0; i < sphereCountries.length; i++) {
+					var countryName = sphereCountries[i];
+					if (cMap.hasOwnProperty(countryName)) {
+						var countryID = cMap[countryName];
+						var a = {
+							id: countryID,
+							title: countryName,
+							color: s.color,
+							groupId: key,
+							customData:s.label
+						}
+						areas.push(a);
+					} else {
+						console.log("no match for " + countryName);
+					}
+				}
+			}
+		}
+	}
+	return areas;
+}
+
+function setActiveSphere(s) {
+	map.dataProvider.areas = getAreas(s);
+	map.validateData();
+}
+
+
 
 (function ($,bbgConfig, entities) {
 
-	// find out if the user is on a mobile device or not (used for zoomDuration)
-	var isMobile = isMobileDevice();
-
-	var colorBase = '#0071bc',
-		colorRollOver = '#205493',
-		colorSelected = '#112e51';
-
-	$(document).ready(function() {
-
-		var defaultEntity='bbg'; //might fill this from a global JS var later.
-		countries=[];
-		fakeDetail="xxxx";
+	jQuery(document).ready(function() {
 
 		map = AmCharts.makeChart( "chartdiv", {
   			theme: "light",
@@ -96,81 +133,42 @@ for (var key in spheres) {
 			type: "map",
 			dataProvider: {
 				map: "worldLow",
-				areas:areas
+				areas:getAreas('all')
 			},
 			areasSettings: {
 				autoZoom: false,
 				selectable:true,
-				"rollOverOutlineColor": "#C00",
-				"alpha": 1,
-    "unlistedAreasAlpha": 0.4,
-    "balloonText": "[[title]]"
-
+					"rollOverOutlineColor": "#FFFFFF",
+					"rollOverColor": "#CC0000",
+					"alpha": 1,
+					"unlistedAreasAlpha": 0.6,
+					"balloonText": "[[customData]] Hot Spot"
 			},
 		} );
 
-		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
 			sphere = sMap[event.mapObject.id];
-			console.log("go to " + sphere);
 			window.location = bbgConfig.template_directory_uri + "../../../hot-spots/" + sphere;
-			
 		});
-
-		grabData('BBG');
-
 	});
-
-	// this function will set the endpoint based on the entity and then go fetch the countries
-	function grabData(entity) {
-
-		var url = '';
-		// this is an organization (BBG)
-		if (entity === 'bbg') {
-			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?region_country=1';
-			
-		} else {
-			url = bbgConfig.template_directory_uri + 'api.php?endpoint=api/countries/?group='+entity;
-		}
-	}
-
-	// this function will return true if the user is on a mobile device or false otherwise
-	function isMobileDevice () {
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 
 })(jQuery,bbgConfig, entities);
 
-// for (var i = 0; i < data.countries.length; i++) {
-// 						var country = data.countries[i];
-// 						var countryCode = data.countries[i].code;
-// 						country.id = countryCode;
-// 						// if the country has region_ids array, BBG has coverage there
-// 						if (country.region_ids) {
-// 							country.color = '#9F1D26';
-// 							country.rollOverColor = "#891E25";
-// 							country.selectedColor = "#7A1A21";
-
-
-// 						// NO COVERAGE here
-// 						} else {
-// 							// this is the default color for non-BBG covered countries
-// 							country.color = '#DDDDDD';
-// 							country.rollOverColor = "#B7B7B7";
-
-// 							// these zoom levels will prevent zoom on countries that are not covered
-// 							country.zoomLatitude = map.zoomLatitude();
-// 							country.zoomLongitude = map.zoomLongitude();
-// 							country.zoomLevel = map.zoomLevel();
-
-// 						}
-
-
-// 						countries.push(country);
-
-// 					}
+		// for (var i=0; i < s.influences.length; i++) {
+		// 	var countryName = s.influences[i];
+		// 	if (cMap.hasOwnProperty(countryName)) {
+		// 		var countryID = cMap[countryName];
+		// 		sMap[countryID] = key;
+		// 		var a = {
+		// 			id: countryID,
+		// 			title: countryName,
+		// 			color: s.color2,
+		// 			groupId: key,
+		// 			customData:s.label
+		// 		}
+		// 		areas.push(a);
+		// 	} else {
+		// 		console.log("no match for " + countryName);
+		// 	}
+		// }
