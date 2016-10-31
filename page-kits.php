@@ -367,12 +367,12 @@ get_header(); ?>
 										$fileExt = strtoupper( pathinfo($file, PATHINFO_EXTENSION) );
 										$fileSize = formatBytes( filesize($file) );
 
-
-									print_r( $fileObj );
+									// print_r( $fileObj );
 								    // Related page array
-								    // $pageObj = $file['downloads_page_link'];
+								    $pageObj = $file['downloads_page_link'];
 								    	// page data
-								    	// $pageID = $pageObj['ID'];
+								    	$pageID = $pageObj['ID'];
+								    	print_r( $pageID );
 
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__kits__section--tile'>";
