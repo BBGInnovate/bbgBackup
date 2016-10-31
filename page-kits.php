@@ -177,7 +177,7 @@ get_header(); ?>
 					<!-- Contact card (tailored to audience) -->
 					<div class="bbg__article-sidebar large">
 						<?php if ( $includeContactBox ) { ?>
-							<aside class="bbg__article-sidebar__aside">
+							<aside>
 								<div class="bbg__contact-card">
 									<div class="bbg__contact-card__text">
 										<?php
@@ -235,20 +235,12 @@ get_header(); ?>
 		        		<!-- Stats tile -->
 		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
 		        			<h3 class="bbg__kits__section--tile__title-bar">Universal reach</h3>
-							<ul class="bbg__kits__section--tile__list">
-								<li><span class="bbg__kits__section--tile__list--serif"><?php echo $networks; ?></span></li>
-								<li>serving <span class="bbg__kits__section--tile__list--sans"><?php echo $audience; ?></span> weekly</li>
-								<li>in <span class="bbg__kits__section--tile__list--sans"><?php echo $languages; ?></span> in</li>
-								<li>more than <span class="bbg__kits__section--tile__list--sans"><?php echo $countries; ?></span>.</li>
-							</ul>
+							<p class="bbg__kits__section--tile__list"><span class="bbg__kits__section--tile__list--serif"><?php echo $networks; ?></span> serve an audience of <span class="bbg__kits__section--tile__list--sans"><?php echo $audience; ?></span> weekly in <span class="bbg__kits__section--tile__list--sans"><?php echo $languages; ?></span> in more than <span class="bbg__kits__section--tile__list--sans"><?php echo $countries; ?></span>.</p>
 		        		</article>
 						<!-- Stats tile -->
 		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
 		        			<h3 class="bbg__kits__section--tile__title-bar">Global distribution</h3>
-							<ul class="bbg__kits__section--tile__list">
-								<li>Nearly <span class="bbg__kits__section--tile__list--sans"><?php echo $affiliates; ?></span> help to</li>
-								<li>distribute <span class="bbg__kits__section--tile__list--serif"><?php echo $programming; ?></span> of original programming each week.</li>
-							</ul>
+							<p class="bbg__kits__section--tile__list">Nearly <span class="bbg__kits__section--tile__list--sans"><?php echo $affiliates; ?></span> worldwide help our networks distribute <span class="bbg__kits__section--tile__list--serif"><?php echo $programming; ?></span> of original programming each week.</p>
 		        		</article>
 		        	</div>
 		        </section>
@@ -327,11 +319,8 @@ get_header(); ?>
 							$downloadsLabel = get_sub_field('kits_downloads_label');
 
 							if ($downloadsLabel) {
-								echo "<h2 class='entry-title'>$downloadsLabel</h2>";
+								echo "<h2 class='bbg__label'>$downloadsLabel</h2>";
 							}
-
-							// show section intro text
-							// echo "<div class='bbg__about__child__intro'>$downloadsIntro</div>";
 
 							echo "<div class='usa-grid-full bbg__kits__section--tiles'>";
 
@@ -355,10 +344,20 @@ get_header(); ?>
 									$fileName = $file['downloads_link_name'];
 									// $fileURL = $file['downloads_file'];
 									$fileImageObject = $file['downloads_file_image'];
+									// var_dump( $fileImageObject );
 										// retrieve ID from image object and load "mugshot" size
-										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'mugshot' );
+										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'large-thumb' );
 
-									// Files object array
+									// Related page array
+								    $supportPage = $file['kits_related_page'];
+								    	// page data
+								    	$pageHeadline = get_the_title( $supportPage->ID );
+								    	$pageURL = get_permalink( $supportPage->ID );
+										$pageExcerpt = my_excerpt( $supportPage->ID );
+										$pageExcerpt = apply_filters( 'the_content', $pageExcerpt );
+										$pageExcerpt = str_replace( ']]>', ']]&gt;', $pageExcerpt );
+
+								    // Files object array
 									$fileObj = $file['downloads_file'];
 										// file data
 										$fileID = $fileObj['ID'];
@@ -367,22 +366,27 @@ get_header(); ?>
 										$fileExt = strtoupper( pathinfo($file, PATHINFO_EXTENSION) );
 										$fileSize = formatBytes( filesize($file) );
 
-									// print_r( $fileObj );
-								    // Related page array
-								    $pageObj = $file['downloads_page_link'];
-								    	// page data
-								    	$pageID = $pageObj['ID'];
-								    	print_r( $pageID );
-
 									// Output variables in HTML format
 									echo "<article class='$containerClass bbg__kits__section--tile'>";
-										// Output file title/name
-										echo "<h3 class='bbg__kits__section--tile__title'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a> <span class='bbg__file-size'>(" . $fileExt . ", " . $fileSize . ")</span></h3>";
+										echo "<header class='bbg__kits__section--tile__header'>";
+											// Output page data
+											if ( $supportPage ) {
+												echo "<h3 class='bbg__kits__section--tile__title'>" . "<a href='" . $pageURL . "'>" . $pageHeadline . "</a></h3>";
+											} else {
+												echo "<h3 class='bbg__kits__section--tile__title'>" . "<a href='" . $fileURL . "' target='_blank'>" . $fileName . "</a></h3>";
+											}
+										echo "</header>";
+
 										// Output file image
 										if ( $thumbSrc ) {
 											echo "<a href='" . $fileURL . "' target='_blank'>";
 												echo "<div class='bbg__kits__section--tile__thumb' style='background-image: url(" . $thumbSrc[0] . ");'></div>";
 											echo "</a>";
+
+										echo $pageExcerpt;
+
+										// Output file title/name
+										echo "<p class='bbg__kits__section--tile__downloads'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a> <span class='bbg__file-size'>(" . $fileExt . ", " . $fileSize . ")</span></p>";
 										}
 									echo "</article>";
 								}

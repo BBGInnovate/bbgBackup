@@ -6310,7 +6310,7 @@ article {
   clear: both;
   visibility: hidden;
 }
-.bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline, .bbg__article-sidebar .bbg__sidebar__primary .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__title, .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__article-sidebar .bbg__sidebar__primary .bbg__kits__section--tile__title {
+.bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline {
   clear: none;
 }
 .bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-image {
@@ -6337,7 +6337,7 @@ article {
     float: none;
     max-width: none;
   }
-  .bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline:after, .bbg__article-sidebar .bbg__sidebar__primary .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__title:after, .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__article-sidebar .bbg__sidebar__primary .bbg__kits__section--tile__title:after {
+  .bbg__article-sidebar .bbg__sidebar__primary .bbg__sidebar__primary-headline:after {
     content: ".";
     display: block;
     height: 0;
@@ -6935,7 +6935,7 @@ section.usa-section.bbg-banner__section {
   line-height: 2.5;
 }
 
-.bbg__about__grandchild .bbg__about__grandchild__title {
+.bbg__about__grandchild .bbg__about__grandchild__title, .bbg__about__grandchild .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__title, .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__about__grandchild .bbg__kits__section--tile__title {
   text-transform: capitalize;
 }
 .bbg__about__grandchild .bbg__about__grandchild__subtitle {
@@ -7844,6 +7844,20 @@ div.appropriations-small > p.header {
   text-decoration: underline;
 }
 
+.bbg__kits__section .bbg__article-content {
+  margin-bottom: 0;
+  min-height: 30rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__kits__section .bbg__article-content {
+    min-height: 20rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__kits__section .bbg__article-content {
+    min-height: 25rem;
+  }
+}
 .bbg__kits__section .bbg__article-content .bbg__kits__inquiries h3, .bbg__kits__section .bbg__article-content .bbg__kits__inquiries .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__kits__section .bbg__article-content .bbg__kits__inquiries caption {
   margin-top: 0;
 }
@@ -7864,7 +7878,11 @@ div.appropriations-small > p.header {
 }
 .bbg__kits__section .bbg__contact-card .bbg__kits__social {
   margin-bottom: 0;
-  margin-left: -3rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__kits__section .bbg__contact-card .bbg__kits__social {
+    margin-left: -3rem;
+  }
 }
 .bbg__kits__section .bbg__contact-card .bbg__kits__social .bbg__kits__social-link {
   background-size: auto 2.5rem;
@@ -7875,8 +7893,10 @@ div.appropriations-small > p.header {
   margin-bottom: 6rem;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile {
+  display: block;
+  min-height: 15rem;
   /* Elevator pitch/intro tile */
-  /* Stats tile -- table */
+  /* Statistics tiles */
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__pitch--rev {
   display: block;
@@ -7887,14 +7907,13 @@ div.appropriations-small > p.header {
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__pitch--rev p {
   color: #981b1e;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.7;
   margin: 0;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 600px) {
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__pitch--rev p {
-    font-size: 2rem;
     line-height: 1.7;
   }
 }
@@ -7907,6 +7926,8 @@ div.appropriations-small > p.header {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.6rem;
   line-height: 2;
+  margin-right: auto;
+  margin-left: auto;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
   font-size: 4.5rem;
@@ -7921,18 +7942,34 @@ div.appropriations-small > p.header {
   font-weight: 700;
   line-height: 1.4;
 }
+@media screen and (min-width: 600px) {
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
+    font-size: 3.25rem;
+  }
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
+    font-size: 2.25rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
+    font-size: 4.5rem;
+  }
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
+    font-size: 3rem;
+  }
+}
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__header {
+  display: table-row;
+  height: 5.2rem;
+}
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__title {
-  /* background-color: $color-secondary-darkest;
-  color: white;
-  line-height: 1;
-  margin-top: 0;
-  padding: 1rem;
-  text-transform: uppercase; */
+  display: table-cell;
+  vertical-align: bottom;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__title-bar {
   background-color: #981b1e;
   color: white;
-  line-height: 1;
+  line-height: 1.25;
   margin-top: 0;
   padding: 1rem;
   text-transform: uppercase;
@@ -7959,31 +7996,35 @@ div.appropriations-small > p.header {
 }
 @media screen and (min-width: 600px) {
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__thumb {
-    max-width: 100%;
-    min-height: 15rem;
-    width: 100%;
     margin-bottom: 1rem;
+    margin-right: 20%;
+    max-width: 80%;
+    min-height: 20rem;
+    width: 100%;
   }
 }
 @media screen and (min-width: 900px) {
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__thumb {
-    min-height: 20rem;
+    margin-right: 2rem;
+    max-height: 50rem;
+    min-height: 40rem;
   }
 }
 @media screen and (min-width: 1201px) {
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__thumb {
     max-width: 50%;
     margin-bottom: 0;
-    min-height: 15rem;
+    min-height: 20rem;
   }
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile p {
-  line-height: 2;
-  margin-top: 0;
-  /* Temporary edits from brian */
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 1.6rem;
   line-height: 1.7;
+  margin-top: 0;
+}
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__downloads {
+  line-height: 1.15;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__link {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
