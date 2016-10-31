@@ -149,6 +149,38 @@
 	add_shortcode('countries', 'countries_shortcode');
 
 	/**
+	 * Add shortcode reference for the number of total affiliates
+	 * @return Text
+	 * Returns total number of affiliates from custom field set in 'BBG settings'
+	 */
+	function affiliates_shortcode() {
+		// access site-wide variables
+		global $post;
+
+		// set variables based on custom fields
+	    $number_of_affiliates = get_field( 'site_setting_total_affiliates', 'options', 'false' );
+
+		return $number_of_affiliates . " global affiliates";
+	}
+	add_shortcode('affiliates', 'affiliates_shortcode');
+
+	/**
+	 * Add shortcode reference for the number of programming hours per week
+	 * @return Text
+	 * Returns estimated number of programming hours distributed from custom field set in 'BBG settings'
+	 */
+	function programming_shortcode() {
+		// access site-wide variables
+		global $post;
+
+		// set variables based on custom fields
+	    $hours_of_programming = get_field( 'site_setting_total_countries', 'options', 'false' );
+
+		return $hours_of_programming . " hours of original programming each week";
+	}
+	add_shortcode('programming', 'programming_shortcode');
+
+	/**
 	 * Shortcode for selecting/downloading apps
 	 * @param  $formType
 	 * @return Returns a form for downloading the correct type of apps
@@ -160,7 +192,7 @@
 		}
 		$s = "";
 		if ($formType == 'news') {
-			$s .= '<p>Find the version of the app that\'s best for you:<p>
+			$s .= '<p>Find the version of the app that’s best for you:<p>
 					<form class="bbg__article__form--inline">
 					<legend class="bbg__article-content__form-title"></legend>
 					<fieldset id="appSelect-os" class="usa-fieldset-inputs usa-sans"><label class="bbg__article__form-radio__label" for="appSelect-os">Select your OS:</label>
@@ -189,7 +221,7 @@
 		} else if ($formType == 'java') {
 			$s .= '
 				<form id="appSelect-java" class="usa-form-large bbg__article__form">
-				<legend class="bbg__article-content__form-title">Find the version of the app that\'s best for you:</legend>
+				<legend class="bbg__article-content__form-title">Find the version of the app that’s best for you:</legend>
 				<fieldset>
 				<div id="entities" class="usa-input-grid bbg__article__form-select--main"><label for="entity" class="">Network</label><select id="entity" name="entity">
 				<option value="" disabled selected>Select a network</option>
@@ -205,7 +237,7 @@
 		} else if ($formType == 'sawa') {
 			$s .= '
 				<form id="appSelect-sawa" class="usa-form-large bbg__article__form">
-				<legend class="bbg__article-content__form-title">Find the version of the app that\'s best for you:</legend>
+				<legend class="bbg__article-content__form-title">Find the version of the app that’s best for you:</legend>
 				<fieldset>
 				<div id="osList" class="usa-input-grid bbg__article__form-select--main"><label class="" for="os">OS</label><select id="os" name="os">
 				<option disabled="disabled" selected="selected" value="">Select an OS</option>
@@ -221,7 +253,7 @@
 		} else if ($formType == 'streamer') {
 			$s .= '
 				<form id="appSelect-streamer" class="usa-form-large bbg__article__form">
-				<legend class="bbg__article-content__form-title">Find the version of the app that\'s best for you:</legend>
+				<legend class="bbg__article-content__form-title">Find the version of the app that’s best for you:</legend>
 				<fieldset>
 				<div id="osList" class="usa-input-grid bbg__article__form-select--main"><label for="os" class="usa-sr-only">OS</label>
 				<select id="os" name="os">

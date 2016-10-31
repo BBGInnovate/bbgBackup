@@ -54,7 +54,7 @@ if (count($subgroups) < 4) {
 	$siteSelect .= "<ul class='bbg__rss__list'>";
 	foreach ($subgroups as $s) {
 		if ($s->website_url != "") { // EX: mbn digital
-			$siteSelect .= "<li class='bbg__rss__list-link'><a target='_blank' href='" . $s->website_url . "'>" . $s->name . "</a></li>";	
+			$siteSelect .= "<li class='bbg__rss__list-link'><a target='_blank' href='" . $s->website_url . "'>" . $s->name . "</a></li>";
 		}
 	}
 	$siteSelect .= "</ul>";
@@ -300,7 +300,7 @@ if ($custom_query -> have_posts()) {
 		$orgTerms = get_field('standardpost_award_organization', $id );
 	    $organizations=array();
 	    $organizations[] = $orgTerms->name;
-	    
+
 
 		$recipients = get_post_meta( $id, 'standardpost_award_recipient' );
 		$awards[]=array(
@@ -391,7 +391,7 @@ get_header(); ?>
 
 			<div class="usa-grid-full">
 
-				<?php while ( have_posts() ) : the_post(); 
+				<?php while ( have_posts() ) : the_post();
 					//$videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 				?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("bbg__article"); ?>>
@@ -484,12 +484,7 @@ get_header(); ?>
 
 							</div><!-- .entry-content -->
 
-
-
-
-
-
-							<div class="bbg__article-sidebar largeXXX">
+							<div class="bbg__article-sidebar large">
 									<?php if ($entityMission!=""){ ?>
 									<aside class="bbg__article-sidebar__aside">
 										<!--<h3 class="bbg__sidebar-label"><?php echo $abbreviation; ?> Mission</h3>-->
@@ -497,55 +492,48 @@ get_header(); ?>
 									</aside>
 									<?php } ?>
 
-
 									<aside class="bbg__article-sidebar__aside">
-									<?php
-									if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
-										echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
-									} ?>
-
-									<ul class="bbg__article-sidebar__list--labeled">
 										<?php
-											echo $budget;
-											echo $employees;
-											echo $languages;
-											echo $audience;
-										?>
-									</ul>
+										if ($budget != "" || $employees != "" || $languages != "" || $audience != "" || $appLink != "") {
+											echo '<h3 class="bbg__sidebar-label">Fast facts</h3>';
+										} ?>
+
+										<ul class="bbg__article-sidebar__list--labeled">
+											<?php
+												echo $budget;
+												echo $employees;
+												echo $languages;
+												echo $audience;
+											?>
+										</ul>
 									</aside>
-
-
 
 									<?php
 									if ($facebook!="" || $twitterProfileHandle!="" || $instagram!=""){
 									?>
-									<aside class="bbg__article-sidebar__aside">
-									<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
-									<ul class="bbg__article-share">
-										<?php
-											if ($facebook!=""){
-												echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
-											}
-											if ($twitterProfileHandle!=""){
-												echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
-											}
-											if ($instagram!=""){
-												echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
-											}
-										?>
-									</ul>
-									</aside>
+										<aside class="bbg__article-sidebar__aside">
+											<h3 class="bbg__sidebar-label bbg__contact-label"><?php echo $abbreviation; ?> social media </h3>
+											<ul class="bbg__article-share">
+												<?php
+													if ($facebook!=""){
+														echo '<li class="bbg__article-share__link facebook"><a href="'.$facebook.'" title="Like '.get_the_title().' on Facebook"><span class="bbg__article-share__icon facebook"></span><span class="bbg__article-share__text">Facebook</span></a></li>';
+													}
+													if ($twitterProfileHandle!=""){
+														echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
+													}
+													if ($instagram!=""){
+														echo '<li class="bbg__article-share__link instagram"><a href="https://instagram.com/'.$instagram.'" title="Follow '.get_the_title().' on Instagram"><span class="bbg__article-share__icon instagram"></span><span class="bbg__article-share__text">Instagram</span></a></li>';
+													}
+												?>
+											</ul>
+										</aside>
 									<?php } ?>
 
-
-
 									<aside class="bbg__article-sidebar__aside">
-									<?php
-										echo $appLink;
-									?>
+										<?php
+											echo $appLink;
+										?>
 									</aside>
-
-
 
 									<?php
 										if (count($rssItems)) {
@@ -570,7 +558,7 @@ get_header(); ?>
 												$maxThreatsStories=3;
 												echo '<aside class="bbg__article-sidebar__aside">';
 												echo '<h6 class="bbg__label small"><a href="/threats-to-press/">Threats to Press</a></h6>';
-												echo '<ul class="bbg__rss__list">';	
+												echo '<ul class="bbg__rss__list">';
 												for ( $i = 0; $i <min( $maxRelatedStories, count($threats) ); $i++) {
 													$o = $threats[$i];
 													echo '<li class="bbg__rss__list-link">';
@@ -590,42 +578,33 @@ get_header(); ?>
 										echo '<aside class="bbg__article-sidebar__aside">';
 										echo $siteSelect;
 										echo '</aside>';
-
-
 									?>
-
 
 								<?php if ($includeContactBox){ ?>
-								<aside class="bbg__article-sidebar__aside">
-								<div class="bbg__contact-card <?php if ($includeMap){echo 'bbg__contact-card--include-map';} ?>">
-									<?php if ($includeMap){ ?>
-										<div id='map' class='bbg__contact-card__map'></div>
-									<?php } ?>
+									<aside class="bbg__article-sidebar__aside">
+										<div class="bbg__contact-card <?php if ($includeMap){echo 'bbg__contact-card--include-map';} ?>">
+											<?php if ($includeMap){ ?>
+												<div id='map' class='bbg__contact-card__map'></div>
+											<?php } ?>
 
-									<div class="bbg__contact-card__text">
-									<h3>Contact information</h3>
-									<?php
-									echo $address;
-									echo '<ul class="usa-unstyled-list">';
-									echo $phone;
-									echo $email;
-									echo $learnMore;
-									echo '</ul>';
-									?>
-									</div>
-								</div>
-								</aside>
+											<div class="bbg__contact-card__text">
+											<h3>Contact information</h3>
+											<?php
+											echo $address;
+											echo '<ul class="usa-unstyled-list">';
+											echo $phone;
+											echo $email;
+											echo $learnMore;
+											echo '</ul>';
+											?>
+											</div>
+										</div>
+									</aside>
 								<?php } ?>
-
-
-
-
 
 							</div><!-- .bbg__article-sidebar -->
 
 						</div>
-
-
 
 						<div class="usa-grid">
 							<footer class="entry-footer bbg-post-footer 1234">

@@ -1,0 +1,304 @@
+/* Main intro paragraph */
+.bbg__kits__intro {
+	// intro text
+	p {
+		@extend .usa-font-lead;
+		line-height: 2.5;
+	}
+	// "Read more" link
+	a.bbg__kits__intro__more--link {
+		@extend .bbg__read-more;
+
+		text: {
+			align: right;
+			decoration: none;
+			transform: uppercase;
+		}
+		white-space: nowrap;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.bbg__kits__section {
+	.bbg__article-content .bbg__kits__inquiries {
+		h3 {
+			margin-top: 0;
+		}
+
+		.bbg__kits__inquiries__text--half {
+			float: left;
+			margin-top: 0;
+			width: 50%;
+		}
+
+		.bbg__kits__inquiries__button--half {
+			float: right;
+			width: 40%;
+		}
+	}
+
+	.bbg__contact-card {
+		margin-top: 0;
+
+		.bbg__contact-card__text {
+			margin-bottom: 0;
+		}
+
+		.bbg__kits__social {
+			margin: {
+				bottom: 0;
+				left: -3rem;
+			}
+
+			.bbg__kits__social-link {
+				@extend .usa-social-links;
+				background-size: auto 2.5rem;
+				margin: 0 1rem 0 0;
+				right: 1.2rem;
+			}
+		}
+	}
+
+	.bbg__kits__section--row {
+		margin-bottom: $site-margins-large;
+
+		// ROW: 3 column tiles
+		.bbg__kits__section--tiles {
+			.bbg__kits__section--tile {
+				/* Elevator pitch/intro tile */
+				.bbg__kits__pitch--rev {
+					display: block;
+					background-color: $color-gray-lightest;
+					border-radius: $border-radius;
+					padding: $site-margins-medium;
+					p {
+						color: $color-secondary-darkest;
+						font: {
+							family: $font-sans;
+							size: $base-font-size;
+							weight: $font-bold;
+						}
+						line-height: $base-line-height;
+						margin: 0;
+					}
+					@include media($medium-large-screen) {
+						p {
+							font-size: $lead-font-size;
+							line-height: $lead-line-height;
+						}
+					}
+					@include media($large-screen) {
+						padding: $site-margins;
+					}
+				}
+
+				/* Stats tile -- table */
+				.bbg__kits__section--tile__list {
+					@extend .usa-unstyled-list;
+
+					font: {
+						family: $font-serif;
+						size: $base-font-size;
+					}
+					line-height: 2;
+
+					&--serif {
+						font: {
+							size: 4.5rem;
+							style: normal;
+							weight: $font-bold;
+						}
+						line-height: $small-line-height;
+					}
+
+					&--sans {
+						font: {
+							family: $font-sans;
+							size: 3rem;
+							style: normal;
+							weight: $font-bold;
+						}
+						line-height:  $small-line-height;
+					}
+				}
+
+				.bbg__kits__section--tile__title {
+					@extend .bbg__sidebar__primary-headline;
+					// @extend .bbg__about__grandchild__title;
+					/* background-color: $color-secondary-darkest;
+					color: white;
+					line-height: 1;
+					margin-top: 0;
+					padding: 1rem;
+					text-transform: uppercase; */
+				}
+
+				.bbg__kits__section--tile__title-bar {
+					background-color: $color-secondary-darkest;
+					color: white;
+					line-height: 1;
+					margin-top: 0;
+					padding: 1rem;
+					text-transform: uppercase;
+				}
+
+				.bbg__kits__section--tile__subtitle {
+					color: $color-gray-medium;
+					font: {
+						family: $font-serif;
+						weight: 700;
+					}
+					text-transform: capitalize;
+				}
+
+				.bbg__kits__section--tile__thumb {
+					@include backgroundCover;
+
+					float: left;
+					margin: {
+						top:  $site-margins-small;
+						right: $site-margins-small;
+					}
+					max: {
+						height: 40rem;
+						width: 40rem;
+					}
+					min: {
+						height: 10rem;
+						width: 10rem;
+					}
+					height: 100%;
+					width: 25%;
+
+					@include media($medium-screen) {
+						max-width: 100%;
+						min-height: 15rem;
+						width: 100%;
+						margin-bottom: 1rem;
+					}
+
+					@include media($medium-large-screen) {
+						min-height: 20rem;
+					}
+
+					@include media($large-screen) {
+						max-width: 50%;
+						margin-bottom: 0;
+						min-height: 15rem;
+					}
+				}
+
+				p {
+					line-height: 2;
+					margin-top: 0;
+
+					/* Temporary edits from brian */
+					font-family: $font-sans;
+					font-size: 1.6rem;
+					line-height: 1.7;
+				}
+
+				.bbg__kits__section--tile__link {
+					font-family: $font-sans;
+					margin-left: 1rem;
+					text: {
+						align: right;
+						decoration: none;
+					}
+					white-space: nowrap;
+				}
+			}
+		}
+
+		// ROW: ribbon
+		&.bbg__ribbon--thin {
+			padding: 0;
+			margin: {
+				right: -4.5rem;
+				left: -4rem;
+			}
+
+			.bbg__announcement__flexbox {
+				padding-top: 0;
+
+				.bbg__announcement__headline,
+				p {
+					padding: {
+						right: 2rem;
+						left: 2rem;
+					}
+				}
+			}
+
+			@include media($medium-large-screen) {
+				margin: 0 -50% 5rem;
+				max-width: none;
+
+				.bbg__announcement__flexbox {
+					.bbg__announcement__headline,
+					p {
+						padding: {
+							right: 10%;
+							left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.bbg__kits__child {
+
+	@include media($medium-screen) {
+		.bbg__label {
+			font-size: 2rem;
+		}
+	}
+}
+
+.bbg__kits__excerpt {
+	margin-bottom: 3rem;
+	max-height: 350px;
+
+	.bbg__excerpt-header__thumbnail--medium {
+		max-height: 28.7rem;
+		overflow: hidden;
+	}
+}
+
+.bbg__kits__child__second-headline {
+	margin-top: 1rem;
+}
+
+// Add special excerpt class when there are exactly 5 pages including the Mission (not common but just in case!)
+.bbg__kits__excerpt-content--large {
+	@include media($large-screen) {
+		height: 44.1rem;
+		max-height: 44.1rem;
+
+		p {
+			font-size: 2.5rem;
+			line-height: 2.2;
+		}
+	}
+}
+
+/*****
+	Umbrella child styles
+*****/
+.bbg__kits__child__intro {
+
+	p:first-of-type {
+		@extend .usa-font-lead;
+		line-height: 2.5;
+	}
+}
+
+.bbg__kits__section--tile {
+
+}
