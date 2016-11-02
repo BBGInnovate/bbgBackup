@@ -10,7 +10,7 @@ $sidebarDownloads = "";
 if ( $includeSidebar ) {
 
 	// check if the flexible content field has rows of data
-	
+
 	$s = "";
 
 	$sidebarTitle = get_post_meta( get_the_ID(), 'sidebar_title', true );
@@ -77,7 +77,7 @@ if ( $includeSidebar ) {
 
 				$sidebarImage = "";
 				if ($sidebarLinkImage && $sidebarLinkImage != ""){
-					
+
 					$sidebarImageSrc = $sidebarLinkImage['sizes']['medium'];
 					$sidebarImage = '<a target="blank" href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarImageSrc . '"/></a>';
 				}
@@ -143,7 +143,7 @@ if ( $includeSidebar ) {
 
 				$sidebarDescription = "";
 				if ($sidebarPhotoCaption && $sidebarPhotoCaption != ""){
-					$sidebarDescription = "<p>" . $sidebarPhotoCaption . "</p>";
+					$sidebarDescription = "<p class='bbg__sidebar__photo-caption'>" . $sidebarPhotoCaption . "</p>";
 				}
 
 				$s .= '<div>' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
@@ -151,7 +151,7 @@ if ( $includeSidebar ) {
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
-		
+
 	endif;
 	$sidebar = $s;
 }
@@ -167,12 +167,12 @@ if ( $listsInclude ) {
 	$dropdownTitle = get_field( 'sidebar_dropdown_title' );
 
 	if ( have_rows('sidebar_dropdown_content') ) {
-		
+
 		$s = "";
 		if ($dropdownTitle && $dropdownTitle != "") {
-			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $dropdownTitle ."</h5>";	
+			$s = "<h5 class='bbg__label small bbg__sidebar__download__label'>" . $dropdownTitle ."</h5>";
 		}
-		
+
 
 		while ( have_rows('sidebar_dropdown_content') ) : the_row();
 
@@ -253,7 +253,7 @@ if ( $listsInclude ) {
 					foreach( $sidebarInternalRows as $link ) {
 						$sidebarInternalLinkName = $link['internal_links_title'];
 						$sidebarInternalLinkObj = $link['internal_links_url'];
-						$url = get_permalink( $sidebarInternalLinkObj->ID ); 
+						$url = get_permalink( $sidebarInternalLinkObj->ID );
 						if ( $sidebarInternalLinkName == "" | !$sidebarInternalLinkName ) {
 							$title = $sidebarInternalLinkObj->post_title; // WP object title
 							$sidebarInternalLinkName = $title;
@@ -269,7 +269,7 @@ if ( $listsInclude ) {
 					foreach( $sidebarInternalRows as $link ) {
 						$sidebarInternalLinkName = $link['internal_links_title'];
 						$sidebarInternalLinkObj = $link['internal_links_url'];
-						$url = get_permalink( $sidebarInternalLinkObj->ID ); 
+						$url = get_permalink( $sidebarInternalLinkObj->ID );
 						if ( $sidebarInternalLinkName == "" | !$sidebarInternalLinkName ) {
 							$title = $sidebarInternalLinkObj->post_title; // WP object title
 							$sidebarInternalLinkName = $title;
