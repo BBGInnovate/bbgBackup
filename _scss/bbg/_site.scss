@@ -398,6 +398,13 @@ article {
 		width: 50%;
 	}
 
+	.bbg__sidebar__photo-caption {
+		/* font-size: 1.3rem; */
+		font-weight: 300;
+		line-height: 1.7;
+		margin-top: 1rem;
+	}
+
 	div {
 		margin-bottom: $site-margins;
 	}
@@ -426,14 +433,6 @@ article {
 			clear: both;
 			font-size: 1.5rem;
 		}
-
-		/*
-		a[href$=".pdf"]{
-			&::after {
-				content: " (PDF)";
-			}
-		}
-		*/
 	}
 
 	.bbg__sidebar__download__description {
@@ -457,6 +456,7 @@ article {
 			width: 100%;
 		}
 	}
+
 	.bbg__quotation {
 
 		@include media($medium-screen) {
@@ -603,7 +603,7 @@ article {
 		.bbg__article-sidebar.large {
 			float: left;
 		}
-	} 
+	}
 	*/
 }
 
