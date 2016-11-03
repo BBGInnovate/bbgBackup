@@ -196,6 +196,12 @@
 	margin-bottom: $site-margins;
 }
 
+.bbg__profile-excerpt--sidebar {
+	float: none;
+	margin-bottom: 0 !important;
+	max-width: 100%;
+}
+
 /* not sure we're using this anymore */
 /*
 .bbg__profile-excerpt__photo-container {

@@ -7330,6 +7330,12 @@ section.usa-section.bbg-banner__section {
   visibility: hidden;
 }
 
+.bbg__profile-excerpt--sidebar {
+  float: none;
+  margin-bottom: 0 !important;
+  max-width: 100%;
+}
+
 /* not sure we're using this anymore */
 /*
 .bbg__profile-excerpt__photo-container {
@@ -7827,6 +7833,17 @@ div.appropriations-small > p.header {
   float: left;
   margin-right: 1.5rem;
   max-width: 33%;
+}
+
+.bbg__profile-featured__profile__medium {
+  float: left;
+  margin-right: 1.5rem;
+  max-width: 33%;
+}
+@media screen and (min-width: 900px) {
+  .bbg__profile-featured__profile__medium {
+    max-width: 50%;
+  }
 }
 
 /* Main intro paragraph */

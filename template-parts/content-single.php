@@ -187,15 +187,15 @@ if( $journos ) {
 
 	if( $featuredJournalistsObj ) {
 		// var_dump( $featuredJournalistsObj );
-		$featuredJournalists .= '<section class="usa-section">';
+		// $featuredJournalists .= '<section class="usa-section">';
 		$featuredJournalists .= '<div class="usa-grid-full">';
-		$featuredJournalists .= '<div class="usa-grid">';
+		// $featuredJournalists .= '<div class="usa-grid">';
 		$featuredJournalists .= '<header class="page-header">';
 		$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
-		$featuredJournalists .= '</header><!-- .page-header -->';
-		$featuredJournalists .= '</div>';
+		$featuredJournalists .= '</header>';
+		// $featuredJournalists .= '</div>';
 
-		$featuredJournalists .= '<div class="usa-grid">';
+		// $featuredJournalists .= '<div class="usa-grid">';
 
 		foreach ( $featuredJournalistsObj as $journalists ) {
 	    	foreach ($journalists as $journalist) {
@@ -215,7 +215,7 @@ if( $journos ) {
 					$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
 				}
 
-				$featuredJournalists .= '<div class="bbg__profile-excerpt">';
+				$featuredJournalists .= '<div class="bbg__profile-excerpt--sidebar">';
 
 				$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
 				$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
@@ -224,9 +224,9 @@ if( $journos ) {
 			}
 		}
 
+		// $featuredJournalists .= '</div>';
 		$featuredJournalists .= '</div>';
-		$featuredJournalists .= '</div>';
-		$featuredJournalists .= '</section>';
+		// $featuredJournalists .= '</section>';
 	}
     endwhile;
 }
@@ -439,8 +439,6 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				}
 				/* END AWARD INFO */
 
-				echo $featuredJournalists;
-
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
 				renderContactCard($contactPostIDs);
@@ -453,6 +451,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 				if ($includeRelatedProfile) {
 					echo $relatedProfile;
 				}
+
+				echo $featuredJournalists;
 
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
