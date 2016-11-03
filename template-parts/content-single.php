@@ -166,78 +166,69 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 }
 
 /**** If this is a Threats to Press post show the profile ****/
-$threatCategoryID = get_cat_id( 'threats-to-pressd' );
+$threatCategoryID = get_cat_id( 'threats-to-press' );
 $isThreat = has_category( $threatCategoryID );
+
+$journos = get_field( 'featured_journalists_section' );
+
 $featuredJournalists = "";
 $profilePhoto = "";
 
 // check if the flexible content field has rows of data
-if( have_rows('featured_journalists_section') ){
+if( $journos ) {
+	// echo '<h2>we have rows</h2>';
 
  	// loop through the rows of data
     while ( have_rows('featured_journalists_section') ) : the_row();
 
 	// display a sub field value
 	$featuredJournalistsSectionLabel = get_sub_field('featured_journalists_section_label');
+	$featuredJournalistsObj = get_sub_field('featured_journalist');
 
-	if ( have_rows('featured_journalist') ){
-		//echo the_sub_field('featured_journalists_section_label');
+	if( $featuredJournalistsObj ) {
+		// var_dump( $featuredJournalistsObj );
 		$featuredJournalists .= '<section class="usa-section">';
 		$featuredJournalists .= '<div class="usa-grid-full">';
 		$featuredJournalists .= '<div class="usa-grid">';
 		$featuredJournalists .= '<header class="page-header">';
-		//$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
 		$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
 		$featuredJournalists .= '</header><!-- .page-header -->';
 		$featuredJournalists .= '</div>';
 
 		$featuredJournalists .= '<div class="usa-grid">';
 
-	    while ( have_rows('featured_journalist') ) : the_row();
-			//var_dump(get_sub_field('featured_journalist_profile'));
-			$relatedPages = get_sub_field( 'featured_journalist_profile' );
+		foreach ( $featuredJournalistsObj as $journalists ) {
+	    	foreach ($journalists as $journalist) {
+				$profileTitle = $journalist->post_title;
+				$profileName = $journalist->first_name . " " . $journalist->last_name;
+				$profileOccupation = $journalist->occupation;
+				$profilePhoto = $journalist->profile_photo;
+				$profileUrl = get_permalink($journalist->ID);
+				//$profileExcerpt = get_the_excerpt($relatedPages->ID);
+				$profileExcerpt = my_excerpt($journalist->ID); //get_the_excerpt($relatedPages->ID);
 
-			$profileTitle = $relatedPages->post_title;
-			$profileName = $relatedPages->first_name . " " . $relatedPages->last_name;
-			$profileOccupation = $relatedPages->occupation;
-			$profilePhoto = $relatedPages->profile_photo;
-			$profileUrl = get_permalink($relatedPages->ID);
-			//$profileExcerpt = get_the_excerpt($relatedPages->ID);
-			$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
+				$profileOccupation = '<span class="bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
 
-			$profileOccupation = '<span class="bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
+				if ($profilePhoto) {
+					$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
+					$profilePhoto = $profilePhoto[0];
+					$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
+				}
 
-			if ($profilePhoto) {
-				$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
-				$profilePhoto = $profilePhoto[0];
-				$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
+				$featuredJournalists .= '<div class="bbg__profile-excerpt">';
+
+				$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
+				$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
+
+				$featuredJournalists .= '</div>';
 			}
+		}
 
-			$featuredJournalists .= '<div class="bbg__profile-excerpt">';
-
-			//$featuredJournalists .= '<div class="usa-grid">';
-			/*
-			$featuredJournalists .= '<div class="usa-width-one-third">';
-			$featuredJournalists .= $profilePhoto;
-			$featuredJournalists .= '</div>';
-			*/
-			//$featuredJournalists .= '<div class="usa-width-two-thirds">';
-			$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
-			$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
-			//$featuredJournalists .= '</div>';
-			//$featuredJournalists .= '</div>';
-
-			$featuredJournalists .= '</div>';
-
-	    endwhile;
 		$featuredJournalists .= '</div>';
 		$featuredJournalists .= '</div>';
 		$featuredJournalists .= '</section>';
 	}
-
     endwhile;
-
-    echo $featuredJournalists;
 }
 
 /* Displaying award info -- not implemented yet*/
@@ -346,8 +337,6 @@ if ($isProject) {
 }
 /**** END CREATING NEXT/PREV LINKS ****/
 
-
-
 //the title/headline field, followed by the URL and the author's twitter handle
 $twitterText = "";
 $twitterText .= html_entity_decode( get_the_title() );
@@ -399,7 +388,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	<div class="usa-grid">
 
-		<?php echo '<header class="entry-header bbg__article-header'.$featuredImageClass.'">'; ?>
+		<?php echo '<header class="entry-header bbg__article-header' . $featuredImageClass . '">'; ?>
 
 		<?php echo bbginnovate_post_categories(); ?>
 		<!-- .bbg__label -->
@@ -449,6 +438,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 					echo '</div>';
 				}
 				/* END AWARD INFO */
+
+				echo $featuredJournalists;
 
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
