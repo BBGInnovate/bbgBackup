@@ -131,29 +131,28 @@ if( have_rows('project_team_members') ):
 	$teamRoster .= $s;
 endif;
 
-
 /**** If this press release is categorized as one of the entities, get the entity logo ****/
-$entityCategories=['voa','rfa','mbn','ocb','rferl'];
-$entityLogo="";
-$entityLink="";
+$entityCategories = ['voa','rfa','mbn','ocb','rferl'];
+$entityLogo = "";
+$entityLink = "";
 if ( (in_category('Press Release') && in_category($entityCategories) ) || in_category('Project') ) {
-	foreach ($entityCategories as $eCat) {
-		if ($entityLogo=="" && in_category($eCat)) {
+	foreach ( $entityCategories as $eCat ) {
+		if ( $entityLogo == "" && in_category($eCat) ) {
 			$broadcastersPage=get_page_by_title('Our Networks');
 			$args = array(
-				'post_type'=> 'page',
+				'post_type' => 'page',
 				'posts_per_page' => 1,
 				'post_parent' => $broadcastersPage->ID,
 				'name' => str_replace('-press-release', '', $eCat)
 			);
 			$custom_query = new WP_Query($args);
-			if ($custom_query -> have_posts()) {
-				while ( $custom_query -> have_posts() )  {
+			if ( $custom_query->have_posts() ) {
+				while ( $custom_query->have_posts() )  {
 					$custom_query->the_post();
-					$id=get_the_ID();
+					$id = get_the_ID();
 					$entityLogoID = get_post_meta( $id, 'entity_logo',true );
-					$entityLogo="";
-					$entityLink=get_the_permalink($id);
+					$entityLogo = "";
+					$entityLink = get_the_permalink($id);
 					if ($entityLogoID) {
 						$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
 						$entityLogo = $entityLogoObj[0];
@@ -167,11 +166,13 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 }
 
 /**** If this is a Threats to Press post show the profile ****/
+$threatCategoryID = get_cat_id( 'threats-to-pressd' );
+$isThreat = has_category( $threatCategoryID );
 $featuredJournalists = "";
 $profilePhoto = "";
 
 // check if the flexible content field has rows of data
-if( have_rows('featured_journalists_section') ){
+if( $isThreat && have_rows('featured_journalists_section') ){
 
  	// loop through the rows of data
     while ( have_rows('featured_journalists_section') ) : the_row();
