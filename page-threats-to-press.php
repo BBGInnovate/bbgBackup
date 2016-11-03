@@ -266,10 +266,10 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 							$relatedPages = get_sub_field( 'featured_journalist_profile' );
 
 
-							$profileTitle = $relatedPages ->post_title;
-							$profileName = $relatedPages ->first_name . " " . $relatedPages ->last_name;
-							$profileOccupation = $relatedPages ->occupation;
-							$profilePhoto = $relatedPages ->profile_photo;
+							$profileTitle = $relatedPages->post_title;
+							$profileName = $relatedPages->first_name . " " . $relatedPages->last_name;
+							$profileOccupation = $relatedPages->occupation;
+							$profilePhoto = $relatedPages->profile_photo;
 							$profileUrl = get_permalink($relatedPages->ID);
 							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
 							$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
@@ -445,7 +445,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					}
 					var titleLink = "<h5>" + headline + "</h5>";
 					if (t.link != "") {
-						titleLink="<h5><a href='" + t.link + "'>" + headline + "</a></h5>";	
+						titleLink="<h5><a href='" + t.link + "'>" + headline + "</a></h5>";
 					}
 
 					if (t.status == "Killed"){
@@ -475,7 +475,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 								'marker-color': markerColor
 							})
 						});
-						
+
 						marker.bindPopup(titleLink + t.description);
 						markers.addLayer(marker);
 					}

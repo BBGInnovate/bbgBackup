@@ -166,6 +166,81 @@ if ( (in_category('Press Release') && in_category($entityCategories) ) || in_cat
 	}
 }
 
+/**** If this is a Threats to Press post show the profile ****/
+$featuredJournalists = "";
+$profilePhoto = "";
+
+// check if the flexible content field has rows of data
+if( have_rows('featured_journalists_section') ){
+
+ 	// loop through the rows of data
+    while ( have_rows('featured_journalists_section') ) : the_row();
+
+	// display a sub field value
+	$featuredJournalistsSectionLabel = get_sub_field('featured_journalists_section_label');
+
+	if ( have_rows('featured_journalist') ){
+		//echo the_sub_field('featured_journalists_section_label');
+		$featuredJournalists .= '<section class="usa-section">';
+		$featuredJournalists .= '<div class="usa-grid-full">';
+		$featuredJournalists .= '<div class="usa-grid">';
+		$featuredJournalists .= '<header class="page-header">';
+		//$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
+		$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
+		$featuredJournalists .= '</header><!-- .page-header -->';
+		$featuredJournalists .= '</div>';
+
+		$featuredJournalists .= '<div class="usa-grid">';
+
+	    while ( have_rows('featured_journalist') ) : the_row();
+			//var_dump(get_sub_field('featured_journalist_profile'));
+			$relatedPages = get_sub_field( 'featured_journalist_profile' );
+
+			$profileTitle = $relatedPages->post_title;
+			$profileName = $relatedPages->first_name . " " . $relatedPages->last_name;
+			$profileOccupation = $relatedPages->occupation;
+			$profilePhoto = $relatedPages->profile_photo;
+			$profileUrl = get_permalink($relatedPages->ID);
+			//$profileExcerpt = get_the_excerpt($relatedPages->ID);
+			$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
+
+			$profileOccupation = '<span class="bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
+
+			if ($profilePhoto) {
+				$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
+				$profilePhoto = $profilePhoto[0];
+				$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
+			}
+
+			$featuredJournalists .= '<div class="bbg__profile-excerpt">';
+
+			//$featuredJournalists .= '<div class="usa-grid">';
+			/*
+			$featuredJournalists .= '<div class="usa-width-one-third">';
+			$featuredJournalists .= $profilePhoto;
+			$featuredJournalists .= '</div>';
+			*/
+			//$featuredJournalists .= '<div class="usa-width-two-thirds">';
+			$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
+			$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
+			//$featuredJournalists .= '</div>';
+			//$featuredJournalists .= '</div>';
+
+			$featuredJournalists .= '</div>';
+
+	    endwhile;
+		$featuredJournalists .= '</div>';
+		$featuredJournalists .= '</div>';
+		$featuredJournalists .= '</section>';
+	}
+
+    endwhile;
+
+} else {
+	//echo "<h1>nope</h1>";
+}
+
+
 /* Displaying award info -- not implemented yet*/
 $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
