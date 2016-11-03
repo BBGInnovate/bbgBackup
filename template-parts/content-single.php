@@ -172,7 +172,7 @@ $featuredJournalists = "";
 $profilePhoto = "";
 
 // check if the flexible content field has rows of data
-if( $isThreat && have_rows('featured_journalists_section') ){
+if( have_rows('featured_journalists_section') ){
 
  	// loop through the rows of data
     while ( have_rows('featured_journalists_section') ) : the_row();
