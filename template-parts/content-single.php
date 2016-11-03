@@ -237,10 +237,8 @@ if( $isThreat && have_rows('featured_journalists_section') ){
 
     endwhile;
 
-} else {
-	//echo "<h1>nope</h1>";
+    echo $featuredJournalists;
 }
-
 
 /* Displaying award info -- not implemented yet*/
 $awardCategoryID = get_cat_id('Award');
