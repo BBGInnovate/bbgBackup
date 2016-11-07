@@ -53,43 +53,12 @@ get_header(); ?>
 				</header><!-- .page-header -->
 			</div>
 
-			<?php
-				/*$hideFeaturedImage = FALSE;
-				if ($videoUrl != "") {
-					echo featured_video($videoUrl);
-					$hideFeaturedImage = TRUE;
-				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-					echo '<div class="usa-grid-full">';
-					$featuredImageClass = "";
-					$featuredImageCutline = "";
-					$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
-					if ($thumbnail_image && isset($thumbnail_image[0])) {
-						$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-					}
-
-					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
-
-					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
-					echo '</div>';
-
-					// Caption for featured image
-					if ($featuredImageCutline != "") {
-						echo '<div class="usa-grid">';
-							echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-						echo '</div> <!-- usa-grid -->';
-					}
-
-					echo '</div> <!-- usa-grid-full -->';
-
-				}*/
-			?><!-- .bbg__article-header__thumbnail -->
-
 			<!-- SET UNIVERSAL VARIABLES -->
 			<?php
 				// access site-wide variables
 				global $post;
 				// set locale for number filters
-				setlocale( LC_ALL, 'en_US' ); // currency
+				setlocale( LC_ALL, 'en_US.UTF-8' ); // currency
 
 			    /* BBG settings variables */
 			    // Load url for mission page
@@ -142,9 +111,9 @@ get_header(); ?>
 				$city = get_field( 'agency_city', 'options', 'false' );
 				$state = get_field( 'agency_state', 'options', 'false' );
 				$zip = get_field( 'agency_zip', 'options', 'false' );
-				$address = "";
-				$mapLink = "";
-				$includeContactBox = FALSE;
+				// $address = "";
+				// $mapLink = "";
+				// $includeContactBox = FALSE;
 
 				/* Format all contact information */
 				// Show corresponding phone number
@@ -273,43 +242,40 @@ get_header(); ?>
 		        			<h3 class="bbg__kits__section--tile__title-bar">Annual budget</h3>
 		        			<table class="bbg__kits__section--tile__table--borderless">
 								<tbody>
-							<?php
-								// check that budget repeater field exists
-								$allBudgets = get_field( 'site_setting_annual_budgets', 'options', 'false' );
-								//arsort($allBudgets);
-								//var_dump( $allBudgets );
-								// echo $allBudgets;
+								<?php
+									// check that budget repeater field exists
+									$allBudgets = get_field( 'site_setting_annual_budgets', 'options', 'false' );
+									//arsort($allBudgets);
+									//var_dump( $allBudgets );
+									// echo $allBudgets;
 
-								if( $allBudgets ) {
-									// echo '<ul class="bbg__kits__section--tile__list">';
+									if( $allBudgets ) {
+										//build a new array with the key and value
+										foreach($allBudgets as $key => $value) {
+											//still going to sort by firstname
+											$budget[$key] = $value['fiscal_year'];
+										}
+										// sort multi-dimensional array by new array
+										array_multisort($budget, SORT_DESC, $allBudgets);
 
-									//build a new array with the key and value
-									foreach($allBudgets as $key => $value) {
-										//still going to sort by firstname
-										$budget[$key] = $value['fiscal_year'];
+										// loop through repeater rows
+										foreach( $allBudgets as $budget ) {
+											// populate variables for each row
+											$budgetFY = 'FY' . $budget['fiscal_year'];
+											$budgetStatus = $budget['status'];
+											$budgetAmount = $budget['dollar_amount'];
+
+											echo '<!-- ' . $budgetFY . ' budget -->';
+											echo '<tr>';
+												// fiscal year column
+												echo '<th scope="row">' . $budgetFY . ' <span class="bbg__file-size">(' . $budgetStatus  . ')</span></th>';
+												// amount column
+												echo '<td class="bbg__kits__section--tile__list--sans">' . money_format( '%.1n', $budgetAmount ) . 'M</td>';
+											echo '</tr>';
+										}
 									}
-									// sort multi-dimensional array by new array
-									array_multisort($budget, SORT_DESC, $allBudgets);
-
-									// loop through repeater rows
-									foreach( $allBudgets as $budget ) {
-										// populate variables for each row
-										$budgetFY = 'FY' . $budget['fiscal_year'];
-										$budgetStatus = $budget['status'];
-										$budgetAmount = $budget['dollar_amount'];
-
-										echo '<!-- ' . $budgetFY . ' budget -->';
-										echo '<tr>';
-											// fiscal year column
-											echo '<th scope="row">' . $budgetFY . ' <span class="bbg__file-size">(' . $budgetStatus  . ')</span></th>';
-											// amount column
-											echo '<td class="bbg__kits__section--tile__list--sans">' . money_format( '%.1n', $budgetAmount ) . 'M</td>';
-										echo '</tr>';
-									}
-									// echo '</ul>';
-								}
-							?>
-									</tbody>
+								?>
+								</tbody>
 							</table>
 		        		</article>
 		        	</div>
