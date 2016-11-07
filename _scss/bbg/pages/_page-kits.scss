@@ -1,10 +1,33 @@
 /* Main intro paragraph */
 .bbg__kits__intro {
 	// intro text
+	margin-bottom: $site-margins;
+
 	p {
 		@extend .usa-font-lead;
 		line-height: 2.5;
+
+		&:first-of-type {
+			display: block;
+			background-color: $color-gray-lightest;
+			border-radius: $border-radius;
+			padding: $site-margins;
+			color: #000;
+			font: {
+				family: $font-sans;
+				size: 2.25rem;
+				weight: 300;
+			}
+			line-height: 1.7;
+			margin: 0;
+
+			@include media($large-screen) {
+				font-size: 3rem;
+				line-height: 1.9;
+			}
+		}
 	}
+
 	// "Read more" link
 	a.bbg__kits__intro__more--link {
 		@extend .bbg__read-more;
@@ -115,6 +138,39 @@
 				}
 
 				/* Statistics tiles */
+				// Table with stats
+				.bbg__kits__section--tile__table--borderless {
+					@extend .bbg__table-plain;
+					font: {
+						family: $font-serif;
+						size: $read-in-font-size;
+						weight: $font-bold;
+					}
+
+					th {
+						height: 4rem;
+						padding-left: 0;
+						text-align: left;
+						vertical-align: text-top;
+					}
+
+					td {
+						height: 4rem;
+						padding: 0;
+						text-align: right;
+						vertical-align: text-top;
+					}
+
+					@include media($medium-screen) {
+						font-size: $base-font-size;
+					}
+
+					@include media ($medium-large-screen) {
+						font-size: $read-in-font-size;
+					}
+
+				}
+				// Paragraph with stats
 				.bbg__kits__section--tile__list {
 					@extend .usa-unstyled-list;
 
@@ -130,8 +186,7 @@
 
 					&--serif {
 						font: {
-							size: 4.5rem;
-							style: normal;
+							size: 3.75rem;
 							weight: $font-bold;
 						}
 						line-height: $small-line-height;
@@ -140,25 +195,39 @@
 					&--sans {
 						font: {
 							family: $font-sans;
-							size: 3rem;
-							style: normal;
+							size: 2.75rem;
 							weight: $font-bold;
 						}
 						line-height:  $small-line-height;
 					}
 
-					@include media($medium-screen) {
-						&--serif {
-							font-size: 3.25rem;
+					&--list {
+						font: {
+							size: 2rem;
+							weight: $font-bold;
 						}
-						&--sans {
-							font-size: 2.25rem;
+						text-align: right;
+
+						.bbg__file-size::after {
+							content: '\2001';
 						}
 					}
 
 					@include media($medium-screen) {
 						&--serif {
-							font-size: 4.5rem;
+							font-size: 3.15rem;
+						}
+						&--sans {
+							font-size: 2.15rem;
+						}
+						&--list {
+							font-size: 1.75rem;
+						}
+					}
+
+					@include media($medium-large-screen) {
+						&--serif {
+							font-size: 4.25rem;
 						}
 						&--sans {
 							font-size: 3rem;

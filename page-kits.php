@@ -54,7 +54,7 @@ get_header(); ?>
 			</div>
 
 			<?php
-				$hideFeaturedImage = FALSE;
+				/*$hideFeaturedImage = FALSE;
 				if ($videoUrl != "") {
 					echo featured_video($videoUrl);
 					$hideFeaturedImage = TRUE;
@@ -81,7 +81,7 @@ get_header(); ?>
 
 					echo '</div> <!-- usa-grid-full -->';
 
-				}
+				}*/
 			?><!-- .bbg__article-header__thumbnail -->
 
 			<!-- SET UNIVERSAL VARIABLES -->
@@ -92,8 +92,29 @@ get_header(); ?>
 				setlocale( LC_ALL, 'en_US' ); // currency
 
 			    /* BBG settings variables */
-			    $mission = get_field( 'site_setting_mission_statement', 'options', 'false' );
+			    // Load url for mission page
 			    $missionURL = get_field( 'site_setting_mission_statement_link', 'options', 'false' );
+
+			    if ( $missionURL ) {
+			    	// get mission page ID
+			    	$missionID = url_to_postid( $missionURL );
+			    	// load excerpt from page
+					$mission = my_excerpt( $missionID );
+					// apply content filters to excerpt
+					$mission = apply_filters( 'the_content', $mission );
+					$mission = str_replace( ']]>', ']]&gt;', $mission );
+					// remove last few characters from excerpt
+					$mission = substr($mission, 0, -5);
+					// add link to url at end of excerpt
+					$mission = $mission . ' <a href="' . $missionURL . '" class="bbg__kits__intro__more--link">Network missions »</a></p>';
+			    } else {
+			    	// get mission from BBG settings "mission statement" variable
+			    	$mission = get_field( 'site_setting_mission_statement', 'options', 'false' );
+			    	// apply content filters to text
+					$mission = apply_filters( 'the_content', $mission );
+					$mission = str_replace( ']]>', ']]&gt;', $mission );
+			    }
+
 			    // numbers
 			    $networks = get_field( 'site_setting_total_networks', 'options', 'false' ) . " networks";
 			    $languages = get_field( 'site_setting_total_languages', 'options', 'false' ) . " languages";
@@ -101,6 +122,8 @@ get_header(); ?>
 			    $audience = get_field( 'site_setting_unduplicated_audience', 'options', 'false' ) . " million";
 			    $affiliates = get_field( 'site_setting_total_affiliates', 'options', 'false' );
 					$affiliates = number_format( $affiliates ) . " affiliates"; // format number and append value desc
+			    $transmittingSites = get_field( 'site_setting_transmitting_sites', 'options', 'false' );
+					$transmittingSites = number_format( $transmittingSites ) . " transmitting sites"; // format number and append value desc
 			    $programming = get_field( 'site_setting_weekly_programming', 'options', 'false' );
 					$programming = number_format( $programming ) . " hours"; // format number and append value desc
 
@@ -159,7 +182,7 @@ get_header(); ?>
 
 			<!-- Page introduction -->
 			<div id="page-intro" class="usa-section usa-grid bbg__kits__intro">
-				<?php echo '<p>' . $mission . ' <a href="' . $missionURL . '" class="bbg__kits__intro__more--link">Network missions »</a></p>'; ?>
+				<?php echo $mission; ?>
 			</div>
 
 			<!-- Inquiries -->
@@ -224,23 +247,70 @@ get_header(); ?>
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 		        <!-- 3-COL ROW -->
 		        <section class="usa-grid-full bbg__kits__section--row">
-		        	<h2 class="entry-title">BBG at-a-glance</h2>
+		        	<h2 class="entry-title">BBG by the numbers</h2>
 		        	<div class="usa-grid-full bbg__kits__section--tiles">
 		        		<!-- Elevator pitch/intro tile -->
-		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
+		        		<!-- <article class="bbg-grid--1-3-3 bbg__kits__section--tile">
 		        			<div class="bbg__kits__pitch--rev">
 								<?php echo $pageContent; ?>
 				        	</div>
-		        		</article>
-		        		<!-- Stats tile -->
+		        		</article> -->
+
+						<!-- DISTRIBUTION tile -->
 		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
-		        			<h3 class="bbg__kits__section--tile__title-bar">Universal reach</h3>
-							<p class="bbg__kits__section--tile__list"><span class="bbg__kits__section--tile__list--serif"><?php echo $networks; ?></span> serve an audience of <span class="bbg__kits__section--tile__list--sans"><?php echo $audience; ?></span> weekly in <span class="bbg__kits__section--tile__list--sans"><?php echo $languages; ?></span> in more than <span class="bbg__kits__section--tile__list--sans"><?php echo $countries; ?></span>.</p>
+		        			<h3 class="bbg__kits__section--tile__title-bar">International operations</h3>
+							<p class="bbg__kits__section--tile__list"><span class="bbg__kits__section--tile__list--serif"><?php echo $networks; ?></span> and a system of <span class="bbg__kits__section--tile__list--sans"><?php echo $affiliates; ?></span> and over <span class="bbg__kits__section--tile__list--sans"><?php echo $transmittingSites; ?></span> distribute <span class="bbg__kits__section--tile__list--sans"><?php echo $programming; ?></span> of original content globally each week.</p>
 		        		</article>
-						<!-- Stats tile -->
+
+		        		<!-- AUDIENCE tile -->
 		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
-		        			<h3 class="bbg__kits__section--tile__title-bar">Global distribution</h3>
-							<p class="bbg__kits__section--tile__list">Nearly <span class="bbg__kits__section--tile__list--sans"><?php echo $affiliates; ?></span> worldwide help our networks distribute <span class="bbg__kits__section--tile__list--serif"><?php echo $programming; ?></span> of original programming each week.</p>
+		        			<h3 class="bbg__kits__section--tile__title-bar">Global audience</h3>
+							<p class="bbg__kits__section--tile__list">A worldwide unduplicated audience of <span class="bbg__kits__section--tile__list--serif"><?php echo $audience; ?></span> from more than <span class="bbg__kits__section--tile__list--sans"><?php echo $countries; ?></span> tune in weekly in <span class="bbg__kits__section--tile__list--sans"><?php echo $languages; ?></span>.</p>
+		        		</article>
+
+		        		<!-- BUDGET tile -->
+		        		<article class="bbg-grid--1-3-3 bbg__kits__section--tile">
+		        			<h3 class="bbg__kits__section--tile__title-bar">Annual budget</h3>
+		        			<table class="bbg__kits__section--tile__table--borderless">
+								<tbody>
+							<?php
+								// check that budget repeater field exists
+								$allBudgets = get_field( 'site_setting_annual_budgets', 'options', 'false' );
+								//arsort($allBudgets);
+								//var_dump( $allBudgets );
+								// echo $allBudgets;
+
+								if( $allBudgets ) {
+									// echo '<ul class="bbg__kits__section--tile__list">';
+
+									//build a new array with the key and value
+									foreach($allBudgets as $key => $value) {
+										//still going to sort by firstname
+										$budget[$key] = $value['fiscal_year'];
+									}
+									// sort multi-dimensional array by new array
+									array_multisort($budget, SORT_DESC, $allBudgets);
+
+									// loop through repeater rows
+									foreach( $allBudgets as $budget ) {
+										// populate variables for each row
+										$budgetFY = 'FY' . $budget['fiscal_year'];
+										$budgetStatus = $budget['status'];
+										$budgetAmount = $budget['dollar_amount'];
+
+										echo '<!-- ' . $budgetFY . ' budget -->';
+										echo '<tr>';
+											// fiscal year column
+											echo '<th scope="row">' . $budgetFY . ' <span class="bbg__file-size">(' . $budgetStatus  . ')</span></th>';
+											// amount column
+											echo '<td class="bbg__kits__section--tile__list--sans">' . money_format( '%.1n', $budgetAmount ) . 'M</td>';
+										echo '</tr>';
+									}
+									// echo '</ul>';
+								}
+							?>
+									</tbody>
+							</table>
 		        		</article>
 		        	</div>
 		        </section>
@@ -341,25 +411,37 @@ get_header(); ?>
 								// Loop through all the grandchild pages
 								foreach ($downloadFiles as $file) {
 									// Define all variables
-									$fileName = $file['downloads_link_name'];
-									// $fileURL = $file['downloads_file'];
 									$fileImageObject = $file['downloads_file_image'];
 									// var_dump( $fileImageObject );
 										// retrieve ID from image object and load "mugshot" size
 										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'large-thumb' );
 
-									// Related page array
+
+								    $supportPageTitle = $file['kits_related_page_name'];
+								    // Related page array
 								    $supportPage = $file['kits_related_page'];
 								    	// page data
-								    	$pageHeadline = get_the_title( $supportPage->ID );
+								    	if ( $supportPageTitle ) {
+								    		$pageHeadline = $supportPageTitle;
+								    	} else {
+									    	$pageHeadline = get_the_title( $supportPage->ID );
+								    	}
 								    	$pageURL = get_permalink( $supportPage->ID );
 										$pageExcerpt = my_excerpt( $supportPage->ID );
 										$pageExcerpt = apply_filters( 'the_content', $pageExcerpt );
 										$pageExcerpt = str_replace( ']]>', ']]&gt;', $pageExcerpt );
 
+
+									$fileTitle = $file['downloads_link_name'];
 								    // Files object array
 									$fileObj = $file['downloads_file'];
 										// file data
+										// var_dump( $fileObj );
+										if ( $fileTitle ) {
+											$fileName = $fileTitle;
+										} else {
+											$fileName = $fileObj['title'];
+										}
 										$fileID = $fileObj['ID'];
 										$fileURL = $fileObj['url'];
 										$file = get_attached_file( $fileID );

@@ -3391,7 +3391,8 @@ a:focus .bbg__article-share__icon {
 .usa-table-borderless,
 .bbg__sidebar__table,
 .bbg__table-plain,
-.bbg__article__form--inline {
+.bbg__article__form--inline,
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
   font-size: 1.3rem;
 }
 @media screen and (min-width: 481px) {
@@ -3399,7 +3400,8 @@ a:focus .bbg__article-share__icon {
   .usa-table-borderless,
   .bbg__sidebar__table,
   .bbg__table-plain,
-  .bbg__article__form--inline {
+  .bbg__article__form--inline,
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
     font-size: 1.6rem;
   }
 }
@@ -3409,16 +3411,17 @@ table td {
   border: 1px solid #aeb0b5;
 }
 
-.bbg__table-plain, .bbg__article__form--inline {
+.bbg__table-plain, .bbg__article__form--inline, .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
   display: block;
   margin: 0 auto;
   min-width: auto;
   max-width: 600px;
   width: 100%;
 }
-.bbg__table-plain th, .bbg__article__form--inline th,
+.bbg__table-plain th, .bbg__article__form--inline th, .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless th,
 .bbg__table-plain td,
-.bbg__article__form--inline td {
+.bbg__article__form--inline td,
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless td {
   border: none;
   padding: 0 1.5rem;
 }
@@ -7959,6 +7962,33 @@ div.appropriations-small > p.header {
     padding: 3rem;
   }
 }
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless th {
+  height: 4rem;
+  padding-left: 0;
+  text-align: left;
+  vertical-align: text-top;
+}
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless td {
+  height: 4rem;
+  padding: 0;
+  text-align: right;
+  vertical-align: text-top;
+}
+@media screen and (min-width: 600px) {
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__table--borderless {
+    font-size: 2rem;
+  }
+}
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.6rem;
@@ -7967,29 +7997,38 @@ div.appropriations-small > p.header {
   margin-left: auto;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
-  font-size: 4.5rem;
-  font-style: normal;
+  font-size: 3.75rem;
   font-weight: 700;
   line-height: 1.4;
 }
 .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 3rem;
-  font-style: normal;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.4;
 }
-@media screen and (min-width: 600px) {
-  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
-    font-size: 3.25rem;
-  }
-  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
-    font-size: 2.25rem;
-  }
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--list {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: right;
+}
+.bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--list .bbg__file-size::after {
+  content: '\2001';
 }
 @media screen and (min-width: 600px) {
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
-    font-size: 4.5rem;
+    font-size: 3.15rem;
+  }
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
+    font-size: 2.15rem;
+  }
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--list {
+    font-size: 1.75rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--serif {
+    font-size: 4.25rem;
   }
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile .bbg__kits__section--tile__list--sans {
     font-size: 3rem;
