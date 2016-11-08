@@ -160,15 +160,22 @@ function setActiveSphere(s) {
 				map: "worldLow",
 				areas:getAreas("all")
 			},
+			// backgroundColor:"#AAAAAA",
+			// backgroundAlpha: 1,
 			areasSettings: {
-				autoZoom: true,
+				autoZoom: false,
 				alpha: 1,
 				unlistedAreasAlpha: 0.6,
 				color:"#CCCCCC",
 				selectable: true
 			},
 		} );
-		
+		map.zoomControl = {
+			zoomControlEnabled: false,
+			panControlEnabled: false,
+			homeButtonEnabled: false
+		};
+
 		map.addListener("clickMapObject", function (event) {
 			sphere = sMap[event.mapObject.id];
 			window.location = bbgConfig.template_directory_uri + "../../../hot-spots/" + sphere;
