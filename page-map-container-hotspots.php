@@ -53,6 +53,16 @@ echo getNetworkExcerptJS();
 			</div><!-- div.usa-grid-full -->
 			<section class="usa-section">
 				<div class="usa-grid">
+
+					<div align="center">
+						<h1 style="margin-top:2rem;">Hot Spots</h1>
+						<div class="legendBox china"></div> China
+						<div class="legendBox cve"></div> Countering Violent Extremism
+						<div class="legendBox cuba"></div> Cuba
+						<div class="legendBox iran"></div> Iran
+						<div class="legendBox russia"></div> Russia
+					</div><BR>
+
 					<div class="bbg__map-area__container " style="postion: relative;">
 						<div id="chartdiv"></div>
 					</div>
@@ -75,14 +85,7 @@ echo getNetworkExcerptJS();
 							<option value="russia">Russia</option>
 						</select>
 					</div>
-					<div align="center">
-						<h1 style="margin-top:2rem;">Hot Spots</h1>
-						<div class="legendBox china"></div> China
-						<div class="legendBox cve"></div> Countering Violent Extremism
-						<div class="legendBox cuba"></div> Cuba
-						<div class="legendBox iran"></div> Iran
-						<div class="legendBox russia"></div> Russia
-					</div>
+					
 				</div>
 			</section>
 
