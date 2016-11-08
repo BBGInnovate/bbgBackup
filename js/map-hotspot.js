@@ -1,11 +1,17 @@
-var COLOR_HOVER = "#CC0000";
+var COLOR_HOVER = "#CC0000"; //the color that highlights a hot spot when you roll over a country
+var COLOR_ACTIVE = "#FFFFFF"; //background color when a button in the hot spot bar is active
+
+//primary colors for our various hot spots
 var colors = {
 	iran: "#83c2ba",
 	russia: "#ebdb8b",
 	china: "#a791b4",
 	cuba: "#85c5e3",
-	cve: "#C9B7AD"
+	cve: "#C9B7AD",
+	all: "#999999"
 }
+
+//define each sphere an dthe countires it is comprised of and influences
 var spheres = {
 	iran: {
 		comprisedOf: ['Iran'],
@@ -46,6 +52,8 @@ var spheres = {
 		label: "China"
 	},
 };
+
+
 var fullCountryList = AmCharts.maps.worldLow.svg.g.path;
 var activeSphere = "all";
 
@@ -80,20 +88,6 @@ for (var key in spheres) {
 }
 
 jQuery( document ).ready(function() {
- 	//color the legend
-    jQuery('.china').css('background-color', colors['china']);
-    jQuery('.cuba').css('background-color', colors['cuba']);
-    jQuery('.iran').css('background-color', colors['iran']);
-    jQuery('.russia').css('background-color', colors['russia']);
-    jQuery('.cve').css('background-color', colors['cve']);
-
-    jQuery('#mapFilters input').click(function(e) {
-    	setActiveSphere(jQuery(this).val());
-    });
-    jQuery('#hotSpotPicker').change(function(e) {
-    	setActiveSphere(jQuery(this).val());
-    });
-
 
 });
 
@@ -262,6 +256,49 @@ function setActiveSphere(s) {
 				}
 			}
 		});
+
+
+		//color the legend
+	    jQuery('.china').css('background-color', colors['china']);
+	    jQuery('.cuba').css('background-color', colors['cuba']);
+	    jQuery('.iran').css('background-color', colors['iran']);
+	    jQuery('.russia').css('background-color', colors['russia']);
+	    jQuery('.cve').css('background-color', colors['cve']);
+
+	    jQuery('#mapFilters input').click(function(e) {
+	    	setActiveSphere(jQuery(this).val());
+	    });
+	    jQuery('#hotSpotPicker').change(function(e) {
+	    	setActiveSphere(jQuery(this).val());
+	    });
+
+	    function resetButtons() {
+	    	jQuery('.entity-buttons button').each(function (index, value) {
+	    		var val = jQuery(this).val();
+	    		var defaultButtonBG = colors[val];
+	    		var defaultButtonTextColor = "#FFF";
+	    		jQuery(this).css('color',defaultButtonTextColor);
+	    		jQuery(this).css('background-color',defaultButtonBG);
+	    		jQuery(this).css('border-color',defaultButtonBG);
+	    		
+	    		
+	    	});
+	    }
+	     jQuery('.entity-buttons button').click(function(e) {
+	     	resetButtons();
+
+	     	var val = jQuery(this).val();
+	     	jQuery(this).css('color',colors[val]);
+	     	jQuery(this).css('background-color',COLOR_ACTIVE);
+	     	setActiveSphere(val);
+	     	
+	     });
+	    resetButtons();
+	    jQuery('.entity-buttons button.all').trigger( "click" );
+
+
+
+
 	});
 
 

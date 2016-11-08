@@ -29,6 +29,13 @@ echo getNetworkExcerptJS();
 	display:inline-table;
 	background: #000000;
 }
+.entity-buttons button { 
+	border-top:3px;
+	border-left:3px;
+	border-right:3px;
+	border-bottom:0px;
+	border-style: solid;
+}
 </style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
@@ -49,13 +56,13 @@ echo getNetworkExcerptJS();
 			</div><!-- div.usa-grid-full -->
 			<section class="usa-section">
 				<div class="usa-grid">
-					<div class="btn-group entity-buttons u--show-medium-large" role="group" aria-label="..." style=" clear: none;">
-						<button type="button" title="ALL" class=" btn-default all"><span class="bbg__map__button-text">ALL</span></button><!--
-						--><button type="button" title="CHINA" class=" btn-default china"><span class="bbg__map__button-text">CHINA</span></button><!--
+					<div class="btn-group entity-buttons u--show-medium-large" role="group" aria-label="..." style="clear: none;">
+						<button type="button" title="ALL" class=" btn-default all" value="all"><span class="bbg__map__button-text">ALL</span></button><!--
+						--><button type="button" title="CHINA" class=" btn-default china" value="china"><span class="bbg__map__button-text">CHINA</span></button><!--
 						--><!--
-						--><button type="button" title="CUBA" class=" btn-default cuba"><span class="bbg__map__button-text">CUBA</span></button><!--
-						--><button type="button" title="IRAN" class=" btn-default iran"><span class="bbg__map__button-text">IRAN</span></button><!--
-						--><button type="button" title="RUSSIA" class=" btn-default russia"><span class="bbg__map__button-text">RUSSIA</span></button><button type="button" title="COUNTERING VIOLENT EXTREMISM" class=" btn-default cve"><span class="bbg__map__button-text">COUNTERING VIOLENT EXTREMISM</span></button>
+						--><button type="button" title="CUBA" class=" btn-default cuba" value="cuba"><span class="bbg__map__button-text">CUBA</span></button><!--
+						--><button type="button" title="IRAN" class=" btn-default iran" value="iran"><span class="bbg__map__button-text">IRAN</span></button><!--
+						--><button type="button" title="RUSSIA" class=" btn-default russia" value="russia"><span class="bbg__map__button-text">RUSSIA</span></button><button type="button" title="COUNTERING VIOLENT EXTREMISM" class=" btn-default cve" value="cve"><span class="bbg__map__button-text">COUNTERING VIOLENT EXTREMISM</span></button>
 					</div>
 					<div align="center" id="mapFilters" class="u--hide-medium-large">
 						<BR>
