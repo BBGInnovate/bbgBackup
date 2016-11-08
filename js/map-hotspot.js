@@ -70,7 +70,6 @@ for (var key in spheres) {
 			if (cMap.hasOwnProperty(countryName)) {
 				var countryID = cMap[countryName];
 				sAreas[key].push(countryID);
-				console.log("pusing " + countryID + " onto " + key);
 				if (! (sMap.hasOwnProperty(countryID))) {
 					sMap[countryID] = key;	
 				}
@@ -89,6 +88,9 @@ jQuery( document ).ready(function() {
     jQuery('.cve').css('background-color', colors['cve']);
 
     jQuery('#mapFilters input').click(function(e) {
+    	setActiveSphere(jQuery(this).val());
+    });
+    jQuery('#hotSpotPicker').change(function(e) {
     	setActiveSphere(jQuery(this).val());
     });
 
@@ -144,15 +146,6 @@ function setActiveSphere(s) {
 	var newAreas = getAreas(s);
 	map.dataProvider.areas = newAreas;
 	map.validateData();
-	
-	// var g2 = [];
-	// for (var i=0; i < sAreas[activeSphere].length; i++) {
-	// 	var id2 = sAreas[activeSphere][i];
-	// 	var o = map.getObjectById(id2);
-	// 	g2.push(o);
-	// }
-	// map.zoomToGroup(g2);
-
 }
 
 (function ($,bbgConfig, entities) {
@@ -200,7 +193,6 @@ function setActiveSphere(s) {
 			var primarySphere = sMap[countryID];
 			if (primarySphere) {
 				if (activeSphere != "all") {
-//					console.log("mismatch2 " + primarySphere + " and " +activeSphere);
 					primarySphere = activeSphere;
 				}
 				var c = cMapByID[countryID];
@@ -236,7 +228,6 @@ function setActiveSphere(s) {
 
 			if (primarySphere) {
 				if (activeSphere != "all") {
-					//console.log("mismatch " + primarySphere + " and " +activeSphere);
 					primarySphere = activeSphere;
 				}
 				var c = cMapByID[countryID];

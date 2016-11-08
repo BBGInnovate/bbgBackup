@@ -52,26 +52,38 @@ echo getNetworkExcerptJS();
 				</div><!-- div.usa-grid -->
 			</div><!-- div.usa-grid-full -->
 			<section class="usa-section">
-				<div class="bbg__map-area__container " style="postion: relative;">
-					<div id="chartdiv"></div>
+				<div class="usa-grid">
+					<div class="bbg__map-area__container " style="postion: relative;">
+						<div id="chartdiv"></div>
+					</div>
+					<div align="center" id="mapFilters" class="u--show-medium-large">
+						<input type="radio" checked name="hotspot" id="hs_all" value="all" /><label for="hs_all"> All</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_china" value="china" /><label for="hs_china"> China</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_cve" value="cve" /><label for="hs_cve"> CVE</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_cuba" value="cuba" /><label for="hs_cuba"> Cuba</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_iran" value="iran" /><label for="hs_iran"> Iran</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_russia" value="russia" /><label for="hs_russia"> Russia</label>
+					</div>
+					<div align="center" id="mapFilters" class="u--hide-medium-large">
+						<BR>
+						<select id="hotSpotPicker">
+							<option value="all">All</option>
+							<option value="china">China</option>
+							<option value="cve">CVE</option>
+							<option value="cuba">Cuba</option>
+							<option value="iran">Iran</option>
+							<option value="russia">Russia</option>
+						</select>
+					</div>
+					<div align="center">
+						<h1 style="margin-top:2rem;">Hot Spots</h1>
+						<div class="legendBox china"></div> China
+						<div class="legendBox cve"></div> Countering Violent Extremism
+						<div class="legendBox cuba"></div> Cuba
+						<div class="legendBox iran"></div> Iran
+						<div class="legendBox russia"></div> Russia
+					</div>
 				</div>
-				<div align="center" id="mapFilters" class="u--show-medium-large">
-					<input type="radio" checked name="hotspot" id="hs_all" value="all" /><label for="hs_all"> All</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_china" value="china" /><label for="hs_china"> China</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_cve" value="cve" /><label for="hs_cve"> CVE</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_cuba" value="cuba" /><label for="hs_cuba"> Cuba</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_iran" value="iran" /><label for="hs_iran"> Iran</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_russia" value="russia" /><label for="hs_russia"> Russia</label>
-				</div>
-				<div align="center">
-					<h1 style="margin-top:2rem;">Hot Spots</h1>
-					<div class="legendBox china"></div> China
-					<div class="legendBox cve"></div> Countering Violent Extremism
-					<div class="legendBox cuba"></div> Cuba
-					<div class="legendBox iran"></div> Iran
-					<div class="legendBox russia"></div> Russia
-				</div>
-
 			</section>
 
 			<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
