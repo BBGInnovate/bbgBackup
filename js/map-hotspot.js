@@ -167,14 +167,15 @@ function setActiveSphere(s) {
 				alpha: 1,
 				unlistedAreasAlpha: 0.6,
 				color:"#CCCCCC",
-				selectable: true
+				selectable: true,
+				outlineThickness: 1
 			},
+			zoomControl:  {
+				zoomControlEnabled: false,
+				panControlEnabled: false,
+				homeButtonEnabled: false
+			}
 		} );
-		map.zoomControl = {
-			zoomControlEnabled: false,
-			panControlEnabled: false,
-			homeButtonEnabled: false
-		};
 
 		map.addListener("clickMapObject", function (event) {
 			sphere = sMap[event.mapObject.id];
@@ -213,6 +214,8 @@ function setActiveSphere(s) {
 						var countryID = cMap[countryName];
 						var c2 = cMapByID[countryID];
 						var mapObject = map.getObjectById(countryID);
+						mapObject.outlineThickness=1;
+						//mapObject.outlineAlpha=1;
 						if (mapObject) {
 							
 							if (activeSphere == "all") {
@@ -251,6 +254,8 @@ function setActiveSphere(s) {
 						var mapObject = map.getObjectById(countryID);
 						if (mapObject) {
 							mapObject.color = COLOR_HOVER;
+							mapObject.outlineThickness=0;
+							//mapObject.outlineAlpha=0.1;
 							mapObject.validate();
 						}
 					}
