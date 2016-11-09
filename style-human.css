@@ -7929,6 +7929,10 @@ div.appropriations-small > p.header {
   margin: 0 1rem 0 0;
   right: 1.2rem;
 }
+.bbg__kits__section .bbg__contact-card .bbg__kits__contacts {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
 .bbg__kits__section .bbg__kits__section--row {
   margin-bottom: 6rem;
 }

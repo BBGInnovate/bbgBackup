@@ -1,41 +1,40 @@
-<?php 
-
+<?php
 	function acf_load_contact_card_choices( $field ) {
 	    //http://stackoverflow.com/questions/4452599/how-can-i-reset-a-query-in-a-custom-wordpress-metabox#comment46272169_7845948
 	    //note that wp_reset_postdata doesn't work here, so we have to store a reference to post and put it back when we're done.  documented wordpress "bug"
 
 		global $post;
-		$post_original=$post;
+		$post_original = $post;
 	    $field['choices'] = array();
-	    $qParamsContact=array(
+	    $qParamsContact = array(
 			'post_type' => array('post')
 			,'cat' => get_cat_id('contact')
 			,'posts_per_page' => 100
 		);
 		$custom_query = new WP_Query( $qParamsContact );
 		$choices = array();
-		while ( $custom_query -> have_posts() )  {
+		while ( $custom_query->have_posts() )  {
 			$custom_query->the_post();
 			$choices[] = array(
-				"post_id"=>get_the_ID(),
-				"title"=>get_the_title()
+				"post_id" => get_the_ID(),
+				"title" => get_the_title()
 			);
 		}
-		usort($choices, 'sortByTitle');
-		foreach ($choices as $choice) {
+		usort( $choices, 'sortByTitle' );
+		foreach ( $choices as $choice ) {
 			$field['choices'][ $choice["post_id"]] = $choice["title"];
 		}
 
-		$post=$post_original;
+		$post = $post_original;
 		// return the field
 		return $field;
 	}
 
 	add_filter('acf/load_field/name=contact_post_id', 'acf_load_contact_card_choices');
 
-	function renderContactCard($postIDs) {
-		if (is_array($postIDs) && count($postIDs) > 0) {
-			$qParamsContactCard=array(
+	function renderContactCard( $postIDs ) {
+		if ( is_array($postIDs) && count($postIDs) > 0 ) {
+			$qParamsContactCard = array(
 				'post__in' => $postIDs,
 				'ignore_sticky_posts' => true
 			);
@@ -46,14 +45,14 @@
 				while ( $custom_query->have_posts() ) : $custom_query->the_post();
 					//now let's get the custom fields associated with our related contact posts
 					$id = get_the_ID();
-					$email = get_post_meta( $id, 'email',true );
-					$fullname = get_post_meta( $id, 'fullname',true );
-					$phone = get_post_meta( $id, 'phone',true );
-					$bio = get_the_content($id);
-					$office = get_post_meta( $id, 'office',true );
-					$jobTitle = get_post_meta( $id, 'job_title',true );
+					$email = get_post_meta( $id, 'email', true );
+					$fullname = get_post_meta( $id, 'fullname', true );
+					$phone = get_post_meta( $id, 'phone', true );
+					$bio = get_the_content( $id );
+					$office = get_post_meta( $id, 'office', true );
+					$jobTitle = get_post_meta( $id, 'job_title', true );
 
-					if ($jobTitle!=""){
+					if ($jobTitle != ""){
 						$office = $jobTitle . ", " . $office;
 					}
 
@@ -72,4 +71,29 @@
 		}
 	}
 
+	function renderContactSelect( $postIDs ) {
+		if ( is_array($postIDs) && count($postIDs) > 0 ) {
+			$qParamsContactCard = array(
+				'post__in' => $postIDs,
+				'ignore_sticky_posts' => true
+			);
+			$custom_query = new WP_Query( $qParamsContactCard );
+			if ( $custom_query->have_posts() ) :
+				echo '<select name="entity_sites" id="entity_sites">';
+					echo '<option>Contact our networks</option>';
+					while ( $custom_query->have_posts() ) : $custom_query->the_post();
+						//now let's get the custom fields associated with our related contact posts
+						$id = get_the_ID();
+						$email = get_post_meta( $id, 'email', true );
+						$fullname = get_post_meta( $id, 'fullname', true );
+						$office = get_post_meta( $id, 'office', true );
+
+						echo '<option value="mailto:' . $email . '">' . $fullname . ', ' . $office . '</option>';
+					endwhile;
+				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
+				echo '</div>';
+			endif;
+			wp_reset_postdata();
+		}
+	}
 ?>

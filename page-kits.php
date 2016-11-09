@@ -147,6 +147,11 @@ get_header(); ?>
 				if ( $address != "" || $phone != "" || $email != "" || $phoneMedia != "" || $emailPress != "" ){
 					$includeContactBox = TRUE;
 				}
+
+				// get all contact cards for dropdown
+				$allContacts = get_field( 'kits_network_contacts' );
+
+				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id', true );
 			?>
 
 			<!-- Page introduction -->
@@ -192,9 +197,9 @@ get_header(); ?>
 											$allSocial = get_field( 'agency_social_media_profiles', 'options', 'false' );
 
 											echo '<div class="bbg__kits__social">';
-												if( $allSocial ) {
+												if ( $allSocial ) {
 													// loop through repeater rows
-													foreach( $allSocial as $socials ) {
+													foreach ( $allSocial as $socials ) {
 														// populate variables for each row
 														$socialPlatform = $socials['social_media_platform'];
 														$socialProfile = $socials['social_media_profile_name'];
@@ -203,6 +208,10 @@ get_header(); ?>
 														echo '<a class="bbg__kits__social-link usa-link-' . strtolower( $socialPlatform ) . '" href="' . $socialURL . '" role="img" aria-label="' . $socialPlatform  . '"></a>';
 													}
 												}
+											echo '</div>';
+
+											echo '<div class="bbg__kits__contacts">';
+												renderContactSelect($contactPostIDs);
 											echo '</div>';
 										?>
 									</div>
@@ -256,7 +265,7 @@ get_header(); ?>
 											$budget[$key] = $value['fiscal_year'];
 										}
 										// sort multi-dimensional array by new array
-										array_multisort($budget, SORT_DESC, $allBudgets);
+										array_multisort( $budget, SORT_DESC, $allBudgets );
 
 										// loop through repeater rows
 										foreach( $allBudgets as $budget ) {
@@ -396,7 +405,6 @@ get_header(); ?>
 										$pageExcerpt = my_excerpt( $supportPage->ID );
 										$pageExcerpt = apply_filters( 'the_content', $pageExcerpt );
 										$pageExcerpt = str_replace( ']]>', ']]&gt;', $pageExcerpt );
-
 
 									$fileTitle = $file['downloads_link_name'];
 								    // Files object array
