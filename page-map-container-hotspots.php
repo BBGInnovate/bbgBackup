@@ -29,6 +29,13 @@ echo getNetworkExcerptJS();
 	display:inline-table;
 	background: #000000;
 }
+.entity-buttons button { 
+	border-top:3px;
+	border-left:3px;
+	border-right:3px;
+	border-bottom:0px;
+	border-style: solid;
+}
 </style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
@@ -40,38 +47,59 @@ echo getNetworkExcerptJS();
 			<div class="usa-grid-full">
 				<div class="usa-grid">
 					<header class="page-header">
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php //echo $parent->post_title; ?></a></h5>
-						<?php } ?>
-						<?php //the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+						
+						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>">Section Title<?php //echo $parent->post_title; ?></a></h5>
+						<?php echo "<h1 class='entry-title'>Hot Spots</h1>"; ?>
 					</header><!-- .page-header -->
+					<h3 id="site-intro" class="usa-font-lead">Curabitur convallis eleifend ipsum et malesuada. Donec in egestas mauris, et tincidunt sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  <!--<a href="/who-we-are/" class="bbg__read-more">LEARN MORE »</a>--></h3>
 				</div><!-- div.usa-grid -->
 			</div><!-- div.usa-grid-full -->
 			<section class="usa-section">
-				<div class="bbg__map-area__container " style="postion: relative;">
-					<div id="chartdiv"></div>
-				</div>
-				<div align="center" id="mapFilters" class="u--show-medium-large">
-					<input type="radio" checked name="hotspot" id="hs_all" value="all" /><label for="hs_all"> All</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_china" value="china" /><label for="hs_china"> China</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_cve" value="cve" /><label for="hs_cve"> CVE</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_cuba" value="cuba" /><label for="hs_cuba"> Cuba</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_iran" value="iran" /><label for="hs_iran"> Iran</label>&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="hotspot" id="hs_russia" value="russia" /><label for="hs_russia"> Russia</label>
-				</div>
-				<div align="center">
-					<h1 style="margin-top:2rem;">Hot Spots</h1>
-					<div class="legendBox china"></div> China
-					<div class="legendBox cve"></div> Countering Violent Extremism
-					<div class="legendBox cuba"></div> Cuba
-					<div class="legendBox iran"></div> Iran
-					<div class="legendBox russia"></div> Russia
-				</div>
+				<div class="usa-grid">
+					<div class="btn-group entity-buttons u--show-medium-large" role="group" aria-label="..." style="clear: none;">
+						<button type="button" title="ALL" class=" btn-default all" value="all"><span class="bbg__map__button-text">ALL</span></button><!--
+						--><button type="button" title="CHINA" class=" btn-default china" value="china"><span class="bbg__map__button-text">CHINA</span></button><!--
+						--><!--
+						--><button type="button" title="CUBA" class=" btn-default cuba" value="cuba"><span class="bbg__map__button-text">CUBA</span></button><!--
+						--><button type="button" title="IRAN" class=" btn-default iran" value="iran"><span class="bbg__map__button-text">IRAN</span></button><!--
+						--><button type="button" title="RUSSIA" class=" btn-default russia" value="russia"><span class="bbg__map__button-text">RUSSIA</span></button><button type="button" title="COUNTERING VIOLENT EXTREMISM" class=" btn-default cve" value="cve"><span class="bbg__map__button-text">COUNTERING VIOLENT EXTREMISM</span></button>
+					</div>
+					<div align="center" id="mapFilters" class="u--hide-medium-large">
+						<BR>
+						<select id="hotSpotPicker">
+							<option value="all">All</option>
+							<option value="china">China</option>
+							<option value="cve">CVE</option>
+							<option value="cuba">Cuba</option>
+							<option value="iran">Iran</option>
+							<option value="russia">Russia</option>
+						</select>
+					</div>
 
+					<div class="bbg__map-area__container " style="postion: relative;">
+						<div id="chartdiv"></div>
+					</div><BR>
+
+					<div align="center" class="u--hide-medium-large">
+						<div class="legendBox china"></div> China
+						<div class="legendBox cve"></div> Countering Violent Extremism
+						<div class="legendBox cuba"></div> Cuba
+						<div class="legendBox iran"></div> Iran
+						<div class="legendBox russia"></div> Russia
+					</div><BR>
+					<!--
+					<div align="center" id="mapFilters" class="u--show-medium-large">
+						<input type="radio" checked name="hotspot" id="hs_all" value="all" /><label for="hs_all"> All</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_china" value="china" /><label for="hs_china"> China</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_cve" value="cve" /><label for="hs_cve"> CVE</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_cuba" value="cuba" /><label for="hs_cuba"> Cuba</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_iran" value="iran" /><label for="hs_iran"> Iran</label>&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="hotspot" id="hs_russia" value="russia" /><label for="hs_russia"> Russia</label>
+					</div>
+					-->
+					
+					
+				</div>
 			</section>
 
 			<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
