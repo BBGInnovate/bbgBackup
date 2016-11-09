@@ -1,8 +1,27 @@
 var COLOR_HOVER = "#CC0000"; //the color that highlights a hot spot when you roll over a country
 var COLOR_ACTIVE = "#FFFFFF"; //background color when a button in the hot spot bar is active
 
+var hideUnselectedCountries = false;
+
+var color_secondary_darkest = "#981b1e";
+var color_primary = "#0071bc";
+var color_green = "#2e8540";
+var color_orange = "orange";
+var color_ocb = "#653792";
+var color_mbn = "#BB3530";
+
+
+
 //primary colors for our various hot spots
 var colors = {
+	iran: color_green,
+	russia: color_orange,
+	china: color_mbn,
+	cuba: color_ocb,
+	cve: color_primary,
+	all: color_secondary_darkest
+}
+var pastelColors = {
 	iran: "#83c2ba",
 	russia: "#ebdb8b",
 	china: "#a791b4",
@@ -10,6 +29,17 @@ var colors = {
 	cve: "#C9B7AD",
 	all: "#999999"
 }
+var pastelColors2 = {
+	iran: "#CC99B3",
+	russia: "#ebdb8b",
+	china: "#2B9ED4",
+	cuba: "#71B771",
+	cve: "#E67300",
+	all: "#999999"
+}
+
+colors = pastelColors2;
+
 
 //define each sphere an dthe countires it is comprised of and influences
 var spheres = {
@@ -68,6 +98,8 @@ for (var i = 0; i < fullCountryList.length; i++) {
 
 sMap = {};  //this maps countryIDs to spheres so that when you click a country, it takes you to a sphere.
 sAreas = {};
+fullSphereCountryList = [];
+
 for (var key in spheres) {
 	if (spheres.hasOwnProperty(key)) {
 		s = spheres[key];
@@ -77,6 +109,7 @@ for (var key in spheres) {
 			var countryName = sphereCountries[i];
 			if (cMap.hasOwnProperty(countryName)) {
 				var countryID = cMap[countryName];
+				fullSphereCountryList.push(countryID);
 				sAreas[key].push(countryID);
 				if (! (sMap.hasOwnProperty(countryID))) {
 					sMap[countryID] = key;	
@@ -86,10 +119,6 @@ for (var key in spheres) {
 		}
 	}
 }
-
-jQuery( document ).ready(function() {
-
-});
 
 function getAreas(aSphere) {
 	var areas = [];
@@ -146,6 +175,10 @@ function setActiveSphere(s) {
 
 	jQuery(document).ready(function() {
 
+		jQuery('#hideCountriesOnHover').change(function() {
+       		hideUnselectedCountries = jQuery(this).is(":checked");
+       	});
+
 		map = AmCharts.makeChart( "chartdiv", {
   			theme: "light",
 			projection:"eckert3",
@@ -159,10 +192,10 @@ function setActiveSphere(s) {
 			areasSettings: {
 				autoZoom: false,
 				alpha: 1,
-				unlistedAreasAlpha: 0.6,
+				unlistedAreasAlpha: 0.55,
 				color:"#CCCCCC",
 				selectable: true,
-				outlineThickness: 1
+				outlineThickness: 0
 			},
 			zoomControl:  {
 				zoomControlEnabled: false,
@@ -202,13 +235,15 @@ function setActiveSphere(s) {
 				event.mapObject.validate();
 				var s = spheres[primarySphere];
 				var sphereCountries = s.comprisedOf.concat(s.influences);
+				var usedIDs = {};
 				for (var i=0; i < sphereCountries.length; i++) {
 					var countryName = sphereCountries[i];
 					if (cMap.hasOwnProperty(countryName)) {
 						var countryID = cMap[countryName];
 						var c2 = cMapByID[countryID];
+						usedIDs[countryID] = 1;
 						var mapObject = map.getObjectById(countryID);
-						mapObject.outlineThickness=1;
+						mapObject.outlineThickness=0;
 						//mapObject.outlineAlpha=1;
 						if (mapObject) {
 							
@@ -223,6 +258,24 @@ function setActiveSphere(s) {
 						}
 					}
 				}
+
+				if (hideUnselectedCountries && activeSphere == 'all') {
+					for (var i=0; i < fullSphereCountryList.length; i++) {
+						var countryID = fullSphereCountryList[i];
+						if (! (usedIDs.hasOwnProperty(countryID))) {
+							var c2 = cMapByID[countryID];
+							var mapObject = map.getObjectById(countryID);
+							if (mapObject) {
+								//console.log('hide ' + countryID);
+								mapObject.color = colors[c2.spheres[0]];
+								mapObject.validate();
+							}
+							
+						}
+					}
+				}
+
+
 			}
 			
 		});
@@ -235,25 +288,55 @@ function setActiveSphere(s) {
 					primarySphere = activeSphere;
 				}
 				var c = cMapByID[countryID];
-				event.mapObject.color = COLOR_HOVER;
+				var s = spheres[primarySphere];
+
+				event.mapObject.color = s.color;
 				event.mapObject.validate();
 				
 				//loop through all countries that are in this country's primary sphere
-				var s = spheres[primarySphere];
+				
 				var sphereCountries = s.comprisedOf.concat(s.influences);
+				var usedIDs = {};
 				for (var i=0; i < sphereCountries.length; i++) {
 					var countryName = sphereCountries[i];
 					if (cMap.hasOwnProperty(countryName)) {
 						var countryID = cMap[countryName];
+						usedIDs[countryID] = 1;
 						var mapObject = map.getObjectById(countryID);
 						if (mapObject) {
-							mapObject.color = COLOR_HOVER;
+							
+							if (hideUnselectedCountries) {
+								mapObject.color = s.color;
+							} else {
+								mapObject.color = COLOR_HOVER;
+							}
+							
+							
 							mapObject.outlineThickness=0;
 							//mapObject.outlineAlpha=0.1;
 							mapObject.validate();
 						}
 					}
 				}
+
+				if (hideUnselectedCountries && activeSphere == 'all') {
+					for (var i=0; i < fullSphereCountryList.length; i++) {
+						var countryID = fullSphereCountryList[i];
+						if (! (usedIDs.hasOwnProperty(countryID))) {
+
+							var mapObject = map.getObjectById(countryID);
+							if (mapObject) {
+								// /console.log('hide ' + countryID);
+								mapObject.color = "#ececec";	
+								mapObject.validate();
+							}
+							
+						}
+					}
+				}
+
+
+
 			}
 		});
 
