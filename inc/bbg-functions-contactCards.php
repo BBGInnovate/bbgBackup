@@ -94,7 +94,7 @@
 						// }
 
 
-						echo '<option value="mailto:' . $email . '">' $organization . ': ' . $fullname . ', ' . $office . '</option>';
+						echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . ', ' . $office . '</option>';
 					endwhile;
 				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
 				echo '</div>';
