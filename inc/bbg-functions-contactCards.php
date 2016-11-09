@@ -86,9 +86,15 @@
 						$id = get_the_ID();
 						$email = get_post_meta( $id, 'email', true );
 						$fullname = get_post_meta( $id, 'fullname', true );
+						$organization = get_post_meta( $id, 'organization', true );
 						$office = get_post_meta( $id, 'office', true );
 
-						echo '<option value="mailto:' . $email . '">' . $fullname . ', ' . $office . '</option>';
+						// if ( $office ) {
+						// 	$organization = $organization . ' ' . $office;
+						// }
+
+
+						echo '<option value="mailto:' . $email . '">' $organization . ': ' . $fullname . ', ' . $office . '</option>';
 					endwhile;
 				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
 				echo '</div>';
