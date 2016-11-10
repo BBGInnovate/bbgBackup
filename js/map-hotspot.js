@@ -211,6 +211,7 @@ function resetButtons(btnLeaveAlone) {
 				alpha: 1,
 				unlistedAreasAlpha: 0.55,
 				selectable: true,
+				selectedColor: undefined,
 				outlineThickness: 0.1
 			},
 			zoomControl:  {
