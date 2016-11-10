@@ -136,7 +136,7 @@ function getAreas(aSphere) {
 						}
 						var isComprised = (i < s.comprisedOf.length);
 						var alpha = 1;
-						if ( (aSphere != "all") && !isComprised) {
+						if ( (aSphere != "all" && aSphere != "cve") && !isComprised) {
 							alpha = 0.7;
 							console.log('comprised!!!!');
 						}
