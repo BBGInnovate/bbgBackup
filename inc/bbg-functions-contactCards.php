@@ -84,17 +84,13 @@
 					while ( $custom_query->have_posts() ) : $custom_query->the_post();
 						//now let's get the custom fields associated with our related contact posts
 						$id = get_the_ID();
-						$email = get_post_meta( $id, 'email', true );
-						$fullname = get_post_meta( $id, 'fullname', true );
 						$organization = get_post_meta( $id, 'organization', true );
-						$office = get_post_meta( $id, 'office', true );
+						$fullname = get_post_meta( $id, 'fullname', true );
+						$jobTitle = get_post_meta( $id, 'job_title', true );
+						$email = get_post_meta( $id, 'email', true );
+						// $office = get_post_meta( $id, 'office', true );
 
-						// if ( $office ) {
-						// 	$organization = $organization . ' ' . $office;
-						// }
-
-
-						echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . ', ' . $office . '</option>';
+						echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . ', ' . $jobTitle . '</option>';
 					endwhile;
 				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
 				echo '</div>';
