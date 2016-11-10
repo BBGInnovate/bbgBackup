@@ -88,6 +88,7 @@
 				bottom: 0;
 				// left: -3rem;
 			}
+			min-height: 2rem;
 
 			@include media($medium-screen) {
 				margin-left: -3rem;

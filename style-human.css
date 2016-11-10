@@ -7918,6 +7918,7 @@ div.appropriations-small > p.header {
 }
 .bbg__kits__section .bbg__contact-card .bbg__kits__social {
   margin-bottom: 0;
+  min-height: 2rem;
 }
 @media screen and (min-width: 600px) {
   .bbg__kits__section .bbg__contact-card .bbg__kits__social {

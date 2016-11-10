@@ -12,7 +12,7 @@
    template name: Entity
  */
 
-$pageContent="";
+$pageContent = "";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
@@ -39,7 +39,7 @@ if ($entityLogoID) {
 	$entityLogo = $entityLogoObj[0];
 }
 
-$awardSlug=get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
+$awardSlug = get_post_meta( $id, 'entity_award_recipient_taxonomy_slug', true );
 $entityApiID = get_post_meta( $id, 'entity_api_id', true );
 $entityCategorySlug = get_post_meta( $id, 'entity_category_slug', true );
 $entityCategoryObj = get_category_by_slug($entityCategorySlug);
@@ -61,9 +61,9 @@ if (count($subgroups) < 4) {
 } else {
 	$siteSelect .= "<select name='entity_sites' id='entity_sites'>";
 	$siteSelect .= "<option>Select a service</option>";
-	foreach ($subgroups as $s) {
-		if ($s->website_url != "") { // EX: mbn digital
-			$siteSelect .= "<option value='" . $s->website_url . "'>".$s->name."</option>";
+	foreach ( $subgroups as $s ) {
+		if ( $s->website_url != "" ) { // EX: mbn digital
+			$siteSelect .= "<option value='" . $s->website_url . "'>" . $s->name . "</option>";
 		}
 	}
 	$siteSelect .= "</select><button class='usa-button' id='entityUrlGo'>Go</button>";
@@ -77,36 +77,31 @@ $audience = get_post_meta( $id, 'entity_audience', true );
 $appLink = get_post_meta( $id, 'entity_mobile_apps_link', true );
 $primaryLanguage = get_post_meta( $id, 'entity_primary_language', true );
 
-if ($budget != "") {
-	$budget = '<li><span class="bbg__article-sidebar__list-label">Annual budget: </span>'. $budget . '</li>';
+if ( $budget != "" ) {
+	$budget = '<li><span class="bbg__article-sidebar__list-label">Annual budget: </span>' . $budget . '</li>';
 }
-if ($employees != "") {
+if ( $employees != "" ) {
 	$employees = number_format( floatval( $employees ), 0, '.', ',' );
-	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>'. $employees . '</li>';
+	$employees = '<li><span class="bbg__article-sidebar__list-label">Employees: </span>' . $employees . '</li>';
 }
-if ($languages != "") {
+if ( $languages != "" ) {
 	if ($languages == "1"){
-		$languages = '<li><span class="bbg__article-sidebar__list-label">Language supported: </span>'. $primaryLanguage . '</li>';
+		$languages = '<li><span class="bbg__article-sidebar__list-label">Language supported: </span>' . $primaryLanguage . '</li>';
 	} else {
-		$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>'. $languages . '</li>';
+		$languages = '<li><span class="bbg__article-sidebar__list-label">Languages supported: </span>' . $languages . '</li>';
 	}
 }
-if ($audience != "") {
-	$audience = '<li><span class="bbg__article-sidebar__list-label">Audience estimate: </span>'. $audience . '</li>';
+if ( $audience != "" ) {
+	$audience = '<li><span class="bbg__article-sidebar__list-label">Audience estimate: </span>' . $audience . '</li>';
 }
-if ($appLink != "") {
-	$appLink = '<h3><a href="https://www.bbg.gov/apps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">'. $appLink . '</p>';
+if ( $appLink != "" ) {
+	$appLink = '<h3><a href="https://www.bbg.gov/apps/" class="bbg__article-sidebar__list-label">Download the apps </a></h3><p style="font-family: sans-serif; margin-top: 0;">' . $appLink . '</p>';
 }
-
-
-
 
 //Social + contact links
 $twitterProfileHandle = get_post_meta( $id, 'entity_twitter_handle', true );
 $facebook = get_post_meta( $id, 'entity_facebook', true );
 $instagram = get_post_meta( $id, 'entity_instagram', true );
-
-
 
 
 //Contact information
@@ -122,29 +117,29 @@ $map = "";
 $mapLink = "";
 $includeContactBox = FALSE;
 
-if ($email != "") {
-	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email '. $abbreviation . '">'. $email . '</a></li>';
+if ( $email != "" ) {
+	$email = '<li><span class="bbg__list-label">Email: </span><a href="mailto:' . $email . '" title="Email ' . $abbreviation . '">' . $email . '</a></li>';
 }
 
-if ($phone != "") {
-	$phone = '<li><span class="bbg__list-label">Tel: </span>'. $phone . '</li>';
+if ( $phone != "" ) {
+	$phone = '<li><span class="bbg__list-label">Tel: </span>' . $phone . '</li>';
 }
 
-if ($learnMore != "") {
-	$learnMore = '<li><a href="'. $learnMore . '">Learn more</a> about '. $abbreviation . '</li>';
+if ( $learnMore != "" ) {
+	$learnMore = '<li><a href="'. $learnMore . '">Learn more</a> about ' . $abbreviation . '</li>';
 }
 
 
-if ($street != "" && $city!= "" && $state != "" && $zip != "") {
+if ( $street != "" && $city!= "" && $state != "" && $zip != "" ) {
 	$address = $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
 
 	//Strip spaces for url-encoding.
-	$street = str_replace(" ", "+", $street);
-	$city = str_replace(" ", "+", $city);
-	$state = str_replace(" ", "+", $state);
+	$street = str_replace( " ", "+", $street );
+	$city = str_replace( " ", "+", $city );
+	$state = str_replace( " ", "+", $state );
 	$size = 400;
 	$zoom = 14;
-	$map = 'http://maps.googleapis.com/maps/api/staticmap?center='.$street.',+'.$city.',+'.$state.'+'.$zip."&zoom=".$zoom."&scale=false&size=".$size."x".$size."&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state.');';
+	$map = 'http://maps.googleapis.com/maps/api/staticmap?center=' . $street . ',+' . $city . ',+' . $state . '+' . $zip . "&zoom=" . $zoom . "&scale=false&size=" . $size . "x" . $size . "&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C".$street.',+'.$city.',+'.$state . ');';
 	$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
 	//$includeMap = "bbg__contact-card--include-map";
 
@@ -160,7 +155,7 @@ if ( $includeMap ) {
 	$mapPin = get_post_meta( get_the_ID(), 'map_pin', true );
 	$mapZoom = get_post_meta( get_the_ID(), 'map_zoom', true );
 
-	$key = 	'<?php echo MAPBOX_API_KEY; ?>';
+	$key = '<?php echo MAPBOX_API_KEY; ?>';
 	$zoom = 8;
 	if ( $mapZoom > 0 && $mapZoom < 20 ) {
 		$zoom = $mapZoom;
@@ -173,25 +168,17 @@ if ( $includeMap ) {
 	if ( $mapPin ){
 		$pin = "pin-s+990000(" . $lng .",". $lat .")/";
 	}
-
 	//Static map like this:
 	//$map = "https://api.mapbox.com/v4/mapbox.emerald/" . $pin . $lng . ",". $lat . "," . $zoom . "/170x300.png?access_token=" . $key;
 }
 
-
-if ($address != "" || $phone != "" || $email != ""){
+if ( $address != "" || $phone != "" || $email != "" ){
 	$includeContactBox = TRUE;
 }
 
-
-
-
-
-
-
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
-$bannerPosition=get_post_meta( $id, 'adjust_the_banner_image', true);
+$bannerPosition = get_post_meta( $id, 'adjust_the_banner_image', true );
 $videoUrl = "";
 
 /**** BEGIN CREATING rssItems array *****/
@@ -200,43 +187,41 @@ $rssItems = array();
 $itemContainer = false;
 $languageDirection = "";
 
-if (property_exists($entityJson, 'channel') && property_exists($entityJson->channel,'item')) {
+if ( property_exists($entityJson, 'channel') && property_exists($entityJson->channel, 'item') ) {
 	$itemContainer = $entityJson->channel;
 } else {
 	$itemContainer = $entityJson;
 }
 if ($itemContainer) {
 	if (property_exists($itemContainer, 'language')) {
-		if ($itemContainer->language == "ar"){
+		if ($itemContainer -> language == "ar"){
 			$languageDirection = " rtl";
 		}
 	}
-	foreach ($itemContainer->item as $e) {
-		$title = $e->title;
-		$url = $e->link;
-		$description = $e->description;
+	foreach ($itemContainer -> item as $e) {
+		$title = $e -> title;
+		$url = $e -> link;
+		$description = $e -> description;
 		$enclosureUrl = "";
-		if (property_exists($e, 'enclosure') && property_exists($e->enclosure, '@attributes') && property_exists($e->enclosure->{'@attributes'}, 'url') ) {
-			$enclosureUrl = ($e->enclosure->{'@attributes'}->url);
+		if (property_exists($e, 'enclosure') && property_exists($e -> enclosure, '@attributes') && property_exists($e -> enclosure -> {'@attributes'}, 'url') ) {
+			$enclosureUrl = ( $e -> enclosure -> {'@attributes'} -> url );
 		}
-		$rssItems[] = array( 'title'=>$title, 'url'=>$url, 'description'=>$description, 'image'=>$enclosureUrl );
+		$rssItems[] = array( 'title' => $title, 'url' => $url, 'description' => $description, 'image' => $enclosureUrl );
 	}
 }
 /**** DONE CREATING rssItems array *****/
 
 /**** START FETCH related press releases ****/
-$prCategorySlug=get_post_meta( $id, 'entity_pr_category', true );
-$pressReleases=array();
-if ($prCategorySlug != "") {
-	$prCategoryObj=get_category_by_slug($prCategorySlug);
-	if (is_object($prCategoryObj)) {
-		$prCategoryID=$prCategoryObj->term_id;
-		$qParams=array(
-			'post_type' => array('post'),
+$prCategorySlug = get_post_meta( $id, 'entity_pr_category', true );
+$pressReleases = array();
+if ( $prCategorySlug != "" ) {
+	$prCategoryObj = get_category_by_slug( $prCategorySlug );
+	if ( is_object($prCategoryObj) ) {
+		$prCategoryID = $prCategoryObj -> term_id;
+		$qParams = array(
+			'post_type' => array( 'post' ),
 			'posts_per_page' => 5,
-			'category__and' => array(
-									$prCategoryID
-							  ),
+			'category__and' => array( $prCategoryID ),
 			'orderby', 'date',
 			'order', 'DESC',
 			'tax_query' => array(
@@ -248,41 +233,41 @@ if ($prCategorySlug != "") {
 
 				)
 			),
-			'category__not_in' => get_cat_id('Award')
+			'category__not_in' => get_cat_id( 'Award' )
 		);
-		$custom_query = new WP_Query($qParams);
-		if ($custom_query -> have_posts()) {
+		$custom_query = new WP_Query( $qParams );
+		if ( $custom_query -> have_posts() ) {
 			while ( $custom_query -> have_posts() )  {
-				$custom_query->the_post();
-				$id=get_the_ID();
-				$pressReleases[]=array('url'=>get_permalink($id), 'title'=> get_the_title($id), 'excerpt'=>get_the_excerpt());
+				$custom_query -> the_post();
+				$id = get_the_ID();
+				$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt());
 			}
 		}
 		wp_reset_postdata();
 	}
 }
-$s="";
-if (count($pressReleases)) {
+$s = "";
+if ( count($pressReleases) ) {
 	//$s.= '<h2>Recent '. $abbreviation .' press releases</h2>';
-	foreach ($pressReleases as $pr) {
-		$url=$pr['url'];
-		$title=$pr['title'];
-		$s.= '<div class="bbg__post-excerpt">';
-		$s.= '<h3><a href="'.$url.'">'.$title.'</a></h3>';
-		$s.= '<p>'.$pr['excerpt'].'</p>';
-		$s.= '</div>';
+	foreach ( $pressReleases as $pr ) {
+		$url = $pr['url'];
+		$title = $pr['title'];
+		$s .= '<div class="bbg__post-excerpt">';
+		$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
+		$s .= '<p>' . $pr['excerpt'] . '</p>';
+		$s .= '</div>';
 	}
 	$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
-	$entityCategoryLink = get_category_link($entityCategoryObj->term_id);
+	$entityCategoryLink = get_category_link( $entityCategoryObj -> term_id );
 	$s .= "<a href='$entityCategoryLink'>View all " . $abbreviation . " highlights »</a>";
 	$s .= "</div>";
 }
-$pageContent = str_replace("[press releases]", $s, $pageContent);
+$pageContent = str_replace( "[press releases]", $s, $pageContent );
 /**** END FETCH related press releases ****/
 
 /**** START FETCH AWARDS ****/
-$awards=array();
-$qParams=array(
+$awards = array();
+$qParams = array(
 	'posts_per_page' => 5,
 	'orderby' => 'date',
 	'order' => 'DESC',
@@ -292,18 +277,18 @@ $qParams=array(
 $custom_query = new WP_Query($qParams);
 if ($custom_query -> have_posts()) {
 	while ( $custom_query -> have_posts() )  {
-		$custom_query->the_post();
-		$id=get_the_ID();
+		$custom_query -> the_post();
+		$id = get_the_ID();
 
 		$awardYears  = get_post_meta( $id, 'standardpost_award_year' );
 		$awardTitle = get_post_meta( $id, 'standardpost_award_title', true );
-		$orgTerms = get_field('standardpost_award_organization', $id );
-	    $organizations=array();
-	    $organizations[] = $orgTerms->name;
+		$orgTerms = get_field( 'standardpost_award_organization', $id );
+	    $organizations = array();
+	    $organizations[] = $orgTerms -> name;
 
 
 		$recipients = get_post_meta( $id, 'standardpost_award_recipient' );
-		$awards[]=array(
+		$awards[] = array(
 			'id'=>$id,
 			'url'=>get_permalink($id),
 			'title'=> get_the_title($id),
@@ -316,38 +301,37 @@ if ($custom_query -> have_posts()) {
 	}
 }
 wp_reset_postdata();
-$s="";
-if (count($awards)) {
+$s = "";
+if ( count($awards) ) {
 	//$s.= '<h2>Recent '. $abbreviation .' Awards</h2>';
-	foreach ($awards as $a) {
+	foreach ( $awards as $a ) {
+		$id = $a['id'];
+		$url = $a['url'];
+		$title = $a['title'];
+		$awardYears = $a['awardYears'];
+		$awardTitle = $a['awardTitle'];
+		$organizations = $a['organizations'];
+		$recipients = $a['recipients'];
 
-		$id=$a['id'];
-		$url=$a['url'];
-		$title=$a['title'];
-		$awardYears=$a['awardYears'];
-		$awardTitle=$a['awardTitle'];
-		$organizations=$a['organizations'];
-		$recipients=$a['recipients'];
-
-		$s.= '<div class="bbg__post-excerpt bbg__award__excerpt">';
-		$s.= '<h3 class="bbg__award-excerpt__title"><a href="'.$url.'">'.$title.'</a></h3>';
-		$s.= '<p class="bbg__award-excerpt__source">';
-		$s.= '<span class="bbg__award-excerpt__org">' . $awardTitle . ', ' . join($organizations) . '</span> (';
-		$s.= join($awardYears);
-		$s.= ')</p>';
-		$s.= '<p>'.$a['excerpt'].'</p>';
-		$s.= '</div>';
+		$s .= '<div class="bbg__post-excerpt bbg__award__excerpt">';
+		$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+		$s .= '<p class="bbg__award-excerpt__source">';
+		$s .= '<span class="bbg__award-excerpt__org">' . $awardTitle . ', ' . join($organizations) . '</span> (';
+		$s .= join( $awardYears );
+		$s .= ')</p>';
+		$s .= '<p>' . $a['excerpt'] . '</p>';
+		$s .= '</div>';
 	}
 	$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
 	$s .= "<a href='$entityAwardsLinkFiltered'>View all " . $abbreviation . " awards »</a>";
 	$s .= "</div>";
 }
-$pageContent = str_replace("[awards]", $s, $pageContent);
+$pageContent = str_replace( "[awards]", $s, $pageContent );
 /**** END FETCH AWARDS ****/
 
 /**** START FETCH threats to press ****/
-$threats=array();
-$threatsCategoryObj=get_category_by_slug("threats-to-press");
+$threats = array();
+$threatsCategoryObj = get_category_by_slug( "threats-to-press" );
 $threatsCategoryID=$threatsCategoryObj->term_id;
 if ($entity_category_slug != "") {
 	if (is_object($entityCategoryObj)) {

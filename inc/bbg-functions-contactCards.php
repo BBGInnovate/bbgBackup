@@ -73,24 +73,38 @@
 
 	function renderContactSelect( $postIDs ) {
 		if ( is_array($postIDs) && count($postIDs) > 0 ) {
-			$qParamsContactCard = array(
+			$custom_query = new WP_Query( array(
 				'post__in' => $postIDs,
-				'ignore_sticky_posts' => true
-			);
-			$custom_query = new WP_Query( $qParamsContactCard );
+				'ignore_sticky_posts' => true,
+				// 'posts_per_page' => 1,
+				'meta_key' => 'organization',
+				'orderby' => 'meta_value',
+				'order' => 'ASC'
+			) );
 			if ( $custom_query->have_posts() ) :
 				echo '<select name="entity_sites" id="entity_sites">';
 					echo '<option>Contact our networks</option>';
 					while ( $custom_query->have_posts() ) : $custom_query->the_post();
+
 						//now let's get the custom fields associated with our related contact posts
 						$id = get_the_ID();
 						$organization = get_post_meta( $id, 'organization', true );
+							// trim numbers from organization value
+							$organization = trim($organization, "123456-");
 						$fullname = get_post_meta( $id, 'fullname', true );
 						$jobTitle = get_post_meta( $id, 'job_title', true );
 						$email = get_post_meta( $id, 'email', true );
 						// $office = get_post_meta( $id, 'office', true );
 
-						echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . ', ' . $jobTitle . '</option>';
+						/*echo '<pre>';
+						var_dump( $organization );
+						echo '</pre>';*/
+						if ( $jobTitle ) {
+							echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . ', ' . $jobTitle . '</option>';
+						} else {
+							echo '<option value="mailto:' . $email . '">' . $organization . ': ' . $fullname . '</option>';
+						}
+
 					endwhile;
 				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
 				echo '</div>';

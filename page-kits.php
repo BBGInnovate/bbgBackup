@@ -155,9 +155,9 @@ get_header(); ?>
 			?>
 
 			<!-- Page introduction -->
-			<div id="page-intro" class="usa-section usa-grid bbg__kits__intro">
+			<!-- <div id="page-intro" class="usa-section usa-grid bbg__kits__intro">
 				<?php echo $mission; ?>
-			</div>
+			</div> -->
 
 			<!-- Inquiries -->
 			<article class="bbg__article bbg__kits__section">
@@ -450,11 +450,66 @@ get_header(); ?>
 							echo '</div>';
 						echo '</section>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
-
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
 				endif;
+
+				/**** START FETCH related press releases ****/
+				// $prCategorySlug = get_post_meta( $id, 'entity_pr_category', true );
+				$pressReleases = array();
+				// if ( $prCategorySlug != "" ) {
+					// Define slug for press releases
+					$prCategoryObj = get_category_by_slug( 'press-release' );
+					//
+					/*if ( is_object($prCategoryObj ) ) {
+						$prCategoryID = $prCategoryObj -> term_id;
+						$qParams = array(
+							'post_type' => array( 'post' ),
+							'posts_per_page' => 3,
+							'category__and' => array( $prCategoryID ),
+							'orderby', 'date',
+							'order', 'DESC',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'post_format',
+									'field' => 'slug',
+									'terms' => 'post-format-quote',
+									'operator' => 'NOT IN'
+								)
+							),
+							'category__not_in' => get_cat_id( 'Award' )
+						);
+						// execute query
+						$custom_query = new WP_Query( $qParams );
+						if ( $custom_query -> have_posts() ) {
+							while ( $custom_query -> have_posts() )  {
+								$custom_query -> the_post();
+								$id = get_the_ID();
+								$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
+							}
+						}
+						wp_reset_postdata();
+					}*/
+				// }
+				$s = "";
+				if ( count($pressReleases) ) {
+					$s = '<h2>Recent press releases</h2>';
+					foreach ( $pressReleases as $pr ) {
+						$url = $pr['url'];
+						$title = $pr['title'];
+						$s .= '<div class="bbg__post-excerpt">';
+						$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
+						$s .= '<p>' . $pr['excerpt'] . '</p>';
+						$s .= '</div>';
+					}
+					$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
+					// $entityCategoryLink = get_category_link( $entityCategoryObj -> term_id );
+					$s .= "<a href='$entityCategoryLink'>View all " . $abbreviation . " highlights »</a>";
+					$s .= "</div>";
+				}
+				$pageContent = str_replace( "[press releases]", $s, $pageContent );
+				/**** END FETCH related press releases ****/
 			?>
 			</div> <!-- End id="page-sections" -->
 <?php get_footer(); ?>
