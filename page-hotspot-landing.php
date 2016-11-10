@@ -57,8 +57,9 @@ echo getNetworkExcerptJS();
 			</div><!-- div.usa-grid-full -->
 			<section class="usa-section">
 				<div class="usa-grid">
+					
+					<!--
 					<div>
-
 						<fieldset class="usa-fieldset-inputs usa-sans">
 							<legend class="usa-sr-only">Historical figures 1</legend>
 							<ul class="usa-unstyled-list">
@@ -68,16 +69,17 @@ echo getNetworkExcerptJS();
 								</li>
 							</ul>
 						</fieldset>
-
-					</div>
+					</div>	
+					-->
+					
 					<div class="btn-group entity-buttons u--show-medium-large" role="group" aria-label="..." style="clear: none;">
 						<button type="button" title="ALL" class=" btn-default all" value="all"><span class="bbg__map__button-text">ALL</span></button><!--
 						--><button type="button" title="CHINA" class=" btn-default china" value="china"><span class="bbg__map__button-text">CHINA</span></button><!--
-						--><!--
 						--><button type="button" title="CUBA" class=" btn-default cuba" value="cuba"><span class="bbg__map__button-text">CUBA</span></button><!--
 						--><button type="button" title="IRAN" class=" btn-default iran" value="iran"><span class="bbg__map__button-text">IRAN</span></button><!--
-						--><button type="button" title="RUSSIA" class=" btn-default russia" value="russia"><span class="bbg__map__button-text">RUSSIA</span></button><button type="button" title="COUNTERING VIOLENT EXTREMISM" class=" btn-default cve" value="cve"><span class="bbg__map__button-text">COUNTERING VIOLENT EXTREMISM</span></button>
-					</div>
+						--><button type="button" title="RUSSIA" class=" btn-default russia" value="russia"><span class="bbg__map__button-text">RUSSIA</span></button><!--
+						--><button type="button" title="COUNTERING VIOLENT EXTREMISM" class=" btn-default cve" value="cve"><span class="bbg__map__button-text">COUNTERING VIOLENT EXTREMISM</span></button><!--
+						--></div>
 					<div align="center" id="mapFilters" class="u--hide-medium-large">
 						<BR>
 						<select id="hotSpotPicker">
@@ -105,18 +107,6 @@ echo getNetworkExcerptJS();
 						</div>
 					</div>
 
-					<!--
-					<div align="center" id="mapFilters" class="u--show-medium-large">
-						<input type="radio" checked name="hotspot" id="hs_all" value="all" /><label for="hs_all"> All</label>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="hotspot" id="hs_china" value="china" /><label for="hs_china"> China</label>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="hotspot" id="hs_cve" value="cve" /><label for="hs_cve"> CVE</label>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="hotspot" id="hs_cuba" value="cuba" /><label for="hs_cuba"> Cuba</label>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="hotspot" id="hs_iran" value="iran" /><label for="hs_iran"> Iran</label>&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="hotspot" id="hs_russia" value="russia" /><label for="hs_russia"> Russia</label>
-					</div>
-					-->
-					
-					
 				</div>
 			</section>
 
