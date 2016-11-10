@@ -74,7 +74,7 @@ var spheres = {
 		influences: [
 			'Argentina','Bolivia','Brazil','Chile','Colombia','Ecuador','French Guiana','Guyana','Paraguay','Peru','Suriname','Uruguay','Venezuela',
 			'Angola','Benin','Botswana','Burkina Faso','Burundi','Cameroon','Cape Verde','Central African Republic','Chad','Comoros','Republic of Congo','Democratic Republic of Congo','CÃ´te d\'Ivoire','Djibouti','Equatorial Guinea','Eritrea','Ethiopia','Gabon','Gambia','Ghana','Guinea','Guinea-Bissau','Kenya','Lesotho','Liberia','Madagascar','Malawi','Mali','Mauritania','Mauritius','Mozambique','Namibia','Niger','Nigeria','Rwanda','São Tomé and Príncipe','Senegal','Seychelles','Sierra Leone','Somalia','South Africa','South Sudan','Sudan','Swaziland','Tanzania','Togo','Uganda','Western Sahara','Zambia','Zimbabwe',
-			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama'],
+			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama','India', 'Bangladesh','Bhutan', 'Nepal', 'Thailand', 'Myanmar', 'Vietnam', 'Lao People\'s Democratic Republic', 'North Korea', 'South Korea'],
 		color: colors['china'],
 		label: "China"
 	},
@@ -134,10 +134,17 @@ function getAreas(aSphere) {
 							var c = cMapByID[countryID];
 							newColor = colors[c.spheres[0]];
 						}
+						var isComprised = (i < s.comprisedOf.length);
+						var alpha = 1;
+						if ( (aSphere != "all") && !isComprised) {
+							alpha = 0.7;
+							console.log('comprised!!!!');
+						}
 						var a = {
 							id: countryID,
 							title: countryName,
-							color: newColor
+							color: newColor,
+							alpha: alpha
 						}
 						areas.push(a);
 					} 
@@ -209,7 +216,6 @@ function resetButtons(btnLeaveAlone) {
 				autoZoom: false,
 				alpha: 1,
 				unlistedAreasAlpha: 0.55,
-				color:"#CCCCCC",
 				selectable: true,
 				outlineThickness: 0.1
 			},
