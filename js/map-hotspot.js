@@ -61,7 +61,7 @@ var spheres = {
 	cve: {
 		comprisedOf: ['Russia'],
 		influences: [
-			'Afghanistan','Armenia','Azerbaijan','Bahrain','Bangladesh','Brunei','Cambodia','Taiwan','East Timor','Indonesia','Iran','Iraq','Israel','Palestine','Japan','Jordan','Kazakhstan','Kuwait','Kyrgyzstan','Laos','Lebanon','Maldives','Myanmar','North Korea','Oman','Pakistan','Philippines','Qatar','Russia','Saudi Arabia','Singapore','South Korea','Sri Lanka','Syria','Tajikistan','Thailand','Taiwan','Turkey','Turkmenistan','United Arab Emirates','Uzbekistan','Vietnam','Yemen',
+			'Afghanistan','Armenia','Azerbaijan','Bahrain','Bangladesh','Brunei','Cambodia','East Timor','Indonesia','Iran','Iraq','Israel','Palestine','Japan','Jordan','Kazakhstan','Kuwait','Kyrgyzstan','Laos','Lebanon','Maldives','Myanmar','North Korea','Oman','Pakistan','Philippines','Qatar','Russia','Saudi Arabia','Singapore','South Korea','Sri Lanka','Syria','Tajikistan','Thailand','Turkey','Turkmenistan','United Arab Emirates','Uzbekistan','Vietnam','Yemen',
 			'Papua New Guinea',
 			'Albania','Andorra','Belarus','Bosnia and Herzegovina','Bulgaria','Croatia','Cyprus','Czech Republic','Estonia','Georgia','Greece','Hungary','Latvia','Lithuania','Republic of Macedonia','Malta','Moldova','Montenegro','Poland','Romania','Russia','San Marino','Serbia','Slovakia','Slovenia','Turkey','Ukraine','Vatican City',
 			'Egypt','Morocco','Libya','Algeria','Mali','Mauritania', 'Chad', 'Western Sahara', 'Sudan','Eritrea','Ethiopia','Somalia', 'Cameroon', 'CÃ´te d\'Ivoire', 'Benin', 'Ghana','Togo', 'Liberia', 'Niger', 'Burkina Faso', 'Senegal', 'Nigeria', 'Guinea', 'Sierra Leone', 'Gambia'
@@ -118,44 +118,34 @@ for (var key in spheres) {
 
 function getAreas(aSphere) {
 	var areas = [];
-	if (aSphere == "all") {
-		var areas = [];
-		for (var i = 0; i < fullCountryList.length; i++) {
-			c = fullCountryList[i];
-			var newColor = colors[c.spheres[0]];
-			
-			if (sMap[c.id]) {
-				var a = {
-					id: c.id,
-					title: c.title,
-					color: newColor
-				}
-				areas.push(a);	
-			}
-		}
-	} else {
-		for (var key in spheres) {
-			if (spheres.hasOwnProperty(key)) {
-				s = spheres[key];
-				if (aSphere == key) {
-					var sphereCountries = s.comprisedOf.concat(s.influences);
-					for (var i=0; i < sphereCountries.length; i++) {
-						var countryName = sphereCountries[i];
-						if (cMap.hasOwnProperty(countryName)) {
-							var countryID = cMap[countryName];
-							var a = {
-								id: countryID,
-								title: countryName,
-								color: s.color,
-								customData:s.label
-							}
-							areas.push(a);
-						} 
-					}
+	for (var key in spheres) {
+		if (spheres.hasOwnProperty(key)) {
+			s = spheres[key];
+			if (aSphere == key || aSphere == "all") {
+				var sphereCountries = s.comprisedOf.concat(s.influences);
+				for (var i=0; i < sphereCountries.length; i++) {
+					var countryName = sphereCountries[i];
+					if (cMap.hasOwnProperty(countryName)) {
+						var countryID = cMap[countryName];
+						//if you're only showing a particular sphere, color it for the sphere
+						//if you're showing all spheres, color it by the 'primary' sphere
+						var newColor = s.color;
+						if (aSphere == "all") {
+							var c = cMapByID[countryID];
+							newColor = colors[c.spheres[0]];
+						}
+						var a = {
+							id: countryID,
+							title: countryName,
+							color: newColor
+						}
+						areas.push(a);
+					} 
 				}
 			}
 		}
 	}
+	
 	return areas;
 }
 
@@ -221,16 +211,15 @@ function resetButtons(btnLeaveAlone) {
 				unlistedAreasAlpha: 0.55,
 				color:"#CCCCCC",
 				selectable: true,
-				outlineThickness: 0
+				outlineThickness: 0.1
 			},
 			zoomControl:  {
 				zoomControlEnabled: false,
 				panControlEnabled: false,
 				homeButtonEnabled: false
-			}
+			},
+			dragMap:false
 		});
-
-		map.dragMap=false;
 
 		map.addListener("clickMapObject", function (event) {
 			sphere = sMap[event.mapObject.id];
@@ -270,7 +259,7 @@ function resetButtons(btnLeaveAlone) {
 						var c2 = cMapByID[countryID];
 						usedIDs[countryID] = 1;
 						var mapObject = map.getObjectById(countryID);
-						mapObject.outlineThickness=0;
+						//mapObject.outlineThickness=0;
 						//mapObject.outlineAlpha=1;
 						if (mapObject) {
 							
@@ -336,7 +325,7 @@ function resetButtons(btnLeaveAlone) {
 							}
 							
 							
-							mapObject.outlineThickness=0;
+							//mapObject.outlineThickness=0;
 							//mapObject.outlineAlpha=0.1;
 							mapObject.validate();
 						}
