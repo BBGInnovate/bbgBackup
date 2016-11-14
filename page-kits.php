@@ -464,66 +464,62 @@ get_header(); ?>
 						$prCategoryObj = get_category_by_slug( 'press-release' );
 						$prCategoryID = $prCategoryObj -> term_id;
 					?>
-					<div class="usa-grid">
-						<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>
-					</div>
+					
+					<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>
+				
+					<!-- Headlines -->
+					<div class=" bbg__ceo-post">
+						<div class="usa-width-one-half bbg__secondary-stories">
+							<?php
+								/* BEWARE: sticky posts add a record */
+								$maxPostsToShow=9;
 
-					<!-- Featured Post -->
-					<div class="usa-grid-full">
+								/**** START FETCH related press releases ****/
+								$pressReleases = array();
+								
+								$qParams = array(
+									'post_type' => array( 'post' ),
+									'posts_per_page' => 9,
+									'category__and' => array( $prCategoryID ),
+									'orderby', 'date',
+									'order', 'DESC',
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'post_format',
+											'field' => 'slug',
+											'terms' => 'post-format-quote',
+											'operator' => 'NOT IN'
 
-						<!-- Headlines -->
-						<div class="usa-grid bbg__ceo-post">
-							<div class="usa-width-one-half bbg__secondary-stories">
-								<?php
-									/* BEWARE: sticky posts add a record */
-									$maxPostsToShow=9;
+										)
+									),
+									'category__not_in' => get_cat_id( 'Award' )
+								);
 
-									/**** START FETCH related press releases ****/
-									$pressReleases = array();
-									
-									$qParams = array(
-										'post_type' => array( 'post' ),
-										'posts_per_page' => 9,
-										'category__and' => array( $prCategoryID ),
-										'orderby', 'date',
-										'order', 'DESC',
-										'tax_query' => array(
-											array(
-												'taxonomy' => 'post_format',
-												'field' => 'slug',
-												'terms' => 'post-format-quote',
-												'operator' => 'NOT IN'
-
-											)
-										),
-										'category__not_in' => get_cat_id( 'Award' )
-									);
-
-									query_posts($qParams);
-									if ( have_posts() ) {
-										$counter = 0;
-										$includeImage = TRUE;
-										while ( have_posts() ) : the_post();
-											$counter++;
-											$postIDsUsed[] = get_the_ID();
-											$gridClass = "bbg-grid--full-width";
-											if ($counter > 2) {
-												$includeImage = false;
-												$includeMeta=false;
-												$includeExcerpt=false;
-												if ($counter==3) {
-													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
-													echo '</div><div class="usa-width-one-half tertiary-stories">';
-												}
+								query_posts($qParams);
+								if ( have_posts() ) {
+									$counter = 0;
+									$includeImage = TRUE;
+									while ( have_posts() ) : the_post();
+										$counter++;
+										$postIDsUsed[] = get_the_ID();
+										$gridClass = "bbg-grid--full-width";
+										if ($counter > 2) {
+											$includeImage = false;
+											$includeMeta=false;
+											$includeExcerpt=false;
+											if ($counter==3) {
+												//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
+												echo '</div><div class="usa-width-one-half tertiary-stories">';
 											}
-											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-										endwhile;
-									}
-									wp_reset_query();
-								?>
-							</div>
-						</div><!-- headlines -->
-					</div>
+										}
+										get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+									endwhile;
+								}
+								wp_reset_query();
+							?>
+						</div>
+					</div><!-- headlines -->
+					
 				</section><!-- .BBG News -->
 			</div> <!-- End id="page-sections" -->
 <?php get_footer(); ?>
