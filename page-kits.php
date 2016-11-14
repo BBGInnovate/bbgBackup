@@ -480,7 +480,7 @@ get_header(); ?>
 									$prCategoryID = $prCategoryObj -> term_id;
 									$qParams = array(
 										'post_type' => array( 'post' ),
-										'posts_per_page' => 5,
+										'posts_per_page' => 9,
 										'category__and' => array( $prCategoryID ),
 										'orderby', 'date',
 										'order', 'DESC',
