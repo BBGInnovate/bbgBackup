@@ -450,66 +450,76 @@ get_header(); ?>
 							echo '</div>';
 						echo '</section>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
+
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
 				endif;
+				?>
 
-				/**** START FETCH related press releases ****/
-				// $prCategorySlug = get_post_meta( $id, 'entity_pr_category', true );
-				$pressReleases = array();
-				// if ( $prCategorySlug != "" ) {
-					// Define slug for press releases
-					$prCategoryObj = get_category_by_slug( 'press-release' );
-					//
-					/*if ( is_object($prCategoryObj ) ) {
-						$prCategoryID = $prCategoryObj -> term_id;
-						$qParams = array(
-							'post_type' => array( 'post' ),
-							'posts_per_page' => 3,
-							'category__and' => array( $prCategoryID ),
-							'orderby', 'date',
-							'order', 'DESC',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'post_format',
-									'field' => 'slug',
-									'terms' => 'post-format-quote',
-									'operator' => 'NOT IN'
-								)
-							),
-							'category__not_in' => get_cat_id( 'Award' )
-						);
-						// execute query
-						$custom_query = new WP_Query( $qParams );
-						if ( $custom_query -> have_posts() ) {
-							while ( $custom_query -> have_posts() )  {
-								$custom_query -> the_post();
-								$id = get_the_ID();
-								$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
-							}
-						}
-						wp_reset_postdata();
-					}*/
-				// }
-				$s = "";
-				if ( count($pressReleases) ) {
-					$s = '<h2>Recent press releases</h2>';
-					foreach ( $pressReleases as $pr ) {
-						$url = $pr['url'];
-						$title = $pr['title'];
-						$s .= '<div class="bbg__post-excerpt">';
-						$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
-						$s .= '<p>' . $pr['excerpt'] . '</p>';
-						$s .= '</div>';
-					}
-					$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
-					// $entityCategoryLink = get_category_link( $entityCategoryObj -> term_id );
-					$s .= "<a href='$entityCategoryLink'>View all " . $abbreviation . " highlights »</a>";
-					$s .= "</div>";
-				}
-				$pageContent = str_replace( "[press releases]", $s, $pageContent );
-				/**** END FETCH related press releases ****/
-			?>
+
+				<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
+				<section id="recent-posts" class="usa-section bbg__home__recent-posts">
+					<div class="usa-grid">
+						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ) ?>">BBG News</a></h6>
+					</div>
+
+					<!-- Featured Post -->
+					<div class="usa-grid-full">
+
+						<!-- Headlines -->
+						<div class="usa-grid bbg__ceo-post">
+							<div class="usa-width-one-half bbg__secondary-stories">
+								<?php
+									/* BEWARE: sticky posts add a record */
+									$maxPostsToShow=9;
+
+									/**** START FETCH related press releases ****/
+									$pressReleases = array();
+									$prCategoryObj = get_category_by_slug( 'press-release' );
+									$prCategoryID = $prCategoryObj -> term_id;
+									$qParams = array(
+										'post_type' => array( 'post' ),
+										'posts_per_page' => 5,
+										'category__and' => array( $prCategoryID ),
+										'orderby', 'date',
+										'order', 'DESC',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'post_format',
+												'field' => 'slug',
+												'terms' => 'post-format-quote',
+												'operator' => 'NOT IN'
+
+											)
+										),
+										'category__not_in' => get_cat_id( 'Award' )
+									);
+
+									query_posts($qParams);
+									if ( have_posts() ) {
+										$counter = 0;
+										$includeImage = TRUE;
+										while ( have_posts() ) : the_post();
+											$counter++;
+											$postIDsUsed[] = get_the_ID();
+											$gridClass = "bbg-grid--full-width";
+											if ($counter > 2) {
+												$includeImage = false;
+												$includeMeta=false;
+												$includeExcerpt=false;
+												if ($counter==3) {
+													echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>';
+												}
+											}
+											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+										endwhile;
+									}
+									wp_reset_query();
+								?>
+							</div>
+						</div><!-- headlines -->
+					</div>
+				</section><!-- .BBG News -->
 			</div> <!-- End id="page-sections" -->
 <?php get_footer(); ?>
