@@ -454,7 +454,7 @@ get_header(); ?>
 						elseif (get_row_layout() == 'kits_recent_press_releases' ) :
 
 							echo '<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->';
-							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
+							//echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 							$prCategoryObj = get_category_by_slug( 'press-release' );
 							$prCategoryID = $prCategoryObj -> term_id;
 							echo '<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>';
