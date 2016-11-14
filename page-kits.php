@@ -460,8 +460,12 @@ get_header(); ?>
 
 				<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 				<section id="recent-posts" class="usa-section bbg__home__recent-posts">
+					<?php 
+						$prCategoryObj = get_category_by_slug( 'press-release' );
+						$prCategoryID = $prCategoryObj -> term_id;
+					?>
 					<div class="usa-grid">
-						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ) ?>">BBG News</a></h6>
+						<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>
 					</div>
 
 					<!-- Featured Post -->
@@ -476,8 +480,7 @@ get_header(); ?>
 
 									/**** START FETCH related press releases ****/
 									$pressReleases = array();
-									$prCategoryObj = get_category_by_slug( 'press-release' );
-									$prCategoryID = $prCategoryObj -> term_id;
+									
 									$qParams = array(
 										'post_type' => array( 'post' ),
 										'posts_per_page' => 9,
@@ -509,7 +512,8 @@ get_header(); ?>
 												$includeMeta=false;
 												$includeExcerpt=false;
 												if ($counter==3) {
-													echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>';
+													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
+													echo '</div><div class="usa-width-one-half tertiary-stories">';
 												}
 											}
 											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
