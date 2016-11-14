@@ -9,32 +9,34 @@
  */
 
 function getEntityLogo($entityAbbr) {
-	$entityLogo = false;
-	$broadcastersPage=get_page_by_title('Our Networks');
-	$args = array(
-		'post_type' => 'page',
-		'posts_per_page' => 1,
-		'post_parent' => $broadcastersPage->ID,
-		'name' => $entityAbbr
-	);
-	$custom_query = new WP_Query($args);
-	if ( $custom_query->have_posts() ) {
-		while ( $custom_query->have_posts() )  {
-			$custom_query->the_post();
-			$id = get_the_ID();
-			$entityLogoID = get_post_meta( $id, 'entity_logo',true );
-			$entityLogo = "";
-			$entityLink = get_the_permalink($id);
-			if ($entityLogoID) {
-				$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
-				$entityLogo = $entityLogoObj[0];
-			}
-		}
-	}
-	wp_reset_postdata();
-	wp_reset_query();
+	//return get_template_directory_uri().'/img/logo_rferl--circle-20.png'; //need to fix this 
+	return $imgSrc=get_template_directory_uri().'/img/logo_'.$entityAbbr.'--circle-40.png'; //need to fix this			
+	// $entityLogo = false;
+	// $broadcastersPage=get_page_by_title('Our Networks');
+	// $args = array(
+	// 	'post_type' => 'page',
+	// 	'posts_per_page' => 1,
+	// 	'post_parent' => $broadcastersPage->ID,
+	// 	'name' => $entityAbbr
+	// );
+	// $custom_query = new WP_Query($args);
+	// if ( $custom_query->have_posts() ) {
+	// 	while ( $custom_query->have_posts() )  {
+	// 		$custom_query->the_post();
+	// 		$id = get_the_ID();
+	// 		$entityLogoID = get_post_meta( $id, 'entity_logo',true );
+	// 		$entityLogo = "";
+	// 		$entityLink = get_the_permalink($id);
+	// 		if ($entityLogoID) {
+	// 			$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
+	// 			$entityLogo = $entityLogoObj[0];
+	// 		}
+	// 	}
+	// }
+	// wp_reset_postdata();
+	// wp_reset_query();
 
-	return $entityLogo;
+	// return $entityLogo;
 }
 
 $challenges = get_field( 'hot_spot_challenges', '', true );
@@ -174,7 +176,7 @@ get_header(); ?>
 
 										?>
 											<tr>
-												<td style="padding:0px" ><img width="20" height="20" src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
+												<td width="100" style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
 												<td nowrap style="padding-left:10px"><a target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
 												<td nowrap><?php echo str_replace("http://", "", $link); ?></td>
 											</tr>
