@@ -451,7 +451,7 @@ get_header(); ?>
 						echo '</section>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
 
-						elseif (get_row_layout() == 'kits_recent_press_releases' )) :
+						elseif (get_row_layout() == 'kits_recent_press_releases' ) :
 
 							echo '<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->';
 							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
