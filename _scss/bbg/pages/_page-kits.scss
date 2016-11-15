@@ -305,6 +305,7 @@
 						margin-right: 2rem;
 						max-height: 50rem;
 						min-height: 40rem;
+						max-width: 90%;  //GIGI: added by Joe, check this. 
 					}
 
 					@include media($large-screen) {
