@@ -275,4 +275,60 @@
 
 	}
 	add_shortcode('appselector', 'appselector_shortcode');
+
+	/**
+	 * Add shortcode reference for BBG-wide audience numbers
+	 * @param  Array $split includes the total audience number + a split by media type
+	 * @return Text
+	 * Returns numbers set on the entity pages
+	 */
+	function entityfastfact_shortcode( $atts ) {
+		// access site-wide variables
+		global $post;
+
+		$atts = shortcode_atts( array(
+			'entity' => '',
+			'type' => ''
+		), $atts );
+
+		$returnVal = '';
+		if ( ! empty( $atts['entity'] ) ) {
+			$entity = $atts['entity'];
+		}
+		if ( ! empty( $atts['type'] ) ) {
+			$fastFactType = $atts['type'];
+		}
+
+		if ($entity != "" && $fastFactType != "") {
+			//entity_budget, entity_employees, entity_languages, entity_primary_language, entity_audience, entity_mobile_apps_link
+			$entityParentPage = get_page_by_path('networks');
+
+			$qParams = array(
+				'post_type' => array('page'),
+				'posts_per_page' => -1,
+				'post_parent' => $entityParentPage->ID
+			);
+
+			$custom_query = new WP_Query($qParams);
+			if ( $custom_query -> have_posts() ) {
+				while ( $custom_query -> have_posts() )  {
+					$custom_query -> the_post();
+					$id = get_the_ID();
+
+					$abbreviation = strtolower( get_post_meta( $id, 'entity_abbreviation', true ) );
+					$abbreviation = str_replace( "/", "", $abbreviation );
+
+					if ( $abbreviation == $orgName ) {
+						$returnVal = get_post_meta( $id, 'entity_' . $ffType, true );
+					}
+				}
+			}
+			wp_reset_postdata();
+		}
+		return $returnVal;
+
+	}
+
+	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
+
 ?>
