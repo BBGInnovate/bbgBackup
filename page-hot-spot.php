@@ -176,9 +176,9 @@ get_header(); ?>
 
 										?>
 											<tr>
-												<td width="100" style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
+												<td style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
 												<td nowrap style="padding-left:10px"><a target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
-												<td nowrap><?php echo str_replace("http://", "", $link); ?></td>
+												<td width="99%" ><?php echo str_replace("http://", "", $link); ?></td>
 											</tr>
 										<?php endwhile; ?>
 									<?php endif; ?>
