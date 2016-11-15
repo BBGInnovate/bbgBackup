@@ -173,10 +173,10 @@ get_header(); ?>
 												//$serviceName .= " &nbsp;&nbsp;&nbsp;($serviceInEnglish)";
 											}
 											$entityLogo = getEntityLogo($hotSpotNetwork);
-
+ 
 										?>
 											<tr>
-												<td style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
+												<td style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' title="<?php echo $serviceInEnglish; ?>" src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
 												<td nowrap style="padding-left:10px"><a target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
 												<td width="99%" ><?php echo str_replace("http://", "", $link); ?></td>
 											</tr>
