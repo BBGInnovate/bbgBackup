@@ -457,7 +457,7 @@ get_header(); ?>
 							//echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 							$prCategoryObj = get_category_by_slug( 'press-release' );
 							$prCategoryID = $prCategoryObj -> term_id;
-							echo '<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>';
+							echo '<h6 class="bbg__label"><a href="' . get_category_link( $prCategoryID ) . '">Recent Press Releases</a></h6>';
 							echo '<div class=" bbg__ceo-post">';
 									echo '<div class="usa-width-one-half bbg__secondary-stories">';
 									/* BEWARE: sticky posts add a record */
@@ -529,6 +529,25 @@ get_header(); ?>
 
 								echo '</div><!-- headlines -->';
 							echo '</section><!-- .BBG News -->';
+						elseif (get_row_layout() == 'kits_recent_awards' ) :
+							$qParams=array(
+								'post_type' => array('post')
+								,'cat' => get_cat_ID('Awards')
+								,'posts_per_page' => 3
+								,'orderby' => 'post_date'
+								,'order' => 'desc',
+							);
+							$custom_query_args= $qParams;
+							$custom_query = new WP_Query( $custom_query_args );
+							echo '<h6 class="bbg__label"><a href="' . get_category_link( get_cat_ID('Awards') ) . '">Recent Awards</a></h6>';
+							//echo '<div class=" usa-grid">';
+							while ( $custom_query->have_posts() )  {
+								$custom_query->the_post();
+								$gridClass = "bbg-grid--1-2-3";
+								get_template_part( 'template-parts/content-portfolio', get_post_format() );
+							}
+							//echo "</div>"
+							wp_reset_query();
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
