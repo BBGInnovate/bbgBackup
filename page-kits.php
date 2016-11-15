@@ -468,7 +468,7 @@ get_header(); ?>
 									
 									$qParams = array(
 										'post_type' => array( 'post' ),
-										'posts_per_page' => 9,
+										'posts_per_page' => 2,
 										'category__and' => array( $prCategoryID ),
 										'orderby', 'date',
 										'order', 'DESC',
@@ -506,6 +506,27 @@ get_header(); ?>
 									}
 									wp_reset_query();
 									echo '</div>';
+
+									$qParams=array(
+										'post_type' => array('post'),
+										'posts_per_page' => 1,
+										'orderby' => 'post_date',
+										'order' => 'desc',
+										'category__in' => get_cat_ID('Media Advisory');
+									);
+									$custom_query = new WP_Query( $qParams );
+									$mediaAdvisoryID = false;
+									if ( $custom_query->have_posts() ) :
+										while ( $custom_query->have_posts() ) : $custom_query->the_post();
+											$mediaAdvisoryID = get_the_ID();
+										endwhile;
+									endif;
+									if ($mediaAdvisoryID) {
+										$mediaPost = get_post($mediaAdvisoryID);
+										echo getSoapboxStr($mediaPost);
+									}
+									wp_reset_query();
+
 								echo '</div><!-- headlines -->';
 							echo '</section><!-- .BBG News -->';
 						endif;

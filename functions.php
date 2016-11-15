@@ -1106,6 +1106,9 @@ function getSoapboxStr($soap) {
 				$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
 				$mugshot = $mugshot[0];
 			}
+		} else if ($cat->slug == "media-advisory") {
+			$isMediaAdvisory = true;
+			$soapHeaderText = "Media Advisory";
 		}
 	}
 
