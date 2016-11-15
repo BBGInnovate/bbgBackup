@@ -512,7 +512,7 @@ get_header(); ?>
 										'posts_per_page' => 1,
 										'orderby' => 'post_date',
 										'order' => 'desc',
-										'category__in' => get_cat_ID('Media Advisory');
+										'category__in' => get_cat_ID('Media Advisory')
 									);
 									$custom_query = new WP_Query( $qParams );
 									$mediaAdvisoryID = false;
