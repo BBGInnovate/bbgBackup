@@ -541,7 +541,7 @@ get_header(); ?>
 							$custom_query = new WP_Query( $custom_query_args );
 							echo '<h6 class="bbg__label"><a href="' . get_category_link( get_cat_ID('Award') ) . '">Recent Awards</a></h6>';
 
-							echo '<div class=" usa-grid">';
+							echo '<div class=" ">';
 							while ( $custom_query->have_posts() )  {
 								$custom_query->the_post();
 								$gridClass = "bbg-grid--1-2-3";
