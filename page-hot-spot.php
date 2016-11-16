@@ -138,14 +138,15 @@ get_header(); ?>
 
 							<div class="bbg__article-content large">
 								
-								<h2>Challenges</h2>
-								<?php echo $challenges; ?>
-								<h2>Strategic Priorities</h2>
-								<?php echo $priorities; ?>
-
-								
-								<h2 >Special Programming</h2>
-								<?php echo $programming; ?>
+								<?php if( have_rows('hot_spot_freeform_textareas') ): ?>
+									<?php while( have_rows('hot_spot_freeform_textareas') ): the_row(); 
+										// vars
+										$label = get_sub_field('hot_spot_freeform_textarea_label');
+										$content = get_sub_field('hot_spot_freeform_textarea_text');
+										echo "<h2>$label</h2>$content";
+										?>
+									<?php endwhile; ?>
+								<?php endif; ?>
 
 							</div><!-- .bbg__article-sidebar -->
 							<div class="bbg__article-sidebar large">
