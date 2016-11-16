@@ -75,6 +75,7 @@ function outputBroadcasters($cols) {
 				$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
 				$abbreviation=str_replace("/", "",$abbreviation);
 				$description=get_post_meta( $id, 'entity_description', true );
+				$description = apply_filters('the_content', $description);
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
 				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
 
@@ -91,7 +92,7 @@ function outputBroadcasters($cols) {
 			}
 		}
 	}
-	$s = apply_filters('the_content', $s); 
+
 	$s .= '</div>';
 	wp_reset_postdata();
 	return $s;
