@@ -91,6 +91,7 @@ function outputBroadcasters($cols) {
 			}
 		}
 	}
+	$s = apply_filters('the_content', $s); 
 	$s .= '</div>';
 	wp_reset_postdata();
 	return $s;
