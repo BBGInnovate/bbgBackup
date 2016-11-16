@@ -318,8 +318,8 @@
 					$abbreviation = strtolower( get_post_meta( $id, 'entity_abbreviation', true ) );
 					$abbreviation = str_replace( "/", "", $abbreviation );
 
-					if ( $abbreviation == $orgName ) {
-						$returnVal = get_post_meta( $id, 'entity_' . $ffType, true );
+					if ( $abbreviation == $entity ) {
+						$returnVal = get_post_meta( $id, 'entity_' . $fastFactType, true );
 					}
 				}
 			}
