@@ -8089,6 +8089,7 @@ div.appropriations-small > p.header {
     margin-right: 2rem;
     max-height: 50rem;
     min-height: 40rem;
+    max-width: 90%;
   }
 }
 @media screen and (min-width: 1201px) {

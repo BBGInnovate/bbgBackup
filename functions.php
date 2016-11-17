@@ -1106,12 +1106,17 @@ function getSoapboxStr($soap) {
 				$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
 				$mugshot = $mugshot[0];
 			}
+		} else if ($cat->slug == "media-advisory") {
+			$isMediaAdvisory = true;
+			$soapHeaderText = "Media Advisory";
 		}
 	}
 
 	$s .= '<div class="usa-width-one-half bbg__voice--featured">';
 	if ($soapHeaderPermalink != "") {
 		$s .= '<h6 class="bbg__label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
+	} else if ($soapHeaderText != "") {
+		$s .= '<h6 class="bbg__label small">' . $soapHeaderText.'</h6>';
 	}
 
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';

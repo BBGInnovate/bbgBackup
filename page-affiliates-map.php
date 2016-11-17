@@ -246,13 +246,13 @@ get_header(); ?>
     iconImages["other"] = "webcam-icon.png";
 
     var maki = {};
-    maki["radio"] = {"name": "music", "color":"#ccc"};
-    maki["tv"] = {"name": "aerialway", "color":"#b0b"};
+    maki["radio"] = {"name": "music", "color":"#0014CC"};
+    maki["tv"] = {"name": "aerialway", "color":"#A30000"};
     maki["newspaper"] = {"name": "library", "color":"#ccc"};
-    maki["satellite"] = {"name": "heliport", "color":"#ccc"};
-    maki["web"] = {"name": "ferry", "color":"#ccc"};
-    maki["mobile"] = {"name": "pitch", "color":"#ccc"};
-    maki["other"] = {"name": "fuel", "color":"#ccc"};
+    maki["satellite"] = {"name": "heliport", "color":"#b0b"};
+    maki["web"] = {"name": "ferry", "color":"#000"};
+    maki["mobile"] = {"name": "pitch", "color":"#0b0"};
+    maki["other"] = {"name": "fuel", "color":"#FF6600"};
 
 	var deliveryLayers={};    
     for (var deliveryPlatform in iconImages) {
@@ -275,7 +275,8 @@ get_header(); ?>
 
 
 
-        var icon = L.MakiMarkers.icon({icon: maki[platform].name, color: maki[platform].color, size: "m"});
+        var icon = L.MakiMarkers.icon({icon: "circle", color: maki[platform].color, size: "m"});
+   //     var icon = L.MakiMarkers.icon({size: "m", color: maki[platform].color});
   //       var oldIcon = L.icon({
 		// 	"iconUrl": "<?php echo get_template_directory_uri(); ?>/img/" + iconImages[platform],
 		// 	"iconSize": [20, 20],
@@ -283,7 +284,7 @@ get_header(); ?>
 		// });
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
-            icon:icon
+          icon:icon
         });
        
         var popupText = title + description;

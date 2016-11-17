@@ -11,7 +11,7 @@ var color_ocb = "#653792";
 var color_mbn = "#BB3530";
 
 //primary colors for our various hot spots
-var colors = {
+var lisaFrankColors = {
 	iran: color_green,
 	russia: color_orange,
 	china: color_mbn,
@@ -27,7 +27,7 @@ var pastelColors = {
 	cve: "#C9B7AD",
 	all: "#999999"
 }
-var pastelColors2 = {
+var normalColors = {
 	iran: "#CC99B3",
 	russia: "#ebdb8b",
 	china: "#2B9ED4",
@@ -36,7 +36,7 @@ var pastelColors2 = {
 	all: "#999999"
 }
 
-colors = pastelColors2;
+colors = normalColors;
 
 //define each sphere an dthe countires it is comprised of and influences
 var spheres = {
@@ -74,7 +74,7 @@ var spheres = {
 		influences: [
 			'Argentina','Bolivia','Brazil','Chile','Colombia','Ecuador','French Guiana','Guyana','Paraguay','Peru','Suriname','Uruguay','Venezuela',
 			'Angola','Benin','Botswana','Burkina Faso','Burundi','Cameroon','Cape Verde','Central African Republic','Chad','Comoros','Republic of Congo','Democratic Republic of Congo','CÃ´te d\'Ivoire','Djibouti','Equatorial Guinea','Eritrea','Ethiopia','Gabon','Gambia','Ghana','Guinea','Guinea-Bissau','Kenya','Lesotho','Liberia','Madagascar','Malawi','Mali','Mauritania','Mauritius','Mozambique','Namibia','Niger','Nigeria','Rwanda','São Tomé and Príncipe','Senegal','Seychelles','Sierra Leone','Somalia','South Africa','South Sudan','Sudan','Swaziland','Tanzania','Togo','Uganda','Western Sahara','Zambia','Zimbabwe',
-			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama'],
+			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama','India', 'Bangladesh','Bhutan', 'Nepal', 'Thailand', 'Myanmar', 'Vietnam', 'Lao People\'s Democratic Republic', 'North Korea', 'South Korea'],
 		color: colors['china'],
 		label: "China"
 	},
@@ -134,10 +134,17 @@ function getAreas(aSphere) {
 							var c = cMapByID[countryID];
 							newColor = colors[c.spheres[0]];
 						}
+						var isComprised = (i < s.comprisedOf.length);
+						var alpha = 1;
+						if ( (aSphere != "all" && aSphere != "cve") && !isComprised) {
+							alpha = 0.7;
+							///console.log('comprised!!!!');
+						}
 						var a = {
 							id: countryID,
 							title: countryName,
-							color: newColor
+							color: newColor,
+							alpha: alpha
 						}
 						areas.push(a);
 					} 
@@ -191,10 +198,6 @@ function resetButtons(btnLeaveAlone) {
 
 	jQuery(document).ready(function() {
 		
-		// jQuery('#hideCountriesOnHover').change(function() {
-		// 	hideUnselectedCountries = jQuery(this).is(":checked");
-		// });
-
 		map = AmCharts.makeChart( "chartdiv", {
 			theme: "light",
 			projection:"eckert3",
@@ -203,14 +206,12 @@ function resetButtons(btnLeaveAlone) {
 				map: "worldLow",
 				areas:getAreas("all")
 			},
-			// backgroundColor:"#AAAAAA",
-			// backgroundAlpha: 1,
 			areasSettings: {
 				autoZoom: false,
 				alpha: 1,
 				unlistedAreasAlpha: 0.55,
-				color:"#CCCCCC",
 				selectable: true,
+				selectedColor: undefined,
 				outlineThickness: 0.1
 			},
 			zoomControl:  {
@@ -259,12 +260,10 @@ function resetButtons(btnLeaveAlone) {
 						var c2 = cMapByID[countryID];
 						usedIDs[countryID] = 1;
 						var mapObject = map.getObjectById(countryID);
-						//mapObject.outlineThickness=0;
-						//mapObject.outlineAlpha=1;
 						if (mapObject) {
-							
 							if (activeSphere == "all") {
 								mapObject.color = colors[c2.spheres[0]];
+								mapObject.alpha = 1;
 								mapObject.validate();
 							} else {
 								mapObject.color = colors[activeSphere];
@@ -307,7 +306,6 @@ function resetButtons(btnLeaveAlone) {
 				event.mapObject.validate();
 				
 				//loop through all countries that are in this country's primary sphere
-				
 				var sphereCountries = s.comprisedOf.concat(s.influences);
 				var usedIDs = {};
 				for (var i=0; i < sphereCountries.length; i++) {
@@ -317,16 +315,19 @@ function resetButtons(btnLeaveAlone) {
 						usedIDs[countryID] = 1;
 						var mapObject = map.getObjectById(countryID);
 						if (mapObject) {
-							
 							if (hideUnselectedCountries) {
 								mapObject.color = s.color;
 							} else {
 								mapObject.color = COLOR_HOVER;
 							}
-							
-							
-							//mapObject.outlineThickness=0;
-							//mapObject.outlineAlpha=0.1;
+							var isComprised = (i < s.comprisedOf.length);
+							var alpha = 1;
+							if ( (primarySphere != "all" && primarySphere != "cve") && !isComprised) {
+								alpha = 0.7;
+								///console.log('comprised!!!!');
+							}
+							mapObject.alpha=alpha;
+
 							mapObject.validate();
 						}
 					}

@@ -8,6 +8,37 @@
    template name: Hot Spot
  */
 
+function getEntityLogo($entityAbbr) {
+	//return get_template_directory_uri().'/img/logo_rferl--circle-20.png'; //need to fix this 
+	return $imgSrc=get_template_directory_uri().'/img/logo_'.$entityAbbr.'--circle-40.png'; //need to fix this			
+	// $entityLogo = false;
+	// $broadcastersPage=get_page_by_title('Our Networks');
+	// $args = array(
+	// 	'post_type' => 'page',
+	// 	'posts_per_page' => 1,
+	// 	'post_parent' => $broadcastersPage->ID,
+	// 	'name' => $entityAbbr
+	// );
+	// $custom_query = new WP_Query($args);
+	// if ( $custom_query->have_posts() ) {
+	// 	while ( $custom_query->have_posts() )  {
+	// 		$custom_query->the_post();
+	// 		$id = get_the_ID();
+	// 		$entityLogoID = get_post_meta( $id, 'entity_logo',true );
+	// 		$entityLogo = "";
+	// 		$entityLink = get_the_permalink($id);
+	// 		if ($entityLogoID) {
+	// 			$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
+	// 			$entityLogo = $entityLogoObj[0];
+	// 		}
+	// 	}
+	// }
+	// wp_reset_postdata();
+	// wp_reset_query();
+
+	// return $entityLogo;
+}
+
 $challenges = get_field( 'hot_spot_challenges', '', true );
 $tag = get_field( 'hot_spot_tag', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
@@ -107,10 +138,19 @@ get_header(); ?>
 
 							<div class="bbg__article-content large">
 								
-								<h2>Challenges</h2>
-								<?php echo $challenges; ?>
-								<h2>Strategic Priorities</h2>
-								<?php echo $priorities; ?>
+								<?php if( have_rows('hot_spot_freeform_textareas') ): ?>
+									<?php while( have_rows('hot_spot_freeform_textareas') ): the_row(); 
+										// vars
+										$label = get_sub_field('hot_spot_freeform_textarea_label');
+										$content = get_sub_field('hot_spot_freeform_textarea_text');
+										echo "<h2>$label</h2>$content";
+										?>
+									<?php endwhile; ?>
+								<?php endif; ?>
+
+							</div><!-- .bbg__article-sidebar -->
+							<div class="bbg__article-sidebar large">
+								<div>
 
 								<h2 >Languages Served</h2>
 								<table class="usa-table-borderless bbg__jobs__table">
@@ -118,8 +158,7 @@ get_header(); ?>
 
 								<?php while( have_rows('hot_spot_languages') ): the_row(); ?>
 									<tr>
-										<td><h4><?php the_sub_field('hot_spot_language_name'); ?></h4></td>
-										<td></td>
+										<td colspan="3"><h4><?php the_sub_field('hot_spot_language_name'); ?></h4></td>
 									</tr>
 									<?php 
 									if( have_rows('hot_spot_language_sites') ): ?>
@@ -129,26 +168,25 @@ get_header(); ?>
 											$link = get_sub_field('hot_spot_site_url');
 											$serviceInLanguage = get_sub_field('hot_spot_language_site_name_in_language');
 											$serviceInEnglish = get_sub_field('hot_spot_site_name_in_english');
+											$hotSpotNetwork = get_sub_field('hot_spot_site_network');
 											$serviceName = $serviceInLanguage;
 											if ($serviceInEnglish != "") {
-												$serviceName .= " &nbsp;&nbsp;&nbsp;($serviceInEnglish)";
+												//$serviceName .= " &nbsp;&nbsp;&nbsp;($serviceInEnglish)";
 											}
+											$entityLogo = getEntityLogo($hotSpotNetwork);
+ 
 										?>
 											<tr>
-												<td><a target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
-												<td><?php echo str_replace("http://", "", $link); ?></td>
+												<td style="padding:0px" ><img width="20" height="20" style='height:20px !important; width:20px !important; max-width:none;' src="<?php if ($entityLogo) { echo $entityLogo; } ?>" /></td>
+												<td nowrap style="padding-left:10px"><a title="<?php echo $serviceInEnglish; ?>"  target="_blank" href="<?php echo $link; ?>" class="bbg__jobs-list__title"><?php echo $serviceName; ?></a></td>
+												<td width="99%" ><?php echo str_replace("http://", "", $link); ?></td>
 											</tr>
 										<?php endwhile; ?>
 									<?php endif; ?>
 								<?php endwhile; ?>
 								</tbody>
 								</table>
-								<h2 >Special Programming</h2>
-								<?php echo $programming; ?>
 
-							</div><!-- .bbg__article-sidebar -->
-							<div class="bbg__article-sidebar large">
-								<div>
 								<?php 
 									if( have_rows('hot_spot_press_freedom_numbers') ):
 										echo '<h5 class="bbg__label small">Press Freedom</h5>';

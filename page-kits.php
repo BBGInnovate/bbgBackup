@@ -450,66 +450,112 @@ get_header(); ?>
 							echo '</div>';
 						echo '</section>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
+
+						elseif (get_row_layout() == 'kits_recent_press_releases' ) :
+
+							echo '<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->';
+							//echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
+							$prCategoryObj = get_category_by_slug( 'press-release' );
+							$prCategoryID = $prCategoryObj -> term_id;
+							echo '<h6 class="bbg__label"><a href="' . get_category_link( $prCategoryID ) . '">Recent Press Releases</a></h6>';
+							echo '<div class=" bbg__ceo-post">';
+									echo '<div class="usa-width-one-half bbg__secondary-stories">';
+									/* BEWARE: sticky posts add a record */
+									$maxPostsToShow=9;
+
+									/**** START FETCH related press releases ****/
+									$pressReleases = array();
+									
+									$qParams = array(
+										'post_type' => array( 'post' ),
+										'posts_per_page' => 2,
+										'category__and' => array( $prCategoryID ),
+										'orderby', 'date',
+										'order', 'DESC',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'post_format',
+												'field' => 'slug',
+												'terms' => 'post-format-quote',
+												'operator' => 'NOT IN'
+
+											)
+										),
+										'category__not_in' => get_cat_id( 'Award' )
+									);
+
+									query_posts($qParams);
+									if ( have_posts() ) {
+										$counter = 0;
+										$includeImage = TRUE;
+										while ( have_posts() ) : the_post();
+											$counter++;
+											$postIDsUsed[] = get_the_ID();
+											$gridClass = "bbg-grid--full-width";
+											if ($counter > 2) {
+												$includeImage = false;
+												$includeMeta=false;
+												$includeExcerpt=false;
+												if ($counter==3) {
+													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
+													echo '</div><div class="usa-width-one-half tertiary-stories">';
+												}
+											}
+											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+										endwhile;
+									}
+									wp_reset_query();
+									echo '</div>';
+
+									$qParams=array(
+										'post_type' => array('post'),
+										'posts_per_page' => 1,
+										'orderby' => 'post_date',
+										'order' => 'desc',
+										'category__in' => get_cat_ID('Media Advisory')
+									);
+									$custom_query = new WP_Query( $qParams );
+									$mediaAdvisoryID = false;
+									if ( $custom_query->have_posts() ) :
+										while ( $custom_query->have_posts() ) : $custom_query->the_post();
+											$mediaAdvisoryID = get_the_ID();
+										endwhile;
+									endif;
+									if ($mediaAdvisoryID) {
+										$mediaPost = get_post($mediaAdvisoryID);
+										echo getSoapboxStr($mediaPost);
+									}
+									wp_reset_query();
+
+								echo '</div><!-- headlines -->';
+							echo '</section><!-- .BBG News -->';
+						elseif (get_row_layout() == 'kits_recent_awards' ) :
+							$qParams=array(
+								'post_type' => array('post')
+								,'cat' => get_cat_ID('Award')
+								,'posts_per_page' => 3
+								,'orderby' => 'post_date'
+								,'order' => 'desc'
+							);
+							$custom_query_args= $qParams;
+							$custom_query = new WP_Query( $custom_query_args );
+							echo '<h6 class="bbg__label"><a href="' . get_category_link( get_cat_ID('Award') ) . '">Recent Awards</a></h6>';
+
+							echo '<div class=" ">';
+							while ( $custom_query->have_posts() )  {
+								$custom_query->the_post();
+								$gridClass = "bbg-grid--1-2-3";
+								get_template_part( 'template-parts/content-portfolio', get_post_format() );
+							}
+							echo "</div>";
+							wp_reset_query();
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
 				endif;
+				?>
 
-				/**** START FETCH related press releases ****/
-				// $prCategorySlug = get_post_meta( $id, 'entity_pr_category', true );
-				$pressReleases = array();
-				// if ( $prCategorySlug != "" ) {
-					// Define slug for press releases
-					$prCategoryObj = get_category_by_slug( 'press-release' );
-					//
-					/*if ( is_object($prCategoryObj ) ) {
-						$prCategoryID = $prCategoryObj -> term_id;
-						$qParams = array(
-							'post_type' => array( 'post' ),
-							'posts_per_page' => 3,
-							'category__and' => array( $prCategoryID ),
-							'orderby', 'date',
-							'order', 'DESC',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'post_format',
-									'field' => 'slug',
-									'terms' => 'post-format-quote',
-									'operator' => 'NOT IN'
-								)
-							),
-							'category__not_in' => get_cat_id( 'Award' )
-						);
-						// execute query
-						$custom_query = new WP_Query( $qParams );
-						if ( $custom_query -> have_posts() ) {
-							while ( $custom_query -> have_posts() )  {
-								$custom_query -> the_post();
-								$id = get_the_ID();
-								$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
-							}
-						}
-						wp_reset_postdata();
-					}*/
-				// }
-				$s = "";
-				if ( count($pressReleases) ) {
-					$s = '<h2>Recent press releases</h2>';
-					foreach ( $pressReleases as $pr ) {
-						$url = $pr['url'];
-						$title = $pr['title'];
-						$s .= '<div class="bbg__post-excerpt">';
-						$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
-						$s .= '<p>' . $pr['excerpt'] . '</p>';
-						$s .= '</div>';
-					}
-					$s .= '<div class="usa-grid-full u--space-below-mobile--large">';
-					// $entityCategoryLink = get_category_link( $entityCategoryObj -> term_id );
-					$s .= "<a href='$entityCategoryLink'>View all " . $abbreviation . " highlights »</a>";
-					$s .= "</div>";
-				}
-				$pageContent = str_replace( "[press releases]", $s, $pageContent );
-				/**** END FETCH related press releases ****/
-			?>
+
+
 			</div> <!-- End id="page-sections" -->
 <?php get_footer(); ?>
