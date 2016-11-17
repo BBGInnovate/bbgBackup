@@ -372,7 +372,7 @@
 		$fullStr = '';
 		if (count($threatsToPress) > 0) {
 			$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
-			$fullStr .= '<aside class="bbg__article-sidebar__aside">';
+			$fullStr .= '<aside style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px;" class="bbg__article-sidebar__aside">';
 			$fullStr .= '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
 			$i=0;
 			foreach ($threatsToPress as $n) {
