@@ -57,13 +57,12 @@
 					}
 
 					echo '<div class="bbg__contact__card">';
-					echo '<p>Contact '.$fullname.'<br/>';
-					echo $office.'</p>';
+					echo '<p>Contact ' . $fullname . '<br/>';
+					echo $office . '</p>';
 					echo '<ul class="bbg__contact__card-list">';
-					echo '<li class="bbg__contact__link email"><a href="mailto:'.$email.'" title="Email '.$fullname.'"><span class="bbg__contact__icon email"></span><span class="bbg__contact__text">'.$email.'</span></a></li>';
-					echo '<li class="bbg__contact__link phone"><span class="bbg__contact__icon phone"></span><span class="bbg__contact__text">'.$phone.'</span></li>';
+					echo '<li class="bbg__contact__link email"><a href="mailto:' . $email . '" title="Email ' . $fullname . '"><span class="bbg__contact__icon email"></span><span class="bbg__contact__text">' . $email . '</span></a></li>';
+					echo '<li class="bbg__contact__link phone"><span class="bbg__contact__icon phone"></span><span class="bbg__contact__text">' . $phone . '</span></li>';
 					echo '</ul></div>';
-
 				endwhile;
 				echo '</div>';
 			endif;
