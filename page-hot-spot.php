@@ -152,7 +152,7 @@ get_header(); ?>
 										// vars
 										$label = get_sub_field('hot_spot_freeform_textarea_label');
 										$content = get_sub_field('hot_spot_freeform_textarea_text');
-										$content = str_replace("[threatstopress]", $threatsToPressStr, $content)
+										$content = str_replace("[threatstopress]", $threatsToPressStr, $content);
 										echo "<h2>$label</h2>$content";
 										?>
 									<?php endwhile; ?>
