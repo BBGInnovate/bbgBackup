@@ -584,11 +584,23 @@ get_header(); ?>
 
 							$title = "Rumors, Myths and Untruths";
 							$url = "https://www.bbg.gov/rumors-myths-untruths/";
+							$excerpt = "A guide to rumors, myths and untruths pertaining to the BBG. Topics include propaganda, budget, the Smith-Mundt act, and the BBG Firewall.";
 
-							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
-							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
-							$s .= '<p>A guide to rumors, myths and untruths pertaining to the BBG.</p>';
-							$s .= '</div>';
+							$s .= '<article id="post-32196" class="bbg-blog__excerpt--list bbg-grid--full-width  post-32196 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl category-threats-to-press tag-hotspot-russia">';
+							$s .= '<header class="entry-header bbg-blog__excerpt-header">';
+							$s .= '<h3 class="entry-title bbg-blog__excerpt-title--list "><a href="' . $url . '">' . $title . '</a></h3>';
+							$s .= '</header><!-- .bbg-blog__excerpt-header -->';
+							$s .= '<div class="entry-meta bbg__excerpt-meta">';
+							//$s .= '<span class="posted-on"><time class="entry-date published" datetime="2016-11-14T18:00:59+00:00">November 14, 2016</time></span>		</div><!-- .entry-meta -->';
+							$s .= '<div class="entry-content bbg-blog__excerpt-content">';
+							$s .= '<p>' . $excerpt . '</p>';
+							$s .= '</div><!-- .bbg-blog__excerpt-content -->';
+							$s .= '</article>';
+
+							// $s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+							// $s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+							// $s .= '<p>A guide to rumors, myths and untruths pertaining to the BBG.</p>';
+							// $s .= '</div>';
 
 
 							echo $s;
