@@ -334,7 +334,7 @@ get_header(); ?>
 
 											// echo '<h3 style="margin:0;">Want to stay informed?</h3>';
 											// echo '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
-											echo "<button id='btnSignup' onclick=\" toggleForm();  \" class='usa-button-outline bbg__kits__inquiries__button--half' style='width:100%' data-enabled='enabled'>Sign up to receive updates</button>";
+											echo "<button id='btnSignup' onclick=\" toggleForm();  \" class='usa-button-outline bbg__kits__inquiries__button--half' style='width:100%; margin-top:2rem;' data-enabled='enabled'>Sign up to receive updates</button>";
 											
 											echo $signupForm; 
 											
