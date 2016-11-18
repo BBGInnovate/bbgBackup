@@ -331,4 +331,81 @@
 
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
+
+	/**
+	 * Add shortcode reference for threats to press. used on hotspot landing page
+	 * @param  Array $atts may contain a tag 
+	 * @return html markup containing the threats
+	 * Returns numbers set on the entity pages
+	 */
+	function threatstopress_shortcode ($atts) {
+		/**** create 'THREATS TO PRESS' array ***/
+		$ttp_query_args = array(
+			'post_type' => array('post')
+			,'cat' => get_cat_id('Threats to Press')
+			,'posts_per_page' => 3
+			,'post_status' => array('publish')
+			,'orderby', 'date'
+			,'order', 'DESC'
+		);
+		if (isset ($atts['tag'])) {
+			$ttp_query_args['tag'] = $atts['tag'];
+		}
+
+		$threatsToPress = array();
+		$ttp_query = new WP_Query( $ttp_query_args );
+
+		if ($ttp_query -> have_posts()) {
+			
+			while ( $ttp_query -> have_posts() )  {
+				$id = $ttp_query -> get_the_ID();
+				$ttp_query->the_post();
+				$threatsToPress[] = array(
+					'url' => get_the_permalink(),
+					'title' => get_the_title(),
+					'id' => get_the_ID(),
+					'thumb' => get_the_post_thumbnail( $id, 'medium-thumb', array( 'style' => 'max-height:400px; width:100%'  )),
+					'excerpt' => my_excerpt($id) 
+				);
+			}
+		}
+		$fullStr = '';
+		if (count($threatsToPress) > 0) {
+			$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
+			$fullStr .= '<aside style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px;" class="bbg__article-sidebar__aside">';
+			$fullStr .= '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
+			$i=0;
+			foreach ($threatsToPress as $n) {
+				$s = ''; 
+				$i++;
+				if ($i == 1) {
+					$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+					$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+					$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+					$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
+					$s .=		'</div>';
+					$s .=		'<p>';
+					$s .= '<a href="'.$n['url'] . '"><h4>' . $n['title'] . '</h4></a>';
+					if ($n['excerpt'] != '') {
+						$s .= $n['excerpt'];
+					}
+					$s .= '</p><BR>';
+					$s .=	'</header><!-- .entry-header -->';
+					$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+				} else {
+					$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
+					$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+					$s .=		'<p class=""><a href="'.$n['url'] . '">' . $n['title'] . '</a></p>';
+					$s .=	'</header><!-- .entry-header -->';
+					$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+				}
+				$fullStr .= $s;
+			}
+			$fullStr .= '</aside>';
+		}
+		return $fullStr;
+	}
+	add_shortcode( 'threatstopress', 'threatstopress_shortcode' );
+
+
 ?>

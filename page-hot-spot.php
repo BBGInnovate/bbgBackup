@@ -76,34 +76,6 @@ if ($custom_query -> have_posts()) {
 }
 /**** done creating 'NEWS FROM NETWORKS' array ***/
 
-/**** create 'THREATS TO PRESS' array ***/
-$ttp_query_args = array(
-	'post_type' => array('post')
-	,'cat' => get_cat_id('Threats to Press')
-	,'tag' => $tag -> slug
-	,'posts_per_page' => 3
-	,'post_status' => array('publish')
-	,'orderby', 'date'
-	,'order', 'DESC'
-);
-
-$threatsToPress = array();
-$ttp_query = new WP_Query( $ttp_query_args );
-if ($ttp_query -> have_posts()) {
-	
-	while ( $ttp_query -> have_posts() )  {
-		$ttp_query->the_post();
-		$threatsToPress[] = array(
-			'url' => get_the_permalink(),
-			'title' => get_the_title(),
-			'id' => get_the_ID(),
-			'thumb' => get_the_post_thumbnail( $id, 'small-thumb' ),
-			'excerpt' => get_the_excerpt($id) 
-		);
-	}
-}
-/**** done creating 'NEWS FROM NETWORKS' array ***/
-
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
@@ -203,7 +175,7 @@ get_header(); ?>
 								?>
 
 								<?php 
-								if (count($threatsToPress) > 0) {
+								if (false && count($threatsToPress) > 0) {
 									$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 									echo '<aside class="bbg__article-sidebar__aside">';
 									echo '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
