@@ -40,7 +40,7 @@ endif;
 wp_reset_postdata();
 wp_reset_query();
 
-// include get_template_directory() . "/inc/constant-contact_sign-up.php";
+include get_template_directory() . "/inc/constant-contact_sign-up.php";
 
 get_header(); ?>
 
@@ -177,13 +177,14 @@ get_header(); ?>
 				<div class="usa-grid">
 					<!-- Inquiries section -->
 					<div class="entry-content bbg__article-content large">
-						<div class="bbg__kits__inquiries">
-							<h3>Inquiries</h3><!-- NEED TO MAKE THIS CONTENT DYNAMIC FOR EACH KIT -->
+						<!-- NEED TO MAKE THIS CONTENT DYNAMIC FOR EACH KIT -->
+						<!-- <div class="bbg__kits__inquiries">
+							<h3>Inquiries</h3>
 							<p>The Office of Public Affairs is the main point of contact for members of the press and requests for collaborations.</p>
 							<p class="bbg__kits__inquiries__text--half"><strong>Want to stay informed?</strong> BBG sends out press releases, newsletters, event notices and media clips regularly.</p>
 							<a target="_blank" class="usa-button bbg__kits__inquiries__button--half" href="http://visitor.r20.constantcontact.com/d.jsp?llr=bqfpwmkab&p=oi&m=1110675265025">Sign up for updates</a>
-						</div>
-						<?php /*echo $signupForm;*/ ?>
+						</div> -->
+						<?php echo $signupForm; ?>
 					</div>
 					<!-- Contact card (tailored to audience) -->
 					<div class="bbg__article-sidebar large">
@@ -303,7 +304,7 @@ get_header(); ?>
 		        		</article>
 		        	</div>
 		        </section>
-		        <?php 
+		        <?php
 				/**** FETCH AND RETURN DATA ROWS ****/
 				// check if the flexible content field has rows of data
 				if ( have_rows('kits_flexible_page_rows') ):
@@ -470,7 +471,7 @@ get_header(); ?>
 							echo '<!-- JOE START HERE!!!! -->';
 					        echo '<!-- BBG NEWS -->';
 							//echo '<section class="usa-grid-full bbg__kits__section--row">';
-				
+
 				/**** FETCH AND RETURN LATEST NEWS ****/
 					$pressReleases = array();
 						// Define slug for press releases
@@ -592,7 +593,7 @@ get_header(); ?>
 
 
 						elseif (get_row_layout() == 'kits_recent_awards' ) :
-							// 
+							//
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
