@@ -303,127 +303,7 @@ get_header(); ?>
 		        		</article>
 		        	</div>
 		        </section>
-<!-- JOE START HERE!!!! -->
-		        <!-- BBG NEWS -->
-				<section class="usa-grid-full bbg__kits__section--row">
-				<?php
-				/**** FETCH AND RETURN LATEST NEWS ****/
-					$pressReleases = array();
-						// Define slug for press releases
-						$prCategoryObj = get_category_by_slug( 'press-release' );
-
-					$awards = array();
-						// Define slug for awards
-						$awardCategoryObj = get_category_by_slug( 'award' );
-
-					// set up press release category query parameters
-					if ( is_object($prCategoryObj) ) {
-						$prCategoryID = $prCategoryObj -> term_id;
-						$prParams = array(
-							'post_type' => array( 'post' ),
-							'posts_per_page' => 1,
-							'category__and' => array( $prCategoryID ),
-							'orderby', 'date',
-							'order', 'DESC',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'post_format',
-									'field' => 'slug',
-									'terms' => 'post-format-quote',
-									'operator' => 'NOT IN'
-								)
-							),
-							'category__not_in' => get_cat_id( 'award' )
-						);
-						// execute query
-						$pr_query = new WP_Query( $prParams );
-						if ( $pr_query -> have_posts() ) {
-							while ( $pr_query -> have_posts() ) : $pr_query -> the_post();
-								$id = get_the_ID();
-								$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
-							endwhile;
-						}
-						wp_reset_postdata();
-					};
-
-					if ( is_object($awardCategoryObj) ) {
-						// set up award category query parameters
-						$awardCategoryID = $awardCategoryObj -> term_id;
-						$awardParams = array(
-							'post_type' => array( 'post' ),
-							'posts_per_page' => 1,
-							'category__and' => array( $awardCategoryID ),
-							'orderby' => 'date',
-							'order' => 'DESC'
-						);
-						// execute awards query
-						$award_query = new WP_Query( $awardParams );
-						if ( $award_query -> have_posts() ) {
-							while ( $award_query -> have_posts() ) : $award_query -> the_post();
-								$id = get_the_ID();
-
-								$awardYears  = get_post_meta( $id, 'standardpost_award_year' );
-								$awardTitle = get_post_meta( $id, 'standardpost_award_title', true );
-								$orgTerms = get_field( 'standardpost_award_organization', $id );
-							    $organizations = array();
-							    $organizations[] = $orgTerms -> name;
-								$entity = get_post_meta( $id, 'standardpost_award_recipient' );
-								$description = get_post_meta( $id, 'standardpost_award_description' );
-
-								$awards[] = array(
-									'id' => $id,
-									'url' => get_permalink( $id ),
-									'title' => get_the_title( $id ),
-									'excerpt' => get_the_excerpt(),
-									'awardYears' => $awardYears,
-									'awardTitle' => $awardTitle,
-									'organizations' => $organizations,
-									'recipients' => $entity
-								);
-							endwhile;
-						}
-						wp_reset_postdata();
-					}
-
-					$s = "";
-
-						$s = '<h2>Recent news</h2>';
-						$counter = 0;
-						foreach ( $pressReleases as $pr ) {
-							$counter++;
-							$styleStr = '';
-							if ($counter==1) {
-								$styleStr = " style='margin-right:2.35765%; '";
-							}
-							$url = $pr['url'];
-							$title = $pr['title'];
-							$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
-							$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
-							$s .= '<p>' . $pr['excerpt'] . '</p>';
-						}
-						$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-						$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
-						$s .= "</div>";
-
-						foreach ( $awards as $a ) {
-							$id = $a['id'];
-							$url = $a['url'];
-							$title = $a['title'];
-							$awardYears = $a['awardYears'];
-							$awardTitle = $a['awardTitle'];
-
-							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
-							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
-							$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
-							$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
-							$s .= '</div>';
-						}
-						$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
-						$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
-						$s .= "</div>";
-
-				echo $s . '</section>';
-/* JOE END HERE!!! */
+		        <?php 
 				/**** FETCH AND RETURN DATA ROWS ****/
 				// check if the flexible content field has rows of data
 				if ( have_rows('kits_flexible_page_rows') ):
@@ -587,102 +467,132 @@ get_header(); ?>
 
 						elseif (get_row_layout() == 'kits_recent_press_releases' ) :
 
-							echo '<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->';
-							//echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
-							$prCategoryObj = get_category_by_slug( 'press-release' );
-							$prCategoryID = $prCategoryObj -> term_id;
-							echo '<h6 class="bbg__label"><a href="' . get_category_link( $prCategoryID ) . '">Recent Press Releases</a></h6>';
-							echo '<div class=" bbg__ceo-post">';
-									echo '<div class="usa-width-one-half bbg__secondary-stories">';
-									/* BEWARE: sticky posts add a record */
-									$maxPostsToShow=9;
+							echo '<!-- JOE START HERE!!!! -->';
+					        echo '<!-- BBG NEWS -->';
+							echo '<section class="usa-grid-full bbg__kits__section--row">';
+				
+				/**** FETCH AND RETURN LATEST NEWS ****/
+					$pressReleases = array();
+						// Define slug for press releases
+						$prCategoryObj = get_category_by_slug( 'press-release' );
 
-									/**** START FETCH related press releases ****/
-									$pressReleases = array();
+					$awards = array();
+						// Define slug for awards
+						$awardCategoryObj = get_category_by_slug( 'award' );
 
-									$qParams = array(
-										'post_type' => array( 'post' ),
-										'posts_per_page' => 2,
-										'category__and' => array( $prCategoryID ),
-										'orderby', 'date',
-										'order', 'DESC',
-										'tax_query' => array(
-											array(
-												'taxonomy' => 'post_format',
-												'field' => 'slug',
-												'terms' => 'post-format-quote',
-												'operator' => 'NOT IN'
+					// set up press release category query parameters
+					if ( is_object($prCategoryObj) ) {
+						$prCategoryID = $prCategoryObj -> term_id;
+						$prParams = array(
+							'post_type' => array( 'post' ),
+							'posts_per_page' => 1,
+							'category__and' => array( $prCategoryID ),
+							'orderby', 'date',
+							'order', 'DESC',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'post_format',
+									'field' => 'slug',
+									'terms' => 'post-format-quote',
+									'operator' => 'NOT IN'
+								)
+							),
+							'category__not_in' => get_cat_id( 'award' )
+						);
+						// execute query
+						$pr_query = new WP_Query( $prParams );
+						if ( $pr_query -> have_posts() ) {
+							while ( $pr_query -> have_posts() ) : $pr_query -> the_post();
+								$id = get_the_ID();
+								$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
+							endwhile;
+						}
+						wp_reset_postdata();
+					};
 
-											)
-										),
-										'category__not_in' => get_cat_id( 'Award' )
-									);
+					if ( is_object($awardCategoryObj) ) {
+						// set up award category query parameters
+						$awardCategoryID = $awardCategoryObj -> term_id;
+						$awardParams = array(
+							'post_type' => array( 'post' ),
+							'posts_per_page' => 1,
+							'category__and' => array( $awardCategoryID ),
+							'orderby' => 'date',
+							'order' => 'DESC'
+						);
+						// execute awards query
+						$award_query = new WP_Query( $awardParams );
+						if ( $award_query -> have_posts() ) {
+							while ( $award_query -> have_posts() ) : $award_query -> the_post();
+								$id = get_the_ID();
 
-									query_posts($qParams);
-									if ( have_posts() ) {
-										$counter = 0;
-										$includeImage = TRUE;
-										while ( have_posts() ) : the_post();
-											$counter++;
-											$postIDsUsed[] = get_the_ID();
-											$gridClass = "bbg-grid--full-width";
-											if ($counter > 2) {
-												$includeImage = false;
-												$includeMeta=false;
-												$includeExcerpt=false;
-												if ($counter==3) {
-													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
-													echo '</div><div class="usa-width-one-half tertiary-stories">';
-												}
-											}
-											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-										endwhile;
-									}
-									wp_reset_query();
-									echo '</div>';
+								$awardYears  = get_post_meta( $id, 'standardpost_award_year' );
+								$awardTitle = get_post_meta( $id, 'standardpost_award_title', true );
+								$orgTerms = get_field( 'standardpost_award_organization', $id );
+							    $organizations = array();
+							    $organizations[] = $orgTerms -> name;
+								$entity = get_post_meta( $id, 'standardpost_award_recipient' );
+								$description = get_post_meta( $id, 'standardpost_award_description' );
 
-									$qParams=array(
-										'post_type' => array('post'),
-										'posts_per_page' => 1,
-										'orderby' => 'post_date',
-										'order' => 'desc',
-										'category__in' => get_cat_ID('Media Advisory')
-									);
-									$custom_query = new WP_Query( $qParams );
-									$mediaAdvisoryID = false;
-									if ( $custom_query->have_posts() ) :
-										while ( $custom_query->have_posts() ) : $custom_query->the_post();
-											$mediaAdvisoryID = get_the_ID();
-										endwhile;
-									endif;
-									if ($mediaAdvisoryID) {
-										$mediaPost = get_post($mediaAdvisoryID);
-										echo getSoapboxStr($mediaPost);
-									}
-									wp_reset_query();
+								$awards[] = array(
+									'id' => $id,
+									'url' => get_permalink( $id ),
+									'title' => get_the_title( $id ),
+									'excerpt' => get_the_excerpt(),
+									'awardYears' => $awardYears,
+									'awardTitle' => $awardTitle,
+									'organizations' => $organizations,
+									'recipients' => $entity
+								);
+							endwhile;
+						}
+						wp_reset_postdata();
+					}
 
-								echo '</div><!-- headlines -->';
-							echo '</section><!-- .BBG News -->';
-						elseif (get_row_layout() == 'kits_recent_awards' ) :
-							$qParams=array(
-								'post_type' => array('post')
-								,'cat' => get_cat_ID('Award')
-								,'posts_per_page' => 3
-								,'orderby' => 'post_date'
-								,'order' => 'desc'
-							);
-							$custom_query_args= $qParams;
-							$custom_query = new WP_Query( $custom_query_args );
-							echo '<h6 class="bbg__label"><a href="' . get_category_link( get_cat_ID('Award') ) . '">Recent Awards</a></h6>';
+					$s = "";
 
-							echo '<div class=" ">';
-							while ( $custom_query->have_posts() )  {
-								$custom_query->the_post();
-								$gridClass = "bbg-grid--1-2-3";
-								get_template_part( 'template-parts/content-portfolio', get_post_format() );
+						$s = '<h2>Recent news</h2>';
+						$counter = 0;
+						foreach ( $pressReleases as $pr ) {
+							$counter++;
+							$styleStr = '';
+							if ($counter==1) {
+								$styleStr = " style='margin-right:2.35765%; '";
 							}
-							echo "</div>";
-							wp_reset_query();
+							$url = $pr['url'];
+							$title = $pr['title'];
+							$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
+							$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
+							$s .= '<p>' . $pr['excerpt'] . '</p>';
+						}
+						$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
+						$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
+						$s .= "</div>";
+
+						foreach ( $awards as $a ) {
+							$id = $a['id'];
+							$url = $a['url'];
+							$title = $a['title'];
+							$awardYears = $a['awardYears'];
+							$awardTitle = $a['awardTitle'];
+
+							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+							$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
+							$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
+							$s .= '</div>';
+						}
+						$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
+						$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
+						$s .= "</div>";
+
+				echo $s . '</section>';
+/* JOE END HERE!!! */
+
+
+
+						elseif (get_row_layout() == 'kits_recent_awards' ) :
+							// 
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
