@@ -565,10 +565,11 @@ get_header(); ?>
 							$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
 							$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
 							$s .= '<p>' . $pr['excerpt'] . '</p>';
+							$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
+							$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
+							$s .= "</div>";
 						}
-						$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-						$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
-						$s .= "</div>";
+						
 
 						foreach ( $awards as $a ) {
 							$id = $a['id'];
@@ -581,11 +582,10 @@ get_header(); ?>
 							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
 							$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
 							$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
+							$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
+							$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
 							$s .= '</div>';
 						}
-						$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
-						$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
-						$s .= "</div>";
 						echo $s;
 				//echo $s . '</section>';
 /* JOE END HERE!!! */
