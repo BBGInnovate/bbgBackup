@@ -343,7 +343,7 @@ get_header(); ?>
 											
 										endwhile;
 										$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-										echo "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
+										echo "<BR><a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
 									}
 									wp_reset_query();
 									echo '</div>';
