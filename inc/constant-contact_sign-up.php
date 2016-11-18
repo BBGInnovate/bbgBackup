@@ -17,7 +17,7 @@ if ( $includeSignup ) {
 	$signupForm .= "</span>";
 									
 	$signupForm .= "<form style='display:none;' data-id='embedded_signup:form' class='ctct-custom-form Form' name='embedded_signup' method='POST' action='https://visitor2.constantcontact.com/api/signup'>";
-	$signupForm .= '<hr><h3 style="margin:0;">Want to stay informed?</h3><div style="float:right; cursor:pointer; font-weight:bold;" id="btnClose">X</div>';
+	$signupForm .= '<hr style="margin-top:2rem;"><h3 style="margin:0;">Want to stay informed?</h3><div style="float:right; cursor:pointer; font-weight:bold;" id="btnClose">X</div>';
 	$signupForm .= '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
 	
 		$signupForm .= "<!-- The following code must be included to ensure your sign-up form works properly. -->";
