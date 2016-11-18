@@ -302,7 +302,7 @@ get_header(); ?>
 									
 									$qParams = array(
 										'post_type' => array( 'post' ),
-										'posts_per_page' => 4,
+										'posts_per_page' => 5,
 										'category__and' => array( $prCategoryID ),
 										'orderby', 'date',
 										'order', 'DESC',
@@ -334,7 +334,12 @@ get_header(); ?>
 													echo '</div><div class="usa-width-one-half tertiary-stories">';
 												}
 											}
-											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+											if ($counter==1) {
+												get_template_part( 'template-parts/content-portfolio', get_post_format() );
+											} else {
+												get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+											}
+											
 										endwhile;
 									}
 									wp_reset_query();
