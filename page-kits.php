@@ -302,7 +302,7 @@ get_header(); ?>
 									
 									$qParams = array(
 										'post_type' => array( 'post' ),
-										'posts_per_page' => 5,
+										'posts_per_page' => 4,
 										'category__and' => array( $prCategoryID ),
 										'orderby', 'date',
 										'order', 'DESC',
@@ -342,13 +342,15 @@ get_header(); ?>
 											}
 											
 										endwhile;
+										$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
+										$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
 									}
 									wp_reset_query();
 									echo '</div>';
 								echo '</div><!-- headlines -->';
 							echo '</section><!-- .BBG News -->';
 						?>
-						
+						 
 					</div>
 					<!-- Contact card (tailored to audience) -->
 					<div class="bbg__article-sidebar large">
