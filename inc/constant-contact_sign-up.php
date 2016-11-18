@@ -15,10 +15,11 @@ if ( $includeSignup ) {
 	$signupForm .= "<span id='success_message' style='display:none;'>";
     $signupForm .= "<div style='text-align:center;'>Thanks for signing up!</div>";
 	$signupForm .= "</span>";
-
-	$signupForm .= "<form data-id='embedded_signup:form' class='ctct-custom-form Form' name='embedded_signup' method='POST' action='https://visitor2.constantcontact.com/api/signup'>";
-		$signupForm .= "<h3 style='margin:0;'>Want to stay informed?</h3>";
-		$signupForm .= "<p>Sign up to receive our press releases, newsletters, and event notices.</p>";
+									
+	$signupForm .= "<form style='display:none;' data-id='embedded_signup:form' class='ctct-custom-form Form' name='embedded_signup' method='POST' action='https://visitor2.constantcontact.com/api/signup'>";
+	$signupForm .= '<hr><h3 style="margin:0;">Want to stay informed?</h3><div style="float:right; cursor:pointer; font-weight:bold;" id="btnClose">X</div>';
+	$signupForm .= '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
+	
 		$signupForm .= "<!-- The following code must be included to ensure your sign-up form works properly. -->";
 
 		$signupForm .= "<input data-id='ca:input' type='hidden' name='ca' value='98c4cff0-5ff9-41f4-b686-77c1a956c79a'>";
@@ -93,7 +94,7 @@ if ( $includeSignup ) {
 		$signupForm .= "<button type='submit' class='usa-button bbg__kits__inquiries__button--half' data-enabled='enabled'>Sign Up</button>";
 
 		$signupForm .= "<div>";
-		$signupForm .= "<p class='ctct-form-footer'>By submitting this form, you are grantingn the Broadcasting Board of Governors permission to email you. You may unsubscribe via the link found at the bottom of every email. (See our <a href='http://www.constantcontact.com/legal/privacy-statement' target='_blank'>Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p>";
+		$signupForm .= "<p class='ctct-form-footer'>By submitting this form, you are granting the Broadcasting Board of Governors permission to email you. You may unsubscribe via the link found at the bottom of every email. (See our <a href='http://www.constantcontact.com/legal/privacy-statement' target='_blank'>Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p>";
 		$signupForm .= "</div>";
 		$signupForm .= "</form>";
 

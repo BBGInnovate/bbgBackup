@@ -133,6 +133,28 @@ get_header(); ?>
 
 }
 </style>
+<script type="text/javascript">
+	
+	function toggleForm() {
+		btnSignup = document.getElementById('btnSignup');
+		if (btnSignup.style.display=="none") {
+			btnSignup.style.display=''; 
+			ccForm=document.getElementsByName('embedded_signup'); 
+			ccForm[0].style.display='none';
+		} else {
+			btnSignup.style.display='none'; 
+			ccForm=document.getElementsByName('embedded_signup'); 
+			ccForm[0].style.display='';
+		}
+		
+	}
+
+	jQuery( document ).ready(function() {
+		jQuery('#btnClose').click(function() {
+		  toggleForm();
+		});
+	});
+</script>
 
 <div id="main" class="site-main">
 
@@ -263,7 +285,7 @@ get_header(); ?>
 							<p class="bbg__kits__inquiries__text--half"><strong>Want to stay informed?</strong> BBG sends out press releases, newsletters, event notices and media clips regularly.</p>
 							<a target="_blank" class="usa-button bbg__kits__inquiries__button--half" href="http://visitor.r20.constantcontact.com/d.jsp?llr=bqfpwmkab&p=oi&m=1110675265025">Sign up for updates</a>
 						</div> -->
-						<?php echo $signupForm; ?>
+						
 					</div>
 					<!-- Contact card (tailored to audience) -->
 					<div class="bbg__article-sidebar large">
@@ -273,6 +295,8 @@ get_header(); ?>
 									<div class="bbg__contact-card__text">
 										<?php
 											// Main contact information
+											$pageName = str_replace("Private: ", "", $pageName);
+
 											if ( $pageName == "Press room" ) {
 												echo '<h3>Office of Public Affairs</h3>';
 											} elseif ( $pageName == "Congressional affairs" ) {
@@ -307,15 +331,33 @@ get_header(); ?>
 											echo '<div class="bbg__kits__contacts">';
 												renderContactSelect($contactPostIDs);
 											echo '</div>';
+
+											// echo '<h3 style="margin:0;">Want to stay informed?</h3>';
+											// echo '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
+											echo "<button id='btnSignup' onclick=\" toggleForm();  \" class='usa-button bbg__kits__inquiries__button--half' data-enabled='enabled'>Sign up to receive updates</button>";
+											
+											echo $signupForm; 
+											
 										?>
 									</div>
+
 								</div>
+								<?php 
+									// echo '<div class="bbg__contact-card">'; 
+									// echo '<div class="bbg__contact-card__text">';
+									// echo '<h3 style="margin:0;">Want to stay informed?</h3>';
+									// echo '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
+									// echo "<button id='btnSignup' onclick=\" document.getElementById('btnSignup').style.display='none'; ccForm=document.getElementsByName('embedded_signup'); ccForm[0].style.display='';  \" class='usa-button bbg__kits__inquiries__button--half' data-enabled='enabled'>Sign up to receive updates</button>";
+									// echo $signupForm;
+									// echo '</div>';
+									// echo '</div>';
+								?>
 							</aside>
 						<?php } ?>
 					</div>
 				</div>
 			</article>
-
+ 
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 		        <!-- 3-COL ROW -->
 		        <section class="usa-grid-full bbg__kits__section--row">
