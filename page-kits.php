@@ -590,7 +590,7 @@ get_header(); ?>
 							$s .= '<header class="entry-header bbg-blog__excerpt-header">';
 							$s .= '<h3 class="entry-title bbg-blog__excerpt-title--list "><a href="' . $url . '">' . $title . '</a></h3>';
 							$s .= '</header><!-- .bbg-blog__excerpt-header -->';
-							$s .= '<div class="entry-meta bbg__excerpt-meta">';
+							//$s .= '<div class="entry-meta bbg__excerpt-meta">';
 							//$s .= '<span class="posted-on"><time class="entry-date published" datetime="2016-11-14T18:00:59+00:00">November 14, 2016</time></span>		</div><!-- .entry-meta -->';
 							$s .= '<div class="entry-content bbg-blog__excerpt-content">';
 							$s .= '<p>' . $excerpt . '</p>';
