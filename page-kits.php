@@ -560,15 +560,20 @@ get_header(); ?>
 							}
 							echo $s;
 						elseif (get_row_layout() == 'kits_recent_awards' ) :
-							
+							$counter = 0;
 							foreach ( $awards as $a ) {
+								$counter++;
+								$styleStr = '';
+								if ($counter==1) {
+									$styleStr = " style='margin-right:2.35765%; '";
+								}
 								$id = $a['id'];
 								$url = $a['url'];
 								$title = $a['title'];
 								$awardYears = $a['awardYears'];
 								$awardTitle = $a['awardTitle'];
 
-								$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+								$s .= '<div ' . $styleStr . '  class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
 								$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
 								$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
 								$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
