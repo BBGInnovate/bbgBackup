@@ -328,13 +328,14 @@ get_header(); ?>
 											$includeExcerpt=false;
 											if ($counter > 1) {
 												$includeImage = false;
-												$includeMeta=false;
+												$includeMeta = false;
 												if ($counter==2) {
 													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
 													echo '</div><div class="usa-width-one-half tertiary-stories">';
 												}
 											}
 											if ($counter==1) {
+												$includePortfolioDescription = false;
 												get_template_part( 'template-parts/content-portfolio', get_post_format() );
 											} else {
 												get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
