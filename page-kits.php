@@ -323,7 +323,7 @@ get_header(); ?>
 
 						$sectionClasses = "usa-grid-full bbg__kits__section--row";
 						if (get_row_layout() == 'kits_ribbon_page') {
-							$sectionClasses .= "bbg__ribbon--thin";
+							$sectionClasses .= " bbg__ribbon--thin";
 						}
 						echo '<!-- ROW ' . $counter . '-->';
 						echo '<section class="' . $sectionClasses . '">';
