@@ -9,34 +9,7 @@
  */
 
 function getEntityLogo($entityAbbr) {
-	//return get_template_directory_uri().'/img/logo_rferl--circle-20.png'; //need to fix this 
 	return $imgSrc=get_template_directory_uri().'/img/logo_'.$entityAbbr.'--circle-40.png'; //need to fix this			
-	// $entityLogo = false;
-	// $broadcastersPage=get_page_by_title('Our Networks');
-	// $args = array(
-	// 	'post_type' => 'page',
-	// 	'posts_per_page' => 1,
-	// 	'post_parent' => $broadcastersPage->ID,
-	// 	'name' => $entityAbbr
-	// );
-	// $custom_query = new WP_Query($args);
-	// if ( $custom_query->have_posts() ) {
-	// 	while ( $custom_query->have_posts() )  {
-	// 		$custom_query->the_post();
-	// 		$id = get_the_ID();
-	// 		$entityLogoID = get_post_meta( $id, 'entity_logo',true );
-	// 		$entityLogo = "";
-	// 		$entityLink = get_the_permalink($id);
-	// 		if ($entityLogoID) {
-	// 			$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
-	// 			$entityLogo = $entityLogoObj[0];
-	// 		}
-	// 	}
-	// }
-	// wp_reset_postdata();
-	// wp_reset_query();
-
-	// return $entityLogo;
 }
 
 $challenges = get_field( 'hot_spot_challenges', '', true );
@@ -53,13 +26,78 @@ $featuredImageBackgroundPosition = $randomFeaturedImage['hot_spot_rotating_featu
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 $pressFreedomIntro = get_field( 'site_setting_press_freedom_intro', 'options', 'false' );
 
+$threatsToPressStr = threatstopress_shortcode(array('tag' => $tag->slug));
+
+/**** create 'THREATS TO PRESS' array ***/
+$ttp_query_args = array(
+	'post_type' => array('post')
+	,'cat' => get_cat_id('Threats to Press')
+	,'posts_per_page' => 2
+	,'post_status' => array('publish')
+	,'orderby' => 'date'
+	,'order' => 'DESC'
+);
+
+$postIDsUsed=array();
+$threatsToPress = array();
+$ttp_query = new WP_Query( $ttp_query_args );
+
+if ($ttp_query -> have_posts()) {
+	
+	while ( $ttp_query -> have_posts() )  {
+		$id = $ttp_query -> get_the_ID();
+		$ttp_query->the_post();
+		$threatsToPress[] = array(
+			'url' => get_the_permalink(),
+			'title' => get_the_title(),
+			'id' => $id,
+			'thumb' => get_the_post_thumbnail( $id, 'medium-thumb', array( 'style' => 'max-height:400px; width:100%'  )),
+			'excerpt' => my_excerpt($id)
+		);
+		$postIDsUsed[] = $id;
+	}
+}
+ 
+$fullStr = ''; 
+if (count($threatsToPress) > 0) {
+	$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
+	//$fullStr .= '<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px;" >';
+	$fullStr .= '<p></p><p class="bbg__label small"><a href="' . $ttpLink . '">Threats to Press</a></p>'; 
+	$i=0;
+	foreach ($threatsToPress as $n) {
+		$s = ''; 
+		$i++;
+		$s .= '<article class="' . implode(" ", get_post_class( "bbg__article bbg-grid--1-2-2" )) . '"">';
+		$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
+		$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
+		$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
+		$s .=		'</div>';
+		$s .=		'<p>'; 
+		$s .= '<a href="'.$n['url'] . '"><h4>' . $n['title'] . '</h4></a>';
+		if ($n['excerpt'] != '') {
+			//$s .= "<span >" . $n['excerpt'] . "</span>";
+		}
+		$s .= '</p><BR>';
+		$s .=	'</header><!-- .entry-header -->';
+		$s .= '</article><!-- .bbg-portfolio__excerpt -->';
+		$fullStr .= $s;
+	}
+	$fullStr .= '</div>';
+
+}
+$threatsToPressStr = $fullStr;
+
+/**** done creating 'THREATS TO PRESS' array ***/
+
 /**** create 'NEWS FROM NETWORKS' array ***/
 $nnn_query_args=array(
 	'post_type' => array('post'),
 	'posts_per_page' => 3,
 	'tag' => $tag -> slug,
 	'orderby' => 'date',
-	'order' => 'DESC'
+	'order' => 'DESC',
+	'post__not_in' => $postIDsUsed
+
 );
 $newsFromNetworks = array();
 $custom_query = new WP_Query( $nnn_query_args );
@@ -75,7 +113,6 @@ if ($custom_query -> have_posts()) {
 	}
 }
 /**** done creating 'NEWS FROM NETWORKS' array ***/
-
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
@@ -115,6 +152,7 @@ get_header(); ?>
 										// vars
 										$label = get_sub_field('hot_spot_freeform_textarea_label');
 										$content = get_sub_field('hot_spot_freeform_textarea_text');
+										$content = str_replace("[threatstopress]", $threatsToPressStr, $content)
 										echo "<h2>$label</h2>$content";
 										?>
 									<?php endwhile; ?>
