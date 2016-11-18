@@ -26,8 +26,6 @@ $featuredImageBackgroundPosition = $randomFeaturedImage['hot_spot_rotating_featu
 $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 $pressFreedomIntro = get_field( 'site_setting_press_freedom_intro', 'options', 'false' );
 
-$threatsToPressStr = threatstopress_shortcode(array('tag' => $tag->slug));
-
 /**** create 'THREATS TO PRESS' array ***/
 $ttp_query_args = array(
 	'post_type' => array('post')
@@ -36,6 +34,7 @@ $ttp_query_args = array(
 	,'post_status' => array('publish')
 	,'orderby' => 'date'
 	,'order' => 'DESC'
+	,'tag' => $tag->slug
 );
 
 $postIDsUsed=array();
