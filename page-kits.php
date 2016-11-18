@@ -285,6 +285,61 @@ get_header(); ?>
 							<p class="bbg__kits__inquiries__text--half"><strong>Want to stay informed?</strong> BBG sends out press releases, newsletters, event notices and media clips regularly.</p>
 							<a target="_blank" class="usa-button bbg__kits__inquiries__button--half" href="http://visitor.r20.constantcontact.com/d.jsp?llr=bqfpwmkab&p=oi&m=1110675265025">Sign up for updates</a>
 						</div> -->
+
+						<?php  
+
+							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
+							$prCategoryObj = get_category_by_slug( 'press-release' );
+							$prCategoryID = $prCategoryObj -> term_id;
+							echo '<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>';
+							echo '<div class=" bbg__ceo-post">';
+									echo '<div class="usa-width-one-half bbg__secondary-stories">';
+									/* BEWARE: sticky posts add a record */
+									$maxPostsToShow=9;
+									/**** START FETCH related press releases ****/
+									$pressReleases = array();
+									
+									$qParams = array(
+										'post_type' => array( 'post' ),
+										'posts_per_page' => 4,
+										'category__and' => array( $prCategoryID ),
+										'orderby', 'date',
+										'order', 'DESC',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'post_format',
+												'field' => 'slug',
+												'terms' => 'post-format-quote',
+												'operator' => 'NOT IN'
+											)
+										),
+										'category__not_in' => get_cat_id( 'Award' )
+									);
+									query_posts($qParams);
+									if ( have_posts() ) {
+										$counter = 0;
+										$includeImage = TRUE;
+										while ( have_posts() ) : the_post();
+											$counter++;
+											$postIDsUsed[] = get_the_ID();
+											$gridClass = "bbg-grid--full-width";
+											if ($counter > 1) {
+												$includeImage = false;
+												$includeMeta=false;
+												$includeExcerpt=false;
+												if ($counter==2) {
+													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
+													echo '</div><div class="usa-width-one-half tertiary-stories">';
+												}
+											}
+											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+										endwhile;
+									}
+									wp_reset_query();
+									echo '</div>';
+								echo '</div><!-- headlines -->';
+							echo '</section><!-- .BBG News -->';
+						?>
 						
 					</div>
 					<!-- Contact card (tailored to audience) -->
