@@ -587,6 +587,7 @@ get_header(); ?>
 
 							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
 							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+							$s .= '<p>A guide to rumors, myths and untruths pertaining to the BBG.</p>';
 							$s .= '</div>';
 
 
