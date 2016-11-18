@@ -325,10 +325,10 @@ get_header(); ?>
 											$postIDsUsed[] = get_the_ID();
 											$includeMeta=false;
 											$gridClass = "bbg-grid--full-width";
+											$includeExcerpt=false;
 											if ($counter > 1) {
 												$includeImage = false;
 												$includeMeta=false;
-												$includeExcerpt=false;
 												if ($counter==2) {
 													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
 													echo '</div><div class="usa-width-one-half tertiary-stories">';
