@@ -229,7 +229,7 @@ get_header(); ?>
 								if (false && count($threatsToPress) > 0) {
 									$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 									echo '<aside class="bbg__article-sidebar__aside">';
-									echo '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
+									//echo '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
 									$i=0;
 									foreach ($threatsToPress as $n) {
 										$s = ''; 
