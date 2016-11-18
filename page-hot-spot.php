@@ -50,10 +50,10 @@ if ($ttp_query -> have_posts()) {
 			'url' => get_the_permalink(),
 			'title' => get_the_title(),
 			'id' => $id,
-			'thumb' => get_the_post_thumbnail( $id, 'medium-thumb', array( 'style' => 'max-height:400px; width:100%'  )),
+			'thumb' => get_the_post_thumbnail( $id, 'medium-thumb' ),
 			'excerpt' => my_excerpt($id)
 		);
-		$postIDsUsed[] = $id;
+		$postIDsUsed[] = $id; //, array( 'style' => 'max-height:400px; width:100%') 
 	}
 }
  
@@ -61,12 +61,16 @@ $fullStr = '';
 if (count($threatsToPress) > 0) {
 	$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 	//$fullStr .= '<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px;" >';
-	$fullStr .= '<p></p><p class="bbg__label small"><a href="' . $ttpLink . '">Threats to Press</a></p>'; 
+	$fullStr .= '<p class="bbg__label small"><a href="' . $ttpLink . '">Threats to Press</a></p>'; 
 	$i=0;
 	foreach ($threatsToPress as $n) {
 		$s = ''; 
 		$i++;
-		$s .= '<article class="' . implode(" ", get_post_class( "bbg__article bbg-grid--1-2-2" )) . '"">';
+		$styleStr = '';
+		if ($i==1) {
+			$styleStr = " style='margin-right:2.35765%; '";
+		}
+		$s .= '<article ' . $styleStr . ' class="' . implode(" ", get_post_class( "bbg__article bbg-grid--1-2-2" )) . '"">';
 		$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
 		$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
 		$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
@@ -81,7 +85,6 @@ if (count($threatsToPress) > 0) {
 		$s .= '</article><!-- .bbg-portfolio__excerpt -->';
 		$fullStr .= $s;
 	}
-	$fullStr .= '</div>';
 
 }
 $threatsToPressStr = $fullStr;
@@ -116,6 +119,17 @@ if ($custom_query -> have_posts()) {
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 get_header(); ?>
+
+<style>
+@media screen and (min-width: 600px) {
+
+.bbg-grid--1-2-2:nth-child(2n+1) {
+	clear:none;
+	margin-right:0;
+}
+
+}
+</style>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main bbg__2-column" role="main">
