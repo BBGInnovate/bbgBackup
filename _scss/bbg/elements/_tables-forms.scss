@@ -139,8 +139,20 @@ table td {
 	}
 }
 
-
 input[type="radio"] + label {
 	display: inline-block !important;
 	margin-top: $site-margins-small;
+}
+
+.bbg__kits__form {
+	background-color: #f1f1f1;
+	border-radius: 0.3rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding: 3rem;
+}
+
+.bbg_hidden-fields {
+	display: none;
+	visibility: hidden;
 }

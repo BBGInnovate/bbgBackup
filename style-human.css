@@ -3500,6 +3500,19 @@ input[type="radio"] + label {
   margin-top: 1rem;
 }
 
+.bbg__kits__form {
+  background-color: #f1f1f1;
+  border-radius: 0.3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 3rem;
+}
+
+.bbg_hidden-fields {
+  display: none;
+  visibility: hidden;
+}
+
 /** ---------------
  * RESPONSIVE SVGs
  ------------------ */
