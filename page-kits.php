@@ -44,6 +44,17 @@ wp_reset_query();
 
 get_header(); ?>
 
+<style>
+@media screen and (min-width: 600px) {
+
+.bbg-grid--1-2-2:nth-child(2n+1) {
+	clear:none;
+	margin-right:0;
+}
+
+}
+</style>
+
 <div id="main" class="site-main">
 
 	<div id="primary" class="content-area">
@@ -377,10 +388,16 @@ get_header(); ?>
 					$s = "";
 
 						$s = '<h2>Recent news</h2>';
+						$counter = 0;
 						foreach ( $pressReleases as $pr ) {
+							$counter++;
+							$styleStr = '';
+							if ($counter==1) {
+								$styleStr = " style='margin-right:2.35765%; '";
+							}
 							$url = $pr['url'];
 							$title = $pr['title'];
-							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
+							$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
 							$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
 							$s .= '<p>' . $pr['excerpt'] . '</p>';
 						}
