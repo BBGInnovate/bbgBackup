@@ -469,7 +469,7 @@ get_header(); ?>
 
 							echo '<!-- JOE START HERE!!!! -->';
 					        echo '<!-- BBG NEWS -->';
-							echo '<section class="usa-grid-full bbg__kits__section--row">';
+							//echo '<section class="usa-grid-full bbg__kits__section--row">';
 				
 				/**** FETCH AND RETURN LATEST NEWS ****/
 					$pressReleases = array();
@@ -585,8 +585,8 @@ get_header(); ?>
 						$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
 						$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
 						$s .= "</div>";
-
-				echo $s . '</section>';
+						echo $s;
+				//echo $s . '</section>';
 /* JOE END HERE!!! */
 
 
