@@ -287,11 +287,12 @@ get_header(); ?>
 						</div> -->
 
 						<?php  
-
+							//echo '<h6 class="bbg__label"><a href="">Recent Press Releases</a></h6>';<?php echo get_category_link( $prCategoryID ); 
+							
 							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 							$prCategoryObj = get_category_by_slug( 'press-release' );
 							$prCategoryID = $prCategoryObj -> term_id;
-							echo '<h6 class="bbg__label"><a href="<?php echo get_category_link( $prCategoryID ); ?>">Recent Press Releases</a></h6>';
+							echo '<h2 class="bbg__label">Recent Press Releases</h6>';
 							echo '<div class=" bbg__ceo-post">';
 									echo '<div class="usa-width-one-half bbg__secondary-stories">';
 									/* BEWARE: sticky posts add a record */
