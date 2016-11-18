@@ -61,7 +61,7 @@ $fullStr = '';
 if (count($threatsToPress) > 0) {
 	$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 	//$fullStr .= '<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px;" >';
-	$fullStr .= '<p class="bbg__label small"><a href="' . $ttpLink . '">Threats to Press</a></p>'; 
+	//$fullStr .= '<p class="bbg__label small"><a href="' . $ttpLink . '">Threats to Press</a></p>'; 
 	$i=0;
 	foreach ($threatsToPress as $n) {
 		$s = ''; 
@@ -225,42 +225,7 @@ get_header(); ?>
 									endif;
 								?>
 
-								<?php 
-								if (false && count($threatsToPress) > 0) {
-									$ttpLink = get_permalink( get_page_by_path( 'threats-to-press' ) );
-									echo '<aside class="bbg__article-sidebar__aside">';
-									//echo '<h6 class="bbg__label small"><a href="$ttpLink">Threats to Press</a></h6>';
-									$i=0;
-									foreach ($threatsToPress as $n) {
-										$s = ''; 
-										$i++;
-										if ($i == 1) {
-											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
-											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
-											$s .=		'<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">';
-											$s .=			'<a tabindex="-1" href="' . $n['url'] . '">' . $n['thumb'] . '</a>';
-											$s .=		'</div>';
-											$s .=		'<p>';
-											$s .= '<a href="'.$n['url'] . '"><h4>' . $n['title'] . '</h4></a>';
-											if ($n['excerpt'] != '') {
-												$s .= $n['excerpt'];
-											}
-											$s .= '</p><BR>';
-											$s .=	'</header><!-- .entry-header -->';
-											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
-										} else {
-											$s .= '<article class="' . implode(" ", get_post_class( "bbg__article" )) . '"">';
-											$s .=	'<header class="entry-header bbg-portfolio__excerpt-header">';
-											$s .=		'<p class=""><a href="'.$n['url'] . '">' . $n['title'] . '</a></p>';
-											$s .=	'</header><!-- .entry-header -->';
-											$s .= '</article><!-- .bbg-portfolio__excerpt -->';
-										}
-										echo $s;
-									}
-									echo '</aside>';
-								}
 								
-								?>
 								<h5 class="bbg__label small">By the numbers</h5>
 								<img src="https://placehold.it/300x400" />
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
