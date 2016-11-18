@@ -105,7 +105,7 @@
 						}
 
 					endwhile;
-				echo '</select><button class="usa-button-outline" id="entityUrlGo">Go</button>';
+				echo '</select><button class="usa-button" id="entityUrlGo">Go</button>';
 				echo '</div>';
 			endif;
 			wp_reset_postdata();
