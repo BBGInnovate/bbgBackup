@@ -1508,3 +1508,33 @@ article {
 		margin-bottom: $site-margins-small;
 	}
 }
+
+.bbg__form__sign-up {
+	display: inline-block;
+	position: relative;
+}
+
+.bbg__form--required {
+	&:after {
+		color: $color-secondary;
+		content: '*';
+		font-weight: $font-bold;
+	}
+}
+
+.bbg__button--close {
+	@include button-unstyled;
+	background-image: url('#{$image-path}/close.png');
+	background-image: url('#{$image-path}/close.svg');
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 1.3rem;
+	cursor: pointer;
+
+	height: 100%;
+	width: 1.3rem;
+
+	position: absolute;
+	top: 3rem;
+	right: 0;
+}

@@ -15,11 +15,12 @@ if ( $includeSignup ) {
 	$signupForm .= "<span id='success_message' style='display:none;'>";
     $signupForm .= "<div style='text-align:center;'>Thanks for signing up!</div>";
 	$signupForm .= "</span>";
-									
-	$signupForm .= "<form style='display:none;' data-id='embedded_signup:form' class='ctct-custom-form Form' name='embedded_signup' method='POST' action='https://visitor2.constantcontact.com/api/signup'>";
-	$signupForm .= '<hr style="margin-top:2rem;"><h3 style="margin:0;">Want to stay informed?</h3><div style="float:right; cursor:pointer; font-weight:bold;" id="btnClose">X</div>';
+
+	$signupForm .= "<form style='display:none;' data-id='embedded_signup:form' class='bbg__form__sign-up' name='embedded_signup' method='POST' action='https://visitor2.constantcontact.com/api/signup'>";
+	$signupForm .= '<hr style="margin-top:2rem;">';
+	$signupForm .= '<h3>Want to stay informed? <span id="btnClose" class="bbg__button--close"></span></h3>';
 	$signupForm .= '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
-	
+
 		$signupForm .= "<!-- The following code must be included to ensure your sign-up form works properly. -->";
 
 		$signupForm .= "<input data-id='ca:input' type='hidden' name='ca' value='98c4cff0-5ff9-41f4-b686-77c1a956c79a'>";
@@ -27,18 +28,23 @@ if ( $includeSignup ) {
 		$signupForm .= "<input data-id='url:input' type='hidden' name='url' value=''>";
 
 		$signupForm .= "<p data-id='Email Address:p'>";
-			$signupForm .= "<label for='input-type-text' data-id='Email Address:label' data-name='email' class='ctct-form-required'>Email Address <span class='usa-additional_text'>Required</span></label>";
-			$signupForm .= "<input data-id='Email Address:input' type='text' name='email' value='' maxlength='80'>";
+			$signupForm .= "<label for='input-type-text' data-id='Email Address:label' data-name='email' class='bbg__form--required'>Email Address <span class='usa-additional_text usa-sr-only'>Required</span></label>";
+			$signupForm .= "<input data-id='Email Address:input' type='text' name='email' maxlength='80'>";
 		$signupForm .= "</p>";
 
 		$signupForm .= "<p><span data-id='First Name:p'>";
-			$signupForm .= "<label for='input-type-text' data-id='First Name:label' data-name='first_name' class='ctct-form-required'>First Name</label>";
+			$signupForm .= "<label for='input-type-text' data-id='First Name:label' data-name='first_name' class='bbg__form--required'>First Name <span class='usa-additional_text usa-sr-only'>Required</span></label>";
 			$signupForm .= "<input data-id='First Name:input' type='text' name='first_name' value='' maxlength='50'>";
 		$signupForm .= "</span>";
 		$signupForm .= "<span data-id='Last Name:p'>";
-			$signupForm .= "<label for='input-type-text' data-id='Last Name:label' data-name='last_name' class='ctct-form-required'>Last Name</label>";
+			$signupForm .= "<label for='input-type-text' data-id='Last Name:label' data-name='last_name' class='bbg__form--required'>Last Name <span class='usa-additional_text usa-sr-only'>Required</span></label>";
 			$signupForm .= "<input data-id='Last Name:input' type='text' name='last_name' value='' maxlength='50'>";
 		$signupForm .= "</span>";
+		$signupForm .= "</p>";
+
+		$signupForm .= "<p data-id='Company:p'>";
+			$signupForm .= "<label for='input-type-text' data-id='Company:label' data-name='company'>Company</label>";
+			$signupForm .= "<input data-id='Company:input' type='text' name='company' value='' maxlength='50'>";
 		$signupForm .= "</p>";
 
 		$signupForm .= "<p data-id='Phone Number:p'>";
@@ -49,11 +55,6 @@ if ( $includeSignup ) {
 		$signupForm .= "<p data-id='Job Title:p'>";
 			$signupForm .= "<label for='input-type-text' data-id='Job Title:label' data-name='job_title'>Job Title</label>";
 			$signupForm .= "<input data-id='Job Title:input' type='text' name='job_title' value='' maxlength='50'>";
-		$signupForm .= "</p>";
-
-		$signupForm .= "<p data-id='Company:p'>";
-			$signupForm .= "<label for='input-type-text' data-id='Company:label' data-name='company'>Company</label>";
-			$signupForm .= "<input data-id='Company:input' type='text' name='company' value='' maxlength='50'>";
 		$signupForm .= "</p>";
 
 		$signupForm .= "<p data-id='Twitter:p'>";
@@ -72,10 +73,10 @@ if ( $includeSignup ) {
 					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_0' value='6' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Events</span>";
 				$signupForm .= "</li>";
-				$signupForm .= "<li>";
+				/*$signupForm .= "<li>";
 					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_1' value='5' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Media Highlights</span>";
-				$signupForm .= "</li>";
+				$signupForm .= "</li>";*/
 				$signupForm .= "<li>";
 					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_2' value='7' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Newsletter</span>";

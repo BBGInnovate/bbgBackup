@@ -6610,6 +6610,43 @@ article {
   margin-bottom: 1rem;
 }
 
+.bbg__form__sign-up {
+  display: inline-block;
+  position: relative;
+}
+
+.bbg__form--required:after {
+  color: #e31c3d;
+  content: '*';
+  font-weight: 700;
+}
+
+.bbg__button--close {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  font-weight: 400;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  -webkit-font-smoothing: auto;
+  background-image: url("img//close.png");
+  background-image: url("img//close.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 1.3rem;
+  cursor: pointer;
+  height: 100%;
+  width: 1.3rem;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+}
+.bbg__button--close:hover {
+  background-color: transparent;
+}
+
 .bbg-banner {
   background-color: #f1f1f1;
   background-size: cover;
