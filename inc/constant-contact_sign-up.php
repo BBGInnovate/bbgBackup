@@ -25,6 +25,7 @@ if ( $includeSignup ) {
 
 		$signupForm .= "<input data-id='ca:input' type='hidden' name='ca' value='98c4cff0-5ff9-41f4-b686-77c1a956c79a'>";
 		$signupForm .= "<input data-id='source:input' type='hidden' name='source' value='EFD'>";
+		$signupForm .= "<input data-id='required:input' type='hidden' name='required' value='list,email,first_name,last_name'>";
 		$signupForm .= "<input data-id='url:input' type='hidden' name='url' value=''>";
 
 		$signupForm .= "<p data-id='Email Address:p'>";
@@ -49,7 +50,7 @@ if ( $includeSignup ) {
 
 		$signupForm .= "<p data-id='Phone Number:p'>";
 			$signupForm .= "<label for='input-type-text' data-id='Phone Number:label' data-name='phone'>Phone Number</label>";
-			$signupForm .= "<input data-id='Phone Number:input' type='text' name='phone' value='' maxlength='50'>";
+			$signupForm .= "<input data-id='Phone Number:input' type='text' name='phone' value='' maxlength='20'>";
 		$signupForm .= "</p>";
 
 		$signupForm .= "<p data-id='Job Title:p'>";
@@ -73,30 +74,22 @@ if ( $includeSignup ) {
 					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_0' value='6' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Events</span>";
 				$signupForm .= "</li>";
-				/*$signupForm .= "<li>";
-					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_1' value='5' checked>";
-					$signupForm .= "<span data-id='Lists:span'>BBG Media Highlights</span>";
-				$signupForm .= "</li>";*/
 				$signupForm .= "<li>";
-					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_2' value='7' checked>";
+					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_1' value='7' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Newsletter</span>";
 				$signupForm .= "</li>";
 				$signupForm .= "<li>";
-					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_3' value='8' checked>";
+					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_2' value='8' checked>";
 					$signupForm .= "<span data-id='Lists:span'>BBG Press Releases</span>";
 				$signupForm .= "</li>";
 				$signupForm .= "<li>";
-					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_4' value='1456319600' checked>";
+					$signupForm .= "<input data-id='Lists:input' type='checkbox' name='list_3' value='1456319600' checked>";
 					$signupForm .= "<span data-id='Lists:span'>CEO Blog</span>";
 				$signupForm .= "</li>";
 			$signupForm .= "</ul>";
 		$signupForm .= "</fieldset>";
 
 		$signupForm .= "<button type='submit' class='usa-button bbg__kits__inquiries__button--half' data-enabled='enabled'>Sign Up</button>";
-
-		$signupForm .= "<div>";
-		$signupForm .= "<p class='ctct-form-footer'>By submitting this form, you are granting the Broadcasting Board of Governors permission to email you. You may unsubscribe via the link found at the bottom of every email. (See our <a href='http://www.constantcontact.com/legal/privacy-statement' target='_blank'>Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p>";
-		$signupForm .= "</div>";
 		$signupForm .= "</form>";
 
 		$signupForm .= "<!-- Error messages: DO NOT DELETE -->";
