@@ -44,8 +44,11 @@ $ttp_query = new WP_Query( $ttp_query_args );
 if ($ttp_query -> have_posts()) {
 	
 	while ( $ttp_query -> have_posts() )  {
-		$id = $ttp_query -> get_the_ID();
+
 		$ttp_query->the_post();
+		$id = $ttp_query -> post -> ID;
+		$postIDsUsed[] = $id; //, array( 'style' => 'max-height:400px; width:100%') 
+		
 		$threatsToPress[] = array(
 			'url' => get_the_permalink(),
 			'title' => get_the_title(),
@@ -53,7 +56,7 @@ if ($ttp_query -> have_posts()) {
 			'thumb' => get_the_post_thumbnail( $id, 'medium-thumb' ),
 			'excerpt' => my_excerpt($id)
 		);
-		$postIDsUsed[] = $id; //, array( 'style' => 'max-height:400px; width:100%') 
+		
 	}
 }
  
