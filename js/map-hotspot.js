@@ -42,7 +42,7 @@ colors = normalColors;
 var spheres = {
 	iran: {
 		comprisedOf: ['Iran'],
-		influences: ['Armenia','Azerbaijan','Turkey','Syria','Jordan','Israel','Afghanistan','Pakistan','Cyprus'],
+		influences: ['Armenia','Azerbaijan','Turkey','Syria','Jordan','Israel','Afghanistan','Pakistan','Cyprus','Yemen'],
 		color: colors['iran'],
 		label: "Iran"
 	},
@@ -108,7 +108,7 @@ for (var key in spheres) {
 				fullSphereCountryList.push(countryID);
 				sAreas[key].push(countryID);
 				if (! (sMap.hasOwnProperty(countryID))) {
-					sMap[countryID] = key;	
+					sMap[countryID] = key;
 				}
 				cMapByID[countryID].spheres.push(key);
 			}
@@ -147,12 +147,12 @@ function getAreas(aSphere) {
 							alpha: alpha
 						}
 						areas.push(a);
-					} 
+					}
 				}
 			}
 		}
 	}
-	
+
 	return areas;
 }
 
@@ -169,7 +169,7 @@ function initMobileLegend() {
 	jQuery('.cuba').css('background-color', colors['cuba']);
 	jQuery('.iran').css('background-color', colors['iran']);
 	jQuery('.russia').css('background-color', colors['russia']);
-	jQuery('.cve').css('background-color', colors['cve']);	
+	jQuery('.cve').css('background-color', colors['cve']);
 }
 
 function resetButton(btnName) {
@@ -182,7 +182,7 @@ function resetButton(btnName) {
 	} else {
 		btn.css('color',defaultButtonTextColor);
 		btn.css('background-color',defaultButtonBG);
-		btn.css('border-color',defaultButtonBG);	
+		btn.css('border-color',defaultButtonBG);
 	}
 }
 
@@ -197,7 +197,7 @@ function resetButtons(btnLeaveAlone) {
 (function ($,bbgConfig, entities) {
 
 	jQuery(document).ready(function() {
-		
+
 		map = AmCharts.makeChart( "chartdiv", {
 			theme: "light",
 			projection:"eckert3",
@@ -227,7 +227,7 @@ function resetButtons(btnLeaveAlone) {
 			window.location = bbgConfig.template_directory_uri + "../../../hot-spots/" + sphere;
 		});
 
-		map.balloonLabelFunction = function (area, map) {      
+		map.balloonLabelFunction = function (area, map) {
 			var txt = "";
 			if (activeSphere != "all") {
 				txt= spheres[activeSphere].label + " Hot Spot";
@@ -235,7 +235,7 @@ function resetButtons(btnLeaveAlone) {
 				var sphere = spheres[sMap[area.id]];
 		    	if (sphere) {
 		    		txt = sphere.label + " Hot Spot";
-		    	}	
+		    	}
 			}
 	    	return txt;
 	    };
@@ -284,7 +284,7 @@ function resetButtons(btnLeaveAlone) {
 								mapObject.color = colors[c2.spheres[0]];
 								mapObject.validate();
 							}
-							
+
 						}
 					}
 				}
@@ -304,7 +304,7 @@ function resetButtons(btnLeaveAlone) {
 
 				event.mapObject.color = s.color;
 				event.mapObject.validate();
-				
+
 				//loop through all countries that are in this country's primary sphere
 				var sphereCountries = s.comprisedOf.concat(s.influences);
 				var usedIDs = {};
@@ -341,16 +341,16 @@ function resetButtons(btnLeaveAlone) {
 							var mapObject = map.getObjectById(countryID);
 							if (mapObject) {
 								// /console.log('hide ' + countryID);
-								mapObject.color = "#ececec";	
+								mapObject.color = "#ececec";
 								mapObject.validate();
 							}
-							
+
 						}
 					}
 				}
 			}
 		});
-		
+
 	    jQuery('#hotSpotPicker').change(function(e) {
 	    	setActiveSphere(jQuery(this).val());
 	    });
@@ -361,7 +361,7 @@ function resetButtons(btnLeaveAlone) {
 			var val = jQuery(this).val();
 			if (val != activeSphere) {
 				jQuery(this).css('color',colors[val]);
-				jQuery(this).css('background-color','#FFFFFF');	
+				jQuery(this).css('background-color','#FFFFFF');
 			}
 		});
 
@@ -373,19 +373,19 @@ function resetButtons(btnLeaveAlone) {
 				jQuery(this).css('color','#FFFFFF');
 				jQuery(this).css('background-color',colors[val]);
 			}
-			
+
 		});
-		
+
 		jQuery('.entity-buttons button').click(function(e) {
 			var val = jQuery(this).val();
 			setActiveSphere(val);
 			resetButtons();
 
-			
+
 			jQuery(this).css('color',colors[val]);
 			jQuery(this).css('background-color',COLOR_ACTIVE);
-			
-			
+
+
 		});
 	    resetButtons();
 	    jQuery('.entity-buttons button.all').trigger( "click" );
