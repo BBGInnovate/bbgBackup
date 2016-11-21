@@ -72,39 +72,74 @@ if ( is_object($awardCategoryObj) ) {
 }
 /******* DONE CREATING AN ARRAY FOR AWARDS INFO ******/
 
-/******* CREATE AN ARRAY FOR PRESS RELEASE INFO ******/
-$pressReleases = array();
-$prCategoryObj = get_category_by_slug( 'press-release' );
-
-// set up press release category query parameters
-if ( is_object($prCategoryObj) ) {
-	$prCategoryID = $prCategoryObj -> term_id;
-	$prParams = array(
+/******* GRAB THE MOST RECENT MEDIA ADVISORY THAT HAS AN EXPIRATION DATE IN THE FUTURE. WE CHECK LATEST 5 ******/
+$advisory = false;
+$mediaAdvisoryCategoryObj = get_category_by_slug( 'media-advisory' );
+if ( is_object($mediaAdvisoryCategoryObj) ) {
+	// set up award category query parameters
+	$mediaAdvisoryCategoryID = $mediaAdvisoryCategoryObj -> term_id;
+	$mediaParams = array(
 		'post_type' => array( 'post' ),
-		'posts_per_page' => 1,
-		'category__and' => array( $prCategoryID ),
-		'orderby', 'date',
-		'order', 'DESC',
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'post_format',
-				'field' => 'slug',
-				'terms' => 'post-format-quote',
-				'operator' => 'NOT IN'
-			)
-		),
-		'category__not_in' => get_cat_id( 'award' )
+		'posts_per_page' => 5,
+		'category__and' => array( $mediaAdvisoryCategoryID ),
+		'orderby' => 'date',
+		'order' => 'DESC'
 	);
-	// execute query
-	$pr_query = new WP_Query( $prParams );
-	if ( $pr_query -> have_posts() ) {
-		while ( $pr_query -> have_posts() ) : $pr_query -> the_post();
-			$id = get_the_ID();
-			$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt() );
+	$todayDateObj = new DateTime("now");
+
+	// execute advisory query
+	$foundAdvisory = false;
+	$media_query = new WP_Query( $mediaParams );
+	if ( $media_query -> have_posts() ) {
+		while ( $media_query -> have_posts() ) : $media_query -> the_post();
+			if (!$foundAdvisory) {
+				$id = get_the_ID();
+				$expiryDate = get_field( 'media_advisory_expiration_date', $id );
+				$expiryDateObj = DateTime::createFromFormat(
+					"m/d/Y h:i",
+					$expiryDate . " 00:00"
+				);
+				if ($expiryDateObj > $todayDateObj) {
+					$foundAdvisory = true;
+					$thumb =  get_the_post_thumbnail( $id, 'medium-thumb' );
+					$advisory = array(
+						'id' => $id,
+						'url' => get_permalink(),
+						'title' => get_the_title(),
+						'excerpt' => get_the_excerpt(),	//leave this one last- it changes the post context
+						'thumb' => $thumb,
+						'expiryDate' => $expiryDate
+					);
+				}
+			}
 		endwhile;
 	}
 	wp_reset_postdata();
-};
+}
+$numPressReleases = 4;
+if ($advisory) {
+	$numPressReleases = 1;
+}
+
+/****** PREPARE QUERY PARAMS PRESS RELEASES ********/
+$prCategoryObj = get_category_by_slug( 'press-release' );
+$prCategoryID = $prCategoryObj -> term_id;
+$qParamsPressReleases = array(
+	'post_type' => array( 'post' ),
+	'posts_per_page' => $numPressReleases,
+	'category__and' => array( $prCategoryID ),
+	'orderby', 'date',
+	'order', 'DESC',
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'post_format',
+			'field' => 'slug',
+			'terms' => 'post-format-quote',
+			'operator' => 'NOT IN'
+		)
+	),
+	'category__not_in' => get_cat_id( 'Award' )
+);
 /******* DONE CREATING AN ARRAY FOR PRESS RELEASES ******/
 
 
@@ -290,33 +325,26 @@ get_header(); ?>
 							//echo '<h6 class="bbg__label"><a href="">Recent Press Releases</a></h6>';<?php echo get_category_link( $prCategoryID ); 
 
 							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
-							$prCategoryObj = get_category_by_slug( 'press-release' );
-							$prCategoryID = $prCategoryObj -> term_id;
-							echo '<h2 class="">Recent Press Releases</h2>';
+
+							// GIGI LOOK HERE
+							if (!$advisory) {
+								echo '<h2 class="">Recent Press Releases</h2>';
+							}
+							
+
 							echo '<div class=" bbg__ceo-post">';
+
+									
 									echo '<div class="usa-width-one-half bbg__secondary-stories">';
+									
+									// GIGI LOOK HERE
+									if ($advisory) {
+										echo '<h2 class="">Recent Press Releases</h2>';
+									}
 									/* BEWARE: sticky posts add a record */
-									$maxPostsToShow=9;
 									/**** START FETCH related press releases ****/
 									$pressReleases = array();
-									
-									$qParams = array(
-										'post_type' => array( 'post' ),
-										'posts_per_page' => 4,
-										'category__and' => array( $prCategoryID ),
-										'orderby', 'date',
-										'order', 'DESC',
-										'tax_query' => array(
-											array(
-												'taxonomy' => 'post_format',
-												'field' => 'slug',
-												'terms' => 'post-format-quote',
-												'operator' => 'NOT IN'
-											)
-										),
-										'category__not_in' => get_cat_id( 'Award' )
-									);
-									query_posts($qParams);
+									query_posts($qParamsPressReleases);
 									if ( have_posts() ) {
 										$counter = 0;
 										$includeImage = TRUE;
@@ -347,7 +375,21 @@ get_header(); ?>
 									}
 									wp_reset_query();
 									echo '</div>';
+									
+									// GIGI LOOK HERE
+									if ($advisory) {
+										echo '<div class="usa-width-one-half tertiary-stories"><h2 >Media Advisory</h2>';
+										
+										echo '<a href="' . $advisory['url'] . '">';
+										echo  $advisory['thumb'];
+										echo '</a>';
+
+										echo '<a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a>';
+										echo '<p>'.$advisory['excerpt'].'</p>';
+										echo '</div>';
+									}
 								echo '</div><!-- headlines -->';
+
 							echo '</section><!-- .BBG News -->';
 						?>
 						 
@@ -407,16 +449,6 @@ get_header(); ?>
 									</div>
 
 								</div>
-								<?php 
-									// echo '<div class="bbg__contact-card">'; 
-									// echo '<div class="bbg__contact-card__text">';
-									// echo '<h3 style="margin:0;">Want to stay informed?</h3>';
-									// echo '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
-									// echo "<button id='btnSignup' onclick=\" document.getElementById('btnSignup').style.display='none'; ccForm=document.getElementsByName('embedded_signup'); ccForm[0].style.display='';  \" class='usa-button bbg__kits__inquiries__button--half' data-enabled='enabled'>Sign up to receive updates</button>";
-									// echo $signupForm;
-									// echo '</div>';
-									// echo '</div>';
-								?>
 							</aside>
 						<?php } ?>
 					</div>
@@ -642,30 +674,7 @@ get_header(); ?>
 							}
 							echo '</div>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
-
-						elseif (get_row_layout() == 'kits_recent_press_releases' ) :
-					        echo '<!-- BBG NEWS -->';
-							
-
-							$s = "";
-							$s = '<h2>Recent news</h2>';
-							$counter = 0;
-							foreach ( $pressReleases as $pr ) {
-								$counter++;
-								$styleStr = '';
-								if ($counter==1) {
-									$styleStr = " style='margin-right:2.35765%; '";
-								}
-								$url = $pr['url'];
-								$title = $pr['title'];
-								$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt">';
-								$s .= '<h3><a href="' . $url . '">' . $title . '</a></h3>';
-								$s .= '<p>' . $pr['excerpt'] . '</p>';
-								$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-								$s .= "<a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
-								$s .= "</div>";
-							}
-							echo $s;
+						
 						elseif (get_row_layout() == 'kits_recent_awards' ) :
 							$counter = 0;
 							foreach ( $awards as $a ) {
