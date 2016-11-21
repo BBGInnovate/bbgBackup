@@ -225,11 +225,12 @@ get_header(); ?>
 									endif;
 								?>
 
-								
+								<!--
 								<h5 class="bbg__label small">By the numbers</h5>
 								<img src="https://placehold.it/300x400" />
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 								</div>
+								-->
 
 								<?php 
 								if (count($newsFromNetworks) > 0) {
