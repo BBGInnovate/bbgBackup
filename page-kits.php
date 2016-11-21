@@ -677,6 +677,7 @@ get_header(); ?>
 						
 						elseif (get_row_layout() == 'kits_recent_awards' ) :
 							$counter = 0;
+							
 							foreach ( $awards as $a ) {
 								$counter++;
 								$styleStr = '';
@@ -689,7 +690,7 @@ get_header(); ?>
 								$awardYears = $a['awardYears'];
 								$awardTitle = $a['awardTitle'];
 
-								$s .= '<div ' . $styleStr . '  class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+								$s .= '<h2 class="entry-title">Recent Awards</h2><div ' . $styleStr . '  class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
 								$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
 								$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
 								$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
