@@ -167,7 +167,7 @@ if (in_category($categoriesThatShowEntityIcons))  {
 			}
 		}
 	} elseif (in_category('bbg') || in_category('BBG in the News')) {
-		/* for the time being, not showing a BBG logo because it's repetitious, particularly at mobile
+		/* for the time being, not showing a BBG logo because it's repetitious, particularly at mobile */
 		// $entityLink = "https://www.bbg.gov";
 		// $entityLogo = DEFAULT_IMAGE;
 		
