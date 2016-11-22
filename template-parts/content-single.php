@@ -132,36 +132,45 @@ if( have_rows('project_team_members') ):
 endif;
 
 /**** If this press release is categorized as one of the entities, get the entity logo ****/
+$categoryTypes = ['Press Release','Project','Media Advisory'];
 $entityCategories = ['voa','rfa','mbn','ocb','rferl'];
 $entityLogo = "";
 $entityLink = "";
-if ( (in_category('Press Release') && in_category($entityCategories) ) || in_category('Project') ) {
-	foreach ( $entityCategories as $eCat ) {
-		if ( $entityLogo == "" && in_category($eCat) ) {
-			$broadcastersPage=get_page_by_title('Our Networks');
-			$args = array(
-				'post_type' => 'page',
-				'posts_per_page' => 1,
-				'post_parent' => $broadcastersPage->ID,
-				'name' => str_replace('-press-release', '', $eCat)
-			);
-			$custom_query = new WP_Query($args);
-			if ( $custom_query->have_posts() ) {
-				while ( $custom_query->have_posts() )  {
-					$custom_query->the_post();
-					$id = get_the_ID();
-					$entityLogoID = get_post_meta( $id, 'entity_logo',true );
-					$entityLogo = "";
-					$entityLink = get_the_permalink($id);
-					if ($entityLogoID) {
-						$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
-						$entityLogo = $entityLogoObj[0];
+//DEFAULT_IMAGE
+if (in_category($categoryTypes))  {
+	if ( in_category($entityCategories)) {
+		foreach ( $entityCategories as $eCat ) { 
+			if ( $entityLogo == "" && in_category($eCat) ) {
+				$broadcastersPage=get_page_by_title('Our Networks');
+				$args = array(
+					'post_type' => 'page',
+					'posts_per_page' => 1,
+					'post_parent' => $broadcastersPage->ID,
+					'name' => str_replace('-press-release', '', $eCat)
+				);
+				$custom_query = new WP_Query($args);
+				if ( $custom_query->have_posts() ) {
+					while ( $custom_query->have_posts() )  {
+						$custom_query->the_post();
+						$id = get_the_ID();
+						$entityLogoID = get_post_meta( $id, 'entity_logo',true );
+						$entityLogo = "";
+						$entityLink = get_the_permalink($id);
+						if ($entityLogoID) {
+							$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
+							$entityLogo = $entityLogoObj[0];
+						}
 					}
 				}
+				wp_reset_postdata();
+				wp_reset_query();
 			}
-			wp_reset_postdata();
-			wp_reset_query();
 		}
+	} elseif (in_category('bbg') || in_category('BBG in the News')) {
+		/* for the time being, not showing a BBG logo because it's repetitious, particularly at mobile
+		// $entityLink = "https://www.bbg.gov";
+		// $entityLogo = DEFAULT_IMAGE;
+		
 	}
 }
 
