@@ -46,6 +46,7 @@ foreach ($allAffiliates as $a) {
 		$url = $a[6];
 		$smurl = $a[7];
 		$platform = $a[8];
+		$platformOther = $a[9];
 
 		$headline = "<h5>" . $title . "</h5>";
 		if ($url != "") {
