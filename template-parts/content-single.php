@@ -132,12 +132,12 @@ if( have_rows('project_team_members') ):
 endif;
 
 /**** If this press release is categorized as one of the entities, get the entity logo ****/
-$categoryTypes = ['Press Release','Project','Media Advisory'];
+$categoriesThatShowEntityIcons = ['Press Release','Project','Media Advisory'];
 $entityCategories = ['voa','rfa','mbn','ocb','rferl'];
 $entityLogo = "";
 $entityLink = "";
 //DEFAULT_IMAGE
-if (in_category($categoryTypes))  {
+if (in_category($categoriesThatShowEntityIcons))  {
 	if ( in_category($entityCategories)) {
 		foreach ( $entityCategories as $eCat ) { 
 			if ( $entityLogo == "" && in_category($eCat) ) {
