@@ -84,7 +84,30 @@ $geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
 
 
 get_header(); ?>
+<style> 
+	
 
+	#mapFilters label { margin-left:15px; }
+	
+	/* the threats map looked great at < 480 wihtout this height adjustment 
+	because its bounds allow a further in zoom, but we need to adjust this map or else there are gray bars at < 480
+	 */
+	@media screen and (max-width: 480px) {
+		.bbg__map--banner  {
+		  background-color: #f1f1f1;
+		  height: 240px;
+		  width: 100%;
+		}
+	}
+	
+	/*
+	@media screen and (min-width: 900px) {
+	  .bbg__map--banner {
+	    height: 450px;
+	  }
+	}
+	*/
+</style>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -116,9 +139,7 @@ get_header(); ?>
 		"864930005" => "Mobile",
 		"864930006" => "Other",
 				-->
-				<style> 
-					#mapFilters label { margin-left:15px; }
-				</style>
+				
 				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
@@ -137,7 +158,7 @@ get_header(); ?>
 						<option value="all">All</option>
 						<option value="radio">Radio</option>
 						<option value="tv">TV</option>
-						<option value="web">Web</option>
+						<option value="web">Digital</option>
 						<!--
 						<option value="other">Other</option>
 						<option value="satellite">Satellite</option>
