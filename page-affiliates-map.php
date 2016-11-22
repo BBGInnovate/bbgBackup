@@ -124,10 +124,12 @@ get_header(); ?>
 					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_tv" value="tv" /><label for="delivery_tv"> TV</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_web" value="web" /><label for="delivery_web"> Web</label>
+					<!--
 					<input type="radio" name="deliveryPlatform" id="delivery_other" value="other" /><label for="delivery_other"> Other</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_satellite" value="satellite" /><label for="delivery_satellite"> Satellite</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_newspaper" value="newspaper" /><label for="delivery_newspaper"> Newspaper</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_mobile" value="mobile" /><label for="delivery_mobile"> Mobile</label>
+					-->
 				</div>
 				<div align="center" id="mapFilters" class="u--hide-medium-large">
 					<p></p><h3>Select a delivery platform</h3>
@@ -136,10 +138,12 @@ get_header(); ?>
 						<option value="radio">Radio</option>
 						<option value="tv">TV</option>
 						<option value="web">Web</option>
+						<!--
 						<option value="other">Other</option>
 						<option value="satellite">Satellite</option>
 						<option value="newspaper">Newspaper</option>
 						<option value="mobile">Mobile</option>
+						-->
 					</select>
 				</div>
 			</section>
