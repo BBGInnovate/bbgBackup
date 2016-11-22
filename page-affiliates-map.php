@@ -57,7 +57,7 @@ foreach ($allAffiliates as $a) {
 			$headline = "<h5><a target='_blank' href='" . $url . "'>" . $title . "</a></h5>";
 		}
 
-
+		
 		$features[] = array(
 			'type' => 'Feature',
 			'geometry' => array( 
@@ -123,7 +123,7 @@ get_header(); ?>
 					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_tv" value="tv" /><label for="delivery_tv"> TV</label>
-					<input type="radio" name="deliveryPlatform" id="delivery_web" value="web" /><label for="delivery_web"> Web</label>
+					<input type="radio" name="deliveryPlatform" id="delivery_web" value="web" /><label for="delivery_web"> Digital</label>
 					<!--
 					<input type="radio" name="deliveryPlatform" id="delivery_other" value="other" /><label for="delivery_other"> Other</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_satellite" value="satellite" /><label for="delivery_satellite"> Satellite</label>
