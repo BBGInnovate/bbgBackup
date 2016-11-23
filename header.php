@@ -207,7 +207,21 @@ O:::::::OOO:::::::ODDD:::::DDDDD:::::DDDD:::::DDDDD:::::DII::::::II
 		}
 		?>
 
+		<?php 
+			if ($_SERVER['HTTP_HOST'] == "bbgredesign.voanews.com"):
 
+		?>
+			<div style="background-color:#FF0000; color:#FFFFFF;" class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
+			<div class="usa-grid">
+				<span class="usa-disclaimer-official">
+					Development server.  Content may be dated or innacurate.  
+				</span>
+			</div>
+		</div>
+		<?php 
+			endif;
+		?>
+		
 		<div class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
 			<div class="usa-grid">
 				<span class="usa-disclaimer-official">
