@@ -184,5 +184,13 @@ form[id^=fscf_form] {
   input[type="text"], TEXTAREA {
     max-width:65rem;
   }
+    textarea, input[type=text] {
+      text-align: left;
+      margin:0;
+      width:99%;
+      background: #e5eff6;
+      border: 0px !important;
+      border-bottom: 1px solid #000000 !important;
+  }
 }
 

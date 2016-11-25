@@ -2872,6 +2872,14 @@ form[id^=fscf_form] label {
 form[id^=fscf_form] input[type="text"], form[id^=fscf_form] TEXTAREA {
   max-width: 65rem;
 }
+form[id^=fscf_form] textarea, form[id^=fscf_form] input[type=text] {
+  text-align: left;
+  margin: 0;
+  width: 99%;
+  background: #e5eff6;
+  border: 0px !important;
+  border-bottom: 1px solid #000000 !important;
+}
 
 .usa-search {
   max-width: none;
