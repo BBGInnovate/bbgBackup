@@ -2861,7 +2861,7 @@ fieldset {
   background-size: 100%;
 }
 
-form [id^=fscf_form] {
+form[id^=fscf_form] {
   max-width: none;
 }
 
