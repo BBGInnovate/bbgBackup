@@ -178,6 +178,10 @@ form[id^=fscf_form] {
   max-width: none; 
   label {
     margin-bottom: 0.5em;
+    max-width:none;
+  }
+  input[type="text"], TEXTAREA {
+    max-width:65rem;
   }
 }
 

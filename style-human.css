@@ -2866,6 +2866,10 @@ form[id^=fscf_form] {
 }
 form[id^=fscf_form] label {
   margin-bottom: 0.5em;
+  max-width: none;
+}
+form[id^=fscf_form] input[type="text"], form[id^=fscf_form] TEXTAREA {
+  max-width: 65rem;
 }
 
 .usa-search {
