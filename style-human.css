@@ -2865,7 +2865,7 @@ form[id^=fscf_form] {
   max-width: none;
 }
 form[id^=fscf_form] label {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
   max-width: 65em;
 }
 form[id^=fscf_form] input[type="text"], form[id^=fscf_form] TEXTAREA {
