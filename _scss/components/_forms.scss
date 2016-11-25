@@ -173,3 +173,7 @@ input.usa-input-medium {
     background-size: 100%;
   }
 }
+
+form [id^=fscf_form] {
+  max-width: none; 
+}

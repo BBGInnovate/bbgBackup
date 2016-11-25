@@ -2861,6 +2861,10 @@ fieldset {
   background-size: 100%;
 }
 
+form [id^=fscf_form] {
+  max-width: none;
+}
+
 .usa-search {
   max-width: none;
   position: relative;
