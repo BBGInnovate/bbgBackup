@@ -179,7 +179,7 @@ form[id^=fscf_form] {
   label {
     margin-bottom: 0.25rem;
     max-width:65rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
   input[type="text"], TEXTAREA {
     max-width:65rem;
@@ -191,6 +191,9 @@ form[id^=fscf_form] {
       background: #e5eff6;
       border: 0px !important;
       border-bottom: 1px solid #000000 !important;
+  }
+  input[type=checkbox] +label {
+    margin-top:1.5rem;
   }
 }
 
