@@ -2864,6 +2864,9 @@ fieldset {
 form[id^=fscf_form] {
   max-width: none;
 }
+form[id^=fscf_form] label {
+  margin-bottom: 0.5em;
+}
 
 .usa-search {
   max-width: none;

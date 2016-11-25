@@ -176,4 +176,8 @@ input.usa-input-medium {
 
 form[id^=fscf_form] {
   max-width: none; 
+  label {
+    margin-bottom: 0.5em;
+  }
 }
+
