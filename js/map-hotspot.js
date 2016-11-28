@@ -223,7 +223,15 @@ function resetButtons(btnLeaveAlone) {
 		});
 
 		map.addListener("clickMapObject", function (event) {
-			sphere = sMap[event.mapObject.id];
+			var sphere= false;
+			console.log('activeSphere is ' + activeSphere);
+			//if we're in the 'all' view, take the most relevant sphere
+			if (activeSphere == "all") {
+				sphere = sMap[event.mapObject.id];
+			} else {
+			//else if our view is restricted to a sphere, use that
+				sphere = activeSphere;
+			}
 			window.location = bbgConfig.template_directory_uri + "../../../hot-spots/" + sphere;
 		});
 
