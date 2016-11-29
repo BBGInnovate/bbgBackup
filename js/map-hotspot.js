@@ -61,9 +61,9 @@ var spheres = {
 	cve: {
 		comprisedOf: ['Russia'],
 		influences: [
-			'Russia','Afghanistan','Armenia','Iran','Iraq','Kazakhstan','Kyrgyzstan','Pakistan','Tajikistan','Turkmenistan','Uzbekistan','Belarus','Georgia','Serbia',
+			'Afghanistan','Armenia','Iran','Iraq','Kazakhstan','Kyrgyzstan','Pakistan','Tajikistan','Turkmenistan','Uzbekistan','Belarus','Georgia','Serbia',
 			'Bangladesh','Philippines','Thailand','Malaysia','India','Indonesia',
-			'Israel','Jordan','Kuwait','Lebanon','Saudi Arabia','Syria','Turkey','Yemen','Egypt','Morocco','Libya','Algeria','Iraq','Iran',
+			'Israel','Jordan','Kuwait','Lebanon','Saudi Arabia','Syria','Turkey','Yemen','Egypt','Morocco','Libya','Algeria',
 			'Mali', 'Mauritania', 'Chad', 'Western Sahara', 'Sudan', 'Eritrea', 'Ethiopia', 'Somalia', 'Cameroon', 'Benin', 'Niger', 'Burkina Faso', 'Nigeria', 'Kenya', 'Tanzania', 'Uganda'
 		],
 		color: colors['cve'],
