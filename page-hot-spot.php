@@ -148,7 +148,7 @@ get_header(); ?>
 									<img src="<?php echo $mapImageSrc; ?>" class="bbg__profile-photo__image">
 								</div>
 								<div class="bbg__profile-title">
-									<h1 class="entry-title bbg__article-header__title"><?php echo get_the_title(); ?></h1>
+									<h1 class="entry-title bbg__article-header__title"><?php echo str_replace("Private:","Draft:",get_the_title()); ?></h1>
 									<h5 class="entry-category bbg__profile-tagline">
 										<a href="<?php echo get_permalink( get_page_by_path( 'hot-spots' ) ); ?>">Hot Spots</a>									</h5><!-- .bbg__label -->
 								</div>

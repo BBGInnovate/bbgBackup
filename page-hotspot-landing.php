@@ -13,10 +13,13 @@ if ( have_posts() ) :
 		$pageContent = get_the_content();
 		//$pageContent = apply_filters('the_content', $pageContent);
 		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+		$pageTitle = str_replace("Private:", "Draft:", get_the_title());
 	endwhile;
 endif;
 wp_reset_postdata();
 wp_reset_query();
+
+
 
 get_header();
 echo getNetworkExcerptJS();
@@ -49,7 +52,7 @@ echo getNetworkExcerptJS();
 					<header class="page-header">
 						
 						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>">Section Title<?php //echo $parent->post_title; ?></a></h5>
-						<?php echo "<h1 class='entry-title'>Hot Spots</h1>"; ?>
+						<?php echo "<h1 class='entry-title'>$pageTitle</h1>"; ?>
 					</header><!-- .page-header -->
 					<h3 id="site-intro" class="usa-font-lead"><?php echo $pageContent; ?></h3>
 
