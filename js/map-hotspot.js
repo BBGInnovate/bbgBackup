@@ -42,29 +42,29 @@ colors = normalColors;
 var spheres = {
 	iran: {
 		comprisedOf: ['Iran'],
-		influences: ['Armenia','Azerbaijan','Turkey','Syria','Jordan','Israel','Afghanistan','Pakistan','Cyprus','Yemen'],
+		influences: ['Turkmenistan', 'Afghanistan', 'Pakistan', 'Yemen', 'Iraq', 'Azerbaijan'],
 		color: colors['iran'],
 		label: "Iran"
 	},
 	russia: {
-		comprisedOf: ['Russia', 'Svalbard and Jan Mayen'],
-		influences: ['Estonia','Latvia','Lithuania','Belarus','Moldova','Syria','Kazakhstan','Uzbekistan','Turkmenistan','Tajikistan','Kyrgyzstan','Azerbaijan','Armenia','Georgia'],
+		comprisedOf: ['Russia'],
+		influences: ['Ukraine','Estonia','Latvia','Lithuania','Belarus','Moldova','Syria','Kazakhstan','Uzbekistan','Turkmenistan','Tajikistan','Kyrgyzstan','Azerbaijan','Armenia','Georgia','Israel'],
 		color: colors['russia'],
 		label: "Russia"
 	},
 	cuba: {
 		comprisedOf: ['Cuba'],
-		influences: ['Venezuela','Colombia','Ecuador','Peru','Bolivia'],
+		influences: ['Venezuela','Colombia'],
 		color: colors['cuba'],
 		label: "Cuba"
 	},
 	cve: {
 		comprisedOf: ['Russia'],
 		influences: [
-			'Afghanistan','Armenia','Azerbaijan','Bahrain','Bangladesh','Brunei','Cambodia','East Timor','Indonesia','Iran','Iraq','Israel','Palestine','Japan','Jordan','Kazakhstan','Kuwait','Kyrgyzstan','Laos','Lebanon','Maldives','Myanmar','North Korea','Oman','Pakistan','Philippines','Qatar','Russia','Saudi Arabia','Singapore','South Korea','Sri Lanka','Syria','Tajikistan','Thailand','Turkey','Turkmenistan','United Arab Emirates','Uzbekistan','Vietnam','Yemen',
-			'Papua New Guinea',
-			'Albania','Andorra','Belarus','Bosnia and Herzegovina','Bulgaria','Croatia','Cyprus','Czech Republic','Estonia','Georgia','Greece','Hungary','Latvia','Lithuania','Republic of Macedonia','Malta','Moldova','Montenegro','Poland','Romania','Russia','San Marino','Serbia','Slovakia','Slovenia','Turkey','Ukraine','Vatican City',
-			'Egypt','Morocco','Libya','Algeria','Mali','Mauritania', 'Chad', 'Western Sahara', 'Sudan','Eritrea','Ethiopia','Somalia', 'Cameroon', 'CÃ´te d\'Ivoire', 'Benin', 'Ghana','Togo', 'Liberia', 'Niger', 'Burkina Faso', 'Senegal', 'Nigeria', 'Guinea', 'Sierra Leone', 'Gambia'
+			'Russia','Afghanistan','Armenia','Iran','Iraq','Kazakhstan','Kyrgyzstan','Pakistan','Tajikistan','Turkmenistan','Uzbekistan','Belarus','Georgia','Serbia',
+			'Bangladesh','Philippines','Thailand','Malaysia','India','Indonesia',
+			'Israel','Jordan','Kuwait','Lebanon','Saudi Arabia','Syria','Turkey','Yemen','Egypt','Morocco','Libya','Algeria','Iraq','Iran',
+			'Mali', 'Mauritania', 'Chad', 'Western Sahara', 'Sudan', 'Eritrea', 'Ethiopia', 'Somalia', 'Cameroon', 'Benin', 'Niger', 'Burkina Faso', 'Nigeria', 'Kenya', 'Tanzania', 'Uganda'
 		],
 		color: colors['cve'],
 		label: "Countering Violent Extremism"
@@ -72,9 +72,7 @@ var spheres = {
 	china: {
 		comprisedOf: ['China'],
 		influences: [
-			'Argentina','Bolivia','Brazil','Chile','Colombia','Ecuador','French Guiana','Guyana','Paraguay','Peru','Suriname','Uruguay','Venezuela',
-			'Angola','Benin','Botswana','Burkina Faso','Burundi','Cameroon','Cape Verde','Central African Republic','Chad','Comoros','Republic of Congo','Democratic Republic of Congo','CÃ´te d\'Ivoire','Djibouti','Equatorial Guinea','Eritrea','Ethiopia','Gabon','Gambia','Ghana','Guinea','Guinea-Bissau','Kenya','Lesotho','Liberia','Madagascar','Malawi','Mali','Mauritania','Mauritius','Mozambique','Namibia','Niger','Nigeria','Rwanda','São Tomé and Príncipe','Senegal','Seychelles','Sierra Leone','Somalia','South Africa','South Sudan','Sudan','Swaziland','Tanzania','Togo','Uganda','Western Sahara','Zambia','Zimbabwe',
-			'Costa Rica','El Salvador','Guatemala','Honduras','Mexico','Nicaragua','Panama','India', 'Bangladesh','Bhutan', 'Nepal', 'Thailand', 'Myanmar', 'Vietnam', 'Lao People\'s Democratic Republic', 'North Korea', 'South Korea'],
+			'Bangladesh','Bhutan', 'Nepal', 'Thailand', 'Myanmar', 'Vietnam', 'Lao People\'s Democratic Republic', 'North Korea', 'South Korea', 'Cambodia', 'Malaysia'  ],
 		color: colors['china'],
 		label: "China"
 	},
@@ -111,6 +109,8 @@ for (var key in spheres) {
 					sMap[countryID] = key;
 				}
 				cMapByID[countryID].spheres.push(key);
+			} else {
+				console.log('nothing found for ' + sphereCountries[i]);
 			}
 		}
 	}
