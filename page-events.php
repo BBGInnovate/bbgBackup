@@ -89,7 +89,7 @@ $future_events_query = new WP_Query( $future_events_query_args );
 $upcomingEvents = "";
 if (!is_paged()) {
 	
-	if ($future_events_query->has_posts()) {
+	if ($future_events_query->have_posts()) {
 		$upcomingEvents .= '<div class="bbg__infobox">';
 		$upcomingEvents .= '<header class="page-header">';
 		$upcomingEvents .= '<h6 class="page-title bbg__label">Upcoming events</h6>';
