@@ -443,7 +443,7 @@ function bbginnovate_query_offset(&$query) {
 		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'award') {
 			array_push($termsToExclude, get_cat_id('Award'));
 		}
-		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'award') {
+		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'special-days') {
 			array_push($termsToExclude, get_cat_id('Special Days'));
 		}
 
