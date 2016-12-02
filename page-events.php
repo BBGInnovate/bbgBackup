@@ -35,11 +35,10 @@ $hasTeamFilter=false;
 
 
 /**** QUERY TO GET FIRST POST - EITHER FEATURED OR FIRST REVERSE CHRON ***/
-if ($showFeaturedEvent && $featuredEvent) {
+if ($showFeaturedEvent && $featuredEvent && has_category('event',$featuredEvent)) {
 	$qParamsFirst=array(
 		'p' => $featuredEvent->ID
 		,'post_status' => array('publish','future')
-		,'cat' => get_cat_id('Event')
 	);
 } else {
 	$qParamsFirst=array(
