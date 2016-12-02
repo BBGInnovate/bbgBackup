@@ -39,6 +39,7 @@ if ($showFeaturedEvent && $featuredEvent) {
 	$qParamsFirst=array(
 		'p' => $featuredEvent->ID
 		,'post_status' => array('publish','future')
+		,'cat' => get_cat_id('Event')
 	);
 } else {
 	$qParamsFirst=array(
