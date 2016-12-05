@@ -169,19 +169,19 @@ get_header(); ?>
 }
 </style>
 <script type="text/javascript">
-	
+
 	function toggleForm() {
 		btnSignup = document.getElementById('btnSignup');
 		if (btnSignup.style.display=="none") {
-			btnSignup.style.display=''; 
-			ccForm=document.getElementsByName('embedded_signup'); 
+			btnSignup.style.display='';
+			ccForm=document.getElementsByName('embedded_signup');
 			ccForm[0].style.display='none';
 		} else {
-			btnSignup.style.display='none'; 
-			ccForm=document.getElementsByName('embedded_signup'); 
+			btnSignup.style.display='none';
+			ccForm=document.getElementsByName('embedded_signup');
 			ccForm[0].style.display='';
 		}
-		
+
 	}
 
 	jQuery( document ).ready(function() {
@@ -303,96 +303,82 @@ get_header(); ?>
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id', true );
 			?>
 
-			<!-- Page introduction -->
-			<!-- <div id="page-intro" class="usa-section usa-grid bbg__kits__intro">
-				<?php echo $mission; ?>
-			</div> -->
-
-			<!-- Inquiries -->
+			<!-- PART 1
+				**** Press releases + media advisories + contact & inquiries ****
+			-->
 			<article class="bbg__article bbg__kits__section">
 				<div class="usa-grid">
-					<!-- Inquiries section -->
 					<div class="entry-content bbg__article-content large">
-						<!-- NEED TO MAKE THIS CONTENT DYNAMIC FOR EACH KIT -->
-						<!-- <div class="bbg__kits__inquiries">
-							<h3>Inquiries</h3>
-							<p>The Office of Public Affairs is the main point of contact for members of the press and requests for collaborations.</p>
-							<p class="bbg__kits__inquiries__text--half"><strong>Want to stay informed?</strong> BBG sends out press releases, newsletters, event notices and media clips regularly.</p>
-							<a target="_blank" class="usa-button bbg__kits__inquiries__button--half" href="http://visitor.r20.constantcontact.com/d.jsp?llr=bqfpwmkab&p=oi&m=1110675265025">Sign up for updates</a>
-						</div> -->
+						<?php
+							//echo '<h6 class="bbg__label"><a href="">Recent Press Releases</a></h6>';<?php echo get_category_link( $prCategoryID );
 
-						<?php  
-							//echo '<h6 class="bbg__label"><a href="">Recent Press Releases</a></h6>';<?php echo get_category_link( $prCategoryID ); 
-
+							echo '<!-- Press Releases section -->';
 							echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 
-							// GIGI LOOK HERE
-							if (!$advisory) {
-								echo '<h2 class="">Recent Press Releases</h2>';
+							if ( !$advisory ) {
+								echo '<h2>Recent press releases</h2>';
 							}
-							
 
-							echo '<div class=" bbg__ceo-post">';
+							echo '<div class="bbg__ceo-post">';
+								echo '<div class="usa-width-one-half bbg__secondary-stories">';
 
-									
-									echo '<div class="usa-width-one-half bbg__secondary-stories">';
-									
-									// GIGI LOOK HERE
-									if ($advisory) {
-										echo '<h2 class="">Recent Press Releases</h2>';
-									}
-									/* BEWARE: sticky posts add a record */
-									/**** START FETCH related press releases ****/
-									$pressReleases = array();
-									query_posts($qParamsPressReleases);
-									if ( have_posts() ) {
-										$counter = 0;
-										$includeImage = TRUE;
-										while ( have_posts() ) : the_post();
-											$counter++;
-											$postIDsUsed[] = get_the_ID();
-											$includeMeta=false;
-											$gridClass = "bbg-grid--full-width";
-											$includeExcerpt=false;
-											if ($counter > 1) {
-												$includeImage = false;
-												$includeMeta = false;
-												if ($counter==2) {
-													//<header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>
-													echo '</div><div class="usa-width-one-half tertiary-stories">';
-												}
+								if ( $advisory ) {
+									echo '<h2>Latest press release</h2>';
+								}
+								/* BEWARE: sticky posts add a record */
+								/**** START FETCH related press releases ****/
+								$pressReleases = array();
+								// Run queary of press releases
+								query_posts( $qParamsPressReleases );
+								if ( have_posts() ) {
+									$counter = 0;
+									$includeImage = TRUE;
+
+									while ( have_posts() ) : the_post();
+										$counter++;
+										$postIDsUsed[] = get_the_ID();
+										$includeMeta = false;
+										$gridClass = "bbg-grid--full-width";
+										$includeExcerpt = false;
+
+										if ($counter > 1) {
+											$includeImage = false;
+											$includeMeta = false;
+											if ($counter == 2) {
+												echo '</div><div class="usa-width-one-half tertiary-stories">';
 											}
-											if ($counter==1) {
-												$includePortfolioDescription = false;
-												get_template_part( 'template-parts/content-portfolio', get_post_format() );
-											} else {
-												get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-											}
-											
-										endwhile;
-										$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-										echo "<BR><a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
-									}
-									wp_reset_query();
-									echo '</div>';
-									
-									// GIGI LOOK HERE
-									if ($advisory) {
-										echo '<div class="usa-width-one-half tertiary-stories"><h2 >Media Advisory</h2>';
-										
-										echo '<a href="' . $advisory['url'] . '">';
-										echo  $advisory['thumb'];
-										echo '</a>';
+										}
+										if ($counter == 1) {
+											$includePortfolioDescription = false;
+											get_template_part( 'template-parts/content-portfolio', get_post_format() );
+										} else {
+											get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+										}
 
-										echo '<a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a>';
-										echo '<p>'.$advisory['excerpt'].'</p>';
+									endwhile;
+
+									$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
+									echo "<br/><a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
+								}
+								wp_reset_query();
+								echo '</div>';
+
+								if ( $advisory ) {
+									echo '<div class="usa-width-one-half tertiary-stories">';
+										// Optional image
+										/*echo '<a href="' . $advisory['url'] . '">';
+											echo  $advisory['thumb'];
+										echo '</a>';*/
+										echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Media Advisory</span><br/><a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a></h3>';
+										echo '<div class="entry-content bbg-blog__excerpt-content">';
+											echo '<p>' . $advisory['excerpt'] . '</p>';
 										echo '</div>';
-									}
+									echo '</div>';
+								}
 								echo '</div><!-- headlines -->';
 
 							echo '</section><!-- .BBG News -->';
 						?>
-						 
 					</div>
 					<!-- Contact card (tailored to audience) -->
 					<div class="bbg__article-sidebar large">
@@ -442,9 +428,9 @@ get_header(); ?>
 											// echo '<h3 style="margin:0;">Want to stay informed?</h3>';
 											// echo '<p>Sign up to receive our press releases, newsletters, and event notices.</p>';
 											echo "<button id='btnSignup' onclick=\" toggleForm();  \" class='usa-button-outline bbg__kits__inquiries__button--half' style='width:100%; margin-top:2rem;' data-enabled='enabled'>Sign up to receive updates</button>";
-											
-											echo $signupForm; 
-											
+
+											echo $signupForm;
+
 										?>
 									</div>
 
@@ -454,7 +440,7 @@ get_header(); ?>
 					</div>
 				</div>
 			</article>
- 
+
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 		        <!-- 3-COL ROW -->
 		        <section class="usa-grid-full bbg__kits__section--row">
@@ -545,7 +531,7 @@ get_header(); ?>
 						}
 						echo '<!-- ROW ' . $counter . '-->';
 						echo '<section class="' . $sectionClasses . '">';
-					
+
 						if ( get_row_layout() == 'kits_ribbon_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE RIBBON ROW ***/
 							$labelText = get_sub_field('kits_ribbon_label');
@@ -674,10 +660,10 @@ get_header(); ?>
 							}
 							echo '</div>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
-						
+
 						elseif (get_row_layout() == 'kits_recent_awards' ) :
 							$counter = 0;
-							
+
 							foreach ( $awards as $a ) {
 								$counter++;
 								$styleStr = '';

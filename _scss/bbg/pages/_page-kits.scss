@@ -76,6 +76,10 @@
 		}
 	}
 
+	.bbg__label--advisory {
+		background-color: $color-primary-darker;
+	}
+
 	.bbg__contact-card {
 		margin-top: 0;
 
@@ -305,7 +309,7 @@
 						margin-right: 2rem;
 						max-height: 50rem;
 						min-height: 40rem;
-						max-width: 90%;  //GIGI: added by Joe, check this. 
+						max-width: 90%;  //GIGI: added by Joe, check this.
 					}
 
 					@include media($large-screen) {

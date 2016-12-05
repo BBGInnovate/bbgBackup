@@ -7983,6 +7983,9 @@ div.appropriations-small > p.header {
   float: right;
   width: 40%;
 }
+.bbg__kits__section .bbg__label--advisory {
+  background-color: #205493;
+}
 .bbg__kits__section .bbg__contact-card {
   margin-top: 0;
 }
