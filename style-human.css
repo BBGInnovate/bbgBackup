@@ -5462,6 +5462,22 @@ img > a:focus,
   margin-bottom: 1rem;
 }
 
+.bbg__label--advisory {
+  background-color: #205493;
+}
+
+.bbg__label--rumor {
+  background-color: #0071bc;
+}
+
+.bbg__label--myth {
+  background-color: #757575;
+}
+
+.bbg__label--untruth {
+  background-color: #981b1e;
+}
+
 .bbg__file-size {
   color: #323a45;
   font-size: 75%;
@@ -7982,9 +7998,6 @@ div.appropriations-small > p.header {
 .bbg__kits__section .bbg__article-content .bbg__kits__inquiries .bbg__kits__inquiries__button--half {
   float: right;
   width: 40%;
-}
-.bbg__kits__section .bbg__label--advisory {
-  background-color: #205493;
 }
 .bbg__kits__section .bbg__contact-card {
   margin-top: 0;

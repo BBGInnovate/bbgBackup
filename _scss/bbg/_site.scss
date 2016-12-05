@@ -178,6 +178,21 @@ img,
 	}
 }
 
+// .usa-label variants (colors)
+.bbg__label--advisory {
+	background-color: $color-primary-darker; // dark blue
+}
+.bbg__label--rumor {
+	background-color: $color-primary; // dark blue
+}
+.bbg__label--myth {
+	background-color: $color-gray-medium; // dark blue
+}
+.bbg__label--untruth {
+	background-color: $color-secondary-darkest; // dark blue
+}
+
+
 .bbg__file-size {
 	color: $color-gray-dark;
 	font-size: 75%;
