@@ -8,10 +8,6 @@
    template name: Hot Spot
  */
 
-function getEntityLogo($entityAbbr) {
-	return $imgSrc=get_template_directory_uri().'/img/logo_'.$entityAbbr.'--circle-40.png'; //need to fix this			
-}
-
 $challenges = get_field( 'hot_spot_challenges', '', true );
 $tag = get_field( 'hot_spot_tag', '', true );
 $priorities = get_field( 'hot_spot_strategic_priorities', '', true );
@@ -199,7 +195,7 @@ get_header(); ?>
 											if ($serviceInEnglish != "") {
 												//$serviceName .= " &nbsp;&nbsp;&nbsp;($serviceInEnglish)";
 											}
-											$entityLogo = getEntityLogo($hotSpotNetwork);
+											$entityLogo = getTinyEntityLogo($hotSpotNetwork);
  
 										?>
 											<tr>
