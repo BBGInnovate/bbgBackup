@@ -6413,6 +6413,12 @@ article {
   }
 }
 
+@media screen and (min-width: 900px) {
+  .bbg__entity-logo__press-release-first-of-many {
+    margin-left: 10px;
+  }
+}
+
 .bbg__award-excerpt__title {
   margin-bottom: 3px;
 }
