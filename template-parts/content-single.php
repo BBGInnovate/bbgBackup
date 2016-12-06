@@ -418,8 +418,8 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<div class="bbg__article-sidebar--left">
 			<?php
-				if (count($entityLogos) > 0) {
-					$numLogos = count($entityLogos);
+				$numLogos = count($entityLogos);
+				if ( $numLogos > 0 && $numLogos < 3) {
 					for ($i=0; $i < $numLogos; $i++) {
 						$e = $entityLogos[$i];
 						$entityLink = $e['link'];
