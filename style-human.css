@@ -6413,9 +6413,12 @@ article {
   }
 }
 
+.bbg__entity-logo__press-release-first-of-many {
+  margin-left: 10px;
+}
 @media screen and (min-width: 900px) {
   .bbg__entity-logo__press-release-first-of-many {
-    margin-left: 10px;
+    margin-left: 0px;
   }
 }
 
