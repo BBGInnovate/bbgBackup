@@ -110,7 +110,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 <link rel="alternate" type="text/xml+oembed" href="https://www.bbg.gov/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.bbg.gov%2Fwho-we-are%2F&amp;format=xml">
 
 <script type="text/javascript">
-	bbgConfig={};
+	bbgConfig = {};
 	bbgConfig.template_directory_uri = 'https://www.bbg.gov/wp-content/themes/bbgRedesign/';
 </script>
 
@@ -223,8 +223,8 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
             <div id="primary" class="content-area">
                 <main id="main" class="site-main bbg__2-column" role="main">
                     <div class="usa-grid-full usa-grid bbg__unavailable">
-						<h1 class="bbg__unavailable__h1">Thank you for visiting our site</h1>
-						<h2 class="bbg__unavailable__h2">Please excuse us while it’s being updated and come back soon</h2>
+						<h1 class="bbg__unavailable__h1">Our site is currently down for maintenance.</h1>
+						<h2 class="bbg__unavailable__h2">We should be back online shortly. Thank you for your patience.</h2>
 					</div>
 					<div class="usa-grid-full">
 						<article id="post" class="bbg__article page type-page status-publish hentry">
