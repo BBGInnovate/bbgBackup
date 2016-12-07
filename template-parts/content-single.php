@@ -134,13 +134,15 @@ endif;
 /**** If this press release is categorized as one of the entities, get the entity logo ****/
 $categoriesThatShowEntityIcons = ['Press Release','Project','Media Advisory'];
 $entityCategories = ['voa','rfa','mbn','ocb','rferl'];
-$entityLogo = "";
-$entityLink = "";
+
+$entityLogos = array();
+
+
 //DEFAULT_IMAGE
 if (in_category($categoriesThatShowEntityIcons))  {
 	if ( in_category($entityCategories)) {
 		foreach ( $entityCategories as $eCat ) { 
-			if ( $entityLogo == "" && in_category($eCat) ) {
+			if ( in_category($eCat) ) {
 				$broadcastersPage=get_page_by_title('Our Networks');
 				$args = array(
 					'post_type' => 'page',
@@ -160,6 +162,10 @@ if (in_category($categoriesThatShowEntityIcons))  {
 							$entityLogoObj = wp_get_attachment_image_src( $entityLogoID , 'Full');
 							$entityLogo = $entityLogoObj[0];
 						}
+						$entityLogos[] = array(
+							'logo' => $entityLogo,
+							'link' => $entityLink
+						);
 					}
 				}
 				wp_reset_postdata();
@@ -412,8 +418,19 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 		<div class="bbg__article-sidebar--left">
 			<?php
-				if ($entityLogo!=""){
-					echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release"/></a>';
+				$numLogos = count($entityLogos);
+				if ( $numLogos > 0 && $numLogos < 3) {
+					for ($i=0; $i < $numLogos; $i++) {
+						$e = $entityLogos[$i];
+						$entityLink = $e['link'];
+						$entityLogo = $e['logo'];
+						$firstClass = "";
+						//attach a utility class to allow us to apply spacing at mobile when you have multiple entity icons
+						if ($i ==0 && $numLogos > 0) {
+							$firstClass = "bbg__entity-logo__press-release-first-of-many";
+						}
+						echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release ' . $firstClass . '"/></a>';	
+					}
 				}
 			?>
 

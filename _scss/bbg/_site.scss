@@ -1260,6 +1260,13 @@ article {
 	}
 }
 
+.bbg__entity-logo__press-release-first-of-many {
+	margin-left: $site-margins-small;
+	@include media($medium-large-screen) {
+		margin-left: 0px;
+	}
+}
+
 
 .bbg__award-excerpt__title {
 	margin-bottom: 3px;

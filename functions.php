@@ -941,6 +941,10 @@ function special_committee_list_shortcode($atts) {
 }
 add_shortcode('special_committee_list', 'special_committee_list_shortcode');
 
+function getTinyEntityLogo($entityAbbr) {
+	return $imgSrc=get_template_directory_uri().'/img/logo_'.$entityAbbr.'--circle-40.png';
+}
+
 function getEntityData() {
 	/*** Possible todo: leverage wordpress transient cache ***/
 	$entityParentPage = get_page_by_path('networks');
