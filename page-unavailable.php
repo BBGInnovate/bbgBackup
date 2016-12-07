@@ -175,6 +175,23 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 			margin-top: -.8rem;
 			margin-bottom: 3rem;
 		}
+
+		.bbg__article-share__link {
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		.bbg__entity {
+			display: table-row;
+		}
+
+		@media screen and (min-width: 481px) {
+			.bbg__article-sidebar.large .bbg__entity__text, .bbg__article-sidebar.large .bbg__team__text {
+				padding: 0 0 2rem 1rem;
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
 	</style>
 </head>
 
@@ -211,43 +228,26 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 					</div>
 					<div class="usa-grid-full">
 						<article id="post" class="bbg__article page type-page status-publish hentry">
-							<!-- <div class="usa-grid">
-								<header class="entry-header bbg__article-header">
-									<div class="bbg__profile-photo">
-										<img src="http://localhost/innovationWP/bbg/wp-content/uploads/sites/2/2016/07/logo-agency-square.png" alt="Logo of the Broadcasting Board of Governors" width="300" height="300" class="bbg__profile-photo__image" />
-									</div>
-									<div class="bbg__profile-title">
-										<h1 class="entry-title bbg__article-header__title">Broadcasting Board of Governors</h1>
-										<h5 class="entry-category bbg__profile-tagline">A networked global media agency</h5>
-									</div>
-								</header>
-								<!-- .entry-header -->
-                            <!-- .page-header -->
-                            <!-- </div> -->
                             <div class="usa-grid">
                                 <div class="entry-content bbg__article-content large">
                                     <div class="bbg__profile__content">
-                                    	<h1>A networked global media agency</h1>
+                                    	<h1>A global media agency</h1>
 
-                                        <p class="bbg__intro">The Broadcasting Board of Governors (BBG) is both the name of the independent federal agency that oversees all U.S. civilian international media and the name of the board that governs those broadcasts.</p>
-
-										<p>The five media organizations that comprise the BBG complement and reinforce one another in a shared mission vital to U.S. national interests: to inform, engage and connect people around the world in support of freedom and democracy. Together, the BBG media organizations communicate each week with more than 226 million people across the globe.</p>
+                                        <p class="bbg__intro">The Broadcasting Board of Governors (BBG) is an independent federal agency that oversees all U.S. civilian international media, including Voice of America, Radio Free Europe/Radio Liberty, the Office of Cuba Broadcasting, Radio Free Asia, and the Middle East Broadcasting Networks.</p>
 
 										<h2>Mission</h2>
 
-										<p>The mission of the BBG is to inform, engage, and connect people around the world in support of freedom and democracy. The agency’s mission is reinforced by those of the individual broadcasters that are overseen by the BBG.</p>
+										<p>The mission of the BBG is to inform, engage, and connect people around the world in support of freedom and democracy.</p>
 
 										<h2>Leadership</h2>
 
-										<p>Our leadership is comprised of the Board that governs our broadcasts and the senior staff who oversee the International Broadcasting Bureau, which provides multimedia broadcast distribution, as well as technical and administrative support to the broadcasting networks.</p>
+										<p>Our leadership is comprised of the Board that governs our broadcasts and the senior staff who oversee the International Broadcasting Bureau, which provides multimedia broadcast distribution, as well as technical and administrative support to the broadcasting networks. The CEO provides day-to-day management of BBG’s operations, including oversight of the technical, professional, and administrative support as well as strategic guidance and management of other programs.</p>
                                     </div>
                                 </div>
                                 <!-- .entry-content -->
                                 <div class="bbg__article-sidebar large">
-                                    <h5 class="bbg__label small">Find us on social media</h5>
-                                    <!-- <div> -->
+                                    <h5 class="bbg__label">Find us on social media</h5>
                                     <aside class="bbg__article-sidebar__aside">
-                                        <!-- <h3 class="bbg__sidebar-label bbg__contact-label"> social media </h3> -->
 										<ul class="bbg__article-share">
 											<li class="bbg__article-share__link facebook">
 												<a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook">
@@ -265,7 +265,59 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 										</ul>
 										<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at <a href="tel:1-202-203-4400">(202) 203-4400</a> or by e-mail at <a href="mailto:publicaffairs@bbg.gov">pubaff@bbg.gov</a>.</p>
 									</aside>
-                                    <!-- </div> -->
+									<h5 class="bbg__label">Visit our networks</h5>
+									<div class="usa-grid-full">
+										<article class="bbg__entity">
+											<div class="bbg__avatar__container bbg__entity__icon">
+												<a href="https://www.bbg.gov/networks/" tabindex="-1">
+													<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_voa--circle-200.png);"></div>
+												</a>
+											</div>
+											<div class="bbg__entity__text">
+												<h2 class="bbg__entity__name"><a href="http://www.voanews.com" target="_blank" title="VOA website">Voice of America</a></h2>
+											</div>
+										</article>
+										<article class="bbg__entity">
+											<div class="bbg__avatar__container bbg__entity__icon">
+												<a href="https://www.bbg.gov/networks/" tabindex="-1">
+													<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png);"></div>
+												</a>
+											</div>
+											<div class="bbg__entity__text">
+												<h2 class="bbg__entity__name"><a href="http://www.rferl.org" target="_blank" title="RFE/RL website">Radio Free Europe / Radio Liberty</a></h2>
+											</div>
+										</article>
+										<article class="bbg__entity">
+											<div class="bbg__avatar__container bbg__entity__icon">
+												<a href="https://www.bbg.gov/networks/ocb/" tabindex="-1">
+													<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_ocb--circle-200.png);"></div>
+												</a>
+											</div>
+											<div class="bbg__entity__text">
+												<h2 class="bbg__entity__name"><a href="http://www.martinoticias.com" target="_blank" title="Martí Noticias website">Office of Cuba Broadcasting</a></h2>
+											</div>
+										</article>
+										<article class="bbg__entity">
+											<div class="bbg__avatar__container bbg__entity__icon">
+												<a href="https://www.bbg.gov/networks/rfa/" tabindex="-1">
+													<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_rfa--circle-200.png);"></div>
+												</a>
+											</div>
+											<div class="bbg__entity__text">
+												<h2 class="bbg__entity__name"><a href="http://www.rfa.org/english/" target="_blank" title="RFA website">Radio Free Asia</a></h2>
+											</div>
+										</article>
+										<article class="bbg__entity">
+											<div class="bbg__avatar__container bbg__entity__icon">
+												<a href="https://www.bbg.gov/networks/mbn/" tabindex="-1">
+													<div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_mbn--circle-200.png);"></div>
+												</a>
+											</div>
+											<div class="bbg__entity__text">
+												<h2 class="bbg__entity__name"><a href="http://www.alhurra.com" target="_blank" title="Alhurra Television website">Middle East Broadcasting Networks</a></h2>
+											</div>
+										</article>
+									</div>
                                 </div>
                             </div>
                             <!-- .bbg__article-sidebar -->
