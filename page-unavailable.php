@@ -233,7 +233,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
                                     <div class="bbg__profile__content">
                                     	<h1>A global media agency</h1>
 
-                                        <p class="bbg__intro">The Broadcasting Board of Governors (BBG) is an independent federal agency that oversees all U.S. civilian international media, including Voice of America, Radio Free Europe/Radio Liberty, the Office of Cuba Broadcasting, Radio Free Asia, and the Middle East Broadcasting Networks.</p>
+                                        <p class="bbg__intro">The Broadcasting Board of Governors (BBG) is the independent federal agency that oversees all U.S. civilian international media, including Voice of America, Radio Free Europe/Radio Liberty, the Office of Cuba Broadcasting, Radio Free Asia, and the Middle East Broadcasting Networks.</p>
 
 										<h2>Mission</h2>
 
@@ -241,7 +241,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 
 										<h2>Leadership</h2>
 
-										<p>Our leadership is comprised of the Board that governs our broadcasts and the senior staff who oversee the International Broadcasting Bureau, which provides multimedia broadcast distribution, as well as technical and administrative support to the broadcasting networks. The CEO provides day-to-day management of BBG’s operations, including oversight of the technical, professional, and administrative support as well as strategic guidance and management of other programs.</p>
+										<p>Our leadership *includes* a board that governs our broadcasts and the senior staff who oversee the International Broadcasting Bureau, which provides multimedia broadcast distribution, as well as technical and administrative support to the broadcasting networks. The CEO provides day-to-day management of BBG’s operations, including oversight of the technical, professional, and administrative support as well as strategic guidance and management of other programs.</p>
                                     </div>
                                 </div>
                                 <!-- .entry-content -->
