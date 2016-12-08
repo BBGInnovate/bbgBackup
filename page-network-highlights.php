@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbginnovate
-  template name: Network Highlights 
+  template name: Network Highlights
  */
 
 $pageTitle="";
@@ -103,29 +103,30 @@ get_header(); ?>
 							$title = $pr['title'];
 
 							if ($counter == 1) {
-								$s .= '<div class="bbg-grid--1-1-1-2 secondary-stories">';	
+								$s .= '<div class="bbg-grid--1-1-1-2 secondary-stories">';
 							} else if ($counter == 2) {
-								$s .= '<div class="bbg-grid--1-1-1-2 tertiary-stories">';	
+								$s .= '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 							}
-							
-							
+
+
 							if ($counter == 1) {
 								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
-								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
-								$s .= '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">';
-								$s .= $pr['thumb'];
-								$s .= '</div>';
-								$s .= '<div class="entry-content bbg-blog__excerpt-content"><p>';
-								$s .= $pr['excerpt'];
-								$s .= '</p></div>';
+									$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
+
+									$s .= '<div class="entry-content bbg-blog__excerpt-content"><p>';
+										$s .= '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">';
+											$s .= $pr['thumb'];
+										$s .= '</div>';
+										$s .= '<p>' . $pr['excerpt'] . '</p>';
+									$s .= '</div>';
 							} else {
 								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg-blog__excerpt--list" )) . '">';
 								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="'.$url.'">'.$title.'</a></h3></header>';
-							}	
+							}
 							$s .= '</article>';
 							if ($counter == 1 || $counter == 5) {
 								if ($counter == 5) {
-									$idObj = get_category_by_slug($entitySlug); 
+									$idObj = get_category_by_slug($entitySlug);
 				  					$id = $idObj->term_id;
 									$s .= '<article>' . '<a href="' . get_category_link($id) . '">Read more ' . strtoupper($entityString) . ' news »</a></article>';
 								}
@@ -138,7 +139,7 @@ get_header(); ?>
 					echo $s;
 				}
 			?>
-			
+
 
 
 		</main><!-- #main -->
@@ -189,7 +190,7 @@ if ( $custom_query->have_posts() ) :
 			}
 			$features[] = array(
 				'type' => 'Feature',
-				'geometry' => array( 
+				'geometry' => array(
 					'type' => 'Point',
 					'coordinates' => array($location['lng'],$location['lat'])
 				),
@@ -197,7 +198,7 @@ if ( $custom_query->have_posts() ) :
 					'title' => $mapHeadline,
 					'description' => $mapDescription,
 					'marker-color' => $pinColor,
-					'marker-size' => 'large', 
+					'marker-size' => 'large',
 					'marker-symbol' => ''
 				)
 			);
@@ -213,7 +214,7 @@ if ( $custom_query->have_posts() ) :
 		echo "</script>";
 		//echo $geojsonStr;
 
-endif; 
+endif;
 
 ?>
 
@@ -267,7 +268,7 @@ var map = L.mapbox.map('map', 'mapbox.emerald')
         var description = geojson[0].features[i].properties['description'];
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
             icon: L.mapbox.marker.icon({
-            	'marker-symbol': '', 
+            	'marker-symbol': '',
             	'marker-color': geojson[0].features[i].properties['marker-color']
            	})
         });
