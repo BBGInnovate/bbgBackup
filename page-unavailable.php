@@ -168,6 +168,10 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 			color: #981b1e;
 		}
 
+		.bbg__profile__content {
+			margin-bottom: 4rem;
+		}
+
 		.bbg__intro {
 			font-size: 2rem;
 			font-weight: 300;
@@ -185,8 +189,27 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 			display: table-row;
 		}
 
+		.bbg__entity__icon {
+			border-radius: 50%;
+			height: 75px;
+			margin: 0 auto 2.5rem;
+			width: 75px;
+		}
+
+		.bbg__entity__name {
+			line-height: 1.1;
+			clear: none;
+			font-size: 2.5rem;
+			margin-bottom: 0;
+			text-align: center;
+		}
+
 		@media screen and (min-width: 481px) {
-			.bbg__article-sidebar.large .bbg__entity__text, .bbg__article-sidebar.large .bbg__team__text {
+			.bbg__entity__name {
+				text-align: left;
+			}
+
+			.bbg__entity__text {
 				padding: 0 0 2rem 1rem;
 				display: table-cell;
 				vertical-align: middle;
@@ -223,7 +246,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
             <div id="primary" class="content-area">
                 <main id="main" class="site-main bbg__2-column" role="main">
                     <div class="usa-grid-full usa-grid bbg__unavailable">
-						<h1 class="bbg__unavailable__h1">Our site is currently down for maintenance.</h1>
+						<h1 class="bbg__unavailable__h1">BBG.gov is currently undergoing maintenance.</h1>
 						<h2 class="bbg__unavailable__h2">We should be back online shortly. Thank you for your patience.</h2>
 					</div>
 					<div class="usa-grid-full">
@@ -238,11 +261,61 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 										<h2>Mission</h2>
 
 										<p>The mission of the BBG is to inform, engage, and connect people around the world in support of freedom and democracy.</p>
-
-										<h2>Leadership</h2>
-
-										<p>Our leadership *includes* a board that governs our broadcasts and the senior staff who oversee the International Broadcasting Bureau, which provides multimedia broadcast distribution, as well as technical and administrative support to the broadcasting networks. The CEO provides day-to-day management of BBG’s operations, including oversight of the technical, professional, and administrative support as well as strategic guidance and management of other programs.</p>
                                     </div>
+                                    <h6 class="bbg__label">Visit our networks</h6>
+
+							        <div class="usa-grid-full">
+							            <article class="bbg__entity bbg-grid--1-1-1-2">
+							                <div class="bbg__avatar__container bbg__entity__icon">
+							                    <a href="https://bbgredesign.voanews.com/who-we-are/" tabindex="-1">
+							                        <div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_voa--circle-200.png);"></div>
+							                    </a>
+							                </div>
+							                <div class="bbg__entity__text">
+							                    <h3 class="bbg__entity__name"><a href="https://bbgredesign.voanews.com/who-we-are/">Voice of America</a></h3>
+							                </div>
+							            </article>
+							            <article class="bbg__entity bbg-grid--1-1-1-2">
+							                <div class="bbg__avatar__container bbg__entity__icon">
+							                    <a href="https://bbgredesign.voanews.com/networks/rferl/" tabindex="-1">
+							                        <div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png);"></div>
+							                    </a>
+							                </div>
+							                <div class="bbg__entity__text">
+							                    <h3 class="bbg__entity__name"><a href="https://bbgredesign.voanews.com/networks/rferl/">Radio Free Europe / Radio Liberty</a></h3>
+							                </div>
+							            </article>
+							            <article class="bbg__entity bbg-grid--1-1-1-2">
+							                <div class="bbg__avatar__container bbg__entity__icon">
+							                    <a href="https://bbgredesign.voanews.com/networks/ocb/" tabindex="-1">
+							                        <div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_ocb--circle-200.png);"></div>
+							                    </a>
+							                </div>
+							                <div class="bbg__entity__text">
+							                    <h3 class="bbg__entity__name"><a href="https://bbgredesign.voanews.com/networks/ocb/">Office of Cuba Broadcasting</a></h3>
+							                </div>
+							            </article>
+							            <article class="bbg__entity bbg-grid--1-1-1-2">
+							                <div class="bbg__avatar__container bbg__entity__icon">
+							                    <a href="https://bbgredesign.voanews.com/networks/rfa/" tabindex="-1">
+							                        <div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_rfa--circle-200.png);"></div>
+							                    </a>
+							                </div>
+							                <div class="bbg__entity__text">
+							                    <h3 class="bbg__entity__name"><a href="https://bbgredesign.voanews.com/networks/rfa/">Radio Free Asia</a></h3>
+							                </div>
+							            </article>
+							            <article class="bbg__entity bbg-grid--1-1-1-2">
+							                <div class="bbg__avatar__container bbg__entity__icon">
+							                    <a href="https://bbgredesign.voanews.com/networks/mbn/" tabindex="-1">
+							                        <div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/img/logo_mbn--circle-200.png);"></div>
+							                    </a>
+							                </div>
+							                <div class="bbg__entity__text">
+							                    <h3 class="bbg__entity__name"><a href="https://bbgredesign.voanews.com/networks/mbn/">Middle East Broadcasting Networks</a></h3>
+							                </div>
+							            </article>
+							        </div>
                                 </div>
                                 <!-- .entry-content -->
                                 <div class="bbg__article-sidebar large">
@@ -265,7 +338,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 										</ul>
 										<p class="bbg-tagline bbg-tagline--main">For more information, please contact BBG Public Affairs at <a href="tel:1-202-203-4400">(202) 203-4400</a> or by e-mail at <a href="mailto:publicaffairs@bbg.gov">pubaff@bbg.gov</a>.</p>
 									</aside>
-									<h5 class="bbg__label">Visit our networks</h5>
+									<!-- <h5 class="bbg__label">Visit our networks</h5>
 									<div class="usa-grid-full">
 										<article class="bbg__entity">
 											<div class="bbg__avatar__container bbg__entity__icon">
@@ -317,7 +390,7 @@ var WEF = {"local":"en_US","version":"v2.6","fb_id":""};
 												<h2 class="bbg__entity__name"><a href="http://www.alhurra.com" target="_blank" title="Alhurra Television website">Middle East Broadcasting Networks</a></h2>
 											</div>
 										</article>
-									</div>
+									</div> -->
                                 </div>
                             </div>
                             <!-- .bbg__article-sidebar -->
