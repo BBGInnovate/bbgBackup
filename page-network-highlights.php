@@ -110,8 +110,8 @@ get_header(); ?>
 
 
 							if ($counter == 1) {
-								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
-									$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
+								$s .= '<article id="post-'. get_the_ID() . '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
+									$s .= '<header class="entry-header bbg-blog__excerpt-header"><h2><a href="' . $url . '">' . $title . '</a></h2></header>';
 
 									$s .= '<div class="entry-content bbg-blog__excerpt-content">';
 										$s .= '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">';
