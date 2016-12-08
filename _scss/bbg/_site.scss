@@ -840,7 +840,7 @@ article {
 	width: 50%;
 }
 
-.bbg-blog__excerpt-content p{
+.bbg-blog__excerpt-content p {
 	font-family: $font-sans;
 }
 
@@ -853,7 +853,7 @@ article {
 .tertiary-stories {
 	border-top: $border-dotted;
 	display: block;
-	margin-top: $site-margins;
+	margin-top: $site-margins + 1;
 	padding-top: $site-margins;
 
 	.bbg__label.small {
