@@ -45,7 +45,7 @@ get_header(); ?>
 
 			<div class="usa-grid-full">
 			<?php
-				$entities = ['voa','rferl', 'ocb', 'rfa', 'mbn'];
+				$entities = ['bbg', 'voa', 'rferl', 'ocb', 'rfa', 'mbn'];
 				foreach ($entities as $e) {
 					/**** START FETCH related press releases ****/
 					$entityString = $e;
@@ -62,7 +62,8 @@ get_header(); ?>
 								'post_type' => array('post'),
 								'posts_per_page' => 5,
 								'category__and' => array(
-														$prCategoryID
+														$prCategoryID,
+														get_cat_ID('Press Release')
 												  ),
 								'orderby', 'date',
 								'order', 'DESC',
@@ -72,10 +73,8 @@ get_header(); ?>
 										'field' => 'slug',
 										'terms' => 'post-format-quote',
 										'operator' => 'NOT IN'
-
 									)
-								),
-								'category__not_in' => get_cat_id('Award')
+								)
 							);
 							$custom_query = new WP_Query($qParams);
 							if ($custom_query -> have_posts()) {
