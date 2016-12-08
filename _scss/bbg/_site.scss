@@ -851,8 +851,9 @@ article {
 }
 
 .tertiary-stories {
-	border-top: 1px solid #2A2F38;
-	padding-top: $site-margins;
+	border-top: $border-dotted;
+	display: block;
+	margin-top: $site-margins-large;
 
 	.bbg__label.small {
 		margin-bottom: $site-margins;
@@ -874,7 +875,10 @@ article {
 	}
 
 	@include media($medium-large-screen) {
-		border-left: $border-dotted;
+		border: {
+			top: none;
+			left: $border-dotted;
+		}
 		padding-left: 3%;
 	}
 

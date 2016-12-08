@@ -6087,8 +6087,9 @@ article {
 }
 
 .tertiary-stories {
-  border-top: 1px solid #2A2F38;
-  padding-top: 3rem;
+  border-top: 1px dotted #CCC;
+  display: block;
+  margin-top: 6rem;
 }
 .tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
@@ -6107,6 +6108,7 @@ article {
 }
 @media screen and (min-width: 900px) {
   .tertiary-stories {
+    border-top: none;
     border-left: 1px dotted #CCC;
     padding-left: 3%;
   }
