@@ -853,7 +853,8 @@ article {
 .tertiary-stories {
 	border-top: $border-dotted;
 	display: block;
-	margin-top: $site-margins-large;
+	margin-top: $site-margins;
+	padding-top: $site-margins;
 
 	.bbg__label.small {
 		margin-bottom: $site-margins;

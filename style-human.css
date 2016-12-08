@@ -6089,7 +6089,8 @@ article {
 .tertiary-stories {
   border-top: 1px dotted #CCC;
   display: block;
-  margin-top: 6rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
 }
 .tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
