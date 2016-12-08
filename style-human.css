@@ -6086,6 +6086,10 @@ article {
   }
 }
 
+.tertiary-stories {
+  border-top: 1px solid #2A2F38;
+  padding-top: 3rem;
+}
 .tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
 }

@@ -113,15 +113,15 @@ get_header(); ?>
 								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg__article" )) . '">';
 									$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3><a href="'.$url.'">'.$title.'</a></h3></header>';
 
-									$s .= '<div class="entry-content bbg-blog__excerpt-content"><p>';
+									$s .= '<div class="entry-content bbg-blog__excerpt-content">';
 										$s .= '<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--small ">';
 											$s .= $pr['thumb'];
 										$s .= '</div>';
 										$s .= '<p>' . $pr['excerpt'] . '</p>';
 									$s .= '</div>';
 							} else {
-								$s .= '<article id="post-'. get_the_ID(). '" class="' . implode(" ", get_post_class( "bbg-blog__excerpt--list" )) . '">';
-								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="'.$url.'">'.$title.'</a></h3></header>';
+								$s .= '<article id="post-' . get_the_ID() . '" class="' . implode(" ", get_post_class( "bbg-blog__excerpt--list" )) . '">';
+								$s .= '<header class="entry-header bbg-blog__excerpt-header"><h3 class="entry-title bbg-blog__excerpt-title--list"><a href="' . $url . '">' . $title . '</a></h3></header>';
 							}
 							$s .= '</article>';
 							if ($counter == 1 || $counter == 5) {

@@ -851,6 +851,9 @@ article {
 }
 
 .tertiary-stories {
+	border-top: 1px solid #2A2F38;
+	padding-top: $site-margins;
+
 	.bbg__label.small {
 		margin-bottom: $site-margins;
 	}
@@ -1498,6 +1501,7 @@ article {
 		padding: {
 			top: $site-margins;
 		}
+
 		@include media($medium-screen) {
 			border-top: none;
 			border-left: 1px solid #2A2F38;
