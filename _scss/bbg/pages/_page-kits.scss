@@ -52,6 +52,10 @@
 
 		@include media($medium-screen) {
 			min-height: 20rem;
+
+			&.large {
+				display: flex;
+			}
 		}
 
 		@include media($medium-large-screen) {
@@ -59,7 +63,6 @@
 
 			&.large {
 				border-right: none;
-				display: flex;
 			}
 		}
 

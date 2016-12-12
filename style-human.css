@@ -8007,6 +8007,11 @@ div.appropriations-small > p.header {
   .bbg__kits__section .bbg__article-content {
     min-height: 20rem;
   }
+  .bbg__kits__section .bbg__article-content.large {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 @media screen and (min-width: 900px) {
   .bbg__kits__section .bbg__article-content {
@@ -8014,9 +8019,6 @@ div.appropriations-small > p.header {
   }
   .bbg__kits__section .bbg__article-content.large {
     border-right: none;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
   }
 }
 .bbg__kits__section .bbg__article-content .bbg__kits__recent-posts {
