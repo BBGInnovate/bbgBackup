@@ -8014,6 +8014,9 @@ div.appropriations-small > p.header {
   }
   .bbg__kits__section .bbg__article-content.large {
     border-right: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 .bbg__kits__section .bbg__article-content .bbg__kits__recent-posts {

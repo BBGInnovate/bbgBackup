@@ -142,6 +142,8 @@ $qParamsPressReleases = array(
 );
 /******* DONE CREATING AN ARRAY FOR PRESS RELEASES ******/
 
+// set variable for PR category link to All network highlights page
+$prCategoryLink = get_permalink( get_page_by_path( 'news/network-highlights' ) );
 
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
@@ -357,8 +359,7 @@ get_header(); ?>
 
 									endwhile;
 
-									$prCategoryLink = get_category_link( $prCategoryObj -> term_id );
-									echo "<br/><a href='$prCategoryLink'class='bbg__kits__intro__more--link'>View all press releases »</a>";
+									echo "<br/><a href='$prCategoryLink' class='bbg__kits__intro__more--link'>View all press releases »</a>";
 								}
 								wp_reset_query();
 								echo '</div>';
