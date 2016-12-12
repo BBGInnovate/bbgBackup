@@ -319,7 +319,7 @@ get_header(); ?>
 								echo '<h2>Recent press releases</h2>';
 							}
 
-							echo '<div class="bbg__ceo-post">';
+							echo '<div class="bbg__kits__recent-posts">';
 								echo '<div class="usa-width-one-half bbg__secondary-stories">';
 
 								if ( $advisory ) {

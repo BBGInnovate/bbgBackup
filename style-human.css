@@ -6092,6 +6092,16 @@ article {
   margin-top: 4rem;
   padding-top: 1.5rem;
 }
+@media screen and (min-width: 600px) {
+  .tertiary-stories {
+    border-top: none;
+    border-left: 1px dotted #CCC;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    padding-top: 0;
+    padding-left: 3rem;
+  }
+}
 .tertiary-stories .bbg__label.small {
   margin-bottom: 3rem;
 }
@@ -8001,6 +8011,17 @@ div.appropriations-small > p.header {
 @media screen and (min-width: 900px) {
   .bbg__kits__section .bbg__article-content {
     min-height: 25rem;
+  }
+  .bbg__kits__section .bbg__article-content.large {
+    border-right: none;
+  }
+}
+.bbg__kits__section .bbg__article-content .bbg__kits__recent-posts {
+  margin-bottom: 20%;
+}
+@media screen and (min-width: 900px) {
+  .bbg__kits__section .bbg__article-content .bbg__kits__recent-posts {
+    margin-bottom: 0;
   }
 }
 .bbg__kits__section .bbg__article-content .bbg__kits__inquiries h3, .bbg__kits__section .bbg__article-content .bbg__kits__inquiries .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__kits__section .bbg__article-content .bbg__kits__inquiries caption {
