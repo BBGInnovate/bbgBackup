@@ -138,7 +138,7 @@ if ( $custom_query->have_posts() ) :
 		endwhile;
 
 		$s = "";
-		for ($i=2030; $i >= 2000; $i++) {
+		for ($i=2030; $i >= 2000; $i--) {
 			if (isset($trainingByYear[$i])) {
 				//echo "<h3>" . $i , "</h3>";
 				$s.='<div class="usa-accordion bbg__committee-list">';
