@@ -138,7 +138,7 @@ if ( $custom_query->have_posts() ) :
 		endwhile;
 
 		$s = "";
-		for ($i=2012; $i<2030; $i++) {
+		for ($i=2030; $i >= 2000; $i++) {
 			if (isset($trainingByYear[$i])) {
 				//echo "<h3>" . $i , "</h3>";
 				$s.='<div class="usa-accordion bbg__committee-list">';
@@ -149,8 +149,8 @@ if ( $custom_query->have_posts() ) :
 				$s.='</button>';
 				$s.='<div id="collapsible-'.$i.'" aria-hidden="true" class="usa-accordion-content">';
 
-				$yearContent=$trainingByYear[$i];
-				for ($j=0; $j <count($yearContent); $j++) {
+				$yearContent = $trainingByYear[$i];
+				for ($j=0; $j < count($yearContent); $j++) {
 					$o = $yearContent[$j];
 					$link =$o['storyLink'];
 					$title = $o['title'];
