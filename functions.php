@@ -572,15 +572,29 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 			}
 			if (!$suppressOutput) {
 
-				/* JBF 8/19 - we could have also directly called yoast_get_primary_term_id() but I'd like this to work even if the plug is disabled */
-				$primaryCategoryID = get_post_meta( get_the_ID(), '_yoast_wpseo_primary_category', true );
-				if ($primaryCategoryID && $primaryCategoryID != "") {
+				/******* TODO: Rewrite this section ... no need for so many loops ****/
+
+				/* JBF 12/12/2016 - 'Press Release' takes precedence over everything else */
+				if ( !$selectedCategory ) {
 					foreach ( $categories as $category ) {
-						if ( $category->term_id == $primaryCategoryID ) {
+						if ( $category->name == "Press Release" ) {
 							$selectedCategory = $category;
 							break;
 						}
-					}	
+					}
+				}
+
+				/* JBF 8/19 - we could have also directly called yoast_get_primary_term_id() but I'd like this to work even if the plug is disabled */
+				if ( !$selectedCategory ) {
+					$primaryCategoryID = get_post_meta( get_the_ID(), '_yoast_wpseo_primary_category', true );
+					if ($primaryCategoryID && $primaryCategoryID != "") {
+						foreach ( $categories as $category ) {
+							if ( $category->term_id == $primaryCategoryID ) {
+								$selectedCategory = $category;
+								break;
+							}
+						}	
+					}
 				}
 
 				if ( !$selectedCategory ) {
