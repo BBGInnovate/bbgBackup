@@ -181,6 +181,36 @@
 	add_shortcode('programming', 'programming_shortcode');
 
 	/**
+	 * Add shortcode reference for the most recent requested budget. 
+	 * Comes from custom field set in 'BBG settings'. 
+	 * Used on the Rumors, Myths and Untruths page.
+	 * @return number rounded to nearest integer
+	 */
+	function budget_shortcode() {
+		// access site-wide variables
+		global $post;
+
+		// set variables based on custom fields
+	    $budget = get_field( 'site_setting_annual_budgets', 'options', 'false' );
+	    
+	    /**** sort the budgets so that they are in order of fiscal year descending ***/
+	    function cmpFiscalYear($a, $b) {
+		    return ($b['fiscal_year'] - $a['fiscal_year']);
+		}
+	    usort($budget, "cmpFiscalYear");
+
+	    $latestBudget=0;
+	    for ($i=0; $i < count($budget); $i++) {
+	    	if ($latestBudget == 0 && ($budget[$i]['status'] == 'Requested')) {
+	    		$latestBudget = round($budget[$i]['dollar_amount'],0);
+	    	}
+	    }
+		return $latestBudget;
+	}
+
+	add_shortcode('currentCBJ', 'budget_shortcode');
+
+	/**
 	 * Shortcode for selecting/downloading apps
 	 * @param  $formType
 	 * @return Returns a form for downloading the correct type of apps
