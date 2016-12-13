@@ -157,7 +157,7 @@ if ( $custom_query->have_posts() ) :
 					$trainingDate = $o['trainingDate'];
 					$country = $o['country'];
 					$storyLink = $o['storyLink'];
-					$s .= "<a href='$storyLink'>$title</a> in $country<BR>";
+					$s .= "<a href='$storyLink'>$title</a><BR><span class='bbg__award-excerpt__source'>$country</span><BR><BR>";
 				}
 				$s.= '</div>';
 				$s.= '</li>';
