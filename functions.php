@@ -1208,6 +1208,10 @@ add_filter( 'query_vars', 'filter_query_vars' , 10, 1 );
 function order_post_objects_by_date( $args, $field, $post_id ) {
     $args['order'] = 'DESC';
     $args['orderby'] = 'post_date';
+    $args['post_status'] = array(
+    	'publish',
+    	'future'
+    );
     return $args;
 }
 add_filter('acf/fields/post_object/query', 'order_post_objects_by_date', 10, 3);
