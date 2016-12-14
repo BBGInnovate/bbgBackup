@@ -1201,4 +1201,17 @@ function filter_query_vars( $qvars ) {
 }
 add_filter( 'query_vars', 'filter_query_vars' , 10, 1 );
 
+/***** 
+	On our "Homepage Options" you can select many featured posts.  We want the picker to sort the list of available
+	posts in order of descending date rather than alphabetical order. see https://www.advancedcustomfields.com/resources/acf-fields-post_object-query/ for details
+*****/
+function order_post_objects_by_date( $args, $field, $post_id ) {
+    $args['order'] = 'DESC';
+    $args['orderby'] = 'post_date';
+    return $args;
+}
+add_filter('acf/fields/post_object/query/name=my_post_object', 'order_post_objects_by_date', 10, 3);
+
+
+
 ?>
