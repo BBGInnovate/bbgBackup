@@ -1210,7 +1210,7 @@ function order_post_objects_by_date( $args, $field, $post_id ) {
     $args['orderby'] = 'post_date';
     return $args;
 }
-add_filter('acf/fields/post_object/query/', 'order_post_objects_by_date', 10, 3);
+add_filter('acf/fields/post_object/query', 'order_post_objects_by_date', 10, 3);
 
 
 
