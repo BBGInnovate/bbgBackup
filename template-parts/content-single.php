@@ -246,6 +246,64 @@ if( $journos ) {
     endwhile;
 }
 
+
+$addFeaturedMap = get_post_meta( get_the_ID(), 'featured_map_add', true );
+$featuredMapCaption = get_post_meta( get_the_ID(), 'featured_map_caption', true );
+
+if ($addFeaturedMap) {
+	$featuredMapItems = get_field( 'featured_map_items', get_the_ID(), true);
+	$features = [];
+
+	for ($i=0; $i < count($featuredMapItems); $i++) {
+		$item = $featuredMapItems[$i];
+		$featuredMapItemLocation = $item['featured_map_item_coordinates'];
+		$featuredMapItemTitle = $item['featured_map_item_title'];
+		$featuredMapItemDescription = $item['featured_map_item_description'];
+		$featuredMapItemLink = $item['featured_map_item_link'];
+		$featuredMapItemVideoLink = $item['featured_map_item_video_link'];
+		$im = $item['featured_map_item_image'];
+
+		$featuredMapItemImageUrl = $im['sizes']['medium'];
+
+		$popupBody = "";
+		if ($featuredMapItemLink != "") {
+			$popupBody .= "<h5><a style='font-weight: bold; ' href='$featuredMapItemLink'>$featuredMapItemTitle</a></h5><div class='u--show-medium-large'><img src='$featuredMapItemImageUrl'></div><BR>$featuredMapItemDescription";
+		} else {
+			$popupBody .= "<h5><span style='font-weight: bold;'>$featuredMapItemTitle</span></h5><div class='u--show-medium-large'><img src='$featuredMapItemImageUrl'></div><BR>$featuredMapItemDescription";
+		}
+		
+
+		$features[] = array(
+			'type' => 'Feature',
+			'geometry' => array(
+				'type' => 'Point',
+				'coordinates' => array($featuredMapItemLocation['lng'],$featuredMapItemLocation['lat'])
+			),
+			'properties' => array(
+				'title' => "<a href='$featuredMapItemLink'>$featuredMapItemTitle</a>",
+				'description' => $popupBody,
+				'marker-size' => 'large',
+				'marker-symbol' => ''
+			)
+		);
+	}
+	$geojsonObj= array(array(
+		'type' => 'FeatureCollection',
+		'features' => $features
+	));
+	$geojsonStr=json_encode(new ArrayValue($geojsonObj), JSON_PRETTY_PRINT, 10);
+
+	echo "<script type='text/javascript'>\n";
+	echo "geojson = $geojsonStr";
+	echo "</script>";
+	//echo $geojsonStr;
+}
+
+/* TODO: add the following fields */
+// media_dev_sponsors
+// media_dev_additional_files
+// media_dev_presenters
+
 /* Displaying award info -- not implemented yet*/
 $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
@@ -362,14 +420,25 @@ $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 ?>
+<style>
+.leaflet-popup-pane {
+	min-width: 300px !important;
+}
+</style>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( "bbg__article" ); ?>>
 
 	<?php
-		//If a featured video is set, include it.
-		//ELSE if a featured image is set, include it.
+		//in order of priority, use one of the following: featured map, video, image
 		$hideFeaturedImage = FALSE;
-		if ( $videoUrl != "" ) {
+		if ($addFeaturedMap) {
+			echo "<div class='usa-grid-full'><div id='map-featured' class='bbg__map--banner'></div>";
+			if ($featuredMapCaption != "") {
+				echo "<p class='bbg__article-header__caption'>$featuredMapCaption</p>";
+			}
+			echo "</div>";
+			$hideFeaturedImage = TRUE;
+		} else if ( $videoUrl != "" ) {
 			echo featured_video($videoUrl);
 			$hideFeaturedImage = TRUE;
 		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
@@ -505,6 +574,70 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	</div><!-- .usa-grid -->
 </article><!-- #post-## -->
+
+
+
+
+<?php
+if ( $addFeaturedMap){
+?>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+	<script type="text/javascript">
+		L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
+		var map = L.mapbox.map('map-featured', 'mapbox.emerald')
+	    var markers = L.mapbox.featureLayer();
+	    for (var i = 0; i < geojson[0].features.length; i++) {
+	        var coords = geojson[0].features[i].geometry.coordinates;
+	        var title = geojson[0].features[i].properties.title; //a[2];
+	        var description = geojson[0].features[i].properties['description'];
+	        var marker = L.marker(new L.LatLng(coords[1], coords[0]));
+	        var popupText = description;
+
+	        //rather than just use html, do this - http://stackoverflow.com/questions/10889954/images-size-in-leaflet-cloudmade-popups-dont-seem-to-count-to-determine-popu
+	       	var divNode = document.createElement('DIV');
+			divNode.innerHTML =popupText;
+	        marker.bindPopup(divNode);
+	        marker.addTo(markers);
+	    }
+	    markers.addTo(map);
+		map.scrollWheelZoom.disable();
+		function centerMap(){
+			map.fitBounds(markers.getBounds());
+		}
+		centerMap();
+
+		//Recenter the map on resize
+		function resizeStuffOnResize(){
+		  waitForFinalEvent(function(){
+				centerMap();
+		  }, 500, "some unique string");
+		}
+
+		//Wait for the window resize to 'end' before executing a function---------------
+		var waitForFinalEvent = (function () {
+			var timers = {};
+			return function (callback, ms, uniqueId) {
+				if (!uniqueId) {
+					uniqueId = "Don't call this twice without a uniqueId";
+				}
+				if (timers[uniqueId]) {
+					clearTimeout (timers[uniqueId]);
+				}
+				timers[uniqueId] = setTimeout(callback, ms);
+			};
+		})();
+
+		window.addEventListener('resize', function(event){
+			resizeStuffOnResize();
+		});
+
+		resizeStuffOnResize();
+
+	</script>
+<?php } ?>
+
+
 
 <?php
 /* if the map is set, then load the necessary JS and CSS files */
