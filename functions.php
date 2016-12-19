@@ -21,109 +21,7 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Media Advisory')
 );
 
-/****** UTILITY FUNCTIONS - KEEP UP TOP ****/
-function fileExpired($filepath, $minutesToExpire) {
-	$expired = false;
-	if ( !file_exists( $filepath ) ) {
-		$expired = true;
-	} else {
-		$secondsDiff = time() - filemtime( $filepath );
-		$minutesDiff = $secondsDiff/60;
-		if ($minutesDiff > $minutesToExpire) {
-			$expired = true;
-		}
-	}
-	return  $expired;
-}
-function fetchUrl($url) {
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_URL,$url);
-	$result=curl_exec($ch);
-	curl_close($ch);
-	return $result;
-}
-function getFeed($url,$id) {
-	$feedFilepath = get_template_directory() . "/external-feed-cache/" . $id . ".xml";
-	if ( fileExpired($feedFilepath,60)) { //one hour expiration
-		$feedStr=fetchUrl($url);
-		file_put_contents($feedFilepath, $feedStr);
-	} else {
-		$feedStr=file_get_contents($feedFilepath);
-	}
-	$xml = simplexml_load_string($feedStr);
-	$json = json_encode($xml,JSON_PRETTY_PRINT);
-	$json=json_decode($json);
-	return $json;
-}
-function parse_csv ($csv_string, $delimiter = ",", $skip_empty_lines = true, $trim_fields = true) {
-    $enc = preg_replace('/(?<!")""/', '!!Q!!', $csv_string);
-    $enc = preg_replace_callback(
-        '/"(.*?)"/s',
-        function ($field) {
-            return urlencode(utf8_encode($field[1]));
-        },
-        $enc
-    );
-    $lines = preg_split($skip_empty_lines ? ($trim_fields ? '/( *\R)+/s' : '/\R+/s') : '/\R/s', $enc);
-    return array_map(
-        function ($line) use ($delimiter, $trim_fields) {
-            $fields = $trim_fields ? array_map('trim', explode($delimiter, $line)) : explode($delimiter, $line);
-            return array_map(
-                function ($field) {
-                    return str_replace('!!Q!!', '"', utf8_decode(urldecode($field)));
-                },
-                $fields
-            );
-        },
-        $lines
-    );
-}
-function getCSV($url,$id,$expirationMinutes) {
-	$feedFilepath = get_template_directory() . "/external-feed-cache/" . $id . ".csv";
-	if ( $expirationMinutes<=0 || fileExpired($feedFilepath,$expirationMinutes)) {
-		$feedStr=fetchUrl($url);
-		file_put_contents($feedFilepath, $feedStr);
-	} else {
-		$feedStr=file_get_contents($feedFilepath);
-	}
-	$csv = parse_csv($feedStr);
-
-	return $csv;
-}
-function formatBytes($bytes) {
-	$units = array('B', 'KB', 'MB', 'GB', 'TB');
-
-	$bytes = max($bytes, 0);
-	$pow = floor(($bytes ? log($bytes) : 0) / log(1000));
-	$pow = min($pow, count($units) - 1);
-
-	// Uncomment one of the following alternatives
-	$bytes /= pow(1000, $pow);
-	// $bytes /= (1 << (10 * $pow));
-
-	$precision = 2;
-	if ($pow < 2) {
-		$precision = 0;
-	}
-
-	return round($bytes, $precision) . ' ' . $units[$pow];
-}
-
-class ArrayValue implements JsonSerializable {
-    //****** HELPER CLASS FOR SERIALIZING PHP TO JSON
-    public function __construct(array $array) {
-        $this->array = $array;
-    }
-
-    public function jsonSerialize() {
-        return $this->array;
-    }
-}
-/****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
-
-
+require get_template_directory() . '/inc/bbg-functions-utilities.php';
 
 if ( ! function_exists( 'bbginnovate_setup' ) ) :
 	/**
@@ -374,7 +272,6 @@ require get_template_directory() . '/inc/bbg-functions-networks.php';
 require get_template_directory() . '/inc/bbg-functions-quotations.php';
 require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
 require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
-require get_template_directory() . '/inc/bbg-functions-utilities.php';
 require get_template_directory() . '/inc/bbg-functions-category-tooltip.php';
 //require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php';
 
