@@ -246,7 +246,7 @@ if( $journos ) {
     endwhile;
 }
 
-
+$addFeaturedGallery = get_post_meta( get_the_ID(), 'featured_gallery_add', true );
 $addFeaturedMap = get_post_meta( get_the_ID(), 'featured_map_add', true );
 $featuredMapCaption = get_post_meta( get_the_ID(), 'featured_map_caption', true );
 
@@ -418,7 +418,7 @@ $twitterText .= " " . get_permalink();
 
 $twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
-
+$hideFeaturedImage = FALSE;
 ?>
 <style>
 .leaflet-popup-pane {
@@ -430,7 +430,14 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 	<?php
 		//in order of priority, use one of the following: featured map, video, image
-		$hideFeaturedImage = FALSE;
+		
+		if ($addFeaturedGallery) {
+			$hideFeaturedImage = true;
+			echo "<div class='usa-grid-full'>";
+			$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+			putUniteGallery($featuredGalleryID);
+			echo "</div>";
+		}
 		if ($addFeaturedMap) {
 			echo "<div class='usa-grid-full'><div id='map-featured' class='bbg__map--banner'></div>";
 			if ($featuredMapCaption != "") {
