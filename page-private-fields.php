@@ -32,7 +32,7 @@ if ($custom_query -> have_posts()) {
 		$url = get_permalink($id);
 		$title = get_the_title($id);
 		
-		$images = get_field( 'hot_spot_rotating_featured_images', '', true );
+		$images = get_field( 'media_dev_additional_images', '', true );
 		$files = get_field( 'media_dev_additional_files', '', true );
 		$videos = get_field( 'media_dev_additional_videos', '', true );
 
