@@ -186,6 +186,15 @@ endif;
 
 get_header(); ?>
 
+<style>
+div.usa-accordion-content {
+	padding:1.5rem !important;
+}
+div.usa-accordion-content a {
+	font-weight:bold;
+}
+</style>
+
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main bbg__2-column" role="main">
@@ -209,6 +218,7 @@ get_header(); ?>
 				<style> 
 					#mapFilters label { margin-left:15px; }
 				</style>
+				<!--
 				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="trainingYear" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2016" value="2016" /><label for="trainingYear_2016"> 2016</label>
@@ -227,6 +237,7 @@ get_header(); ?>
 						<option value="2013">2013</option>
 					</select>
 				</div>
+				-->
 			</section>
 
 			<div class="usa-grid">	
@@ -358,10 +369,10 @@ get_header(); ?>
         var title = geojson[0].features[i].properties.title; //a[2];
         var description = geojson[0].features[i].properties['description'];
         var year = geojson[0].features[i].properties['year'];
-        var icon = L.MakiMarkers.icon({icon: maki[year].name, color: maki[year].color, size: "m"});
+        var icon = L.MakiMarkers.icon({icon: "circle", color: "#981b1e", size: "m"});
 
         var marker = L.marker(new L.LatLng(coords[1], coords[0]), {
-           // icon:icon
+            icon:icon
         });
        
         var popupText = title + description;
