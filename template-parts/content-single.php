@@ -467,10 +467,6 @@ $hideFeaturedImage = FALSE;
 		
 		if ($addFeaturedGallery) {
 			$hideFeaturedImage = true;
-			echo "<div class='usa-grid-full'>";
-			$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
-			putUniteGallery($featuredGalleryID);
-			echo "</div>";
 		}
 		if ($addFeaturedMap) {
 			echo "<div class='usa-grid-full'><div id='map-featured' class='bbg__map--banner'></div>";
@@ -515,16 +511,29 @@ $hideFeaturedImage = FALSE;
 
 		<?php echo '<header class="entry-header bbg__article-header' . $featuredImageClass . '">'; ?>
 
-		<?php echo bbginnovate_post_categories(); ?>
+		<?php 
+			echo bbginnovate_post_categories(); 
+		?>
 		<!-- .bbg__label -->
 
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
 
+			<?php 
+				if ($addFeaturedGallery) {
+					echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
+					$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+					putUniteGallery($featuredGalleryID);
+					echo "</div>";
+				}
+			?>
+
 			<div class="entry-meta bbg__article-meta">
 				<?php bbginnovate_posted_on(); ?>
 			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
+
+		
 
 		<div class="bbg__article-sidebar--left">
 			<?php

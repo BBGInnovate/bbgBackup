@@ -3765,6 +3765,11 @@ object {
   display: block !important;
 }
 
+/****** FEATURED GALLERY *****/
+.bbg__article-featured__gallery {
+  margin-bottom: 3rem;
+}
+
 /*********************************/
 /*   IFRAMES FOR TIMELINEJS      */
 /*   used on posts and pages     */
