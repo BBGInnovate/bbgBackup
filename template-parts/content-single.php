@@ -304,6 +304,40 @@ if ($addFeaturedMap) {
 // media_dev_additional_files
 // media_dev_presenters
 
+$mediaDevSponsors = "";
+if ( have_rows('media_dev_sponsors') ):
+	$mediaDevSponsors .= '<h3 class="bbg__sidebar-label">Sponsors</h3>';
+	if( have_rows('media_dev_sponsors') ):
+		$mediaDevSponsors .= "<ul class='usa-unstyled-list'>";
+		while ( have_rows('media_dev_sponsors') ) : the_row();
+			$sponsorName = get_sub_field('media_dev_participant_name');
+			$mediaDevSponsors .= "<li>";
+			$mediaDevSponsors .=  '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name">';
+			$mediaDevSponsors .= $sponsorName;
+			$mediaDevSponsors .= '</h5>';
+			$mediaDevSponsors .= '</li>';
+		endwhile;
+		$mediaDevSponsors .= "</ul><BR>";
+	endif;
+endif;
+
+$mediaDevPresenters = "";
+if( have_rows('media_dev_presenters') ):
+	$mediaDevSponsors .= '<h3 class="bbg__sidebar-label">Presenters</h3>';
+	$mediaDevPresenters .= "<ul class='usa-unstyled-list'>";
+	while ( have_rows('media_dev_presenters') ) : the_row();
+		$presenterName = get_sub_field('media_dev_participant_name');
+		$presenterTitle = get_sub_field('media_dev_participant_job_title');
+		$mediaDevPresenters .= '<li>';
+		$mediaDevPresenters .= '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name">' . $presenterName . '</h5>';
+		$mediaDevPresenters .= '<span class="bbg__profile-excerpt__occupation">' . $presenterTitle . '</span>';
+		$mediaDevPresenters .= '</li>';
+	endwhile;
+	$mediaDevPresenters .= "</ul><BR>";
+endif;
+
+
+
 /* Displaying award info -- not implemented yet*/
 $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
@@ -571,6 +605,9 @@ $hideFeaturedImage = FALSE;
 				if ( $listsInclude ) {
 					echo $sidebarDownloads;
 				}
+
+				echo $mediaDevSponsors;
+				echo $mediaDevPresenters;
 
 				echo $teamRoster;
 
