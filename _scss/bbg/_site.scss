@@ -706,6 +706,14 @@ article {
 	}
 }
 
+.bbg__footer__subnav--links {
+
+	a {
+		color: $color-primary-darker;
+		font-weight: $font-bold;
+	}
+}
+
 .bbg__footer__sub {
 	background-color: $color-gray-dark;
 	padding: .5rem 0 1rem 0;
@@ -713,7 +721,7 @@ article {
 	.bbg__footer__sub__required-link {
 		display: inline-block;
 
-		&:first-of-type a{
+		&:first-of-type a {
 			padding: 0 .5rem 0 0;
 		};
 	}

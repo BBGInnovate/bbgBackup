@@ -33,6 +33,16 @@
 						<img itemprop="image" role="img" aria-label="BBG logo" class="usa-footer-logo-img" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Broadcasting Board of Governors logo">
 						<h3 itemprop="name" class="usa-footer-logo-heading">Broadcasting Board of Governors</h3>
 					</a>
+					<nav class="usa-footer-nav">
+						<ul class="usa-unstyled-list">
+							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
+								<a href="/press-room">Press room</a>
+							</li>
+							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
+								<a href="/news/network-highlights/newsletter-archives/signup/">Sign up</a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 
 				<div class="usa-footer-contact-links usa-width-one-half">
@@ -46,7 +56,7 @@
 					<address itemscope itemtype="https://schema.org/GovernmentOffice">
 						<h3 class="usa-footer-contact-heading">Contact the BBG</h3>
 						<p itemprop="address" aria-label="address">330 Independence Avenue, SW<br/>Washington, DC 20237</p>
-						<p itemprop="telephone" aria-label="telephone"><a href="tel=+01-202-203-4000">(202) 203-4000</a></p>
+						<p itemprop="telephone" aria-label="telephone"><a href="tel:+01-202-203-4000" rel="nofollow">(202) 203-4000</a></p>
 						<a itemprop="email" aria-label="email" href="mailto:publicaffairs@bbg.gov">publicaffairs@bbg.gov</a>
 					</address>
 				</div>

@@ -5950,6 +5950,11 @@ article {
   padding: 1.5rem 2rem;
 }
 
+.bbg__footer__subnav--links a {
+  color: #205493;
+  font-weight: 700;
+}
+
 .bbg__footer__sub {
   background-color: #323a45;
   padding: .5rem 0 1rem 0;
