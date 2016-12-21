@@ -306,7 +306,7 @@ if ($addFeaturedMap) {
 
 $mediaDevSponsors = "";
 if ( have_rows('media_dev_sponsors') ):
-	$mediaDevSponsors .= '<h3 class="bbg__sidebar-label">Sponsors</h3>';
+	$mediaDevSponsors .= '<h3 class="bbg__sidebar-label">Funders</h3>';
 	if( have_rows('media_dev_sponsors') ):
 		$mediaDevSponsors .= "<ul class='usa-unstyled-list'>";
 		while ( have_rows('media_dev_sponsors') ) : the_row();
