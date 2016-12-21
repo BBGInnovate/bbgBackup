@@ -269,9 +269,9 @@ get_header(); ?>
 				/* Format all contact information */
 				// Show corresponding phone number
 				if ( $phoneMedia != "" && $pageName == "Press room" || $pageName == "Congressional affairs" )  {
-					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel=+01' . $phoneMedia_link . '">' . $phoneMedia . '</a></li>';
+					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $phoneMedia_link . '">' . $phoneMedia . '</a></li>';
 				} else {
-					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel=+01' . $phone_link . '">' . $phone . '</a></li>';
+					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $phone_link . '">' . $phone . '</a></li>';
 				}
 
 				// Show corresponding email address
