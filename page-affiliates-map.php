@@ -31,8 +31,9 @@ if ($pageTagline && $pageTagline!=""){
 $secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 
+$fullPath = get_template_directory() . "/external-feed-cache/affiliates.json";
 
-$string = file_get_contents( get_template_directory() . "/external-feed-cache/affiliates.json");
+$string = file_get_contents( $fullPath);
 $allAffiliates = json_decode($string, true);
 $counter=0;
 
@@ -142,7 +143,11 @@ get_header(); ?>
 		"864930005" => "Mobile",
 		"864930006" => "Other",
 				-->
-				
+				<?php 
+					/*if (file_exists($fullPath)) {
+					    echo '<div align="center"><p class="bbg-tagline" style="margin=top:1.25rem; margin-bottom: 0.5 rem; font-size: 1.25rem !important;" >Last updated: ' . date ("F d, Y", filemtime($fullPath)) . '</p></div>';
+					} */
+				?>
 				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
 					<input type="radio" name="deliveryPlatform" id="delivery_radio" value="radio" /><label for="delivery_radio"> Radio</label>
@@ -241,6 +246,12 @@ get_header(); ?>
 	var mbToken = '<?php echo MAPBOX_API_KEY; ?>';
 	var tilesetUrl = 'https://a.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}@2x.png?access_token='+mbToken;
 	var attribStr = '&copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>  &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+	<?php 
+		if (file_exists($fullPath)) {
+		    $lastUpdatedStr = date ("m/d/Y", filemtime($fullPath)) ;
+		    echo "attribStr += '<BR><div align=\'right\'>Affiliates last updated $lastUpdatedStr</div>';"; 
+		}
+	?>
 	//https://b.tiles.mapbox.com/v4/mapbox.emerald/2/0/1.png
 	var tiles = L.tileLayer(tilesetUrl, {
 		maxZoom: 18,
