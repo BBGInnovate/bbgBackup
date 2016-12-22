@@ -144,9 +144,9 @@ get_header(); ?>
 		"864930006" => "Other",
 				-->
 				<?php 
-					/*if (file_exists($fullPath)) {
-					    echo '<div align="center"><p class="bbg-tagline" style="margin=top:1.25rem; margin-bottom: 0.5 rem; font-size: 1.25rem !important;" >Last updated: ' . date ("F d, Y", filemtime($fullPath)) . '</p></div>';
-					} */
+					if (file_exists($fullPath)) {
+					    echo '<div align="center"><p class="bbg-tagline" style="margin-top:0.75rem; margin-bottom: 0.4rem; font-size: 1.25rem !important; line-height:1;" >Last updated: ' . date ("F d, Y", filemtime($fullPath)) . '</p></div>';
+					} 
 				?>
 				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="deliveryPlatform" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
