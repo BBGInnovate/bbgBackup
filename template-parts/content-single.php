@@ -441,6 +441,9 @@ if ($isProject) {
 		$nextLink = '<a rel="next" href="' . $nextPostPermalink . '" title="' . $nextPostTitle . '"><span class="bbg__article__nav-icon right-arrow"></span><span class="bbg__article__nav-text">Next: ' . $nextPostTitle . '</span></a>';
 		$nextLink = '<div class="bbg__article__nav-link bbg__article__nav-next">' . $nextLink . '</div>';
 	}
+
+	$prevLink = "":
+	$nextLink = "";
 }
 /**** END CREATING NEXT/PREV LINKS ****/
 
