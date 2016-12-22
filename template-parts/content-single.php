@@ -442,7 +442,7 @@ if ($isProject) {
 		$nextLink = '<div class="bbg__article__nav-link bbg__article__nav-next">' . $nextLink . '</div>';
 	}
 
-	$prevLink = "":
+	$prevLink = "";
 	$nextLink = "";
 }
 /**** END CREATING NEXT/PREV LINKS ****/
