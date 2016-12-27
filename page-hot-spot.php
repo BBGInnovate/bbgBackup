@@ -19,7 +19,6 @@ $randomFeaturedImage = $featuredImagesData[array_rand($featuredImagesData)];
 $featuredImageSrc = $randomFeaturedImage['hot_spot_rotating_featured_image']['sizes']['large-thumb'];
 $featuredImageBackgroundPosition = $randomFeaturedImage['hot_spot_rotating_featured_image_background_position'];
 
-$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 $pressFreedomIntro = get_field( 'site_setting_press_freedom_intro', 'options', 'false' );
 
 /**** create 'THREATS TO PRESS' array ***/
@@ -115,7 +114,6 @@ if ($custom_query -> have_posts()) {
 }
 /**** done creating 'NEWS FROM NETWORKS' array ***/
 
-include get_template_directory() . "/inc/shared_sidebar.php";
 
 get_header(); ?>
 
