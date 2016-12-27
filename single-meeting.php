@@ -47,10 +47,10 @@ if ( have_posts() ) {
 	$meetingSpeakers = get_post_meta( get_the_ID(), 'board_meeting_speakers', true );
 
 	/*** CREATE EVENTBRITE IFRAME ****/
-	$eventStr = "";
+	$eventBriteButtonStr = "";
 	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
 	if ($eventbriteUrl && $eventbriteUrl != "") {
-		$eventStr="<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
+		$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
 	}
 
 	rewind_posts();
@@ -164,7 +164,6 @@ get_header(); ?>
 
 					<div class="entry-content bbg__article-content">
 						<?php
-						 //echo $eventStr;
 						 the_content(); ?>
 					</div><!-- .entry-content -->
 
@@ -172,7 +171,7 @@ get_header(); ?>
 						<h5>WHEN: <?php echo $meetingTime; ?><br/><?php echo $postDate; ?></h5>
 						<h5>WHERE: <?php echo $meetingLocation; ?></h5>
 
-						<?php echo $eventStr; ?>
+						<?php echo $eventBriteButtonStr; ?>
 
 						<p class="bbg-tagline bbg-tagline--main"><?php echo $meetingContactTagline; ?></p>
 
