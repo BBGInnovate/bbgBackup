@@ -81,8 +81,6 @@ get_header(); ?>
 
 			$projectCategoryID = get_cat_id('Project');
 			$isProject = has_category($projectCategoryID);
-			$prevLink = "";
-			$nextLink = "";
 
 			//Default adds a space above header if there's no image set
 			$featuredImageClass = " bbg__article--no-featured-image";
@@ -132,8 +130,6 @@ get_header(); ?>
 
 
 				<div class="bbg__article__nav">
-					<?php echo $prevLink; ?>
-					<?php echo $nextLink; ?>
 				</div><!-- .bbg__article__nav -->
 
 
