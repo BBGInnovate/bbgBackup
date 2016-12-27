@@ -4,14 +4,13 @@
 		$jobsFilepath = get_template_directory() . "/external-feed-cache/jobcache.json";
 		if ( fileExpired($jobsFilepath, 90)  ) {  //1440 min = 1 day
 			$jobsUrl = 'https://data.usajobs.gov/api/search?Organization=IB00';
-			$apiKey = USAJOBS_API_KEY;
+			$apiKey = USAJOBS_API_KEY;	//USAJOBS_API_KEY is set in wp-config.php
 			$host = 'data.usajobs.gov';
 			$ch = curl_init();
 			$timeout = 5;
 			curl_setopt($ch, CURLOPT_URL, $jobsUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-			//curl_setopt($ch,CURLOPT_USERAGENT,$apiUsername);
 
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 				'Authorization-Key: ' . $apiKey,
@@ -20,7 +19,11 @@
 
 			$result = curl_exec($ch);
 			curl_close($ch);
-			file_put_contents($jobsFilepath, $result);
+			if ($result !== false && $result != "") {
+				file_put_contents($jobsFilepath, $result);
+			} else {
+				$result=file_get_contents($jobsFilepath);	
+			}
 		} else {
 			$result=file_get_contents($jobsFilepath);
 		}
