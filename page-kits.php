@@ -9,26 +9,6 @@
    template name: Info Kits
  */
 
-$bannerPosition = get_field( 'adjust_the_banner_image', '', true );
-$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true );
-$bannerAdjustStr="";
-if ($bannerPositionCSS) {
-	$bannerAdjustStr = $bannerPositionCSS;
-} elseif ($bannerPosition) {
-	$bannerAdjustStr = $bannerPosition;
-}
-
-$videoUrl = get_field( 'featured_video_url', '', true );
-$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
-$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
-
-$headline = get_field( 'headline', '', true );
-$headlineStr = "";
-
-$listsInclude = get_field( 'sidebar_dropdown_include', '', true);
-
-include get_template_directory() . "/inc/shared_sidebar.php";
-
 /******* CREATE AN ARRAY FOR AWARDS INFO ******/
 $awards = array();
 $awardCategoryObj = get_category_by_slug( 'award' );
@@ -161,17 +141,17 @@ include get_template_directory() . "/inc/constant-contact_sign-up.php";
 get_header(); ?>
 
 <style>
-@media screen and (min-width: 600px) {
-
-.bbg-grid--1-2-2:nth-child(2n+1) {
-	clear:none;
-	margin-right:0;
-}
-
-}
+	@media screen and (min-width: 600px) {
+		/*** JBF: this CSS is here because something is wrong with the grid at 1-2-2 ***/
+		.bbg-grid--1-2-2:nth-child(2n+1) {
+			clear:none;
+			margin-right:0;
+		}
+	}
 </style>
-<script type="text/javascript">
 
+<script type="text/javascript">
+	/* show/hide the constant contact signup form */
 	function toggleForm() {
 		btnSignup = document.getElementById('btnSignup');
 		if (btnSignup.style.display=="none") {
@@ -187,6 +167,7 @@ get_header(); ?>
 	}
 
 	jQuery( document ).ready(function() {
+		/* click handler for the show/hide of constant contact form */
 		jQuery('#btnClose').click(function() {
 		  toggleForm();
 		});
