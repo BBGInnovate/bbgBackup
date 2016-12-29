@@ -14,7 +14,11 @@ global $headline;
 global $tagline;
 global $excerpt;
 global $includePageDescription;
+global $hideLink;
 
+if ( ! isset ($hideLink) ) {
+	$hideLink = false;
+}
 $includeDescription = TRUE;
 if ( isset ( $includePageDescription ) && $includePageDescription == FALSE ) {
 	$includeDescription = FALSE;
