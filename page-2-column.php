@@ -143,8 +143,9 @@ get_header(); ?>
 										}
 
 										echo $secondaryColumnContent;
-										echo getAccordion();
+										
 									}
+									echo getAccordion();
 
 									if ( $listsInclude ) {
 										echo $sidebarDownloads;
