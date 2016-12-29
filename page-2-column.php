@@ -143,6 +143,7 @@ get_header(); ?>
 										}
 
 										echo $secondaryColumnContent;
+										echo getAccordion();
 									}
 
 									if ( $listsInclude ) {
