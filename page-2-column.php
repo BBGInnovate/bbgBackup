@@ -145,11 +145,12 @@ get_header(); ?>
 										echo $secondaryColumnContent;
 										
 									}
-									echo getAccordion();
 
 									if ( $listsInclude ) {
 										echo $sidebarDownloads;
 									}
+
+									echo getAccordion();
 								?>
 
 							</div><!-- .bbg__article-sidebar -->

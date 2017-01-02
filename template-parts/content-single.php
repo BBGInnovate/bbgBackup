@@ -616,6 +616,8 @@ $hideFeaturedImage = FALSE;
 				echo $teamRoster;
 
 				echo $award;
+
+				echo getAccordion();
 			?>
 			<p></p>
 		</div><!-- .bbg__article-sidebar -->
