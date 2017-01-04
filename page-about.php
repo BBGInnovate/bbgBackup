@@ -12,6 +12,7 @@ $templateName = "about";
 
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
 $videoUrl = get_field( 'featured_video_url', '', true );
+$addFeaturedGallery = get_post_meta( get_the_ID(), 'featured_gallery_add', true );
 
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
@@ -36,11 +37,22 @@ get_header();
 			<div class="usa-grid">
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
+					<?php 
+						if ($addFeaturedGallery) {
+							echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
+							$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+							putUniteGallery($featuredGalleryID);
+							echo "</div>";
+						}
+					?>
 				</header><!-- .page-header -->
 			</div>
 
 			<?php
 				$hideFeaturedImage = FALSE;
+				if ($addFeaturedGallery) {
+					$hideFeaturedImage = true;
+				}
 				if ($videoUrl != "") {
 					echo featured_video($videoUrl);
 					$hideFeaturedImage = TRUE;
