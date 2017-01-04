@@ -449,6 +449,10 @@ get_header();
 							}
 							$tagLink = get_tag_link($officeTag[0]->term_id);
 						?>
+							<style>
+								.bbg-blog__officeEvent-label { margin-top:15px !important; }
+							</style>
+
 							<article class="bbg__article bbg__kits__section">
 								<div class="usa-grid-full">
 									<div class="entry-content bbg__article-content large">
@@ -508,7 +512,7 @@ get_header();
 														// echo '<a href="' . $eventDetail['url'] . '">';
 														// 	echo  $eventDetail['thumb'];
 														// echo '</a>';
-														echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Upcoming Event</span><br/><a href="' . $eventDetail['url'] . '">' . $eventDetail["title"] . '</a></h3>';
+														echo '<h3  class="bbg-blog__officeEvent-label entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Upcoming Event</span><br/><a href="' . $eventDetail['url'] . '">' . $eventDetail["title"] . '</a></h3>';
 														echo '<div class="entry-content bbg-blog__excerpt-content">';
 															echo '<p>' . $eventDetail['excerpt'] . '</p>';
 														echo '</div>';
