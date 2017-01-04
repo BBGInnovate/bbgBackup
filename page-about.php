@@ -393,12 +393,43 @@ get_header();
 							$officeTwitter = get_sub_field('office_twitter');
 							$officeYoutube = get_sub_field('office_youtube');
 							$officeEvent = false;
+							$postIDsUsed = [];
+
+							$qParamsUpcoming = array(
+								'post_type' => array('post')
+								,'cat' => get_cat_id('Event')
+								,'tag' => $officeTag[0]->slug
+								,'post_status' => array('future')
+								,'order' => 'ASC'
+								,'posts_per_page' => 1
+							);
+							$future_events_query = new WP_Query( $qParamsUpcoming );
+							$eventDetail=[];
+							if ($future_events_query->have_posts()) {
+								$officeEvent = true;
+								while ( $future_events_query->have_posts() ) {
+									$future_events_query->the_post(); 
+									$id = get_the_ID();
+									$eventDetail['url'] = get_the_permalink();
+									$eventDetail['title'] = get_the_title();
+									$eventDetail['thumb'] = get_the_post_thumbnail( $id, 'medium-thumb' );
+									$eventDetail['excerpt'] = my_excerpt( $missionID );
+									$eventDetail['id'] = $id;
+									$postIDsUsed[] = $id;
+								}
+							}
+							$maxPosts = 5;
+							if (count($postIDsUsed)) {
+								$maxPosts = 1;
+							}
+
 							$qParamsOffice=array(
 								'post_type' => array('post'),
-								'posts_per_page' => 5,
+								'posts_per_page' => $maxPosts,
 								'tag' => $officeTag[0]->slug,
 								'orderby' => 'date',
-								'order' => 'DESC'
+								'order' => 'DESC',
+								'post__not_in' => $postIDsUsed
 							);
 							$street = get_field( 'agency_street', 'options', 'false' );
 							$city = get_field( 'agency_city', 'options', 'false' );
@@ -446,7 +477,6 @@ get_header();
 
 													while ( have_posts() ) : the_post();
 														$counter++;
-														$postIDsUsed[] = get_the_ID();
 														$includeMeta = false;
 														$gridClass = "bbg-grid--full-width";
 														$includeExcerpt = false;
@@ -475,12 +505,12 @@ get_header();
 												if ( $officeEvent ) {
 													echo '<div class="usa-width-one-half tertiary-stories">';
 														// Optional image
-														/*echo '<a href="' . $advisory['url'] . '">';
-															echo  $advisory['thumb'];
-														echo '</a>';*/
-														echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Media Advisory</span><br/><a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a></h3>';
+														// echo '<a href="' . $eventDetail['url'] . '">';
+														// 	echo  $eventDetail['thumb'];
+														// echo '</a>';
+														echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Upcoming Event</span><br/><a href="' . $eventDetail['url'] . '">' . $eventDetail["title"] . '</a></h3>';
 														echo '<div class="entry-content bbg-blog__excerpt-content">';
-															echo '<p>' . $advisory['excerpt'] . '</p>';
+															echo '<p>' . $eventDetail['excerpt'] . '</p>';
 														echo '</div>';
 													echo '</div>';
 												}
