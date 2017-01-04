@@ -663,7 +663,7 @@ get_header(); ?>
 							foreach ( $awards as $a ) {
 								$counter++;
 								$styleStr = '';
-								if ($counter==1) {
+								if ( $counter == 1 ) {
 									$styleStr = " style='margin-right:2.35765%; '";
 								}
 								$id = $a['id'];
@@ -672,33 +672,33 @@ get_header(); ?>
 								$awardYears = $a['awardYears'];
 								$awardTitle = $a['awardTitle'];
 
-								$s .= '<h2 class="entry-title">Recent Awards</h2><div ' . $styleStr . '  class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
-								$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
-								$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
-								$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
-								$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
-								$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
-								$s .= '</div>';
+								$s = '<div class="usa-section usa-grid bbg__kits__section">';
+									$s .= '<section class="usa-grid-full bbg__kits__section--row">';
+
+										$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+											$s .= '<h2 class="entry-title">Recent Awards</h2>';
+											$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+											$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
+											$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
+											$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
+											$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
+										$s .= '</div>';
 							}
 
-							$title = "Rumors, Myths and Untruths";
-							$url = "https://www.bbg.gov/rumors-myths-untruths/";
-							$excerpt = "A guide to rumors, myths and untruths pertaining to the BBG. Topics include propaganda, budget, the Smith-Mundt act, and the BBG Firewall.";
+							$focusPageObj = get_sub_field('kits_recent_awards_focus_page');
 
-							// $s .= '<article id="post-32196" class="bbg-blog__excerpt--list bbg-grid--full-width  post-32196 post type-post status-publish format-standard has-post-thumbnail hentry category-press-release category-rferl category-threats-to-press tag-hotspot-russia">';
-							// $s .= '<header class="entry-header bbg-blog__excerpt-header">';
-							// $s .= '<h3 class="entry-title bbg-blog__excerpt-title--list "><a href="' . $url . '">' . $title . '</a></h3>';
-							// $s .= '</header><!-- .bbg-blog__excerpt-header -->';
-							// $s .= '<div class="entry-content bbg-blog__excerpt-content">';
-							// $s .= '<p>' . $excerpt . '</p>';
-							// $s .= '</div><!-- .bbg-blog__excerpt-content -->';
-							// $s .= '</article>';
+							$focusPageTitle = get_the_title( $focusPageObj->ID );
+							$focusPageURL = get_the_permalink( $focusPageObj->ID );
+							$focusPageExcerpt = my_excerpt( $focusPageObj->ID );
+							$focusPageExcerpt = apply_filters( 'the_content', $focusPageExcerpt );
+							$focusPageExcerpt = str_replace( ']]>', ']]&gt;', $focusPageExcerpt );
 
-							$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
-							$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
-							$s .= '<p>' . $excerpt . '</p>';
-							$s .= '</div>';
-
+										$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+											$s .= '<h2 class="entry-title"><a href="' . $focusPageURL . '">' . $focusPageTitle . '</a></h2>';
+											$s .= '<p>' . $focusPageExcerpt . '</p>';
+										$s .= '</div>';
+									$s .= '</section>';
+								$s .= '</div>';
 							echo $s;
 						endif;
 						echo "</section>";
