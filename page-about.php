@@ -204,7 +204,10 @@ get_header();
 							}*/
 
 							// show umbrella section intro text
-							echo "<div class='bbg__about__child__intro'>$introText</div>";
+							if ($introText) {
+								echo "<div class='bbg__about__child__intro'>$introText</div>";	
+							}
+							
 							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
 
 							if ( $umbrellaPages ) {
@@ -366,6 +369,154 @@ get_header();
 							// echo "</section>";
 						echo "</section>";
 						/*** END DISPLAY OF ENTIRE RIBBON ROW ***/
+						elseif ( get_row_layout() == 'about_office' ):
+						/*** BEGIN DISPLAY OF OFFICE ROW ***/
+							$officeTag = get_sub_field('office_tag');
+							$officeTitle = get_sub_field('office_title');
+							$officeEmail = get_sub_field('office_email');
+							$officeEmail = '<li><span class="bbg__list-label">Email: </span><a itemprop="email" aria-label="email" href="mailto:' . $officeEmail . '" title="Contact us">' . $officeEmail . '</a></li>';
+							$officePhone = get_sub_field('office_phone');
+							$officePhone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $officePhone . '">' . $officePhone . '</a></li>';
+							$officeFacebook = get_sub_field('office_facebook');
+							$officeTwitter = get_sub_field('office_twitter');
+							$officeYoutube = get_sub_field('office_youtube');
+							$officeEvent = false;
+							$qParamsOffice=array(
+								'post_type' => array('post'),
+								'posts_per_page' => 5,
+								'tag' => $officeTag[0]->name,
+								'orderby' => 'date',
+								'order' => 'DESC'
+							);
+							$street = get_field( 'agency_street', 'options', 'false' );
+							$city = get_field( 'agency_city', 'options', 'false' );
+							$state = get_field( 'agency_state', 'options', 'false' );
+							$zip = get_field( 'agency_zip', 'options', 'false' );
+							$address = "";
+							if ($street != "" && $city != "" && $state != "" && $zip != "") {
+								$address = $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
+
+								//Strip spaces for url-encoding.
+								$street = str_replace(" ", "+", $street);
+								$city = str_replace(" ", "+", $city);
+								$state = str_replace(" ", "+", $state);
+								$mapLink = 'https://www.google.com/maps/place/' . $street . ',+' . $city . ',+' . $state . '+' . $zip . '/';
+
+								$address = '<p itemprop="address" aria-label="address"><a href="'. $mapLink . '">' . $address . '</a></p>';
+							}
+							$tagLink = get_tag_link($officeTag[0]->term_id);
+						?>
+							<article class="bbg__article bbg__kits__section">
+								<div class="usa-grid-full">
+									<div class="entry-content bbg__article-content large">
+										<?php
+
+											echo '<!-- Highlights section -->';
+											echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
+
+											if ( !$officeEvent ) {
+												echo '<h2>Recent Highlights</h2>';
+											}
+
+											echo '<div class="bbg__kits__recent-posts">';
+												echo '<div class="usa-width-one-half bbg__secondary-stories">';
+
+												if ( $officeEvent ) {
+													echo '<h2>Latest highlight</h2>';
+												}
+												/* BEWARE: sticky posts add a record */
+												/**** START FETCH related highlights ****/
+												// Run queary of press releases
+												query_posts( $qParamsOffice );
+												if ( have_posts() ) {
+													$counter = 0;
+													$includeImage = TRUE;
+
+													while ( have_posts() ) : the_post();
+														$counter++;
+														$postIDsUsed[] = get_the_ID();
+														$includeMeta = false;
+														$gridClass = "bbg-grid--full-width";
+														$includeExcerpt = false;
+
+														if ($counter > 1) {
+															$includeImage = false;
+															$includeMeta = false;
+															if ($counter == 2) {
+																echo '</div><div class="usa-width-one-half tertiary-stories">';
+															}
+														}
+														if ($counter == 1) {
+															$includePortfolioDescription = false;
+															get_template_part( 'template-parts/content-portfolio', get_post_format() );
+														} else {
+															get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+														}
+
+													endwhile;
+
+													echo "<br/><a href='$tagLink' class='bbg__kits__intro__more--link'>View all highlights »</a>";
+												}
+												wp_reset_query();
+												echo '</div>';
+
+												if ( $officeEvent ) {
+													echo '<div class="usa-width-one-half tertiary-stories">';
+														// Optional image
+														/*echo '<a href="' . $advisory['url'] . '">';
+															echo  $advisory['thumb'];
+														echo '</a>';*/
+														echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Media Advisory</span><br/><a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a></h3>';
+														echo '<div class="entry-content bbg-blog__excerpt-content">';
+															echo '<p>' . $advisory['excerpt'] . '</p>';
+														echo '</div>';
+													echo '</div>';
+												}
+												echo '</div><!-- headlines -->';
+
+											echo '</section><!-- .BBG News -->';
+										?>
+									</div>
+									<!-- Contact card (tailored to audience) -->
+									<div class="bbg__article-sidebar large">
+										<aside>
+											<div class="bbg__contact-card">
+												<div class="bbg__contact-card__text">
+													<?php
+														echo "<h3>" . $officeTitle . "</h3>";
+														echo $address;
+														echo '<ul class="usa-unstyled-list">';
+															echo $officePhone;
+															echo $officeEmail;
+														echo '</ul>';
+
+														echo '<!-- Social media profiles -->';
+
+														echo '<div class="bbg__kits__social">';
+															$officeFacebook = get_sub_field('office_facebook');
+															$officeTwitter = get_sub_field('office_twitter');
+															$officeYoutube = get_sub_field('office_youtube');
+
+															if ($officeFacebook) {
+																echo '<a class="bbg__kits__social-link usa-link-facebook" href="' . $officeFacebook . '" role="img" aria-label="facebook"></a>';
+															}
+															if ($officeTwitter) {
+																echo '<a class="bbg__kits__social-link usa-link-twitter" href="' . $officeTwitter . '" role="img" aria-label="twitter"></a>';
+															}
+															if ($officeYoutube) {
+																echo '<a class="bbg__kits__social-link usa-link-youtube" href="' . $officeYoutube . '" role="img" aria-label="youtube"></a>';
+															}
+														echo '</div>';
+
+													?>
+												</div>
+											</div>
+										</aside>
+									</div>
+								</div>
+							</article>
+						<?php
+						/*** END DISPLAY OF OFFICE ROW ***/
 						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
