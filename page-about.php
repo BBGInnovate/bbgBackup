@@ -384,7 +384,7 @@ get_header();
 							$qParamsOffice=array(
 								'post_type' => array('post'),
 								'posts_per_page' => 5,
-								'tag' => $officeTag[0]->name,
+								'tag' => $officeTag[0]->slug,
 								'orderby' => 'date',
 								'order' => 'DESC'
 							);
