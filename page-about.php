@@ -413,7 +413,7 @@ get_header();
 									$eventDetail['url'] = get_the_permalink();
 									$eventDetail['title'] = get_the_title();
 									$eventDetail['thumb'] = get_the_post_thumbnail( $id, 'medium-thumb' );
-									$eventDetail['excerpt'] = my_excerpt( $missionID );
+									$eventDetail['excerpt'] = my_excerpt( $id );
 									$eventDetail['id'] = $id;
 									$postIDsUsed[] = $id;
 								}
