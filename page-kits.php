@@ -375,7 +375,7 @@ get_header(); ?>
 								wp_reset_query();
 								echo '</div>';
 
-								if ( $advisory ) {
+								if ( $advisory && $pageName == "Press room" ) {
 									echo '<div class="usa-width-one-half tertiary-stories">';
 										echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Media Advisory</span><br/><a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a></h3>';
 										echo '<div class="entry-content bbg-blog__excerpt-content">';
@@ -671,6 +671,7 @@ get_header(); ?>
 								$title = $a['title'];
 								$awardYears = $a['awardYears'];
 								$awardTitle = $a['awardTitle'];
+								$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
 
 								$s = '<div class="usa-section usa-grid-full bbg__kits__section">';
 									$s .= '<section class="usa-grid-full bbg__kits__section--row">';
@@ -679,8 +680,7 @@ get_header(); ?>
 											$s .= '<h2 class="entry-title">Recent Awards</h2>';
 											$s .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
 											$s .= '<h4>' . join( $awardYears ) . ' ' . join( $organizations ) . '</h4>';
-											$s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
-											$awardCategoryLink = get_category_link( $awardCategoryObj -> term_id );
+											// $s .= '<p class="bbg__award-excerpt__org">' . $awardTitle . '</p>';
 											$s .= "<a href='$awardCategoryLink'class='bbg__kits__intro__more--link'>View all awards »</a>";
 										$s .= '</div>';
 							}
@@ -694,8 +694,9 @@ get_header(); ?>
 							$focusPageExcerpt = str_replace( ']]>', ']]&gt;', $focusPageExcerpt );
 
 										$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
-											$s .= '<h2 class="entry-title"><a href="' . $focusPageURL . '">' . $focusPageTitle . '</a></h2>';
+											$s .= '<h2 class="entry-title">' . $focusPageTitle . '</h2>';
 											$s .= '<p>' . $focusPageExcerpt . '</p>';
+											$s .= '<a href="' . $focusPageURL . ' class="bbg__kits__intro__more--link">Read more »</a>';
 										$s .= '</div>';
 									$s .= '</section>';
 								$s .= '</div>';
