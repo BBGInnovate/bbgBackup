@@ -338,7 +338,7 @@ get_header(); ?>
 								if ( $pageName == "Press room" ) {
 									// Run query of press releases
 									query_posts( $qParamsPressReleases );
-								} elseif( $pageName == "Congressional affairs" ) {
+								} elseif ( $pageName == "Congressional affairs" ) {
 									// Run query of congressional affairs tag
 									query_posts( $qParamsCongressional );
 								}
@@ -375,7 +375,7 @@ get_header(); ?>
 								wp_reset_query();
 								echo '</div>';
 
-								if ( $advisory && $pageName == "Press room" ) {
+								if ( $advisory ) { // NEED TO FIX SO THAT ADVISORY ONLY COMES UP IN PRESS ROOM
 									echo '<div class="usa-width-one-half tertiary-stories">';
 										echo '<h3 class="entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Media Advisory</span><br/><a href="' . $advisory['url'] . '">' . $advisory["title"] . '</a></h3>';
 										echo '<div class="entry-content bbg-blog__excerpt-content">';
