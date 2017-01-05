@@ -453,6 +453,7 @@ get_header();
 
 							<article class="bbg__article bbg__kits__section">
 								<div class="usa-grid-full">
+									<?php if ($officeEvent): ?>
 									<section class='usa-section'>
 										<div class="usa-alert usa-alert-info">
 									    <div class="usa-alert-body">
@@ -460,7 +461,8 @@ get_header();
 									      <p class="usa-alert-text"><?php echo $eventDetail['excerpt']; ?></p>
 									    </div>
 									  </div>
-									</section>  
+									</section>
+									<?php endif; ?>
 
 									<div class="entry-content bbg__article-content large">
 										<?php
