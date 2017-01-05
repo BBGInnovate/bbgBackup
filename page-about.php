@@ -419,9 +419,7 @@ get_header();
 								}
 							}
 							$maxPosts = 4;
-							if (count($postIDsUsed)) {
-								$maxPosts = 1;
-							}
+						
 
 							$qParamsOffice=array(
 								'post_type' => array('post'),
@@ -455,22 +453,33 @@ get_header();
 
 							<article class="bbg__article bbg__kits__section">
 								<div class="usa-grid-full">
+									<?php if ($officeEvent): ?>
+									<section class='usa-section'>
+										<div class="usa-alert usa-alert-info">
+									    <div class="usa-alert-body">
+									      <h3 class="usa-alert-heading"><?php echo "<a href='" . $eventDetail['url'] . "'>" . $eventDetail['title'] . "</a>"; ?></h3>
+									      <p class="usa-alert-text"><?php echo $eventDetail['excerpt']; ?></p>
+									    </div>
+									  </div>
+									</section>
+									<?php endif; ?>
+
 									<div class="entry-content bbg__article-content large">
 										<?php
 
 											echo '<!-- Highlights section -->';
 											echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 
-											if ( !$officeEvent ) {
+											//if ( !$officeEvent ) {
 												echo '<h2>Recent Highlights</h2>';
-											}
+											//}
 
 											echo '<div class="bbg__kits__recent-posts">';
 												echo '<div class="usa-width-one-half bbg__secondary-stories">';
 
-												if ( $officeEvent ) {
-													echo '<h2>Latest highlight</h2>';
-												}
+												// if ( $officeEvent ) {
+												// 	echo '<h2>Latest highlight</h2>';
+												// }
 												/* BEWARE: sticky posts add a record */
 												/**** START FETCH related highlights ****/
 												// Run queary of press releases
@@ -506,19 +515,19 @@ get_header();
 												wp_reset_query();
 												echo '</div>';
 
-												if ( $officeEvent ) {
-													echo '<div class="usa-width-one-half tertiary-stories">';
-														// Optional image
-														// echo '<a href="' . $eventDetail['url'] . '">';
-														// 	echo  $eventDetail['thumb'];
-														// echo '</a>';
-														echo '<h3  class="bbg-blog__officeEvent-label entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Upcoming Event</span><br/><a href="' . $eventDetail['url'] . '">' . $eventDetail["title"] . '</a></h3>';
-														echo '<div class="entry-content bbg-blog__excerpt-content">';
-															echo '<p>' . $eventDetail['excerpt'] . '</p>';
-														echo '</div>';
-													echo '</div>';
-												}
-												echo '</div><!-- headlines -->';
+												// if ( $officeEvent ) {
+												// 	echo '<div class="usa-width-one-half tertiary-stories">';
+												// 		// Optional image
+												// 		// echo '<a href="' . $eventDetail['url'] . '">';
+												// 		// 	echo  $eventDetail['thumb'];
+												// 		// echo '</a>';
+												// 		echo '<h3  class="bbg-blog__officeEvent-label entry-title bbg-blog__excerpt-title"><span class="usa-label bbg__label--advisory">Upcoming Event</span><br/><a href="' . $eventDetail['url'] . '">' . $eventDetail["title"] . '</a></h3>';
+												// 		echo '<div class="entry-content bbg-blog__excerpt-content">';
+												// 			echo '<p>' . $eventDetail['excerpt'] . '</p>';
+												// 		echo '</div>';
+												// 	echo '</div>';
+												// }
+												// echo '</div><!-- headlines -->';
 
 											echo '</section><!-- .BBG News -->';
 										?>
