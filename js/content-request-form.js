@@ -44,10 +44,10 @@
         errorMsg += "Please enter a link to the content you're interested in from a BBG website\n";
       }
       if (!awareThirdYes) {
-        errorMsg += "Please acknolwedge that you are aware that our content often contains material from third parties such as the Associated Press (AP), Agence France-Presse (AFP) and Reuters.\n"
+        errorMsg += "Please acknowledge that you are aware that our content often contains material from third parties such as the Associated Press (AP), Agence France-Presse (AFP) and Reuters.\n"
       }
       if (!awareContentYes) {
-        errorMsg += "Please acknolwedge that you are aware that we require our content to be aired or used in a way in which its source is made clear.\n"
+        errorMsg += "Please acknowledge that you are aware that we require our content to be aired or used in a way in which its source is made clear.\n"
       }
       if (errorMsg == "") {
         jQuery('#fscf_form4').submit();
