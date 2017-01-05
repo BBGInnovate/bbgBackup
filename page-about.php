@@ -418,7 +418,7 @@ get_header();
 									$postIDsUsed[] = $id;
 								}
 							}
-							$maxPosts = 5;
+							$maxPosts = 4;
 							if (count($postIDsUsed)) {
 								$maxPosts = 1;
 							}
