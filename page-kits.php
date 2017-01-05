@@ -672,7 +672,7 @@ get_header(); ?>
 								$awardYears = $a['awardYears'];
 								$awardTitle = $a['awardTitle'];
 
-								$s = '<div class="usa-section usa-grid bbg__kits__section">';
+								$s = '<div class="usa-section usa-grid-full bbg__kits__section">';
 									$s .= '<section class="usa-grid-full bbg__kits__section--row">';
 
 										$s .= '<div ' . $styleStr . ' class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
