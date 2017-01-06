@@ -26,28 +26,28 @@
       var awareThirdYes = jQuery('#fscf_field4_8_1').prop('checked');
       var awareContentYes = jQuery('#fscf_field4_9_1').prop('checked');
       if (name == "") {
-        errorMsg += "Please enter a name\n";
+        errorMsg += "Please enter a name\n\n";
       }
       if (selectedNetwork == "") {
-        errorMsg += "Please select a network\n";
+        errorMsg += "Please select a network\n\n";
       }
       if (email == "") {
-        errorMsg += "Please enter your email address\n";
+        errorMsg += "Please enter your email address\n\n";
       }
       if (audience == "") {
-        errorMsg += "Please enter the target audience\n"
+        errorMsg += "Please enter the target audience\n\n"
       }
       if ( ! (textChecked || photosChecked || videoChecked || audioChecked) ) {
-        errorMsg += "Please select one or more content types you're interested in\n";
+        errorMsg += "Please select one or more content types you're interested in\n\n";
       }
       if (link != "") {
-        errorMsg += "Please enter a link to the content you're interested in from a BBG website\n";
+        errorMsg += "Please enter a link to the content you're interested in from a BBG website\n\n";
       }
       if (!awareThirdYes) {
-        errorMsg += "Please acknowledge that you are aware that our content often contains material from third parties such as the Associated Press (AP), Agence France-Presse (AFP) and Reuters.\n"
+        errorMsg += "Please acknowledge that you are aware that our content often contains material from third parties such as the Associated Press (AP), Agence France-Presse (AFP) and Reuters.\n\n"
       }
       if (!awareContentYes) {
-        errorMsg += "Please acknowledge that you are aware that we require our content to be aired or used in a way in which its source is made clear.\n"
+        errorMsg += "Please acknowledge that you are aware that we require our content to be aired or used in a way in which its source is made clear.\n\n"
       }
       if (errorMsg == "") {
         jQuery('#fscf_form4').submit();
