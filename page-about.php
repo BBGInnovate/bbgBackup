@@ -37,15 +37,19 @@ get_header();
 			<div class="usa-grid">
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
-					<?php 
-						if ($addFeaturedGallery) {
-							echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
-							$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
-							putUniteGallery($featuredGalleryID);
-							echo "</div>";
-						}
-					?>
+					
 				</header><!-- .page-header -->
+			</div>
+			
+			<div class="usa-grid-full">
+				<?php 
+					if ($addFeaturedGallery) {
+						echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
+						$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+						putUniteGallery($featuredGalleryID);
+						echo "</div>";
+					}
+				?>
 			</div>
 
 			<?php
