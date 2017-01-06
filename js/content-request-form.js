@@ -40,7 +40,7 @@
       if ( ! (textChecked || photosChecked || videoChecked || audioChecked) ) {
         errorMsg += "Please select one or more content types you're interested in\n\n";
       }
-      if (link != "") {
+      if (link == "") {
         errorMsg += "Please enter a link to the content you're interested in from a BBG website\n\n";
       }
       if (!awareThirdYes) {
