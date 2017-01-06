@@ -9,6 +9,17 @@
    template name: Info Kits
  */
 
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$pageName = get_the_title();
+		$pageContent = get_the_content();
+		$pageContent = apply_filters('the_content', $pageContent);
+   		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
+
 /******* CREATE AN ARRAY FOR AWARDS INFO ******/
 $awards = array();
 $awardCategoryObj = get_category_by_slug( 'award' );
@@ -55,7 +66,6 @@ if ( is_object($awardCategoryObj) ) {
 /******* GRAB THE MOST RECENT MEDIA ADVISORY THAT HAS AN EXPIRATION DATE IN THE FUTURE. WE CHECK LATEST 5 ******/
 $advisory = false;
 $mediaAdvisoryCategoryObj = get_category_by_slug( 'media-advisory' );
-/* JBF 1/6/2017: hardcoding no use of media advisory on OCA page */
 if ( $pageName != "Office of Congressional Affairs" && is_object($mediaAdvisoryCategoryObj) ) {
 	// set up award category query parameters
 	$mediaAdvisoryCategoryID = $mediaAdvisoryCategoryObj -> term_id;
@@ -147,17 +157,6 @@ $qParamsCongressional = array(
 // set variable for PR category link to main news page
 $congCategoryLink = get_permalink( get_page_by_path( 'news' ) );
 /******* DONE CREATING AN ARRAY FOR CONGRESSIONAL NEWS ******/
-
-if ( have_posts() ) :
-	while ( have_posts() ) : the_post();
-		$pageName = get_the_title();
-		$pageContent = get_the_content();
-		$pageContent = apply_filters('the_content', $pageContent);
-   		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
-	endwhile;
-endif;
-wp_reset_postdata();
-wp_reset_query();
 
 include get_template_directory() . "/inc/constant-contact_sign-up.php";
 
