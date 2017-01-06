@@ -55,7 +55,8 @@ if ( is_object($awardCategoryObj) ) {
 /******* GRAB THE MOST RECENT MEDIA ADVISORY THAT HAS AN EXPIRATION DATE IN THE FUTURE. WE CHECK LATEST 5 ******/
 $advisory = false;
 $mediaAdvisoryCategoryObj = get_category_by_slug( 'media-advisory' );
-if ( is_object($mediaAdvisoryCategoryObj) ) {
+/* JBF 1/6/2017: hardcoding no use of media advisory on OCA page */
+if ( $pageName != "Office of Congressional Affairs" && is_object($mediaAdvisoryCategoryObj) ) {
 	// set up award category query parameters
 	$mediaAdvisoryCategoryID = $mediaAdvisoryCategoryObj -> term_id;
 	$mediaParams = array(
