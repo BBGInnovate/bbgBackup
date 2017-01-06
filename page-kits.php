@@ -273,7 +273,7 @@ get_header(); ?>
 				// Show corresponding phone number
 				if ( $pageName == "Press room" && $phoneMedia != "" )  {
 					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $phoneMedia_link . '">' . $phoneMedia . '</a></li>';
-				} elseif ( $pageName == "Congressional affairs" && $phoneCongress != "" )  {
+				} elseif ( $pageName == "Office of Congressional Affairs" && $phoneCongress != "" )  {
 					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $phoneCongress_link . '">' . $phoneCongress . '</a></li>';
 				} else {
 					$phone = '<li itemprop="telephone" aria-label="telephone"><span class="bbg__list-label">Tel: </span><a href="tel:' . $phone_link . '">' . $phone . '</a></li>';
@@ -282,7 +282,7 @@ get_header(); ?>
 				// Show corresponding email address
 				if ( $pageName == "Press room" && $emailPress != "" ) {
 					$email = '<li><span class="bbg__list-label">Email: </span><a itemprop="email" aria-label="email" href="mailto:' . $emailPress . '" title="Contact us">' . $emailPress . '</a></li>';
-				} elseif ( $pageName == "Congressional affairs" && $emailCongress != "" ) {
+				} elseif ( $pageName == "Office of Congressional Affairs" && $emailCongress != "" ) {
 					$email = '<li><span class="bbg__list-label">Email: </span><a itemprop="email" aria-label="email" href="mailto:' . $emailCongress . '" title="Contact us">' . $emailCongress . '</a></li>';
 				} else {
 					$email = '<li><span class="bbg__list-label">Email: </span><a itemprop="email" aria-label="email" href="mailto:' . $email . '" title="Contact us">' . $email . '</a></li>';
@@ -350,7 +350,7 @@ get_header(); ?>
 
 							if ( !$advisory && $pageName == "Press room" ) {
 								echo '<h2>Recent press releases</h2>';
-							} elseif ( !$advisory && $pageName == "Congressional affairs" ) {
+							} elseif ( !$advisory && $pageName == "Office of Congressional Affairs" ) {
 								echo '<h2>Recent highlights</h2>';
 							}
 
@@ -427,7 +427,7 @@ get_header(); ?>
 
 											if ( $pageName == "Press room" ) {
 												echo '<h3>Office of Public Affairs</h3>';
-											} elseif ( $pageName == "Congressional affairs" ) {
+											} elseif ( $pageName == "Office of Congressional Affairs" ) {
 												echo '<h3>Office of Congressional Affairs</h3>';
 											} else {
 												echo '<h3>Contact information</h3>';
