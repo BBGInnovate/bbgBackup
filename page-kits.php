@@ -365,7 +365,7 @@ get_header(); ?>
 								if ( $pageName == "Press room" ) {
 									// Run query of press releases
 									query_posts( $qParamsPressReleases );
-								} elseif ( $pageName == "Office of Congressional affairs" ) {
+								} elseif ( $pageName == "Office of Congressional Affairs" ) {
 									// Run query of congressional affairs tag
 									query_posts( $qParamsCongressional );
 								}
@@ -430,7 +430,7 @@ get_header(); ?>
 											} elseif ( $pageName == "Office of Congressional Affairs" ) {
 												echo '<h3>Office of Congressional Affairs</h3>';
 											} else {
-												echo '<h3>Contact information</h3>';
+												echo '<h3>' . $pageName . 'Contact information</h3>';
 											}
 											echo $address;
 											echo '<ul class="usa-unstyled-list">';
