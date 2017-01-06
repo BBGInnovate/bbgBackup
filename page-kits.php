@@ -338,7 +338,7 @@ get_header(); ?>
 								if ( $pageName == "Press room" ) {
 									// Run query of press releases
 									query_posts( $qParamsPressReleases );
-								} elseif ( $pageName == "Congressional affairs" ) {
+								} elseif ( $pageName == "Office of Congressional affairs" ) {
 									// Run query of congressional affairs tag
 									query_posts( $qParamsCongressional );
 								}
