@@ -315,9 +315,36 @@ get_header(); ?>
 			-->
 			<article class="bbg__article bbg__kits__section">
 				<div class="usa-grid">
+					<?php 
+						$includeInfoBox = get_post_meta( $post->ID, 'kits_include_info_box', true );
+						if ($includeInfoBox) {
+							$link = get_post_meta( $post->ID, 'kits_info_box_link', true );
+							$title = get_post_meta( $post->ID, 'kits_info_box_title', true );
+							$text = get_post_meta( $post->ID, 'kits_info_box_text', true );
+
+							$s = "";
+							$s .= '<section class="usa-section">';
+							$s .= '<div class="usa-alert usa-alert-info">';
+							$s .= '<div class="usa-alert-body">';
+							$s .= '<h3 class="usa-alert-heading">';
+							if ($link == "") {
+								$s .= $title;
+							} else {
+								$s .= '<a href="' . $link . '">' . $title . '</a>';
+							}
+							$s .= '</h3>';
+							$s .= '<p class="usa-alert-text">';
+							$s .= $text;
+							$s .= '</p>';
+							$s .= '</div>';
+							$s .= '</div>';
+							$s .= '</section>';
+							echo $s;
+						}
+					?>
+
 					<div class="entry-content bbg__article-content large">
 						<?php
-
 						echo '<!-- Recent news section -->';
 						echo '<section id="recent-posts" class="usa-section bbg__home__recent-posts">';
 
@@ -701,6 +728,30 @@ get_header(); ?>
 									$s .= '</section>';
 								$s .= '</div>';
 							echo $s;
+						elseif ( get_row_layout() == 'kits_info_row' ) :
+							$link = get_sub_field('kits_info_row_link');
+							$title = get_sub_field('kits_info_row_title');
+							$text = get_sub_field('kits_info_row_text');
+
+							$s = "";
+							$s .= '<section class="usa-section">';
+							$s .= '<div class="usa-alert usa-alert-info">';
+							$s .= '<div class="usa-alert-body">';
+							$s .= '<h3 class="usa-alert-heading">';
+							if ($link == "") {
+								$s .= $title;
+							} else {
+								$s .= '<a href="' . $link . '">' . $title . '</a>';
+							}
+							$s .= '</h3>';
+							$s .= '<p class="usa-alert-text">';
+							$s .= $text;
+							$s .= '</p>';
+							$s .= '</div>';
+							$s .= '</div>';
+							$s .= '</section>';
+							echo $s;
+
 						endif;
 						echo "</section>";
 					endwhile;
