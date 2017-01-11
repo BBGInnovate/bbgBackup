@@ -28,7 +28,9 @@
 <?php 
 
 if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
-    
+  
+
+
   $qParams = array(
     'post_type'=> 'post',
     'post_status' => 'publish',
@@ -37,30 +39,67 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
     'order' => 'desc',
   );
 
-  $tags = array();
+  
+  $showTags=false;
   if (isset($_GET['qtags']) ) {
-    
+    $showTags=true;
+    $tags = array();  
     foreach($_GET['qtags'] as $t) {
       $tags[] = $t;
     }
-
     $qParams['tag__and'] = $tags;
+
+    $tagsDisplay = get_tags(array('include' => $tags));
+    $tagNames = [];
+    foreach ($tagsDisplay as $t) {
+      $tagNames[] = $t->name;
+    }
+    $tagNames = implode(", ", $tagNames);
+
   }
-  $cats = array();
+
+
+
+  $showCats=false;
   if (isset($_GET['qcats']) ) {
-    
+    $showCats=true;
+    $cats = array();
     foreach($_GET['qcats'] as $c) {
       $cats[] = $c;
     }
     $qParams['category__and'] = $cats;
+
+    $catsDisplay = get_categories(array('include' => $cats));
+    $catNames = [];
+    foreach ($catsDisplay as $c) {
+      $catNames[] = $c -> name;
+    }
+    $catNames = implode(", ", $catNames);
   }
+  
+
+  echo "<h1>Post Report</h1>";
+  if ($showCats) {
+    echo "Categories queried: " . $catNames . "<BR>";
+  }
+  if ($showTags) {
+    echo "Tags queried: " . $tagNames . "<BR>";
+  }
+  echo "<BR>";
 
   $custom_query = new WP_Query( $qParams );
   if ( $custom_query->have_posts() ) :
+    $counter = 0;
+    echo "<table class='table table-striped table-bordered'><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
-      echo "<a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a><BR>";
+      $counter++;
+      echo "<tr><td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
     endwhile;
+    echo "</tbody></table>";
+  else: 
+    echo "No results found.";
   endif;
+  die();
 }
 
 ?>
