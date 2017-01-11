@@ -90,10 +90,10 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   $custom_query = new WP_Query( $qParams );
   if ( $custom_query->have_posts() ) :
     $counter = 0;
-    echo "<table class='table table-striped table-bordered'><tbody>";
+    echo "<table class='table table-striped table-bordered'><thead><th >Pub Date</th><th>Post</th><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
       $counter++;
-      echo "<tr><td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
+      echo "<tr><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
     endwhile;
     echo "</tbody></table>";
   else: 
