@@ -146,6 +146,10 @@ get_header(); ?>
 										
 									}
 
+									if ( $includeSidebar ) {
+										echo $sidebar;
+									}
+
 									if ( $listsInclude ) {
 										echo $sidebarDownloads;
 									}
