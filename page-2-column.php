@@ -18,6 +18,7 @@ if ($bannerPositionCSS) {
 }
 
 $videoUrl = get_field( 'featured_video_url', '', true );
+$addFeaturedGallery = get_post_meta( get_the_ID(), 'featured_gallery_add', true );
 $secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
 $secondaryColumnContent = get_field( 'secondary_column_content', '', true );
 
@@ -53,6 +54,16 @@ get_header(); ?>
 								<?php } ?>
 
 							</header><!-- .page-header -->
+						</div>
+
+						<?php 
+							if ($addFeaturedGallery) {
+								echo "<div class='usa-grid-full'><div class='usa-grid-full bbg__article-featured__gallery' >";
+								$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+								putUniteGallery($featuredGalleryID);
+								echo "</div>";
+							}
+						?>
 						</div>
 
 						<?php
@@ -154,7 +165,6 @@ get_header(); ?>
 										echo $sidebarDownloads;
 									}
 
-									//echo getAccordion();
 								?>
 
 							</div><!-- .bbg__article-sidebar -->
