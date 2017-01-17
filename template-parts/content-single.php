@@ -602,6 +602,11 @@ $hideFeaturedImage = FALSE;
 					echo "</div>";
 				}
 
+				if ($award != "") {
+					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
+					echo $award;
+				}
+
 				if ( $includeSidebar ) {
 					echo $sidebar;
 				}
@@ -615,7 +620,7 @@ $hideFeaturedImage = FALSE;
 
 				echo $teamRoster;
 
-				echo $award;
+				
 
 				echo getAccordion();
 			?>
