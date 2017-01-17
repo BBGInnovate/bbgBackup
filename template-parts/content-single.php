@@ -440,6 +440,21 @@ if ($isProject) {
 }
 /**** END CREATING NEXT/PREV LINKS ****/
 
+/* Displaying award info -- not implemented yet*/
+$podcastCategoryID = get_cat_id('Podcasts');
+$isPodcast = has_category($podcastCategoryID);
+$soundcloudPlayer = "";
+if ($isPodcast) {
+	$podcastSoundcloudURL = get_post_meta( get_the_ID(), 'podcast_soundcloud_url', true );
+	$podcastTranscript = get_post_meta( get_the_ID(), 'podcast_transcript', true );
+	$podcastTranscript = apply_filters('the_content', $podcastTranscript);
+	if ($podcastTranscript) {
+		$podcastTranscript = '<div id="podcastTranscript" class="usa-accordion-bordered bbg__committee-list"><ul class="usa-unstyled-list"><li><button id="transcriptButton" class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-podcast-1">Transcript</button><div id="collapsible-podcast-1" aria-hidden="true" class="usa-accordion-content">' . $podcastTranscript . '</div><li></ul></div>';
+	}
+	$soundcloudPlayer = "<div><iframe width='100%' height='166' scrolling='no' frameborder='no' src='$podcastSoundcloudURL'></iframe><a onClick=\"tButton = jQuery('#transcriptButton'); if (tButton.attr('aria-expanded')=='false') {tButton.click(); }\" href='#podcastTranscript' style='cursor:pointer;'>View Transcript</a><BR><BR></div>";
+}
+
+
 //the title/headline field, followed by the URL and the author's twitter handle
 $twitterText = "";
 $twitterText .= html_entity_decode( get_the_title() );
@@ -567,7 +582,16 @@ $hideFeaturedImage = FALSE;
 
 		<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 			<?php
+
+				if ($isPodcast) {
+					echo $soundcloudPlayer;
+				}
+
 				echo $pageContent;
+
+				if ($isPodcast) {
+					echo $podcastTranscript;
+				}
 
 				/* START AWARD INFO */
 				if ( isset($awardDescription) && $awardDescription!= "" ) {
