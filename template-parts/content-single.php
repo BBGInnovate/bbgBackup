@@ -46,8 +46,16 @@ if ($dateline != "") {
 $relatedProfileID = get_post_meta( get_the_ID(), 'statement_related_profile', true );
 $includeRelatedProfile = false;
 if ($relatedProfileID) {
+	
 	$includeRelatedProfile = true;
-	$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );
+
+	$alternatePhotoID = get_post_meta( get_the_ID(), 'statement_alternate_profile_image', true );
+	if ($alternatePhotoID) {
+		$profilePhotoID = $alternatePhotoID;
+	} else {
+		$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );	
+	}
+	
 	$profilePhoto = "";
 
 	if ($profilePhotoID) {
