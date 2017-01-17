@@ -148,6 +148,34 @@ if ( $includeSidebar ) {
 
 				$s .= '<div>' . $sidebarImage . $sidebarImageTitle . $sidebarDescription . '</div>';
 			/* END PHOTOS */
+			} else if (get_row_layout() == 'sidebar_accordion'){
+				$s = "";
+				$accordionTitle = get_sub_field('sidebar_accordion_title');
+				if ($accordionTitle != "") {
+					$s .= "<h5 class='bbg__label small bbg__sidebar__download__label'>$accordionTitle</h5>";
+				}
+				if( have_rows('sidebar_accordion_items') ):
+					$s .= '<style>
+					div.usa-accordion-content {
+						padding:1.5rem !important;
+					}
+					</style>';
+					
+					$s .= '<div class="usa-accordion bbg__committee-list"><ul class="usa-unstyled-list">';
+					$i = 0;
+					while ( have_rows('sidebar_accordion_items') ) : the_row();
+						$i++;
+						$itemLabel = get_sub_field('sidebar_accordion_item_label');
+						$itemText = get_sub_field('sidebar_accordion_item_text');
+						$s .= '<li>';
+						$s .= '<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-faq-' . $i . '">' . $itemLabel . '</button>';
+						$s .= '<div id="collapsible-faq-' . $i . '" aria-hidden="true" class="usa-accordion-content">';
+						$s .= $itemText;
+						$s .= '</div>';
+						$s .= '</li>';
+						endwhile;
+						$s .= '</ul></div>';
+				endif;
 			}
 		endwhile;
 		// Add all content types to the sidebar variable

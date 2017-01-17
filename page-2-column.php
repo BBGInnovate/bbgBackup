@@ -154,7 +154,7 @@ get_header(); ?>
 										echo $sidebarDownloads;
 									}
 
-									echo getAccordion();
+									//echo getAccordion();
 								?>
 
 							</div><!-- .bbg__article-sidebar -->
