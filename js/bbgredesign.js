@@ -92,7 +92,7 @@ jQuery(document).ready(function() {
     if (jQuery("form#fscf_form4").length) {
         
         //hide the selector for the form item
-        jQuery('#fscf_div_field_contact4').hide();
+        //jQuery('#fscf_div_field_contact4').hide();
 
         jQuery("input[type=submit]").attr('onclick','').unbind('click');
         jQuery("input[type=submit]").click(function(e) {
