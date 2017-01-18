@@ -88,14 +88,54 @@ jQuery(document).ready(function() {
         //jQuery("div[data-name='committee_members'] select").chosen();
     }
 
-    /*
-    if( typeof acf.add_action !== 'undefined' ) {
-        acf.add_action('load', function( $el ){
-            console.log('ACF loaded ');
+    /*** Add client side validation to the content request form.  We use Fast Secure Contact Form to generate it ***/
+    if (jQuery("form#fscf_form4").length) {
+        jQuery("input[type=submit]").attr('onclick','').unbind('click');
+        jQuery("input[type=submit]").click(function(e) {
+          e.preventDefault();
+          var errorMsg = "";
+          var name = jQuery('#fscf_name4').val();
+          var selectedNetwork = jQuery('#fscf_mail_to4').val();
+          var email = jQuery('#fscf_email4').val();
+          var audience = jQuery('#fscf_field4_4').val(); 
+          var textChecked = jQuery('#fscf_field4_5_1').attr('checked');
+          var photosChecked = jQuery('#fscf_field4_5_2').attr('checked');
+          var videoChecked = jQuery('#fscf_field4_5_3').attr('checked');
+          var audioChecked = jQuery('#fscf_field4_5_4').attr('checked');
+          var link = jQuery('#fscf_field4_6').val();
+          var awareThirdYes = jQuery('#fscf_field4_8_1').prop('checked');
+          var awareContentYes = jQuery('#fscf_field4_9_1').prop('checked');
+          if (name == "") {
+            errorMsg += "Please enter a name\n\n";
+          }
+          if (selectedNetwork == "") {
+            errorMsg += "Please select a network\n\n";
+          }
+          if (email == "") {
+            errorMsg += "Please enter your email address\n\n";
+          }
+          if (audience == "") {
+            errorMsg += "Please enter the target audience\n\n"
+          }
+          if ( ! (textChecked || photosChecked || videoChecked || audioChecked) ) {
+            errorMsg += "Please select one or more content types you're interested in\n\n";
+          }
+          if (link == "") {
+            errorMsg += "Please enter a link to the content you're interested in from a BBG website\n\n";
+          }
+          if (!awareThirdYes) {
+            errorMsg += "Please acknowledge that you are aware that our content often contains material from third parties such as the Associated Press (AP), Agence France-Presse (AFP) and Reuters.\n\n"
+          }
+          if (!awareContentYes) {
+            errorMsg += "Please acknowledge that you are aware that we require our content to be aired or used in a way in which its source is made clear.\n\n"
+          }
+          if (errorMsg == "") {
+            jQuery('#fscf_form4').submit();
+          } else {
+            alert(errorMsg);
+          }
+          return false;
+         // 
         });
     }
-    */
-
-
-
 });
