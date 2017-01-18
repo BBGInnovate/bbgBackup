@@ -2253,6 +2253,24 @@ p a,
   background-size: 1.3rem;
 }
 
+/* added the following specifically for the  content request form */
+.bbg__article-sidebar .usa-accordion-content ol {
+  list-style-type: decimal;
+  padding-left: 2rem;
+  font-size: 1.35rem;
+}
+.bbg__article-sidebar .usa-accordion-content ol li {
+  padding-bottom: 1rem !important;
+}
+.bbg__article-sidebar .usa-accordion-content ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  font-size: 1.35rem;
+}
+.bbg__article-sidebar .usa-accordion-content ul li {
+  padding-bottom: 1rem !important;
+}
+
 .usa-alert {
   background-color: #f1f1f1;
   background-position: 1rem 2rem;

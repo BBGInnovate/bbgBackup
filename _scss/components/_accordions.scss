@@ -132,3 +132,14 @@ $accordion-border: 3px solid $color-gray-lightest;
 .usa-accordion-button[aria-expanded=false] {
   @include accordion-button-unopened-styles;
 }
+
+/* added the following specifically for the  content request form */
+.bbg__article-sidebar {
+  .usa-accordion-content {
+    ol { list-style-type: decimal; padding-left: 2rem; font-size: 1.35rem; }
+    ol li { padding-bottom: 1rem !important; }
+    ul { list-style-type: disc; padding-left: 2rem; font-size: 1.35rem; }
+    ul li { padding-bottom: 1rem !important; }
+  } 
+}
+  
