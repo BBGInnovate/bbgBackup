@@ -201,7 +201,7 @@ div.usa-accordion-content a {
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg__label--mobile large"><?php echo $pageTitle; ?></h5>
+					<h5 class="bbg__label--mobile large"><?php echo "Media Training and Development"; //echo $pageTitle;  //WE ARE DELIBERATELY HARDCODING THIS BECAUSE THE NAME IS TOO LONG IN THE PAGE PICKER ON THE PARENT PAGE ?></h5>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
