@@ -206,8 +206,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-
-			<?php if ( $custom_query->have_posts() ) : ?>
+		<?php if ( $custom_query->have_posts() ) : ?>
 
 			<div class="usa-grid">
 				<header class="page-header">
@@ -234,7 +233,6 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 				</div>
 			</section>
 
-
 			<?php
 				$featuredJournalists = "";
 				$profilePhoto = "";
@@ -251,65 +249,46 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					if ( have_rows('featured_journalist') ){
 						//echo the_sub_field('featured_journalists_section_label');
 						$featuredJournalists .= '<section class="usa-section">';
-						$featuredJournalists .= '<div class="usa-grid-full">';
-						$featuredJournalists .= '<div class="usa-grid">';
-						$featuredJournalists .= '<header class="page-header">';
-						//$featuredJournalists .= '<h5 class="bbg__label">' . get_sub_field('featured_journalists_section_label') . '</h5>';
-						$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
-						$featuredJournalists .= '</header><!-- .page-header -->';
-						$featuredJournalists .= '</div>';
+							$featuredJournalists .= '<div class="usa-grid-full">';
+								$featuredJournalists .= '<div class="usa-grid">';
+									$featuredJournalists .= '<header class="page-header">';
+										$featuredJournalists .= '<h5 class="bbg__label">' . $featuredJournalistsSectionLabel . '</h5>';
+									$featuredJournalists .= '</header><!-- .page-header -->';
+								$featuredJournalists .= '</div>';
 
-						$featuredJournalists .= '<div class="usa-grid">';
+								$featuredJournalists .= '<div class="usa-grid">';
 
-					    while ( have_rows('featured_journalist') ) : the_row();
-							//var_dump(get_sub_field('featured_journalist_profile'));
-							$relatedPages = get_sub_field( 'featured_journalist_profile' );
+							    while ( have_rows('featured_journalist') ) : the_row();
+									//var_dump(get_sub_field('featured_journalist_profile'));
+									$relatedPages = get_sub_field( 'featured_journalist_profile' );
+									$profileTitle = $relatedPages->post_title;
+									$profileName = $relatedPages->first_name . " " . $relatedPages->last_name;
+									$profileOccupation = $relatedPages->occupation;
+									$profilePhoto = $relatedPages->profile_photo;
+									$profileUrl = get_permalink( $relatedPages->ID );
+									//$profileExcerpt = get_the_excerpt($relatedPages->ID);
+									$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
 
+									$profileOccupation = '<span class="bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
 
-							$profileTitle = $relatedPages->post_title;
-							$profileName = $relatedPages->first_name . " " . $relatedPages->last_name;
-							$profileOccupation = $relatedPages->occupation;
-							$profilePhoto = $relatedPages->profile_photo;
-							$profileUrl = get_permalink($relatedPages->ID);
-							//$profileExcerpt = get_the_excerpt($relatedPages->ID);
-							$profileExcerpt = my_excerpt($relatedPages->ID); //get_the_excerpt($relatedPages->ID);
+									if ($profilePhoto) {
+										$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
+										$profilePhoto = $profilePhoto[0];
+										$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
+									}
 
-							$profileOccupation = '<span class="bbg__profile-excerpt__occupation">' . $profileOccupation .'</span>';
+									$featuredJournalists .= '<div class="bbg__profile-excerpt">';
+										$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
+										$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
+									$featuredJournalists .= '</div>';
 
-							if ($profilePhoto) {
-								$profilePhoto = wp_get_attachment_image_src( $profilePhoto , 'Full');
-								$profilePhoto = $profilePhoto[0];
-								$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
-							}
-
-							$featuredJournalists .= '<div class="bbg__profile-excerpt">';
-
-							//$featuredJournalists .= '<div class="usa-grid">';
-							/*
-							$featuredJournalists .= '<div class="usa-width-one-third">';
-							$featuredJournalists .= $profilePhoto;
+							    endwhile;
+								$featuredJournalists .= '</div>';
 							$featuredJournalists .= '</div>';
-							*/
-							//$featuredJournalists .= '<div class="usa-width-two-thirds">';
-							$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
-							$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
-							//$featuredJournalists .= '</div>';
-							//$featuredJournalists .= '</div>';
-
-							$featuredJournalists .= '</div>';
-
-					    endwhile;
-						$featuredJournalists .= '</div>';
-						$featuredJournalists .= '</div>';
 						$featuredJournalists .= '</section>';
 					}
-
 				    endwhile;
-
-				} else {
-					//echo "<h1>nope</h1>";
 				}
-
 			?>
 
 			<section class="usa-section">
@@ -324,13 +303,13 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 
 							$counter++;
 							//Add a check here to only show featured if it's not paginated.
-							if(  $counter==1 ){
+							if(  $counter == 1 ){
 								echo '<h5 class="bbg__label"><a href="' . $threatsPermalink . '">News + updates</a></h5>';
 								echo '</div>';
 								echo '<div class="usa-grid">';
 								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
 							//} elseif( $counter==3 ){
-							} elseif( $counter==2 ){
+							} elseif( $counter == 2 ){
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
@@ -340,22 +319,18 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 								//These values are used for every excerpt >=4
 								$includeImage = FALSE;
 								$includeMeta = FALSE;
-								$includeExcerpt=FALSE;
+								$includeExcerpt = FALSE;
 							}
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 
 						?>
 					<?php endwhile; ?>
-						</div><!-- .bbg-grid right column -->
-
-
+					</div><!-- .bbg-grid right column -->
 				</div><!-- .usa-grid -->
 			</section>
 			<?php endif; ?>
 
-
 			<?php echo $featuredJournalists; ?>
-
 
 			<section class="usa-section bbg__memorial">
 				<div class="usa-grid-full">

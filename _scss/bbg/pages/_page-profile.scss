@@ -194,6 +194,10 @@
 	@extend .usa-width-one-half;
 
 	margin-bottom: $site-margins;
+
+	&:last-child {
+        margin-right: inherit !important;
+  	}
 }
 
 .bbg__profile-excerpt--sidebar {

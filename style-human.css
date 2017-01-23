@@ -7475,6 +7475,9 @@ section.usa-section.bbg-banner__section {
   clear: both;
   visibility: hidden;
 }
+.bbg__profile-excerpt:last-child {
+  margin-right: inherit !important;
+}
 
 .bbg__profile-excerpt--sidebar {
   float: none;
