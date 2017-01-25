@@ -7,6 +7,48 @@
  * @package bbginnovate
  */
 
+function getAwardInfo($awardPostID) {
+	$award = "";
+	$awardTitle = get_post_meta( $awardPostID, 'standardpost_award_title', true );
+	$awardYear = get_post_meta( $awardPostID, 'standardpost_award_year', true );
+	$awardRecipient = get_post_meta( $awardPostID, 'standardpost_award_recipient', true );
+	$awardWinningWork = get_post_meta( $awardPostID, 'standardpost_award_winning_work', true );
+	$awardWinner = get_post_meta( $awardPostID, 'standardpost_award_winner', true );
+	$awardLink = get_post_meta( $awardPostID, 'standardpost_award_link', true );
+
+	$awardOrganization = get_field( 'standardpost_award_organization', $awardPostID, true);
+	$awardOrganization = $awardOrganization -> name;
+	$awardLogo = get_post_meta( $awardPostID, 'standardpost_award_logo', true );
+	$awardOrgUrl = get_post_meta( $awardPostID, 'standardpost_award_org_url', true );
+	$awardDescription = get_post_meta( $awardPostID, 'standardpost_award_description', true );
+
+
+	$award .='<div class="bbg__sidebar__primary">';
+		$awardLogoImage = "";
+
+		if ( $awardLogo ){
+			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+			$awardLogoImage = $awardLogoImage[0];
+			// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+		}
+		// Award-winning work with link to work if it exists
+		if ( $awardLink && $awardLink != "" ){
+			$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
+		} else {
+			$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
+		}
+
+		$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
+		$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
+
+		$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
+		$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
+	$award .= '</div>';
+	return $award;
+}
+
+
 /**** BEGIN: get next post link for project links ****/
 $projectCategoryID = get_cat_id('Project');
 $isProject = has_category($projectCategoryID);
@@ -343,51 +385,6 @@ endif;
 $awardCategoryID = get_cat_id('Award');
 $isAward = has_category($awardCategoryID);
 
-$award = "";
-
-if ($isAward) {
-
-	$awardTitle = get_post_meta( get_the_ID(), 'standardpost_award_title', true );
-	$awardYear = get_post_meta( get_the_ID(), 'standardpost_award_year', true );
-	$awardRecipient = get_post_meta( get_the_ID(), 'standardpost_award_recipient', true );
-	$awardWinningWork = get_post_meta( get_the_ID(), 'standardpost_award_winning_work', true );
-	$awardWinner = get_post_meta( get_the_ID(), 'standardpost_award_winner', true );
-	$awardLink = get_post_meta( get_the_ID(), 'standardpost_award_link', true );
-
-	$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
-	$awardOrganization = $awardOrganization -> name;
-	$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
-	$awardOrgUrl = get_post_meta( get_the_ID(), 'standardpost_award_org_url', true );
-	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
-
-
-	$award .='<div class="bbg__sidebar__primary">';
-		$awardLogoImage = "";
-
-		if ( $awardLogo ){
-			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
-			$awardLogoImage = $awardLogoImage[0];
-			// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
-			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
-		}
-
-		// $award .= $awardLogoImage;
-
-		// Award-winning work with link to work if it exists
-		if ( $awardLink && $awardLink != "" ){
-			$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
-		} else {
-			$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
-		}
-
-		$award .= '<p><strong>Producer: </strong>' . $awardWinner . '<br/>';
-		$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
-
-		$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
-		$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
-	$award .= '</div>';
-}
-
 if ($isProject) {
 	//$categories=get_the_category();
 	$post_id = $post->ID; // current post ID
@@ -602,14 +599,30 @@ $hideFeaturedImage = FALSE;
 				}
 
 				/* START AWARD INFO */
-				if ( isset($awardDescription) && $awardDescription!= "" ) {
-					echo '<div class="usa-grid-full bbg__contact-box">';
-						echo '<h3>About ' . $awardOrganization . '</h3>';
-						echo $awardLogoImage;
-						echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
-					echo '</div>';
+				if ($isAward) {
+					$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );	
+					if ( isset($awardDescription) && $awardDescription!= "" ) {
+						$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
+						$awardOrganization = $awardOrganization -> name;
+					
+						$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+						$awardLogoImage = "";
+						if ( $awardLogo ){
+							$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+							$awardLogoImage = $awardLogoImage[0];
+							// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+							$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+						}
+		
+						echo '<div class="usa-grid-full bbg__contact-box">';
+							echo '<h3>About ' . $awardOrganization . '</h3>';
+							echo $awardLogoImage;
+							echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
+						echo '</div>';
+					}
+					/* END AWARD INFO */
 				}
-				/* END AWARD INFO */
+
 
 				/* START CONTACT CARDS */
 				$contactPostIDs = get_post_meta( $post->ID, 'contact_post_id',true );
@@ -634,9 +647,9 @@ $hideFeaturedImage = FALSE;
 					echo "</div>";
 				}
 
-				if ($award != "") {
+				if ($isAward) {
 					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
-					echo $award;
+					echo getAwardInfo(get_the_ID());
 				}
 
 				if ( $includeSidebar ) {

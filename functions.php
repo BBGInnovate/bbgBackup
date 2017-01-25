@@ -260,6 +260,7 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/bbg-custom-taxonomies.php';
+require get_template_directory() . '/inc/bbg-functions-awards.php';
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
 require get_template_directory() . '/inc/bbg-functions-bizOpps.php';
 require get_template_directory() . '/inc/bbg-functions-congressional-committees.php';
@@ -322,9 +323,11 @@ add_filter( 'get_the_archive_title', function ($title) {
  * the next several functions are for adding that functionality and also making it available in wordpress settings
  * =================================================================================*/
 
-add_action('pre_get_posts', 'bbginnovate_query_offset', 1 );
-function bbginnovate_query_offset(&$query) {
-	/* note that is_home really means 'blog index page' ... which is not necessarily the homepage */
+add_action('pre_get_posts', 'bbginnovate_modify_the_loop', 1 );
+function bbginnovate_modify_the_loop(&$query) {
+	
+	//note that the homepage doesn't actually use the normal loop, and won't be affected by this.  
+	//This query modification is for the 'blog index' page and all archive pages / feeds
 
 	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() ||  $query->is_feed() )) {
 		
