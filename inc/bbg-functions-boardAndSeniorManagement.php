@@ -29,6 +29,7 @@
 		$boardStr="";
 		$chairpersonStr="";
 		$secretaryStr="";
+		$actingStr="";
 
 		while ( $custom_query->have_posts() )  {
 			$custom_query->the_post();
@@ -40,6 +41,7 @@
 			if (  (get_the_title() != "Special Committees") && ($showActive==$active)) {
 				$isChairperson=get_post_meta( $id, 'chairperson', true );
 				$isSecretary=get_post_meta( $id, 'secretary_of_state', true );
+				$isActing=get_post_meta( $id, 'acting', true );
 				//$occupation=get_post_meta( $id, 'occupation', true );
 				$email=get_post_meta( $id, 'email', true );
 				$phone=get_post_meta( $id, 'phone', true );
@@ -53,13 +55,17 @@
 				}
 
 				$profileName = get_the_title();
-				$occupation = "";
-				if ($isChairperson) {
-					$occupation =  '<span class="bbg__profile-excerpt__occupation">Chairman of the Board</span>';
-				} else if ($isSecretary) {
-					$occupation =  '<span class="bbg__profile-excerpt__occupation">Ex officio board member</span>';
+				$occupation = '<span class="bbg__profile-excerpt__occupation">';
+				if ($isActing) {
+					$occupation .=  'Acting ';
 				}
 
+				if ($isChairperson) {
+					$occupation .=  'Chairman of the Board';
+				} else if ($isSecretary) {
+					$occupation .=  'Ex officio board member';
+				}
+				$occupation .= '</span>';
 
 				$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
 					$b.=  '<h3 class="bbg__profile-excerpt__name">';
