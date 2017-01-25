@@ -176,6 +176,10 @@ if ( $includeSidebar ) {
 						endwhile;
 						$s .= '</ul></div>';
 				endif;
+			} else if (get_row_layout() == 'sidebar_award'){
+				$relatedPost = get_sub_field('sidebar_related_award_post');
+				$s .= getAwardInfo($relatedPost -> id)
+				
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
