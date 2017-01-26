@@ -18,23 +18,54 @@
 		$awardDescription = get_post_meta( $awardPostID, 'standardpost_award_description', true );
 		$awardPermalink = get_permalink($awardPostID);
 
+		// $awardLogoImage = "";
+		// if ( $awardLogo ){
+		// 	$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+		// 	$awardLogoImage = $awardLogoImage[0];
+		// 	// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+		// 	$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+		// }
+
 		$award .='<div class="bbg__sidebar__primary">';
-			$awardLogoImage = "";
 
-			if ( $awardLogo ){
-				$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
-				$awardLogoImage = $awardLogoImage[0];
-				// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
-				$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+		if ($isAwardDetailPage) {
+			
+			$award .= '<p>';
+			$award .= '<strong>Name: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
+			$award .= '<strong>Project: </strong>';
+			if ($awardLink) {
+				$award .= '<a href="' . $awardLink .'">' . $awardWinningWork;
+			}  else {
+				$award .= $awardWinningWork;
 			}
-			// Award-winning work with link to work if it exists
-			if ( $awardPermalink && $awardPermalink != "" ){
-				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardWinningWork . '</a></h4>';
+			$award .= '</p>';
+			$award .= '<p>';
+			if ($awardWinner) {
+				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
+			}
+			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br/>';
+			$award .= '<strong>Presented by: </strong>';
+			if ($awardOrgUrl != "") {
+				$award .= '<a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
-				$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
+				$award .= $awardOrganization;
 			}
 
-			$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
+			$award .= '</p>';
+			
+		} else {
+			if (!$isAwardDetailPage) {
+				// Award-winning work with link to work if it exists
+				if ( $awardPermalink && $awardPermalink != "" ){
+					$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardWinningWork . '</a></h4>';
+				} else {
+					$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
+				}
+			}
+
+			if ($awardWinner) {
+				$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
+			}
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
 
 			$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
@@ -46,6 +77,7 @@
 			if ( $awardLink && $awardLink != "" ){
 				$award .= '<BR><a href="' . $awardLink .'">Visit the website »</a>';
 			} 
+		}
 			
 		$award .= '</div>';
 		return $award;
