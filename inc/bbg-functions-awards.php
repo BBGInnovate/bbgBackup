@@ -36,7 +36,7 @@
 			$award .= '<p>';
 			$award .= '<strong>Project: </strong>';
 			
-			if ($awardWinningWork) {
+			if ($awardWinningWork && $awardWinningWork != "") {
 				if ($awardLink) {
 					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
 				}  else {
