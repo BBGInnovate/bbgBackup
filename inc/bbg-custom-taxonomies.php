@@ -15,7 +15,7 @@ function cptui_register_my_taxes() {
 		"show_ui" => false,
 		"query_var" => true,
 		"rewrite" => array( 'slug' => 'organizations', 'with_front' => true ),
-		"show_admin_column" => false,
+		"show_admin_column" => true,
 		"show_in_rest" => false,
 		"rest_base" => "",
 		"show_in_quick_edit" => false,
