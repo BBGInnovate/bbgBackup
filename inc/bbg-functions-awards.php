@@ -32,14 +32,15 @@
 			
 			$award .= '<p>';
 			$award .= '<strong>Name: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
+			
+			$award .= '</p>';
+			$award .= '<p>';
 			$award .= '<strong>Project: </strong>';
 			if ($awardLink) {
 				$award .= '<a href="' . $awardLink .'">' . $awardWinningWork;
 			}  else {
 				$award .= $awardWinningWork;
 			}
-			$award .= '</p>';
-			$award .= '<p>';
 			if ($awardWinner) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
