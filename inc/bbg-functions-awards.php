@@ -36,7 +36,7 @@
 			$award .= '<p>';
 			$award .= '<strong>Project: </strong>';
 			if ($awardLink) {
-				$award .= '<a href="' . $awardLink .'">' . $awardWinningWork;
+				$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
 			}  else {
 				$award .= $awardWinningWork;
 			}
@@ -47,7 +47,7 @@
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br/>';
 			$award .= '<strong>Presented by: </strong>';
 			if ($awardOrgUrl != "") {
-				$award .= '<a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
+				$award .= '<a target="_blank" href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
 				$award .= $awardOrganization;
 			}
