@@ -35,10 +35,13 @@
 			$award .= '</p>';
 			$award .= '<p>';
 			$award .= '<strong>Project: </strong>';
-			if ($awardLink) {
-				$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
-			}  else {
-				$award .= $awardWinningWork;
+			
+			if ($awardWinningWork) {
+				if ($awardLink) {
+					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
+				}  else {
+					$award .= $awardWinningWork;
+				}
 			}
 			$award .= '<br/>';
 			if ($awardWinner) {
