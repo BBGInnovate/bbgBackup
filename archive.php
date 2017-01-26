@@ -67,7 +67,12 @@ get_header(); ?>
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg__label small">More news</h6>';
+								$moreLabel = "More News";
+								
+								if (is_category('Board Meetings')) {
+									$moreLabel = "More Board Meetings";
+								}
+								echo '<h6 class="page-title bbg__label small">' . $moreLabel . '</h6>';
 								echo '</header>';
 
 								//These values are used for every excerpt >=4
