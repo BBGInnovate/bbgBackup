@@ -31,8 +31,7 @@
 		if ($isAwardDetailPage) {
 			
 			$award .= '<p>';
-			$award .= '<strong>Name: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
-			
+			$award .= '<strong>Name: </strong>' . $awardYear . ' ' . $awardTitle;
 			$award .= '</p>';
 			$award .= '<p>';
 			$award .= '<strong>Project: </strong>';
@@ -41,6 +40,7 @@
 			}  else {
 				$award .= $awardWinningWork;
 			}
+			$award .= '<br/>';
 			if ($awardWinner) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
