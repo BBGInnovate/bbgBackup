@@ -43,8 +43,9 @@
 				}  else {
 					$award .= $awardWinningWork;
 				}
+				$award .= '<br/>';
 			}
-			$award .= '<br/>';
+			
 			if ($awardWinner) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
