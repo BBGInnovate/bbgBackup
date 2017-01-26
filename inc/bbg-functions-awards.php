@@ -44,7 +44,7 @@
 				$award .= '<strong>Presented by: </strong>' . $awardOrganization . '<br/>';
 			}
 			if ( $awardLink && $awardLink != "" ){
-				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">Visit the website</a></h4>';
+				$award .= '<BR><a href="' . $awardLink .'">Visit the website »</a>';
 			} 
 			
 		$award .= '</div>';
