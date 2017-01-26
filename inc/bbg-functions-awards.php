@@ -1,5 +1,8 @@
 <?php
-	function getAwardInfo($awardPostID) {
+	function getAwardInfo($awardPostID, $isAwardDetailPage) {
+		//$isAwardDetailPage=true means we're on the landing page for a post that has been categorized as an award
+		//$isAwardDetailPage=false means that we're this information on the sidebar of a post where a user picked a related award in the sidebar
+
 		$award = "";
 		$awardTitle = get_post_meta( $awardPostID, 'standardpost_award_title', true );
 		$awardYear = get_post_meta( $awardPostID, 'standardpost_award_year', true );
@@ -13,7 +16,7 @@
 		$awardLogo = get_post_meta( $awardPostID, 'standardpost_award_logo', true );
 		$awardOrgUrl = get_post_meta( $awardPostID, 'standardpost_award_org_url', true );
 		$awardDescription = get_post_meta( $awardPostID, 'standardpost_award_description', true );
-
+		$awardPermalink = get_permalink($awardPostID);
 
 		$award .='<div class="bbg__sidebar__primary">';
 			$awardLogoImage = "";
@@ -25,8 +28,8 @@
 				$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
 			}
 			// Award-winning work with link to work if it exists
-			if ( $awardLink && $awardLink != "" ){
-				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">' . $awardWinningWork . '</a></h4>';
+			if ( $awardPermalink && $awardPermalink != "" ){
+				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardWinningWork . '</a></h4>';
 			} else {
 				$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
 			}
@@ -35,7 +38,15 @@
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
 
 			$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
-			$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
+			if ($awardOrgUrl != "") {
+				$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
+			} else {
+				$award .= '<strong>Presented by: </strong>' . $awardOrganization . '<br/>';
+			}
+			if ( $awardLink && $awardLink != "" ){
+				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardLink .'">Visit the website</a></h4>';
+			} 
+			
 		$award .= '</div>';
 		return $award;
 	}
