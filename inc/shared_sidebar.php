@@ -174,11 +174,21 @@ if ( $includeSidebar ) {
 						$s .= '</div>';
 						$s .= '</li>';
 						endwhile;
-						$s .= '</ul></div>';
+						$s .= '</ul></div>';  
 				endif;
 			} else if (get_row_layout() == 'sidebar_related_award'){
-				$relatedPost = get_sub_field('sidebar_related_award_post');
-				$s .= getAwardInfo($relatedPost -> ID, false);
+				$relatedPosts = get_sub_field('sidebar_related_award_post');
+				if (is_array($relatedPosts) && count($relatedPosts) > 0) {
+					$label = "About the Award";
+					if (count($relatedPosts) > 1) {
+						$label .= "s";
+					}
+
+					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $label . '</h5>';
+					foreach ($relatedPosts as $relatedPost) {
+						$s .= getAwardInfo($relatedPost -> ID, false);	
+					}	
+				}
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
