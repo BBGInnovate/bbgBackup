@@ -179,15 +179,17 @@ if ( $includeSidebar ) {
 			} else if (get_row_layout() == 'sidebar_related_award'){
 				$relatedPosts = get_sub_field('sidebar_related_award_post');
 				if (is_array($relatedPosts) && count($relatedPosts) > 0) {
-					$label = "About the Award";
+					$label = "Related Award";
 					if (count($relatedPosts) > 1) {
 						$label .= "s";
 					}
 
 					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $label . '</h5>';
+					$s .='<div class="bbg__sidebar__primary">';	
 					foreach ($relatedPosts as $relatedPost) {
 						$s .= getAwardInfo($relatedPost -> ID, false);	
-					}	
+					}
+					$ .=  '</div>';	
 				}
 			}
 		endwhile;

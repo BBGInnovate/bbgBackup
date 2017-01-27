@@ -26,11 +26,10 @@
 		// 	$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
 		// }
 
-		$award .='<div class="bbg__sidebar__primary">';
+		
 		$awardYearAndTitle = $awardYear . ' ' . $awardTitle;
 
 		if ($isAwardDetailPage) {
-			
 			$award .= '<p>';
 
 			/*** TITLE ***/
@@ -67,8 +66,10 @@
 
 			$award .= '</p>';
 			
+			
 		} else {
 
+			
 			/*** BEGIN TITLE ***/
 			$award .= '<h4 class="bbg__sidebar__primary-headline">';
 			if ( $awardPermalink && $awardPermalink != "" ){
@@ -110,8 +111,6 @@
 			$award .= '</p>';
 			/*** END ORG ***/
 		}
-			
-		$award .= '</div>';
 		return $award;
 	}
 ?>
