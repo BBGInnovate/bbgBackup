@@ -32,10 +32,11 @@
 		if ($isAwardDetailPage) {
 			
 			$award .= '<p>';
-			$award .= '<strong>Name: </strong>' . $awardYearAndTitle;
-			$award .= '</p>';
-			$award .= '<p>';
+
+			/*** TITLE ***/
+			$award .= '<strong>Name: </strong>' . $awardYearAndTitle . '<br />';
 			
+			/*** BEGIN AWARD WINNING WORK ***/
 			if ($awardWinningWork) {
 				$award .= '<strong>Project: </strong>';
 				if ($awardLink) {
@@ -45,30 +46,48 @@
 				}
 				$award .= '<br/>';
 			}
+			/*** END AWARD WINNING WORK ***/
 			
+			/*** AWARD WINNER ***/
 			if ($awardWinner) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
+
+			/*** NETWORK ***/
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br/>';
+			
+			/*** BEGIN ORG ***/
 			$award .= '<strong>Presented by: </strong>';
 			if ($awardOrgUrl != "") {
 				$award .= '<a target="_blank" href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
 				$award .= $awardOrganization;
 			}
+			/*** END ORG ***/
 
 			$award .= '</p>';
 			
 		} else {
+
+			/*** BEGIN TITLE ***/
+			$award .= '<h4 class="bbg__sidebar__primary-headline">';
 			if ( $awardPermalink && $awardPermalink != "" ){
-				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardYearAndTitle . '</a></h4>';
+				$award .= '<a href="' . $awardPermalink .'">' . $awardYearAndTitle . '</a>';
 			} else {
-				$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardYearAndTitle . '</h4>';
+				$award .= $awardYearAndTitle;
 			}
+			$award .= '</h4>';
+			/*** END TITLE ***/
+
+			/*** AWARD WINNER ***/
 			if ($awardWinner) {
-				$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
+				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
+
+			/*** NETWORK ***/
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br />';
+			
+			/*** BEGIN AWARD WINNING WORK ***/
 			if ($awardWinningWork) {
 				$award .= '<strong>Project: </strong>';
 				if ($awardLink) {
@@ -78,13 +97,17 @@
 				}
 				$award .= '<br/>';
 			}
+			/*** END AWARD WINNING WORK ***/
 
+			/*** BEGIN ORG ***/
+			$award .= '<strong>Presented by: </strong>';
 			if ($awardOrgUrl != "") {
-				$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
+				$award .= '<a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
-				$award .= '<strong>Presented by: </strong>' . $awardOrganization . '<br/>';
+				$award .= $awardOrganization;
 			}
-			$award .= '</p>';
+			$award .= '<br/>';
+			/*** END ORG ***/
 		}
 			
 		$award .= '</div>';
