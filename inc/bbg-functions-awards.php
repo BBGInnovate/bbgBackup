@@ -68,7 +68,7 @@
 			if ($awardWinner) {
 				$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
-			$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
+			$award .= '<strong>Network: </strong>' . $awardRecipient;
 			if ($awardWinningWork) {
 				$award .= '<strong>Project: </strong>';
 				if ($awardLink) {
@@ -84,6 +84,7 @@
 			} else {
 				$award .= '<strong>Presented by: </strong>' . $awardOrganization . '<br/>';
 			}
+			$award .= '</p>';
 		}
 			
 		$award .= '</div>';
