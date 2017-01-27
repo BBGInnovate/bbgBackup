@@ -79,6 +79,7 @@
 			$award .= '</h4>';
 			/*** END TITLE ***/
 
+			$award .= "<p>";
 			/*** AWARD WINNER ***/
 			if ($awardWinner) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
@@ -106,7 +107,7 @@
 			} else {
 				$award .= $awardOrganization;
 			}
-			$award .= '<br/>';
+			$award .= '</p>';
 			/*** END ORG ***/
 		}
 			
