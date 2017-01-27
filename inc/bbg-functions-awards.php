@@ -27,14 +27,14 @@
 		// }
 
 		$award .='<div class="bbg__sidebar__primary">';
+		$awardYearAndTitle = $awardYear . ' ' . $awardTitle;
 
 		if ($isAwardDetailPage) {
 			
 			$award .= '<p>';
-			$award .= '<strong>Name: </strong>' . $awardYear . ' ' . $awardTitle;
+			$award .= '<strong>Name: </strong>' . $awardYearAndTitle;
 			$award .= '</p>';
 			$award .= '<p>';
-			
 			
 			if ($awardWinningWork) {
 				$award .= '<strong>Project: </strong>';
@@ -60,29 +60,30 @@
 			$award .= '</p>';
 			
 		} else {
-			if (!$isAwardDetailPage) {
-				// Award-winning work with link to work if it exists
-				if ( $awardPermalink && $awardPermalink != "" ){
-					$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardWinningWork . '</a></h4>';
-				} else {
-					$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardWinningWork . '</h4>';
-				}
+			if ( $awardPermalink && $awardPermalink != "" ){
+				$award .= '<h4 class="bbg__sidebar__primary-headline"><a href="' . $awardPermalink .'">' . $awardYearAndTitle . '</a></h4>';
+			} else {
+				$award .= '<h4 class="bbg__sidebar__primary-headline">' . $awardYearAndTitle . '</h4>';
 			}
-
 			if ($awardWinner) {
 				$award .= '<p><strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '</p>';
+			if ($awardWinningWork) {
+				$award .= '<strong>Project: </strong>';
+				if ($awardLink) {
+					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
+				}  else {
+					$award .= $awardWinningWork;
+				}
+				$award .= '<br/>';
+			}
 
-			$award .= '<p><strong>Award: </strong>' . $awardYear . ' ' . $awardTitle . '<br/>';
 			if ($awardOrgUrl != "") {
 				$award .= '<strong>Presented by: </strong><a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a><br/>';
 			} else {
 				$award .= '<strong>Presented by: </strong>' . $awardOrganization . '<br/>';
 			}
-			if ( $awardLink && $awardLink != "" ){
-				$award .= '<BR><a href="' . $awardLink .'">Visit the website »</a>';
-			} 
 		}
 			
 		$award .= '</div>';
