@@ -189,7 +189,7 @@ if ( $includeSidebar ) {
 					foreach ($relatedPosts as $relatedPost) {
 						$s .= getAwardInfo($relatedPost -> ID, false);	
 					}
-					$ .=  '</div>';	
+					$s .=  '</div>';	
 				}
 			}
 		endwhile;
