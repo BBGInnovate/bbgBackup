@@ -179,7 +179,7 @@ if ( $includeSidebar ) {
 			} else if (get_row_layout() == 'sidebar_related_award'){
 				$relatedPosts = get_sub_field('sidebar_related_award_post');
 				if (is_array($relatedPosts) && count($relatedPosts) > 0) {
-					$label = "Related Award";
+					$label = "About the Award";
 					if (count($relatedPosts) > 1) {
 						$label .= "s";
 					}
