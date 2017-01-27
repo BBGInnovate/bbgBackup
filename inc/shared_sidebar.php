@@ -185,8 +185,13 @@ if ( $includeSidebar ) {
 					}
 
 					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $label . '</h5>';
-					$s .='<div class="bbg__sidebar__primary">';	
+					$s .='<div class="bbg__sidebar__primary">';
+					$counter =0;	
 					foreach ($relatedPosts as $relatedPost) {
+						$counter++;
+						if ($counter > 1) {
+							$s .= "<br />";
+						}
 						$s .= getAwardInfo($relatedPost -> ID, false);	
 					}
 					$s .=  '</div>';	
