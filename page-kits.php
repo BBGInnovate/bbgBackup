@@ -315,7 +315,7 @@ get_header(); ?>
 			-->
 			<article class="bbg__article bbg__kits__section">
 				<div class="usa-grid">
-					<?php 
+					<?php
 						$includeInfoBox = get_post_meta( $post->ID, 'kits_include_info_box', true );
 						if ($includeInfoBox) {
 							$link = get_post_meta( $post->ID, 'kits_info_box_link', true );
@@ -723,7 +723,7 @@ get_header(); ?>
 										$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
 											$s .= '<h2 class="entry-title">' . $focusPageTitle . '</h2>';
 											$s .= '<p>' . $focusPageExcerpt . '</p>';
-											$s .= '<a href="' . $focusPageURL . ' class="bbg__kits__intro__more--link">Read more »</a>';
+											$s .= '<a href="' . $focusPageURL . '" class="bbg__kits__intro__more--link">Read more »</a>';
 										$s .= '</div>';
 									$s .= '</section>';
 								$s .= '</div>';
