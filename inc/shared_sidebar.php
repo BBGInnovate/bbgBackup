@@ -262,7 +262,7 @@ if ( $listsInclude ) {
 							$s .= '</select>';
 						$s .= '</form>';
 
-						$s .= '<button class="usa-button" id="downloadFile" style="width: 100%;">Download</button>';
+						$s .= '<button class="usa-button downloadFile" id="downloadFile" style="width: 100%;">Download</button>';
 					} else {
 						$sidebarDownloadsTitle = get_sub_field( 'sidebar_download_title' );
 						$sidebarDownloadsRows = get_sub_field( 'sidebar_downloads' );
