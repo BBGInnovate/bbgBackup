@@ -964,6 +964,10 @@ function toolbar_link_to_mypage( $wp_admin_bar ) {
 	}
 }
 
+function edit_admin_menus() {
+	remove_menu_page('edit-comments.php'); // Remove the Tools Menu
+}
+add_action( 'admin_menu', 'edit_admin_menus' );
 
 
 if ( function_exists ('acf_add_options_page') ) {
