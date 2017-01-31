@@ -37,16 +37,15 @@ get_header();
 			<div class="usa-grid">
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
-
 				</header><!-- .page-header -->
 			</div>
 
 			<div class="usa-grid-full">
 				<?php
-					if ($addFeaturedGallery) {
-						echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
-						$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
-						putUniteGallery($featuredGalleryID);
+					if ( $addFeaturedGallery ) {
+						echo "<div class='usa-grid-full bbg__article-featured__gallery'>";
+							$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
+							putUniteGallery($featuredGalleryID);
 						echo "</div>";
 					}
 				?>
@@ -54,35 +53,36 @@ get_header();
 
 			<?php
 				$hideFeaturedImage = FALSE;
-				if ($addFeaturedGallery) {
-					$hideFeaturedImage = true;
+
+				if ( $addFeaturedGallery ) {
+					$hideFeaturedImage = true; // Hide featured image if there's a gallery
 				}
-				if ($videoUrl != "") {
-					echo featured_video($videoUrl);
-					$hideFeaturedImage = TRUE;
+
+				if ( $videoUrl != "" ) {
+					echo featured_video( $videoUrl );
+					$hideFeaturedImage = TRUE; // Hide featured image if there's a video
 				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 					echo '<div class="usa-grid-full">';
-					$featuredImageClass = "";
-					$featuredImageCutline = "";
-					$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment'));
-					if ($thumbnail_image && isset($thumbnail_image[0])) {
-						$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-					}
+						$featuredImageClass = "";
+						$featuredImageCutline = "";
+						$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
 
-					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+						if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
+							$featuredImageCutline = $thumbnail_image[0] -> post_excerpt;
+						}
 
-					echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '">';
-					echo '</div>';
+						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-					// Caption for featured image
-					if ($featuredImageCutline != "") {
-						echo '<div class="usa-grid">';
-							echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
-						echo '</div> <!-- usa-grid -->';
-					}
+						// Output featured image
+						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerPosition . '"></div>';
 
-					echo '</div> <!-- usa-grid-full -->';
-
+						// Output caption for featured image
+						if ($featuredImageCutline != "") {
+							echo '<div class="usa-grid">';
+								echo '<div class="bbg__article-header__caption">$featuredImageCutline</div>';
+							echo '</div><!-- usa-grid -->';
+						}
+					echo '</div><!-- usa-grid-full -->';
 				}
 			?><!-- .bbg__article-header__thumbnail -->
 
@@ -590,7 +590,7 @@ get_header();
 				<!-- Entity list -->
 				<section id="entities" class="usa-section bbg__staff">
 					<div class="usa-grid">
-						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="List of all BBG broadcasters.">Our networks</a></h6>
+						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="List of all BBG broadcasters">Our networks</a></h6>
 						<div class="usa-intro bbg__broadcasters__intro">
 							<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
 						</div>
