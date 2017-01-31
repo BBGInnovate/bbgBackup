@@ -590,7 +590,7 @@ get_header();
 				<!-- Entity list -->
 				<section id="entities" class="usa-section bbg__staff">
 					<div class="usa-grid">
-						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'broadcasters' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
+						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="List of all BBG broadcasters.">Our networks</a></h6>
 						<div class="usa-intro bbg__broadcasters__intro">
 							<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
 						</div>
@@ -604,8 +604,6 @@ get_header();
 
 		</main>
 	</div><!-- #primary .content-area -->
-	<!-- <div id="secondary" class="widget-area" role="complementary">
-	</div> --><!-- #secondary .widget-area -->
 </div><!-- #main .site-main -->
 
 <?php get_footer(); ?>
