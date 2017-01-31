@@ -72,8 +72,8 @@ function register_custom_post_types() {
 		'labels'      => $labels,
 		'public'                => false,
 		'show_ui'	        => true,
-		'show_in_admin_bar'     => true,
-		'menu_position' => 5
+		'show_in_admin_bar'     => true
+		//,'menu_position' => 5
 		//'show_in_menu' => 'edit.php',
 	);
 	register_post_type( 'threat_to_press', $args );
