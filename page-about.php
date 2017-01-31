@@ -37,12 +37,12 @@ get_header();
 			<div class="usa-grid">
 				<header class="page-header">
 					<?php the_title( '<h5 class="bbg__label--mobile large">', '</h5>' ); ?>
-					
+
 				</header><!-- .page-header -->
 			</div>
-			
+
 			<div class="usa-grid-full">
-				<?php 
+				<?php
 					if ($addFeaturedGallery) {
 						echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
 						$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
@@ -221,9 +221,9 @@ get_header();
 
 							// show umbrella section intro text
 							if ($introText) {
-								echo "<div class='bbg__about__child__intro'>$introText</div>";	
+								echo "<div class='bbg__about__child__intro'>$introText</div>";
 							}
-							
+
 							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
 
 							if ( $umbrellaPages ) {
@@ -412,7 +412,7 @@ get_header();
 							if ($future_events_query->have_posts()) {
 								$officeEvent = true;
 								while ( $future_events_query->have_posts() ) {
-									$future_events_query->the_post(); 
+									$future_events_query->the_post();
 									$id = get_the_ID();
 									$eventDetail['url'] = get_the_permalink();
 									$eventDetail['title'] = get_the_title();
@@ -423,7 +423,7 @@ get_header();
 								}
 							}
 							$maxPosts = 4;
-						
+
 
 							$qParamsOffice=array(
 								'post_type' => array('post'),
@@ -604,9 +604,8 @@ get_header();
 
 		</main>
 	</div><!-- #primary .content-area -->
-	<div id="secondary" class="widget-area" role="complementary">
-	</div><!-- #secondary .widget-area -->
+	<!-- <div id="secondary" class="widget-area" role="complementary">
+	</div> --><!-- #secondary .widget-area -->
 </div><!-- #main .site-main -->
 
-<?php //get_sidebar(); ?>
 <?php get_footer(); ?>
