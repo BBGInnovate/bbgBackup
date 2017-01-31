@@ -259,7 +259,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
-require get_template_directory() . '/inc/bbg-custom-taxonomies.php';
+require get_template_directory() . '/inc/bbg-custom-post-types-and-taxonomies.php';
 require get_template_directory() . '/inc/bbg-functions-awards.php';
 require get_template_directory() . '/inc/bbg-functions-boardAndSeniorManagement.php';
 require get_template_directory() . '/inc/bbg-functions-bizOpps.php';
@@ -784,6 +784,36 @@ function getEntityLinks($entityID) {
 	}
 	return $g;
 }
+
+function register_custom_post_types() {
+	$labels = array(
+		'name'               => 'Threats to Press',
+		'singular_name'      => 'Threat to Press',
+		'menu_name'          => 'Threats to Press',
+		'name_admin_bar'     => 'Threats to Press',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Threat to Press',
+		'new_item'           => 'New Threat to Press',
+		'edit_item'          => 'Edit Threat to Press',
+		'view_item'          => 'View Recipe',
+		'all_items'          => 'Threats to Press',
+		'search_items'       => 'Search Threats to Press',
+		'parent_item_colon'  => 'Parent Threats to Press:',
+		'not_found'          => 'No Threats to Press found.',
+		'not_found_in_trash' => 'No Threats to Press found in Trash.'
+	);
+
+	$args = array( 
+		'labels'      => $labels,
+		'public'                => false,
+		'show_ui'	        => true,
+		'show_in_admin_bar'     => true
+		//'menu_position' => 5,
+		//'show_in_menu' => 'edit.php',
+	);
+	register_post_type( 'threat_to_press', $args );
+}
+add_action( 'init', 'register_custom_post_types' );
 
 /**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/
 add_action( 'init', 'my_add_excerpts_to_pages' );
