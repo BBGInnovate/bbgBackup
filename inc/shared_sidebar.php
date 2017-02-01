@@ -216,7 +216,7 @@ if ( $includeSidebar ) {
 					$s .= '<ul class="bbg__article-share ">';
 					$s .= '<li class="bbg__article-share__link twitter">';
 					$s .= '<a href="' . $widgetLink . '" title="Follow on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="">' . $widgetLinkLabel . '</span></a>';
-					$s . = '</li>';
+					$s .= '</li>';
 					$s .= '</ul>';
 
 					if ($widgetAuthor) {
