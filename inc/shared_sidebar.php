@@ -196,6 +196,20 @@ if ( $includeSidebar ) {
 					}
 					$s .=  '</div>';	
 				}
+			} else if (get_row_layout() == 'sidebar_twitter_widget'){
+				//create widgets @ https://twitter.com/settings/widgets
+				$widgetID = get_sub_field('sidebar_twitter_widget_id');
+				$widgetLabel = get_sub_field('sidebar_twitter_widget_label');
+				$widgetHashtag = get_sub_field('sidebar_twitter_widget_hashtag');
+
+				if ($widgetLabel) {
+					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $widgetLabel . '</h5>';
+				}
+				$s .= '<a data-chrome="noheader" class="twitter-timeline"  href="https://twitter.com/hashtag/' . $widgetHashtag . '" data-widget-id="' . $widgetID . '">#' . $widgetHashtag . ' Tweets</a>';
+				$s .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?';
+				$s .= "'http':'https'";
+				$s .= ';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>'
+          
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
