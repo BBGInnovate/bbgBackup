@@ -199,17 +199,35 @@ if ( $includeSidebar ) {
 			} else if (get_row_layout() == 'sidebar_twitter_widget'){
 				//create widgets @ https://twitter.com/settings/widgets
 				$widgetID = get_sub_field('sidebar_twitter_widget_id');
-				$widgetLabel = get_sub_field('sidebar_twitter_widget_label');
-				$widgetHashtag = get_sub_field('sidebar_twitter_widget_hashtag');
+				//$widgetLabel = get_sub_field('sidebar_twitter_widget_label');
 
-				if ($widgetLabel) {
-					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $widgetLabel . '</h5>';
+				$widgetHashtag = get_sub_field('sidebar_twitter_widget_hashtag');
+				$widgetAuthor = get_sub_field('sidebar_twitter_widget_author');
+
+				if ($widgetHashtag || $widgetAuthor) {
+					if ($widgetAuthor) {
+						$widgetLink = "https://twitter.com/$widgetAuthor";
+						$widgetLinkLabel = '@' . $widgetAuthor;
+					} else {
+						$widgetLink = "https://twitter.com/hashtag/$widgetHashtag";
+						$widgetLinkLabel = '#' . $widgetHashtag;
+					}
+					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">Follow on Twitter</h5>';
+					$s .= '<ul class="bbg__article-share ">';
+					$s .= '<li class="bbg__article-share__link twitter">';
+					$s .= '<a href="' . $widgetLink . '" title="Follow on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="">' . $widgetLinkLabel . '</span></a>';
+					$s . = '</li>';
+					$s .= '</ul>';
+
+					if ($widgetAuthor) {
+						$s .= '<a data-tweet-limit="2"  data-chrome="noheader nofooter noborders transparent noscrollbar" class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/' . $widgetAuthor . '">Tweets by ' . $widgetAuthor . '</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
+					} else if ($widgetHashtag) {
+						$s .= '<a data-chrome="noheader" class="twitter-timeline"  href="https://twitter.com/hashtag/' . $widgetHashtag . '" data-widget-id="' . $widgetID . '">#' . $widgetHashtag . ' Tweets</a>';
+						$s .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?';
+						$s .= "'http':'https'";
+						$s .= ';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+					}
 				}
-				$s .= '<a data-chrome="noheader" class="twitter-timeline"  href="https://twitter.com/hashtag/' . $widgetHashtag . '" data-widget-id="' . $widgetID . '">#' . $widgetHashtag . ' Tweets</a>';
-				$s .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?';
-				$s .= "'http':'https'";
-				$s .= ';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-          
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
