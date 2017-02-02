@@ -43,8 +43,10 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   $showTags=false;
   if (isset($_GET['qtags']) ) {
     $showTags=true;
-    $tags = array($_GET['qtags']);  
-    
+    $tags = array();  
+    foreach($_GET['qtags'] as $t) {
+      $tags[] = $t;
+    }
     $qParams['tag__and'] = $tags;
 
     $tagsDisplay = get_tags(array('include' => $tags));
@@ -61,8 +63,10 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   $showCats=false;
   if (isset($_GET['qcats']) ) {
     $showCats=true;
-    $cats = array($_GET['qcats']);
-    
+    $cats = array();
+    foreach($_GET['qcats'] as $c) {
+      $cats[] = $c;
+    }
     $qParams['category__and'] = $cats;
 
     $catsDisplay = get_categories(array('include' => $cats));
@@ -104,13 +108,13 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
 <form method="get">
         <?php 
           $categoryList = wp_dropdown_categories('echo=0&show_count=1&orderby=name&id=qcats&name=qcats'); 
-          $categoryList = str_replace( "<select name='qcats'", "<select multiple name='qcats[]'", $categoryList );
+          $categoryList = str_replace( "<select  name='qcats'", "<select multiple name='qcats[]'", $categoryList );
           echo "<h3>Categories</h3>";
           echo $categoryList; 
           echo "<BR><BR>";
 
           $tagList = wp_dropdown_categories('taxonomy=post_tag&show_count=1&orderby=name&id=qtags&echo=0&name=qtags');
-          $tagList = str_replace( "<select name='qtags'", "<select multiple name='qtags[]'", $tagList );
+          $tagList = str_replace( "<select  name='qtags'", "<select multiple name='qtags[]'", $tagList );
            echo "<h3>Tags</h3>";
           echo $tagList;
           wp_enqueue_style( 'bbginnovate-style-fonts2', "");
