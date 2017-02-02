@@ -136,7 +136,7 @@ function ttp_table_content( $column_name, $post_id ) {
 add_filter( 'manage_edit-threat_to_press_sortable_columns', 'sortableThreatsCols' );
 function sortableThreatsCols( $sortable_columns ) {
    $sortable_columns[ 'threats_to_press_country' ] = 'threats_to_press_country';
-   $sortable_columns[ 'threats_to_press_status' ] = 'threats_to_press_status';
+  // $sortable_columns[ 'threats_to_press_status' ] = 'threats_to_press_status';
    return $sortable_columns;
 }
 add_action( 'pre_get_posts', 'ttp_orderby' );
