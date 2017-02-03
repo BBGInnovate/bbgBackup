@@ -537,7 +537,7 @@ get_header();
 						<?php
 						echo '</section>';
 						/*** END DISPLAY OF OFFICE ROW ***/
-						}
+						endif;
 					endwhile;
 					echo '<!-- END ROWS -->';
 				endif;
