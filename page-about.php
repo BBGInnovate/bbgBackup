@@ -344,7 +344,7 @@ get_header();
 								echo '<div class="bbg__announcement__flexbox" name="' . $labelText . '">'; // open ribbon container and set div name to $labelText
 
 									if ( $imageURL ) { // Output image thumbnail if set
-										echo '<div class="bbg__announcement__photo" style="background-image: url($imageURL);"></div>';
+										echo '<div class="bbg__announcement__photo" style="background-image: url(' . $imageURL . ');"></div>';
 									}
 
 									echo '<div>'; // Open ribbon text container
