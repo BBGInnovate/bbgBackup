@@ -389,6 +389,7 @@ get_header();
 							);
 							$future_events_query = new WP_Query( $qParamsUpcoming );
 							$eventDetail = [];
+
 							if ( $future_events_query -> have_posts() ) {
 								$officeEvent = true;
 								while ( $future_events_query -> have_posts() ) {
@@ -417,6 +418,7 @@ get_header();
 							$state = get_field( 'agency_state', 'options', 'false' );
 							$zip = get_field( 'agency_zip', 'options', 'false' );
 							$address = "";
+
 							if ( $street != "" && $city != "" && $state != "" && $zip != "" ) {
 								$address = $street . '<br/>' . $city . ', ' . $state . ' ' . $zip;
 
@@ -535,7 +537,7 @@ get_header();
 						<?php
 						echo '</section>';
 						/*** END DISPLAY OF OFFICE ROW ***/
-						endif;
+						}
 					endwhile;
 					echo '<!-- END ROWS -->';
 				endif;
