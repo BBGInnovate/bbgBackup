@@ -102,21 +102,19 @@ get_header();
 
 					/* @Check if number of pages is odd or even
 					*  Return BOOL (true/false) */
-					function checkNum($pageTotal) {
-						return ( $pageTotal%2 ) ? TRUE : FALSE;
+					function checkNum( $pageTotal ) {
+						return ( $pageTotal % 2 ) ? TRUE : FALSE;
 					}
 
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
-						if ( get_row_layout() != 'about_ribbon_page') {
-							// we wrap a  usa-grid container around every row.
-							echo '<!-- ROW ' . $counter . '-->';
-							echo '<section class="usa-grid-full bbg__about__children--row">';
+						if ( get_row_layout() != 'about_ribbon_page' ) { // Check if row is a ribbon
+							echo '<!-- ROW ' . $counter . '-->'; // Add row counter
+							echo '<section class="usa-grid-full bbg__about__children--row">'; // Wrap row in usa-grid container
 						} else {
-							// we wrap a  usa-grid container around every row.
-							echo '<!-- ROW ' . $counter . '-->';
-							echo '<section class="usa-grid-full bbg__about__children--row bbg__ribbon--thin">';
+							echo '<!-- ROW ' . $counter . '-->'; // Add row counter
+							echo '<section class="usa-grid-full bbg__about__children--row bbg__ribbon--thin">'; // Add ribbon row class
 						}
 
 						if ( get_row_layout() == 'about_multicolumn' ):
@@ -133,36 +131,37 @@ get_header();
 							}
 
 							foreach ( $relatedPages as $rPage ) {
-								$rPageHeadline = $rPage->headline;
-								$rPageTagline = $rPage->page_tagline;
-								$rPageDescription = $rPage->about_include_exerpt;
-								$rPageExcerpt = my_excerpt( $rPage->ID );
+								$rPageHeadline = $rPage -> headline;
+								$rPageTagline = $rPage -> page_tagline;
+								$rPageDescription = $rPage -> about_include_exerpt;
+								$rPageExcerpt = my_excerpt( $rPage -> ID );
 								$rPageExcerpt = apply_filters( 'the_content', $rPageExcerpt );
 								$rPageExcerpt = str_replace( ']]>', ']]&gt;', $rPageExcerpt );
 
+								// Set up query based on ID
 								$qParams = array(
 									'post_type' => 'page',
 									'post_status' => 'publish',
-									'post__in' => array( $rPage->ID )
+									'post__in' => array( $rPage -> ID )
 								);
 
-								query_posts( $qParams );
+								query_posts( $qParams ); // Run query
 
 								if ( have_posts() ) {
 									while ( have_posts() ) {
 										the_post();
 
 										if ( get_the_title() == "Mission" ) {
-											$pageTotal = $pageTotal - 1;
+											$pageTotal = $pageTotal - 1; // Lower page count if Mission page included
 										}
 
 										// Check if total number of pages is odd or even
 										if ( checkNum($pageTotal) === TRUE ) {
 											// if TRUE: number is odd
-											$gridClass = 'bbg-grid--1-3-3';
+											$gridClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 										} else {
 											// if FALSE: number is even
-											$gridClass = 'bbg-grid--1-2-2';
+											$gridClass = 'bbg-grid--1-2-2'; // add 2-col grid class
 										}
 										$grids = $gridClass; // pass grid class variable
 
@@ -174,7 +173,7 @@ get_header();
 										$includePageDescription = $rPageDescription;
 										get_template_part( 'template-parts/content-about', get_post_format() );
 
-										if ( get_the_title() == "Mission" ) {
+										if ( get_the_title() == "Mission" ) { // Close Mission row if present
 											echo "</section>";
 											echo '<section class="usa-grid-full bbg__about__children--row">';
 										}
@@ -182,209 +181,190 @@ get_header();
 								}
 								wp_reset_query();
 							}
-
-						echo "</section>";
+						echo '</section>';
 						/*** END DISPLAY OF ENTIRE MULTICOLUMN ROW ***/
 
 						elseif ( get_row_layout() == 'about_umbrella_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
-							$umbrellaPages = get_sub_field('about_umbrella_related_pages');
-							$pageTotal = count ( $umbrellaPages );
+							$umbrellaPages = get_sub_field( 'about_umbrella_related_pages' );
+							$pageTotal = count ( $umbrellaPages ); // count page total
 
-							// Check function return
+							// Check if page count is even or odd
 							if ( checkNum($pageTotal) === TRUE ) {
 								// if TRUE: number is odd
-								$containerClass = 'bbg-grid--1-3-3';
+								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 							} else {
 								// if FALSE: number is even
-								$containerClass = 'bbg-grid--1-2-2';
+								$containerClass = 'bbg-grid--1-2-2'; // add 2-col grid class
 							}
 
 							$labelText = get_sub_field('about_umbrella_label');
 							$labelLink = get_sub_field('about_umbrella_label_link');
 							$introText = get_sub_field('about_umbrella_intro_text');
-							// $imageURL = get_sub_field('about_umbrella_image');
 
 							//allow shortcodes in intro text
-							$introText = apply_filters('the_content', $introText);
-							$introText = str_replace(']]>', ']]&gt;', $introText);
+							$introText = apply_filters( 'the_content', $introText );
+							$introText = str_replace( ']]>', ']]&gt;', $introText );
 
-							if ($labelLink) {
-								echo "<h6 class='bbg__label'><a href='$labelLink'>$labelText</a> <span class='bbg__links--right-angle-quote' aria-hidden=”true”>&raquo;</span></h6>";
-							} else {
-								echo "<h6 class='bbg__label'>$labelText</h6>";
+							if ($labelLink) { // if the label has a URL add link and right arrow
+								echo '<h6 class="bbg__label"><a href="$labelLink">$labelText</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span></h6>';
+							} else { // else only show label
+								echo '<h6 class="bbg__label">$labelText</h6>';
 							}
 
-							/*if ($imageURL) {
-								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $imageURL .  "); height: 100%; min-height: 150px;'></div>";
-							}*/
-
-							// show umbrella section intro text
+							// Output umbrella section intro text
 							if ($introText) {
-								echo "<div class='bbg__about__child__intro'>$introText</div>";
+								echo '<div class="bbg__about__child__intro">$introText</div>';
 							}
 
-							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
+							// Output grandchild pages (subpages)
+							echo '<div class="usa-grid-full bbg__about__grandchildren">';
+								if ( $umbrellaPages ) {
+									// Loop through all the grandchild pages
+									foreach ( $umbrellaPages as $rp ) {
+										// Define all variables
+										$url = get_the_permalink( $rp -> ID );
+										$title = get_the_title( $rp ->  ID);
+										$headline = $rp -> headline;
+										$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp -> ID) , 'medium-thumb' );
+										$thumbPosition = $rp -> adjust_the_banner_image;
+										$excerpt = my_excerpt( $rp -> ID );
+										$excerpt = $excerpt . '<a href="$url" class="bbg__about__grandchild__link">Read more »</a>';
+										$excerpt = apply_filters( 'the_content', $excerpt );
+										$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 
-							if ( $umbrellaPages ) {
-								// Loop through all the grandchild pages
-								foreach ($umbrellaPages as $rp) {
-									// Define all variables
-									$url = get_the_permalink($rp->ID);
-									$title = get_the_title($rp->ID);
-									$headline = $rp->headline;
-									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp->ID) , 'medium-thumb' );
-									$thumbPosition = $rp->adjust_the_banner_image;
-									$excerpt = my_excerpt($rp->ID);
-									$excerpt = $excerpt . " <a href='$url' class='bbg__about__grandchild__link'>Read more »</a>";
-									$excerpt = apply_filters('the_content', $excerpt);
-									$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+										// Output variables
+										echo '<article class="$containerClass bbg__about__grandchild">';
+											if ( $headline ) { // Insert headline if set on the page
+												echo '<h3 class="bbg__about__grandchild__title"><a href="$url">$headline</a></h3>';
+											} else { // else use the page title
+												echo '<h3 class="bbg__about__grandchild__title"><a href="$url">$title</a></h3>';
+											}
 
-									// Output variables in HTML format
-									echo "<article class='$containerClass bbg__about__grandchild'>";
-
-									if ( $headline ) {
-										echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$headline</a></h3>";
-									} else {
-										echo "<h3 class='bbg__about__grandchild__title'><a href='$url'>$title</a></h3>";
+											if ( $thumbSrc ) { // Add thumbnail if set
+												echo '<a href="$url"><div class="bbg__about__grandchild__thumb" style="background-image: url( . $thumbSrc[0]' .  '); background-position:'  . $thumbPosition . ';"></div></a>';
+											}
+											echo $excerpt; // Output page excerpt
+										echo '</article>';
 									}
-
-									if ($thumbSrc) {
-										echo "<a href='$url'><div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] .  "); background-position: " . $thumbPosition . ";'></div></a>";
-									}
-									echo $excerpt;
-									echo "</article>";
 								}
-							}
 							echo '</div>';
 						echo '</section>';
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 
 						elseif ( get_row_layout() == 'about_downloads_files' ):
 						/*** BEGIN DISPLAY OF DOWNLOAD LINKS ROW ***/
-							$downloadFiles = get_sub_field('about_downloads_file');
-							$totalFiles = count ( $downloadFiles );
+							$downloadFiles = get_sub_field( 'about_downloads_file' );
+							$totalFiles = count ( $downloadFiles ); // count number of files
 
 							// Check function return
-							if ( checkNum($totalFiles) === TRUE ) {
+							if ( checkNum( $totalFiles ) === TRUE ) {
 								// if TRUE: number is odd
-								$containerClass = 'bbg-grid--1-3-3';
+								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 							} else {
 								// if FALSE: number is even
-								$containerClass = 'bbg-grid--1-2-2';
+								$containerClass = 'bbg-grid--1-2-2'; // add 2-col grid class
 							}
 
-							$downloadsLabel = get_sub_field('about_downloads_label');
-							// $downloadsImage = get_sub_field('about_downloads_image');
+							$downloadsLabel = get_sub_field( 'about_downloads_label' );
 							$downloadsIntro = get_sub_field('about_downloads_description');
 
-							//allow shortcodes in intro text
-							$downloadsIntro = apply_filters('the_content', $downloadsIntro);
-							$downloadsIntro = str_replace(']]>', ']]&gt;', $downloadsIntro);
+							// Allow shortcodes in intro text
+							$downloadsIntro = apply_filters( 'the_content', $downloadsIntro );
+							$downloadsIntro = str_replace( ']]>', ']]&gt;', $downloadsIntro );
 
-							if ($downloadsLabel) {
-								echo "<h6 class='bbg__label'>$downloadsLabel</h6>";
+							if ( $downloadsLabel ) { // Output label if set
+								echo '<h6 class="bbg__label">$downloadsLabel</h6>';
 							}
 
-							// show section image
-							/*if ($downloadsImage) {
-								// echo $downloadsImage;
-								echo "<div class='single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium' style='background-image: url(" . $downloadsImage .  "); height: 100%; min-height: 150px;'></div>";
-							}*/
+							// Output downloads section intro text
+							echo '<div class="bbg__about__child__intro">$downloadsIntro</div>';
 
-							// show umbrella section intro text
-							echo "<div class='bbg__about__child__intro'>$downloadsIntro</div>";
-							echo "<div class='usa-grid-full bbg__about__grandchildren'>";
+							// Output grandchild pages (subpages)
+							echo '<div class="usa-grid-full bbg__about__grandchildren">';
+								if ( $downloadFiles ) {
+									// Loop through all the grandchild pages
+									foreach ($downloadFiles as $file) {
+										// Define all variables
+										$fileName = $file['downloads_link_name'];
+										$fileImageObject = $file['downloads_file_image'];
+											// retrieve ID from image object and load "mugshot" size
+											$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'mugshot' );
+										$fileDescription = $file['downloads_file_description'];
+										$fileDescription = apply_filters( 'the_content', $fileDescription );
+										$fileDescription = str_replace( ']]>', ']]&gt;', $fileDescription );
 
-							if ( $downloadFiles ) {
-								// Loop through all the grandchild pages
-								foreach ($downloadFiles as $file) {
-									// Define all variables
-									$fileName = $file['downloads_link_name'];
-									// $fileURL = $file['downloads_file'];
-									$fileImageObject = $file['downloads_file_image'];
-										// retrieve ID from image object and load "mugshot" size
-										$thumbSrc = wp_get_attachment_image_src( $fileImageObject['ID'] , 'mugshot' );
-									$fileDescription = $file['downloads_file_description'];
-									$fileDescription = apply_filters('the_content', $fileDescription);
-									$fileDescription = str_replace(']]>', ']]&gt;', $fileDescription);
+										// Create array from file object
+										$fileObj = $file['downloads_file'];
+											// Define variables
+											$fileID = $fileObj['ID'];
+											$fileURL = $fileObj['url'];
+											$file = get_attached_file( $fileID );
+											$fileExt = strtoupper( pathinfo( $file, PATHINFO_EXTENSION ) ); // set extension to uppercase
+											$fileSize = formatBytes( filesize( $file ) ); // file size
 
-									// Files object array
-									$fileObj = $file['downloads_file'];
-										// file data
-										$fileID = $fileObj['ID'];
-										$fileURL = $fileObj['url'];
-										$file = get_attached_file( $fileID );
-										$fileExt = strtoupper( pathinfo($file, PATHINFO_EXTENSION) );
-										$fileSize = formatBytes( filesize($file) );
-
-									// Output variables in HTML format
-									echo "<article class='$containerClass bbg__about__grandchild'>";
-										// Output file title/name
-										echo "<h3 class='bbg__about__grandchild__title'><a href='" . $fileURL . "' target='_blank'>" . $fileName ."</a> <span class='bbg__file-size'>(" . $fileExt . ", " . $fileSize . ")</span></h3>";
-										// Output file image
-										if ( $thumbSrc ) {
-											echo "<a href='" . $fileURL . "' target='_blank'>";
-												echo "<div class='bbg__about__grandchild__thumb' style='background-image: url(" . $thumbSrc[0] . ");'></div>";
-											echo "</a>";
-										}
-										// Output file description
-										if ( $fileDescription ) {
-											echo $fileDescription;
-										}
-									echo "</article>";
+										// Output variables
+										echo '<article class="$containerClass bbg__about__grandchild">';
+											// Output file title/name
+											echo '<h3 class="bbg__about__grandchild__title"><a href="' . $fileURL . '" target="_blank">' . $fileName . '</a> <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span></h3>';
+											// Output file thumbnail
+											if ( $thumbSrc ) {
+												echo '<a href="' . $fileURL . '" target="_blank">';
+													echo '<div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc[0] . ');"></div>';
+												echo '</a>';
+											}
+											// Output file description
+											if ( $fileDescription ) {
+												echo $fileDescription;
+											}
+										echo '</article>';
+									}
 								}
-							}
 							echo '</div>';
 						echo '</section>';
 						/*** END DISPLAY OF DOWNLOAD LINKS ROW ***/
 
 						elseif( get_row_layout() == 'about_ribbon_page' ):
 						/*** BEGIN DISPLAY OF ENTIRE RIBBON ROW ***/
-							$labelText = get_sub_field('about_ribbon_label');
-							$labelLink = get_sub_field('about_ribbon_label_link');
-							$headlineText = get_sub_field('about_ribbon_headline');
-							$headlineLink = get_sub_field('about_ribbon_headline_link');
-							$summary = get_sub_field('about_ribbon_summary');
-							$imageURL = get_sub_field('about_ribbon_image');
+							// Set variables
+							$labelText = get_sub_field( 'about_ribbon_label' );
+							$labelLink = get_sub_field( 'about_ribbon_label_link' );
+							$headlineText = get_sub_field( 'about_ribbon_headline' );
+							$headlineLink = get_sub_field( 'about_ribbon_headline_link' );
+							$summary = get_sub_field( 'about_ribbon_summary' );
+							$imageURL = get_sub_field( 'about_ribbon_image' );
 
 							// allow shortcodes in intro text
-							$summary = apply_filters('the_content', $summary);
-							$summary = str_replace(']]>', ']]&gt;', $summary);
+							$summary = apply_filters( 'the_content', $summary );
+							$summary = str_replace( ']]>', ']]&gt;', $summary );
 
-							// echo "<section id='ribbon-children' class='usa-section bbg__about__children bbg__ribbon--thin'>"; // Open new child div
-							// echo "<!-- RIBBON: ROW $counter-->"; // add row count
-							// echo "<section class='usa-section bbg__ribbon--thin'>"; // open ribbon container
+							echo '<div class="usa-grid">';
+								echo '<div class="bbg__announcement__flexbox">';
 
-							echo "<div class='usa-grid'>";
-								echo "<div class='bbg__announcement__flexbox'>";
-
-									if ($imageURL) {
-										echo "<div class='bbg__announcement__photo' style='background-image: url($imageURL);'></div>";
+									if ( $imageURL ) { // Output image thumbnail if set
+										echo '<div class="bbg__announcement__photo" style="background-image: url($imageURL);"></div>';
 									}
 
-									echo "<div>";
-
-										if ($labelLink) {
-											echo "<h6 class='bbg__label'><a href='" . get_permalink($labelLink) . "'>$labelText</a></h6>";
-										} else {
-											echo "<h6 class='bbg__label'>$labelText</h6>";
+									echo '<div>';
+										if ( $labelLink ) { // Output label with link if set
+											echo '<h6 class="bbg__label"><a href="' . get_permalink($labelLink) . '">$labelText</a></h6>';
+										} else { // Else output link only
+											echo '<h6 class="bbg__label">$labelText</h6>';
 										}
 
-										if ($headlineLink) {
-											echo "<h2 class='bbg__announcement__headline'><a href='" . get_permalink($headlineLink) . "'>$headlineText</a></h2>";
-										} else {
-											echo "<h2 class='bbg__announcement__headline'>$headlineText</h2>";
+										if ( $headlineLink ) { // Output headline with link if set
+											echo '<h2 class="bbg__announcement__headline"><a href="' . get_permalink($headlineLink) . '">$headlineText</a></h2>';
+										} else { // Else output headline only
+											echo '<h2 class="bbg__announcement__headline">$headlineText</h2>';
 										}
 
 										echo $summary;
-
-									echo "</div>";
-								echo "</div><!-- .bbg__announcement__flexbox -->";
-							echo "</div><!-- .usa-grid -->";
-							// echo "</section>";
-						echo "</section>";
+									echo '</div>';
+								echo '</div><!-- .bbg__announcement__flexbox -->';
+							echo '</div><!-- .usa-grid -->';
+						echo '</section>';
 						/*** END DISPLAY OF ENTIRE RIBBON ROW ***/
+
 						elseif ( get_row_layout() == 'about_office' ):
 						/*** BEGIN DISPLAY OF OFFICE ROW ***/
 							$officeTag = get_sub_field('office_tag');
@@ -450,6 +430,8 @@ get_header();
 								$address = '<p itemprop="address" aria-label="address"><a href="'. $mapLink . '">' . $address . '</a></p>';
 							}
 							$tagLink = get_tag_link($officeTag[0]->term_id);
+						echo '</section>';
+						/*** END DISPLAY OF OFFICE ROW ***/
 						?>
 							<style>
 								.bbg-blog__officeEvent-label { margin-top:15px !important; }
