@@ -429,8 +429,8 @@ get_header();
 								$address = '<p itemprop="address" aria-label="address"><a href="'. $mapLink . '">' . $address . '</a></p>';
 							}
 							$tagLink = get_tag_link( $officeTag[0] -> term_id );
-						echo '</section>';
-						/*** END DISPLAY OF OFFICE ROW ***/
+						/*echo '</section>';
+						** END DISPLAY OF OFFICE ROW ***/
 						?>
 							<style>
 								.bbg-blog__officeEvent-label { margin-top:15px !important; }
