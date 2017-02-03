@@ -429,8 +429,6 @@ get_header();
 								$address = '<p itemprop="address" aria-label="address"><a href="'. $mapLink . '">' . $address . '</a></p>';
 							}
 							$tagLink = get_tag_link( $officeTag[0] -> term_id );
-						/*echo '</section>';
-						** END DISPLAY OF OFFICE ROW ***/
 						?>
 							<style>
 								.bbg-blog__officeEvent-label { margin-top:15px !important; }
@@ -476,12 +474,13 @@ get_header();
 																if ( $counter > 1 ) {
 																	$includeImage = false;
 																	$includeMeta = false;
+
 																	if ( $counter == 2 ) {
 																		echo '</div><div class="usa-width-one-half tertiary-stories">';
+																	} elseif ( $counter == 1 ) {
+																		$includePortfolioDescription = false;
+																		get_template_part( 'template-parts/content-portfolio', get_post_format() );
 																	}
-																} elseif ( $counter == 1 ) {
-																	$includePortfolioDescription = false;
-																	get_template_part( 'template-parts/content-portfolio', get_post_format() );
 																} else {
 																	get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 																}
@@ -534,6 +533,7 @@ get_header();
 								</div>
 							</article>
 						<?php
+						echo '</section>';
 						/*** END DISPLAY OF OFFICE ROW ***/
 						endif;
 					endwhile;
