@@ -379,7 +379,7 @@
 
 			@include media($medium-large-screen) {
 				margin: 0 -50% 5rem;
-				max-width: none;
+				max-width: 99.9vw;
 
 				.bbg__announcement__flexbox {
 					.bbg__announcement__headline,
