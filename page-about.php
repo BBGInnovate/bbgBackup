@@ -236,7 +236,7 @@ get_header();
 										$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 
 										// Output variables
-										echo '<article class="$containerClass bbg__about__grandchild">';
+										echo '<article class="' . $containerClass . ' bbg__about__grandchild">';
 											if ( $headline ) { // Insert headline if set on the page
 												echo '<h3 class="bbg__about__grandchild__title"><a href="' . $url . '">' . $headline . '</a></h3>';
 											} else { // else use the page title
