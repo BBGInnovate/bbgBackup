@@ -200,23 +200,23 @@ get_header();
 								$containerClass = 'bbg-grid--1-2-2'; // add 2-col grid class
 							}
 
-							$labelText = get_sub_field('about_umbrella_label');
-							$labelLink = get_sub_field('about_umbrella_label_link');
-							$introText = get_sub_field('about_umbrella_intro_text');
+							$labelText = get_sub_field( 'about_umbrella_label' );
+							$labelLink = get_sub_field( 'about_umbrella_label_link' );
+							$introText = get_sub_field( 'about_umbrella_intro_text' );
 
 							// allow shortcodes in intro text
 							$introText = apply_filters( 'the_content', $introText );
 							$introText = str_replace( ']]>', ']]&gt;', $introText );
 
 							if ( $labelLink ) { // if the label has a URL add link and right arrow
-								echo '<h6 class="bbg__label"><a href="$labelLink">$labelText</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span></h6>';
+								echo '<h6 class="bbg__label"><a href="' . $labelLink . '">' . $labelText . '</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span></h6>';
 							} else { // else only show label
-								echo '<h6 class="bbg__label">$labelText</h6>';
+								echo '<h6 class="bbg__label">' . $labelText . '</h6>';
 							}
 
 							// Output umbrella section intro text
 							if ( $introText ) {
-								echo '<div class="bbg__about__child__intro">$introText</div>';
+								echo '<div class="bbg__about__child__intro">' . $introText . '</div>';
 							}
 
 							// Output grandchild pages (subpages)
@@ -231,20 +231,20 @@ get_header();
 										$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp -> ID) , 'medium-thumb' );
 										$thumbPosition = $rp -> adjust_the_banner_image;
 										$excerpt = my_excerpt( $rp -> ID );
-										$excerpt = $excerpt . '<a href="$url" class="bbg__about__grandchild__link">Read more »</a>';
+										$excerpt = $excerpt . '<a href="' . $url . '" class="bbg__about__grandchild__link">Read more »</a>';
 										$excerpt = apply_filters( 'the_content', $excerpt );
 										$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 
 										// Output variables
 										echo '<article class="$containerClass bbg__about__grandchild">';
 											if ( $headline ) { // Insert headline if set on the page
-												echo '<h3 class="bbg__about__grandchild__title"><a href="$url">$headline</a></h3>';
+												echo '<h3 class="bbg__about__grandchild__title"><a href="' . $url . '">' . $headline . '</a></h3>';
 											} else { // else use the page title
-												echo '<h3 class="bbg__about__grandchild__title"><a href="$url">$title</a></h3>';
+												echo '<h3 class="bbg__about__grandchild__title"><a href="' . $url . '">' . $title . '</a></h3>';
 											}
 
 											if ( $thumbSrc ) { // Add thumbnail if set
-												echo '<a href="$url"><div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc[0] .  '); background-position:'  . $thumbPosition . ';"></div></a>';
+												echo '<a href="' . $url . '"><div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc[0] .  '); background-position:'  . $thumbPosition . ';"></div></a>';
 											}
 											echo $excerpt; // Output page excerpt
 										echo '</article>';
