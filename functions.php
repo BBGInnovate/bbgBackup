@@ -765,6 +765,13 @@ function acf_load_committee_member_choices( $field ) {
 add_filter('acf/load_field/name=committee_members', 'acf_load_committee_member_choices');
 add_filter('acf/load_field/name=committee_chair', 'acf_load_committee_member_choices');
 
+function fallen_journalist_field_filter( $args, $field, $post_id ) {
+	$threatsPage = get_page_by_path( 'threats-to-press' );
+	$args['post_parent'] = $threatsPage->ID;
+	return $args;
+}
+add_filter('acf/fields/relationship/query/name=fallen_journalists_section', 'fallen_journalist_field_filter', 10, 3);
+
 function getEntityLinks($entityID) {
 	$url="https://api.bbg.gov/api/subgroups?group=".$entityID;
 	$feedFilepath = get_template_directory() . "/external-feed-cache/subgroupscache_".$entityID.".json";
