@@ -1348,8 +1348,8 @@ article {
 	}
 
 	@include media($large-screen) {
-		margin: 0px -19%;
-		max-width: 99.9vw;
+		margin: 0 -50%;
+		max-width: none;
 	}
 
 	.bbg__label {
