@@ -282,7 +282,10 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 
 						?>
-					<?php endwhile; ?>
+					<?php endwhile; 
+						wp_reset_postdata();
+						wp_reset_query();
+					?>
 					</div><!-- .bbg-grid right column -->
 				</div><!-- .usa-grid -->
 			</section>
@@ -298,7 +301,80 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 
 					<div class="usa-grid">
 						<div id="memorialWall">
-							<?php echo $wall; ?>
+							<?php 
+
+								$fallenJournalists = get_field('fallen_journalists_section');
+								$wall = "";
+								if( $fallenJournalists ) {
+									foreach( $fallenJournalists as $j ) {
+										$id = $j->ID;
+										$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
+										$date = get_field('profile_date_of_passing', $id, true); 
+										$link = get_the_permalink($id);
+										$name = get_the_title($id);
+										/*** Get the profile photo mugshot ***/
+										$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
+										$profilePhoto = "";
+										if ($profilePhotoID) {
+											$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+											$mugshot = $profilePhoto[0];
+										}
+										$altText = "";
+										$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
+
+										if ($link != "") {
+											$journalistName = '<a href="' . $link . '">' . $name . "</a>";
+											$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
+										} else {
+											$journalistName = $name;
+										}
+
+										$journalist = "";
+										$journalist .= '<div class="bbg__profile-grid__profile">';
+										$journalist .= $imgSrc;
+										$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
+										$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
+										$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
+										$journalist .= '</div>';
+										$wall .= $journalist;
+									}
+								}
+								echo $wall;
+
+								// <?php
+								// for ( $i=0; $i < count($threats); $i++ ) {
+								// 	$t = &$threats[$i];
+								// 	$mugshot = $t['mugshot'];
+								// 	$link = $t['link'];
+								// 	$name = $t['name'];
+								// 	$date = $t['date'];
+								// 	$status = $t['status'];
+								// 	if ( $status == "Killed" ){
+								// 		if ( $mugshot == "" ) {
+								// 			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
+								// 			$altText = "";
+								// 		} else {
+								// 			$altText = "Photo of $name";
+								// 		}
+								// 		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
+								// 		if ($link != "") {
+								// 			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
+								// 			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
+								// 		} else {
+								// 			$journalistName = $name;
+								// 		}
+								// 		$journalist = "";
+								// 		$journalist .= '<div class="bbg__profile-grid__profile">';
+								// 		$journalist .= $imgSrc;
+								// 		$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
+								// 		$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
+								// 		$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
+								// 		$journalist .= '</div>';
+								// 		$wall .= $journalist;
+								// 	}
+								// }
+							?>
+
 						</div>
 					</div>
 				</div>
