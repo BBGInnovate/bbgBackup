@@ -515,7 +515,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 					}
 					//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
 					//if (displayMode=='select') {
-						centerMap();	
+					//	centerMap();	
 					//}
 					
 				}
