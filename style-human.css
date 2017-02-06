@@ -8293,7 +8293,7 @@ div.appropriations-small > p.header {
 @media screen and (min-width: 900px) {
   .bbg__kits__section .bbg__kits__section--row.bbg__ribbon--thin {
     margin: 0 -50% 5rem;
-    max-width: none;
+    max-width: 99.9vw;
   }
   .bbg__kits__section .bbg__kits__section--row.bbg__ribbon--thin .bbg__announcement__flexbox .bbg__announcement__headline,
   .bbg__kits__section .bbg__kits__section--row.bbg__ribbon--thin .bbg__announcement__flexbox p {
