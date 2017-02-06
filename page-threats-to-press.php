@@ -8,21 +8,54 @@
   template name: Threats to Press
  */
 
+function getThreatsCustomPosts($trailingDays) {
+	/* get two of the most recent 6 impact posts for use on the homepage */
+	$qParams = array(
+		'post_type'=> 'threat_to_press',
+		'post_status' => 'publish',
+		'orderby' => 'post_date',
+		'order' => 'desc',
+		'posts_per_page' => -1,
+		'date_query' => array(
+	        array(
+	            'after' => "$trailingDays days ago"
+	        )
+	    )
+	);
 
-/****** BEGIN HELPER FUNCTION SORT BY DATE ****/
-function threatDateCompare($a, $b) {
-	$t1 = ($a['dateTimestamp']);
-	$t2 = ($b['dateTimestamp']);
-	return $t2 - $t1;
+	$custom_query = new WP_Query( $qParams );
+	
+	$threats = array();
+	if ( $custom_query->have_posts() ) :
+		while ( $custom_query->have_posts() ) : $custom_query->the_post();
+			$id = get_the_ID();
+			$country = get_post_meta( $id, 'threats_to_press_country', true );
+			$targetNames = get_post_meta( $id, 'threats_to_press_target_names', true );
+			$networks = get_post_meta( $id, 'threats_to_press_network', true );
+			$coordinates = get_post_meta( $id, 'threats_to_press_coordinates', true );
+			$status = get_post_meta( $id, 'threats_to_press_status', true );
+			$link = get_post_meta( $id, 'threats_to_press_link', true );
+			
+			$t = array(
+				'country' => $country,
+				'name' => $targetNames,
+				'date' => get_the_date(),
+				'year' => get_the_date('Y'),
+				'status' => $status,
+				'description' => get_the_content(),
+				'mugshot' => '',
+				'network' => $networks,
+				'link' => $link,
+				'latitude' => $coordinates['lat'],
+				'longitude' => $coordinates['lng'],
+				'headline' => get_the_title()
+			);
+			$threats[] = $t;
+		endwhile;
+	endif;
+	
+	return $threats;
 }
-/****** END HELPER FUNCTION SORT BY DATE ****/
-
-$spreadsheetKey = "1JzULIRzp4Meuat8wxRwO8LUoLc8K2dB6HVfHWjepdqo";
-$spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/pubhtml";
-$csvUrl = "https://docs.google.com/spreadsheets/d/" . $spreadsheetKey . "/export?gid=0&format=csv";
-$threatsCSVArray = getCSV( $csvUrl,'threats',10 );
-array_shift( $threatsCSVArray ); //our first row contained headers
-
 
 $pageContent = "";
 $pageTitle = "";
@@ -38,36 +71,6 @@ if ( have_posts() ) :
 endif;
 wp_reset_postdata();
 wp_reset_query();
-
-$currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-
-$numPostsFirstPage = 6;
-$numPostsSubsequentPages = 6;
-
-$threatsCat = get_category_by_slug( 'threats-to-press' );
-$threatsPermalink = get_category_link( $threatsCat->term_id );
-
-
-$postsPerPage = $numPostsFirstPage;
-$offset = 0;
-if ( $currentPage > 1 ) {
-	$postsPerPage = $numPostsSubsequentPages;
-	$offset = $numPostsFirstPage + ( $currentPage-2 ) * $numPostsSubsequentPages;
-}
-
-$hasTeamFilter = false;
-$mobileAppsPostContent = "";
-
-$qParams = array(
-	'post_type' => array('post')
-	,'cat' => get_cat_id('Threats to Press')
-	,'posts_per_page' => $postsPerPage
-	,'offset' => $offset
-	,'post_status' => array('publish')
-);
-
-$custom_query_args = $qParams;
-$custom_query = new WP_Query( $custom_query_args );
 
 /* Map options */
 $trailingDays = get_post_meta( $id, 'threats_to_press_map_trailing_days', true );
@@ -101,104 +104,34 @@ if ( $includeQuotation ) {
 	$quotation .= '</div>';
 }
 
-$threats = array();
-foreach($threatsCSVArray as $t) {
-	$t = array_map('utf8_encode', $t);
-	$threats[] = array(
-		'country' => $t[0],
-		'name' => $t[1],
-		'date' => $t[2],
-		'status' => $t[3],
-		'description' => $t[4],
-		'mugshot' => $t[5],
-		'network' => $t[6],
-		'link' => $t[7],
-		'latitude' => $t[8],
-		'longitude' => $t[9],
-		'headline' => $t[10]
-	);
-}
-
-for ( $i=0; $i < count($threats); $i++ ) {
-	$t = &$threats[$i];
-	$dateStr = $t['date'];
-	$dateObj = explode("/", $dateStr);
-	if (count($dateObj) == 3) {
-		$month = $dateObj[0];
-		$day = $dateObj[1];
-		$year = $dateObj[2];
-	} elseif (count($dateObj) == 2) {
-		$month = $dateObj[0];
-		$day = 1;
-		$year = $dateObj[1];
-	} else {
-		$month=1;
-		$day=1;
-		$year=$dateObj[0];
-	}
-	$dateTimestamp = mktime(0, 0, 0, $month, $day, $year);
-	$t['dateTimestamp'] = $dateTimestamp;
-}
-usort( $threats, 'threatDateCompare' );
-
 $wall = "";
 $journalist = "";
 $journalistName = "";
 $mugshot = "";
 $altText = "";
 
-for ( $i=0; $i < count($threats); $i++ ) {
-	$t = &$threats[$i];
-	$mugshot = $t['mugshot'];
-	$link = $t['link'];
-	$name = $t['name'];
-	$date = $t['date'];
-	$status = $t['status'];
+$postsPerPage = 6;
+$qParams = array(
+	'post_type' => array('post')
+	,'cat' => get_cat_id('Threats to Press')
+	,'posts_per_page' => $postsPerPage
+	,'post_status' => array('publish')
+);
 
-	if ( $status == "Killed" ){
-		if ( $mugshot == "" ) {
-			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
-			$altText = "";
-		} else {
-			$altText = "Photo of $name";
-		}
-		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
-		if ($link != "") {
-			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
-			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
-		} else {
-			$journalistName = $name;
-		}
-		$journalist = "";
-		$journalist .= '<div class="bbg__profile-grid__profile">';
-		$journalist .= $imgSrc;
-		$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
-		$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
-		$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
-		$journalist .= '</div>';
+$custom_query_args = $qParams;
+$custom_query = new WP_Query( $custom_query_args );
 
-		$wall .= $journalist;
-	}
-}
-
-$threatsFilteredByDate = [];
-for ($i=0; $i<count($threats); $i++) {
-	$t = $threats[$i];
-	$str = time() - (($t['dateTimestamp']));
-	$daysSinceThreat = floor($str/3600/24);
-	//echo " days since " . date('m/d/Y', $t['dateTimestamp']) . " is " . $daysSinceThreat . "<BR>";
-	if ($daysSinceThreat <= $trailingDays) {
-		$threatsFilteredByDate[] = $threats[$i];
-	}
-}
 //echo "showing " . count($threatsFilteredByDate) . " threats <BR>";
+$threats = getThreatsCustomPosts($trailingDays);
 $threatsJSON = "<script type='text/javascript'>\n";
-$threatsJSON .= "threats=" . json_encode(new ArrayValue($threatsFilteredByDate), JSON_PRETTY_PRINT, 10) . ";";
+$threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT, 10) . ";";
 $threatsJSON .="</script>";
 get_header();
 echo $threatsJSON;
 
 $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
+$threatsCat = get_category_by_slug( 'threats-to-press' );
+$threatsPermalink = get_category_link( $threatsCat->term_id );
 
 
  ?>
@@ -220,6 +153,30 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					<div class="usa-grid">
 						<p class="bbg__article-header__caption"><?php echo $threatsMapCaption ?></p>
 					</div>
+				<style> 
+					#mapFilters label { margin-left:15px; }
+				</style>
+			
+				<div align="center" id="mapFilters" class="u--show-medium-large">
+					<input type="radio" checked name="trainingYear" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2017" value="2017" /><label for="trainingYear_2017"> 2017</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2016" value="2016" /><label for="trainingYear_2016"> 2016</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2015" value="2015" /><label for="trainingYear_2015"> 2015</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2014" value="2014" /><label for="trainingYear_2014"> 2014</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2013" value="2013" /><label for="trainingYear_2013"> 2013</label>
+				</div>
+				<div align="center" id="mapFilters" class="u--hide-medium-large">
+					<p></p><h3>Select a year</h3>
+					<select name="trainingSelect">
+						<option value="all">All</option>
+						<option value="2017">2017</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+						<option value="2014">2014</option>
+						<option value="2013">2013</option>
+					</select>
+				</div>
+			
 			</section>
 
 			<section class="usa-section">
@@ -355,12 +312,16 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 			</section>
 
 
-			<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
-			<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+			<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+			<link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
 
-			<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
-			<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
-			<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.3/leaflet.markercluster.js'></script>
+			<link href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.3/MarkerCluster.css' rel='stylesheet' />
+			<link href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.3/MarkerCluster.Default.css' rel='stylesheet' />
+			<!-- <script src="https://cdn.rawgit.com/ghybs/Leaflet.FeatureGroup.SubGroup/v1.0.0/dist/leaflet.featuregroup.subgroup-src.js"></script>-->
+			<script src="https://cdn.rawgit.com/ghybs/Leaflet.FeatureGroup.SubGroup/master/src/subgroup.js"></script>
+
 			<style>
 				.marker-cluster-small {
 					background-color: rgba(255, 255, 255, 0.6) !important;
@@ -385,8 +346,23 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 
 			<script type="text/javascript">
 				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-				var map = L.mapbox.map('map-threats', 'mapbox.emerald');
-				var markers = new L.MarkerClusterGroup({
+				var map = L.mapbox.map('map-threats', 'mapbox.emerald',{attributionControl: false});
+				
+				var attribStr = '';
+				
+				
+			//	attribStr += '<div align=\'right\'>&copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>  &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div>';
+				<?php 
+					$sinceDate = date('m/d/Y', strtotime("-$trailingDays days"));
+					echo "attribStr += '<div align=\'right\'>Showing threats since $sinceDate</div>';"; 
+				?>
+
+				var attribution = L.control.attribution();
+				attribution.setPrefix('');
+				attribution.addAttribution(attribStr);
+				attribution.addTo(map);
+
+				var mcg = new L.MarkerClusterGroup({
 					maxClusterRadius: <?php echo $maxClusterRadius; ?>,
 					iconCreateFunction: function (cluster) {
 						var childCount = cluster.getChildCount();
@@ -409,6 +385,22 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 					}
 				});
 
+				var maki = {};
+			    maki["2016"] = {"name": "library", "color":"#f00"};
+			    maki["2015"] = {"name": "library", "color":"#f00"};
+			    maki["2014"] = {"name": "library", "color":"#b0b"};
+			    maki["2013"] = {"name": "heliport", "color":"#ccc"};
+			    maki["2012"] = {"name": "ferry", "color":"#ccc"};
+
+				var deliveryLayers={};    
+			    for (var deliveryPlatform in maki) {
+			     	if (maki.hasOwnProperty(deliveryPlatform)) {
+			     		var newLayer = L.featureGroup.subGroup(mcg);
+			     		newLayer.addTo(map);
+			     		deliveryLayers[deliveryPlatform] = newLayer;
+			     	}
+			    }
+
 
 				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
@@ -423,7 +415,7 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 						titleLink="<h5><a href='" + t.link + "'>" + headline + "</a></h5>";
 					}
 
-					if (t.status == "Killed"){
+					if (false && t.status == "Killed"){
 						markerColor = "#000";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
@@ -436,10 +428,12 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 						//marker.addTo(map);
 
 					} else {
-						if ( t.status == "Threatened") {
+						if ( t.status == "threatened") {
 							markerColor = "#900";
-						} else if ( t.status == "Missing") {
+						} else if ( t.status == "missing") {
 							markerColor = "#999";
+						} else if (t.status == "killed") {
+							markerColor = "#000";
 						} else {
 							//check this pin to see what the status is
 							markerColor = "#931fe5";
@@ -452,23 +446,24 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 						});
 
 						marker.bindPopup(titleLink + t.description);
-						markers.addLayer(marker);
+						console.log("add to layer " + t.year + " it is " + deliveryLayers[t.year]);
+						var targetLayer = deliveryLayers[t.year];
+        				marker.addTo(targetLayer);
 					}
-
-
 				}
 
-			    map.addLayer(markers);
-			    map.addLayer(killedMarkers);
+			    map.addLayer(mcg);
+			    //map.addLayer(killedMarkers);
 
 				//Disable the map scroll/zoom so that you can scroll the page.
 				map.scrollWheelZoom.disable();
 
 				function centerMap(){
 					//console.log('centeringMap');
-					map.fitBounds(markers.getBounds());
+					console.log('center map on ' + mcg.getBounds());
+					map.fitBounds(mcg.getBounds());
 				}
-				centerMap();
+				//centerMap();
 
 
 				//Recenter the map on resize
@@ -501,6 +496,38 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 				});
 
 				resizeStuffOnResize();
+
+				function setSelectedPlatform(platform, displayMode) {
+					for (var p in deliveryLayers) {
+						if (deliveryLayers.hasOwnProperty(p)) {
+							map.removeLayer(deliveryLayers[p]);
+						}
+					}
+					if (platform == "all") {
+						for (var p in deliveryLayers) {
+							if (deliveryLayers.hasOwnProperty(p)) {
+								map.addLayer(deliveryLayers[p]);
+							}
+						}
+					} else {
+						map.addLayer(deliveryLayers[platform]);
+					}
+					//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
+					//if (displayMode=='select') {
+						centerMap();	
+					//}
+					
+				}
+
+				jQuery( document ).ready(function() {
+					jQuery('input[type=radio][name=trainingYear]').change(function() {
+						setSelectedPlatform(this.value, 'radio');
+					});
+					jQuery('select[name=trainingSelect]').change(function() {
+						var selectedPlatform = jQuery(this).val();
+						setSelectedPlatform(selectedPlatform,'select');
+					});
+				});
 
 				/*
 				//Test if zoomed in
