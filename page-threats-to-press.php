@@ -200,7 +200,7 @@ wp_reset_query();
 
 
 <div id='legend' style='display:none;'>
-<strong>Threats since 2013</strong>
+<strong>BBG Threats since 2013</strong>
   <nav class='legend clearfix'>
     <span style='background:#B66063;'></span>
     <span style='background:#981b1e;'></span>
