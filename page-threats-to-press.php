@@ -423,21 +423,27 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 
 			<script type="text/javascript">
 				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-				var map = L.mapbox.map('map-threats', 'mapbox.emerald',{attributionControl: false});
 				
+				var initialCenter = [28.304380682962783, 22.148437500000004];
+				
+				/**** this calculation of initial zoom based on the window width is done to prevent a dramatic zoom done right when you start the map ***/
+				var initialZoom = 3;
+				if (window.innerWidth < 600) {
+					initialZoom=1;
+				} else if (window.innerWidth < 1160) {
+					initialZoom = 2;
+				}
+				var map = L.mapbox.map('map-threats', 'mapbox.emerald', {attributionControl:false}).setView(initialCenter, initialZoom);
 				var attribStr = '';
-				
-				
-			//	attribStr += '<div align=\'right\'>&copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>  &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div>';
 				<?php 
 					$sinceDate = date('m/d/Y', strtotime("-$trailingDays days"));
 					echo "attribStr += '<div align=\'right\'>Showing threats since $sinceDate</div>';"; 
 				?>
 
-				var attribution = L.control.attribution();
-				attribution.setPrefix('');
-				attribution.addAttribution(attribStr);
-				attribution.addTo(map);
+				 var attribution = L.control.attribution({prefix:false});
+				 attribution.setPrefix(attribStr);
+				 //attribution.addAttribution(attribStr);
+				 attribution.addTo(map);
 
 				var mcg = new L.MarkerClusterGroup({
 					maxClusterRadius: <?php echo $maxClusterRadius; ?>,
@@ -470,14 +476,17 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 			    maki["2012"] = {"name": "ferry", "color":"#ccc"};
 
 				var deliveryLayers={};    
+				var deliveryLayersNoCluster={};
+
 			    for (var deliveryPlatform in maki) {
 			     	if (maki.hasOwnProperty(deliveryPlatform)) {
 			     		var newLayer = L.featureGroup.subGroup(mcg);
 			     		newLayer.addTo(map);
 			     		deliveryLayers[deliveryPlatform] = newLayer;
+			     		var newLayer2 =  L.featureGroup();
+			     		deliveryLayersNoCluster[deliveryPlatform] = newLayer2;
 			     	}
 			    }
-
 
 				var markerColor = "#900";
 				for (var i = 0; i < threats.length; i++) {
@@ -493,6 +502,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 					}
 
 					if (false && t.status == "Killed"){
+						//this code should never get executed. It's legacy code from when the map had different behavior.  feel free to eventually delete.
 						markerColor = "#000";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
@@ -523,9 +533,18 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 						});
 
 						marker.bindPopup(titleLink + t.description);
-						console.log("add to layer " + t.year + " it is " + deliveryLayers[t.year]);
 						var targetLayer = deliveryLayers[t.year];
         				marker.addTo(targetLayer);
+
+        				//we need a separate instance of the markers for the individual years because they're not supposed to have clustering
+        				var marker2 = L.marker(new L.LatLng(t.latitude, t.longitude), {
+							icon: L.mapbox.marker.icon({
+								'marker-symbol': '',
+								'marker-color': markerColor
+							})
+						});
+						marker2.bindPopup(titleLink + t.description);
+        				marker2.addTo(deliveryLayersNoCluster[t.year])
 					}
 				}
 
@@ -536,12 +555,8 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 				map.scrollWheelZoom.disable();
 
 				function centerMap(){
-					//console.log('centeringMap');
-					console.log('center map on ' + mcg.getBounds());
 					map.fitBounds(mcg.getBounds());
 				}
-				//centerMap();
-
 
 				//Recenter the map on resize
 				function resizeStuffOnResize(){
@@ -578,6 +593,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 					for (var p in deliveryLayers) {
 						if (deliveryLayers.hasOwnProperty(p)) {
 							map.removeLayer(deliveryLayers[p]);
+							map.removeLayer(deliveryLayersNoCluster[p]);
 						}
 					}
 					if (platform == "all") {
@@ -587,7 +603,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 							}
 						}
 					} else {
-						map.addLayer(deliveryLayers[platform]);
+						map.addLayer(deliveryLayersNoCluster[platform]);
 					}
 					//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
 					//if (displayMode=='select') {
@@ -604,6 +620,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 						var selectedPlatform = jQuery(this).val();
 						setSelectedPlatform(selectedPlatform,'select');
 					});
+					setSelectedPlatform('all');
 				});
 
 				/*
