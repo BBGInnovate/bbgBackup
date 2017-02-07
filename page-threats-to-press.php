@@ -134,8 +134,82 @@ $threatsMapCaption = get_field( 'threats_to_press_map_caption' );
 $threatsCat = get_category_by_slug( 'threats-to-press' );
 $threatsPermalink = get_category_link( $threatsCat->term_id );
 
+$fallenJournalists = get_field('fallen_journalists_section');
+$wall = "";
+if( $fallenJournalists ) {
+	foreach( $fallenJournalists as $j ) {
+		$id = $j->ID;
+		$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
+		$date = get_field('profile_date_of_passing', $id, true); 
+		$link = get_the_permalink($id);
+		$name = get_the_title($id);
+		/*** Get the profile photo mugshot ***/
+		$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
+		$profilePhoto = "";
+		if ($profilePhotoID) {
+			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+			$mugshot = $profilePhoto[0];
+		}
+		$altText = "";
+		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
+
+		if ($link != "") {
+			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
+			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
+		} else {
+			$journalistName = $name;
+		}
+
+		$journalist = "";
+		$journalist .= '<div class="bbg__profile-grid__profile">';
+		$journalist .= $imgSrc;
+		$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
+		$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
+		$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
+		$journalist .= '</div>';
+		$wall .= $journalist;
+	}
+}
+wp_reset_postdata();
+wp_reset_query();
 
  ?>
+
+
+<style>
+	.map-legends, .map-tooltip {
+		max-width:165px !important;
+		width:165px;
+
+	}
+	.legend label, .legend span {
+		display:block;
+		float:left;
+		height:15px;
+		width:33%;
+		text-align:center;
+		font-size:9px;
+		color:#808080;
+	}
+	.legend label {
+		margin-top:0px;
+		margin-bottom:5px;
+	}
+</style>
+
+
+
+<div id='legend' style='display:none;'>
+<strong>Threats since 2013</strong>
+  <nav class='legend clearfix'>
+    <span style='background:#B66063;'></span>
+    <span style='background:#981b1e;'></span>
+    <span style='background:#000000;'></span> 
+    <label>Threatened</label>
+    <label></label>
+    <label>Killed</label>
+    <!-- <small>Source: <a href="#link to source">Name of source</a></small> -->
+</div>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -301,79 +375,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 
 					<div class="usa-grid">
 						<div id="memorialWall">
-							<?php 
-
-								$fallenJournalists = get_field('fallen_journalists_section');
-								$wall = "";
-								if( $fallenJournalists ) {
-									foreach( $fallenJournalists as $j ) {
-										$id = $j->ID;
-										$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
-										$date = get_field('profile_date_of_passing', $id, true); 
-										$link = get_the_permalink($id);
-										$name = get_the_title($id);
-										/*** Get the profile photo mugshot ***/
-										$profilePhotoID = get_post_meta( $id, 'profile_photo', true );
-										$profilePhoto = "";
-										if ($profilePhotoID) {
-											$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
-											$mugshot = $profilePhoto[0];
-										}
-										$altText = "";
-										$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
-
-										if ($link != "") {
-											$journalistName = '<a href="' . $link . '">' . $name . "</a>";
-											$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
-										} else {
-											$journalistName = $name;
-										}
-
-										$journalist = "";
-										$journalist .= '<div class="bbg__profile-grid__profile">';
-										$journalist .= $imgSrc;
-										$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
-										$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
-										$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
-										$journalist .= '</div>';
-										$wall .= $journalist;
-									}
-								}
-								echo $wall;
-
-								// <?php
-								// for ( $i=0; $i < count($threats); $i++ ) {
-								// 	$t = &$threats[$i];
-								// 	$mugshot = $t['mugshot'];
-								// 	$link = $t['link'];
-								// 	$name = $t['name'];
-								// 	$date = $t['date'];
-								// 	$status = $t['status'];
-								// 	if ( $status == "Killed" ){
-								// 		if ( $mugshot == "" ) {
-								// 			$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
-								// 			$altText = "";
-								// 		} else {
-								// 			$altText = "Photo of $name";
-								// 		}
-								// 		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
-								// 		if ($link != "") {
-								// 			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
-								// 			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
-								// 		} else {
-								// 			$journalistName = $name;
-								// 		}
-								// 		$journalist = "";
-								// 		$journalist .= '<div class="bbg__profile-grid__profile">';
-								// 		$journalist .= $imgSrc;
-								// 		$journalist .= '<h4 class="bbg__profile-grid__profile__name">' . $journalistName . '</h4>';
-								// 		$journalist .= '<h5 class="bbg__profile-grid__profile__dates">Killed ' . $date . '</h5>';
-								// 		$journalist .= '<p class="bbg__profile-grid__profile__description"></p>';
-								// 		$journalist .= '</div>';
-								// 		$wall .= $journalist;
-								// 	}
-								// }
-							?>
+							<?php echo $wall; ?>
 
 						</div>
 					</div>
@@ -423,7 +425,6 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 
 			<script type="text/javascript">
 				L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
-				
 				var initialCenter = [28.304380682962783, 22.148437500000004];
 				
 				/**** this calculation of initial zoom based on the window width is done to prevent a dramatic zoom done right when you start the map ***/
@@ -434,16 +435,12 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 					initialZoom = 2;
 				}
 				var map = L.mapbox.map('map-threats', 'mapbox.emerald', {attributionControl:false}).setView(initialCenter, initialZoom);
+				map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 				var attribStr = '';
-				<?php 
-					$sinceDate = date('m/d/Y', strtotime("-$trailingDays days"));
-					echo "attribStr += '<div align=\'right\'>Showing threats since $sinceDate</div>';"; 
-				?>
-
-				 var attribution = L.control.attribution({prefix:false});
-				 attribution.setPrefix(attribStr);
-				 //attribution.addAttribution(attribStr);
-				 attribution.addTo(map);
+				var attribution = L.control.attribution({prefix:false, position:'topright'}).addTo(map);
+				 // attribution.setPrefix(attribStr);
+				 // //attribution.addAttribution(attribStr);
+				 // attribution.addTo(map);
 
 				var mcg = new L.MarkerClusterGroup({
 					maxClusterRadius: <?php echo $maxClusterRadius; ?>,
@@ -468,24 +465,15 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 					}
 				});
 
-				var maki = {};
-			    maki["2016"] = {"name": "library", "color":"#f00"};
-			    maki["2015"] = {"name": "library", "color":"#f00"};
-			    maki["2014"] = {"name": "library", "color":"#b0b"};
-			    maki["2013"] = {"name": "heliport", "color":"#ccc"};
-			    maki["2012"] = {"name": "ferry", "color":"#ccc"};
+				var layers = {};    
+				var layersNoCluster = {};
 
-				var deliveryLayers={};    
-				var deliveryLayersNoCluster={};
-
-			    for (var deliveryPlatform in maki) {
-			     	if (maki.hasOwnProperty(deliveryPlatform)) {
-			     		var newLayer = L.featureGroup.subGroup(mcg);
-			     		newLayer.addTo(map);
-			     		deliveryLayers[deliveryPlatform] = newLayer;
-			     		var newLayer2 =  L.featureGroup();
-			     		deliveryLayersNoCluster[deliveryPlatform] = newLayer2;
-			     	}
+			    for (var year=2020; year >= 2013; year--) {
+		     		var newLayer = L.featureGroup.subGroup(mcg);
+		     		newLayer.addTo(map);
+		     		layers[year] = newLayer;
+		     		var newLayer2 =  L.featureGroup();
+		     		layersNoCluster[year] = newLayer2;
 			    }
 
 				var markerColor = "#900";
@@ -515,15 +503,22 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 						//marker.addTo(map);
 
 					} else {
-						if ( t.status == "threatened") {
-							markerColor = "#900";
-						} else if ( t.status == "missing") {
-							markerColor = "#999";
+
+						/*
+					 <span style='background:#B66063;'></span>
+    <span style='background:#981b1e;'></span>
+    <span style='background:#000000;'></span> 
+						*/
+
+						if ( t.status == "threatened" || t.status == "arrested" || t.status == "detained") {
+							markerColor = "#B66063";
+						} else if ( t.status == "missing" || t.status == "attacked") {
+							markerColor = "#981b1e";
 						} else if (t.status == "killed") {
 							markerColor = "#000";
 						} else {
 							//check this pin to see what the status is
-							markerColor = "#931fe5";
+							markerColor = "#F0F";
 						}
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
@@ -533,7 +528,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 						});
 
 						marker.bindPopup(titleLink + t.description);
-						var targetLayer = deliveryLayers[t.year];
+						var targetLayer = layers[t.year];
         				marker.addTo(targetLayer);
 
         				//we need a separate instance of the markers for the individual years because they're not supposed to have clustering
@@ -544,7 +539,7 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 							})
 						});
 						marker2.bindPopup(titleLink + t.description);
-        				marker2.addTo(deliveryLayersNoCluster[t.year])
+        				marker2.addTo(layersNoCluster[t.year])
 					}
 				}
 
@@ -590,20 +585,20 @@ $threatsPermalink = get_category_link( $threatsCat->term_id );
 				resizeStuffOnResize();
 
 				function setSelectedPlatform(platform, displayMode) {
-					for (var p in deliveryLayers) {
-						if (deliveryLayers.hasOwnProperty(p)) {
-							map.removeLayer(deliveryLayers[p]);
-							map.removeLayer(deliveryLayersNoCluster[p]);
+					for (var p in layers) {
+						if (layers.hasOwnProperty(p)) {
+							map.removeLayer(layers[p]);
+							map.removeLayer(layersNoCluster[p]);
 						}
 					}
 					if (platform == "all") {
-						for (var p in deliveryLayers) {
-							if (deliveryLayers.hasOwnProperty(p)) {
-								map.addLayer(deliveryLayers[p]);
+						for (var p in layers) {
+							if (layers.hasOwnProperty(p)) {
+								map.addLayer(layers[p]);
 							}
 						}
 					} else {
-						map.addLayer(deliveryLayersNoCluster[platform]);
+						map.addLayer(layersNoCluster[platform]);
 					}
 					//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
 					//if (displayMode=='select') {
