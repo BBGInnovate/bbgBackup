@@ -75,6 +75,10 @@ if ( have_posts() ) {
 	}
 
 	$resolution = get_field('board_resolution_of_honor');
+
+	$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
+	$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
+
 	rewind_posts();
 }
 
