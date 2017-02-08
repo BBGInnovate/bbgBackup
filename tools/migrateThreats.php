@@ -71,7 +71,7 @@
                     update_field('field_5890dc8248522', $t['name'], $post_id); //threats_to_press_target_names = field_5890dc8248522
                     update_field('field_5890de0e48526', $networks, $post_id); //threats_to_press_network = field_5890de0e48526
                     update_field('field_5890dea748527', $address, $post_id); //threats_to_press_coordinates = field_5890dea748527
-                    update_field('field_5892a99bf1fec', $status, $post_id); //threats_to_press_status = field_5890dea748527
+                    update_field('1field_589298b8e17e0', $status, $post_id); //threats_to_press_status = field_5890dea748527
                     if ($t['link'] != '') {
                         update_field('field_5890e235f2ed8', $t['link'], $post_id); //threats_to_press_link = field_5890e235f2ed8    
                     }   
