@@ -1,5 +1,7 @@
 <?php 
 
+    die();
+
     require ('../../../../wp-load.php');
     //switch_to_blog(2);
 
