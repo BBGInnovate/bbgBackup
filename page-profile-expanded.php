@@ -28,7 +28,7 @@ if ( have_posts() ) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];
 	}
-	
+
 	/**** CREATE $bannerAdjustStr *****/
 	$bannerPosition = get_post_meta( $id, 'adjust_the_banner_image', true);
 	$bannerPositionCSS = get_field( 'adjust_the_banner_image_css', '', true);
@@ -38,7 +38,7 @@ if ( have_posts() ) {
 	} else if ($bannerPosition) {
 		$bannerAdjustStr = $bannerPosition;
 	}
-	
+
 	// Grab a featured video, which will replace featured image, if we have it.
 	$videoUrl = get_field( 'featured_video_url', '', true );
 
@@ -100,6 +100,8 @@ get_header(); ?>
 			$twitterText .= " by @bbggov " . get_permalink();
 			$twitterURL="//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
+
+			include get_template_directory() . "/inc/shared_sidebar.php";
 
 			?>
 
@@ -237,7 +239,21 @@ get_header(); ?>
 							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
 						<?php } ?>
 
-						<ul class="bbg__article-share ">
+						<?php
+							// Insert standard sidebar
+							echo "<!-- Sidebar content -->";
+							if ( $includeSidebar && $sidebarTitle != "" ) {
+								echo $sidebar;
+							}
+
+							if ( $secondaryColumnContent != "" ) {
+								echo $secondaryColumnContent;
+							}
+
+							echo $sidebarDownloads;
+						?>
+
+						<ul class="bbg__article-share">
 						<?php
 						if ($email != ""){
 							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
