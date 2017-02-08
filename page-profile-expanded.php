@@ -75,10 +75,6 @@ if ( have_posts() ) {
 	}
 
 	$resolution = get_field('board_resolution_of_honor');
-
-	$secondaryColumnLabel = get_field( 'secondary_column_label', '', true );
-	$secondaryColumnContent = get_field( 'secondary_column_content', '', true );
-
 	rewind_posts();
 }
 
@@ -249,12 +245,6 @@ get_header(); ?>
 							if ( $includeSidebar && $sidebarTitle != "" ) {
 								echo $sidebar;
 							}
-
-							if ( $secondaryColumnContent != "" ) {
-								echo $secondaryColumnContent;
-							}
-
-							echo $sidebarDownloads;
 						?>
 
 						<ul class="bbg__article-share">
