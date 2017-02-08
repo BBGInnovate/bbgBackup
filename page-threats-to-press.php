@@ -153,7 +153,8 @@ if( $fallenJournalists ) {
 		$altText = "";
 		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
 
-		if ($link != "") {
+		//JBF 2/8/2017: not using link until we fill out profiles.
+		if (false && $link != "") {
 			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
 			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
 		} else {
@@ -178,9 +179,18 @@ wp_reset_query();
 
 <style>
 	.map-legends, .map-tooltip {
-		max-width:165px !important;
-		width:165px;
+		/*
+		JBF 2/8/2017: max-width & width were useful with custom legend
+		view https://www.mapbox.com/mapbox.js/example/v1.0.0/custom-legend/ to see an example
+		max-width:120px !important;
+		width:120px;
+		*/
+		padding:3px 5px 3px 5px;
 
+	}
+
+	.map-legend {
+		padding:0px !important; 
 	}
 	.legend label, .legend span {
 		display:block;
@@ -197,18 +207,17 @@ wp_reset_query();
 	}
 </style>
 
-
-
 <div id='legend' style='display:none;'>
-<strong>BBG Threats since 2013</strong>
-  <nav class='legend clearfix'>
+<strong>Threats since 2013</strong>
+  <!-- 
+ <nav class='legend clearfix'>
     <span style='background:#B66063;'></span>
     <span style='background:#981b1e;'></span>
     <span style='background:#000000;'></span> 
     <label>Threatened</label>
     <label></label>
     <label>Killed</label>
-    <!-- <small>Source: <a href="#link to source">Name of source</a></small> -->
+   <small>Source: <a href="#link to source">Name of source</a></small> -->
 </div>
 
 	<div id="primary" class="content-area">
@@ -504,22 +513,19 @@ wp_reset_query();
 
 					} else {
 
-						/*
-					 <span style='background:#B66063;'></span>
-    <span style='background:#981b1e;'></span>
-    <span style='background:#000000;'></span> 
-						*/
+						// JBF 3/8/2017: this comment block is here for the future when we re-enable colors based on status
 
-						if ( t.status == "threatened" || t.status == "arrested" || t.status == "detained") {
-							markerColor = "#B66063";
-						} else if ( t.status == "missing" || t.status == "attacked") {
-							markerColor = "#981b1e";
-						} else if (t.status == "killed") {
-							markerColor = "#000";
-						} else {
-							//check this pin to see what the status is
-							markerColor = "#F0F";
-						}
+						// if ( t.status == "threatened" || t.status == "arrested" || t.status == "detained") {
+						// 	markerColor = "#B66063";
+						// } else if ( t.status == "missing" || t.status == "attacked") {
+						// 	markerColor = "#981b1e";
+						// } else if (t.status == "killed") {
+						// 	markerColor = "#000";
+						// } else {
+						// 	//check this pin to see what the status is
+						// 	markerColor = "#F0F";
+						// }
+						markerColor = "#981b1e";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
 								'marker-symbol': '',
