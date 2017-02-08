@@ -8,7 +8,7 @@
   template name: Threats to Press
  */
 
-function getThreatsCustomPosts($trailingDays) {
+function getThreatsCustomPosts($cutoffDate) {
 	/* get two of the most recent 6 impact posts for use on the homepage */
 	$qParams = array(
 		'post_type'=> 'threat_to_press',
@@ -18,7 +18,7 @@ function getThreatsCustomPosts($trailingDays) {
 		'posts_per_page' => -1,
 		'date_query' => array(
 	        array(
-	            'after' => "$trailingDays days ago"
+	            'after' => "$cutoffDate"
 	        )
 	    )
 	);
@@ -61,6 +61,7 @@ function getThreatsCustomPosts($trailingDays) {
 $pageContent = "";
 $pageTitle = "";
 $pageExcerpt = "";
+$id = 0;
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
@@ -68,16 +69,17 @@ if ( have_posts() ) :
 		$pageExcerpt = get_the_excerpt();
 		$pageContent = apply_filters( 'the_content', $pageContent );
 		$pageContent = str_replace( ']]>', ']]&gt;', $pageContent );
+		$id = get_the_ID();
 	endwhile;
 endif;
 wp_reset_postdata();
 wp_reset_query();
 
+
 /* Map options */
 $trailingDays = get_post_meta( $id, 'threats_to_press_map_trailing_days', true );
 $maxClusterRadius = get_post_meta( $id, 'threats_to_press_map_maximum_cluster_radius', true );
-
-
+$cutoffDate = get_field( 'threats_to_press_map_cutoff_date', $id, true );
 /* Adding optional quotation to the bottom of the page */
 $includeQuotation = get_field( 'quotation_include', '', true );
 $quotation = "";
@@ -123,7 +125,7 @@ $custom_query_args = $qParams;
 $custom_query = new WP_Query( $custom_query_args );
 
 //echo "showing " . count($threatsFilteredByDate) . " threats <BR>";
-$threats = getThreatsCustomPosts($trailingDays);
+$threats = getThreatsCustomPosts($cutoffDate);
 $threatsJSON = "<script type='text/javascript'>\n";
 $threatsJSON .= "threats=" . json_encode(new ArrayValue($threats), JSON_PRETTY_PRINT, 10) . ";";
 $threatsJSON .="</script>";
