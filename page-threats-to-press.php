@@ -411,25 +411,25 @@ wp_reset_query();
 			<script src="https://cdn.rawgit.com/ghybs/Leaflet.FeatureGroup.SubGroup/master/src/subgroup.js"></script>
 
 			<style>
-				.marker-cluster-small {
-					background-color: rgba(255, 255, 255, 0.6) !important;
+				.marker-cluster-small, .marker-cluster-small div, .marker-cluster-medium, .marker-cluster-medium div  {
+					/* D4A5A8 */
+					background-color: rgba(162, 50, 53, 1) !important;
+					color:#FFF;
 				}
-				.marker-cluster-small div {
-					background-color: rgba(255, 200, 0, 0.6) !important;
-				}
-				/*experimenting with styling the clusters*/
-				.marker-cluster-medium div {
+				
+				.marker-cluster-large, .marker-cluster-large div {
+					/* #981b1e */
+					background-color: rgba(122, 21, 24, 1) !important;
+					color:#FFF;
+					/* font-size:15px; */
 
-					background-color: rgba(255, 100, 0, 0.6) !important;
-				}
-				.marker-cluster-large div {
-
-					background-color: rgba(255, 0, 0, 0.6) !important;
-				}
+				} 
+				/*
 				.marker-cluster-killed div {
 					background-color: rgba(0, 0, 0, 1) !important;
 					color:#FFF;
 				}
+				*/
 			</style>
 
 			<script type="text/javascript">
@@ -525,7 +525,7 @@ wp_reset_query();
 						// 	//check this pin to see what the status is
 						// 	markerColor = "#F0F";
 						// }
-						markerColor = "#981b1e";
+						markerColor = "#AC494C";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
 								'marker-symbol': '',
