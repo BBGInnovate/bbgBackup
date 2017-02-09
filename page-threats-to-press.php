@@ -415,13 +415,13 @@ wp_reset_query();
 			<style>
 				.marker-cluster-small, .marker-cluster-small div, .marker-cluster-medium, .marker-cluster-medium div  {
 					/* D4A5A8 */
-					background-color: rgba(162, 50, 53, 1) !important;
+					background-color: #ba1c21 !important;
 					color:#FFF;
 				}
 				
 				.marker-cluster-large, .marker-cluster-large div {
 					/* #981b1e */
-					background-color: rgba(122, 21, 24, 1) !important;
+					background-color: #7a3336 !important;
 					color:#FFF;
 					/* font-size:15px; */
 
@@ -465,16 +465,16 @@ wp_reset_query();
 						} else {
 						    c += 'large';
 						}
-						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(0, 0), iconAnchor: new L.Point(20,20) }); 
 					}
 				});
-				var killedMarkers = new L.MarkerClusterGroup({
-					iconCreateFunction: function (cluster) {
-						var childCount = cluster.getChildCount();
-						var c = ' marker-cluster-killed';
-						return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
-					}
-				});
+				// var killedMarkers = new L.MarkerClusterGroup({
+				// 	iconCreateFunction: function (cluster) {
+				// 		var childCount = cluster.getChildCount();
+				// 		var c = ' marker-cluster-killed';
+				// 		return new L.DivIcon({ html: '<div><span><b>' + childCount + '</b></span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+				// 	}
+				// });
 
 				var layers = {};    
 				var layersNoCluster = {};
@@ -527,7 +527,7 @@ wp_reset_query();
 						// 	//check this pin to see what the status is
 						// 	markerColor = "#F0F";
 						// }
-						markerColor = "#AC494C";
+						markerColor = "#DB6266";
 						var marker = L.marker(new L.LatLng(t.latitude, t.longitude), {
 							icon: L.mapbox.marker.icon({
 								'marker-symbol': '',
