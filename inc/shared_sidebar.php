@@ -98,10 +98,10 @@ if ( $includeSidebar ) {
 				// Set text for the internal link
 				if ($sidebarInternalTitle && $sidebarInternalTitle != "") {
 					// User-defined title
-					$sidebarSectionTitle = "<p>" . $sidebarInternalTitle . "</p>";
+					$sidebarSectionTitle = $sidebarInternalTitle;
 				} else {
 					// WP object title (set above)
-					$sidebarSectionTitle = "<p>" . $title . "</p>";
+					$sidebarSectionTitle = $title;
 				}
 
 				$sidebarDescription = "";
@@ -160,7 +160,7 @@ if ( $includeSidebar ) {
 						padding:1.5rem !important;
 					}
 					</style>';
-					
+
 					$s .= '<div class="usa-accordion bbg__committee-list"><ul class="usa-unstyled-list">';
 					$i = 0;
 					while ( have_rows('sidebar_accordion_items') ) : the_row();
@@ -174,7 +174,7 @@ if ( $includeSidebar ) {
 						$s .= '</div>';
 						$s .= '</li>';
 						endwhile;
-						$s .= '</ul></div>';  
+						$s .= '</ul></div>';
 				endif;
 			} else if (get_row_layout() == 'sidebar_related_award'){
 				$relatedPosts = get_sub_field('sidebar_related_award_post');
@@ -186,15 +186,15 @@ if ( $includeSidebar ) {
 
 					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $label . '</h5>';
 					$s .='<div class="bbg__sidebar__primary">';
-					$counter =0;	
+					$counter =0;
 					foreach ($relatedPosts as $relatedPost) {
 						$counter++;
 						if ($counter > 1) {
 							$s .= "<br />";
 						}
-						$s .= getAwardInfo($relatedPost -> ID, false);	
+						$s .= getAwardInfo($relatedPost -> ID, false);
 					}
-					$s .=  '</div>';	
+					$s .=  '</div>';
 				}
 			} else if (get_row_layout() == 'sidebar_twitter_widget'){
 				//create widgets @ https://twitter.com/settings/widgets
