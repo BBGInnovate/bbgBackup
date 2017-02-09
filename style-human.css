@@ -6513,16 +6513,14 @@ article {
   margin: 0 -10%;
   max-width: 110vw;
   padding-right: 1rem;
+  /* @include media($large-screen) {
+  	margin: 0 -50%;
+  	max-width: none;
+  } */
 }
 @media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
-    margin: 0 -3rem 0 -10%;
-  }
-}
-@media screen and (min-width: 1201px) {
-  .bbg__ribbon--thin {
-    margin: 0 -50%;
-    max-width: none;
+    margin: 0 -14vw;
   }
 }
 .bbg__ribbon--thin .bbg__label {
