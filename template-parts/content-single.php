@@ -489,7 +489,13 @@ $hideFeaturedImage = FALSE;
 		<?php echo '<header class="entry-header bbg__article-header' . $featuredImageClass . '">'; ?>
 
 		<?php 
-			echo bbginnovate_post_categories(); 
+			if (get_post_type() == "threat_to_press") {
+				$link = get_permalink( get_page_by_path( 'threats-to-press' ) );
+				echo '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="Threats to Press">Threats to Press</a></h5>';
+			} else {
+				echo bbginnovate_post_categories(); 	
+			}
+			
 		?>
 		<!-- .bbg__label -->
 
