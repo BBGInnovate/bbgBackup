@@ -49,16 +49,16 @@ if ($dateline != "") {
 $relatedProfileID = get_post_meta( get_the_ID(), 'statement_related_profile', true );
 $includeRelatedProfile = false;
 if ($relatedProfileID) {
-	
+
 	$includeRelatedProfile = true;
 
 	$alternatePhotoID = get_post_meta( get_the_ID(), 'statement_alternate_profile_image', true );
 	if ($alternatePhotoID) {
 		$profilePhotoID = $alternatePhotoID;
 	} else {
-		$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );	
+		$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );
 	}
-	
+
 	$profilePhoto = "";
 
 	if ($profilePhotoID) {
@@ -145,7 +145,7 @@ $entityLogos = array();
 //DEFAULT_IMAGE
 if (in_category($categoriesThatShowEntityIcons))  {
 	if ( in_category($entityCategories)) {
-		foreach ( $entityCategories as $eCat ) { 
+		foreach ( $entityCategories as $eCat ) {
 			if ( in_category($eCat) ) {
 				$broadcastersPage=get_page_by_title('Our Networks');
 				$args = array(
@@ -180,7 +180,7 @@ if (in_category($categoriesThatShowEntityIcons))  {
 		/* for the time being, not showing a BBG logo because it's repetitious, particularly at mobile */
 		// $entityLink = "https://www.bbg.gov";
 		// $entityLogo = DEFAULT_IMAGE;
-		
+
 	}
 }
 
@@ -275,7 +275,7 @@ if ($addFeaturedMap) {
 		} else {
 			$popupBody .= "<h5><span style='font-weight: bold;'>$featuredMapItemTitle</span></h5><div class='u--show-medium-large'><img src='$featuredMapItemImageUrl'></div><BR>$featuredMapItemDescription";
 		}
-		
+
 
 		$features[] = array(
 			'type' => 'Feature',
@@ -441,7 +441,7 @@ $hideFeaturedImage = FALSE;
 
 	<?php
 		//in order of priority, use one of the following: featured map, video, image
-		
+
 		if ($addFeaturedGallery) {
 			$hideFeaturedImage = true;
 		}
@@ -488,21 +488,21 @@ $hideFeaturedImage = FALSE;
 
 		<?php echo '<header class="entry-header bbg__article-header' . $featuredImageClass . '">'; ?>
 
-		<?php 
+		<?php
 			if (get_post_type() == "threat_to_press") {
 				$link = get_permalink( get_page_by_path( 'threats-to-press' ) );
 				echo '<h5 class="entry-category bbg__label"><a href="' . $link . '" title="Threats to Press">Threats to Press</a></h5>';
 			} else {
-				echo bbginnovate_post_categories(); 	
+				echo bbginnovate_post_categories();
 			}
-			
+
 		?>
 		<!-- .bbg__label -->
 
 			<?php the_title( '<h1 class="entry-title bbg__article-header__title">', '</h1>' ); ?>
 			<!-- .bbg__article-header__title -->
 
-			<?php 
+			<?php
 				if ($addFeaturedGallery) {
 					echo "<div class='usa-grid-full bbg__article-featured__gallery' >";
 					$featuredGalleryID = get_post_meta( get_the_ID(), 'featured_gallery_id', true );
@@ -516,7 +516,7 @@ $hideFeaturedImage = FALSE;
 			</div><!-- .bbg__article-meta -->
 		</header><!-- .bbg__article-header -->
 
-		
+
 
 		<div class="bbg__article-sidebar--left">
 			<?php
@@ -531,7 +531,7 @@ $hideFeaturedImage = FALSE;
 						if ($i ==0 && $numLogos > 0) {
 							$firstClass = "bbg__entity-logo__press-release-first-of-many";
 						}
-						echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release ' . $firstClass . '"/></a>';	
+						echo '<a href="'.$entityLink.'" title="Learn more"><img src="'. $entityLogo . '" class="bbg__entity-logo__press-release ' . $firstClass . '"/></a>';
 					}
 				}
 			?>
@@ -567,11 +567,11 @@ $hideFeaturedImage = FALSE;
 
 				/* START AWARD INFO */
 				if ($isAward) {
-					$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );	
+					$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
 					if ( isset($awardDescription) && $awardDescription!= "" ) {
 						$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
 						$awardOrganization = $awardOrganization -> name;
-					
+
 						$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
 						$awardLogoImage = "";
 						if ( $awardLogo ){
@@ -580,7 +580,7 @@ $hideFeaturedImage = FALSE;
 							// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
 							$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
 						}
-		
+
 						echo '<div class="usa-grid-full bbg__contact-box">';
 							echo '<h3>About ' . $awardOrganization . '</h3>';
 							echo $awardLogoImage;
@@ -600,11 +600,13 @@ $hideFeaturedImage = FALSE;
 
 		<div class="bbg__article-sidebar">
 			<?php
-				if ($includeRelatedProfile) {
+				if ( $includeRelatedProfile ) {
 					echo $relatedProfile;
 				}
 
 				echo $featuredJournalists;
+
+				echo getInterviewees();
 
 				if ( $includeMap  && $mapLocation){
 					//echo "<img src='" . $map . "' class='bbg__locator-map'/>";
@@ -614,9 +616,9 @@ $hideFeaturedImage = FALSE;
 					echo "</div>";
 				}
 
-				if ($isAward) {
+				if ( $isAward ) {
 					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
-					echo '<div class="bbg__sidebar__primary">';	
+					echo '<div class="bbg__sidebar__primary">';
 					echo getAwardInfo(get_the_ID(), true);	//getAwardInfo is found in bbg-functions-awards.php
 					echo '</div>';
 				}
@@ -633,8 +635,6 @@ $hideFeaturedImage = FALSE;
 				echo $mediaDevPresenters;
 
 				echo $teamRoster;
-
-				
 
 				echo getAccordion();
 			?>
