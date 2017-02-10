@@ -231,87 +231,109 @@ if ( $includeSidebar ) {
 			} else if (get_row_layout() == 'sidebar_accordion_dynamic'){
 
 				$taglist = get_sub_field('sidebar_accordion_dynamic_tags');
-				$tagIDs = array();
-				foreach ($taglist as $tag) {
-					$tagIDs[] = $tag->term_id;
-				}
-
-				$catIDs = array();
 				$categoryRestriction = get_sub_field('sidebar_accordion_dynamic_categories');
-				foreach ($categoryRestriction as $cat) {
-					$catIDs[] = $cat->term_id;
-				}
-
 				$accordionTitle = get_sub_field('sidebar_accordion_dynamic_title');
-				if ($accordionTitle != "") {
-					$s .= "<h5 class='bbg__label small bbg__sidebar__download__label'>$accordionTitle</h5>";
+				$sectionDescription = get_sub_field('sidebar_accordion_dynamic_description');
+				$maxItems = get_sub_field('sidebar_accordion_dynamic_max_items_per_container');
+				$tagMap = array();
+				$tagIDs = array();
+				$catIDs = array();
+
+				foreach ($taglist as $tag) {
+					$tagIDs[] = $tag -> term_id;
+					$tagMap[$tag -> term_id]= true;
 				}
-				$s .= '<style>
-				div.usa-accordion-content {
-					padding:1.5rem !important;
+				
+				if ($categoryRestriction) {
+					foreach ($categoryRestriction as $cat) {
+						$catIDs[] = $cat -> term_id;
+					}	
 				}
-				</style>';
+				if (!count($tagIDs)) {
+					$s .= "Dynamic accordion requires at least one tag.<BR>";
+				} else {
+					if ($accordionTitle != "") {
+						$s .= "<h5 class='bbg__label small bbg__sidebar__download__label'>$accordionTitle</h5>";
+					}
+					
+					if ($sectionDescription) {
+						$s .= '<p>' . $sectionDescription . '</p>';	
+					}
+					$s .= '<style>
+					div.usa-accordion-content {
+						padding:1.5rem !important;
+					}
+					</style>';
 
-				$s .= '<div class="usa-accordion bbg__committee-list"><ul class="usa-unstyled-list">';
-				$i = 0;
+					$s .= '<div class="usa-accordion bbg__committee-list"><ul class="usa-unstyled-list">';
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => 999,
+						'orderby' => 'post_date',
+						'order' => 'desc',
+						'tag__in' => $tagIDs
+					);
+					if (count($catIDs)) {
+						$qParams['category__and'] = $catIDs;
+					}
 
-				$qParams=array(
-					'post_type' => array('post'),
-					'posts_per_page' => 50,
-					'orderby' => 'post_date',
-					'order' => 'desc',
-					'category__and' => $catIDs,
-					'tag__or' => $tagIDs
-				);
 
-				$postsByTag = array();
-				$custom_query = new WP_Query($qParams);
+					$postsByTag = array();
+					$custom_query = new WP_Query($qParams);
 
-				while ( $custom_query->have_posts() )  {
-					$custom_query->the_post();
-					$id = get_the_ID();
-					$posttags = get_the_tags();
-					$permalink = get_the_permalink();
-					$title = get_the_title();
-					if ($posttags) {
-						foreach($posttags as $tag) {
-							$term_id = $tag -> term_id;
-							if (!isset($postsByTag[$term_id])) {
-								 $postsByTag[$term_id] = array();
+					//create a 2 dimensional data structure called "postsByTag".   
+					//the first key is the tagID, and then each entry is an array of id/title/link 
+					while ( $custom_query->have_posts() )  { 
+						$custom_query->the_post();
+						$id = get_the_ID();
+						$posttags = get_the_tags();
+						$permalink = get_the_permalink();
+						$title = get_the_title();
+						if ($posttags) {
+							foreach($posttags as $tag) {
+								$term_id = $tag -> term_id;
+								if (isset($tagMap[$term_id])) {
+									if (!isset($postsByTag[$term_id])) {
+										$postsByTag[$term_id] = array();	
+									}
+									$postsByTag[$term_id][] = array(
+										'id' => $id,
+										'title' => $title,
+										'link' => $permalink
+									);
+								}
 							}
-							$postsByTag[$term_id][] = array(
-								'id' => $id,
-								'title' => $title,
-								'link' => $permalink
-							);
 						}
 					}
-				} 
-				foreach ($taglist as $tag) {
-					$i++;
-					$itemLabel = $tag -> name;
-					$itemID = $tag -> term_id;
-					$itemLabel = str_replace("Region: ", "", $itemLabel);
-					
-					if (isset($postsByTag[$itemID])) {
-						$s .= '<li>';
-						$s .= '<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-faq-' . $i . '">' . $itemLabel . '</button>';
-						$s .= '<div id="collapsible-faq-' . $i . '" aria-hidden="true" class="usa-accordion-content">';
-						
-						$j=0;
-						foreach($postsByTag[$itemID] as $article) {
-							$j++;
-							if ($j > 1) {
-								$s .= "<BR><BR>";
-							}
-							$link = $article['link'];
-							$id = $article['id'];
-							$title = $article['title'];
-							$s .= "<a href='$link'>$title</a>";
-						}
+					wp_reset_postdata();
 
-						$s .= '</div>';
-						$s .= '</li>';
+					$i = 0;
+					foreach ($taglist as $tag) {
+						$i++;
+						$itemLabel = $tag -> name;
+						$itemID = $tag -> term_id;
+						$itemLabel = str_replace("Region: ", "", $itemLabel);
+						if (isset($postsByTag[$itemID])) {
+							$s .= '<li>';
+							$s .= '<button class="usa-button-unstyled" aria-expanded="false" aria-controls="collapsible-faq-' . $i . '">' . $itemLabel . '</button>';
+							$s .= '<div id="collapsible-faq-' . $i . '" aria-hidden="true" class="usa-accordion-content">';
+							$j=0;
+							foreach($postsByTag[$itemID] as $article) {
+								$j++;
+								if ($maxItems == 0 || $j <= $maxItems) {
+									if ($j > 1) {
+										$s .= "<BR><BR>";
+									}
+									$link = $article['link'];
+									$id = $article['id'];
+									$title = $article['title'];
+									$s .= "<a href='$link'>$title</a>";
+								}
+							}
+
+							$s .= '</div>';
+							$s .= '</li>';
+						}
 					}
 				}
 			} else if (get_row_layout() == 'sidebar_taxonomy_display'){
@@ -323,78 +345,83 @@ if ( $includeSidebar ) {
 				$pastOrFuture = get_sub_field('sidebar_taxonomy_display_past_or_future');
 
 				$tagIDs = array();
+				$catIDs = array();
+
 				if ($taglist) {
 					foreach ($taglist as $tag) {
 						$tagIDs[] = $tag->term_id;
 					}	
 				}
-				
 
-				$catIDs = array();
+				
 				if ($categoryRestriction) {
 					foreach ($categoryRestriction as $cat) {
 						$catIDs[] = $cat->term_id;
 					}	
 				}
-				
 
-				$qParams=array(
-					'post_type' => array('post'),
-					'posts_per_page' => $numItems,
-					'orderby' => 'post_date'
-				);
-				if ($pastOrFuture == "past") {
-					$qParams['order'] = 'desc';
+				if (!count($tagIDs) && !count($catIDs)) {
+					$s .= "Sidebar taxonomy display requires at least one tag or category<BR>";
 				} else {
-					$qParams['order'] = 'asc';
-					$qParams['post_status'] = 'future';
-				}
-				
-				if (count($tagIDs)) {
-					$qParams['tag__and'] = $tagIDs;
-				}
-				if (count($catIDs)) {
-					$qParams['category__and'] = $catIDs;
-				}
-
-				$custom_query = new WP_Query($qParams);
-			
-				if ($custom_query -> found_posts || $sectionDescription) {
-					$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $sectionTitle . '</h5>';
-					if ($sectionDescription) {
-						$s .= '<p>' . $sectionDescription . '</p>';	
+					//We allow users to enter a zero to indicate no limit.  Wordpress needs a -1 for this.
+					if ($numItems == 0) {
+						$numItems = -1;
 					}
-					if ($custom_query -> found_posts) {
-						$i=0;
-						$s .= '<p>';
-						while ( $custom_query->have_posts() )  {
-							$custom_query->the_post();
-							$i++;
-							if ($i > 1) {
-								$s .= "<BR><BR>";
-							}
-							
-							$id = get_the_ID();
+					$qParams=array(
+						'post_type' => array('post'),
+						'posts_per_page' => $numItems,
+						'orderby' => 'post_date'
+					);
+					if ($pastOrFuture == "past") {
+						$qParams['order'] = 'desc';
+					} else {
+						$qParams['order'] = 'asc';
+						$qParams['post_status'] = 'future';
+					}
+					
+					if (count($tagIDs)) {
+						$qParams['tag__and'] = $tagIDs;
+					}
+					if (count($catIDs)) {
+						$qParams['category__and'] = $catIDs;
+					}
 
-							if ($pastOrFuture == "past") {
-								$permalink = get_the_permalink();
-							} else {
-								/**** wordpress doesn't return a nice permalink for scheduled posts, so we have a workaround ***/
-								global $post;
-								$my_post = clone $post;
-								$my_post->post_status = 'published';
-								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
-								$permalink = get_permalink($my_post);
-							}
-							
-							$title = get_the_title();
-							$s .= "<a style='text-decoration:none;' href='$permalink'>$title</a>";
+					$custom_query = new WP_Query($qParams);
+					if ($custom_query -> found_posts || $sectionDescription) {
+						$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $sectionTitle . '</h5>';
+						if ($sectionDescription) {
+							$s .= '<p>' . $sectionDescription . '</p>';	
 						}
-						$s .= '</p>';
+						if ($custom_query -> found_posts) {
+							$i=0;
+							$s .= '<p>';
+							while ( $custom_query->have_posts() )  {
+								$custom_query->the_post();
+								$i++;
+								if ($i > 1) {
+									$s .= "<BR><BR>";
+								}
+								$id = get_the_ID();
+								if ($pastOrFuture == "past") {
+									$permalink = get_the_permalink();
+								} else {
+									/**** wordpress doesn't return a nice permalink for scheduled posts, so we have a workaround ***/
+									global $post;
+									$my_post = clone $post;
+									$my_post->post_status = 'published';
+									$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
+									$permalink = get_permalink($my_post);
+								}
+								
+								$title = get_the_title();
+								$s .= "<a style='text-decoration:none;' href='$permalink'>$title</a>";
+							}
+							$s .= '</p>';
+						}
+						$s .= '<BR>';
 					}
-					$s .= '<BR>';
+					wp_reset_postdata();
 				}
-				wp_reset_postdata();
 			}
 		endwhile;
 		// Add all content types to the sidebar variable
