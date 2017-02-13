@@ -801,6 +801,14 @@ function my_add_excerpts_to_pages() {
 
 }
 
+//http://aaronrutley.com/responsive-images-in-wordpress-with-acf/
+function ar_responsive_image($image_id,$image_size,$max_width){
+	if($image_id != '') {
+		$image_src = wp_get_attachment_image_url( $image_id, $image_size );
+		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
+		echo 'src="'.$image_src.'" srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
+	}
+}
 
 function bbgredesign_get_image_size_links($imgID) {
 	//http://justintadlock.com/archives/2011/01/28/linking-to-all-image-sizes-in-wordpress
