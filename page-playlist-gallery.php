@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
- template name: Category Browser
+ template name: Playlist Gallery
 
  */
 
