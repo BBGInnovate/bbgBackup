@@ -276,11 +276,11 @@ get_header();
 							$downloadsIntro = str_replace( ']]>', ']]&gt;', $downloadsIntro );
 
 							if ( $downloadsLabel ) { // Output label if set
-								echo '<h6 class="bbg__label">$downloadsLabel</h6>';
+								echo '<h6 class="bbg__label">' . $downloadsLabel . '</h6>';
 							}
 
 							// Output downloads section intro text
-							echo '<div class="bbg__about__child__intro">$downloadsIntro</div>';
+							echo '<div class="bbg__about__child__intro">' . $downloadsIntro . '</div>';
 
 							// Output grandchild pages (subpages)
 							echo '<div class="usa-grid-full bbg__about__grandchildren">'; // open granchildren container
@@ -503,7 +503,7 @@ get_header();
 																}
 															endwhile;
 
-															echo '<br/><a href="$tagLink" class="bbg__kits__intro__more--link">View all highlights »</a>';
+															echo '<br/><a href="' . $tagLink . '" class="bbg__kits__intro__more--link">View all highlights »</a>';
 														}
 														wp_reset_query();
 													?>
