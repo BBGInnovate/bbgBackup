@@ -809,7 +809,7 @@ function ar_responsive_image($image_id,$image_size,$max_width){
 		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
 		$returnVal = 'src="'.$image_src.'" srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
 	}
-	return returnVal;
+	return $returnVal;
 }
 
 function bbgredesign_get_image_size_links($imgID) {
