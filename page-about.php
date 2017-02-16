@@ -8,6 +8,54 @@
  * @package bbgRedesign
  */
 
+/* @Check if number of pages is odd or even
+*  Return BOOL (true/false) */
+function isOdd( $pageTotal ) {
+	return ( $pageTotal % 2 ) ? TRUE : FALSE;
+}
+function showUmbrellaArea($atts) {
+	
+	$title = $atts['title'];
+	$label = $atts['label'];
+	$link = $atts['link'];
+	$gridClass = $atts['gridClass'];
+	$description = $atts['description'];
+	$forceContentLabels = $atts['forceContentLabels'];
+	$thumbPosition = "center center";
+	$thumbSrc = $atts['thumbSrc'];
+	$rowLayout = $atts['rowLayout'];
+	$anchorTarget = "";
+	if ($rowLayout == "external") {
+		$anchorTarget = " target='_blank' ";
+	}
+
+	// Output variables
+	echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
+
+	if ($label == "") {
+		if ($forceContentLabels) {
+			echo '<h6 class="bbg__label">&nbsp;</h6>';	
+		}
+	} else {
+		if ($link != "") {
+			$label = '<a href="' . $link . '">' . $label . '</a>';
+		}
+		echo '<h6 class="bbg__label">' . $label . '</h6>';	
+	}
+	
+	if ($thumbSrc) {
+		echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">'; 
+		//echo '<a target="_blank" href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . ar_responsive_image($thumbnailID,'medium-thumb',1200) . 'class="attachment-large-thumb size-large-thumb"></a>';
+		echo '<a ' . $anchorTarget . ' href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . $thumbSrc .  ' class="attachment-large-thumb size-large-thumb"></a>';
+		echo '</div>';	
+	}
+	
+
+	echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $title . '</a></h3>';
+	echo $description; // Output page excerpt
+	echo '</article>';
+}
+
 $templateName = "about";
 
 $bannerPosition = get_field( 'adjust_the_banner_image', '', true);
@@ -100,12 +148,6 @@ get_header();
 					$pageTotal = 1;
 					$containerClass = 'bbg__about__child ';
 
-					/* @Check if number of pages is odd or even
-					*  Return BOOL (true/false) */
-					function checkNum( $pageTotal ) {
-						return ( $pageTotal % 2 ) ? TRUE : FALSE;
-					}
-
 					while ( have_rows('about_flexible_page_rows') ) : the_row();
 						$counter++;
 
@@ -158,7 +200,7 @@ get_header();
 										}
 
 										// Check if total number of pages is odd or even
-										if ( checkNum($pageTotal) === TRUE ) {
+										if ( isOdd($pageTotal) === TRUE ) {
 											// if TRUE: number is odd
 											$gridClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 										} else {
@@ -192,7 +234,7 @@ get_header();
 							$pageTotal = count ( $umbrellaPages ); // count subpages
 
 							// Check if page count is even or odd
-							if ( checkNum($pageTotal) === TRUE ) {
+							if ( isOdd($pageTotal) === TRUE ) {
 								// if TRUE: number is odd
 								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 							} else {
@@ -254,13 +296,104 @@ get_header();
 						echo '</section>'; // close row
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 
+						elseif ( get_row_layout() == 'master_umbrella' ):
+							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
+							
+							$labelText = get_sub_field('master_umbrella_label');
+							$labelLink = get_sub_field('master_umbrella_link');
+							$forceContentLabels = get_sub_field('master_umbrella_force_content_labels');
+							$introText = get_sub_field('master_umbrella_intro_text');
+							$introText = apply_filters( 'the_content', $introText );
+							$introText = str_replace( ']]>', ']]&gt;', $introText );
+
+
+							//output intro section label if it exists (with or without link)
+							if ($labelText != "") {
+								if ( $labelLink ) { // if the label has a URL add link and right arrow
+									$labelText = '<a href="' . $labelLink . '">' . $labelText . '</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span>';
+								} 
+								echo '<h6 class="bbg__label">' . $labelText . '</h6>';	
+							} 
+							
+							//output intro section text if it exists
+							if ($introText != "") {
+								if ( $introText ) { 
+									echo '<div class="bbg__about__child__intro">' . $introText . '</div>';
+								}
+							}
+
+							$numRows = count(get_sub_field('master_umbrella_content'));
+							$containerClass = 'bbg-grid--1-2-2';
+							if ( isOdd($numRows)) {
+								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
+							}
+
+							echo '<div class="usa-grid-full bbg__about__grandchildren">'; // open grandchildren container
+							while ( have_rows('master_umbrella_content') ) : the_row();
+								if (get_row_layout() == 'master_umbrella_content_external') {
+									$thumbnail = get_sub_field('master_umbrella_content_file_thumbnail');
+									$thumbnailID = $thumbnail['ID'];
+									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
+									if ($thumbSrc) {
+										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+									}
+
+									showUmbrellaArea(array(
+										'label' => get_sub_field('master_umbrella_content_external_label'),
+										'title' => get_sub_field('master_umbrella_content_external_title'),
+										'description' => get_sub_field('master_umbrella_content_external_description'),
+										'link' => get_sub_field('master_umbrella_content_external_link'),
+										'thumbSrc' => $thumbSrc,
+										'gridClass' => $containerClass,
+										'forceContentLabels' => $forceContentLabels,
+										'rowLayout' => 'external'
+									));
+								} elseif (get_row_layout() == 'master_umbrella_content_internal') {
+									$pageObj = get_sub_field('master_umbrella_content_internal_link');
+									$showExcerpt = get_sub_field('master_umbrella_content_internal_include_excerpt');
+									$id = $pageObj[0]->ID;
+									$pageTitle = $pageObj[0]->post_title;
+									$link = get_the_permalink($id);
+									$secondaryHeadline = get_post_meta( $id, 'headline', true );
+									//$tagline = get_post_meta( $id, 'page_tagline', true );
+
+									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($id) , 'medium-thumb' );
+									if ($thumbSrc) {
+										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+									}
+									$description = "";
+									if ($showExcerpt) {
+										$description = my_excerpt( $id );
+										$description = apply_filters( 'the_content', $description );
+										$description = str_replace( ']]>', ']]&gt;', $description );
+									}
+
+									showUmbrellaArea(array(
+										'label' => $secondaryHeadline,
+										'title' => $pageTitle,
+										'description' => $description,
+										'link' => $link, 
+										'thumbSrc' => $thumbSrc,
+										'gridClass' => $containerClass,
+										'forceContentLabels' => $forceContentLabels,
+										'rowLayout' => 'internal'
+									));
+
+								} elseif (get_row_layout() == 'master_umbrella_content_file') {
+
+								}
+							endwhile;
+							echo '</div>';
+							echo '</section>'; // close row
+						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+
 						elseif ( get_row_layout() == 'about_downloads_files' ):
 						/*** BEGIN DISPLAY OF DOWNLOAD LINKS ROW ***/
 							$downloadFiles = get_sub_field( 'about_downloads_file' );
 							$totalFiles = count ( $downloadFiles ); // count number of files
 
 							// Check function return
-							if ( checkNum( $totalFiles ) === TRUE ) {
+							if ( isOdd( $totalFiles ) === TRUE ) {
 								// if TRUE: number is odd
 								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 							} else {
