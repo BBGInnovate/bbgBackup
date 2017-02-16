@@ -381,6 +381,43 @@ get_header();
 
 								} elseif (get_row_layout() == 'master_umbrella_content_file') {
 
+									$pageObj = get_sub_field('master_umbrella_content_file_file');
+									$pageTitle = get_sub_field('master_umbrella_content_file_title');
+									$description = get_sub_field('master_umbrella_content_file_description');
+									$link = get_the_permalink($id);
+
+									$thumbnail = get_sub_field('master_umbrella_content_file_thumbnail');
+									$thumbnailID = $thumbnail['ID'];
+									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
+									if ($thumbSrc) {
+										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+									}
+									
+									$description = "";
+									if ($showExcerpt) {
+										$description = my_excerpt( $id );
+										$description = apply_filters( 'the_content', $description );
+										$description = str_replace( ']]>', ']]&gt;', $description );
+									}
+									// Create array from file object
+									// $fileObj = $file['downloads_file'];
+									// 	// Define variables from array fields
+									// 	$fileID = $fileObj['ID'];
+									// 	$fileURL = $fileObj['url'];
+									// 	$file = get_attached_file( $fileID );
+									// 	$fileExt = strtoupper( pathinfo( $file, PATHINFO_EXTENSION ) ); // set extension to uppercase
+									// 	$fileSize = formatBytes( filesize( $file ) ); // file size
+
+									showUmbrellaArea(array(
+										'label' => $secondaryHeadline,
+										'title' => $pageTitle,
+										'description' => $description,
+										'link' => $link, 
+										'thumbSrc' => $thumbSrc,
+										'gridClass' => $containerClass,
+										'forceContentLabels' => $forceContentLabels,
+										'rowLayout' => 'internal'
+									));
 								}
 							endwhile;
 							echo '</div>';
