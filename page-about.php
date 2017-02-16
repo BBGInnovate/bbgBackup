@@ -350,12 +350,19 @@ get_header();
 									));
 								} elseif (get_row_layout() == 'master_umbrella_content_internal') {
 									$pageObj = get_sub_field('master_umbrella_content_internal_link');
-									$showExcerpt = get_sub_field('master_umbrella_content_internal_include_excerpt');
 									$id = $pageObj[0]->ID;
-									$pageTitle = $pageObj[0]->post_title;
 									$link = get_the_permalink($id);
+
+									$pageTitle = $pageObj[0]->post_title;
 									$secondaryHeadline = get_post_meta( $id, 'headline', true );
-									//$tagline = get_post_meta( $id, 'page_tagline', true );
+
+									$showExcerpt = get_sub_field('master_umbrella_content_internal_include_excerpt');
+									$tagline = get_post_meta( $id, 'page_tagline', true );
+									
+									$title = $pageTitle;
+									if ($tagline) {
+										$title = $tagline;
+									}
 
 									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($id) , 'medium-thumb' );
 									if ($thumbSrc) {
@@ -364,13 +371,15 @@ get_header();
 									$description = "";
 									if ($showExcerpt) {
 										$description = my_excerpt( $id );
+										$description = $description . '<a href="' . $link . '" class="bbg__about__grandchild__link">Read more »</a>';
 										$description = apply_filters( 'the_content', $description );
 										$description = str_replace( ']]>', ']]&gt;', $description );
+
 									}
 
 									showUmbrellaArea(array(
 										'label' => $secondaryHeadline,
-										'title' => $pageTitle,
+										'title' => $title,
 										'description' => $description,
 										'link' => $link, 
 										'thumbSrc' => $thumbSrc,
