@@ -273,7 +273,7 @@ get_header();
 										$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($rp -> ID) , 'medium-thumb' );
 										$thumbPosition = $rp -> adjust_the_banner_image;
 										$excerpt = my_excerpt( $rp -> ID );
-										$excerpt = $excerpt . '<a href="' . $url . '" class="bbg__about__grandchild__link">Read more »</a>';
+										//$excerpt = $excerpt . '<a href="' . $url . '" class="bbg__about__grandchild__link">Read more »</a>';
 										$excerpt = apply_filters( 'the_content', $excerpt );
 										$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 
@@ -371,7 +371,7 @@ get_header();
 									$description = "";
 									if ($showExcerpt) {
 										$description = my_excerpt( $id );
-										$description = $description . '<a href="' . $link . '" class="bbg__about__grandchild__link">Read more »</a>';
+										//$description = $description . '<a href="' . $link . '" class="bbg__about__grandchild__link">Read more »</a>';
 										$description = apply_filters( 'the_content', $description );
 										$description = str_replace( ']]>', ']]&gt;', $description );
 
