@@ -621,14 +621,14 @@ get_header();
 																$gridClass = 'bbg-grid--full-width';
 																$includeExcerpt = false;
 
-																if ($counter > 1) {
+																if ( $counter > 1 ) {
 																	$includeImage = false;
 																	$includeMeta = false;
-																	if ($counter == 2) {
+																	if ( $counter == 2 ) {
 																		echo '</div><div class="usa-width-one-half tertiary-stories">';
 																	}
 																}
-																if ($counter == 1) {
+																if ( $counter == 1 ) {
 																	$includePortfolioDescription = false;
 																	get_template_part( 'template-parts/content-portfolio', get_post_format() );
 																} else {
