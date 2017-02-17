@@ -83,10 +83,18 @@ $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 
-//Include sidebar map
+//Include sidebar map 
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
+
+//fake a map location 
+if (get_post_type() == "threat_to_press") {
+	$mapLocation = get_post_meta( get_the_ID(), 'threats_to_press_coordinates', true );	
+	if ($mapLocation) {
+		$includeMap = true;	
+	}
+}
 
 if ( $includeMap && $mapLocation) {
 	$mapHeadline = get_post_meta( get_the_ID(), 'map_headline', true );
