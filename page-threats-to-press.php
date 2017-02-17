@@ -41,6 +41,7 @@ function getThreatsCustomPosts($cutoffDate) {
 				'name' => $targetNames,
 				'date' => get_the_date(),
 				'year' => get_the_date('Y'),
+				'niceDate' => get_the_date('M d, Y'), 
 				'status' => $status,
 				'description' => get_the_content(),
 				'mugshot' => '',
@@ -426,6 +427,10 @@ wp_reset_query();
 					/* font-size:15px; */
 
 				} 
+				.mapBubbleDate {
+					font-style: italic;
+					margin-bottom:4px;
+				}
 				/*
 				.marker-cluster-killed div {
 					background-color: rgba(0, 0, 0, 1) !important;
@@ -509,7 +514,7 @@ wp_reset_query();
 								'marker-color': markerColor
 							})
 						});
-						marker.bindPopup(titleLink + t.description);
+						marker.bindPopup(titleLink + t.description + '<BR><BR>' + t.niceDate);
 						killedMarkers.addLayer(marker);
 						//marker.addTo(map);
 
@@ -535,7 +540,7 @@ wp_reset_query();
 							})
 						});
 
-						marker.bindPopup(titleLink + t.description);
+						marker.bindPopup(titleLink + '<div class="mapBubbleDate">' + t.niceDate + '</div>' + t.description);
 						var targetLayer = layers[t.year];
         				marker.addTo(targetLayer);
 
@@ -546,7 +551,7 @@ wp_reset_query();
 								'marker-color': markerColor
 							})
 						});
-						marker2.bindPopup(titleLink + t.description);
+						marker2.bindPopup(titleLink + '<div class="mapBubbleDate">' + t.niceDate + '</div>' + t.description);
         				marker2.addTo(layersNoCluster[t.year])
 					}
 				}
