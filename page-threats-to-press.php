@@ -481,8 +481,8 @@ wp_reset_query();
 				// 	}
 				// });
 
-				var layers = {};    
-				var layersNoCluster = {};
+				layers = {};    
+				layersNoCluster = {};
 
 			    for (var year=2020; year >= 2013; year--) {
 		     		var newLayer = L.featureGroup.subGroup(mcg);
@@ -563,7 +563,15 @@ wp_reset_query();
 				map.scrollWheelZoom.disable();
 
 				function centerMap(){
-					map.fitBounds(mcg.getBounds());
+					if (activeYear == "all") {
+						lGroup = mcg;
+					} else {
+						lGroup = layersNoCluster[activeYear];
+					}
+					if (lGroup) {
+						map.fitBounds(lGroup.getBounds());
+					}
+					
 				}
 
 				//Recenter the map on resize
