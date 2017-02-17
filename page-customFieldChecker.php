@@ -27,9 +27,10 @@
 
 <?php 
 
-if (isset($_GET['customFieldKey'] )) {
+if ( isset($_GET['customFieldKey']) && ($_GET['customFieldKey'] != "" )) {
+
+
   $qParams = array(
-    'post_type'=> 'page',
     'post_status' => 'publish',
     'posts_per_page' => 200,
     'orderby' => 'post_date',
@@ -43,7 +44,15 @@ if (isset($_GET['customFieldKey'] )) {
     )
   );
 
-  
+  if (isset($_GET['post_type']) ) {
+    if ($_GET['post_type'] == 'q_post') {
+      $qParams['post_type'] = 'post';
+    } else {
+      $qParams['post_type'] = $_GET['post_type'];    
+    }
+    
+  }
+
   echo "<h1>Post Report (Custom Field Edition)</h1>";
     echo "Key queried: " . $_GET['customFieldKey'] . " <BR>";
  
@@ -52,12 +61,12 @@ if (isset($_GET['customFieldKey'] )) {
   $custom_query = new WP_Query( $qParams );
   if ( $custom_query->have_posts() ) :
     $counter = 0;
-    echo "<table class='table table-striped table-bordered'><thead><th >Pub Date</th><th>Post</th><th>Key Value</th><tbody>";
+    echo "<table class='table table-striped table-bordered'><thead><th >Pub Date</th><th>Type</td><th>Post</th><th>Key Value</th><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
       $counter++;
       $id = get_the_ID();
       $key = $_GET['customFieldKey'];
-      echo "<tr><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td><td><pre>";
+      echo "<tr><td width='175'>" . get_the_date() . "</td><td>" . get_post_type() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td><td><pre>";
       var_dump(get_post_meta($id,$key));
       echo  "</pre></td></tr>";
     endwhile;
@@ -69,11 +78,15 @@ if (isset($_GET['customFieldKey'] )) {
 
 ?>
 
-<h1>Post Queries</h1>
 <form method="get">
-        <h2>Custom Field Key</h2>
-        <input type="text" name="customFieldKey">
-         <button type="submit" class="btn btn-default">Submit</button>
+        <h3>Custom Field Key</h3>
+        <input type="text" name="customFieldKey"> <BR><BR>
+        <h3>Post Type</h3>
+        <input type="radio" name="post_type" value="any" id="any" checked="checked"> <label for="any">Any</label> &nbsp;&nbsp;
+        <input type="radio" name="post_type" value="q_post" id="post"> <label for="post">Posts Only</label> &nbsp;&nbsp;
+        <input type="radio" name="post_type" value="page" id="page"> <label for="page">Pages Only</label> <BR><BR>
+
+        <button type="submit" class="btn btn-default">Submit</button>
 </form>       
 
 
