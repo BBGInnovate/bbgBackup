@@ -597,21 +597,24 @@ wp_reset_query();
 
 				resizeStuffOnResize();
 
-				function setSelectedPlatform(platform, displayMode) {
+				
+
+				function setSelectedYear(year, displayMode) {
+					activeYear = year;
 					for (var p in layers) {
 						if (layers.hasOwnProperty(p)) {
 							map.removeLayer(layers[p]);
 							map.removeLayer(layersNoCluster[p]);
 						}
 					}
-					if (platform == "all") {
+					if (year == "all") {
 						for (var p in layers) {
 							if (layers.hasOwnProperty(p)) {
 								map.addLayer(layers[p]);
 							}
 						}
 					} else {
-						map.addLayer(layersNoCluster[platform]);
+						map.addLayer(layersNoCluster[year]);
 					}
 					//at mobile (when we're showing a select box) it helps to recenter the map after changing platforms
 					//if (displayMode=='select') {
@@ -619,16 +622,16 @@ wp_reset_query();
 					//}
 					
 				}
-
 				jQuery( document ).ready(function() {
 					jQuery('input[type=radio][name=trainingYear]').change(function() {
-						setSelectedPlatform(this.value, 'radio');
+						setSelectedYear(this.value, 'radio');
 					});
 					jQuery('select[name=trainingSelect]').change(function() {
-						var selectedPlatform = jQuery(this).val();
-						setSelectedPlatform(selectedPlatform,'select');
+						var year = jQuery(this).val();
+						setSelectedYear(year,'select');
 					});
-					setSelectedPlatform('all');
+					//initialize the year to 'all' at startup
+					setSelectedYear('all');
 				});
 
 				/*
