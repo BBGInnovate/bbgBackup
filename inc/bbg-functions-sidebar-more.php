@@ -67,9 +67,8 @@
 				}
 
 				// close list and div
+				$intervieweesList .= '</ul></div>';
 		    endwhile;
-
-			$intervieweesList .= '</ul></div>';
 
 		return $intervieweesList;
 	}
