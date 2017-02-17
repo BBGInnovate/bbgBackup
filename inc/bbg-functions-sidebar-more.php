@@ -30,10 +30,10 @@
 			$intervieweesLabel = get_field('interviews_label');
 			// create list variable
 			$intervieweesList = "";
-	    	// open a new div + output label + open list
-			$intervieweesList .= '<div><h3 class="bbg__sidebar-label">' . $intervieweesLabel . '</h3><ul class="usa-unstyled-list">';
 
 		    while ( have_rows('interview_names') ) : the_row();
+		    	// open a new div + output label + open list
+				$intervieweesList .= '<div><h3 class="bbg__sidebar-label">' . $intervieweesLabel . '</h3><ul class="usa-unstyled-list">';
 
 				if ( get_row_layout() == 'interview_names_internal' ) {
 					// set variable for WP object array
