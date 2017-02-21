@@ -30,7 +30,7 @@ function showUmbrellaArea($atts) {
 	}
 
 	// Output variables
-	echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
+	echo '<article class="' . $gridClass . ' bbg__about__grandchild bbg__about__child">';
 
 	if ($columnTitle == "") {
 		if ($forceContentLabels) {
@@ -352,7 +352,7 @@ get_header();
 									$id = $pageObj[0]->ID;
 									$link = get_the_permalink($id);
 									$title = "";
-									$includeTitle = get_sub_field('umbrella_content_internal_include_title');
+									$includeTitle = get_sub_field('umbrella_content_internal_include_item_title');
 									$titleOverride = get_sub_field('umbrella_content_internal_title');
 									$secondaryHeadline = get_post_meta( $id, 'headline', true );
  
@@ -389,7 +389,7 @@ get_header();
 									}
 
 									showUmbrellaArea(array(
-										'columnTitle' => $secondaryHeadline,
+										'columnTitle' => get_sub_field('umbrella_content_internal_column_title'),
 										'itemTitle' => $title,
 										'description' => $description,
 										'link' => $link, 
@@ -418,7 +418,7 @@ get_header();
 										$description = str_replace( ']]>', ']]&gt;', $description );
 									} 
 									
-									$fileTitle = get_sub_field('umbrella_content_file_title');
+									$fileTitle = get_sub_field('umbrella_content_file_item_title');
 									//parse information about the file so we can append file sizeto append to our file title
 									$fileID = $fileObj['ID'];
 									$fileURL = $fileObj['url'];
