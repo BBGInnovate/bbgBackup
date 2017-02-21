@@ -713,17 +713,19 @@ get_header(); ?>
 							}
 
 							$focusPageObj = get_sub_field('kits_recent_awards_focus_page');
-
-							$focusPageTitle = get_the_title( $focusPageObj->ID );
-							$focusPageURL = get_the_permalink( $focusPageObj->ID );
-							$focusPageExcerpt = my_excerpt( $focusPageObj->ID );
-							$focusPageExcerpt = apply_filters( 'the_content', $focusPageExcerpt );
-							$focusPageExcerpt = str_replace( ']]>', ']]&gt;', $focusPageExcerpt );
-
+							if ($focusPageObj) {
+								$focusPageTitle = get_the_title( $focusPageObj->ID );
+								$focusPageURL = get_the_permalink( $focusPageObj->ID );
+								$focusPageExcerpt = my_excerpt( $focusPageObj->ID );
+								$focusPageExcerpt = apply_filters( 'the_content', $focusPageExcerpt );
+								$focusPageExcerpt = str_replace( ']]>', ']]&gt;', $focusPageExcerpt );
+							}
 										$s .= '<div class="bbg-grid--1-2-2 usa-width-one-half bbg__post-excerpt bbg__award__excerpt">';
+										if ($focusPageObj) {
 											$s .= '<h2 class="entry-title">' . $focusPageTitle . '</h2>';
 											$s .= '<p>' . $focusPageExcerpt . '</p>';
 											$s .= '<a href="' . $focusPageURL . '" class="bbg__kits__intro__more--link">Read more »</a>';
+										}
 										$s .= '</div>';
 									$s .= '</section>';
 								$s .= '</div>';
