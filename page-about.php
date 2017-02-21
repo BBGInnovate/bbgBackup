@@ -15,8 +15,8 @@ function isOdd( $pageTotal ) {
 }
 function showUmbrellaArea($atts) {
 	
-	$title = $atts['title'];
-	$label = $atts['label'];
+	$itemTitle = $atts['itemTitle'];
+	$columnTitle = $atts['columnTitle'];
 	$link = $atts['link'];
 	$gridClass = $atts['gridClass'];
 	$description = $atts['description'];
@@ -32,15 +32,15 @@ function showUmbrellaArea($atts) {
 	// Output variables
 	echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
 
-	if ($label == "") {
+	if ($columnTitle == "") {
 		if ($forceContentLabels) {
 			echo '<h6 class="bbg__label">&nbsp;</h6>';	
 		}
 	} else {
 		if ($link != "") {
-			$label = '<a href="' . $link . '">' . $label . '</a>';
+			$columnTitle = '<a href="' . $link . '">' . $columnTitle . '</a>';
 		}
-		echo '<h6 class="bbg__label">' . $label . '</h6>';	
+		echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
 	}
 	
 	if ($thumbSrc) {
@@ -51,7 +51,7 @@ function showUmbrellaArea($atts) {
 	}
 	
 
-	echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $title . '</a></h3>';
+	echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>';
 	echo $description; // Output page excerpt
 	echo '</article>';
 }
@@ -244,11 +244,11 @@ get_header();
 
 							$labelText = get_sub_field( 'about_umbrella_label' );
 							$labelLink = get_sub_field( 'about_umbrella_label_link' );
-							$introText = get_sub_field( 'about_umbrella_intro_text' );
+							$sectionIntroText = get_sub_field( 'about_umbrella_intro_text' );
 
 							// allow shortcodes in intro text
-							$introText = apply_filters( 'the_content', $introText );
-							$introText = str_replace( ']]>', ']]&gt;', $introText );
+							$sectionIntroText = apply_filters( 'the_content', $sectionIntroText );
+							$sectionIntroText = str_replace( ']]>', ']]&gt;', $sectionIntroText );
 
 							if ( $labelLink ) { // if the label has a URL add link and right arrow
 								echo '<h6 class="bbg__label"><a href="' . $labelLink . '">' . $labelText . '</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span></h6>';
@@ -257,8 +257,8 @@ get_header();
 							}
 
 							// Output umbrella section intro text
-							if ( $introText ) {
-								echo '<div class="bbg__about__child__intro">' . $introText . '</div>';
+							if ( $sectionIntroText ) {
+								echo '<div class="bbg__about__child__intro">' . $sectionIntroText . '</div>';
 							}
 
 							// Output grandchild pages (subpages)
@@ -296,78 +296,89 @@ get_header();
 						echo '</section>'; // close row
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
 
-						elseif ( get_row_layout() == 'master_umbrella' ):
+						elseif ( get_row_layout() == 'umbrella' ): 
 							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							
-							$labelText = get_sub_field('master_umbrella_label');
-							$labelLink = get_sub_field('master_umbrella_link');
-							$forceContentLabels = get_sub_field('master_umbrella_force_content_labels');
-							$introText = get_sub_field('master_umbrella_intro_text');
-							$introText = apply_filters( 'the_content', $introText );
-							$introText = str_replace( ']]>', ']]&gt;', $introText );
+							$sectionHeading = get_sub_field('umbrella_section_heading');
+							$sectionHeadingLink = get_sub_field('umbrella_section_heading_link');
+							$forceContentLabels = get_sub_field('umbrella_force_content_labels');
+							$sectionIntroText = get_sub_field('umbrella_section_intro_text');
+							$sectionIntroText = apply_filters( 'the_content', $sectionIntroText );
+							$sectionIntroText = str_replace( ']]>', ']]&gt;', $sectionIntroText );
 
 
 							//output intro section label if it exists (with or without link)
-							if ($labelText != "") {
-								if ( $labelLink ) { // if the label has a URL add link and right arrow
-									$labelText = '<a href="' . $labelLink . '">' . $labelText . '</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span>';
+							if ($sectionHeading != "") {
+								if ( $sectionHeadingLink ) { // if the label has a URL add link and right arrow
+									$sectionHeading = '<a href="' . $sectionHeadingLink . '">' . $sectionHeading . '</a> <span class="bbg__links--right-angle-quote" aria-hidden="true">&raquo;</span>';
 								} 
-								echo '<h6 class="bbg__label">' . $labelText . '</h6>';	
+								echo '<h6 class="bbg__label">' . $sectionHeading . '</h6>';	
 							} 
 							
 							//output intro section text if it exists
-							if ($introText != "") {
-								if ( $introText ) { 
-									echo '<div class="bbg__about__child__intro">' . $introText . '</div>';
+							if ($sectionIntroText != "") {
+								if ( $sectionIntroText ) { 
+									echo '<div class="bbg__about__child__intro">' . $sectionIntroText . '</div>';
 								}
 							}
 
-							$numRows = count(get_sub_field('master_umbrella_content'));
+							$numRows = count(get_sub_field('umbrella_content'));
 							$containerClass = 'bbg-grid--1-2-2';
 							if ( isOdd($numRows)) {
 								$containerClass = 'bbg-grid--1-3-3'; // add 3-col grid class
 							}
 
 							echo '<div class="usa-grid-full bbg__about__grandchildren">'; // open grandchildren container
-							while ( have_rows('master_umbrella_content') ) : the_row();
-								if (get_row_layout() == 'master_umbrella_content_external') {
-									$thumbnail = get_sub_field('master_umbrella_content_file_thumbnail');
+							while ( have_rows('umbrella_content') ) : the_row();
+								if (get_row_layout() == 'umbrella_content_external') {
+									$thumbnail = get_sub_field('umbrella_content_external_thumbnail');
 									$thumbnailID = $thumbnail['ID'];
 									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
 									if ($thumbSrc) {
 										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
-									}
-
+									} 
 									showUmbrellaArea(array(
-										'label' => get_sub_field('master_umbrella_content_external_label'),
-										'title' => get_sub_field('master_umbrella_content_external_title'),
-										'description' => get_sub_field('master_umbrella_content_external_description'),
-										'link' => get_sub_field('master_umbrella_content_external_link'),
+										'columnTitle' => get_sub_field('umbrella_content_external_column_title'),
+										'itemTitle' => get_sub_field('umbrella_content_external_item_title'),
+										'description' => get_sub_field('umbrella_content_external_description'),
+										'link' => get_sub_field('umbrella_content_external_link'),
 										'thumbSrc' => $thumbSrc,
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
 										'rowLayout' => 'external'
 									));
-								} elseif (get_row_layout() == 'master_umbrella_content_internal') {
-									$pageObj = get_sub_field('master_umbrella_content_internal_link');
+								} elseif (get_row_layout() == 'umbrella_content_internal') {
+									$pageObj = get_sub_field('umbrella_content_internal_link');
 									$id = $pageObj[0]->ID;
 									$link = get_the_permalink($id);
-
-									$pageTitle = $pageObj[0]->post_title;
+									$title = "";
+									$includeTitle = get_sub_field('umbrella_content_internal_include_title');
+									$titleOverride = get_sub_field('umbrella_content_internal_title');
 									$secondaryHeadline = get_post_meta( $id, 'headline', true );
-
-									$showExcerpt = get_sub_field('master_umbrella_content_internal_include_excerpt');
-									$tagline = get_post_meta( $id, 'page_tagline', true );
+ 
+									if ( $includeTitle ) {
+										$titleOverride = get_sub_field('umbrella_content_internal_item_title');
+										if ($titleOverride != "" ) {
+											$title = $titleOverride;
+										} else {
+											if ($secondaryHeadline) {
+												$title = $secondaryHeadline;	
+											} else {
+												$title = $pageObj[0]->post_title;	
+											}
+										}
+									}
 									
-									$title = $pageTitle;
-									if ($tagline) {
-										$title = $tagline;
+									$showFeaturedImage = get_sub_field('umbrella_content_internal_include_featured_image');
+									$thumbSrc = "";
+									if ($showFeaturedImage) {
+										$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($id) , 'medium-thumb' );
+										if ($thumbSrc) {
+											$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+										}
 									}
-
-									$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($id) , 'medium-thumb' );
-									if ($thumbSrc) {
-										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
-									}
+									
+									$showExcerpt = get_sub_field('umbrella_content_internal_include_excerpt');
 									$description = "";
 									if ($showExcerpt) {
 										$description = my_excerpt( $id );
@@ -378,8 +389,8 @@ get_header();
 									}
 
 									showUmbrellaArea(array(
-										'label' => $secondaryHeadline,
-										'title' => $title,
+										'columnTitle' => $secondaryHeadline,
+										'itemTitle' => $title,
 										'description' => $description,
 										'link' => $link, 
 										'thumbSrc' => $thumbSrc,
@@ -388,12 +399,12 @@ get_header();
 										'rowLayout' => 'internal'
 									));
 
-								} elseif (get_row_layout() == 'master_umbrella_content_file') {
+								} elseif (get_row_layout() == 'umbrella_content_file') {
 
-									$fileObj = get_sub_field('master_umbrella_content_file_file');
-									$description = get_sub_field('master_umbrella_content_file_description');
+									$fileObj = get_sub_field('umbrella_content_file_file');
+									$description = get_sub_field('umbrella_content_file_description');
 
-									$thumbnail = get_sub_field('master_umbrella_content_file_thumbnail');
+									$thumbnail = get_sub_field('umbrella_content_file_thumbnail');
 									$thumbnailID = $thumbnail['ID'];
 									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
 									if ($thumbSrc) {
@@ -405,9 +416,9 @@ get_header();
 										$description = my_excerpt( $id );
 										$description = apply_filters( 'the_content', $description );
 										$description = str_replace( ']]>', ']]&gt;', $description );
-									}
+									} 
 									
-									$fileTitle = get_sub_field('master_umbrella_content_file_title');
+									$fileTitle = get_sub_field('umbrella_content_file_title');
 									//parse information about the file so we can append file sizeto append to our file title
 									$fileID = $fileObj['ID'];
 									$fileURL = $fileObj['url'];
@@ -416,10 +427,10 @@ get_header();
 									$fileSize = formatBytes( filesize( $file ) ); // file size
 									
 									$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
-
+ 
 									showUmbrellaArea(array(
-										'label' => $secondaryHeadline,
-										'title' => $fileTitle,
+										'columnTitle' => $secondaryHeadline,
+										'itemTitle' => $fileTitle,
 										'description' => $description,
 										'link' => $fileURL, 
 										'thumbSrc' => $thumbSrc,
