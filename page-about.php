@@ -295,7 +295,22 @@ get_header();
 							echo '</div>'; // close grandchildren container
 						echo '</section>'; // close row
 						/*** END DISPLAY OF ENTIRE UMBRELLA ROW ***/
+						elseif ( get_row_layout() == 'marquee'):
 
+							$marqueeHeading = get_sub_field('marquee_heading');
+							$marqueeLink = get_sub_field('marquee_link');
+							$marqueeContent = get_sub_field('marquee_content');
+							$marqueeContent = apply_filters( 'the_content', $marqueeContent );
+							$marqueeContent = str_replace( ']]>', ']]&gt;', $marqueeContent ); 
+
+							echo '<section class="usa-grid-full bbg__about__children--row bbg__about--marquee">';
+							echo '<article id="post-25948" class="bbg__about__excerpt bbg__about__child bbg__about__child--mission bbg-grid--1-1-1 post-25948 page type-page status-publish has-post-thumbnail hentry">';
+								echo '<header class="entry-header bbg__about__excerpt-header"><h6 class="bbg__label"><a href="' . $marqueeLink . '">' . $marqueeHeading . '</a></h6></header>';
+								echo '<div class="entry-content bbg__about__excerpt-content">' . $marqueeContent . '</div>';
+							echo '</article>';
+							echo '</section>';
+
+						
 						elseif ( get_row_layout() == 'umbrella' ): 
 							/*** BEGIN DISPLAY OF ENTIRE UMBRELLA ROW ***/
 							
