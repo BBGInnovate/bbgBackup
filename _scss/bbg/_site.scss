@@ -1337,15 +1337,16 @@ article {
 	}
 }
 
-.bbg__ribbon--thin {
+.bbg__ribbon--thin { 
 	background-color: $color-gray-dark;
-	margin: 0 -(100vw + 2%);
+	//margin: 0 -(100vw + 2%);
+	margin: 0 -10%;
 	max-width: 110vw;
 	padding-right: 1rem;
 
-	/* @include media($medium-large-screen) {
+	@include media($medium-large-screen) {
 		margin: 0 -14vw;
-	} */
+	}
 
 	/* @include media($large-screen) {
 		margin: 0 -50%;

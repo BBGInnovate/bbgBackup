@@ -7035,17 +7035,17 @@ section.usa-section.bbg-banner__section {
   margin-top: 1rem;
 }
 
-.bbg__about__child--mission .single-post-thumbnail {
+.bbg__about__child--mission .single-post-thumbnail, .bbg__about--marquee .single-post-thumbnail {
   display: none;
   height: 0;
 }
-.bbg__about__child--mission .bbg__about__excerpt-content {
+.bbg__about__child--mission .bbg__about__excerpt-content, .bbg__about--marquee .bbg__about__excerpt-content {
   display: block;
   background-color: #f1f1f1;
   border-radius: 0.3rem;
   padding: 3rem;
 }
-.bbg__about__child--mission p {
+.bbg__about__child--mission p, .bbg__about--marquee p {
   color: #000;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 2.5rem;
@@ -7054,7 +7054,7 @@ section.usa-section.bbg-banner__section {
   margin: 0;
 }
 @media screen and (min-width: 1201px) {
-  .bbg__about__child--mission p {
+  .bbg__about__child--mission p, .bbg__about--marquee p {
     font-size: 3rem;
     line-height: 1.9;
   }
