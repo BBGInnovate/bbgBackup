@@ -23,37 +23,49 @@ function showUmbrellaArea($atts) {
 	$forceContentLabels = $atts['forceContentLabels'];
 	$thumbPosition = "center center";
 	$thumbSrc = $atts['thumbSrc'];
-	$rowLayout = $atts['rowLayout'];
+	$columnType = $atts['columnType'];
 	$anchorTarget = "";
-	if ($rowLayout == "external" || $rowLayout == "file") {
+	$layout = $atts['layout'];
+	if ($columnType == "external" || $columnType == "file") {
 		$anchorTarget = " target='_blank' ";
 	}
 
-	// Output variables
-	echo '<article class="' . $gridClass . ' bbg__about__grandchild bbg__about__child">';
-
-	if ($columnTitle == "") {
-		if ($forceContentLabels) {
-			echo '<h6 class="bbg__label">&nbsp;</h6>';	
+	if ( $layout == 'full' ) {
+		// Output variables
+		echo '<article class="' . $gridClass . ' bbg__about__grandchild bbg__about__child">';
+		if ($columnTitle == "") {
+			if ($forceContentLabels) {
+				echo '<h6 class="bbg__label">&nbsp;</h6>';	
+			}
+		} else {
+			if ($link != "") {
+				$columnTitle = '<a href="' . $link . '">' . $columnTitle . '</a>';
+			}
+			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
 		}
+		
+		if ($thumbSrc) {
+			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">'; 
+			//echo '<a target="_blank" href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . ar_responsive_image($thumbnailID,'medium-thumb',1200) . 'class="attachment-large-thumb size-large-thumb"></a>';
+			echo '<a ' . $anchorTarget . ' href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" src="' . $thumbSrc .  '" class="attachment-large-thumb size-large-thumb"></a>';
+			echo '</div>';	
+		}
+		
+		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>';
+		echo $description; // Output page excerpt
+		echo '</article>';
 	} else {
+
+		echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
+		$columnTitle = $itemTitle;
 		if ($link != "") {
 			$columnTitle = '<a href="' . $link . '">' . $columnTitle . '</a>';
 		}
-		echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
+		echo '<h3 class="bbg__about__grandchild__title">' . $columnTitle . '</h3>';	
+		echo '<a href="' . $link . '">';
+		echo '<div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc . '); background-position:center center;"></div></a>' . $description;
+		echo '</article>';
 	}
-	
-	if ($thumbSrc) {
-		echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">'; 
-		//echo '<a target="_blank" href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . ar_responsive_image($thumbnailID,'medium-thumb',1200) . 'class="attachment-large-thumb size-large-thumb"></a>';
-		echo '<a ' . $anchorTarget . ' href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . $thumbSrc .  ' class="attachment-large-thumb size-large-thumb"></a>';
-		echo '</div>';	
-	}
-	
-
-	echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>';
-	echo $description; // Output page excerpt
-	echo '</article>';
 }
 
 $templateName = "about";
@@ -350,7 +362,8 @@ get_header();
 									$thumbnailID = $thumbnail['ID'];
 									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
 									if ($thumbSrc) {
-										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+										//$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+										$thumbSrc = $thumbSrc[0];
 									} 
 									showUmbrellaArea(array(
 										'columnTitle' => get_sub_field('umbrella_content_external_column_title'),
@@ -360,9 +373,11 @@ get_header();
 										'thumbSrc' => $thumbSrc,
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
-										'rowLayout' => 'external'
+										'columnType' => 'external',
+										'layout' => get_sub_field('umbrella_content_external_layout')
 									));
 								} elseif (get_row_layout() == 'umbrella_content_internal') {
+
 									$pageObj = get_sub_field('umbrella_content_internal_link');
 									$id = $pageObj[0]->ID;
 									$link = get_the_permalink($id);
@@ -389,7 +404,8 @@ get_header();
 									if ($showFeaturedImage) {
 										$thumbSrc = wp_get_attachment_image_src( get_post_thumbnail_id($id) , 'medium-thumb' );
 										if ($thumbSrc) {
-											$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+											//$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+											$thumbSrc = $thumbSrc[0];
 										}
 									}
 									
@@ -411,27 +427,25 @@ get_header();
 										'thumbSrc' => $thumbSrc,
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
-										'rowLayout' => 'internal'
+										'columnType' => 'internal',
+										'layout' => get_sub_field('umbrella_content_internal_layout')
 									));
 
 								} elseif (get_row_layout() == 'umbrella_content_file') {
 
 									$fileObj = get_sub_field('umbrella_content_file_file');
 									$description = get_sub_field('umbrella_content_file_description');
+									$layout = get_sub_field('umbrella_content_file_layout');
 
 									$thumbnail = get_sub_field('umbrella_content_file_thumbnail');
 									$thumbnailID = $thumbnail['ID'];
 									$thumbSrc = wp_get_attachment_image_src( $thumbnailID , 'medium-thumb' );
 									if ($thumbSrc) {
-										$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+										//$thumbSrc = 'src="' . $thumbSrc[0] . '"';	
+										$thumbSrc = $thumbSrc[0];
 									}
 									
-									$description = "";
-									if ($showExcerpt) {
-										$description = my_excerpt( $id );
-										$description = apply_filters( 'the_content', $description );
-										$description = str_replace( ']]>', ']]&gt;', $description );
-									} 
+									$description = get_sub_field('umbrella_content_file_description');
 									
 									$fileTitle = get_sub_field('umbrella_content_file_item_title');
 									//parse information about the file so we can append file sizeto append to our file title
@@ -441,7 +455,12 @@ get_header();
 									$fileExt = strtoupper( pathinfo( $file, PATHINFO_EXTENSION ) ); // set extension to uppercase
 									$fileSize = formatBytes( filesize( $file ) ); // file size
 									
-									$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
+									if ($layout == 'full') {
+										$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
+									} else {
+										$description = $description . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';	
+									}
+									
  
 									showUmbrellaArea(array(
 										'columnTitle' => $secondaryHeadline,
@@ -451,7 +470,8 @@ get_header();
 										'thumbSrc' => $thumbSrc,
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
-										'rowLayout' => 'file'
+										'columnType' => 'file',
+										'layout' => $layout
 									));
 								}
 							endwhile;
