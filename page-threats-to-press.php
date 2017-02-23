@@ -157,7 +157,7 @@ if( $fallenJournalists ) {
 		$imgSrc = '<img src="' . $mugshot . '" alt="' . $altText . '" class="bbg__profile-grid__profile__mugshot"/>';
 
 		//JBF 2/8/2017: not using link until we fill out profiles.
-		if (false && $link != "") {
+		if ($link != "") {
 			$journalistName = '<a href="' . $link . '">' . $name . "</a>";
 			$imgSrc = '<a href="' . $link . '">' . $imgSrc . "</a>";
 		} else {
