@@ -26,6 +26,13 @@ function showUmbrellaArea($atts) {
 	$columnType = $atts['columnType'];
 	$anchorTarget = "";
 	$layout = $atts['layout'];
+	$linkSuffix = "";
+	if ($columnType == "file") {
+		$fileSize = $atts['fileSize'];
+		$fileExt = $atts['fileExt'];
+		$linkSuffix = ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
+	
+	}
 	if ($columnType == "external" || $columnType == "file") {
 		$anchorTarget = " target='_blank' ";
 	}
@@ -39,7 +46,7 @@ function showUmbrellaArea($atts) {
 			}
 		} else {
 			if ($link != "") {
-				$columnTitle = '<a href="' . $link . '">' . $columnTitle . '</a>';
+				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>' . $linkSuffix;
 			}
 			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
 		}
@@ -59,10 +66,10 @@ function showUmbrellaArea($atts) {
 		echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
 		$columnTitle = $itemTitle;
 		if ($link != "") {
-			$columnTitle = '<a href="' . $link . '">' . $columnTitle . '</a>';
+			$columnTitle = '<a '  . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>' . $linkSuffix;
 		}
 		echo '<h3 class="bbg__about__grandchild__title">' . $columnTitle . '</h3>';	
-		echo '<a href="' . $link . '">';
+		echo '<a '  . $anchorTarget . ' href="' . $link . '">';
 		echo '<div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc . '); background-position:center center;"></div></a>' . $description;
 		echo '</article>';
 	}
@@ -446,6 +453,8 @@ get_header();
 									}
 									
 									$description = get_sub_field('umbrella_content_file_description');
+									$description = apply_filters( 'the_content', $description );
+									$description = str_replace( ']]>', ']]&gt;', $description );
 									
 									$fileTitle = get_sub_field('umbrella_content_file_item_title');
 									//parse information about the file so we can append file sizeto append to our file title
@@ -460,7 +469,7 @@ get_header();
 									// } else {
 									// 	$description = $description . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';	
 									// }
-									$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
+									//$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
  
 									showUmbrellaArea(array(
 										'columnTitle' => $secondaryHeadline,
@@ -471,7 +480,9 @@ get_header();
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
 										'columnType' => 'file',
-										'layout' => $layout
+										'layout' => $layout,
+										'fileExt' => $fileExt,
+										'fileSize' => $fileSize
 									));
 								}
 							endwhile;
