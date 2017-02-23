@@ -52,7 +52,7 @@ function showUmbrellaArea($atts) {
 		}
 		
 		if ($thumbSrc) {
-			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">'; 
+			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--medium">'; 
 			//echo '<a target="_blank" href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" ' . ar_responsive_image($thumbnailID,'medium-thumb',1200) . 'class="attachment-large-thumb size-large-thumb"></a>';
 			echo '<a ' . $anchorTarget . ' href="' . $link . '" rel="bookmark" tabindex="-1"><img width="1040" height="624" src="' . $thumbSrc .  '" class="attachment-large-thumb size-large-thumb"></a>';
 			echo '</div>';	
