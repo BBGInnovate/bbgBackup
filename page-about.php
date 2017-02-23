@@ -455,12 +455,12 @@ get_header();
 									$fileExt = strtoupper( pathinfo( $file, PATHINFO_EXTENSION ) ); // set extension to uppercase
 									$fileSize = formatBytes( filesize( $file ) ); // file size
 									
-									if ($layout == 'full') {
-										$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
-									} else {
-										$description = $description . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';	
-									}
-									
+									// if ($layout == 'full') {
+									// 	$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
+									// } else {
+									// 	$description = $description . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';	
+									// }
+									$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
  
 									showUmbrellaArea(array(
 										'columnTitle' => $secondaryHeadline,
