@@ -146,7 +146,7 @@ get_header();
 						// Output caption for featured image
 						if ($featuredImageCutline != "") {
 							echo '<div class="usa-grid">';
-								echo '<div class="bbg__article-header__caption">$featuredImageCutline</div>';
+								echo '<div class="bbg__article-header__caption">' . $featuredImageCutline . '</div>';
 							echo '</div><!-- usa-grid -->';
 						}
 					echo '</div><!-- usa-grid-full -->';
