@@ -58,7 +58,7 @@ function showUmbrellaArea($atts) {
 			echo '</div>';	
 		}
 		
-		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>' . $linkSuffix;
+		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a>'  . $linkSuffix . '</h3>';
 		echo $description; // Output page excerpt
 		echo '</article>';
 	} else {
