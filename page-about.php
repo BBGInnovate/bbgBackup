@@ -46,9 +46,9 @@ function showUmbrellaArea($atts) {
 			}
 		} else {
 			if ($link != "") {
-				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>' . $linkSuffix;
+				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>';
 			}
-			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
+			echo '<h6 class="bbg__label">' . $columnTitle  . $linkSuffix . '</h6>';	
 		}
 		
 		if ($thumbSrc) {
@@ -472,7 +472,7 @@ get_header();
 									//$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
  
 									showUmbrellaArea(array(
-										'columnTitle' => get_sub_field('umbrella_content_internal_file_title'),
+										'columnTitle' => get_sub_field('umbrella_content_file_column_title'),,
 										'itemTitle' => $fileTitle,
 										'description' => $description,
 										'link' => $fileURL, 
