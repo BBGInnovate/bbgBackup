@@ -48,7 +48,7 @@ function showUmbrellaArea($atts) {
 			if ($link != "") {
 				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>';
 			}
-			echo '<h6 class="bbg__label">' . $columnTitle  . $linkSuffix . '</h6>';	
+			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
 		}
 		
 		if ($thumbSrc) {
@@ -58,7 +58,7 @@ function showUmbrellaArea($atts) {
 			echo '</div>';	
 		}
 		
-		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>';
+		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a></h3>' . $linkSuffix;
 		echo $description; // Output page excerpt
 		echo '</article>';
 	} else {
