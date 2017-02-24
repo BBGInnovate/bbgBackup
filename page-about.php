@@ -472,7 +472,7 @@ get_header();
 									//$fileTitle = $fileTitle . ' <span class="bbg__file-size">(' . $fileExt . ', ' . $fileSize . ')</span>';
  
 									showUmbrellaArea(array(
-										'columnTitle' => get_sub_field('umbrella_content_file_column_title'),,
+										'columnTitle' => get_sub_field('umbrella_content_file_column_title'),
 										'itemTitle' => $fileTitle,
 										'description' => $description,
 										'link' => $fileURL, 
