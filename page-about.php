@@ -66,8 +66,9 @@ function showUmbrellaArea($atts) {
 		echo '<article class="' . $gridClass . ' bbg__about__grandchild">';
 		$columnTitle = $itemTitle;
 		if ($link != "") {
-			$columnTitle = '<a '  . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>' . $linkSuffix;
+			$columnTitle = '<a '  . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>';
 		}
+		$columnTitle = $columnTitle . $linkSuffix;
 		echo '<h3 class="bbg__about__grandchild__title">' . $columnTitle . '</h3>';	
 		echo '<a '  . $anchorTarget . ' href="' . $link . '">';
 		echo '<div class="bbg__about__grandchild__thumb" style="background-image: url(' . $thumbSrc . '); background-position:center center;"></div></a>' . $description;
