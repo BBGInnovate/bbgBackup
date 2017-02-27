@@ -8420,10 +8420,12 @@ div.appropriations-small > p.header {
     display: block;
     padding: 4rem;
   }
+  .bbg__article .bbg__article-content img.aligncenter,
   .bbg__article .bbg__article-content img.alignleft,
-  .bbg__article .bbg__article-content img.alignrigh {
+  .bbg__article .bbg__article-content img.alignright {
     margin-bottom: 2rem;
-    width: 25% !important;
+    max-width: 50%;
+    width: 25%;
   }
   .bbg__article .bbg__article-sidebar--left {
     display: none;

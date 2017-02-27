@@ -101,10 +101,12 @@
 				}
 			}
 
+			img.aligncenter,
 			img.alignleft,
-			img.alignrigh { // assign max with to floating images within content
+			img.alignright { // assign max with to floating images within content
 				margin-bottom: 2rem;
-				width: 25% !important;
+				max-width: 50%;
+				width: 25%;
 			}
 		}
 
