@@ -8338,23 +8338,95 @@ div.appropriations-small > p.header {
 }
 
 @media print {
-  /* grids */
-  .usa-grid {
-    padding-right: 0;
-    padding-left: 0;
+  /**** UNIVERSAL ****/
+  article {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  article a {
+    font-weight: 700;
+    text-decoration: none;
+  }
+  article a[href^=http]:after {
+    content: " <" attr(href) "> ";
+    font-style: italic;
+  }
+  article a[href^="#"]:after {
+    content: "";
+  }
+  article h1, article h2, article h3, article .bbg__sidebar__table caption, .bbg__sidebar__table article caption {
+    page-break-after: avoid;
   }
 
-  /* banners */
-  .bbg__article-header__banner, .bbg__article-header__banner--profile,
+  nav,
+  button,
+  .usa-button {
+    display: none;
+  }
+
+  @page {
+    margin: 0.25in;
+  }
+  /**** GRIDS ****/
+  .usa-grid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /**** MASTHEAD ****/
+  .usa-disclaimer {
+    display: none;
+  }
+
+  /**** CONTENT ****/
+  /* Article */
+  .bbg__article {
+    margin-left: 3rem;
+  }
+  .bbg__article > * {
+    margin: 0;
+    max-width: none;
+  }
+
+  .bbg__featured-video,
+  .bbg__article-header__thumbnail--large,
+  .bbg__article-header__banner,
+  .bbg__article-header__banner--profile,
   .bbg__article-header__banner--profile {
     display: none;
   }
 
-  .bbg__article-content p, .bbg__article-content a, .bbg__article-content ul, .bbg__article-content li {
-    font-size: 1.3rem;
+  .bbg__article-header {
+    margin: auto;
+  }
+  .bbg__article-header .bbg__label {
+    float: left;
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+    -webkit-transform-origin: 55% 440%;
+            transform-origin: 55% 440%;
   }
 
-  /* sidebars */
+  .bbg__article-content p, .bbg__article-content a, .bbg__article-content ul, .bbg__article-content li {
+    font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+    font-size: 1.3rem;
+  }
+  .bbg__article-content .bbg-embed-shell {
+    display: none;
+  }
+  .bbg__article-content .bbg-embed-shell:after {
+    background-color: #d6d7d9;
+    content: "EMBEDDED VIDEO REMOVED: Please visit website to view";
+    display: block;
+    padding: 4rem;
+  }
+  .bbg__article-content img.alignleft,
+  .bbg__article-content img.alignrigh {
+    margin-bottom: 2rem;
+    width: 25%;
+  }
+
   .bbg__article-sidebar--left {
     display: none;
   }
@@ -8362,8 +8434,11 @@ div.appropriations-small > p.header {
   .bbg__article-sidebar p, .bbg__article-sidebar a, .bbg__article-sidebar ul, .bbg__article-sidebar li {
     font-size: 1.3rem;
   }
+  .bbg__article-sidebar .bbg__sidebar__primary-image {
+    display: none;
+  }
 
-  /* footer stuff */
+  /* Footer */
   .bbg__footer__return-to-top__container {
     display: none;
   }
