@@ -11,8 +11,11 @@
    		}
 
 		a[href^=http]:after { // expand external links
-			content:" <" attr(href) "> ";
+			color: $color-gray-medium;
+			content: " Link: " attr(href) "> ";
 			font-style: italic;
+			font-weight: $font-normal;
+			text-decoration: none;
 		}
 
 		a[href^="#"]:after { // don't expand anchor links
@@ -50,75 +53,74 @@
 	/**** CONTENT ****/
 	/* Article */
 	.bbg__article {
-		margin-left: 3rem;
+		margin: 0 3rem;
 
 		* {
-			margin: 0; // remove all margins from article content
 			max-width: none; // remove max width of 600px from article content
 		}
-	}
 
-	.bbg__featured-video, // featured videos
-	.bbg__article-header__thumbnail--large, // featured image
-	.bbg__article-header__banner, // homepage banner
-	.bbg__article-header__banner--profile { // profile page template banner
-		display: none;
-	}
-
-	// article header
-	.bbg__article-header {
-		margin: auto;
-
-		.bbg__label { // move and rotate the section header to the left side of the page
-			float: left;
-			transform: rotate(270deg);
-			transform-origin: 55% 440%;
-
-			a[href^=http]:after { // don't expand links for labels
-				content: "";
-			}
-		}
-	}
-
-	// article main content
-	.bbg__article-content {
-		p, a, ul, li {
-			font: {
-				family: $font-serif; // Use Merriweather for serif
-				size: 1.3rem; // resize all non-header content
-			}
-		}
-
-		.bbg-embed-shell { // hide all videos
+		// article featured image or video
+		.bbg__featured-video, // featured videos
+		.bbg__article-header__thumbnail--large, // featured image
+		.bbg__article-header__banner, // homepage banner
+		.bbg__article-header__banner--profile { // profile page template banner
 			display: none;
+		}
 
-			&:after { // add text pointing users to view videos online
-				background-color: $color-gray-lighter;
-				content: "EMBEDDED VIDEO REMOVED: Please visit website to view";
-				display: block;
-				padding: 4rem;
+		// article header
+		.bbg__article-header {
+
+			.bbg__label { // move and rotate the section header to the left side of the page
+				float: left;
+				transform: rotate(270deg);
+				transform-origin: 55% 330%;
+
+				a[href^=http]:after { // don't expand links for labels
+					content: "";
+				}
 			}
 		}
 
-		img.alignleft,
-		img.alignrigh { // assign max with to floating images within content
-			margin-bottom: 2rem;
-			width: 25% !important;
+		// article main content
+		.bbg__article-content {
+			p, a, ul, li {
+				font: {
+					family: $font-serif; // Use Merriweather for serif
+					size: 1.3rem; // resize all non-header content
+				}
+			}
+
+			.bbg-embed-shell { // hide all videos
+				display: none;
+
+				&:after { // add text pointing users to view videos online
+					background-color: $color-gray-lighter;
+					content: "EMBEDDED VIDEO REMOVED: Please visit website to view";
+					display: block;
+					padding: 4rem;
+				}
+			}
+
+			img.alignleft,
+			img.alignrigh { // assign max with to floating images within content
+				margin-bottom: 2rem;
+				width: 25% !important;
+			}
 		}
-	}
 
-	// article sidebars
-	.bbg__article-sidebar--left { // hide the left sidebar with social media icons
-		display: none;
-	}
-
-	.bbg__article-sidebar {
-		p, a, ul, li {
-			font-size: 1.3rem;
-		}
-
-		.bbg__sidebar__primary-image {
+		// article sidebars
+		.bbg__article-sidebar--left { // hide the left sidebar with social media icons
 			display: none;
+		}
+
+		.bbg__article-sidebar {
+			p, a, ul, li {
+				font-size: 1.3rem;
+			}
+
+			.bbg__sidebar__primary-image {
+				display: none;
+			}
 		}
 	}
 
