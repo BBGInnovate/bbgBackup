@@ -8395,7 +8395,7 @@ div.appropriations-small > p.header {
   .bbg-header,
   .site-content,
   .usa-footer {
-    max-width: 8in;
+    max-width: 7.25in;
     margin: 0 auto;
   }
 
@@ -8483,9 +8483,6 @@ div.appropriations-small > p.header {
     display: none;
   }
 
-  .usa-footer {
-    max-width: 8in;
-  }
   .usa-footer .usa-social-links, .usa-footer .bbg__kits__section .bbg__contact-card .bbg__kits__social .bbg__kits__social-link, .bbg__kits__section .bbg__contact-card .bbg__kits__social .usa-footer .bbg__kits__social-link,
   .usa-footer .bbg__footer__sub,
   .usa-footer .usa-footer-logo {
