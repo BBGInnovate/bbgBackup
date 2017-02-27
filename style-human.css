@@ -8453,6 +8453,7 @@ div.appropriations-small > p.header {
     max-width: 30%;
   }
   .bbg__article .bbg__article-footer,
+  .bbg__article .bbg__article-footer.usa-grid,
   .bbg__article .bbg__article-sidebar--left {
     display: none;
   }

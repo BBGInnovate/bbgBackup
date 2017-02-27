@@ -142,6 +142,7 @@
 
 		// article sidebars and footer
 		.bbg__article-footer, // hide article footer
+		.bbg__article-footer.usa-grid,
 		.bbg__article-sidebar--left { // hide the left sidebar with social media icons
 			display: none;
 		}
