@@ -60,6 +60,14 @@
 	}
 
 	/**** CONTENT ****/
+	/* Page sections: header + content + footer */
+	.bbg-header,
+	.site-content,
+	.usa-footer {
+		max-width: 8in; // set max width
+		margin: 0 auto; // set auto margins on left and right
+	}
+
 	/* Article */
 	.bbg__article {
 		margin: 0 auto;
@@ -132,7 +140,8 @@
 			}
 		}
 
-		// article sidebars
+		// article sidebars and footer
+		.bbg__article-footer, // hide article footer
 		.bbg__article-sidebar--left { // hide the left sidebar with social media icons
 			display: none;
 		}

@@ -8391,6 +8391,14 @@ div.appropriations-small > p.header {
   }
 
   /**** CONTENT ****/
+  /* Page sections: header + content + footer */
+  .bbg-header,
+  .site-content,
+  .usa-footer {
+    max-width: 8in;
+    margin: 0 auto;
+  }
+
   /* Article */
   .bbg__article {
     margin: 0 auto;
@@ -8444,6 +8452,7 @@ div.appropriations-small > p.header {
     margin: 0 1.5em 2rem 0;
     max-width: 30%;
   }
+  .bbg__article .bbg__article-footer,
   .bbg__article .bbg__article-sidebar--left {
     display: none;
   }
