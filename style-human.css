@@ -8455,6 +8455,9 @@ div.appropriations-small > p.header {
   .bbg__article .bbg__article-content .bbg__contact__card p {
     margin-bottom: 0;
   }
+  .bbg__article .bbg__article-content .bbg__contact__card p::first-line {
+    font-weight: 700;
+  }
   .bbg__article .bbg__article-content .bbg__contact__card .bbg__contact__card-list {
     display: inline;
   }

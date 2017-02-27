@@ -142,6 +142,10 @@
 			.bbg__contact__card {
 				p {
 					margin-bottom: 0;
+
+					&::first-line {
+					    font-weight: $font-bold;
+					}
 				}
 
 				.bbg__contact__card-list {
