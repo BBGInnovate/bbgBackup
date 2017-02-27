@@ -8452,10 +8452,13 @@ div.appropriations-small > p.header {
     margin: 0 1.5em 2rem 0;
     max-width: 30%;
   }
-  .bbg__article .bbg__article-content .bbg__contact__card-list {
+  .bbg__article .bbg__article-content .bbg__contact__card p {
+    margin-bottom: 0;
+  }
+  .bbg__article .bbg__article-content .bbg__contact__card .bbg__contact__card-list {
     display: inline;
   }
-  .bbg__article .bbg__article-content .bbg__contact__icon {
+  .bbg__article .bbg__article-content .bbg__contact__card .bbg__contact__icon {
     display: none;
   }
   .bbg__article .bbg__article-footer,

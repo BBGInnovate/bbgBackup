@@ -139,12 +139,18 @@
 				max-width: 30%;
 			}
 
-			.bbg__contact__card-list {
-				display: inline;
-			}
+			.bbg__contact__card {
+				p {
+					margin-bottom: 0;
+				}
 
-			.bbg__contact__icon {
-				display: none;
+				.bbg__contact__card-list {
+					display: inline;
+				}
+
+				.bbg__contact__icon {
+					display: none;
+				}
 			}
 		}
 
