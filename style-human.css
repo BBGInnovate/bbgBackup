@@ -8384,7 +8384,7 @@ div.appropriations-small > p.header {
   .bbg__article {
     margin-left: 3rem;
   }
-  .bbg__article > * {
+  .bbg__article * {
     margin: 0;
     max-width: none;
   }
@@ -8407,6 +8407,9 @@ div.appropriations-small > p.header {
     -webkit-transform-origin: 55% 440%;
             transform-origin: 55% 440%;
   }
+  .bbg__article-header .bbg__label a[href^=http]:after {
+    content: "";
+  }
 
   .bbg__article-content p, .bbg__article-content a, .bbg__article-content ul, .bbg__article-content li {
     font-family: "Merriweather", "Georgia", "Times New Roman", serif;
@@ -8424,7 +8427,7 @@ div.appropriations-small > p.header {
   .bbg__article-content img.alignleft,
   .bbg__article-content img.alignrigh {
     margin-bottom: 2rem;
-    width: 25%;
+    width: 25% !important;
   }
 
   .bbg__article-sidebar--left {

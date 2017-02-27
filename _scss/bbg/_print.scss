@@ -52,7 +52,7 @@
 	.bbg__article {
 		margin-left: 3rem;
 
-		&>* {
+		* {
 			margin: 0; // remove all margins from article content
 			max-width: none; // remove max width of 600px from article content
 		}
@@ -73,6 +73,10 @@
 			float: left;
 			transform: rotate(270deg);
 			transform-origin: 55% 440%;
+
+			a[href^=http]:after { // don't expand links for labels
+				content: "";
+			}
 		}
 	}
 
@@ -99,7 +103,7 @@
 		img.alignleft,
 		img.alignrigh { // assign max with to floating images within content
 			margin-bottom: 2rem;
-			width: 25%;
+			width: 25% !important;
 		}
 	}
 
