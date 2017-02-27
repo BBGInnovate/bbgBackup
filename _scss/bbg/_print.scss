@@ -1,4 +1,12 @@
 @media print {
+	@page {
+		margin: 0.25in; // set page margins to 1/4 inch
+
+		* {
+			max-width: 8in; // set max width for all elements to 8 inches
+		}
+	}
+
 	/**** UNIVERSAL ****/
 	article {
 		width: 100%;
@@ -33,16 +41,9 @@
 		display: none;
 	}
 
-	@page {
-		margin: 0.25in; // set page margins to 1/4 inch
-
-		* {
-			max-width: 8in; // set max width for all elements to 8 inches
-		}
-	}
-
 	/**** GRIDS ****/
 	.usa-grid {
+		max-width: auto;
 		padding: { // remove all padding for the grid
 			right: 0 !important;
 			left: 0 !important;
@@ -59,9 +60,9 @@
 	.bbg__article {
 		margin: 0 auto;
 
-		/* * {
-			max-width: none; // remove max width of 600px from article content
-		} */
+		* {
+			max-width: none; // remove max width all from article content
+		}
 
 		// article featured image or video
 		.bbg__featured-video, // featured videos

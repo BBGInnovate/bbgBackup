@@ -8338,6 +8338,12 @@ div.appropriations-small > p.header {
 }
 
 @media print {
+  @page {
+    margin: 0.25in;
+    * {
+      max-width: 8in;
+    }
+  }
   /**** UNIVERSAL ****/
   article {
     width: 100%;
@@ -8368,14 +8374,9 @@ div.appropriations-small > p.header {
     display: none;
   }
 
-  @page {
-    margin: 0.25in;
-    * {
-      max-width: 8in;
-    }
-  }
   /**** GRIDS ****/
   .usa-grid {
+    max-width: auto;
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
@@ -8389,9 +8390,9 @@ div.appropriations-small > p.header {
   /* Article */
   .bbg__article {
     margin: 0 auto;
-    /* * {
-    	max-width: none; // remove max width of 600px from article content
-    } */
+  }
+  .bbg__article * {
+    max-width: none;
   }
   .bbg__article .bbg__featured-video,
   .bbg__article .bbg__article-header__thumbnail--large,
