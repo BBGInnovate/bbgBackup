@@ -8376,9 +8376,13 @@ div.appropriations-small > p.header {
 
   /**** GRIDS ****/
   .usa-grid {
-    max-width: auto;
+    max-width: none;
     padding-right: 0 !important;
     padding-left: 0 !important;
+  }
+
+  .usa-grid-full, .bbg__svg__content {
+    max-width: none;
   }
 
   /**** MASTHEAD ****/

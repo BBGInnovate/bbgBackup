@@ -43,16 +43,20 @@
 
 	/**** GRIDS ****/
 	.usa-grid {
-		max-width: auto;
+		max-width: none; // remove all max width values
 		padding: { // remove all padding for the grid
 			right: 0 !important;
 			left: 0 !important;
 		}
 	}
 
+	.usa-grid-full {
+		max-width: none; // remove all max width values
+	}
+
 	/**** MASTHEAD ****/
-	.usa-disclaimer { // official US banner
-		display: none;
+	.usa-disclaimer {
+		display: none; // hide official US banner
 	}
 
 	/**** CONTENT ****/
