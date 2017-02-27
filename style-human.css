@@ -8416,8 +8416,10 @@ div.appropriations-small > p.header {
   .bbg__article .bbg__article-header .bbg__label {
     float: left;
     text-decoration: none;
-    -webkit-transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -40, 40, 0, 1);
-            transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -40, 40, 0, 1);
+    -webkit-transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -50, 400, 0, 1);
+            transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -50, 400, 0, 1);
+    -webkit-transform-origin: left top 0px;
+            transform-origin: left top 0px;
   }
   .bbg__article .bbg__article-header .bbg__label a[href^=http]:after {
     content: "";
