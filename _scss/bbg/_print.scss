@@ -34,12 +34,16 @@
 	}
 
 	@page {
-		margin: 0.25in;
+		margin: 0.25in; // set page margins to 1/4 inch
+
+		* {
+			max-width: 8in; // set max width for all elements to 8 inches
+		}
 	}
 
 	/**** GRIDS ****/
 	.usa-grid {
-		padding: {
+		padding: { // remove all padding for the grid
 			right: 0 !important;
 			left: 0 !important;
 		}
@@ -54,11 +58,10 @@
 	/* Article */
 	.bbg__article {
 		margin: 0 auto;
-		max-width: 8in;
 
-		* {
+		/* * {
 			max-width: none; // remove max width of 600px from article content
-		}
+		} */
 
 		// article featured image or video
 		.bbg__featured-video, // featured videos
@@ -75,7 +78,7 @@
 				float: left;
 				text-decoration: none;
 				transform: rotate(270deg);
-				transform-origin: 50% 350%;
+				transform-origin: 50% 400%;
 
 				a[href^=http]:after { // don't expand links for labels
 					content: "";
@@ -85,15 +88,25 @@
 
 		// article main content
 		.bbg__article-content {
-			p, a, ul, li {
+			p,
+			a,
+			ul,
+			li {
 				font: {
 					family: $font-serif; // Use Merriweather for serif
-					size: 1.3rem; // resize all non-header content
+					size: 1.4rem; // resize all non-header content
 				}
+				line-height: 1.8;
 			}
 
-			.bbg-embed-shell { // hide all videos
-				display: none;
+			// intro paragraph
+			p:first-of-type {
+				margin-bottom: 2rem;
+			}
+
+			// videos
+			.bbg-embed-shell {
+				display: none; // hide all
 
 				&:after { // add text pointing users to view videos online
 					background-color: $color-gray-lighter;
@@ -103,12 +116,13 @@
 				}
 			}
 
+			// inline images
 			img.aligncenter,
 			img.alignleft,
 			img.alignright { // assign max with to floating images within content
 				display: inline;
 				float: left;
-				margin: 0 1.5em 2rem;
+				margin: 0 1.5em 2rem 0;
 				max-width: 30%;
 			}
 		}
@@ -135,12 +149,21 @@
 	}
 
 	.usa-footer {
+		max-width: 8in;
+
 		.usa-social-links,
-		.bbg__footer__sub {
+		.bbg__footer__sub,
+		.usa-footer-logo {
 			display: none;
 		}
-		.usa-footer-logo-img {
-			width: 5rem;
+
+		.usa-footer-secondary_section {
+			background-color: transparent;
+			border-top: 1px solid $color-gray-lighter;
+			padding: {
+				top: 1rem;
+				bottom: 0;
+			}
 		}
 	}
 }
