@@ -52,6 +52,10 @@ foreach ($allAffiliates as $a) {
 		$platform = $a[8];
 		$platformOther = $a[9];
 
+		/*
+		JBF 2/27/2017: Per discussions with affiliate team, we don't want to explose titles. Uncomment this code
+		if that ever changes back.
+		
 		$headline = "<h5>" . $title . "</h5>";
 		if ($url != "") {
 			if (strpos($url, "http") === false) {
@@ -59,7 +63,7 @@ foreach ($allAffiliates as $a) {
 				$url = "http://" . $url;
 			}
 			$headline = "<h5><a target='_blank' href='" . $url . "'>" . $title . "</a></h5>";
-		}
+		}*/
 
 		
 		$features[] = array(
