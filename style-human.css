@@ -8339,9 +8339,9 @@ div.appropriations-small > p.header {
 
 @media print {
   @page {
-    margin: 0.25in;
+    margin: 0.5in;
     * {
-      max-width: 8in;
+      max-width: 7.25in;
     }
   }
   /**** UNIVERSAL ****/
