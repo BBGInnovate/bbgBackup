@@ -236,12 +236,51 @@
 
 
 	/* QUOTED BLOCKS */
-	section.quoted-block > div.wrapper:first-child {
-	    margin-top: 1em;
-	    border: solid#CCC;
-	    border-width: 0.1333em 0.2em;
-	    background-color: #F3F3F3;
-	    padding: 0 2.5em 0 0.5em;
+	section.quoted-block > div.wrapper {
+		&:first-child {
+		    margin-top: 1em;
+		    border: solid#CCC;
+		    border-width: 0.1333em 0.2em;
+		    background-color: #F3F3F3;
+		    padding: 0 2.5em 0 0.5em;
+		}
+
+		.section {
+			p.header {
+				font-variant: capitalize;
+
+				&+ p.text {
+					margin-top: -1rem;
+					margin-bottom: 2rem;
+				}
+			}
+			span.enum::before {
+		    	content: "Sec. ";
+		    }
+		    span.enum::after {
+				content: ".\2002";
+			}
+		}
+
+		section.subsection,
+		section.paragraph {
+			p.inline-header {
+				font-variant: small-caps;
+
+				&+ p.text {
+					display: inline;
+					margin-top: -1rem;
+					margin-bottom: 2rem;
+				}
+			}
+			span.enum::before {
+		    	content: "(";
+		    }
+
+		    span.enum::after {
+				content: ")\2002";
+			}
+		}
 	}
 
 	p.quoted-block-continuation-text {

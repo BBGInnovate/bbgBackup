@@ -7753,6 +7753,37 @@ section.usa-section.bbg-banner__section {
   background-color: #F3F3F3;
   padding: 0 2.5em 0 0.5em;
 }
+.bill_text_content section.quoted-block > div.wrapper .section p.header {
+  font-variant: capitalize;
+}
+.bill_text_content section.quoted-block > div.wrapper .section p.header + p.text {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+.bill_text_content section.quoted-block > div.wrapper .section span.enum::before {
+  content: "Sec. ";
+}
+.bill_text_content section.quoted-block > div.wrapper .section span.enum::after {
+  content: ".\2002";
+}
+.bill_text_content section.quoted-block > div.wrapper section.subsection p.inline-header,
+.bill_text_content section.quoted-block > div.wrapper section.paragraph p.inline-header {
+  font-variant: small-caps;
+}
+.bill_text_content section.quoted-block > div.wrapper section.subsection p.inline-header + p.text,
+.bill_text_content section.quoted-block > div.wrapper section.paragraph p.inline-header + p.text {
+  display: inline;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+.bill_text_content section.quoted-block > div.wrapper section.subsection span.enum::before,
+.bill_text_content section.quoted-block > div.wrapper section.paragraph span.enum::before {
+  content: "(";
+}
+.bill_text_content section.quoted-block > div.wrapper section.subsection span.enum::after,
+.bill_text_content section.quoted-block > div.wrapper section.paragraph span.enum::after {
+  content: ")\2002";
+}
 .bill_text_content p.quoted-block-continuation-text {
   line-height: 1.25;
   text-align: justify;
