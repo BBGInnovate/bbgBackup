@@ -8371,11 +8371,22 @@ div.appropriations-small > p.header {
 @media print {
   @page {
     margin: 0.5in;
+    size: 8.5in 11in;
+    @bottom-right {
+      content: "Page " counter(page);
+    }
   }
   /**** UNIVERSAL ****/
+  /* Page sections: header + content + footer */
+  .bbg-header,
+  .site-content,
+  .usa-footer {
+    max-width: 8in;
+    margin: 0 auto;
+  }
+
   article {
     margin: 0;
-    max-width: 7.25in;
     padding: 0;
   }
   article a {
@@ -8419,14 +8430,6 @@ div.appropriations-small > p.header {
   }
 
   /**** CONTENT ****/
-  /* Page sections: header + content + footer */
-  .bbg-header,
-  .site-content,
-  .usa-footer {
-    max-width: 7.25in;
-    margin: 0 auto;
-  }
-
   /* Article */
   .bbg__article {
     margin: 0 auto;

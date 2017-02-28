@@ -1,13 +1,24 @@
 @media print {
 	@page {
 		margin: 0.5in; // set page margins to 1/2 inch
+		size: 8.5in 11in; // limit printing to 8.5x11 paper
+
+		@bottom-right {
+			content: "Page " counter(page); // add page counter on every page
+		}
 	}
 
 	/**** UNIVERSAL ****/
+	/* Page sections: header + content + footer */
+	.bbg-header,
+	.site-content,
+	.usa-footer {
+		max-width: 8in; // set max width
+		margin: 0 auto; // set auto margins on left and right
+	}
+
 	article {
-		// width: 100%;
 		margin: 0;
-		max-width: 7.25in; // set max width for all elements to 8 inches
 		padding: 0;
 
 		a {
@@ -57,14 +68,6 @@
 	}
 
 	/**** CONTENT ****/
-	/* Page sections: header + content + footer */
-	.bbg-header,
-	.site-content,
-	.usa-footer {
-		max-width: 7.25in; // set max width
-		margin: 0 auto; // set auto margins on left and right
-	}
-
 	/* Article */
 	.bbg__article {
 		margin: 0 auto;
