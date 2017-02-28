@@ -8435,7 +8435,7 @@ div.appropriations-small > p.header {
   /**** CONTENT ****/
   /* Article */
   .bbg__article {
-    margin: 0 auto 0 2in;
+    margin: 0 auto 0 1in;
   }
   .bbg__article * {
     max-width: none;
