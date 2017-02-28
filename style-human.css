@@ -8371,14 +8371,11 @@ div.appropriations-small > p.header {
 @media print {
   @page {
     margin: 0.5in;
-    * {
-      max-width: 7.25in;
-    }
   }
   /**** UNIVERSAL ****/
   article {
-    width: 100%;
     margin: 0;
+    max-width: 7.25in;
     padding: 0;
   }
   article a {

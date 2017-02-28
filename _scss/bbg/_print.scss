@@ -1,16 +1,13 @@
 @media print {
 	@page {
 		margin: 0.5in; // set page margins to 1/2 inch
-
-		* {
-			max-width: 7.25in; // set max width for all elements to 8 inches
-		}
 	}
 
 	/**** UNIVERSAL ****/
 	article {
-		width: 100%;
+		// width: 100%;
 		margin: 0;
+		max-width: 7.25in; // set max width for all elements to 8 inches
 		padding: 0;
 
 		a {
