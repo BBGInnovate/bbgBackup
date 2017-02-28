@@ -1,4 +1,8 @@
 @media print {
+	@page :first {
+		margin-left: 2.5in;
+	}
+
 	@page {
 		margin: 0.5in; // set page margins to 1/2 inch
 		size: 8.5in 11in; // limit printing to 8.5x11 paper

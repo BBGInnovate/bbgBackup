@@ -8369,6 +8369,9 @@ div.appropriations-small > p.header {
 }
 
 @media print {
+  @page :first {
+    margin-left: 2.5in;
+  }
   @page {
     margin: 0.5in;
     size: 8.5in 11in;
