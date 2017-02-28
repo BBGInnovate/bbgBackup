@@ -8369,9 +8369,9 @@ div.appropriations-small > p.header {
 }
 
 @media print {
-  @page :first {
-    margin-left: 2.5in;
-  }
+  /* @page :first {
+  	margin-left: 2.5in;
+  } */
   @page {
     margin: 0.5in;
     size: 8.5in 11in;
@@ -8435,8 +8435,7 @@ div.appropriations-small > p.header {
   /**** CONTENT ****/
   /* Article */
   .bbg__article {
-    margin: 0 auto;
-    max-width: 6in;
+    margin: 0 auto 0 2in;
   }
   .bbg__article * {
     max-width: none;

@@ -1,7 +1,7 @@
 @media print {
-	@page :first {
+	/* @page :first {
 		margin-left: 2.5in;
-	}
+	} */
 
 	@page {
 		margin: 0.5in; // set page margins to 1/2 inch
@@ -74,8 +74,8 @@
 	/**** CONTENT ****/
 	/* Article */
 	.bbg__article {
-		margin: 0 auto;
-		max-width: 6in;
+		margin: 0 auto 0 2in;
+		// max-width: 6in;
 
 		* {
 			max-width: none; // remove max width all from article content
