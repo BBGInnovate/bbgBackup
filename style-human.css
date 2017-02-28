@@ -8433,6 +8433,7 @@ div.appropriations-small > p.header {
   /* Article */
   .bbg__article {
     margin: 0 auto;
+    max-width: 7in;
   }
   .bbg__article * {
     max-width: none;
