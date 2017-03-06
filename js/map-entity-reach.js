@@ -221,25 +221,30 @@ function shadeColor(color, percent) {
 			var entityDetailsStr = '<p>' + en.description + '<p>' + 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
 			$('.entity-details').html(entityDetailsStr).show();
 
-
+			setDisplayMode('entity');
 		}
 
 		function displayCountry(selectedCountryID) {
 			window.selectedCountryID = selectedCountryID;
 			countryName = countriesByID[selectedCountryID].countryName;
+
+			$('#countryName').html(countryName);
 			
-			var services = countriesByName[countryName].services;
+			var networks = countriesByName[countryName].networks;
 			var s = '';
 
-			s += '<ul class="bbg__map-area__list">';
-			s += '<div class="RFA-block">';
-			for (var i=0; i < services.length; i++) {
-				var srv = services[i];
-				s += '<li>'+srv.serviceName+'</li>';
+			for (var i=0; i < networks.length; i++) {
+				var n = networks[i];
+				console.log(n.networkName);
+				s += '<h3><a target="_blank" href="http://www.bbg.gov/broadcasters/rfa/">' + n.networkName + '</a></h3>';
+				s += '<ul class="bbg__map-area__list">';
+				for (var j=0; j < n.services.length; j++) {
+					var srv = n.services[j];
+					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="http://www.rfa.org/cantonese">' + srv.serviceName+'</a></li>';
+				}
+				s += '</ul>';
 			}
-			s += '</div>';
-			s += '</ul>';
-			
+
 			$('.service-block').html(s);
 
 			setDisplayMode('country');

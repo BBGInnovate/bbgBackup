@@ -18,12 +18,12 @@ function getNetworkExcerptJS2() {
 
 	$e = array();
 	$custom_query = new WP_Query($qParams);
-	if ($custom_query -> have_posts()) {
+	if ( $custom_query -> have_posts() ) {
 		while ( $custom_query -> have_posts() )  {
 			$custom_query->the_post();
 			$id=get_the_ID();
 			$fullName=get_post_meta( $id, 'entity_full_name', true );
-			if ($fullName != "") {
+			if ( $fullName != "" ) {
 				$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
 				$abbreviation=str_replace("/", "",$abbreviation);
 				$description=get_post_meta( $id, 'entity_description', true );
@@ -104,39 +104,59 @@ function getMapData() {
 		$countryName = get_the_title();
 		$countryAmmapCode = get_post_meta( $id, 'country_ammap_country_code', true );
 		
-		$services = array();
-		$terms = get_the_terms($id, "language_services");
+		$networks = array();
+
+		$terms = get_the_terms( $id, "language_services" );
 		if ($terms) {
-			foreach ($terms as $t) {
+			foreach ( $terms as $t ) {
 				
-				$s = array(
-					'serviceName' => $t->name
-					,'isParent' => ( ($t -> parent == 0))
-				);
+				$isParent = ($t -> parent == 0);
+				$termMeta = get_term_meta( $t->term_id );
+				$siteName = "";
+				$siteUrl = "";
+				
+				if ( count( $termMeta ) ) {
+					$siteName = $termMeta['language_service_site_name'][0];
+					$siteUrl = $termMeta['language_service_site_url'][0];
+				}
+				
+				if ( $isParent ) {
+					$n1 = array(
+						'networkName' => $t->name
+						,'isParent' => $isParent
+						,'siteName' => $siteName
+						,'siteUrl' => $siteUrl
+						,'services' => array()
+					);
 
-				if (isset($entities[strtolower($t->name)])) {
 					$entities [strtolower($t->name)]['countries'][$countryName] = true;
-				}
+					$networks []= $n1;
+					$p = &$networks[count($networks)-1];
 
-				$termMeta = get_term_meta( $t->term_id);
-				if (count($termMeta)) {
-					$s['siteName'] = $termMeta['language_service_site_name'][0];
-					$s['siteUrl'] = $termMeta['language_service_site_url'][0];
 				} else {
-					$s['siteName'] = "";
-					$s['siteUrl'] = "";
+
+					$s = array(
+						'serviceName' => $t->name
+						,'isParent' => $isParent
+						,'siteName' => $siteName
+						,'siteUrl' => $siteUrl
+					);
+					
+					array_push($p['services'], $s);
+
 				}
-				$services []= $s;
 			}
-		} else {
-			//echo "no language services for " . $countryName . "<BR>";
+
+			$countries[$countryName] = array(
+				"countryName" => $countryName,
+				"ammapCode" => $countryAmmapCode,
+				"networks" => $networks
+			);
 		}
-		$countries[$countryName] = array(
-			"countryName" => $countryName,
-			"ammapCode" => $countryAmmapCode,
-			"services" => $services
-		);
 	}
+
+	
+	
 	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
 	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
 	
