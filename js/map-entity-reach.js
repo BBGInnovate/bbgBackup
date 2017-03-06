@@ -227,22 +227,29 @@ function shadeColor(color, percent) {
 			window.selectedCountryID = selectedCountryID;
 			countryName = countriesByID[selectedCountryID].countryName;
 
-			$('#country-name').html(countryName);
-			//$('.country-label-tooltip').html(countryName);
+			$('h4.country-label-tooltip #country-name').html(countryName);	
+			$('#countryDisplay h2#countryName').html(countryName);
 			
 			var networks = countriesByName[countryName].networks;
 			var s = '';
 
 			var newSortOrder = [];
 			var firstItemIndex = -1;
-			
 			//we alternate the order of the networks if an entity is selected
-			for (var j=0; j<networks.length; j++) {
-				newSortOrder.push(j);
-				if (selectedEntity != "bbg") {
-					if (networks[j].networkName.toLowerCase() == selectedEntity) {
-						newSortOrder[0]=j;
-						newSortOrder[j]=0;
+
+			var desiredNetworkOrder = ["voa","rferl","ocb","rfa","mbn"];
+			for (var j=0; j < desiredNetworkOrder.length; j++) {
+				if (desiredNetworkOrder[j] == selectedEntity) {
+					var temp = desiredNetworkOrder[j];
+					desiredNetworkOrder[j] = desiredNetworkOrder[0];
+					desiredNetworkOrder[0]= temp;
+				}
+			}
+
+			for (var j=0; j<desiredNetworkOrder.length; j++) {
+				for (var k=0; k < networks.length; k++) {
+					if (networks[k].networkName.toLowerCase() == desiredNetworkOrder[j]) {
+						newSortOrder.push(k);
 					}
 				}
 			}
