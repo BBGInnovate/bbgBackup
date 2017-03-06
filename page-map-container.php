@@ -7,53 +7,6 @@
  * template name: Map Container
  */
 
-function getNetworkExcerptJS2() {
-	/* used on map container */
-	$entityParentPage = get_page_by_path('networks');
-	$qParams=array(
-		'post_type' => array('page'),
-		'posts_per_page' => -1,
-		'post_parent' => $entityParentPage->ID
-	);
-
-	$e = array();
-	$custom_query = new WP_Query($qParams);
-	if ( $custom_query -> have_posts() ) {
-		while ( $custom_query -> have_posts() )  {
-			$custom_query->the_post();
-			$id=get_the_ID();
-			$fullName=get_post_meta( $id, 'entity_full_name', true );
-			if ( $fullName != "" ) {
-				$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
-				$abbreviation=str_replace("/", "",$abbreviation);
-				$description=get_post_meta( $id, 'entity_description', true );
-				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
-				$url = get_post_meta( $id, 'entity_site_url', true );
-
-				$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
-				$e[$abbreviation] = array(
-					'description' => $description,
-					'fullName' => $fullName,
-					'url' => $url
-				);
-			}
-		}
-	}
-	wp_reset_postdata();
-	$e['bbg'] = array(
-		'description' => 'The mission of the Broadcasting Board of Governors is to inform, engage, and connect people around the world in support of freedom and democracy.',
-		'fullName' => 'Broadcasting Board of Governors',
-		'url' => 'https://www.bbg.gov'
-	);
-	$s = "<script type='text/javascript'>\n";
-	$entityJson = json_encode(new ArrayValue($e), JSON_PRETTY_PRINT);
-	$entityJson = str_replace("\/", "/", $entityJson);
-	$s .= "entities=" . $entityJson . ";";
-	$s .="</script>";
-
-	return $s;
-}
-
 $pageContent="";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
@@ -66,7 +19,7 @@ wp_reset_postdata();
 wp_reset_query();
 
 get_header();
-echo getNetworkExcerptJS2();
+echo getNetworkExcerptJS();
 
 function getMapData() {
 
