@@ -21,6 +21,11 @@ function getNetworkExcerptJS() {
 				$abbreviation=strtolower(get_post_meta( $id, 'entity_abbreviation', true ));
 				$abbreviation=str_replace("/", "",$abbreviation);
 				$description=get_post_meta( $id, 'entity_description', true );
+
+				//process shortcodes in description
+				$description = apply_filters('the_content', $description);
+   				$description = str_replace(']]>', ']]&gt;', $description);
+
 				$link=get_permalink( get_page_by_path( "/broadcasters/$abbreviation/" ) );
 				$url = get_post_meta( $id, 'entity_site_url', true );
 
