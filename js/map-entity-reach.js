@@ -100,9 +100,10 @@ function shadeColor(color, percent) {
 
 		// some UI tips related to country / service labels when zoom completes
 		map.addListener('zoomCompleted', function (event) {
-			if (hideCountryLabel === false && event.chart.zoomLevel() > 1) {
+			if (currentDisplayMode == "country" &&  event.chart.zoomLevel() > 1) {
 				$('.country-label-tooltip').show();
 			}
+			
 			if (hideServiceLabel === false) {
 				$('.service-label').show();
 			}
@@ -113,17 +114,8 @@ function shadeColor(color, percent) {
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
 
+			hideServiceLabel = false;
 			hideCountryLabel = false;
-			hideServiceLabel = true;
-
-			// $('.usa-width-one-third').hide();
-			// $('.other-subgroups').hide();
-			// $('.country-label-tooltip').hide();
-			// $('.service-label').hide();
-			
-			// $('.groups-and-subgroups').show();
-			// $('.other-subgroups').show();
-
 			setCountryLabelPosition(event.chart.selectedObject.name);
 
 			if (!isMobile) {
@@ -138,7 +130,6 @@ function shadeColor(color, percent) {
 
 			} else {
 				//a country was not previously selected and now one has been clicked
-				console.log('click');
 				displayCountry(event.mapObject.id);
 			}
 		});
@@ -148,16 +139,22 @@ function shadeColor(color, percent) {
 			event.chart.zoomToGroup(activeCountries);
 
 			// prevent countries that are not covered from zooming in on click
-			for (var i = 0; i < map.dataProvider.areas.length; i++) {
-				if (map.dataProvider.areas[i].region_ids == null) {
-					map.dataProvider.areas[i].autoZoomReal = false;
-				}
-			}
+			// for (var i = 0; i < map.dataProvider.areas.length; i++) {
+			// 	if (map.dataProvider.areas[i].region_ids == null) {
+			// 		map.dataProvider.areas[i].autoZoomReal = false;
+			// 	}
+			// }
+
 		});
 
 		function setDisplayMode(displayMode) {
+			
+			currentDisplayMode = displayMode;
+
 			if ( displayMode == "entity") {
 				
+				$('.country-label-tooltip').hide();
+				$('#country-name').hide();
 				$('#entityDisplay').show();
 				$('#countryDisplay').hide();
 
@@ -165,8 +162,9 @@ function shadeColor(color, percent) {
 
 	
 			} else if ( displayMode == "country" ) {
-				console.log('show the country');
-
+				
+				$('.country-label-tooltip').show();
+				$('#country-name').show();
 				$('#entityDisplay').hide();
 				$('#countryDisplay').show();
 
@@ -191,7 +189,7 @@ function shadeColor(color, percent) {
 		}
 			// this function will set the endpoint based on the entity and then go fetch the countries
 		function displayEntity(entity) {
-			
+			selectedEntity = entity;
 			setHighlightedEntity(entity);
 			setBaseColors();	//update global vars that are used to color the map
 
@@ -208,6 +206,7 @@ function shadeColor(color, percent) {
 					country.color = colorBase;
 					country.rollOverColor = colorRollOver;
 					country.selectedColor = colorSelected;
+					country.selectable = true;
 					activeCountries.push(country);
 				}
 			}
@@ -228,14 +227,29 @@ function shadeColor(color, percent) {
 			window.selectedCountryID = selectedCountryID;
 			countryName = countriesByID[selectedCountryID].countryName;
 
-			$('#countryName').html(countryName);
+			$('#country-name').html(countryName);
+			//$('.country-label-tooltip').html(countryName);
 			
 			var networks = countriesByName[countryName].networks;
 			var s = '';
 
-			for (var i=0; i < networks.length; i++) {
-				var n = networks[i];
-				console.log(n.networkName);
+			var newSortOrder = [];
+			var firstItemIndex = -1;
+			
+			//we alternate the order of the networks if an entity is selected
+			for (var j=0; j<networks.length; j++) {
+				newSortOrder.push(j);
+				if (selectedEntity != "bbg") {
+					if (networks[j].networkName.toLowerCase() == selectedEntity) {
+						newSortOrder[0]=j;
+						newSortOrder[j]=0;
+					}
+				}
+			}
+
+			for (var i=0; i < newSortOrder.length; i++) {
+				var sortedIndex = newSortOrder[i];
+				var n = networks[sortedIndex];
 				s += '<h3><a target="_blank" href="http://www.bbg.gov/broadcasters/rfa/">' + n.networkName + '</a></h3>';
 				s += '<ul class="bbg__map-area__list">';
 				for (var j=0; j < n.services.length; j++) {
@@ -270,12 +284,6 @@ function shadeColor(color, percent) {
 			map.selectObject();
 
 			hideCountryLabel = true;
-		}
-
-		//small function make sure we hit every label on the map
-		function updateCountryName(newName) {
-			$('#country-name').text(newName);
-			$('#country-name-panel').text(newName); 
 		}
 
 		// these countries require special left position adjustments

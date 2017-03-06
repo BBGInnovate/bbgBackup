@@ -76,7 +76,6 @@ function getMapData() {
 				if ( $isParent ) {
 					$n1 = array(
 						'networkName' => $t->name
-						,'isParent' => $isParent
 						,'siteName' => $siteName
 						,'siteUrl' => $siteUrl
 						,'services' => array()
@@ -90,7 +89,6 @@ function getMapData() {
 
 					$s = array(
 						'serviceName' => $t->name
-						,'isParent' => $isParent
 						,'siteName' => $siteName
 						,'siteUrl' => $siteUrl
 					);
@@ -108,7 +106,8 @@ function getMapData() {
 		}
 	}
 
-	
+	wp_reset_postdata();
+	wp_reset_query();
 	
 	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
 	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
