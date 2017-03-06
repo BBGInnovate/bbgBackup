@@ -24,7 +24,10 @@ echo getNetworkExcerptJS();
 function getMapData() {
 
 	$entities = array(
-		'mbn' => array(
+		'voa' => array(
+			'countries' => array()
+		),
+		'rferl' => array(
 			'countries' => array()
 		),
 		'ocb' => array(
@@ -33,12 +36,9 @@ function getMapData() {
 		'rfa' => array(
 			'countries' => array()
 		),
-		'rferl' => array(
+		'mbn' => array(
 			'countries' => array()
 		),
-		'voa' => array(
-			'countries' => array()
-		)
 	);
 
 	$qParams=array(
