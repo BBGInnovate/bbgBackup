@@ -1,6 +1,7 @@
 <?php 
 
 require ('../../../../wp-load.php');
+//switch_to_blog(2);
 die();
 $countriesStr = "Afghanistan	AF
 Albania	AL
@@ -80,7 +81,7 @@ Moldova	MD
 Montenegro	ME
 Morocco	MA
 Mozambique	MZ
-Myanmar [Burma]	
+Myanmar [Burma]	MM
 Namibia	NA
 Nicaragua	NI
 Niger	NE
@@ -129,10 +130,15 @@ Zambia	ZM
 Zimbabwe	ZW";
 
 $countries = explode("\n", $countriesStr);
+$countries = array_reverse($countries);  //we create them in reverse order so that a default sort will show titles in proper order
+echo "<pre>";
+var_dump($countries);
+echo "</pre>";
 $counter = 0;
+
 foreach( $countries as $str ) {
 	$counter++;
-	if ($counter < 4) {
+	if ($counter < 999) {
 
 		$countryObj = explode("\t",$str);
 		$countryName = $countryObj[0];
@@ -149,8 +155,9 @@ foreach( $countries as $str ) {
 		
 		$post_id = wp_insert_post( $post_information );
 		echo "created id " . $post_id . "<BR>";
-		update_field('field_58b4c500bf80d', $countryCode, $post_id); //threats_to_press_country = field_5890db9048521
-		
+		flush();
+		update_field('field_58b4b1001b5df', $countryCode, $post_id); //threats_to_press_country = field_5890db9048521
+		usleep(1100000); //we do this to make sure the timestamps are created in our desired order
 	}
 
 }
