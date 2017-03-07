@@ -43,7 +43,7 @@ function getThreatsCustomPosts($cutoffDate) {
 				'year' => get_the_date('Y'),
 				'niceDate' => get_the_date('M d, Y'), 
 				'status' => $status,
-				'description' => get_the_content(),
+				'description' => get_the_excerpt(),
 				'mugshot' => '',
 				'network' => $networks,
 				'link' => $link,
