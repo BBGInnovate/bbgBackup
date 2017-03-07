@@ -10,7 +10,6 @@ MBN/MBN Digital
 MBN/Radio Sawa
 RFA/RFA Burmese
 RFA/RFA Cantonese
-RFA/RFA English
 RFA/RFA Khmer
 RFA/RFA Korean
 RFA/RFA Lao
@@ -18,26 +17,36 @@ RFA/RFA Mandarin
 RFA/RFA Tibet
 RFA/RFA Uyghur
 RFA/RFA Vietnamese
-RFERL/RFERL Afghan
+RFERL/RFERL Afghan (Dari)
+RFERL/RFERL Afghan (Pashto)
 RFERL/RFERL Armenian
 RFERL/RFERL Azerbaijani
-RFERL/RFERL Balkan Regional
+RFERL/RFERL Azerbaijani (Russian)
+RFERL/RFERL Balkan
+RFERL/RFERL Balkan (Albanian)
+RFERL/RFERL Balkan (Macedonian)
 RFERL/RFERL Belarus
-RFERL/RFERL Current Time (Regional Russian)
-RFERL/RFERL English
+RFERL/RFERL Current Time
 RFERL/RFERL Farda
 RFERL/RFERL Georgian
 RFERL/RFERL Kazakh
-RFERL/RFERL Kosovo Unit
+RFERL/RFERL Kazakh (Russian)
 RFERL/RFERL Kyrgyz
-RFERL/RFERL Mashaal
+RFERL/RFERL Kyrgyz (Russian)
 RFERL/RFERL Moldovan
-RFERL/RFERL North Caucasus
+RFERL/RFERL Moldovan (Russian)
+RFERL/RFERL North Caucasus (Aver)
+RFERL/RFERL North Caucasus (Chechen)
+RFERL/RFERL North Caucasus (Russian)
 RFERL/RFERL Russian
 RFERL/RFERL Tajik
+RFERL/RFERL Tajik (Russian)
 RFERL/RFERL Tatar-Bashkir
+RFERL/RFERL Tatar-Bashkir (Russian)
 RFERL/RFERL Turkmen
 RFERL/RFERL Ukrainian
+RFERL/RFERL Ukrainian (Russian)
+RFERL/RFERL Ukrainian (Crimean Tatar)
 RFERL/RFERL Uzbek
 VOA/VOA Afghan
 VOA/VOA Albanian
