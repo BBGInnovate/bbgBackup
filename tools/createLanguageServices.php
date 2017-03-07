@@ -48,7 +48,8 @@ RFERL/RFERL Ukrainian
 RFERL/RFERL Ukrainian (Russian)
 RFERL/RFERL Ukrainian (Crimean Tatar)
 RFERL/RFERL Uzbek
-VOA/VOA Afghan
+VOA/VOA Afghan (Dari)
+VOA/VOA Afghan (Pashto)
 VOA/VOA Albanian
 VOA/VOA Armenian
 VOA/VOA Azerbaijani
@@ -64,7 +65,9 @@ VOA/VOA English
 VOA/VOA French to Africa
 VOA/VOA Georgian
 VOA/VOA Hausa
-VOA/VOA Horn of Africa
+VOA/VOA Horn of Africa (Afaan Oromoo)
+VOA/VOA Horn of Africa (Amharic)
+VOA/VOA Horn of Africa (Tigrigna)
 VOA/VOA Indonesian
 VOA/VOA Khmer
 VOA/VOA Korean
