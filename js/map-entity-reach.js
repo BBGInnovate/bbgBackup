@@ -73,7 +73,7 @@ function shadeColor(color, percent) {
 			}
 		}
 		
-		balloonText == '[[title]]';
+		balloonText = '[[title]]';
 		if (isMobile) {
 			balloonText = '';
 		}
