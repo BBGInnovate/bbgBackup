@@ -116,7 +116,11 @@ function shadeColor(color, percent) {
 
 		// some UI tips related to country / service labels when zoom completes
 		map.addListener('zoomCompleted', function (event) {
-			
+			//console.log("zoomCompleted");
+			if (!isMobile) {
+				map.zoomDuration = 0.2;
+			}
+
 			if (hideCountryLabel === false && currentDisplayMode == "country" &&  event.chart.zoomLevel() > 1) {
 				$('.country-label-tooltip').show();
 				hideCountryLabel = true;
@@ -133,15 +137,13 @@ function shadeColor(color, percent) {
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
 
-			if (!isMobile) {
-				map.zoomDuration = .2;
-			}
-
 			if (window.selectedCountryID && window.selectedCountryID==event.mapObject.id) {
 				//we had a country selected, and they clicked it again. reset
 				window.selectedCountryID = "";
 				event.chart.zoomToGroup(activeCountries);
-				resetView();
+				setDisplayMode('entity');
+				$('#service-list').val(0);
+				map.selectObject();
 
 			} else {
 				//a country was not previously selected and now one has been clicked
@@ -154,8 +156,10 @@ function shadeColor(color, percent) {
 
 		// zoom in on the new entity once it's updated
 		map.addListener('dataUpdated', function (event) {
+			if (currentDisplayMode == 'entity') {
+				map.zoomDuration = 0;
+			}
 			event.chart.zoomToGroup(activeCountries);
-
 			// prevent countries that are not covered from zooming in on click
 			// for (var i = 0; i < map.dataProvider.areas.length; i++) {
 			// 	if (map.dataProvider.areas[i].region_ids == null) {
@@ -216,11 +220,11 @@ function shadeColor(color, percent) {
 			}
 			addCountriesToDropdown(activeCountries);
 			map.dataProvider.areas = activeCountries;
-			map.validateData();
+			map.validateData();	
 		}
 
 		function displayEntity(entity) {
-
+			
 			selectedEntity = entity;
 			setHighlightedEntity(entity);
 			setBaseColors();	//update global vars that are used to color the map
@@ -322,27 +326,6 @@ function shadeColor(color, percent) {
 			setDisplayMode('country');
 		}
 
-		function resetView () {
-			// show entity stuff here
-			$('.usa-width-one-third').show();
-
-			// slight delay for purpose of better UI appearance with zoom duration
-			setTimeout(function() {
-				$('.entity-details').show();
-				var selectedEntity = $('.entity-buttons .active').text().toLowerCase();
-				$('#country-name-panel').text(entities[selectedEntity].fullName);
-			}, 100);
-
-			$('.country-details').hide();
-
-			// reset the subgroup list
-			$('#service-list').val(0);
-
-			// resets current selected object to nothing;
-			map.selectObject();
-
-			hideCountryLabel = true;
-		}
 
 		// these countries require special left position adjustments
 		function setCountryLabelPosition(country) {
@@ -359,6 +342,7 @@ function shadeColor(color, percent) {
 
 		$('.entity-buttons button').on('click', function () {
 			var entity = $(this).text().toLowerCase();
+			map.zoomDuration = 0;
 			displayEntity(entity);
 		});
 
