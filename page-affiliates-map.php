@@ -223,32 +223,74 @@ get_header(); ?>
 <script src="https://cdn.rawgit.com/jseppi/Leaflet.MakiMarkers/master/Leaflet.MakiMarkers.js"></script>
 
 <style>
-
-	.marker-cluster-small {
-		background-color: rgba(241, 211, 87, 0);
+	
+	[class*="marker-cluster-"] {
+		background:rgba(0, 0, 0, 0);
 	}
-	.marker-cluster-small div {
+
+	.marker-cluster-all-small div {
 		background-color: rgba(240, 194, 12, 1);
 	}
 
-	.marker-cluster-medium {
-		background-color: rgba(253, 156, 115, 0);
-	}
-	.marker-cluster-medium div {
+	.marker-cluster-all-medium div {
 		background-color: rgba(241, 128, 23, 1);
 	}
 
-	.marker-cluster-large { 
-		background-color: rgba(255, 0, 0, 0);
-	}
-	.marker-cluster-large div {
+	.marker-cluster-all-large div {
 		background-color: rgba(255, 0, 0, 1);
+	}
+
+	/**** RADIO CLUSTERS ****/
+	.marker-cluster-radio-small div {
+		background-color: #80BFFF;
+	}
+
+	.marker-cluster-radio-medium div {
+		background-color: #475AFF;
+		color:#FFF;
+	}
+
+	.marker-cluster-radio-large div {
+		background-color: #000066;
+		color:#FFF;
+	}
+
+
+	/**** TV CLUSTERS ****/
+	.marker-cluster-tv-small div {
+		background-color: #ba1c21 !important;
+		color:white;
+	}
+
+	.marker-cluster-tv-medium div {
+		background-color: #7a3336 !important;
+		color:white;
+	}
+
+	.marker-cluster-tv-large div {
+		background-color: rgba(255, 0, 0, 1);
+	}
+
+	/**** DIGITAL CLUSTERS ****/
+	.marker-cluster-web-small div {
+		background-color: #BDBDBD;
+	}
+
+	.marker-cluster-web-medium div {
+		background-color: #333333;
+		color:#FFF;
+	}
+
+	.marker-cluster-web-large div {
+		background-color: #000000;
+		color:#FFF;
 	}
 
 </style>
 
 <script type="text/javascript">
 	//var tilesetUrl = 'https://api.mapbox.com/styles/v1/mapbox/emerald-v8/tiles/{z}/{x}/{y}?access_token=<?php echo MAPBOX_API_KEY; ?>';
+	selectedPlatform = "all";
 	var mbToken = '<?php echo MAPBOX_API_KEY; ?>';
 	var tilesetUrl = 'https://a.tiles.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}@2x.png?access_token='+mbToken;
 	var attribStr = '&copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>  &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -271,7 +313,7 @@ get_header(); ?>
     	maxClusterRadius:35,
 		iconCreateFunction: function (cluster) {
 			var childCount = cluster.getChildCount();
-			var c = ' marker-cluster-';
+			var c = ' marker-cluster-'+selectedPlatform+'-';
 			if (childCount < 10) {
 			    c += 'small';
 			} else if (childCount < 100) {
@@ -384,6 +426,7 @@ get_header(); ?>
 	resizeStuffOnResize();
 console.log('test');
 	function setSelectedPlatform(platform, displayMode) {
+		selectedPlatform = platform;
 		for (var p in deliveryLayers) {
 			if (deliveryLayers.hasOwnProperty(p)) {
 				map.removeLayer(deliveryLayers[p]);
