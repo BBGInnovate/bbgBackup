@@ -146,6 +146,9 @@ function shadeColor(color, percent) {
 			} else {
 				//a country was not previously selected and now one has been clicked
 				displayCountry(event.mapObject.id);
+
+				// set the country list value to the same as the map selection
+				$('#country-list').val(event.mapObject.id);
 			}
 		});
 
