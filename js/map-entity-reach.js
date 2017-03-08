@@ -47,18 +47,30 @@ function shadeColor(color, percent) {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
 		
-		/* keep activeCountries & map as global vars else they won't be available in ajax callbacks */
+		/* keep activeCountries & map as global vars else they won't be available in callbacks */
 		activeCountries=[];
 		
 		/* create an ordered array of country names - nice to have later */
 		fullCountryList = Object.keys(countriesByName);
 		
-		/* create a lookup for our country data based on the ammap code */
+		/* create a lookup for our country data based on the ammap code 
+		   as well as a lookup for countries by language service  */
+
+
 		countriesByID = [];
 		for ( i=0; i<fullCountryList.length; i++) {
 			var cname = fullCountryList[i];
 			var countryID = countriesByName[cname].ammapCode;
 			countriesByID[countryID] = countriesByName[cname];
+			var networks = countriesByName[cname].networks;
+			for (var j=0; j<networks.length; j++) {
+				var n = networks[j];
+				//console.log(Object.keys(n));
+				for (var k=0; k<n.services.length; k++) {
+					var serviceName = n.services[k];
+					servicesByName[serviceName].countries[cname]=1;
+				}
+			}
 		}
 		
 		map = AmCharts.makeChart( "chartdiv", {
@@ -184,8 +196,27 @@ function shadeColor(color, percent) {
 			colorSelected = shadeColor(buttonColor, -50);
 		}
 
-		function updateEntityInfo(entity) {
-			
+		function getCountryObj(countryName) {
+			return {
+				id : countriesByName[countryName].ammapCode,
+				countryCode : countriesByName[countryName].ammapCode,
+				name : countryName,
+				countryName : countryName,
+				color : colorBase,
+				rollOverColor : colorRollOver,
+				selectedColor : colorSelected,
+				selectable : true
+			}
+		}
+		function updateActiveCountries(list) {
+			activeCountries=[];
+			for (var i = 0; i < list.length; i++) {
+				var countryName = list[i];
+				activeCountries.push(getCountryObj(countryName));
+			}
+			addCountriesToDropdown(activeCountries);
+			map.dataProvider.areas = activeCountries;
+			map.validateData();
 		}
 
 		function displayEntity(entity) {
@@ -194,32 +225,17 @@ function shadeColor(color, percent) {
 			setBaseColors();	//update global vars that are used to color the map
 
 			/**** loop through all of the countries we have, and if they're a part of this network, add them to our activecountries array */
-			activeCountries=[];
-			for (var i = 0; i < fullCountryList.length; i++) {
-				var countryName = fullCountryList[i];
-				if (entity=="bbg" || entitiesByName[entity].countries.hasOwnProperty(countryName)) {
-					var countryCode = countriesByName[countryName].ammapCode;
-					country = {};
-					country.name = countryName;
-					country.countryName = countryName;
-					country.id = countryCode;
-					country.color = colorBase;
-					country.rollOverColor = colorRollOver;
-					country.selectedColor = colorSelected;
-					country.selectable = true;
-					activeCountries.push(country);
-				}
+			var clist = fullCountryList;
+			if (entity != "bbg") {
+				clist = Object.keys(entitiesByName[entity].countries);
 			}
-			addCountriesToDropdown(activeCountries);
-			map.dataProvider.areas = activeCountries;
-			map.validateData();
+			updateActiveCountries(clist);
 
 			var en = entities[entity];
 			$('#entityName').html(en.fullName);
 
 			var entityDetailsStr = '<p>' + en.description + '<p>' + 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
 			$('.entity-details').html(entityDetailsStr).show();
-
 
 			if (entity != "bbg") {
 				$('#service-list').empty();
@@ -229,11 +245,13 @@ function shadeColor(color, percent) {
 				for (var i = 0; i < entitiesByName[entity].services.length; i++) {
 					var srv = entitiesByName[entity].services[i];
 					var srvo = servicesByName[srv];
-					subgroupListString += '<option value="'+srvo.siteUrl+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
+					subgroupListString += '<option value="'+srv+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
 				}
 				$('#service-list').html(subgroupListString);
+				$('#serviceDropdownBlock').show();
+			} else {
+				$('#serviceDropdownBlock').hide();
 			}
-			
 
 			setDisplayMode('entity');
 		}
@@ -291,14 +309,12 @@ function shadeColor(color, percent) {
 				for (var j=0; j < n.services.length; j++) {
 					var srv = n.services[j];
 					var srvo = servicesByName[srv];
-
 					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="' + srvo.siteUrl + '">' + srvo.serviceName+'</a></li>';
 				}
 				s += '</ul>';
 			}
 
 			$('.service-block').html(s);
-
 			setDisplayMode('country');
 		}
 
@@ -354,9 +370,18 @@ function shadeColor(color, percent) {
 
 		});
 
+		// when someone clicks "view on map" for VOA Spanish, show all the VOA Spanish countries
+		$('#view-on-map').on('click', function () {
+			var serviceName = $('#service-list').val();
+			var countryList = Object.keys(servicesByName[serviceName].countries);
+			console.log("show language service " + serviceName + " which are " + countryList);
+
+			updateActiveCountries(countryList);
+			
+		});
+
 		$('#submit').on('click', function () {
 			var url = $('#service-list option:selected').data('href');
-
 			window.open(url, '_blank');
 		});
 

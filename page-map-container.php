@@ -128,6 +128,7 @@ function getMapData() {
 			,'siteName' => $siteName
 			,'siteUrl' => $siteUrl
 			,'parent' => $parentTerm
+			,'countries' => array() //filled out by JS
 		);
 	}
 
@@ -233,12 +234,13 @@ for (serviceName in servicesByName) {
 									<p class="detail"></p>
 								</div>
 
-								
+								<div id="serviceDropdownBlock">
 									<select id="service-list">
 										<option value="0">Select a subgroup...</option>
 									</select>
 									<button id="view-on-map">View on map</button>
 									<button id="submit">Visit site</button>
+								</div>
 
 							</div>
 
