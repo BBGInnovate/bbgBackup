@@ -73,6 +73,10 @@ function shadeColor(color, percent) {
 			}
 		}
 		
+		balloonText == '[[title]]';
+		if (isMobile) {
+			balloonText = '';
+		}
 		map = AmCharts.makeChart( "chartdiv", {
 			type: "map",
 			borderColor: 'red',
@@ -89,7 +93,7 @@ function shadeColor(color, percent) {
 				selectedColor: "#DDDDDD",
 				rollOverOutlineColor: "#FFFFFF",
 				selectable: true,
-				balloonText: '[[title]]'
+				balloonText: balloonText
 			},
 			balloon: {
 				adjustBorderColor: true,
