@@ -225,7 +225,7 @@ function shadeColor(color, percent) {
 				$('#service-list').empty();
 				var subgroupListString = '';
 				var article = getArticleByEntity(selectedEntity);
-				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity + ' service...</option>';
+				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity.toUpperCase() + ' service...</option>';
 				for (var i = 0; i < entitiesByName[entity].services.length; i++) {
 					var srv = entitiesByName[entity].services[i];
 					var srvo = servicesByName[srv];
