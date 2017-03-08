@@ -26,18 +26,23 @@ function getMapData() {
 	$entities = array(
 		'voa' => array(
 			'countries' => array()
+			,'services' => array()
 		),
 		'rferl' => array(
 			'countries' => array()
+			,'services' => array()
 		),
 		'ocb' => array(
 			'countries' => array()
+			,'services' => array()
 		),
 		'rfa' => array(
 			'countries' => array()
+			,'services' => array()
 		),
 		'mbn' => array(
 			'countries' => array()
+			,'services' => array()
 		),
 	);
 
@@ -65,36 +70,19 @@ function getMapData() {
 				
 				$isParent = ($t -> parent == 0);
 				$termMeta = get_term_meta( $t->term_id );
-				$siteName = "";
-				$siteUrl = "";
-				
-				if ( count( $termMeta ) ) {
-					$siteName = $termMeta['language_service_site_name'][0];
-					$siteUrl = $termMeta['language_service_site_url'][0];
-				}
 				
 				if ( $isParent ) {
 					$n1 = array(
-						'networkName' => $t->name
-						,'siteName' => $siteName
-						,'siteUrl' => $siteUrl
-						,'services' => array()
+						'networkName' => $t->name,
+						'services' => array()
 					);
 
-					$entities [strtolower($t->name)]['countries'][$countryName] = true;
+					$entities [strtolower($t->name)]['countries'][$countryName] = 1;
 					$networks []= $n1;
 					$p = &$networks[count($networks)-1];
 
 				} else {
-
-					$s = array(
-						'serviceName' => $t->name
-						,'siteName' => $siteName
-						,'siteUrl' => $siteUrl
-					);
-					
-					array_push($p['services'], $s);
-
+					array_push($p['services'], $t->name);
 				}
 			}
 
@@ -105,32 +93,75 @@ function getMapData() {
 			);
 		}
 	}
+	$terms = get_terms( array(
+		'taxonomy' => 'language_services',
+		'hide_empty' => false,
+	) );
+
+	$parentTerms = array();
+	foreach ( $terms as $t ) {
+		$isParent = ($t -> parent == 0);
+		if ($isParent) {
+			$parentTerms[$t->term_id] = $t->name;
+		}
+	}
+
+	$servicesByName = array();
+	foreach ( $terms as $t ) {
+		$isParent = ($t -> parent == 0);
+		$parentTerm="";
+
+		if (!$isParent) {
+			$parentTerm = $parentTerms[$t->parent];
+		}
+
+		$termMeta = get_term_meta( $t->term_id );
+		
+		$siteName = "";
+		$siteUrl = "";
+		if ( count( $termMeta ) ) {
+			$siteName = $termMeta['language_service_site_name'][0];
+			$siteUrl = $termMeta['language_service_site_url'][0];
+		}
+		$servicesByName[$t->name] = array(
+			'serviceName' => $t->name
+			,'siteName' => $siteName
+			,'siteUrl' => $siteUrl
+			,'parent' => $parentTerm
+		);
+	}
 
 	wp_reset_postdata();
 	wp_reset_query();
 	
 	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
 	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
+	$serviceStr = json_encode(new ArrayValue($servicesByName), JSON_PRETTY_PRINT);
 	
 	echo "<script type='text/javascript'>\n";
-	echo "entitiesByName = $entityStr";
+	echo "entitiesByName = $entityStr\n";
+	echo "servicesByName = $serviceStr\n";
+	echo "countriesByName = $countryStr\n";
 	echo "</script>";
-
-	echo "<script type='text/javascript'>\n";
-	echo "countriesByName = $countryStr";
-	echo "</script>";
-
-}
-
-?>
-
-
-
-<style>
-/*temp styles */
-</style>
+ 
+}?>
 
 <?php getMapData(); ?>
+
+<script>
+for (serviceName in servicesByName) {
+	if (servicesByName.hasOwnProperty(serviceName)) {
+		s = servicesByName[serviceName];
+		if (s.parent != "") {
+			entitiesByName[s.parent.toLowerCase()]['services'].push(serviceName);
+		}
+	}
+}
+</script>
+
+	<style>
+	/*temp styles */
+	</style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
@@ -193,6 +224,13 @@ function getMapData() {
 										<p><strong>Languages supported: </strong><span class="languages-served"></span></p>
 									</div>
 								</div>
+							</div>
+
+							<div id="entityDisplay">
+								<h2 id="entityName" class="bbg__map-area__country-name">Entity Name</h2>
+								<div class="entity-details">
+									<p class="detail"></p>
+								</div>
 								<div class="groups-and-subgroups"></div>
 								<div class="service-block">
 									<select id="service-list">
@@ -202,13 +240,6 @@ function getMapData() {
 									<button id="submit">Visit site</button>
 								</div>
 								<div class="other-subgroups"></div>
-							</div>
-
-							<div id="entityDisplay">
-								<h2 id="entityName" class="bbg__map-area__country-name">Entity Name</h2>
-								<div class="entity-details">
-									<p class="detail"></p>
-								</div>
 							</div>
 
 							<div id="languageServiceDisplay">

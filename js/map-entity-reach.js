@@ -9,7 +9,7 @@ function isMobileDevice () {
 
 //Select "a" VOA Country vs Select "an" OCB country
 function getArticleByEntity (entity) {
-	if (entity === 'VOA') {
+	if (entity.toLowerCase() === 'voa') {
 		return 'a';
 	} else {
 		return 'an';
@@ -187,7 +187,7 @@ function shadeColor(color, percent) {
 		function updateEntityInfo(entity) {
 			
 		}
-			// this function will set the endpoint based on the entity and then go fetch the countries
+
 		function displayEntity(entity) {
 			selectedEntity = entity;
 			setHighlightedEntity(entity);
@@ -219,6 +219,23 @@ function shadeColor(color, percent) {
 
 			var entityDetailsStr = '<p>' + en.description + '<p>' + 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
 			$('.entity-details').html(entityDetailsStr).show();
+
+
+			if (entity != "bbg") {
+				$('#service-list').empty();
+				var subgroupListString = '';
+				var selectedEntity = entity;
+				var article = getArticleByEntity(selectedEntity);
+				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity + ' service...</option>';
+				for (var i = 0; i < entitiesByName[entity].services.length; i++) {
+					var srv = entitiesByName[entity].services[i];
+					var srvo = servicesByName[srv];
+					subgroupListString += '<option value="'+srvo.siteUrl+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
+				}
+				console.log(subgroupListString);
+				$('#service-list').html(subgroupListString);
+			}
+			
 
 			setDisplayMode('entity');
 		}
@@ -257,11 +274,13 @@ function shadeColor(color, percent) {
 			for (var i=0; i < newSortOrder.length; i++) {
 				var sortedIndex = newSortOrder[i];
 				var n = networks[sortedIndex];
-				s += '<h3><a target="_blank" href="http://www.bbg.gov/broadcasters/rfa/">' + n.networkName + '</a></h3>';
+				s += '<h3><a target="_blank" href="' + n.siteUrl + '">' + n.networkName + '</a></h3>';
 				s += '<ul class="bbg__map-area__list">';
 				for (var j=0; j < n.services.length; j++) {
 					var srv = n.services[j];
-					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="http://www.rfa.org/cantonese">' + srv.serviceName+'</a></li>';
+					var srvo = servicesByName[srv];
+
+					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="' + srvo.siteUrl + '">' + srvo.serviceName+'</a></li>';
 				}
 				s += '</ul>';
 			}
@@ -309,6 +328,12 @@ function shadeColor(color, percent) {
 		$('.entity-buttons button').on('click', function () {
 			var entity = $(this).text().toLowerCase();
 			displayEntity(entity);
+		});
+
+		$('#submit').on('click', function () {
+			var url = $('#service-list option:selected').data('href');
+
+			window.open(url, '_blank');
 		});
 
 		// click on the first element of entity-buttons class (BBG) which will kick off our display.
