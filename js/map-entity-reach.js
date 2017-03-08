@@ -358,8 +358,10 @@ function shadeColor(color, percent) {
 		// this event listener is for select countries through the drop-down (for mobile devices)
 		$('#country-list').on('change', function () {
 			var countryCode = $(this).val();
-			var mapObject = map.getObjectById(countryCode);
-			map.clickMapObject(mapObject);
+			if (countryCode != "0") {
+				var mapObject = map.getObjectById(countryCode);
+				map.clickMapObject(mapObject);
+			}
 			//scrollToMap();
 
 		});
