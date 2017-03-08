@@ -112,12 +112,15 @@ function shadeColor(color, percent) {
 
 		// some UI tips related to country / service labels when zoom completes
 		map.addListener('zoomCompleted', function (event) {
-			if (currentDisplayMode == "country" &&  event.chart.zoomLevel() > 1) {
+			
+			if (hideCountryLabel === false && currentDisplayMode == "country" &&  event.chart.zoomLevel() > 1) {
 				$('.country-label-tooltip').show();
+				hideCountryLabel = true;
 			}
 			
 			if (hideServiceLabel === false) {
 				$('.service-label').show();
+				hideServiceLabel = true;
 			}
 		});
 
@@ -125,10 +128,6 @@ function shadeColor(color, percent) {
 
 		//if someone clicks a country that's already selected, zoom out.
 		map.addListener("clickMapObject", function (event) {
-
-			hideServiceLabel = false;
-			hideCountryLabel = false;
-			setCountryLabelPosition(event.chart.selectedObject.name);
 
 			if (!isMobile) {
 				map.zoomDuration = .2;
@@ -162,25 +161,19 @@ function shadeColor(color, percent) {
 		function setDisplayMode(displayMode) {
 			
 			currentDisplayMode = displayMode;
-
+			$('.service-label').hide();
+			$('.country-label-tooltip').hide();
 			if ( displayMode == "entity") {
-				
-				$('.country-label-tooltip').hide();
+
 				$('#country-name').hide();
 				$('#entityDisplay').show();
 				$('#countryDisplay').hide();
 
 				window.selectedCountryID = '';
-
-	
 			} else if ( displayMode == "country" ) {
-				
-				$('.country-label-tooltip').show();
 				$('#country-name').show();
 				$('#entityDisplay').hide();
 				$('#countryDisplay').show();
-
-
 			}
 		}
 
@@ -275,6 +268,8 @@ function shadeColor(color, percent) {
 		function displayCountry(selectedCountryID) {
 			window.selectedCountryID = selectedCountryID;
 			countryName = countriesByID[selectedCountryID].countryName;
+			setCountryLabelPosition(countryName);
+			hideCountryLabel=false;
 
 			$('h4.country-label-tooltip #country-name').html(countryName);	
 			$('#countryDisplay h2#countryName').html(countryName);
@@ -380,6 +375,8 @@ function shadeColor(color, percent) {
 		// when someone clicks "view on map" for VOA Spanish, show all the VOA Spanish countries
 		$('#view-on-map').on('click', function () {
 			var serviceName = $('#service-list').val();
+			$('.service-label').html(serviceName);
+			hideServiceLabel = false;
 			var countryList = Object.keys(servicesByName[serviceName].countries);
 			console.log("show language service " + serviceName + " which are " + countryList);
 
