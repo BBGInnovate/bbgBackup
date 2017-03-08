@@ -236,7 +236,7 @@ for (serviceName in servicesByName) {
 
 								<div id="serviceDropdownBlock">
 									<select id="service-list">
-										<option value="0">Select a subgroup...</option>
+										<option value="0"></option><!-- Select an [entity] service -->
 									</select>
 									<button id="view-on-map">View on map</button>
 									<button id="submit">Visit site</button>

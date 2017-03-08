@@ -220,11 +220,12 @@ function shadeColor(color, percent) {
 		}
 
 		function displayEntity(entity) {
+
 			selectedEntity = entity;
 			setHighlightedEntity(entity);
 			setBaseColors();	//update global vars that are used to color the map
 
-			/**** loop through all of the countries we have, and if they're a part of this network, add them to our activecountries array */
+			/**** pick our list of countries to highlight  */
 			var clist = fullCountryList;
 			if (entity != "bbg") {
 				clist = Object.keys(entitiesByName[entity].countries);
@@ -232,9 +233,9 @@ function shadeColor(color, percent) {
 			updateActiveCountries(clist);
 
 			var en = entities[entity];
-			$('#entityName').html(en.fullName);
-
 			var entityDetailsStr = '<p>' + en.description + '<p>' + 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
+
+			$('#entityName').html(en.fullName);
 			$('.entity-details').html(entityDetailsStr).show();
 
 			if (entity != "bbg") {
@@ -248,6 +249,7 @@ function shadeColor(color, percent) {
 					subgroupListString += '<option value="'+srv+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
 				}
 				$('#service-list').html(subgroupListString);
+				$('#serviceDropdownBlock button').hide();
 				$('#serviceDropdownBlock').show();
 			} else {
 				$('#serviceDropdownBlock').hide();
@@ -361,13 +363,18 @@ function shadeColor(color, percent) {
 		// this event listener is for select countries through the drop-down (for mobile devices)
 		$('#country-list').on('change', function () {
 			var countryCode = $(this).val();
-			console.log('code is ' + countryCode);
 			var mapObject = map.getObjectById(countryCode);
-			console.log('mapObject is ' + mapObject);
 			map.clickMapObject(mapObject);
-
 			//scrollToMap();
 
+		});
+		$('#service-list').on('change', function () {
+			var subgroupID = $(this).val();
+			if (subgroupID == 0) {
+				$('#serviceDropdownBlock button').hide();
+			} else {
+				$('#serviceDropdownBlock button').show();
+			}
 		});
 
 		// when someone clicks "view on map" for VOA Spanish, show all the VOA Spanish countries
