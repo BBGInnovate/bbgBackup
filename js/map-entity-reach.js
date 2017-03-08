@@ -224,7 +224,6 @@ function shadeColor(color, percent) {
 			if (entity != "bbg") {
 				$('#service-list').empty();
 				var subgroupListString = '';
-				var selectedEntity = entity;
 				var article = getArticleByEntity(selectedEntity);
 				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity + ' service...</option>';
 				for (var i = 0; i < entitiesByName[entity].services.length; i++) {
@@ -232,7 +231,6 @@ function shadeColor(color, percent) {
 					var srvo = servicesByName[srv];
 					subgroupListString += '<option value="'+srvo.siteUrl+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
 				}
-				console.log(subgroupListString);
 				$('#service-list').html(subgroupListString);
 			}
 			

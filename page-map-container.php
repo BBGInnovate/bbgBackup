@@ -224,6 +224,7 @@ for (serviceName in servicesByName) {
 										<p><strong>Languages supported: </strong><span class="languages-served"></span></p>
 									</div>
 								</div>
+								<div class="service-block"></div>
 							</div>
 
 							<div id="entityDisplay">
@@ -231,15 +232,14 @@ for (serviceName in servicesByName) {
 								<div class="entity-details">
 									<p class="detail"></p>
 								</div>
-								<div class="groups-and-subgroups"></div>
-								<div class="service-block">
+
+								
 									<select id="service-list">
 										<option value="0">Select a subgroup...</option>
 									</select>
 									<button id="view-on-map">View on map</button>
 									<button id="submit">Visit site</button>
-								</div>
-								<div class="other-subgroups"></div>
+
 							</div>
 
 							<div id="languageServiceDisplay">
