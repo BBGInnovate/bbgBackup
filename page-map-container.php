@@ -63,35 +63,28 @@ function getMapData() {
 		$countryAmmapCode = get_post_meta( $id, 'country_ammap_country_code', true );
 		
 		$networks = array();
-
-		$terms = get_the_terms( $id, "language_services" );
+		$terms = get_the_terms( $id, "language_services" , array('hide_empty' => false));
 		if ($terms) {
-			foreach ( $terms as $t ) {
-				
-				$isParent = ($t -> parent == 0);
-				$termMeta = get_term_meta( $t->term_id );
-				
-				if ( $isParent ) {
-					$n1 = array(
-						'networkName' => $t->name,
-						'services' => array()
-					);
-
-					$entities [strtolower($t->name)]['countries'][$countryName] = 1;
-					$networks []= $n1;
-					$p = &$networks[count($networks)-1];
-
-				} else {
-					array_push($p['services'], $t->name);
+			$categoryHierarchy = array();
+			sort_terms_hierarchically($terms, $categoryHierarchy);
+			foreach ( $categoryHierarchy as $t ) {
+				$n1 = array(
+					'networkName' => $t->name,
+					'services' => array()
+				);
+				$entities [strtolower($t->name)]['countries'][$countryName] = 1;
+				foreach ($t->children as $service) {
+					$n1['services'][]= $service -> name;
 				}
+				$networks []= $n1;
 			}
-
-			$countries[$countryName] = array(
-				"countryName" => $countryName,
-				"ammapCode" => $countryAmmapCode,
-				"networks" => $networks
-			);
 		}
+		$countries[$countryName] = array(
+			"countryName" => $countryName,
+			"ammapCode" => $countryAmmapCode,
+			"networks" => $networks
+		);
+
 	}
 	$terms = get_terms( array(
 		'taxonomy' => 'language_services',
