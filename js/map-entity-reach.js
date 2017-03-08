@@ -371,7 +371,7 @@ function shadeColor(color, percent) {
 			$('.service-label').html(serviceName);
 			hideServiceLabel = false;
 			var countryList = Object.keys(servicesByName[serviceName].countries);
-			console.log("show language service " + serviceName + " which are " + countryList);
+			//console.log("show language service " + serviceName + " which are " + countryList);
 
 			updateActiveCountries(countryList);
 			
