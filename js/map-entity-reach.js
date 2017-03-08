@@ -210,7 +210,7 @@ function shadeColor(color, percent) {
 					activeCountries.push(country);
 				}
 			}
-
+			addCountriesToDropdown(activeCountries);
 			map.dataProvider.areas = activeCountries;
 			map.validateData();
 
@@ -236,6 +236,20 @@ function shadeColor(color, percent) {
 			
 
 			setDisplayMode('entity');
+		}
+
+		function addCountriesToDropdown (countriesDropdown) {
+			$('#country-list').empty();
+			var countryListString = '';
+
+			countryListString += '<option value="0">Select a country...</option>';
+			for (var i = 0; i < countriesDropdown.length; i++) {
+				var country = countriesDropdown[i];
+				countryListString += '<option value="'+country.id+'">'+country.name+'</option>';
+			}
+
+			$('#country-list').html(countryListString);
+
 		}
 
 		function displayCountry(selectedCountryID) {
@@ -326,6 +340,18 @@ function shadeColor(color, percent) {
 		$('.entity-buttons button').on('click', function () {
 			var entity = $(this).text().toLowerCase();
 			displayEntity(entity);
+		});
+
+		// this event listener is for select countries through the drop-down (for mobile devices)
+		$('#country-list').on('change', function () {
+			var countryCode = $(this).val();
+			console.log('code is ' + countryCode);
+			var mapObject = map.getObjectById(countryCode);
+			console.log('mapObject is ' + mapObject);
+			map.clickMapObject(mapObject);
+
+			scrollToMap();
+
 		});
 
 		$('#submit').on('click', function () {
