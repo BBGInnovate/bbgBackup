@@ -350,7 +350,7 @@ function shadeColor(color, percent) {
 			console.log('mapObject is ' + mapObject);
 			map.clickMapObject(mapObject);
 
-			scrollToMap();
+			//scrollToMap();
 
 		});
 
