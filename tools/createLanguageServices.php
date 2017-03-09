@@ -6,7 +6,6 @@ RFERL
 VOA
 MBN/Alhurra TV
 OCB/Martinoticias
-MBN/MBN Digital
 MBN/Radio Sawa
 RFA/RFA Burmese
 RFA/RFA Cantonese
