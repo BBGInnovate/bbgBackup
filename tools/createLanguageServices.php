@@ -32,6 +32,7 @@ RFERL/RFERL Kazakh
 RFERL/RFERL Kazakh (Russian)
 RFERL/RFERL Kyrgyz
 RFERL/RFERL Kyrgyz (Russian)
+RFERL/Gandhara (English to AfPak)
 RFERL/Radio Mashaal
 RFERL/RFERL Moldovan
 RFERL/RFERL Moldovan (Russian)

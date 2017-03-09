@@ -32,6 +32,7 @@ RFERL Kazakh	http://www.azattyq.org/
 RFERL Kazakh (Russian)	http://rus.azattyq.org/
 RFERL Kyrgyz	http://www.azattyk.kg/
 RFERL Kyrgyz (Russian)	http://rus.azattyk.org/
+Gandhara (English to AfPak) http://gandhara.rferl.org
 Radio Mashaal http://www.mashaalradio.com
 RFERL Moldovan	http://www.europalibera.org/
 RFERL Moldovan (Russian)	http://www.europalibera.org/p/5065.html

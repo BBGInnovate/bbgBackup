@@ -31,6 +31,7 @@ RFERL Kazakh	Kazakhstan
 RFERL Kazakh (Russian)	Kazakhstan
 RFERL Kyrgyz	Kyrgyzstan
 RFERL Kyrgyz (Russian)	Kyrgyzstan
+Gandhara (English to AfPak)	Afghanistan,Pakistan
 Radio Mashaal	Afghanistan,Pakistan
 RFERL Moldovan	Moldova
 RFERL Moldovan (Russian)	Moldova
