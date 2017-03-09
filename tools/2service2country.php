@@ -25,12 +25,13 @@ RFERL Balkan (Albanian)	Bosnia and Herzegovina,Kosovo,Macedonia,Montenegro,Serbi
 RFERL Balkan (Macedonian)	Bosnia and Herzegovina,Kosovo,Macedonia,Montenegro,Serbia
 RFERL Belarus	Belarus
 RFERL Current Time	Estonia,Georgia,Israel,Kazakhstan,Kyrgyzstan,Latvia,Lithuania,Moldova,Russia,Tajikistan,Ukraine
-RFERL Farda	Iran
+Radio Farda	Iran
 RFERL Georgian	Georgia
 RFERL Kazakh	Kazakhstan
 RFERL Kazakh (Russian)	Kazakhstan
 RFERL Kyrgyz	Kyrgyzstan
 RFERL Kyrgyz (Russian)	Kyrgyzstan
+Radio Mashaal	Afghanistan,Pakistan
 RFERL Moldovan	Moldova
 RFERL Moldovan (Russian)	Moldova
 RFERL North Caucasus (Avar)	Russia

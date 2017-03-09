@@ -26,12 +26,13 @@ RFERL Balkan (Albanian)	www.evropaelire.org
 RFERL Balkan (Macedonian)	www.slobodnaevropa.mk
 RFERL Belarus	http://www.svaboda.org/
 RFERL Current Time	http://www.currenttime.tv/
-RFERL Farda	http://www.radiofarda.com/
+Radio Farda	http://www.radiofarda.com/
 RFERL Georgian	http://www.tavisupleba.org/
 RFERL Kazakh	http://www.azattyq.org/
 RFERL Kazakh (Russian)	http://rus.azattyq.org/
 RFERL Kyrgyz	http://www.azattyk.kg/
 RFERL Kyrgyz (Russian)	http://rus.azattyk.org/
+Radio Mashaal http://www.mashaalradio.com
 RFERL Moldovan	http://www.europalibera.org/
 RFERL Moldovan (Russian)	http://www.europalibera.org/p/5065.html
 RFERL North Caucasus (Avar)	http://www.radioerkenli.com/

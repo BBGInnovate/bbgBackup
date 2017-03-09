@@ -26,12 +26,13 @@ RFERL/RFERL Balkan (Albanian)
 RFERL/RFERL Balkan (Macedonian)
 RFERL/RFERL Belarus
 RFERL/RFERL Current Time
-RFERL/RFERL Farda
+RFERL/Radio Farda
 RFERL/RFERL Georgian
 RFERL/RFERL Kazakh
 RFERL/RFERL Kazakh (Russian)
 RFERL/RFERL Kyrgyz
 RFERL/RFERL Kyrgyz (Russian)
+RFERL/Radio Mashaal
 RFERL/RFERL Moldovan
 RFERL/RFERL Moldovan (Russian)
 RFERL/RFERL North Caucasus (Avar)
