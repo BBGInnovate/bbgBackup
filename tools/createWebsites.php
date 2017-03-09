@@ -34,7 +34,7 @@ RFERL Kyrgyz	http://www.azattyk.kg/
 RFERL Kyrgyz (Russian)	http://rus.azattyk.org/
 RFERL Moldovan	http://www.europalibera.org/
 RFERL Moldovan (Russian)	http://www.europalibera.org/p/5065.html
-RFERL North Caucasus (Aver)	http://www.radioerkenli.com/
+RFERL North Caucasus (Avar)	http://www.radioerkenli.com/
 RFERL North Caucasus (Chechen)	http://www.radiomarsho.com/
 RFERL North Caucasus (Russian)	http://www.kavkazr.com/
 RFERL Russian	http://www.svoboda.org/

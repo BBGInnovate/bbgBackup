@@ -33,7 +33,7 @@ RFERL Kyrgyz	Kyrgyzstan
 RFERL Kyrgyz (Russian)	Kyrgyzstan
 RFERL Moldovan	Moldova
 RFERL Moldovan (Russian)	Moldova
-RFERL North Caucasus (Aver)	Russia
+RFERL North Caucasus (Avar)	Russia
 RFERL North Caucasus (Chechen)	Russia
 RFERL North Caucasus (Russian)	Russia
 RFERL Russian	Russia

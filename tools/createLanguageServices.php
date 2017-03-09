@@ -34,7 +34,7 @@ RFERL/RFERL Kyrgyz
 RFERL/RFERL Kyrgyz (Russian)
 RFERL/RFERL Moldovan
 RFERL/RFERL Moldovan (Russian)
-RFERL/RFERL North Caucasus (Aver)
+RFERL/RFERL North Caucasus (Avar)
 RFERL/RFERL North Caucasus (Chechen)
 RFERL/RFERL North Caucasus (Russian)
 RFERL/RFERL Russian
