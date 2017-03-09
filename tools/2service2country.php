@@ -6,6 +6,7 @@ switch_to_blog(2);
 $serviceCountryStr = "Martinoticias	Cuba
 Alhurra TV	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
 Radio Sawa	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
+Afia Darfur	Chad,South Sudan
 RFA Burmese	Myanmar [Burma]
 RFA Cantonese	China
 RFA Khmer	Cambodia

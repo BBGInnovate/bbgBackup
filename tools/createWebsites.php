@@ -5,6 +5,7 @@
  switch_to_blog(2);
 
 $serviceCountryStr = "Martinoticias	http://www.martinoticias.com/
+Afia Darfur	http://www.afiadarfur.com/
 Alhurra TV	http://www.alhurra.com/
 Radio Sawa	http://www.radiosawa.com/
 RFA Burmese	http://www.rfa.org/burmese/
