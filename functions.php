@@ -792,6 +792,34 @@ function getEntityLinks($entityID) {
 	return $g;
 }
 
+function getEntityLinks_taxonomy($termSlug) {
+	
+	$entityTerm = get_term_by('slug', $termSlug, 'language_services');
+	$terms = get_terms(array(
+		 'taxonomy' => 'language_services',
+		 'parent' => $entityTerm ->term_id,
+		 'orderby'    => 'name'
+	));
+	$g = array();
+	foreach ($terms as $t) {
+		$termMeta = get_term_meta( $t->term_id );
+		
+		$siteName = "";
+		$siteUrl = "";
+		if ( count( $termMeta ) ) {
+			$siteName = $termMeta['language_service_site_name'][0];
+			$siteUrl = $termMeta['language_service_site_url'][0];
+		}
+		$termObj = (object) array(
+			'website_url' => $siteUrl,
+			'name' => $t->name
+		);
+		$g []= $termObj;
+	}
+	
+	return $g;
+}
+
 /**** We use the excerpts on certain pages as structured data - for instance pages of individual Board Members have excerpts that drive their display in the Board Member list ***/
 add_action( 'init', 'my_add_excerpts_to_pages' );
 function my_add_excerpts_to_pages() {

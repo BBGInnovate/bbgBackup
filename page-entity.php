@@ -48,6 +48,7 @@ $entityAwardsLinkFiltered = add_query_arg('entity', $awardSlug, $entityAwardsPag
 
 $entityMission = get_post_meta( $id, 'entity_mission', true );
 $subgroups = getEntityLinks($entityApiID);
+//$subgroups = getEntityLinks_taxonomy($entityCategorySlug);
 
 $siteSelect = "<h3 class='bbg__article-sidebar__list-label'>Explore the $abbreviation websites</h3>";
 if (count($subgroups) < 4) {
