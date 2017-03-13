@@ -399,6 +399,7 @@ get_header();
 						elseif ( get_row_layout() == 'about_office' ):
 						/*** BEGIN DISPLAY OF OFFICE ROW ***/
 							$officeTag = get_sub_field( 'office_tag' );
+							$officeTagBoolean = get_sub_field('office_tags_boolean_operator');
 							$officeTitle = get_sub_field( 'office_title' );
 							$officeEmail = get_sub_field( 'office_email' );
 							$officeEmail = '<li><span class="bbg__list-label">Email: </span><a itemprop="email" aria-label="email" href="mailto:' . $officeEmail . '" title="Contact us">' . $officeEmail . '</a></li>';
@@ -414,11 +415,21 @@ get_header();
 							$qParamsUpcoming = array(
 								'post_type' => array( 'post' )
 								,'cat' => get_cat_id( 'Event' )
-								,'tag' => $officeTag[0] -> slug
 								,'post_status' => array( 'future' )
 								,'order' => 'ASC'
 								,'posts_per_page' => 1
 							);
+							$tagIDs = array();
+							foreach($officeTag as $term) {
+								$tagIDs []= $term->term_id;
+							}
+							if (count($officeTag)) {
+								if ($officeTagBoolean == "AND") {
+									$qParamsUpcoming['tag__and'] = $tagIDs;
+								} else {
+									$qParamsUpcoming['tag__in'] = $tagIDs;
+								}
+							}
 
 							// execute upcoming events query
 							$future_events_query = new WP_Query( $qParamsUpcoming );
@@ -447,11 +458,17 @@ get_header();
 							$qParamsOffice = array(
 								'post_type' => array( 'post' ),
 								'posts_per_page' => $maxPosts,
-								'tag' => $officeTag[0]->slug,
 								'orderby' => 'date',
 								'order' => 'DESC',
 								'post__not_in' => $postIDsUsed
 							);
+							if (count($officeTag)) {
+								if ($officeTagBoolean == "AND") {
+									$qParamsOffice['tag__and'] = $tagIDs;
+								} else {
+									$qParamsOffice['tag__in'] = $tagIDs;
+								}
+							}
 
 							// set address variables
 							$street = get_field( 'agency_street', 'options', 'false' );
