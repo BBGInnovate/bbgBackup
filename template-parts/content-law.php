@@ -73,10 +73,10 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 			<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 
 				<?php
-					$pageHeadline = get_field('headline');
+					$lawName = get_field('law_name');
 
-					if ( $pageHeadline ) {
-						echo "<h2 class='act-title'>" . $pageHeadline . "</h2>";
+					if ( $lawName ) {
+						echo "<h2 class='act-title'>" . $lawName . "</h2>";
 					}
 					echo "<section class='usa-grid-full'>";
 						the_content();
