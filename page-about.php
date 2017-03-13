@@ -22,11 +22,13 @@ function showUmbrellaArea($atts) {
 	$description = $atts['description'];
 	$forceContentLabels = $atts['forceContentLabels'];
 	$thumbPosition = "center center";
+	$subTitle = $atts['subTitle'];
 	$thumbSrc = $atts['thumbSrc'];
 	$columnType = $atts['columnType'];
 	$anchorTarget = "";
 	$layout = $atts['layout'];
 	$linkSuffix = "";
+
 	if ($columnType == "file") {
 		$fileSize = $atts['fileSize'];
 		$fileExt = $atts['fileExt'];
@@ -48,7 +50,11 @@ function showUmbrellaArea($atts) {
 			if ($link != "") {
 				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>';
 			}
-			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';	
+			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';
+			if ($lawName != "") {
+				echo '<h5 class="bbg__about__grandchild__subtitle">' . $lawName . '</h5>';
+			}
+			
 		}
 		
 		if ($thumbSrc) {
@@ -246,7 +252,8 @@ get_header();
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
 										'columnType' => 'external',
-										'layout' => get_sub_field('umbrella_content_external_layout')
+										'layout' => get_sub_field('umbrella_content_external_layout'),
+										'subTitle' => ''
 									));
 								} elseif (get_row_layout() == 'umbrella_content_internal') {
 
@@ -257,6 +264,7 @@ get_header();
 									$includeTitle = get_sub_field('umbrella_content_internal_include_item_title');
 									$titleOverride = get_sub_field('umbrella_content_internal_title');
 									$secondaryHeadline = get_post_meta( $id, 'headline', true );
+									$lawName = get_post_meta( $id, 'law_name', true );
  
 									if ( $includeTitle ) {
 										$titleOverride = get_sub_field('umbrella_content_internal_item_title');
@@ -300,7 +308,8 @@ get_header();
 										'gridClass' => $containerClass,
 										'forceContentLabels' => $forceContentLabels,
 										'columnType' => 'internal',
-										'layout' => get_sub_field('umbrella_content_internal_layout')
+										'layout' => get_sub_field('umbrella_content_internal_layout'),
+										'subTitle' => $lawName
 									));
 
 								} elseif (get_row_layout() == 'umbrella_content_file') {
@@ -347,7 +356,8 @@ get_header();
 										'columnType' => 'file',
 										'layout' => $layout,
 										'fileExt' => $fileExt,
-										'fileSize' => $fileSize
+										'fileSize' => $fileSize,
+										'subTitle' => ''
 									));
 								}
 							endwhile;
