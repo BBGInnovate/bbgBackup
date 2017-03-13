@@ -51,10 +51,6 @@ function showUmbrellaArea($atts) {
 				$columnTitle = '<a ' . $anchorTarget . ' href="' . $link . '">' . $columnTitle . '</a>';
 			}
 			echo '<h6 class="bbg__label">' . $columnTitle . '</h6>';
-			if ($lawName != "") {
-				echo '<h5 class="bbg__about__grandchild__subtitle">' . $lawName . '</h5>';
-			}
-			
 		}
 		
 		if ($thumbSrc) {
@@ -65,6 +61,9 @@ function showUmbrellaArea($atts) {
 		}
 		
 		echo '<h3 class="bbg__about__grandchild__title"><a ' . $anchorTarget . ' href="' . $link . '">' . $itemTitle . '</a>'  . $linkSuffix . '</h3>';
+		if ($subTitle != "") {
+			echo '<h5 class="bbg__about__grandchild__subtitle">' . $subTitle . '</h5>';
+		}
 		echo $description; // Output page excerpt
 		echo '</article>';
 	} else {
