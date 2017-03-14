@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package bbgRedesign 
+ * @package bbgRedesign
  */
 
 //can't 'DEFINE' an array, so we just set a var.  Note that this should be kept here and not called on 'init' else it won't be available globally.
@@ -275,7 +275,7 @@ require get_template_directory() . '/inc/bbg-functions-shortcodes.php';
 require get_template_directory() . '/inc/bbg-functions-sidebar-more.php';
 require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
 require get_template_directory() . '/inc/bbg-functions-category-tooltip.php';
-//require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php';
+require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php'; // sets up hierarchy in tags
 
 /**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
@@ -325,12 +325,12 @@ add_filter( 'get_the_archive_title', function ($title) {
 
 add_action('pre_get_posts', 'bbginnovate_modify_the_loop', 1 );
 function bbginnovate_modify_the_loop(&$query) {
-	
-	//note that the homepage doesn't actually use the normal loop, and won't be affected by this.  
+
+	//note that the homepage doesn't actually use the normal loop, and won't be affected by this.
 	//This query modification is for the 'blog index' page and all archive pages / feeds
 
 	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() ||  $query->is_feed() )) {
-		
+
 		$termsToExclude =  array(
 			get_cat_id('Contact'),
 			get_cat_id('Quotation'),
@@ -363,7 +363,7 @@ function bbginnovate_modify_the_loop(&$query) {
 			)
 		);
 		$query->set( 'tax_query', $tax_query );
-	} 
+	}
 	if ( ! ($query->is_home() &&  $query->is_main_query()) ) {
 		return;
 	}
@@ -494,7 +494,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 								$selectedCategory = $category;
 								break;
 							}
-						}	
+						}
 					}
 				}
 
@@ -793,7 +793,7 @@ function getEntityLinks($entityID) {
 }
 
 function getEntityLinks_taxonomy($termSlug) {
-	
+
 	$entityTerm = get_term_by('slug', $termSlug, 'language_services');
 	$terms = get_terms(array(
 		 'taxonomy' => 'language_services',
@@ -803,7 +803,7 @@ function getEntityLinks_taxonomy($termSlug) {
 	$g = array();
 	foreach ($terms as $t) {
 		$termMeta = get_term_meta( $t->term_id );
-		
+
 		$siteName = "";
 		$siteUrl = "";
 		if ( count( $termMeta ) ) {
@@ -816,7 +816,7 @@ function getEntityLinks_taxonomy($termSlug) {
 		);
 		$g []= $termObj;
 	}
-	
+
 	return $g;
 }
 
@@ -1151,7 +1151,7 @@ function filter_query_vars( $qvars ) {
 }
 add_filter( 'query_vars', 'filter_query_vars' , 10, 1 );
 
-/***** 
+/*****
 	On our "Homepage Options" you can select many featured posts.  We want the picker to sort the list of available
 	posts in order of descending date rather than alphabetical order. see https://www.advancedcustomfields.com/resources/acf-fields-post_object-query/ for details
 *****/
