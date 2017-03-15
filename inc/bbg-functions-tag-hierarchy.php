@@ -56,10 +56,10 @@ function register_hierarchical_tags () {
 
 	// Define capabilities based on role permissions
 	$capabilities = array(
-		'manage_terms' => 'manage_options', // only 'administrator'
-		'edit_terms' => 'manage_options',
+		'manage_terms' => 'edit_posts', // everyone: 'administrator', 'editor', 'author', 'contributor
+		'edit_terms' => 'manage_options', // only 'administrator'
 		'delete_terms' => 'edit_pages', // 'administrator', 'editor'
-		'assign_terms' => 'edit_posts'  // administrator', 'editor', 'author', 'contributor'
+		'assign_terms' => 'edit_posts'  // everyone
     );
 
 	// Override structure of built-in WordPress tags
