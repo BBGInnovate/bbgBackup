@@ -5,7 +5,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Custom Field Checker
+   template name: Utility: Custom Field Checker
  */
 
 ?>
