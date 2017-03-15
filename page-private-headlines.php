@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbginnovate
-  template name: Headlines Generator
+  template name: Deprecated Utility: Headlines Generator
  */
 
 

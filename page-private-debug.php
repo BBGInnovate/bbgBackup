@@ -4,7 +4,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Debugger
+   template name: Utility: Pages by Template
  */
 
 get_header(); ?>

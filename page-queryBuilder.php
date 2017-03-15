@@ -5,7 +5,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Query Builder
+   template name: Utility: Query Builder
  */
 
 ?>

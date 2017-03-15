@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
- template name: Playlist Gallery
+ template name: Deprecated: Playlist Gallery
 
  */
 
