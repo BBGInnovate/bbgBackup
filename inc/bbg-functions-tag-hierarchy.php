@@ -27,7 +27,7 @@ function register_hierarchical_tags () {
 	global $wp_rewrite;
 
 	$rewrite =  array(
-		'hierarchical'              => true, // Maintains tag permalink structure
+		'hierarchical'              => false, // Maintains tag permalink structure
 		'slug'                      => get_option('tag_base') ? get_option('tag_base') : 'tag',
 		'with_front'                => ! get_option('tag_base') || $wp_rewrite->using_index_permalinks(),
 		'ep_mask'                   => EP_TAGS,
