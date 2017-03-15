@@ -7,7 +7,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbginnovate
-  template name: Media Custom Fields List
+  template name: Utility: Media Development Custom Field Usage
  */
 
 

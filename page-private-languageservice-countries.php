@@ -4,7 +4,7 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bbgRedesign
-   template name: Map Data: Language Service Countries
+   template name: Utility: Map Data: Language Service Countries
  */
 
 function getMapData() {
