@@ -29,25 +29,42 @@ wp_reset_query();
 
 $today = date('Ymd');
 $qParams = array(
-	'post_type' => array( 'media_clip' ),
+	'post_type' => array( 'media_clips' ),
 	'posts_per_page' => 999,
 	'orderby' => 'meta_value',
-	'meta_key' => 'mail_date'
+	'meta_key' => 'mail_date',
 	'order', 'DESC',
 	'meta_query' => array(
 		array(
 			'key'		=> 'mail_date',
-			'compare'	=> '=',
+			'compare'	=> '<',
 			'value'		=> $today,
 		)
 	)
 );
+
+
+$clipType = false;
+if (isset($_GET['clipType'])) {
+	$clipType = $_GET['clipType'];
+}
+echo "ct is " . $clipType;
+
+$pressReleases = array();
 $custom_query = new WP_Query( $qParams );
 if ( $custom_query -> have_posts() ) {
 	while ( $custom_query -> have_posts() )  {
 		$custom_query -> the_post();
 		$id = get_the_ID();
-		$pressReleases[] = array( 'url' => get_permalink($id), 'title' => get_the_title($id), 'excerpt' => get_the_excerpt());
+		$currentClipType = get_post_meta($id,"clip_type",true);
+		if (!$clipType || ($clipType == $currentClipType)) {
+			$pressReleases[] = array( 
+				'url' => get_permalink($id), 
+				'title' => get_the_title($id), 
+				'excerpt' => get_the_excerpt(),
+				'clipType' => $currentClipType
+			);
+		}
 	}
 }
 echo "<pre>";
