@@ -29,14 +29,14 @@ $qParams = array(
 	'post_type' => array( 'media_clips' ),
 	'posts_per_page' => 999,
 	'orderby' => 'meta_value',
-	'meta_key' => 'mail_date',
+	'meta_key' => 'media_clip_mail_date',
 	'order', 'DESC'
 );
 
 if ( ! isset( $_GET['ignoreDate'] ) ) {
 	$qParams['meta_query'] = array(
 		array(
-			'key'		=> 'mail_date',
+			'key'		=> 'media_clip_mail_date',
 			'compare'	=> '=',
 			'value'		=> $today
 		)
