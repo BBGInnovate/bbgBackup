@@ -83,7 +83,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 
 	while( $custom_query -> have_posts() ) : $custom_query ->the_post();
 		$id = get_the_ID();
-		$currentClipType = get_post_meta("media_clip_type",true);
+		$currentClipType = get_post_meta($id, "media_clip_type",true);
 		$outletTermObj = get_field('media_clip_outlet', get_the_ID());
 		$outletName = $outletTermObj->name;
 		$dateVal = get_field('media_clip_published_on', false, false);
