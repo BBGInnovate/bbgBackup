@@ -12,6 +12,11 @@ if( $post->post_parent ) {
 	$parentTitle = $parent->post_title;
 }
 
+$clipTypes = array();
+$clipTypes['about'] = 'About Our Networks';
+$clipTypes['citation'] = 'Citations';
+$clipTypes['ofInterest'] = 'Of Interest';
+
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageName = get_the_title();
@@ -44,8 +49,10 @@ if ( ! isset( $_GET['ignoreDate'] ) ) {
 }
 
 $clipType = false;
+$clipTypeLabel = "";
 if (isset($_GET['clipType'])) {
 	$clipType = $_GET['clipType'];
+	$clipTypeLabel = $clipTypes[$clipType];
 }
 
 $custom_query = new WP_Query( $qParams );
@@ -81,21 +88,24 @@ do_action( 'rss_tag_pre', 'rss2' );
 	
 	do_action( 'rss2_head'); 
 
+	$counter = 0;
 	while( $custom_query -> have_posts() ) : $custom_query ->the_post();
+		$counter++;
 		$id = get_the_ID();
 		$currentClipType = get_post_meta($id, "media_clip_type",true);
-		$outletTermObj = get_field('media_clip_outlet', get_the_ID());
-		$outletName = $outletTermObj->name;
+		$outletTermObj = get_field('media_clip_outlet', $id);
 		$dateVal = get_field('media_clip_published_on', false, false);
+		$clipLink = get_field('media_clip_story_url', $id);
+		$outletName = $outletTermObj->name;
 		$date = new DateTime($dateVal);
 		$rssDate = $date->format(DateTime::RSS);
 		$displayDate = $date->format('F d, Y');
-		$clipLink = get_field('media_clip_story_url', get_the_ID());
+		
 
  		if (!$clipType || ($clipType == $currentClipType)):
 	?>
 	<item>
-		<title><?php the_title_rss(); ?></title>
+		<title><?php if ($counter==1) { echo "<h2>$clipTypeLabel</h2>";} the_title_rss(); ?></title>
 		<link><?php echo $clipLink; ?></link>
 		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
