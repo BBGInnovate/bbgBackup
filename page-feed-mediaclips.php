@@ -96,8 +96,8 @@ do_action( 'rss_tag_pre', 'rss2' );
 	?>
 	<item>
 		<title><?php the_title_rss(); ?></title>
-		<link><?php the_permalink_rss(); ?></link>
-		<pubDate><?php echo $clipLink;?></pubDate>
+		<link><?php echo $clipLink; ?></link>
+		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
 		<?php the_category_rss('rss2'); ?>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
