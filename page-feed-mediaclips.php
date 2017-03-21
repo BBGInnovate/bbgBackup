@@ -82,20 +82,22 @@ do_action( 'rss_tag_pre', 'rss2' );
 	do_action( 'rss2_head'); 
 
 	while( $custom_query -> have_posts() ) : $custom_query ->the_post();
-		$currentClipType = get_post_meta($id,"media_clip_type",true);
+		$id = get_the_ID();
+		$currentClipType = get_post_meta("media_clip_type",true);
 		$outletTermObj = get_field('media_clip_outlet', get_the_ID());
 		$outletName = $outletTermObj->name;
 		$dateVal = get_field('media_clip_published_on', false, false);
 		$date = new DateTime($dateVal);
 		$rssDate = $date->format(DateTime::RSS);
 		$displayDate = $date->format('F d, Y');
+		$clipLink = get_field('media_clip_story_url', get_the_ID());
 
  		if (!$clipType || ($clipType == $currentClipType)):
 	?>
 	<item>
 		<title><?php the_title_rss(); ?></title>
 		<link><?php the_permalink_rss(); ?></link>
-		<pubDate><?php echo $rssDate;?></pubDate>
+		<pubDate><?php echo $clipLink;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
 		<?php the_category_rss('rss2'); ?>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
