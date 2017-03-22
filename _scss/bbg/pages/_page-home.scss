@@ -1,4 +1,4 @@
-.bbg-banner{
+.bbg-banner {
 	background-color: $color-gray-lightest;
 	@include backgroundCover();
 	height: $banner-image-height * .75;
@@ -6,69 +6,55 @@
 	max-width: 9999px;
 	position: relative;
 	width: 100%;
-
 	@include media($medium-screen) {
 		height: $banner-image-height;
 	}
-
 	@include media($medium-large-screen) {
 		margin-top: 4.8rem;
 	}
-
 	@include media($large-screen) {
 		height: $banner-image-height * 1.25;
 	}
-
 	.bbg-banner__container {
 		&.usa-grid {
 			@include media($medium-screen) {
 				padding-right: 0;
 			}
 		}
-
 		@include media($medium-large-screen) {
 			border-left: 1px solid rgba(240, 240, 240, .4);
 			border-right: 1px solid rgba(240, 240, 240, .4);
 			height: 100%;
 		}
 	}
-
 	a:focus {
 		box-shadow: none;
 		background: none;
 	}
-
-	.bbg-banner__site-logo{
+	.bbg-banner__site-logo {
 		clear: left;
 		display: block;
 		width: 100px;
-
 		@include media($medium-screen) {
 			width: 150px;
 		}
-
 		@include media($large-screen) {
 			width: 200px;
 		}
-
 		:focus {
 			box-shadow: none;
 		}
 	}
-
-	.bbg-banner-box{
+	.bbg-banner-box {
 		margin: 0 auto;
 		max-width: $site-max-width;
 		padding-bottom: $site-margins/2;
 		position: absolute;
-			bottom:0;
-
+		bottom: 0;
 		@include media($medium-screen) {
 			padding-right: $site-margins;
 		}
-
-
-		.bbg-banner-site-title{
+		.bbg-banner-site-title {
 			color: #FFF;
 			font: {
 				family: $font-sans !important;
@@ -79,17 +65,14 @@
 			max-width: $site-max-width;
 			padding-right: $site-margins;
 			text-shadow: $text-shadow;
-
 			@include media($medium-screen) {
 				font-size: $h1-font-size * 1.2;
 			}
-
 			@include media($large-screen) {
 				font-size: 5.5rem;
 			}
 		}
-
-		.bbg-banner-site-description{
+		.bbg-banner-site-description {
 			background-color: $box-transparent;
 			border-radius: 0 $border-radius $border-radius 0;
 			color: #FFF;
@@ -105,35 +88,30 @@
 			}
 			padding: 10px $site-margins 10px $grid-margins;
 			text-transform: uppercase;
-
 			@include media($large-screen) {
 				font-size: $h3-font-size;
 			}
 		}
-
 	}
-
 	.bbg-banner__gradient {
-		background-image: linear-gradient(transparent 0%,#000 200%);
+		background-image: linear-gradient(transparent 0%, #000 200%);
 		height: 25%;
 		position: absolute;
-			right: 0;
-			bottom: 0;
-			left: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
-
 }
 
 .bbg__social__container {
-	position: fixed; 
-		top: 20%;
-		right: 0;
-	z-index: 0; 
+	position: fixed;
+	top: 20%;
+	right: 0;
+	z-index: 0;
 }
 
 .bbg__social {
 	max-width: 100%;
-
 	@include media($large-screen) {
 		right: -$social-icon-home - 50px;
 	}
@@ -146,41 +124,38 @@
 		display: block;
 		line-height: 0;
 		text-orientation: sideways-right;
-		writing-mode: vertical-rl; 
+		writing-mode: vertical-rl;
 	}
 }
 
-
 .bbg__social-list {
 	display: none;
-
 	@include media($large-screen) {
 		@include unstyled-list;
 		display: block;
-
 		.bbg__social-list__link {
 			background-color: #FFF;
 			border: $border-solid;
 			border-bottom: none;
 			//border-radius: 50%;
 			margin-bottom: 0;
-
 			:hover {
 				background-color: #FFF;
 				//border-radius: 50%;
 				box-shadow: 0px 0px 6px #000;
 				z-index: 9999;
-			};
-
+			}
+			;
 			:focus {
 				//background-color: #fdff67;
 				//border-radius: 50%;
 				box-shadow: 0px 0px 6px #000;
-			};
+			}
+			;
 			&:last-of-type {
 				border-bottom: $border-solid
-			};
-
+			}
+			;
 			a {
 				background: {
 					position: center center;
@@ -190,7 +165,6 @@
 				height: $social-icon-home;
 				display: block;
 				width: $social-icon-home;
-
 				// GitHub link
 				&.bbg-icon-github {
 					background: {
@@ -199,7 +173,6 @@
 						size: 30px;
 					}
 				}
-
 				//YouTube link
 				&.bbg-icon-youtube {
 					background: {
@@ -207,7 +180,6 @@
 						image: url(img/social-icons/svg/youtube15.svg);
 					}
 				}
-
 				//Twitter link
 				&.bbg-icon-twitter {
 					background: {
@@ -215,8 +187,6 @@
 						image: url(img/social-icons/svg/twitter16.svg);
 					}
 				}
-
-
 				//Facebook link
 				&.bbg-icon-facebook {
 					background: {
@@ -229,12 +199,9 @@
 	}
 }
 
-
 .bbg-banner__cutline {
 	@extend .wp-caption-text;
-
 	color: #999 !important;
-
 	@include media($medium-screen) {
 		text-align: right !important;
 	}
@@ -244,19 +211,32 @@ section.usa-section.bbg-banner__section {
 	margin-bottom: $site-margins;
 }
 
-
-//voicebox / soapbox / ceo box on the homepage
-.bbg__voice--featured {
-	background-color: $color-gray-lightest;
-	border-radius: $border-radius;
-	padding: $site-margins-medium;
-
-	@include media($medium-large-screen) {
-		padding: $site-margins;
-
-		p {
-			line-height: 2.2;
+//voicebox / soapbox on the homepage
+.bbg__voice {
+	$voiceTypes: ceo, guest, featured;
+	@for $i from 1 through length($voiceTypes) {
+		&--#{nth($voiceTypes, $i)} {
+			border-radius: $border-radius;
+			padding: $site-margins-medium;
+			@include media($medium-large-screen) {
+				padding: $site-margins;
+				p {
+					line-height: 2.2;
+				}
+			}
 		}
+	}
+	// ceo box
+	&--ceo {
+		background-color: $color-gold-lightest;
+	}
+	// guest blog post
+	&--guest {
+		background-color: $color-green-lightest;
+	}
+	// media advisory
+	&--featured {
+		background-color: $color-cool-blue-lightest;
 	}
 }
 
@@ -264,7 +244,6 @@ section.usa-section.bbg-banner__section {
 	.bbg__event-announcement__title {
 		font-size: 2.4rem;
 	}
-
 	@include media($medium-screen) {
 		.bbg__event-announcement__excerpt {
 			display: none;
@@ -273,7 +252,6 @@ section.usa-section.bbg-banner__section {
 			font-size: 2.4rem;
 		}
 	}
-
 	@include media($medium-large-screen) {
 		.bbg__event-announcement__excerpt {
 			display: block;

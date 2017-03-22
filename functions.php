@@ -1036,11 +1036,11 @@ if ( function_exists ('acf_add_options_page') ) {
 	));
 }
 
-function my_excerpt($post_id) {
-	$post = get_post($post_id);
-	if ($post->post_excerpt) {
+function my_excerpt( $post_id ) {
+	$post = get_post( $post_id );
+	if ( $post -> post_excerpt ) {
 		// excerpt set, return it
-		return $post->post_excerpt;
+		return $post -> post_excerpt;
 	} else {
 		setup_postdata( $post );
 		$excerpt = get_the_excerpt();
@@ -1049,65 +1049,111 @@ function my_excerpt($post_id) {
 	}
 }
 
-function getSoapboxStr($soap) {
+function getSoapboxStr( $soap ) {
 	//takes a soap post object and returns the markup
 	$s = "";
-	$id = $soap->ID;
-	$soapCategory = wp_get_post_categories($id);
+	$id = $soap -> ID; // set a variable with soapbox post id
+	$soapCategory = wp_get_post_categories( $id ); // get soapbox post category
 
 	$isCEOPost = FALSE;
 	$isSpeech = FALSE;
+	$relatedProfile = FALSE;
+	$soapClass = "";
 	$soapHeaderPermalink = "";
 	$soapHeaderText = "";
-	$soapPostPermalink = get_the_permalink($id);
-	$mugshot = "";
-	$mugshotName = "";
+	$soapPostPermalink = get_the_permalink( $id );
+	$profilePhoto = "";
+	$profileName = "";
 
-	foreach ($soapCategory as $c) {
-		$cat = get_category( $c );
-		if ($cat->slug == "from-the-ceo") {
-			$isCEOPost = TRUE;
-			$soapHeaderText = "From the CEO";
-			$soapHeaderPermalink = get_category_link($cat->term_id);
-			$mugshot = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
-			$mugshotName = "John Lansing";
-		} else if ($cat->slug == "speech") {
-			$isSpeech = true;
-			$mugshotID = get_post_meta( $id, 'mugshot_photo', true );
-			$mugshotName = get_post_meta( $id, 'mugshot_name', true );
+	// Check if alternate byline override is checked
+	$includeByline = get_post_meta( $id, 'include_byline', true );
 
-			if ($mugshotID) {
-				$mugshot = wp_get_attachment_image_src( $mugshotID , 'mugshot');
-				$mugshot = $mugshot[0];
-			}
-		} else if ($cat->slug == "media-advisory") {
-			$isMediaAdvisory = true;
-			$soapHeaderText = "Media Advisory";
+	if ( $includeByline ) {
+		// if ovverride is checked populate variable
+		$bylineOverride = get_post_meta( $id, 'byline_override', true );
+	} else {
+		// else leave variable empty
+		$bylineOverride = "";
+	}
+
+	// Check for profile post related to main post
+	$relatedProfileID = get_post_meta( $id, 'statement_related_profile', true );
+
+	// Is there a related profile?
+	if ( $relatedProfileID ) {
+		$includeRelatedProfile = TRUE;
+
+		// Check for an alternate profile photo
+		$alternatePhotoID = get_post_meta( $id, 'statement_alternate_profile_image', true );
+
+		// Set profile photo to image object for alternate or attached to profile post
+		if ( $alternatePhotoID ) {
+			$profilePhotoID = $alternatePhotoID;
+		} else {
+			$profilePhotoID = get_post_meta( $relatedProfileID, 'profile_photo', true );
+		}
+
+		// Get image object and set to mugshot size
+		if ( $profilePhotoID ) {
+			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'profile_photo' );
+			$profilePhoto = $profilePhoto[0];
+		}
+
+		// if there's an alternate byline
+		if ( $bylineOverride !== "" ) {
+			// set profile name to byline variable
+			$profileName =  $bylineOverride;
+		} else {
+			// get profile name from the title of the profile post
+			$profileName = get_the_title( $relatedProfileID );
 		}
 	}
 
-	$s .= '<div class="usa-width-one-half bbg__voice--featured">';
-	if ($soapHeaderPermalink != "") {
-		$s .= '<h6 class="bbg__label small"><a href="'.$soapHeaderPermalink.'">'.$soapHeaderText.'</a></h6>';
-	} else if ($soapHeaderText != "") {
-		$s .= '<h6 class="bbg__label small">' . $soapHeaderText.'</h6>';
+	foreach ( $soapCategory as $c ) {
+		$cat = get_category( $c );
+		$soapHeaderPermalink = get_category_link( $cat -> term_id );
+		$soapHeaderText = $cat -> name;
+
+		if ( $cat -> slug == "from-the-ceo" ) {
+			$isCEOPost = TRUE;
+			$soapClass = "bbg__voice--ceo";
+			$soapHeaderText = "From the CEO";
+			// $profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+			$profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
+			$profileName = "John Lansing";
+		} else if ( $cat -> slug == "guest-post" ) {
+			$isSpeech = TRUE;
+			$soapClass = "bbg__voice--guest";
+		} else if (  $cat -> slug == "speech" ||  $cat -> slug == "statement" || $cat -> slug == "media-advisory" ) {
+			$isMediaAdvisory = TRUE;
+		}
+	}
+
+	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
+
+	/*$s .= '';*/
+
+	if ( $soapHeaderPermalink != "" ) {
+		$s .= '<h6 class="bbg__label small"><div class=""></div><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
+	} else if ( $soapHeaderText != "" ) {
+		$s .= '<h6 class="bbg__label small">' . $soapHeaderText . '</h6>';
 	}
 
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
-	$s .= $soap->post_title;
+	$s .= $soap -> post_title;
 	$s .= '</a></h2>';
 
 	$s .= '<p class="">';
 
-	if ($mugshot != "") {
-		$s .= '<span class="bbg__mugshot"><img src="' . $mugshot . '" class="bbg__ceo-post__mugshot" />';
-		if ($mugshotName != "") {
-			$s .= '<span class="bbg__mugshot__caption">' . $mugshotName . '</span>';
+	if ( $profilePhoto != "" ) {
+		$s .= '<span class="bbg__mugshot"><img src="' . $profilePhoto . '" class="bbg__ceo-post__mugshot" />';
+		if ( $profileName != "" ) {
+			$s .= '<span class="bbg__mugshot__caption">' . $profileName . '</span>';
 		}
 		$s .= '</span>';
 	}
 
-	$s .= my_excerpt($id);
+	$s .= my_excerpt( $id );
 	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
 	$s .= '</div>';
 	return $s;
@@ -1117,9 +1163,9 @@ add_filter('the_posts', 'show_future_posts');
 function show_future_posts($posts) {
 	global $wp_query, $wpdb;
 	$returnVal=$posts;
-	if(is_single() && $wp_query->post_count == 0) {
-		$futurePosts = $wpdb->get_results($wp_query->request);
-		if (count($futurePosts) > 0 && has_category('Event', $futurePosts[0])) {
+	if( is_single() && $wp_query -> post_count == 0 ) {
+		$futurePosts = $wpdb -> get_results( $wp_query -> request );
+		if ( count( $futurePosts ) > 0 && has_category('Event', $futurePosts[0]) ) {
 			$returnVal = $futurePosts;
 		}
 	}
