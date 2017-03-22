@@ -1118,8 +1118,8 @@ function getSoapboxStr( $soap ) {
 			$isCEOPost = TRUE;
 			$soapClass = "bbg__voice--ceo";
 			$soapHeaderText = "From the CEO";
-			// $profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
-			$profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
+			$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+			// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 			$profileName = "John Lansing";
 		} else if ( $cat -> slug == "guest-post" ) {
 			$isSpeech = TRUE;
@@ -1130,8 +1130,6 @@ function getSoapboxStr( $soap ) {
 	}
 
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
-
-	/*$s .= '';*/
 
 	if ( $soapHeaderPermalink != "" ) {
 		$s .= '<h6 class="bbg__label small"><div class=""></div><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
