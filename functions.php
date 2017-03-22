@@ -1126,6 +1126,7 @@ function getSoapboxStr( $soap ) {
 			$soapClass = "bbg__voice--guest";
 		} else if (  $cat -> slug == "speech" ||  $cat -> slug == "statement" || $cat -> slug == "media-advisory" ) {
 			$isMediaAdvisory = TRUE;
+			$soapClass = "bbg__voice--featured";
 		}
 	}
 
