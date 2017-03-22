@@ -16,20 +16,16 @@
 //helper function used only in this template
 
 function getTwoRandomImpactPostIDs($used) {
-	/* get all of our impact posts for the last year */
+	/* get two of the most recent 6 impact posts for use on the homepage */
 	$qParams = array(
 		'post_type'=> 'post',
 		'post_status' => 'publish',
 		'cat' => get_cat_id('impact'),
 		'post__not_in' => $used,
-		'posts_per_page' => 999,
+		'posts_per_page' => 12,
 		'orderby' => 'post_date',
 		'order' => 'desc',
-		'date_query'=> array(
-			array(
-			'after' => '1 year ago'
-			)
-		)
+
 	);
 	$custom_query = new WP_Query( $qParams );
 	$allIDs = [];
