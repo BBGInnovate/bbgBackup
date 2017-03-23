@@ -6393,9 +6393,9 @@ article {
 /*    Misc post/page styles            */
 /*                                     */
 .bbg__article-icon {
-  display: inline-block;
   background-size: contain;
   border-radius: 50%;
+  float: left;
   height: 32px;
   margin: 0 0.5rem 2.5rem 0;
   width: 32px;
