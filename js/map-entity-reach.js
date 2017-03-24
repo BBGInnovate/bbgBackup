@@ -43,6 +43,9 @@ function shadeColor(color, percent) {
 		colorRollOver = '#205493',
 		colorSelected = '#112e51';
 
+	//the colors for the entities are 'inherited' from their buttons, but curren time doesn't have a button, so we set its base color here
+	var CURRENT_TIME_MAIN_COLOR = "rgb(31, 155, 222)";	//ff0355 (255, 3, 85) is the current time red, (31, 155, 222) is their blue
+
 	$(document).ready(function() {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
@@ -199,6 +202,8 @@ function shadeColor(color, percent) {
 		}
 
 		function setBaseColors() {
+			//We set the color for an entity based on the color of it's button that picks it
+			//we then provide slightly darkened (mathematically) colors for rollover and selection
 			var buttonColor = $('.selected').css('background-color');
 			colorBase = buttonColor;
 			colorRollOver = shadeColor(buttonColor, -30);
@@ -207,8 +212,12 @@ function shadeColor(color, percent) {
 
 		function getCountryObj(countryName) {
 			var countryColor = colorBase;
-			if (currentTimeOnly.hasOwnProperty(countryName.toLowerCase())) {
-				countryColor = "#FF0000";
+			var countryRolloverColor = colorRollOver;
+			var countrySelectedColor = colorSelected; 
+			if (selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty(countryName.toLowerCase())) {
+				countryColor = CURRENT_TIME_MAIN_COLOR;
+				countrySelectedColor = shadeColor(countryColor, -50);
+				countryRolloverColor = shadeColor(countryColor, -30);
 			}
 			return {
 				id : countriesByName[countryName].ammapCode,
@@ -216,8 +225,8 @@ function shadeColor(color, percent) {
 				name : countryName,
 				countryName : countryName,
 				color : countryColor,
-				rollOverColor : colorRollOver,
-				selectedColor : colorSelected,
+				rollOverColor : countryRolloverColor,
+				selectedColor : countrySelectedColor,
 				selectable : true
 			}
 		}
@@ -227,9 +236,6 @@ function shadeColor(color, percent) {
 			for (var i = 0; i < list.length; i++) {
 				var countryName = list[i];
 				activeCountries.push(getCountryObj(countryName));
-				if (selectedEntity == "rferl") {
-					console.log("say my name");
-				}
 			}
 			addCountriesToDropdown(activeCountries);
 			map.dataProvider.areas = activeCountries;
