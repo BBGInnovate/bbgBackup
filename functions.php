@@ -420,12 +420,14 @@ function featured_video ($url) {
 		$url = str_replace("&start=", "?start=", $url);	//this line fixes the case where they did youtube.com?v=xxx&start=123
 		$url = str_replace("https://vimeo.com/", "https://player.vimeo.com/video/", $url); //vimeo
 
-		$extraClass = "";
+		$extraClass = "other";
 		if(strpos($url, 'facebook') !== false) {
 			$extraClass = 'facebook';
 		} else if(strpos($url, 'c-span') !== false) {
 			$extraClass = 'c-span';
-		}
+		}  else if(strpos($url, 'youtube') !== false) {
+			$extraClass = 'youtube';
+		} 
 
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container $extraClass'>";
 		$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
