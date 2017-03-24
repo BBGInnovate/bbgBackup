@@ -1121,7 +1121,7 @@ function getSoapboxStr( $soap ) {
 			$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
 			// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 			$profileName = "John Lansing";
-		} else if ( $cat -> slug == "guest-post" ) {
+		} else if ( $cat -> slug == "usim-matters" ) {
 			$isSpeech = TRUE;
 			$soapClass = "bbg__voice--guest";
 		} else if (  $cat -> slug == "speech" ||  $cat -> slug == "statement" || $cat -> slug == "media-advisory" ) {
@@ -1132,11 +1132,15 @@ function getSoapboxStr( $soap ) {
 
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
 
-	if ( $soapHeaderPermalink != "" ) {
-		$s .= '<h6 class="bbg__label small"><div class=""></div><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
-	} else if ( $soapHeaderText != "" ) {
-		$s .= '<h6 class="bbg__label small">' . $soapHeaderText . '</h6>';
-	}
+		$s .= '<header class="entry-header bbg-blog__excerpt-header">';
+			// $s .= '<div class="bbg__article-icon"></div>';
+
+			if ( $soapHeaderPermalink != "" ) {
+					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
+			} else if ( $soapHeaderText != "" ) {
+				$s .= '<h6 class="bbg__label small">' . $soapHeaderText . '</h6>';
+			}
+		$s .= '</header>';
 
 	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
 	$s .= $soap -> post_title;

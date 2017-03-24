@@ -1217,10 +1217,11 @@ article {
 /*                                     */
 
 .bbg__article-icon {
-	display: inline-block;
+	// display: inline-block;
 	// background-color: $color-gray-medium;
 	background-size: contain;
 	border-radius: 50%;
+	float: left;
 	height: $bbg__category-icon;
 	margin: 0 0.5rem 2.5rem 0;
 	width: $bbg__category-icon;
