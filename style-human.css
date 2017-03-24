@@ -7042,10 +7042,10 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__event-announcement .bbg__article-icon {
-  /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
-  background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
-  background-image: url("/img/site-icons/BBG_event_red@4x.png");
-  background-image: url("/img/site-icons/BBG_event_red.svg");
+  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png");
+  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg");
+  /* background-image: url('/img/site-icons/BBG_event_red@4x.png');
+  background-image: url('/img/site-icons/BBG_event_red.svg'); */
 }
 .bbg__event-announcement .bbg__event-announcement__content {
   background-color: #F1F1F1;
