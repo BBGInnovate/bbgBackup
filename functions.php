@@ -1219,7 +1219,7 @@ add_filter('acf/fields/post_object/query', 'order_post_objects_by_date', 10, 3);
 
 wp_embed_register_handler( 'rferl', '#https://www\.rferl\.org/a/([\d]+)\.html#i', 'wp_embed_handler_rferl' );
 function wp_embed_handler_rferl( $matches, $attr, $url, $rawattr ) {
-	$embed = '<iframe src="//www.rferl.org/embed/player/0/' . $matches[1] . '.html?type=video" frameborder="0" scrolling="no" width="640" height="363" allowfullscreen></iframe>';
+	$embed = '<iframe src="//www.rferl.org/embed/player/0/' . $matches[1] . '.html?type=video" frameborder="0" scrolling="no" width="640" height="320" allowfullscreen></iframe>';
 	return $embed;
 }
 
