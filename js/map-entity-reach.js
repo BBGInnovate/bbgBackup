@@ -58,6 +58,7 @@ function shadeColor(color, percent) {
 
 
 		countriesByID = [];
+		currentTimeOnly = {};
 		for ( i=0; i<fullCountryList.length; i++) {
 			var cname = fullCountryList[i];
 			var countryID = countriesByName[cname].ammapCode;
@@ -66,12 +67,16 @@ function shadeColor(color, percent) {
 			for (var j=0; j<networks.length; j++) {
 				var n = networks[j];
 				//console.log(Object.keys(n));
+				if (n.networkName.toLowerCase() == "rferl" && n.services.length==1 && n.services[0]=="RFERL Current Time") {
+					currentTimeOnly[cname.toLowerCase()] = 1;
+				}
 				for (var k=0; k<n.services.length; k++) {
 					var serviceName = n.services[k];
 					servicesByName[serviceName].countries[cname]=1;
 				}
 			}
 		}
+		
 		
 		balloonText = '[[title]]';
 		if (isMobile) {
@@ -201,22 +206,30 @@ function shadeColor(color, percent) {
 		}
 
 		function getCountryObj(countryName) {
+			var countryColor = colorBase;
+			if (currentTimeOnly.hasOwnProperty(countryName.toLowerCase())) {
+				countryColor = "#FF0000";
+			}
 			return {
 				id : countriesByName[countryName].ammapCode,
 				countryCode : countriesByName[countryName].ammapCode,
 				name : countryName,
 				countryName : countryName,
-				color : colorBase,
+				color : countryColor,
 				rollOverColor : colorRollOver,
 				selectedColor : colorSelected,
 				selectable : true
 			}
 		}
 		function updateActiveCountries(list) {
+			
 			activeCountries=[];
 			for (var i = 0; i < list.length; i++) {
 				var countryName = list[i];
 				activeCountries.push(getCountryObj(countryName));
+				if (selectedEntity == "rferl") {
+					console.log("say my name");
+				}
 			}
 			addCountriesToDropdown(activeCountries);
 			map.dataProvider.areas = activeCountries;
