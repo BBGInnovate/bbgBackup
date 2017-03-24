@@ -1118,8 +1118,8 @@ function getSoapboxStr( $soap ) {
 			$isCEOPost = TRUE;
 			$soapClass = "bbg__voice--ceo";
 			$soapHeaderText = "From the CEO";
-			$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
-			// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
+			// $profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+			$profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 			$profileName = "John Lansing";
 		} else if ( $cat -> slug == "usim-matters" ) {
 			$isSpeech = TRUE;
@@ -1132,8 +1132,8 @@ function getSoapboxStr( $soap ) {
 
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
 
-		$s .= '<header class="entry-header bbg-blog__excerpt-header">';
-			// $s .= '<div class="bbg__article-icon"></div>';
+		$s .= '<header class="entry-header bbg__article-icons-container">';
+			$s .= '<div class="bbg__article-icon"></div>';
 
 			if ( $soapHeaderPermalink != "" ) {
 					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
@@ -1162,11 +1162,12 @@ function getSoapboxStr( $soap ) {
 	return $s;
 }
 
-add_filter('the_posts', 'show_future_posts');
-function show_future_posts($posts) {
+add_filter( 'the_posts', 'show_future_posts' );
+function show_future_posts( $posts ) {
 	global $wp_query, $wpdb;
-	$returnVal=$posts;
-	if( is_single() && $wp_query -> post_count == 0 ) {
+	$returnVal = $posts;
+
+	if ( is_single() && $wp_query -> post_count == 0 ) {
 		$futurePosts = $wpdb -> get_results( $wp_query -> request );
 		if ( count( $futurePosts ) > 0 && has_category('Event', $futurePosts[0]) ) {
 			$returnVal = $futurePosts;
@@ -1214,7 +1215,5 @@ function order_post_objects_by_date( $args, $field, $post_id ) {
     return $args;
 }
 add_filter('acf/fields/post_object/query', 'order_post_objects_by_date', 10, 3);
-
-
 
 ?>

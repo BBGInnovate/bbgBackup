@@ -15,7 +15,7 @@
 
 //helper function used only in this template
 
-function getTwoRandomImpactPostIDs($used) {
+function getTwoRandomImpactPostIDs( $used ) {
 	/* get two of the most recent 6 impact posts for use on the homepage */
 	$qParams = array(
 		'post_type'=> 'post',
@@ -29,17 +29,17 @@ function getTwoRandomImpactPostIDs($used) {
 	);
 	$custom_query = new WP_Query( $qParams );
 	$allIDs = [];
-	if ( $custom_query->have_posts() ) :
-		while ( $custom_query->have_posts() ) : $custom_query->the_post();
-			$allIDs[]= get_the_ID();
+	if ( $custom_query -> have_posts() ) :
+		while ( $custom_query -> have_posts() ) : $custom_query -> the_post();
+			$allIDs[] = get_the_ID();
 		endwhile;
 	endif;
-	
-	if (count($allIDs) > 2) {
-		shuffle($allIDs);
+
+	if ( count( $allIDs ) > 2 ) {
+		shuffle( $allIDs );
 		$ids = [];
-		$ids[]= array_pop($allIDs);
-		$ids[]= array_pop($allIDs);
+		$ids[] = array_pop( $allIDs );
+		$ids[] = array_pop( $allIDs );
 	} else {
 		$ids = $allIDs;
 	}
@@ -47,9 +47,9 @@ function getTwoRandomImpactPostIDs($used) {
 	return $ids;
 }
 
-function getRecentPostQueryParams($numPosts, $used, $catExclude) {
-	$qParams=array(
-		'post_type' => array('post'),
+function getRecentPostQueryParams( $numPosts, $used, $catExclude ) {
+	$qParams = array(
+		'post_type' => array( 'post' ),
 		'posts_per_page' => $numPosts,
 		'orderby' => 'post_date',
 		'order' => 'desc',
@@ -68,13 +68,13 @@ function getRecentPostQueryParams($numPosts, $used, $catExclude) {
 	);
 	return $qParams;
 }
-function getThreatsPostQueryParams($numPosts, $used) {
-	$qParams=array(
-		'post_type' => array('post'),
+function getThreatsPostQueryParams( $numPosts, $used ) {
+	$qParams = array(
+		'post_type' => array( 'post' ),
 		'posts_per_page' => $numPosts,
 		'orderby' => 'post_date',
 		'order' => 'desc',
-		'cat' => get_cat_id('Threats to Press'),
+		'cat' => get_cat_id( 'Threats to Press' ),
 		'post__not_in' => $used
 	);
 	return $qParams;
@@ -107,28 +107,26 @@ $impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-an
 //$threatsPermalink = get_category_link($threatsCat->term_id);
 $threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 
-
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
-$postIDsUsed=array();
-if ($featuredPost) {
-	$postIDsUsed[]=$featuredPost->ID;
-}
-if ($showFeaturedEvent && $featuredEvent) {
-	$postIDsUsed[]=$featuredEvent->ID;
-}
-if ($soap) {
-	$postIDsUsed[]=$soap->ID;
-}
-if ($threatsToPressPost) {
-	$postIDsUsed[]=$threatsToPressPost->ID;
+$postIDsUsed = array();
+
+if ( $featuredPost ) {
+	$postIDsUsed[] = $featuredPost -> ID;
 }
 
+if ( $showFeaturedEvent && $featuredEvent ) {
+	$postIDsUsed[] = $featuredEvent -> ID;
+}
 
+if ( $soap ) {
+	$postIDsUsed[] = $soap -> ID;
+}
+
+if ( $threatsToPressPost ) {
+	$postIDsUsed[] = $threatsToPressPost -> ID;
+}
 
 /*** output the standard header ***/
-?>
-
-<?php
 get_header();
 
 ?>
@@ -229,8 +227,6 @@ get_header();
 			?>
 			</section><!-- Site introduction -->
 
-
-
 			<!-- Impact stories + 1 Quotation-->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
 				<div class="usa-grid">
@@ -254,7 +250,6 @@ get_header();
 							query_posts($qParams);
 							if ( have_posts() ) :
 								while ( have_posts() ) : the_post();
-									///$gridClass = "bbg-grid--1-3-3";
 									$gridClass = "usa-width-one-half";
 									$includePortfolioDescription = FALSE;
 									$postIDsUsed[] = get_the_ID();
@@ -271,27 +266,32 @@ get_header();
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php
-						if ($featuredEvent && $showFeaturedEvent) {
+						if ( $featuredEvent && $showFeaturedEvent ) {
 
-							$id = $featuredEvent->ID;
+							$id = $featuredEvent -> ID;
 							$labelText = $featuredEventLabel;
-							$eventPermalink = get_the_permalink($id);
+							$eventPermalink = get_the_permalink( $id );
 
-							/* permalinks for future posts by default don't return properly.  fix that. */
-							if ($featuredEvent -> post_status == 'future') {
+							/* permalinks for future posts by default don't return properly. fix that. */
+							if ( $featuredEvent -> post_status == 'future' ) {
 								$my_post = clone $featuredEvent;
-								$my_post->post_status = 'published';
-								$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
-								$eventPermalink = get_permalink($my_post);
+								$my_post -> post_status = 'published';
+								$my_post -> post_name = sanitize_title( $my_post -> post_name ? $my_post -> post_name : $my_post -> post_title, $my_post -> ID);
+								$eventPermalink = get_permalink( $my_post );
 							}
 
-							$eventTitle = $featuredEvent->post_title;
-							$excerpt = my_excerpt($id);
+							$eventTitle = $featuredEvent -> post_title;
+							$excerpt = my_excerpt( $id );
 					?>
 
-							<article class="bbg-portfolio__excerpt bbg__event-announcement" style="" >
-								<h6 class="bbg__label " style=" display: inline-block; margin-bottom: 1rem;"><?php echo $labelText ?></h6>
-								<div style="background-color: #F1F1F1; padding: 1rem 2rem; border-radius: 0 3px 3px 3px">
+							<article class="bbg-portfolio__excerpt bbg__event-announcement">
+								<header class="entry-header bbg__article-icons-container">
+									<div class="bbg__article-icon"></div>
+
+									<h6 class="bbg__label bbg__label--outside"><?php echo $labelText ?></h6>
+								</header>
+
+								<div class="bbg__event-announcement__content">
 									<header class="entry-header bbg-portfolio__excerpt-header">
 										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>
 									</header><!-- .entry-header -->
@@ -303,19 +303,15 @@ get_header();
 							</article>
 
 					<?php } else {
-						$q=getRandomQuote('allEntities', $postIDsUsed);
-						if ($q) {
+						$q = getRandomQuote( 'allEntities', $postIDsUsed );
+						if ( $q ) {
 							$postIDsUsed[] = $q["ID"];
-							outputQuote($q, "");
+							outputQuote( $q, "" );
 						}
-
 					} ?>
 					</div><!-- usa-grid-one-third -->
 					</div><!-- .usa-grid-->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
-
-
-
 
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
 			<section id="recent-posts" class="usa-section bbg__home__recent-posts">

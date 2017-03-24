@@ -211,7 +211,31 @@ section.usa-section.bbg-banner__section {
 	margin-bottom: $site-margins;
 }
 
-//voicebox / soapbox on the homepage
+// icons on focus boxes (soapbox/events announcement)
+.bbg__article-icons-container {
+	display: table-row;
+
+	.bbg__article-icon {
+		background: {
+			size: $bbg__category-icon;
+			position: left top;
+			repeat: no-repeat;
+		}
+		display: table-cell;
+		width: $bbg__category-icon + 5px;
+
+		// @include media($small-screen)  {
+		// 	margin-bottom: 0;
+		// }
+	}
+
+	.bbg__label--outside {
+		display: inline-block;
+		margin-bottom: 1rem;
+	}
+}
+
+// focus box: soapbox
 .bbg__voice {
 	$voiceTypes: ceo, guest, featured;
 	@for $i from 1 through length($voiceTypes) {
@@ -229,10 +253,28 @@ section.usa-section.bbg-banner__section {
 	// ceo box
 	&--ceo {
 		background-color: $color-gold-lightest;
+
+		.bbg__article-icon {
+			//local image urls
+			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png');
+			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg');
+		// live image urls
+		/* 	background-image: url('img/site-icons/BBG_advisory_red@4x.png');
+			background-image: url('img/site-icons/BBG_advisory_red.svg'); */
+		}
 	}
-	// guest blog post
+	// "USIM matters" blog post
 	&--guest {
 		background-color: $color-green-lightest;
+
+		.bbg__article-icon {
+			//local image urls
+			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red@4x.png');
+			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red.svg');
+		// live image urls
+		/* 	background-image: url('img/site-icons/BBG_blog_red@4x.png');
+			background-image: url('img/site-icons/BBG_blog_red.svg'); */
+		}
 	}
 	// media advisory
 	&--featured {
@@ -240,10 +282,27 @@ section.usa-section.bbg-banner__section {
 	}
 }
 
+// focus box: event announcement
 .bbg__event-announcement {
+	.bbg__article-icon {
+		//local image urls
+		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
+		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg');
+	// live image urls
+	/* 	background-image: url('img/site-icons/BBG_event_red@4x.png');
+		background-image: url('img/site-icons/BBG_event_red.svg'); */
+	}
+
+	.bbg__event-announcement__content {
+		background-color: #F1F1F1;
+		border-radius: 0 3px 3px 3px;
+		padding: 1rem 2rem;
+	}
+
 	.bbg__event-announcement__title {
 		font-size: 2.4rem;
 	}
+
 	@include media($medium-screen) {
 		.bbg__event-announcement__excerpt {
 			display: none;
@@ -252,6 +311,7 @@ section.usa-section.bbg-banner__section {
 			font-size: 2.4rem;
 		}
 	}
+
 	@include media($medium-large-screen) {
 		.bbg__event-announcement__excerpt {
 			display: block;

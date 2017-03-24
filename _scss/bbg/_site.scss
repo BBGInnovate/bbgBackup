@@ -1216,29 +1216,6 @@ article {
 /*    Misc post/page styles            */
 /*                                     */
 
-.bbg__article-icon {
-	// display: inline-block;
-	// background-color: $color-gray-medium;
-	background-size: contain;
-	border-radius: 50%;
-	float: left;
-	height: $bbg__category-icon;
-	margin: 0 0.5rem 2.5rem 0;
-	width: $bbg__category-icon;
-
-	@include media($small-screen)  {
-		margin-bottom: 0;
-	}
-	//local image url
-	background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog@4x.png');
-	background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog.svg');
-	// live image url
-	/* background-image: url('img/site-icons/BBG_blog@4x.png');
-	background-image: url('img/site-icons/BBG_blog.svg'); */
-}
-
-
-
 
 /* .bbg__article-sidebar.large {*/
 .bbg__article-sidebar {
