@@ -3741,6 +3741,10 @@ object {
   }
 }
 
+.embed-container.other {
+  margin-bottom: 4rem;
+}
+
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {
@@ -8602,7 +8606,6 @@ div.appropriations-small > p.header {
 /* start expanding the print styles */
 #chartdiv {
   border: 1px solid #CCC;
-  /*border-radius: $border-radius;*/
   font-size: 11px;
   height: 200px;
   width: 100%;
@@ -8616,17 +8619,6 @@ div.appropriations-small > p.header {
   #chartdiv {
     height: 500px;
   }
-}
-
-.usa-grid .bbg__map-area__container {
-  	/*
-  	@extend .usa-width-two-thirds;
-  
-  	@include media($large-screen) {
-  		max-width: none !important;
-  		width: 100% !important;
-  	}
-  	*/
 }
 
 .amcharts-legend-div {
@@ -8649,17 +8641,6 @@ div.appropriations-small > p.header {
   height: 50px;
 }
 
-.country-details {
-  display: none;
-}
-
-/*** TODO - make this use real variables ***/
-/*#country-list { display: block; }  /* show it on small screens */
-/*
-@include media($small-screen) {
-	#country-list { display: none; }
-}
-*/
 /* temp button styles */
 .entity-buttons button {
   background-color: #CCC;
@@ -8820,15 +8801,6 @@ div.appropriations-small > p.header {
     display: inline;
     font-weight: normal;
   }
-
-  /*
-  .bbg__map-area__text {
-  	padding: {
-  		bottom: 0;
-  		left: 0;
-  	};
-  }
-  */
 }
 .country-label-tooltip::before {
   border-color: #FFF transparent;
@@ -8853,11 +8825,9 @@ div.appropriations-small > p.header {
 }
 
 .country-label-tooltip {
-  /*background: #c91f2c none repeat scroll 0 0;*/
   height: auto;
   margin: 20px 0 0 0;
   pointer-events: none;
-  /*position: relative;*/
   padding: 5px;
   position: absolute;
   top: 50%;

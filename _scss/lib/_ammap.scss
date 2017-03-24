@@ -1,8 +1,5 @@
 #chartdiv {
 	border: 1px solid #CCC;
-	//box-shadow: inset 2px 0 3px #999;
-
-	/*border-radius: $border-radius;*/
 
 	font-size	: 11px;
 	height		: 200px;
@@ -12,22 +9,8 @@
 		height		: 400px;
 	}
 	@include media($medium-large-screen) {
-		//border: 1px solid #F1F1F1;
-		//box-shadow: inset 2px 0 10px #999;
-
 		height		: 500px;
 	}
-}
-
-.usa-grid .bbg__map-area__container {
-	/*
-	@extend .usa-width-two-thirds;
-
-	@include media($large-screen) {
-		max-width: none !important;
-		width: 100% !important;
-	}
-	*/
 }
 
 .amcharts-legend-div {
@@ -49,22 +32,6 @@
 	width: 50px;
 	height: 50px;
 }
-
-.country-details {
-	display: none;
-}
-
-/*** TODO - make this use real variables ***/
-/*#country-list { display: block; }  /* show it on small screens */
-
-/*
-@include media($small-screen) {
-	#country-list { display: none; }
-}
-*/
-
-
-
 
 /* temp button styles */
 
@@ -228,38 +195,37 @@
 			background-image: none;
 		}
 
-	&.selected {
-		&.bbg {
-			background-image: none;
-			background-color: $color-secondary-darkest;
-		}
+		&.selected {
+			&.bbg {
+				background-image: none;
+				background-color: $color-secondary-darkest;
+			}
 
-		&.voa {
-			background-image: none;
-			background-color: $color-primary;
-		}
+			&.voa {
+				background-image: none;
+				background-color: $color-primary;
+			}
 
-		&.rfa {
-			background-image: none;
-			background-color: $color-green;
-		}
+			&.rfa {
+				background-image: none;
+				background-color: $color-green;
+			}
 
-		&.rferl {
-			background-image: none;
-			background-color: orange;
-		}
+			&.rferl {
+				background-image: none;
+				background-color: orange;
+			}
 
-		&.ocb {
-			background-image: none;
-			background-color: #653792;
-		}
+			&.ocb {
+				background-image: none;
+				background-color: #653792;
+			}
 
-		&.mbn {
-			background-image: none;
-			background-color: #BB3530;
+			&.mbn {
+				background-image: none;
+				background-color: #BB3530;
+			}
 		}
-	}
-
 	}
 
 	.bbg__map__entity-buttons__instructions {
@@ -268,14 +234,6 @@
 		display: inline;
 		font-weight: normal;
 	}
-	/*
-	.bbg__map-area__text {
-		padding: {
-			bottom: 0;
-			left: 0;
-		};
-	}
-	*/
 }
 
 .country-label-tooltip::before {
@@ -299,11 +257,9 @@
 	right: 85px;
 }
 .country-label-tooltip {
-	/*background: #c91f2c none repeat scroll 0 0;*/
 	height: auto;
 	margin: 20px 0 0 0;
 	pointer-events: none;
-	/*position: relative;*/
 	padding: 5px;
 	position: absolute;
 	top: 50%;

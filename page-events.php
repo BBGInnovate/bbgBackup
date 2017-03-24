@@ -160,7 +160,7 @@ get_header(); ?>
 					$includeMeta = FALSE;
 					$counter++;
 
-					if( (!is_paged() && $counter == 3) || (is_paged() && $counter==2)){
+					if( $counter == 3){
 						echo '</div><!-- left column -->';
 						echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
 
