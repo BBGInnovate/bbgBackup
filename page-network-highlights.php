@@ -151,7 +151,7 @@ $postsPerPage = 50;
 
 $qParams=array(
 	'post_type' => array('post')
-	,'cat' => get_cat_id('Map it')
+	,'category__and' => array( get_cat_id('Map it'), get_cat_id('Press Releases') )
 	,'posts_per_page' => $postsPerPage
 	,'post_status' => array('publish')
 );
