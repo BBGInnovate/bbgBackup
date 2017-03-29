@@ -1001,14 +1001,20 @@ add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
 function toolbar_link_to_mypage( $wp_admin_bar ) {
 	$page = get_page_by_title('Author Guide');
 	if ($page) {
-		$args = array(
+
+		$wp_admin_bar->add_node( array(
 			'id'    => 'authorguide',
 			'title' => 'Author Guide',
 			'href'  => get_permalink($page->ID),
 			'meta'  => array( 'class' => 'authorguide-toolbar-page', 'target' => '_blank' )
-		);
-		$wp_admin_bar->add_node( $args );
+		) );
 	}
+	$wp_admin_bar->add_node( array(
+		'id'    => 'cheatsheet',
+		'title' => 'Cheat Sheet',
+		'href'  => 'https://docs.google.com/document/d/1e-IevBxyXy3-oTuq9ANAolQv5WG9X65BQYs7TE0e3Lg/',
+		'meta'  => array( 'class' => 'authorguide-toolbar-page', 'target' => '_blank' )
+	) );
 }
 
 function edit_admin_menus() {
