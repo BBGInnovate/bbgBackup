@@ -427,7 +427,7 @@ function featured_video ($url) {
 			$extraClass = 'c-span';
 		}  else if(strpos($url, 'youtube') !== false) {
 			$extraClass = 'youtube';
-		} 
+		}
 
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container $extraClass'>";
 		$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
@@ -1134,8 +1134,8 @@ function getSoapboxStr( $soap ) {
 
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
 
-		$s .= '<header class="entry-header bbg-blog__excerpt-header">';
-			// $s .= '<div class="bbg__article-icon"></div>';
+		$s .= '<header class="entry-header bbg__article-icons-container">';
+			$s .= '<div class="bbg__article-icon"></div>';
 
 			if ( $soapHeaderPermalink != "" ) {
 					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';

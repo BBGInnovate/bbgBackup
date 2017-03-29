@@ -6975,6 +6975,8 @@ section.usa-section.bbg-banner__section {
   background-size: 30px;
   background-position: left top;
   background-repeat: no-repeat;
+  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png");
+  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg");
   display: table-cell;
   width: 35px;
 }
@@ -6983,10 +6985,6 @@ section.usa-section.bbg-banner__section {
   margin-bottom: 1rem;
 }
 
-.bbg__voice--ceo {
-  border-radius: 0.3rem;
-  padding: 1.5rem;
-}
 @media screen and (min-width: 900px) {
   .bbg__voice--ceo {
     padding: 3rem;
@@ -6995,10 +6993,6 @@ section.usa-section.bbg-banner__section {
     line-height: 2.2;
   }
 }
-.bbg__voice--guest {
-  border-radius: 0.3rem;
-  padding: 1.5rem;
-}
 @media screen and (min-width: 900px) {
   .bbg__voice--guest {
     padding: 3rem;
@@ -7006,10 +7000,6 @@ section.usa-section.bbg-banner__section {
   .bbg__voice--guest p {
     line-height: 2.2;
   }
-}
-.bbg__voice--featured {
-  border-radius: 0.3rem;
-  padding: 1.5rem;
 }
 @media screen and (min-width: 900px) {
   .bbg__voice--featured {
@@ -7023,10 +7013,10 @@ section.usa-section.bbg-banner__section {
   background-color: #fff1d2;
 }
 .bbg__voice--ceo .bbg__article-icon {
-  /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png');
-  background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg'); */
-  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png");
-  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg");
+  /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red@4x.png');
+  background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red.svg'); */
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red@4x.png");
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red.svg");
 }
 .bbg__voice--guest {
   background-color: #e7f4e4;

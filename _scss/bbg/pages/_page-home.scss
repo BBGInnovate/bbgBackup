@@ -210,23 +210,22 @@
 section.usa-section.bbg-banner__section {
 	margin-bottom: $site-margins;
 }
-
 // icons on focus boxes (soapbox/events announcement)
 .bbg__article-icons-container {
 	display: table-row;
 
+	// prorperties for all icons on focus boxes (soapbox/events announcement)
 	.bbg__article-icon {
 		background: {
 			size: $bbg__category-icon;
 			position: left top;
 			repeat: no-repeat;
+			//local image urls
+			image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png');
+			image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg');
 		}
 		display: table-cell;
 		width: $bbg__category-icon + 5px;
-
-		// @include media($small-screen)  {
-		// 	margin-bottom: 0;
-		// }
 	}
 
 	.bbg__label--outside {
@@ -235,14 +234,14 @@ section.usa-section.bbg-banner__section {
 	}
 }
 
+
 // focus box: soapbox
 .bbg__voice {
 	$voiceTypes: ceo, guest, featured;
-	@for $i from 1 through length($voiceTypes) {
-		&--#{nth($voiceTypes, $i)} {
-			border-radius: $border-radius;
-			padding: $site-margins-medium;
-			@include media($medium-large-screen) {
+	@for $i from 1 through length( $voiceTypes ) {
+		&--#{ nth( $voiceTypes, $i ) } {
+
+			@include media( $medium-large-screen ) {
 				padding: $site-margins;
 				p {
 					line-height: 2.2;
@@ -255,12 +254,12 @@ section.usa-section.bbg-banner__section {
 		background-color: $color-gold-lightest;
 
 		.bbg__article-icon {
-			//local image urls
-			/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png');
-			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg'); */
-		// live image urls
-			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png');
-			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg');
+			//local image urls for dev
+			/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red@4x.png');
+			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red.svg'); */
+			// icon image urls
+			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red@4x.png');
+			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red.svg');
 		}
 	}
 	// "USIM matters" blog post
@@ -268,15 +267,15 @@ section.usa-section.bbg-banner__section {
 		background-color: $color-green-lightest;
 
 		.bbg__article-icon {
-			//local image urls
+			//local image urls for dev
 			/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red@4x.png');
 			background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red.svg'); */
-		// live image urls
+			// icon image urls
 			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red@4x.png');
 			background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red.svg');
 		}
 	}
-	// media advisory
+	// media advisory and other featured posts (keep default icon)
 	&--featured {
 		background-color: $color-cool-blue-lightest;
 	}
@@ -285,10 +284,10 @@ section.usa-section.bbg-banner__section {
 // focus box: event announcement
 .bbg__event-announcement {
 	.bbg__article-icon {
-		//local image urls
+		//local image urls for dev
 		/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
 		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
-	// live image urls
+		// icon image urls
 		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red@4x.png');
 		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red.svg');
 	}
