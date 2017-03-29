@@ -37,6 +37,7 @@ if ( have_posts() ) {
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
 	
 	$meetingRegistrationCloseTime = get_post_meta( get_the_ID(), 'board_meeting_registration_close_time', true );
+	$registrationIsClosed = false;
 	if ($meetingRegistrationCloseTime) {
 
 		$meetingRegistrationCloseDateObj = DateTime::createFromFormat('Y-m-d H:i:s', $meetingRegistrationCloseTime);
@@ -62,7 +63,7 @@ if ( have_posts() ) {
 	$eventBriteButtonStr = "";
 	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
 	if ($eventbriteUrl && $eventbriteUrl != "") {
-		if (!$meetingRegistrationCloseTime || !$registrationIsClosed) {
+		if (!$registrationIsClosed) {
 			$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
 		}
 	}
