@@ -35,6 +35,18 @@ if ( have_posts() ) {
 	}
 
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
+	
+	$meetingRegistrationCloseTime = get_post_meta( get_the_ID(), 'board_meeting_registration_close_time', true );
+	if ($meetingRegistrationCloseTime) {
+
+		$meetingRegistrationCloseDateObj = DateTime::createFromFormat('Y-m-d H:i:s', $meetingRegistrationCloseTime);
+		$meetingRegistrationCloseDateStr = $meetingRegistrationCloseDateObj->format("F j, Y");
+
+		$today = new DateTime("now", new DateTimeZone('America/New_York'));
+		$todayStr = $today->format('Y-m-d H:i:s');
+		$registrationIsClosed = ($meetingRegistrationCloseTime <  ($todayStr));
+	}
+
 	$meetingLocation = get_post_meta( get_the_ID(), 'board_meeting_location', true );
 	$meetingSummary = get_post_meta( get_the_ID(), 'board_meeting_summary', true );
 	$meetingContactTagline = get_post_meta( get_the_ID(), 'board_meeting_contact_tagline', true );
@@ -50,7 +62,9 @@ if ( have_posts() ) {
 	$eventBriteButtonStr = "";
 	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
 	if ($eventbriteUrl && $eventbriteUrl != "") {
-		$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
+		if (!$meetingRegistrationCloseTime || !$registrationIsClosed) {
+			$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
+		}
 	}
 
 	rewind_posts();
@@ -59,8 +73,10 @@ if ( have_posts() ) {
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 $eventPageHeader = "Event";
+$isBoardMeeting = false;
 if (in_category("Board Meetings")) {
 	$eventPageHeader = "Board Meeting";
+	$isBoardMeeting = true;
 }
 
 //Add featured video
@@ -91,7 +107,7 @@ get_header(); ?>
 			$twitterText .= " by @bbggov " . get_permalink();
 			$twitterURL = "//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl = "//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
-			$postDate = get_the_date();
+			$postDate = get_the_date(); 
 
 			?>
 
@@ -163,8 +179,51 @@ get_header(); ?>
 					</div>
 
 					<div class="entry-content bbg__article-content">
+						
 						<?php
-						 the_content(); ?>
+
+						if (isset($_GET['success'])) {
+							echo '<div class="usa-alert usa-alert-success">
+									<div class="usa-alert-body">
+									<h3 class="usa-alert-heading">Submission Successful</h3>
+									<p class="usa-alert-text">Your comment was successfully submitted.</p>
+									</div>
+									</div><BR>';
+						}
+
+						 the_content(); 
+						 ?>
+						 <?php 
+						 	if ($isBoardMeeting && !isset($_GET['success'])):
+						 		if ($registrationIsClosed):
+						 			echo "<p>The deadline for public comments for this meeting has passed.</p>";
+						 		else:
+						 ?>
+									<h3>Public Comments Form</h3>
+									<p>Public comments related to U.S. international media are now being accepted for review by the board. Comments intended for the <?php echo $postDate; ?> meeting of the board must be submitted by <b><?php echo $meetingRegistrationCloseDateStr; ?></b>.</p>
+									<p>Comments received after that date will be forwarded to the board for the following meeting.</p>
+
+									<p>The public comments you provide to the Broadcasting Board of Governors are collected by the agency voluntarily and may be publicly disclosed on the Internet and/or via requests submitted to the BBG under the Freedom of Information Act.</p>
+
+									<p>By providing public comments, you are consenting to their use and consideration by the Board and to their possible public dissemination. Personal contact information will not be made available to the public and will only be used by agency staff to engage with submitters regarding their own comments.</p>
+						<?php 
+									$redirectLink = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+									if(strpos($redirectLink, "?" )) {
+										$redirectLink .= "&";
+									} else {
+										$redirectLink .= "?";
+									}
+									$redirectLink .= "success=true";
+
+									echo do_shortcode("[si-contact-form form='2' redirect='$redirectLink']"); 
+									//echo do_shortcode("[si-contact-form form='2']"); 
+								endif;
+							endif;
+
+							//echo "<pre>"; var_dump($_POST); echo "</pre>";
+						?>
+
 					</div><!-- .entry-content -->
 
 					<div class="bbg__article-sidebar">
