@@ -430,7 +430,7 @@ function featured_video ($url) {
 		}
 
 		$return="<div class='bbg-embed-shell bbg__featured-video'><div class='embed-container $extraClass'>";
-		$return.='<iframe src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
+		$return.='<iframe scrolling="no" src="' . $url . '" frameborder="0" allowfullscreen="" data-ratio="NaN" data-width="" data-height="" style="display: block; margin: 0px;"></iframe>';
 		$return.="</div></div>";
 	}
 	return $return;
