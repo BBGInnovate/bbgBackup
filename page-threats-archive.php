@@ -100,10 +100,10 @@ get_header();
 							}
 							
 							echo '<article class="bbg-blog__excerpt--list ">';
-							echo '<h3 class="entry-title" style="color:#4773aa"><img width="25" height="25" src="' . $imgSrc . '">&nbsp' . $t['headline'] . '</h3>';
+							echo '<h3 class="entry-title" style="color:#4773aa"><img style="vertical-align:middle;" width="25" height="25" src="' . $imgSrc . '"><span style="margin-left:0.75rem;">' . $t['headline'] . '</span></h3>';
 							echo '<div class="entry-meta bbg__excerpt-meta">';
 							echo '<span class="posted-on">';
-							echo '<time class="entry-date published" datetime="2017-03-22T14:19:47+00:00">' . $t['niceDate'] . '</time>';
+							echo '<time class="entry-date published" >' . $t['niceDate'] . '</time>';
 							echo '</span></div>';
 							echo '<div class="entry-content bbg-blog__excerpt-content"><p>' . $t['description'] . '</p></div>';
 							echo '</article>';
