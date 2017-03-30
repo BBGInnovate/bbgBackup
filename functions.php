@@ -997,6 +997,15 @@ function getRandomEntityImage() {
 
 }
 
+
+add_action('admin_menu', 'wpdocs_register_my_custom_submenu_page');
+function wpdocs_register_my_custom_submenu_page() {
+	/* NOTE - this isn't officially supported by WP ****/
+	global $submenu;
+	$submenu['edit.php?post_type=media_clips'][500] = array( 'Sending with Mailchimp', 'Sending with Mailchimp' , 'https://docs.google.com/document/d/11POafEgz5MInKEyQCCepuViizySzqxqJQRgxoLl74cE/edit?usp=sharing' ); 
+}
+
+
 add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
 function toolbar_link_to_mypage( $wp_admin_bar ) {
 	$page = get_page_by_title('Author Guide');
@@ -1015,6 +1024,13 @@ function toolbar_link_to_mypage( $wp_admin_bar ) {
 		'href'  => 'https://docs.google.com/document/d/1e-IevBxyXy3-oTuq9ANAolQv5WG9X65BQYs7TE0e3Lg/',
 		'meta'  => array( 'class' => 'authorguide-toolbar-page', 'target' => '_blank' )
 	) );
+	// $wp_admin_bar->add_node( array(
+	// 	'id'    => 'cheatsheet',
+	// 	'title' => 'Cheat Sheet',
+	// 	'href'  => 'https://docs.google.com/document/d/11POafEgz5MInKEyQCCepuViizySzqxqJQRgxoLl74cE/edit?usp=sharing',
+	// 	'meta'  => array( 'class' => 'authorguide-toolbar-page', 'target' => '_blank' )
+	// ) );
+
 }
 
 function edit_admin_menus() {
