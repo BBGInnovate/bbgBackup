@@ -36,16 +36,28 @@ if ( have_posts() ) {
 
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
 	
+	$today = new DateTime("now", new DateTimeZone('America/New_York'));
+	$todayStr = $today->format('Y-m-d H:i:s');
+
 	$meetingRegistrationCloseTime = get_post_meta( get_the_ID(), 'board_meeting_registration_close_time', true );
+	$commentFormCloseTime = get_post_meta( get_the_ID(), 'board_meeting_comment_form_close_time', true );
+
 	$registrationIsClosed = false;
 	if ($meetingRegistrationCloseTime) {
+		$registrationIsClosed = ($meetingRegistrationCloseTime <  $todayStr);
 
+		//get a display friendly version of this date for later
 		$meetingRegistrationCloseDateObj = DateTime::createFromFormat('Y-m-d H:i:s', $meetingRegistrationCloseTime);
 		$meetingRegistrationCloseDateStr = $meetingRegistrationCloseDateObj->format("F j, Y");
+	}
 
-		$today = new DateTime("now", new DateTimeZone('America/New_York'));
-		$todayStr = $today->format('Y-m-d H:i:s');
-		$registrationIsClosed = ($meetingRegistrationCloseTime <  ($todayStr));
+	$commentFormIsClosed = false;
+	if ($commentFormCloseTime) {
+		$commentFormIsClosed = ($commentFormCloseTime <  $todayStr);
+		$commentFormCloseDateObj = DateTime::createFromFormat('Y-m-d H:i:s', $commentFormCloseTime);
+		
+		//get a display friendly version of this date for later
+		$commentFormCloseStr = $commentFormCloseDateObj->format("F j, Y");
 	}
 
 	$meetingLocation = get_post_meta( get_the_ID(), 'board_meeting_location', true );
@@ -196,12 +208,12 @@ get_header(); ?>
 						 ?>
 						 <?php 
 						 	if ($isBoardMeeting && !isset($_GET['success'])):
-						 		if ($registrationIsClosed):
+						 		if ($commentFormIsClosed):
 						 			echo "<p>The deadline for public comments for this meeting has passed.</p>";
 						 		else:
 						 ?>
 									<h3>Public Comments Form</h3>
-									<p>Public comments related to U.S. international media are now being accepted for review by the board. Comments intended for the <?php echo $postDate; ?> meeting of the board must be submitted by <b><?php echo $meetingRegistrationCloseDateStr; ?></b>.</p>
+									<p>Public comments related to U.S. international media are now being accepted for review by the board. Comments intended for the <?php echo $postDate; ?> meeting of the board must be submitted by <b><?php echo $commentFormCloseStr; ?></b>.</p>
 									<p>Comments received after that date will be forwarded to the board for the following meeting.</p>
 
 									<p>The public comments you provide to the Broadcasting Board of Governors are collected by the agency voluntarily and may be publicly disclosed on the Internet and/or via requests submitted to the BBG under the Freedom of Information Act.</p>
@@ -216,9 +228,7 @@ get_header(); ?>
 										$redirectLink .= "?";
 									}
 									$redirectLink .= "success=true";
-
 									echo do_shortcode("[si-contact-form form='2' redirect='$redirectLink']"); 
-									//echo do_shortcode("[si-contact-form form='2']"); 
 								endif;
 							endif;
 
