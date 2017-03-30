@@ -235,7 +235,8 @@ get_header(); ?>
 									}
 									$redirectLink .= "success=true";
 									echo do_shortcode("[si-contact-form form='2' redirect='$redirectLink']"); 
-								endif;
+									echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/meeting-comment-form.js"></script>';
+								endif; 
 							endif;
 
 							//echo "<pre>"; var_dump($_POST); echo "</pre>";
@@ -302,7 +303,7 @@ get_header(); ?>
 												}
 
 					        				}
-					        				echo "</ul>";
+					        				echo "</ul>"; 
 						        		// end internal speaker list
 						        		}
 							        } else if ( get_row_layout() == 'board_meeting_speakers_external' ) {
