@@ -15,6 +15,17 @@ if ( have_posts() ) {
 	$ogTitle = get_the_title();
 	$ogDescription = get_the_excerpt();
 
+	$eventPageHeader = "Event";
+	$isBoardMeeting = false;
+	$isPressRelease = false;
+	if (in_category("Board Meetings")) {
+		$eventPageHeader = "Board Meeting";
+		$isBoardMeeting = true;
+	}
+	if (in_category("Press Release")) {
+		$isPressRelease = true;
+	}
+
 	/**** CREATE OG:IMAGE *****/
 	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'Full' );
 	$ogImage = $thumb['0'];
@@ -74,9 +85,11 @@ if ( have_posts() ) {
 	/*** CREATE EVENTBRITE IFRAME ****/
 	$eventBriteButtonStr = "";
 	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
-	if ($eventbriteUrl && $eventbriteUrl != "") {
+	if ($eventbriteUrl && $eventbriteUrl != "" && !$isPressRelease) {
 		if (!$registrationIsClosed) {
 			$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
+		} else {
+			$eventBriteButtonStr = "<p style='font-style:italic;' class='registrationClosed'>Registration for this event has closed.</p>";	
 		}
 	}
 
@@ -84,13 +97,6 @@ if ( have_posts() ) {
 }
 
 include get_template_directory() . "/inc/shared_sidebar.php";
-
-$eventPageHeader = "Event";
-$isBoardMeeting = false;
-if (in_category("Board Meetings")) {
-	$eventPageHeader = "Board Meeting";
-	$isBoardMeeting = true;
-}
 
 //Add featured video
 $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
@@ -207,7 +213,7 @@ get_header(); ?>
 						 the_content(); 
 						 ?>
 						 <?php 
-						 	if ($isBoardMeeting && !isset($_GET['success'])):
+						 	if (!$isPressRelease && $isBoardMeeting && !isset($_GET['success'])):
 						 		if ($commentFormIsClosed):
 						 			echo "<p>The deadline for public comments for this meeting has passed.</p>";
 						 		else:
@@ -353,12 +359,6 @@ get_header(); ?>
 							if ( $includeSidebar) {
 								echo $sidebar;
 							}
-
-							/* JBF commenting this out on 8/17/2016 ... remove permanently if no side effects 
-							if ( $secondaryColumnContent != "" ) {
-								echo $secondaryColumnContent;
-							}
-							*/
 
 							echo $sidebarDownloads;
 						?>
