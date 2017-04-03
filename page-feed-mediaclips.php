@@ -105,7 +105,7 @@ do_action( 'rss_tag_pre', 'rss2' );
  		if (!$clipType || ($clipType == $currentClipType)):
 	?>
 	<item>
-		<title><?php if ($counter==1) { echo "<h2>$clipTypeLabel</h2>";} the_title_rss(); ?></title>
+		<title><?php the_title_rss(); ?></title> 
 		<link><?php echo $clipLink; ?></link>
 		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
