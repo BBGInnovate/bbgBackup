@@ -240,6 +240,7 @@ section.usa-section.bbg-banner__section {
 	$voiceTypes: ceo, guest, featured;
 	@for $i from 1 through length( $voiceTypes ) {
 		&--#{ nth( $voiceTypes, $i ) } {
+			padding: $site-margins-medium-plus;
 
 			@include media( $medium-large-screen ) {
 				padding: $site-margins;

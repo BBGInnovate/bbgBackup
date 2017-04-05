@@ -6985,6 +6985,9 @@ section.usa-section.bbg-banner__section {
   margin-bottom: 1rem;
 }
 
+.bbg__voice--ceo {
+  padding: 2rem;
+}
 @media screen and (min-width: 900px) {
   .bbg__voice--ceo {
     padding: 3rem;
@@ -6993,6 +6996,9 @@ section.usa-section.bbg-banner__section {
     line-height: 2.2;
   }
 }
+.bbg__voice--guest {
+  padding: 2rem;
+}
 @media screen and (min-width: 900px) {
   .bbg__voice--guest {
     padding: 3rem;
@@ -7000,6 +7006,9 @@ section.usa-section.bbg-banner__section {
   .bbg__voice--guest p {
     line-height: 2.2;
   }
+}
+.bbg__voice--featured {
+  padding: 2rem;
 }
 @media screen and (min-width: 900px) {
   .bbg__voice--featured {
