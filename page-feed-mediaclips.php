@@ -28,7 +28,14 @@ endif;
 wp_reset_postdata();
 wp_reset_query();
 
-$today = date('Ymd');
+//query date defaults to the current day.  Alternatively, users may pass year (xxxx) month (xx) and day(xx) in the url
+$queryDate = date('Ymd');
+if ( isset($_GET['year']) && isset($_GET['month']) && isset($_GET['day']) ) {
+	$year = $_GET['year'];
+	$month = $_GET['month'];
+	$day = $_GET['day'];
+	$queryDate = DateTime::createFromFormat('Y-m-d',"$year-$month-$day");
+}
 
 $qParams = array(
 	'post_type' => array( 'media_clips' ),
@@ -38,12 +45,12 @@ $qParams = array(
 	'order', 'DESC'
 );
 
-if ( ! isset( $_GET['ignoreDate'] ) ) {
+if ( ! isset( $_GET['allDates'] ) ) {
 	$qParams['meta_query'] = array(
 		array(
 			'key'		=> 'media_clip_mail_date',
 			'compare'	=> '=',
-			'value'		=> $today
+			'value'		=> $queryDate
 		)
 	);
 }
