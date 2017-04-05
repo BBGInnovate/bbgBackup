@@ -30,10 +30,10 @@ wp_reset_query();
 
 //query date defaults to the current day.  Alternatively, users may pass year (xxxx) month (xx) and day(xx) in the url
 $queryDate = date('Ymd');
-if ( isset($_GET['year']) && isset($_GET['month']) && isset($_GET['day']) ) {
-	$year = $_GET['year'];
-	$month = $_GET['month'];
-	$day = $_GET['day'];
+if ( isset($_GET['mail_year']) && isset($_GET['mail_month']) && isset($_GET['mail_day']) ) {
+	$year = $_GET['mail_year'];
+	$month = $_GET['mail_month'];
+	$day = $_GET['mail_day'];
 	$queryDate = DateTime::createFromFormat('Y-m-d',"$year-$month-$day");
 }
 
@@ -53,7 +53,7 @@ if ( ! isset( $_GET['allDates'] ) ) {
 			'value'		=> $queryDate
 		)
 	);
-}
+} 
 
 $clipType = false;
 $clipTypeLabel = "";
