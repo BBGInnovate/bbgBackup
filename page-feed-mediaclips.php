@@ -31,11 +31,13 @@ wp_reset_query();
 //query date defaults to the current day.  Alternatively, users may pass year (xxxx) month (xx) and day(xx) in the url
 $queryDate = date('Ymd');
 if ( isset($_GET['mail_year']) && isset($_GET['mail_month']) && isset($_GET['mail_day']) ) {
-	$year = $_GET['mail_year'];
-	$month = $_GET['mail_month'];
-	$day = $_GET['mail_day'];
-	$queryDate = DateTime::createFromFormat('Y-m-d',"$year-$month-$day");
+        $year = $_GET['mail_year'];
+        $month = $_GET['mail_month'];
+        $day = $_GET['mail_day'];
+        $queryDateObj = DateTime::createFromFormat('Y-m-d H:i:s',"$year-$month-$day 00:00:00");
+		$queryDate = $queryDateObj->format('Ymd');//var_dump($queryDate);//$queryDate = $queryDate->'date'];
 }
+
 
 $qParams = array(
 	'post_type' => array( 'media_clips' ),
@@ -45,7 +47,7 @@ $qParams = array(
 	'order', 'DESC'
 );
 
-if ( ! isset( $_GET['allDates'] ) ) {
+if ( ! isset( $_GET['allDates'] ) &&  ! isset($_GET['alldates'] ) ) {
 	$qParams['meta_query'] = array(
 		array(
 			'key'		=> 'media_clip_mail_date',
