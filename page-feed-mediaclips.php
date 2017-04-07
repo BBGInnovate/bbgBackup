@@ -34,8 +34,10 @@ if ( isset($_GET['mail_year']) && isset($_GET['mail_month']) && isset($_GET['mai
         $year = $_GET['mail_year'];
         $month = $_GET['mail_month'];
         $day = $_GET['mail_day'];
-        $queryDateObj = DateTime::createFromFormat('Y-m-d H:i:s',"$year-$month-$day 00:00:00");
-		$queryDate = $queryDateObj->format('Ymd');//var_dump($queryDate);//$queryDate = $queryDate->'date'];
+        if ($year != "today" && $month != "today" && $day != "today") {
+        	$queryDateObj = DateTime::createFromFormat('Y-m-d H:i:s',"$year-$month-$day 00:00:00");
+			$queryDate = $queryDateObj->format('Ymd');//var_dump($queryDate);//$queryDate = $queryDate->'date'];		
+        }
 }
 
 
@@ -115,7 +117,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	?>
 	<item>
 		<title><?php the_title_rss(); ?></title> 
-		<link><?php echo urlencode($clipLink); ?></link>
+		<dc:creator><![CDATA[<?php echo $clipLink; ?>]]></dc:creator>
 		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
 		<?php the_category_rss('rss2'); ?>
