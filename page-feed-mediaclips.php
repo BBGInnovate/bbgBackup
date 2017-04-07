@@ -117,7 +117,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	?>
 	<item>
 		<title><?php the_title_rss(); ?></title> 
-		<dc:creator><![CDATA[<?php echo $clipLink; ?>]]></dc:creator>
+		<link><![CDATA[<?php echo $clipLink; ?>]]></link>
 		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
 		<?php echo "<!-- clip type is  $currentClipType -->\n"; ?>
