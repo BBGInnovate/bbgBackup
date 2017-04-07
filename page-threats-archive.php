@@ -100,8 +100,8 @@ get_header();
 							}
 
 							echo '<article class="bbg-blog__excerpt--list ">';
-								echo '<header class="entry-header bbg-blog__excerpt-header">';
-									echo '<div style="background-size: 30px; background-position: left top; background-repeat: no-repeat; background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png); display: table-cell;width: 35px;"></div>';
+								echo '<header class="entry-header bbg__article-icons-container">';
+									echo '<div class="bbg__article-icon" style="background-position: left center; background-image: url(https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png);"></div>';
 									echo '<h3 class="entry-title" style="color:#4773aa">' . $t['headline'] . '</h3>';
 								echo '</header>';
 								echo '<div class="entry-meta bbg__excerpt-meta">';
