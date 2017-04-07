@@ -31,13 +31,13 @@ if ( $custom_query->have_posts() ) :
 		$coordinates = get_post_meta( $id, 'threats_to_press_coordinates', true );
 		$status = get_post_meta( $id, 'threats_to_press_status', true );
 		$link = get_post_meta( $id, 'threats_to_press_link', true );
-		
+
 		$t = array(
 			'country' => $country,
 			'name' => $targetNames,
 			'date' => get_the_date(),
 			'year' => get_the_date('Y'),
-			'niceDate' => get_the_date('M d, Y'), 
+			'niceDate' => get_the_date('M d, Y'),
 			'status' => $status,
 			'description' => get_the_excerpt(),
 			'mugshot' => '',
@@ -84,7 +84,7 @@ get_header();
 					<h5 class="bbg__label--mobile large">Threats to Press</h5>
 				</header><!-- .page-header -->
 			</div>
-			
+
 			<section class="usa-section">
 				<div class="usa-grid" style="margin-bottom: 3rem">
 					<h2 class="entry-title bbg-blog__excerpt-title--featured"><?php echo $pageTitle; ?></h2>
@@ -96,16 +96,20 @@ get_header();
 						foreach ($threats as $t) {	//4773aa, 112e51
 							$imgSrc = '';
 							foreach ($t['network'] as $abbreviation) {
-								$imgSrc=get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //	
+								$imgSrc = get_template_directory_uri() . '/img/logo_' . $abbreviation . '--circle-200.png'; //
 							}
-							
+
 							echo '<article class="bbg-blog__excerpt--list ">';
-							echo '<h3 class="entry-title" style="color:#4773aa"><img style="vertical-align:middle;" width="25" height="25" src="' . $imgSrc . '"><span style="margin-left:0.75rem;">' . $t['headline'] . '</span></h3>';
-							echo '<div class="entry-meta bbg__excerpt-meta">';
-							echo '<span class="posted-on">';
-							echo '<time class="entry-date published" >' . $t['niceDate'] . '</time>';
-							echo '</span></div>';
-							echo '<div class="entry-content bbg-blog__excerpt-content"><p>' . $t['description'] . '</p></div>';
+								echo '<header class="entry-header bbg-blog__excerpt-header">';
+									echo '<img width="25" height="25" src="https://www.bbg.gov/wp-content/themes/bbgRedesign/img/logo_rferl--circle-200.png">';
+									echo '<h3 class="entry-title" style="color:#4773aa">' . $t['headline'] . '</h3>';
+								echo '</header>';
+								echo '<div class="entry-meta bbg__excerpt-meta">';
+									echo '<span class="posted-on">';
+									echo '<time class="entry-date published" >' . $t['niceDate'] . '</time>';
+									echo '</span></div>';
+									echo '<div class="entry-content bbg-blog__excerpt-content"><p>' . $t['description'] . '</p>';
+								echo '</div>';
 							echo '</article>';
 						}
 
