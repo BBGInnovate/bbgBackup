@@ -120,6 +120,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<dc:creator><![CDATA[<?php echo $clipLink; ?>]]></dc:creator>
 		<pubDate><?php echo $rssDate;?></pubDate>
 		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
+		<?php echo "<!-- clip type is  $currentClipType -->\n"; ?>
 		<?php the_category_rss('rss2'); ?>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 		<description><![CDATA[<?php echo "<strong>$outletName</strong>" . " - " . $displayDate . "<BR>"; the_excerpt_rss(); ?>]]></description>
