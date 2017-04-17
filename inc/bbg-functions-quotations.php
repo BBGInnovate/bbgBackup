@@ -98,8 +98,9 @@
 
 		foreach ( (get_the_category()) as $cat ) {
 			// $catName = $cat.cat_name;
-			// var_dump($cat);
+			var_dump($cat);
 			$quoteNetwork = $cat->cat_name . ' ';
+			// var_dump($quoteNetwork);
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
