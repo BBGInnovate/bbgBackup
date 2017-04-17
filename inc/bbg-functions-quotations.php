@@ -95,8 +95,10 @@
 		$mugshot = $q['quoteMugshot'];
 
 		$quote = '';
+
+		var_dump($quoteNetwork);
 		$quote .= '<div class="bbg__quotation $class">';
-			$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
+			$quote .= '<div class="bbg__quotation-label"></div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
