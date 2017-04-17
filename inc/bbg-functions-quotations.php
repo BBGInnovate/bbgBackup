@@ -95,9 +95,10 @@
 
 		$catArray = $q['quoteNetwork'];
 
-		foreach ( $catArray as $cat ) {
+		foreach ( (get_the_category()) as $cat ) {
 			// $catName = $cat.cat_name;
-			var_dump($cat);
+			// var_dump($cat);
+			echo $cat->cat_name . ' ';
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
