@@ -96,7 +96,8 @@
 		$catArray = $q['quoteNetwork'];
 
 		foreach ( $catArray as $cat ) {
-			$catName = $cat->'cat_name';
+			// $catName = $cat.cat_name;
+			var_dump($cat);
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
