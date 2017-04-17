@@ -98,14 +98,14 @@
 		foreach ( (get_the_category()) as $cat ) {
 			// $catName = $cat.cat_name;
 			// var_dump($cat);
-			echo $cat->cat_name . ' ';
+			$quoteNetwork = $cat->cat_name . ' ';
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
-			$quote .= '<div class="bbg__quotation-label"></div>';
+			$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
