@@ -98,7 +98,7 @@
 		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
-			for ( $i = 0; $i <= sizeof( $networks ); $i++ ) {
+			for ( $i = 0; $i <= count( $networks ); $i++ ) {
 				if ( $cat -> cat_name == $networks[$i] ) {
 					$quoteNetwork = $networks[$i];
 					break;
