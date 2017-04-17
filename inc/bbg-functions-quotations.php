@@ -93,21 +93,19 @@
 		}
 		$mugshot = $q['quoteMugshot'];
 
-		// $catArray = $q['quoteNetwork'];
-		$quoteNetwork = '';
+		$catArray = $q['quoteNetwork'];
 
-		foreach ( (get_the_category()) as $cat ) {
-			// $catName = $cat.cat_name;
-			var_dump($cat);
-			$quoteNetwork = $cat->cat_name . ' ';
-			// var_dump($quoteNetwork);
+		foreach ( $catArray as $cat ) {
+			$catName = $cat->cat_name;
+			// var_dump($cat);
+			var_dump($catName);
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
-			$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
+			$quote .= '<div class="bbg__quotation-label"></div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
