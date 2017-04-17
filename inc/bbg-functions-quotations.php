@@ -93,19 +93,28 @@
 		}
 		$mugshot = $q['quoteMugshot'];
 
-		$catArray = $q['quoteNetwork'];
+		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
+		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
-			$catName = $cat->cat_name;
+			for ( $i = 0; $i <= sizeof( $networks ); $i++ ) {
+				if ( $cat -> cat_name == $networks[$i] ) {
+					$quoteNetwork = $networks[$i];
+					break;
+				}
+			}
+			// $catName = ;
 			// var_dump($cat);
-			var_dump($catName);
+			// var_dump($catName);
 		}
 		// $quoteNetwork = ;
 		// var_dump($catName);
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
-			$quote .= '<div class="bbg__quotation-label"></div>';
+			if ( $quoteNetwork != '' ) {
+				$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
+			}
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
