@@ -85,7 +85,6 @@
 		$quoteDate = $q['quoteDate'];
 		$ID = $q['ID'];
 		$url = $q['url'];
-		$quoteNetwork = $q['quoteNetwork'];
 		$speaker = $q['speaker'];
 		$quoteText = $q['quoteText'];
 		$tagline = $q['quoteTagline'];
@@ -94,9 +93,11 @@
 		}
 		$mugshot = $q['quoteMugshot'];
 
-		$quote = '';
-
+		$catArray = $q['quoteNetwork'];
+		$quoteNetwork = $catArray['cat_name'];
 		var_dump($quoteNetwork);
+
+		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
 			$quote .= '<div class="bbg__quotation-label"></div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
