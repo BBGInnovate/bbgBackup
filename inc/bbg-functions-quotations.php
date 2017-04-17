@@ -47,7 +47,6 @@
 			//$quoteDate = get_post_meta( $id, 'quotation_date', true );
 			$quoteDate = get_field( 'quotation_date', $id, true );
 
-
 			$quoteMugshotID = get_post_meta( get_the_ID(), 'quotation_mugshot', true );
 			$quoteMugshot = '';
 
@@ -56,10 +55,11 @@
 				$quoteMugshot = $quoteMugshot[0];
 			}
 
-
+			// populate array with quotation posts
 			$quotes[] = array(
 				'ID' => $id,
 				'url' => get_permalink( $id ),
+				'quoteNetwork' => get_the_category( $id ),
 				'quoteDate' => $quoteDate,
 				'speaker' => $speaker,
 				'quoteText' => get_the_content(),
@@ -85,6 +85,7 @@
 		$quoteDate = $q['quoteDate'];
 		$ID = $q['ID'];
 		$url = $q['url'];
+		$quoteNetwork = $q['quoteNetwork'];
 		$speaker = $q['speaker'];
 		$quoteText = $q['quoteText'];
 		$tagline = $q['quoteTagline'];
@@ -95,9 +96,7 @@
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
-			$quote .= '<div class="bbg__quotation-label">';
-				$quote .= 'TESTING';
-			$quote .= '</div>';
+			$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
