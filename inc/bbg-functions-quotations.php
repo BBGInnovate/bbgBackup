@@ -98,7 +98,7 @@
 			$quote .= '<div class="bbg__quotation-label">';
 				$quote .= 'TESTING';
 			$quote .= '</div>';
-			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;$quoteText&rdquo;</h2>';
+			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
 				$quote .= '<p class="bbg__quotation-attribution">';
 
@@ -106,8 +106,8 @@
 					$quote .= '<img src="$mugshot" class="bbg__quotation-attribution__mugshot"/>';
 				}
 				$quote .= '<span class="bbg__quotation-attribution__text">';
-				$quote .= '<span class="bbg__quotation-attribution__name">$speaker</span>';
-				$quote .= '<span class="bbg__quotation-attribution__credit">$tagline</span>';
+				$quote .= '<span class="bbg__quotation-attribution__name">' . $speaker . '</span>';
+				$quote .= '<span class="bbg__quotation-attribution__credit">' . $tagline . '</span>';
 				$quote .= '</span></p>';
 			$quote .= '</div>';
 		$quote .= '</div>';
