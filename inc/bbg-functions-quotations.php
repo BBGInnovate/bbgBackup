@@ -93,6 +93,7 @@
 		}
 		$mugshot = $q['quoteMugshot'];
 
+		$catArray = $q['quoteNetwork'];
 		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
 		$quoteNetwork = '';
 
