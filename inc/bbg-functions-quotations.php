@@ -93,7 +93,8 @@
 		}
 		$mugshot = $q['quoteMugshot'];
 
-		$catArray = $q['quoteNetwork'];
+		// $catArray = $q['quoteNetwork'];
+		$quoteNetwork = '';
 
 		foreach ( (get_the_category()) as $cat ) {
 			// $catName = $cat.cat_name;
