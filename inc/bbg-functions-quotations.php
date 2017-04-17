@@ -96,7 +96,7 @@
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
 			$quote .= '<div class="bbg__quotation-label">';
-				$quote .= ;
+				$quote .= 'TESTING';
 			$quote .= '</div>';
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;$quoteText&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
