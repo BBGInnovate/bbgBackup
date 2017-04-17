@@ -94,8 +94,12 @@
 		$mugshot = $q['quoteMugshot'];
 
 		$catArray = $q['quoteNetwork'];
-		$quoteNetwork = $catArray['cat_name'];
-		var_dump($quoteNetwork);
+
+		foreach ( $catArray as $cat ) {
+			$catName = $cat['cat_name']
+		}
+		// $quoteNetwork = ;
+		var_dump($catName);
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
