@@ -305,8 +305,8 @@ get_header();
 					<?php } else {
 						$q = getRandomQuote( 'allEntities', $postIDsUsed );
 						if ( $q ) {
-							$postIDsUsed[] = $q["ID"];
-							outputQuote( $q, "" );
+							$postIDsUsed[] = $q['ID'];
+							outputQuote( $q, '' );
 						}
 					} ?>
 					</div><!-- usa-grid-one-third -->
@@ -489,7 +489,7 @@ get_header();
 			<section class="usa-section ">
 				<div class="usa-grid">
 					<?php
-						$q = getRandomQuote('allEntities', $postIDsUsed);
+						$q = getRandomQuote( 'allEntities', $postIDsUsed );
 						if ($q) {
 							$postIDsUsed[] = $q["ID"];
 							outputQuote($q);

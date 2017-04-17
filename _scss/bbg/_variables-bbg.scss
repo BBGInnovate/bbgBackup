@@ -29,6 +29,12 @@ $color-light-gray:            #ECECEC;
 $color-focus:                 #3e94cf;
 $color-visited:               #4773aa;
 
+$color-ocb:                   #003a8d;
+$color-mbn:                   #E64C66;
+$color-rfa:                   #478406;
+$color-rferl:                 #EA6903;
+$color-voa:                   #1330bf;
+
 
 // Additional breakpoint(s)
 $medium-large-screen:         900px;
@@ -60,10 +66,10 @@ $social-icon-home:				40px;
 
 // Site margins
 $site-margins-small:          1rem;
-$site-margins-medium:         $site-margins / 2;
-$site-margins-medium-plus:	  $site-margins-small * 2;
-//$site-margins:              3rem;//defined in _variables.scss
-$site-margins-large:          $site-margins * 2;
+$site-margins-medium:         $site-margins / 2; // 1.5rem
+$site-margins-medium-plus:	  $site-margins-small * 2; // 2rem
+//$site-margins:              3rem; //defined in _variables.scss
+$site-margins-large:          $site-margins * 2; // 6rem
 $bbg-grid-gutter:             2.35765%;
 
 
