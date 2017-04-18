@@ -95,6 +95,7 @@
 
 		$catArray = $q['quoteNetwork'];
 		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
+		$networkColors = array( '$color-voa','$color-ocb','$color-rferl','$color-rfa','$color-mbn' );
 		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
@@ -103,6 +104,7 @@
 			for ( $i = 0; $i <= count( $networks ) - 1; $i++ ) {
 				if ( $networks[$i] == $networkName ) {
 					$quoteNetwork = $networkName;
+					$networkColor = $networkColors[$i];
 					break;
 				}
 			}
@@ -111,7 +113,7 @@
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
 			if ( $quoteNetwork != '' ) {
-				$quote .= '<div class="bbg__quotation-label">' . $quoteNetwork . '</div>';
+				$quote .= '<div class="bbg__quotation-label" style="background-color:' . $networkColor . '">' . $quoteNetwork . '</div>';
 			}
 			$quote .= '<h2 class="bbg__quotation-text--large">&ldquo;' . $quoteText . '&rdquo;</h2>';
 			$quote .= '<div class="bbg__quotation-attribution__container">';
