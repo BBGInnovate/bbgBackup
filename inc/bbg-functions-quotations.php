@@ -95,15 +95,17 @@
 
 		$catArray = $q['quoteNetwork'];
 		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
-		$quoteNetwork = '';
+		// $quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
-			$networkName = $cat -> cat_name;
+			$quoteNetwork = $cat -> cat_name;
 
 			for ( $i = 0; $i <= count( $networks ) - 1; $i++ ) {
-				if ( $networks[$i] == $networkName ) {
-					$quoteNetwork = $networkName;
+				if ( $networks[$i] == $quoteNetwork ) {
+					$quoteNetwork = $quoteNetwork;
 					break;
+				} else {
+					$quoteNetwork = '';
 				}
 			}
 			// $catName = ;
