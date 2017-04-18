@@ -100,7 +100,7 @@
 		foreach ( $catArray as $cat ) {
 			$networkName = $cat -> cat_name;
 
-			for ( $i = 0; $i <= count( $networks ); $i++ ) {
+			for ( $i = 0; $i <= count( $networks ) - 1; $i++ ) {
 				if ( $networks[$i] == $networkName ) {
 					$quoteNetwork = $networkName;
 					break;
