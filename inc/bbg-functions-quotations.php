@@ -95,7 +95,7 @@
 
 		$catArray = $q['quoteNetwork'];
 		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
-		$networkColors = array( '$color-voa','$color-ocb','$color-rferl','$color-rfa','$color-mbn' );
+		$networkColors = array( $color-voa,$color-ocb,$color-rferl,$color-rfa,$color-mbn );
 		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
