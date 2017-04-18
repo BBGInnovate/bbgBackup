@@ -95,25 +95,18 @@
 
 		$catArray = $q['quoteNetwork'];
 		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
-		// $quoteNetwork = '';
+		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
-			$quoteNetwork = $cat -> cat_name;
+			$networkName = $cat -> cat_name;
 
 			for ( $i = 0; $i <= count( $networks ) - 1; $i++ ) {
-				if ( $networks[$i] == $quoteNetwork ) {
-					$quoteNetwork = $quoteNetwork;
+				if ( $networks[$i] == $networkName ) {
+					$quoteNetwork = $networkName;
 					break;
-				} else {
-					$quoteNetwork = '';
 				}
 			}
-			// $catName = ;
-			// var_dump($cat);
-			// var_dump($catName);
 		}
-		// $quoteNetwork = ;
-		// var_dump($catName);
 
 		$quote = '';
 		$quote .= '<div class="bbg__quotation $class">';
