@@ -94,8 +94,8 @@
 		$mugshot = $q['quoteMugshot'];
 
 		$catArray = $q['quoteNetwork'];
-		$networks = array('VOA','OCB','RFE/RL','RFA','MBN');
-		$networkColors = array( $color-voa,$color-ocb,$color-rferl,$color-rfa,$color-mbn );
+		$networks = array( 'VOA','OCB','RFE/RL','RFA','MBN' );
+		$networkColors = array( '#1330bf','#003a8d','#EA6903','#478406','#E64C66' );
 		$quoteNetwork = '';
 
 		foreach ( $catArray as $cat ) {
