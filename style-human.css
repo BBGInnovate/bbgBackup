@@ -6227,6 +6227,19 @@ article {
     text-align: center;
   }
 }
+.bbg__quotation .bbg__quotation-label {
+  color: white;
+  display: none;
+  /* font-weight: $font-bold;
+  height: 4rem;
+  margin: -2rem auto 1rem;
+  max-width: 8rem;
+  padding: 1rem 0.5rem 0;
+  text: {
+  	align: center;
+  	transform: uppercase;
+  } */
+}
 .bbg__quotation .bbg__quotation-text--large {
   font-size: 2.5rem;
   font-weight: 100;

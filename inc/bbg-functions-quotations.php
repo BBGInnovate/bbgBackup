@@ -111,7 +111,7 @@
 		}
 
 		$quote = '';
-		$quote .= '<div class="bbg__quotation ' . $class . '">';
+		$quote .= '<div class="bbg__quotation">';
 			if ( $quoteNetwork != '' ) {
 				$quote .= '<div class="bbg__quotation-label" style="background-color:' . $networkColor . '">' . $quoteNetwork . '</div>';
 			}
