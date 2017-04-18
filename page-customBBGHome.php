@@ -482,9 +482,6 @@ get_header();
 				</div>
 			</section><!-- entity list -->
 
-
-
-
 			<!-- Quotation -->
 			<section class="usa-section ">
 				<div class="usa-grid">
