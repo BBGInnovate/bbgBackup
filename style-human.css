@@ -6327,6 +6327,7 @@ article {
 }
 .usa-width-one-third .bbg__quotation .bbg__quotation-label {
   color: white;
+  display: table;
   font-weight: 700;
   height: 4rem;
   margin: -2rem auto 1rem;
