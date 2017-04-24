@@ -68,6 +68,7 @@ if ( have_posts() ) :
 		$pageContent = get_the_content();
 		$pageTitle = get_the_title();
 		$pageExcerpt = get_the_excerpt();
+		$ogDescription = $pageExcerpt;
 		$pageContent = apply_filters( 'the_content', $pageContent );
 		$pageContent = str_replace( ']]>', ']]&gt;', $pageContent );
 		$id = get_the_ID();
