@@ -46,7 +46,8 @@ $qParams = array(
 	'posts_per_page' => 999,
 	'orderby' => 'meta_value',
 	'meta_key' => 'media_clip_mail_date',
-	'order', 'DESC'
+	'order', 'DESC',
+	'post_status' => array('published','pending')
 );
 
 if ( ! isset( $_GET['allDates'] ) &&  ! isset($_GET['alldates'] ) ) {
