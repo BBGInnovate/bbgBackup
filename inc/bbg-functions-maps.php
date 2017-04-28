@@ -1,15 +1,6 @@
 <?php
 
 	function pressFreedomMap() {
-
-	$freeNotFreeObj = array_map('str_getcsv', file(get_stylesheet_directory_uri() . '/data/freeNotFree.csv'));
-	if (count($freeNotFreeObj)) {
-
-		//remove the first row from the array because it's headers, not data
-		array_shift($freeNotFreeObj);
-	}
-	$freeNotFreeStr = json_encode(new ArrayValue($freeNotFreeObj), JSON_PRETTY_PRINT);
-	
     ob_start();
 ?>
 		<!-- Styles -->
@@ -65,7 +56,7 @@
 	<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
 
 	<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/data/threats.js'></script>
-	<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/map-annualreport.js'></script>
+	<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/map-pressfreedom.js'></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<h2>Press Freedom Scores</h2>
@@ -77,15 +68,11 @@
 						<div class="legendBox free"></div> Free 
 						<div class="legendBox partially-free"></div> Partially Free 
 						<div class="legendBox not-free"></div> Not Free 
-						&nbsp;&nbsp;<span style="white-space: nowrap;"><i class="fa fa-map-pin" aria-hidden="true"></i> Incident</span>
 					</div>
 				</div>
 	</div>
 <?php 
 
-	echo "<script type='text/javascript'>\n";
-	echo "freeNotFree = $freeNotFreeStr";
-	echo "</script>";
 	$str = ob_get_clean();
 	echo $str;
 	}
