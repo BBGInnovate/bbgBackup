@@ -1,6 +1,13 @@
 <?php
 
 	function pressFreedomMap() {
+	$freeNotFreeObj = array_map('str_getcsv', file(get_stylesheet_directory_uri() . '/data/freeNotFree.csv'));
+	if (count($freeNotFreeObj)) {
+
+		//remove the first row from the array because it's headers, not data
+		array_shift($freeNotFreeObj);
+	}
+	$freeNotFreeStr = json_encode(new ArrayValue($freeNotFreeObj), JSON_PRETTY_PRINT);	
     ob_start();
 ?>
 		<!-- Styles -->
@@ -72,7 +79,9 @@
 				</div>
 	</div>
 <?php 
-
+	echo "<script type='text/javascript'>\n";
+	echo "freeNotFree = $freeNotFreeStr";
+	echo "</script>";
 	$str = ob_get_clean();
 	echo $str;
 	}
