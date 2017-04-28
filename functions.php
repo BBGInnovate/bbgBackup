@@ -268,6 +268,7 @@ require get_template_directory() . '/inc/bbg-functions-contactCards.php';
 require get_template_directory() . '/inc/bbg-functions-impact.php';
 require get_template_directory() . '/inc/bbg-functions-interns.php';
 require get_template_directory() . '/inc/bbg-functions-jobs.php';
+require get_template_directory() . '/inc/bbg-functions-maps.php';
 require get_template_directory() . '/inc/bbg-functions-nav.php';
 require get_template_directory() . '/inc/bbg-functions-networks.php';
 require get_template_directory() . '/inc/bbg-functions-quotations.php';
