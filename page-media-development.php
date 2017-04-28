@@ -383,7 +383,7 @@ div.usa-accordion-content a {
         marker.bindPopup(divNode);
         
         //var targetLayer = deliveryLayers[year];  LEFTOVER FROM WHEN WE FILTERED BY YEAR 
-        var targetLayer = delieryLayers["2016"];
+        var targetLayer = deliveryLayers["2016"];
         marker.addTo(targetLayer);
     }
 
