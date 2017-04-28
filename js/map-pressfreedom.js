@@ -68,7 +68,7 @@ function getAreas() {
 			},
 			balloon: {
 				fillAlpha: 1,
-				fillColor: "#CCCCCC"
+				fillColor: "#EEE"
 			},
 			dataProvider: {
 				map: "worldLow",
