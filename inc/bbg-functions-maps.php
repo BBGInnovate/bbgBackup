@@ -57,6 +57,9 @@
 		#main-content {
 			padding-top: 0px !important;
 		}
+		#legendContainer {
+			margin-top: 1rem;
+		}
 	</style>
 	<!-- Resources -->
 	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
@@ -71,7 +74,7 @@
 	
 	<div class="bbg__map-area__container " style="postion: relative;">
 		<div id="chartdiv"></div>
-		<div align="center" >
+		<div align="center" id="legendContainer">
 					<div align="center" >
 						<div class="legendBox free"></div> Free 
 						<div class="legendBox partially-free"></div> Partially Free 
