@@ -87,7 +87,7 @@
 	echo "freeNotFree = $freeNotFreeStr";
 	echo "</script>";
 	$str = ob_get_clean();
-	echo $str;
+	return $str;
 	}
 
 add_shortcode( 'pressFreedomMap', 'pressFreedomMap' );
