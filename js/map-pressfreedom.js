@@ -72,7 +72,7 @@ function getAreas() {
 			},
 			dataProvider: {
 				map: "worldLow",
-				areas: areas
+				areas: getAreas()
 			},
 			areasSettings: {
 				autoZoom: false,
