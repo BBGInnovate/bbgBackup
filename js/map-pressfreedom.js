@@ -18,35 +18,35 @@ for (var i = 0; i < fullCountryList.length; i++) {
 
 function getAreas() { 
 	var areas = [];
-	// for (var i=0; i < freeNotFree.length; i++) {
-	// 	var o = freeNotFree[i];
-	// 	var bbgStatus = o[0];
-	// 	var countryName = o[1];
-	// 	var freedomScore = o[2];
-	// 	var freedomStatus = o[3];
+	for (var i=0; i < freeNotFree.length; i++) {
+		var o = freeNotFree[i];
+		var bbgStatus = o[0];
+		var countryName = o[1];
+		var freedomScore = o[2];
+		var freedomStatus = o[3];
 		
-	// 	if (bbgStatus != "Not targeted") {
-	// 		if (cMap.hasOwnProperty(countryName.toLowerCase())) {
-	// 			var countryID = cMap[countryName.toLowerCase()]; 
-	// 			var colorFill = COLOR_NOT_FREE;
-	// 			var freedomLabel = "Not Free";
-	// 			if (freedomStatus == "F") {
-	// 				colorFill = COLOR_FREE;
-	// 				freedomLabel = "Free";
-	// 			} else if (freedomStatus == "PF") {
-	// 				colorFill = COLOR_PARTIALLY_FREE;
-	// 				freedomLabel = "Partially Free";
-	// 			}
-	// 			var a = {
-	// 				id: countryID,
-	// 				title: "<div style='font-size:14px; font-weight:bold;'>" + countryName + "</div>" + freedomLabel + "<BR>" + freedomScore + "/100",
-	// 				color: colorFill,
-	// 				alpha: 1
-	// 			}
-	// 			areas.push(a);
-	// 		}
-	// 	}
-	// }
+		if (bbgStatus != "Not targeted") {
+			if (cMap.hasOwnProperty(countryName.toLowerCase())) {
+				var countryID = cMap[countryName.toLowerCase()]; 
+				var colorFill = COLOR_NOT_FREE;
+				var freedomLabel = "Not Free";
+				if (freedomStatus == "F") {
+					colorFill = COLOR_FREE;
+					freedomLabel = "Free";
+				} else if (freedomStatus == "PF") {
+					colorFill = COLOR_PARTIALLY_FREE;
+					freedomLabel = "Partially Free";
+				}
+				var a = {
+					id: countryID,
+					title: "<div style='font-size:14px; font-weight:bold;'>" + countryName + "</div>" + freedomLabel + "<BR>" + freedomScore + "/100",
+					color: colorFill,
+					alpha: 1
+				}
+				areas.push(a);
+			}
+		}
+	}
 	
 	return areas;
 }
