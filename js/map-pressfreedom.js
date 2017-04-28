@@ -22,8 +22,10 @@ function getAreas() {
 		var o = freeNotFree[i];
 		var bbgStatus = o[0];
 		var countryName = o[1];
-		var freedomScore = o[2];
-		var freedomStatus = o[3];
+		var freedomScore2016 = o[2];
+		var freedomStatus2016 = o[3];
+		var freedomScore = o[4];
+		var freedomStatus = o[5];
 		
 		if (bbgStatus != "Not targeted") {
 			if (cMap.hasOwnProperty(countryName.toLowerCase())) {
