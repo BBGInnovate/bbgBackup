@@ -22,10 +22,8 @@ function getAreas() {
 		var o = freeNotFree[i];
 		var bbgStatus = o[0];
 		var countryName = o[1];
-		var freedomScore2016 = o[2];
-		var freedomStatus2016 = o[3];
-		var freedomScore = o[4];
-		var freedomStatus = o[5];
+		var freedomScore = o[2];
+		var freedomStatus = o[3];
 		
 		if (bbgStatus != "Not targeted") {
 			if (cMap.hasOwnProperty(countryName.toLowerCase())) {
@@ -46,6 +44,8 @@ function getAreas() {
 					alpha: 1
 				}
 				areas.push(a);
+			} else {
+				//console.log("we have no country for " + countryName);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ function getAreas() {
 			},
 			balloon: {
 				fillAlpha: 1,
-				fillColor: "#EEE"
+				fillColor: "#CCCCCC"
 			},
 			dataProvider: {
 				map: "worldLow",
