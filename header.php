@@ -153,8 +153,10 @@ $moveUSAbannerBecauseOfAlert = '';
 	<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo get_template_directory_uri() ?>/img/favicons/favicon-144.png">
 
+	<?php if (!is_user_logged_in()): ?>
 	<!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
 	<script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=BBG&pua=ua-33523145-2" id="_fed_an_ua_tag" ></script>
+	<?php endif; ?>
 </head>
 
 
