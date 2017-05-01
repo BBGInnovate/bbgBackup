@@ -20,10 +20,10 @@ Not targeted,Belize,22,F,27,F
 Direct target,Benin,38,PF,37,PF
 Not targeted,Bhutan,58,PF,58,PF
 Direct target,Bolivia,49,PF,53,PF
-Direct target,Bosnia-Herzegovina,50,PF,51,PF
+Direct target,Bosnia and Herzegovina,50,PF,51,PF
 Direct target,Botswana,45,PF,45,PF
 Not targeted,Brazil,46,PF,47,PF
-Direct target,Brunei,76,NF,76,NF
+Direct target,Brunei Darussalam,76,NF,76,NF
 Not targeted,Bulgaria,40,PF,42,PF
 Direct target,Burkina Faso,41,PF,41,PF
 Direct target,Burundi,80,NF,85,NF
@@ -37,8 +37,8 @@ Direct target,Chile,29,F,29,F
 Direct target,China,87,NF,87,NF
 Direct target,Colombia,56,PF,57,PF
 Not targeted,Comoros,49,PF,49,PF
-Direct target,"Congo, Democratic Republic of (Kinshasa)",78,NF,82,NF
-Direct target,"Congo, Republic of (Brazzaville)",59,PF,60,PF
+Direct target,Democratic Republic of Congo,78,NF,82,NF
+Direct target,Republic of Congo,59,PF,60,PF
 Direct target,Costa Rica,17,F,16,F
 Direct target,Côte d'Ivoire,51,PF,51,PF
 Direct target,Crimea,94,NF,94,NF
@@ -195,6 +195,7 @@ Not targeted,Vanuatu,25,F,25,F
 Direct target,Venezuela,80,NF,81,NF
 Direct target,Vietnam,85,NF,84,NF
 Direct target,West Bank and Gaza Strip,83,NF,84,NF
+Direct target,Western Sahara,66,NF,65,NF
 Direct target,Yemen,83,NF,85,NF
 Direct target,Zambia,61,NF,63,NF
 Direct target,Zimbabwe,74,NF,74,NF
