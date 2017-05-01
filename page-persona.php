@@ -130,11 +130,11 @@ get_header(); ?>
 										echo '<img width="200" style="float:right;" src="' . $avatar["url"] . '"> ';
 										echo $lead;
 										echo "<h2>The Investigation</h2>";
-										echo $lead;
+										echo $investigation;
 										echo "<h2>The Confrontation</h2>";
-										echo $lead;
+										echo $confrontation;
 										echo "<h2>The Decision</h2>";
-										echo $lead;
+										echo $decision;
 
 										the_content();
 									?>
