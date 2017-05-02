@@ -119,7 +119,7 @@ if ( $showFeaturedEvent && $featuredEvent ) {
 }
 
 if ( $soap ) {
-	$postIDsUsed[] = $soap -> ID;
+	$postIDsUsed[] = $soap[0] -> ID;
 }
 
 if ( $threatsToPressPost ) {

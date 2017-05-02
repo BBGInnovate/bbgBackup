@@ -1076,6 +1076,7 @@ function my_excerpt( $post_id ) {
 
 function getSoapboxStr( $soap ) {
 	//takes a soap post object and returns the markup
+	$soap = $soap[0]; //new with switch to relationship field
 	$s = "";
 	$id = $soap -> ID; // set a variable with soapbox post id
 	$soapCategory = wp_get_post_categories( $id ); // get soapbox post category
@@ -1134,31 +1135,70 @@ function getSoapboxStr( $soap ) {
 		}
 	}
 
-	foreach ( $soapCategory as $c ) {
-		$cat = get_category( $c );
-		$soapHeaderPermalink = get_category_link( $cat -> term_id );
-		$soapHeaderText = $cat -> name;
 
-		if ( $cat -> slug == "from-the-ceo" ) {
-			$isCEOPost = TRUE;
-			$soapClass = "bbg__voice--ceo";
-			$soapHeaderText = "From the CEO";
-			$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
-			// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
-			$profileName = "John Lansing";
-		} else if ( $cat -> slug == "usim-matters" ) {
-			$isSpeech = TRUE;
-			$soapClass = "bbg__voice--guest";
-		} else if (  $cat -> slug == "speech" ||  $cat -> slug == "statement" || $cat -> slug == "media-advisory" ) {
-			$isMediaAdvisory = TRUE;
-			$soapClass = "bbg__voice--featured";
+	//Allow an override for the READ MORE label
+	$homepageSoapboxReadMore = get_field( 'homepage_soapbox_read_more', 'options' );
+	$readMoreLabel = "READ MORE";
+	if ( $homepageSoapboxReadMore != "" ) {
+		$readMoreLabel = strtoupper($homepageSoapboxReadMore);
+	}
+
+	//Allow an override for the SOAPBOX LABEL
+	$homepageSoapboxLabel = get_field( 'homepage_soapbox_label', 'options' );
+	
+	//use the blue background by default
+	$soapClass = "bbg__voice--featured";
+	if ( $homepageSoapboxLabel != "" ) {
+		// if the user manually entered a soapbox label, use the manually entered link as well
+		$soapHeaderText = $homepageSoapboxLabel;
+		$soapHeaderPermalink = get_field( 'homepage_soapbox_link', 'options' );
+	} else {
+		/** if the user did not manually enter a soapbox label, use the categories on this post 
+			to decide the class (background color) as well as the header link, and in some cases the profile photo/name
+		**/
+
+		foreach ( $soapCategory as $c ) {
+			$cat = get_category( $c );
+			$soapHeaderPermalink = get_category_link( $cat -> term_id );
+			$soapHeaderText = $cat -> name;
+
+			if ( $cat -> slug == "from-the-ceo" ) {
+				$isCEOPost = TRUE;
+				$soapClass = "bbg__voice--ceo";
+				$soapHeaderText = "From the CEO";
+				$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+				// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
+				$profileName = "John Lansing";
+			} else if ( $cat -> slug == "usim-matters" ) {
+				$isSpeech = TRUE;
+				$soapClass = "bbg__voice--guest";
+			} else if (  $cat -> slug == "speech" ||  $cat -> slug == "statement" || $cat -> slug == "media-advisory" ) {
+				$isMediaAdvisory = TRUE;
+				$soapClass = "bbg__voice--featured";
+			}
 		}
+	}
+
+	//users may manually override the soapbox image 
+	$homepageSoapboxImage = get_field( 'homepage_soapbox_image', 'option' );
+	if ( $homepageSoapboxImage ) {
+		$profilePhoto = wp_get_attachment_image_src( $homepageSoapboxImage , 'profile_photo' );
+		$profilePhoto = $profilePhoto[0];
+	}
+
+	//users may manually override the caption inside the soapbox
+	$homepageSoapboxImageCaption = get_field('homepage_soapbox_image_caption', 'option');
+	if ( $homepageSoapboxImageCaption != "" ) {
+		$profileName = $homepageSoapboxImageCaption;
 	}
 
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
 
 		$s .= '<header class="entry-header bbg__article-icons-container">';
-			$s .= '<div class="bbg__article-icon"></div>';
+			if ( $homepageSoapboxLabel == '' ) {
+				$s .= '<div class="bbg__article-icon"></div>';	
+			}
+			
 
 			if ( $soapHeaderPermalink != "" ) {
 					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
@@ -1182,7 +1222,7 @@ function getSoapboxStr( $soap ) {
 	}
 
 	$s .= my_excerpt( $id );
-	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">READ MORE »</a></p>';
+	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">' . $readMoreLabel . ' »</a></p>';
 	$s .= '</div>';
 	return $s;
 }
