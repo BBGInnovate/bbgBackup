@@ -215,6 +215,7 @@ wp_reset_query();
 			padding-top:1rem;
 		}
 	}
+</style>
 
 <div id='legend' style='display:none;'>
 <strong>Threats since 2013</strong>
