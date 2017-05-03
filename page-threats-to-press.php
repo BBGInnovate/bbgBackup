@@ -209,7 +209,12 @@ wp_reset_query();
 		margin-top:0px;
 		margin-bottom:5px;
 	}
-</style>
+	/*** temp fix for this page ***/
+	@media screen and (max-width: 599px) {
+		.bbg-grid--1-2-2 { 
+			padding-top:1rem;
+		}
+	}
 
 <div id='legend' style='display:none;'>
 <strong>Threats since 2013</strong>
@@ -322,7 +327,7 @@ wp_reset_query();
 										$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
 									}
 
-									$featuredJournalists .= '<div class="bbg__profile-excerpt">';
+									$featuredJournalists .= '<div class="bbg-grid--1-2-2">';
 										$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
 										$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
 									$featuredJournalists .= '</div>';
