@@ -322,7 +322,7 @@ wp_reset_query();
 										$profilePhoto = '<a href="' . $profileUrl . '"><img src="' . $profilePhoto . '" class="bbg__profile-featured__profile__mugshot"/></a>';
 									}
 
-									$featuredJournalists .= '<div class="bbg-grid--1-1-1-2-excerpt">';
+									$featuredJournalists .= '<div class="bbg__profile-excerpt">';
 										$featuredJournalists .= '<h3 class="bbg__profile__name"><a href="' . $profileUrl . '">'. $profileName .'</a></h3>';
 										$featuredJournalists .= '<p class="bbg__profile-excerpt__text">' . $profilePhoto . $profileOccupation . $profileExcerpt . '</p>';
 									$featuredJournalists .= '</div>';
