@@ -93,6 +93,10 @@ if ($featuredEventLabel == "") {
 	$featuredEventLabel = "This week";
 }
 
+$showFeaturedCallout = get_field('show_homepage_featured_callout', 'option');
+$featuredCallout = get_field('homepage_featured_callout', 'option');
+
+
 $featuredEvent = get_field('homepage_featured_event', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
@@ -301,6 +305,10 @@ get_header();
 									</div><!-- .bbg-portfolio__excerpt-title -->
 								</div>
 							</article>
+
+					<?php } else if ($showFeaturedCallout) {
+						outputCallout($featuredCallout);
+					?> 
 
 					<?php } else {
 						$q = getRandomQuote( 'allEntities', $postIDsUsed );
