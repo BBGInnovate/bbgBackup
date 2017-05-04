@@ -7034,7 +7034,7 @@ section.usa-section.bbg-banner__section {
   }
 }
 .bbg__voice--ceo {
-  background-color: #fff1d2;
+  background-color: #dce4ef;
 }
 .bbg__voice--ceo .bbg__article-icon {
   /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_blog_red@4x.png');
@@ -7052,7 +7052,10 @@ section.usa-section.bbg-banner__section {
   background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_blog_red.svg");
 }
 .bbg__voice--featured {
-  background-color: #dce4ef;
+  background-color: #fff1d2;
+}
+.bbg__voice--featured .bbg__article-icon {
+  display: none;
 }
 
 .bbg__event-announcement .bbg__article-icon {
