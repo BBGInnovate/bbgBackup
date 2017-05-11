@@ -36,7 +36,8 @@
 		if ( is_array($postIDs) && count($postIDs) > 0 ) {
 			$qParamsContactCard = array(
 				'post__in' => $postIDs,
-				'ignore_sticky_posts' => true
+				'ignore_sticky_posts' => true,
+				'post_type' => 'contact_card'
 			);
 			$custom_query = new WP_Query( $qParamsContactCard );
 			if ( $custom_query->have_posts() ) :
@@ -75,6 +76,7 @@
 			$custom_query = new WP_Query( array(
 				'post__in' => $postIDs,
 				'ignore_sticky_posts' => true,
+				'post_type' => 'contact_card',
 				// 'posts_per_page' => 1,
 				'meta_key' => 'organization',
 				'orderby' => 'meta_value',
