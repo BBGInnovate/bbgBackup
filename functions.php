@@ -11,7 +11,6 @@
 $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Special Days'),
 	get_cat_id("From the CEO"),
-	// get_cat_id('Contact'),
 	get_cat_id('Quotation'),
 	get_cat_id('Employee'),
 	get_cat_id('Intern Testimonial'),
@@ -333,7 +332,6 @@ function bbginnovate_modify_the_loop(&$query) {
 	if ( $query->is_main_query() && !is_admin() && ($query -> is_home() || $query->is_archive() ||  $query->is_feed() )) {
 
 		$termsToExclude =  array(
-			// get_cat_id('Contact'),
 			get_cat_id('Quotation'),
 			get_cat_id('Employee'),
 			get_cat_id('Intern Testimonial'),
