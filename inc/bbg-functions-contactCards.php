@@ -7,8 +7,8 @@
 		$post_original = $post;
 	    $field['choices'] = array();
 	    $qParamsContact = array(
-			'post_type' => array('post')
-			,'cat' => get_cat_id('contact')
+			'post_type' => array('contact_card')
+			// ,'cat' => get_cat_id('contact')
 			,'posts_per_page' => 100
 		);
 		$custom_query = new WP_Query( $qParamsContact );
