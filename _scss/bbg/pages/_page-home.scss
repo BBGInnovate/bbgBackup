@@ -252,7 +252,7 @@ section.usa-section.bbg-banner__section {
 	}
 	// ceo box
 	&--ceo {
-		background-color: $color-gold-lightest;
+		background-color: $color-cool-blue-lightest;
 
 		.bbg__article-icon {
 			//local image urls for dev
@@ -278,7 +278,11 @@ section.usa-section.bbg-banner__section {
 	}
 	// media advisory and other featured posts (keep default icon)
 	&--featured {
-		background-color: $color-cool-blue-lightest;
+		background-color: $color-gold-lightest;
+
+		.bbg__article-icon {
+			display: none;
+		}
 	}
 }
 
