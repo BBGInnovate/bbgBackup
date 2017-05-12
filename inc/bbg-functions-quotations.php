@@ -3,30 +3,17 @@
 		//	allEntities or rfa, rferl, voa, mbn, ocb
 		if ( $entity == 'allEntities' ) {
 			$qParams = array(
-				'post_type' => 'post',
+				'post_type' => 'quotation',
 				'post_status' => 'publish',
 				'order' => 'DESC',
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'post_format',
-						'field' => 'slug',
-						'terms' => array( 'post-format-quote' )
-					)
-				),
 				'post__not_in' => $idsToExclude
 			);
 		} else {
 			$qParams = array(
-				'post_type' => 'post',
+				'post_type' => 'quotation',
 				'post_status' => 'publish',
 				'order' => 'DESC',
 				'tax_query' => array(
-					'relation' => 'AND',
-	                array(
-				        'taxonomy' => 'post_format',
-				        'field'    => 'slug',
-				        'terms'    => array( 'post-format-quote' ),
-	                ),
 					array(
 						'taxonomy' => 'category',
 						'field' => 'slug',
