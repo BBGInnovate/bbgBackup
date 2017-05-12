@@ -58,6 +58,7 @@ if ( isset($_GET['customFieldKey']) && ($_GET['customFieldKey'] != "" )) {
  
   echo "<BR>";
 
+  $ids = array();
   $custom_query = new WP_Query( $qParams );
   if ( $custom_query->have_posts() ) :
     $counter = 0;
@@ -65,15 +66,20 @@ if ( isset($_GET['customFieldKey']) && ($_GET['customFieldKey'] != "" )) {
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
       $counter++;
       $id = get_the_ID();
+      $ids []= $id;
       $key = $_GET['customFieldKey'];
       echo "<tr><td width='175'>" . get_the_date() . "</td><td>" . get_post_type() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td><td><pre>";
       var_dump(get_post_meta($id,$key));
       echo  "</pre></td></tr>";
     endwhile;
     echo "</tbody></table>";
+    echo "<h3>IDs</h3><pre>";
+    var_dump($ids);
+    echo "</pre>";
   else: 
     echo "No results found.";
   endif;
+
 }
 
 ?>
