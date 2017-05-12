@@ -99,8 +99,11 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
       echo "<tr><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
     endwhile;
     echo "</tbody></table>";
+
      echo "<h3>IDs</h3><pre>";
-    var_dump($ids);
+    foreach ($ids as $i) {
+      echo $i . ",";
+    }
     echo "</pre>";
   else: 
     echo "No results found.";
