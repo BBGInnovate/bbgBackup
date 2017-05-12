@@ -88,14 +88,20 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   echo "<BR>";
 
   $custom_query = new WP_Query( $qParams );
+  $ids = array();
   if ( $custom_query->have_posts() ) :
     $counter = 0;
     echo "<table class='table table-striped table-bordered'><thead><th >Pub Date</th><th>Post</th><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
+     $id = get_the_ID();
+     $ids []= $id;
       $counter++;
       echo "<tr><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
     endwhile;
     echo "</tbody></table>";
+     echo "<h3>IDs</h3><pre>";
+    var_dump($ids);
+    echo "</pre>";
   else: 
     echo "No results found.";
   endif;
