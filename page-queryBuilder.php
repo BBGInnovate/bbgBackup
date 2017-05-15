@@ -91,12 +91,12 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   $ids = array();
   if ( $custom_query->have_posts() ) :
     $counter = 0;
-    echo "<table class='table table-striped table-bordered'><thead><th >Pub Date</th><th>Post</th><tbody>";
+    echo "<table class='table table-striped table-bordered'><thead><th>id</th><th >Pub Date</th><th>Post</th><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
      $id = get_the_ID();
      $ids []= $id;
       $counter++;
-      echo "<tr><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
+      echo "<tr><td width='40'>$id</td><td width='175'>" . get_the_date() . "<td><a target='_blank' href='" . get_the_permalink() . "'>" . get_the_title() . "</a></td></tr>";
     endwhile;
     echo "</tbody></table>";
 
