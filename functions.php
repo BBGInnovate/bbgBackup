@@ -13,7 +13,6 @@ $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id("From the CEO"),
 	get_cat_id('Employee'),
 	get_cat_id('Intern Testimonial'),
-	get_cat_id('Award'),
 	get_cat_id('Impact'),
 	get_cat_id('Media Development Map'),
 	get_cat_id('Media Advisory')
@@ -337,10 +336,6 @@ function bbginnovate_modify_the_loop(&$query) {
 			get_cat_id('Media Advisory')
 		);
 
-		//don't allow the awards on our news page - which is our 'is_home'
-		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'award') {
-			array_push($termsToExclude, get_cat_id('Award'));
-		}
 		if (!($query->is_archive()) || strtolower($query->query['category_name']) != 'special-days') {
 			array_push($termsToExclude, get_cat_id('Special Days'));
 		}

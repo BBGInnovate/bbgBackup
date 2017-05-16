@@ -224,17 +224,7 @@ if ( $prCategorySlug != "" ) {
 			'posts_per_page' => 5,
 			'category__and' => array( $prCategoryID ),
 			'orderby', 'date',
-			'order', 'DESC',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'post_format',
-					'field' => 'slug',
-					'terms' => 'post-format-quote',
-					'operator' => 'NOT IN'
-
-				)
-			),
-			'category__not_in' => get_cat_id( 'Award' )
+			'order', 'DESC'≈≈
 		);
 		$custom_query = new WP_Query( $qParams );
 		if ( $custom_query -> have_posts() ) {
@@ -270,6 +260,7 @@ $pageContent = str_replace( "[press releases]", $s, $pageContent );
 $awards = array();
 $qParams = array(
 	'posts_per_page' => 5,
+	'post_type' => 'award',
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'meta_key' => 'standardpost_award_recipient',
