@@ -57,6 +57,15 @@ if ($category_browser_type == "Page Children") {
 		'post_parent' => get_the_ID(),
 		'order' => 'DESC'
 	);
+} else if ($category_browser_type == "Custom Post Type") { 
+	/*** USED FOR AWARDS ****/
+	$categoryBrowsePostType=  get_post_meta( get_the_ID(), 'category_browser_post_type', true );
+	$qParams=array(
+		'post_type' => array($categoryBrowsePostType)
+		,'posts_per_page' => $postsPerPage
+		,'offset' => $offset
+		,'order' => 'DESC'
+	);
 } else {
 	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
 	$projectCatObj = get_category_by_slug($categoryToBrowse->slug); 
