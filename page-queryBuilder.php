@@ -91,7 +91,7 @@ if ( isset($_GET['qtags']) || isset($_GET['qcats']) ) {
   $ids = array();
   if ( $custom_query->have_posts() ) :
     $counter = 0;
-    echo "Returning " . $custom_query->found_posts . " results <BR>";
+    echo "<strong>Returning " . $custom_query->found_posts . " results</strong><BR><BR>";
     echo "<table class='table table-striped table-bordered'><thead><th>id</th><th >Pub Date</th><th>Post</th><tbody>";
     while ( $custom_query->have_posts() ) : $custom_query->the_post();
      $id = get_the_ID();
