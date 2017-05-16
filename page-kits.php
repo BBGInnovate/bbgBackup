@@ -27,7 +27,7 @@ if ( is_object($awardCategoryObj) ) {
 	// set up award category query parameters
 	$awardCategoryID = $awardCategoryObj -> term_id;
 	$awardParams = array(
-		'post_type' => array( 'post' ),
+		'post_type' => array( 'award' ),
 		'posts_per_page' => 1,
 		'category__and' => array( $awardCategoryID ),
 		'orderby' => 'date',
