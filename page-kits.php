@@ -29,7 +29,6 @@ if ( is_object($awardCategoryObj) ) {
 	$awardParams = array(
 		'post_type' => array( 'award' ),
 		'posts_per_page' => 1,
-		'category__and' => array( $awardCategoryID ),
 		'orderby' => 'date',
 		'order' => 'DESC'
 	);
