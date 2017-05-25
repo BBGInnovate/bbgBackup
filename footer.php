@@ -41,6 +41,9 @@
 							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
 								<a href="/news/network-highlights/newsletter-archives/signup/">Sign up</a>
 							</li>
+							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
+								<a href="/submit-your-ideas/">Submit your ideas</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
