@@ -83,16 +83,16 @@ $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 
-//Include sidebar map 
+//Include sidebar map
 
 $includeMap = get_post_meta( get_the_ID(), 'map_include', true );
 $mapLocation = get_post_meta( get_the_ID(), 'map_location', true );
 
-//fake a map location 
+//fake a map location
 if (get_post_type() == "threat_to_press") {
-	$mapLocation = get_post_meta( get_the_ID(), 'threats_to_press_coordinates', true );	
+	$mapLocation = get_post_meta( get_the_ID(), 'threats_to_press_coordinates', true );
 	if ($mapLocation) {
-		$includeMap = true;	
+		$includeMap = true;
 	}
 }
 
@@ -349,10 +349,9 @@ if( have_rows('media_dev_presenters') ):
 endif;
 
 
-
 /* Displaying award info -- not implemented yet*/
-$awardCategoryID = get_cat_id('Award');
-$isAward = has_category($awardCategoryID);
+/*$awardCategoryID = get_cat_id('Award');
+$isAward = has_category($awardCategoryID);*/
 
 if ($isProject) {
 	//$categories=get_the_category();
