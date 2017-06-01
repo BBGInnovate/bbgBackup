@@ -145,6 +145,11 @@ if( $fallenJournalists ) {
 		$id = $j->ID;
 		$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
 		$date = get_field('profile_date_of_passing', $id, true); 
+		$datePrecision = get_field('profile_date_of_passing', $id, true); 
+		if ( $datePrecision == "month" ) {
+			$dateObj = explode( "/", $date );
+			$date = $dateObj[0] . "/" . $dateObj[2];
+		}
 		$link = get_the_permalink($id);
 		$name = get_the_title($id);
 		/*** Get the profile photo mugshot ***/
