@@ -145,7 +145,7 @@ if( $fallenJournalists ) {
 		$id = $j->ID;
 		$mugshot = "/wp-content/media/2016/07/blankMugshot.png";
 		$date = get_field('profile_date_of_passing', $id, true); 
-		$datePrecision = get_field('profile_date_of_passing', $id, true); 
+		$datePrecision = get_field('profile_date_of_passing_precision', $id, true); 
 		if ( $datePrecision == "month" ) {
 			$dateObj = explode( "/", $date );
 			$date = $dateObj[0] . "/" . $dateObj[2];
