@@ -242,7 +242,7 @@ wp_reset_query();
 
 			<div class="usa-grid">
 				<header class="page-header">
-					<h5 class="bbg__label--mobile large">Threats to Press</h5>
+					<h5 class="bbg__label--mobile large"><?php echo $pageTitle; ?></h5>
 				</header><!-- .page-header -->
 			</div>
 
