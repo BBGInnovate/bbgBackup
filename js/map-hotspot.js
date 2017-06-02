@@ -35,8 +35,16 @@ var normalColors = {
 	cve: "#E67300",
 	all: "#999999"
 }
+var newColors = {
+	iran: "#b9bed3",
+	russia: "#235691",
+	china: "#1273ba",
+	cuba: "#323a46",
+	cve: "#971b1e",
+	all: "#999999"
+}
 
-colors = normalColors;
+colors = newColors;
 
 //define each sphere an dthe countires it is comprised of and influences
 var spheres = {
