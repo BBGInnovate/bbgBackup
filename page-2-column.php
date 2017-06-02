@@ -29,6 +29,14 @@ $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
+if ( have_posts() ) :
+	while ( have_posts() ) : the_post();
+		$ogDescription = get_the_excerpt();
+	endwhile;
+endif;
+wp_reset_postdata();
+wp_reset_query();
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
