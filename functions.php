@@ -213,6 +213,9 @@ function bbginnovate_scripts() {
 		wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
 		wp_enqueue_script('livereload');
 	}
+	
+	wp_enqueue_style( 'selector-css', get_stylesheet_directory_uri() . '/js/vendor/selection-sharer.css' );
+	wp_enqueue_script( 'selector-script', get_stylesheet_directory_uri() . '/js/vendor/selection-sharer.js' );
 
 }
 add_action( 'wp_enqueue_scripts', 'bbginnovate_scripts' );

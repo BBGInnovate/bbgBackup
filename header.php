@@ -105,6 +105,9 @@ $moveUSAbannerBecauseOfAlert = '';
 	<!-- other og:tags -->
 	<meta property="og:site_name" content="<?php echo get_bloginfo('name'); ?>" />
 
+	<!-- for facebook sharing -->
+	<meta property="fb:app_id" content="1288914594517692" />
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
