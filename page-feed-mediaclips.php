@@ -124,7 +124,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<?php echo "<!-- clip type is  $currentClipType -->\n"; ?>
 		<?php the_category_rss('rss2'); ?>
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
-		<description><![CDATA[<?php echo "<strong>$outletName</strong>" . " - " . $displayDate . "<BR>"; the_excerpt_rss(); ?>]]></description>
+		<description><![CDATA[<?php echo "<strong>$outletName</strong>" . " – " . $displayDate . "<BR>"; the_excerpt_rss(); ?>]]></description>
 		<?php 
 			rss_enclosure(); 
 			do_action( 'rss2_item' );
