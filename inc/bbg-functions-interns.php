@@ -40,7 +40,7 @@
 				$s .= '<img class="bbg__mugshot"  src="'.$profilePhoto.'"  />';
 				$s .= '</a>';
 			}
-			$s .= "<p>" . get_the_excerpt() . "</p>";
+			$s .= "<p>" . get_the_excerpt() . " <a href='$permalink'>READ MORE »</a></p>";
 			if ($internSchool != "") {
 				$s .= "<strong>—$internName,</strong> $internDate<br/>$internSchool";
 			} else {
