@@ -1115,7 +1115,7 @@ function getSoapboxStr( $soap ) {
 
 		// Get image object and set to mugshot size
 		if ( $profilePhotoID ) {
-			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'profile_photo' );
+			$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'medium-thumb' );
 			$profilePhoto = $profilePhoto[0];
 		}
 
@@ -1186,6 +1186,12 @@ function getSoapboxStr( $soap ) {
 		$profileName = $homepageSoapboxImageCaption;
 	}
 
+	$mugshotImageFloat = "left";
+	$homepageSoapboxImageFloat = get_field( 'homepage_soapbox_image_float', 'options' );
+	if ( $homepageSoapboxImageFloat ) {
+		$mugshotImageFloat = $homepageSoapboxImageFloat;
+	}
+
 	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
 
 		$s .= '<header class="entry-header bbg__article-icons-container">';
@@ -1208,7 +1214,7 @@ function getSoapboxStr( $soap ) {
 	$s .= '<p class="">';
 
 	if ( $profilePhoto != "" ) {
-		$s .= '<span class="bbg__mugshot"><img src="' . $profilePhoto . '" class="bbg__ceo-post__mugshot" />';
+		$s .= '<span class="bbg__mugshot" style="float: ' . $mugshotImageFloat . ' !important;"><img src="' . $profilePhoto . '" class="bbg__ceo-post__mugshot" />';
 		if ( $profileName != "" ) {
 			$s .= '<span class="bbg__mugshot__caption">' . $profileName . '</span>';
 		}
