@@ -142,6 +142,8 @@ jQuery(document).ready(function() {
          // 
         });
     }
-
-    jQuery('p, h1, h2, h3, h4').selectionSharer();
+    if(typeof(window.SelectionSharer) == "function") {
+      jQuery('p, h1, h2, h3, h4').selectionSharer();  
+    }
+    
 });
