@@ -147,25 +147,29 @@
 		$quote .= '<div class="bbg__quotation">';
 			$quote .= '<div class="bbg__quotation-label" style="background-color:' . $networkBackgroundColor . '">BBG</div>';
 			$quote .= '<h2 class="bbg__quotation-text--large"><strong>' . $title . '</strong></h2><p>' . $body . '</p>';
-			$quote .= '<hr style="width:50%; text-align:center;">';
-			$quote .= '<div class="bbg__quotation-attribution__container">';
-				$quote .= '<p class="bbg__quotation-attribution">';
-				if ( $mugshot != '' ) {
-					$quote .= '<img src="' . $mugshot . '" class="bbg__quotation-attribution__mugshot"/>';
-				}
-				$quote .= '<span class="bbg__quotation-attribution__text">';
-				if ( $callToAction != '' ) {
-					$quote .= '<span class="bbg__quotation-attribution__name">' . $callToAction . '</span>';
-				}
-				if ( $callToActionLabel != '' ) {
-					if ( $callToActionLink != '') {
-						$quote .= '<span class="bbg__quotation-attribution__credit"><a href="' . $callToActionLink . '">' . $callToActionLabel . '</a></span>';
-					} else {
-						$quote .= '<span class="bbg__quotation-attribution__credit">' . $callToActionLink . '</span>';
+
+			if ($mugshot != '' ||  $callToAction != '' || $callToActionLabel != '') {
+				$quote .= '<hr style="width:50%; text-align:center;">';
+				$quote .= '<div class="bbg__quotation-attribution__container">';
+					$quote .= '<p class="bbg__quotation-attribution">';
+					if ( $mugshot != '' ) {
+						$quote .= '<img src="' . $mugshot . '" class="bbg__quotation-attribution__mugshot"/>';
 					}
-				} 
-				$quote .= '</span></p>';
-			$quote .= '</div>';
+					$quote .= '<span class="bbg__quotation-attribution__text">';
+					if ( $callToAction != '' ) {
+						$quote .= '<span class="bbg__quotation-attribution__name">' . $callToAction . '</span>';
+					}
+					if ( $callToActionLabel != '' ) {
+						if ( $callToActionLink != '') {
+							$quote .= '<span class="bbg__quotation-attribution__credit"><a href="' . $callToActionLink . '">' . $callToActionLabel . '</a></span>';
+						} else {
+							$quote .= '<span class="bbg__quotation-attribution__credit">' . $callToActionLink . '</span>';
+						}
+					} 
+					$quote .= '</span></p>';
+				$quote .= '</div>';
+			}
+			
 		$quote .= '</div>';
 		echo $quote;
 	}
