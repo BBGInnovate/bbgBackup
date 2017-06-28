@@ -187,7 +187,7 @@ $moveUSAbannerBecauseOfAlert = '';
 		?>
 
 		<?php 
-			if ($_SERVER['HTTP_HOST'] == "bbgredesign.voanews.com"):
+			if ($_SERVER['HTTP_HOST'] == "bbgredesign.voanews.com" && !is_user_logged_in()):
 
 		?>
 			<div style="background-color:#FF0000; color:#FFFFFF; z-index:9999; position:fixed; width:100%;" class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
