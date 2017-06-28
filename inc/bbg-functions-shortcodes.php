@@ -32,8 +32,10 @@
 			if ( ! $boilerplate || $boilerplate == "" ) {
 				$boilerplate = "The Broadcasting Board of Governors is an independent federal agency supervising all U.S. government-supported, civilian international media. Its mission is to inform, engage and connect people around the world in support of freedom and democracy. BBG networks include the Voice of America, Radio Free Europe/Radio Liberty, the Middle East Broadcasting Networks (Alhurra TV and Radio Sawa), Radio Free Asia, and the Office of Cuba Broadcasting (Radio and TV Martí). BBG programming has a measured audience of [audience] in more than [countries] and in [languages].";
 			}
-
-        } else {
+        } else if ( $orgName == "ct" ) {
+        	$fullName = "Current Time";
+			$boilerplate = "<p>Current Time is a 24/7 Russian-language television and digital network aimed at providing fact-based news and information to Russian speakers in Eurasia and beyond. The network, <strong>launched by RFE/RL with support from VOA</strong>, provides viewers with an alternative to Kremlin-sponsored media when it comes to fractious or underreported issues such as Crimea, the war in Ukraine, and Russia sanctions, as well as evergreen social issues like corruption, labor migration, and minority rights.</p><p>Current Time Television currently broadcasts to <strong>14 countries</strong> including Russia, Ukraine, Moldova, the Baltics, parts of Central Asia, and Israel. Current Time’s dynamic digital platforms have built an audience among young news consumers as well. Current Time’s video products were viewed more than 160 million times in the first five months of 2017—with half of the views coming from inside Russia itself.";
+		} else {
         	$entityParentPage = get_page_by_path('networks');
 
 			$qParams = array(
@@ -181,8 +183,8 @@
 	add_shortcode('programming', 'programming_shortcode');
 
 	/**
-	 * Add shortcode reference for the most recent requested budget. 
-	 * Comes from custom field set in 'BBG settings'. 
+	 * Add shortcode reference for the most recent requested budget.
+	 * Comes from custom field set in 'BBG settings'.
 	 * Used on the Rumors, Myths and Untruths page.
 	 * @return number rounded to nearest integer
 	 */
@@ -192,7 +194,7 @@
 
 		// set variables based on custom fields
 	    $budget = get_field( 'site_setting_annual_budgets', 'options', 'false' );
-	    
+
 	    /**** sort the budgets so that they are in order of fiscal year descending ***/
 	    function cmpFiscalYear($a, $b) {
 		    return ($b['fiscal_year'] - $a['fiscal_year']);
@@ -362,6 +364,6 @@
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
 
-	
+
 
 ?>
