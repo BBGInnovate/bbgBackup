@@ -1286,4 +1286,10 @@ function wp_embed_handler_rferl( $matches, $attr, $url, $rawattr ) {
 	return $embed;
 }
 
+function my_acf_init() {
+	//see https://www.advancedcustomfields.com/resources/google-map/ - this is for backend Google Maps custom field usage
+	acf_update_setting('google_api_key', 'AIzaSyDOdFiB1nc6J-XeeTnQisIfYonl3UHUNgQ');
+}
+add_action('acf/init', 'my_acf_init'); 
+
 ?>
