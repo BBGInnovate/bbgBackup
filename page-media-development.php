@@ -58,6 +58,7 @@ if ( $custom_query->have_posts() ) :
 		$counter = 0;
 		$imgCounter=0;
 		$trainingByYear=array();
+		$errorStr = "";
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 			$id = get_the_ID();
 			$location = get_post_meta( $id, 'media_dev_coordinates', true );
@@ -119,7 +120,9 @@ if ( $custom_query->have_posts() ) :
 			$popupBody .= "<BR><BR>" . $mapDescription . " &nbsp;&nbsp;<a style='font-weight:bold;' href='$storyLink' target='_blank'>Read More &gt; &gt;</a>";
 
 			$pinColor = "#FF0000";
-			
+			if ( !isset($location['lng']) || !isset($location['lat'])) {
+				$errorStr .= "<!-- check lat/lng for " . $mapHeadline . " -->\n";
+			}
 			$features[] = array(
 				'type' => 'Feature',
 				'geometry' => array( 
@@ -166,6 +169,7 @@ if ( $custom_query->have_posts() ) :
 			}
 		}
 		$trainingStr=$s;
+		$trainingStr .= $errorStr;
 
 
 		// echo "<pre>";
