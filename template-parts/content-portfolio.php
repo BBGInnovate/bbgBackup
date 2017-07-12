@@ -54,10 +54,11 @@ if ( isset($_GET['category_id']) ) {
 				}
 				echo $thumbnail;
 
-				echo buildLabel(implode(get_post_class($classNames)));	//check bbg-functions-utilities
+
 			?>
 			</a>
 		</div>
+		<?php echo buildLabel(implode(get_post_class($classNames)));	//check bbg-functions-utilities ?>
 		<?php the_title( sprintf( $linkH3, $postPermalink ), '</a></h3>' ); ?>
 
 		<?php if ( 'post' === get_post_type() ) : ?>
