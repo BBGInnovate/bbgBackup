@@ -172,7 +172,7 @@
 			$labelText = "EVENT";
 		}
 		if ( $labelText != "" ) {
-			$label = "<div><a class='bbg__label_inverted'>" . $labelText . "</a></div>";
+			$label = "<div class='bbg__label_inverted'>$labelText</div>";
 		}
 		return $label;
 	}

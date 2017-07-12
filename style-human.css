@@ -5496,6 +5496,7 @@ img > a:focus,
   display: inline-block;
   font-size: 1.7rem;
   padding: .5rem 1rem;
+  margin-top: 1rem;
 }
 .bbg__label_inverted a {
   color: #FFF;
