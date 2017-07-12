@@ -41,6 +41,9 @@ if ( isset($_GET['category_id']) ) {
 	?>
 		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
 			<?php
+				
+				echo buildLabel($classNames);	//check bbg-functions-utilities
+
 				echo $linkImage;
 
 				/* Set a default thumbnail image in case one isn't set */

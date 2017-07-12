@@ -156,6 +156,26 @@
 			return $this->array;
 		}
 	}
+	
+	function buildLabel($classNames) {
+		$labelText = "";
+		$label = "";
+		if (stristr($classNames, "category-remarks")) {
+			$labelText = "REMARKS";
+		} elseif (stristr($classNames, "category-statement")) {
+			$labelText = "STATEMENT";
+		} elseif (stristr($classNames, "category-appearance")) {
+			$labelText = "APPEARANCE";
+		} elseif (stristr($classNames, "category-oped")) {
+			$labelText = "OP-ED";
+		} elseif (stristr($classNames, "category-event")) {
+			$labelText = "EVENT";
+		}
+		if ( $labelText != "" ) {
+			$label = "<div><a class='bbg__label_inverted'>" . $labelText . "</a></div>";
+		}
+		return $label;
+	}
 	/****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
 
 ?>
