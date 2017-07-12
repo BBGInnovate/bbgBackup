@@ -273,7 +273,7 @@ get_header(); ?>
 							if ( $relatedLinksTag != "" ) {
 								$qParams2=array(
 									'post_type' => array('post'),
-									'posts_per_page' => 5,
+									'posts_per_page' => 4,
 									'tag' => $relatedLinksTag,
 									'orderby' => 'date',
 									'order' => 'DESC'
@@ -289,6 +289,9 @@ get_header(); ?>
 										echo '<li class="bbg__profile__related-link"><a href="' . $link . '">' . $title . '</a></li>';
 									}
 									echo "</ul>";
+									$viewAllLink = get_term_link( $relatedLinksTag, 'post_tag' );
+									echo "<a class='bbg__read-more' href='" . $viewAllLink . "'>VIEW ALL »</a>";
+
 								}
 								wp_reset_postdata();
 							}
