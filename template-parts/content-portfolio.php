@@ -42,7 +42,7 @@ if ( isset($_GET['category_id']) ) {
 		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
 			<?php
 				
-				echo buildLabel(implode(get_post_class($classNames)));	//check bbg-functions-utilities
+				
 
 				echo $linkImage;
 
@@ -53,6 +53,8 @@ if ( isset($_GET['category_id']) ) {
 					$thumbnail = the_post_thumbnail( 'medium-thumb' );
 				}
 				echo $thumbnail;
+
+				echo buildLabel(implode(get_post_class($classNames)));	//check bbg-functions-utilities
 			?>
 			</a>
 		</div>
