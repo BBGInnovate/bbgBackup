@@ -170,6 +170,8 @@
 			$labelText = "OP-ED";
 		} elseif (stristr($classNames, "category-event")) {
 			$labelText = "EVENT";
+		} elseif (stristr($classNames, "category-from-the-ceo")) {
+			$labelText = "BLOG";
 		}
 		if ( $labelText != "" ) {
 			$label = "<div class='bbg__label_inverted'>$labelText</div>";
