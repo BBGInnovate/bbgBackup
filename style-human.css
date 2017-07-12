@@ -5073,6 +5073,7 @@ e.g. on the intern testimonial page */
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 80%;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 600px) {
