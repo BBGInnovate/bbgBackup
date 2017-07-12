@@ -178,6 +178,18 @@ img,
 	}
 }
 
+.bbg__label_inverted {
+	background-color: $color-secondary-darkest;
+	color: #FFF;
+	display: inline-block;
+	font-size: 1.7rem;
+	padding: .5rem 1rem;
+
+	a { 
+		color: #FFF;
+	}
+}
+
 // .usa-label variants (colors)
 .bbg__label--advisory {
 	background-color: $color-primary-darker; // dark blue

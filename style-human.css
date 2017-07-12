@@ -5490,6 +5490,17 @@ img > a:focus,
   margin-bottom: 1rem;
 }
 
+.bbg__label_inverted {
+  background-color: #981b1e;
+  color: #FFF;
+  display: inline-block;
+  font-size: 1.7rem;
+  padding: .5rem 1rem;
+}
+.bbg__label_inverted a {
+  color: #FFF;
+}
+
 .bbg__label--advisory {
   background-color: #205493;
 }
