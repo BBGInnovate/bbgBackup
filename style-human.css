@@ -7588,6 +7588,7 @@ section.usa-section.bbg-banner__section {
 }
 */
 .bbg__profile-excerpt__photo {
+  border: 1px solid #CCC;
   float: left;
   margin-top: 1rem;
   margin-right: 1rem;
