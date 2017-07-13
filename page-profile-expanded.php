@@ -82,9 +82,7 @@ get_header(); ?>
 	<div id="primary" class="content-area bbg__profile">
 		<main id="main" class="site-main" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php
+		<?php while ( have_posts() ) : the_post(); 
 
 			$projectCategoryID = get_cat_id('Project');
 			$isProject = has_category($projectCategoryID);
@@ -185,7 +183,7 @@ get_header(); ?>
 
 
 
-					<div class="entry-content bbg__article-content largeXXX <?php echo $featuredImageClass; ?>">
+					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
 						<div class="bbg__profile__content">
 						<?php the_content(); ?>
 
@@ -230,41 +228,41 @@ get_header(); ?>
 
 					</div><!-- .entry-content -->
 
-					<div class="bbg__article-sidebar largeXXX">
+					<div class="bbg__article-sidebar">
 						<?php
-						if ($email != "" || $phone != ""){
-						?>
-							<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>
-						<?php } elseif ($twitterProfileHandle != "") {?>
-							<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>
-						<?php } ?>
+							
+							//Nasserie Carew is an example that has an email. Currently, phone number is not used on any profiles
+							if ($email != "" || $phone != ""){
+							
+								echo '<h3 class="bbg__sidebar-label bbg__contact-label">Contact </h3>';
+								echo '<ul class="bbg__article-share">';
 
-						<?php
-							// Insert standard sidebar
+								if ($email != ""){
+									echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
+								}
+
+								if ($phone != ""){
+									echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>';
+								}
+								echo '</ul>';
+							}
+
+							//If a twitter handle is filled out, we always show it. We only show recent tweets if it's enabled in the profile page. 
+							//Examples including latest tweets are CEO Lansing and Director Amanda Bennett
+							if ($twitterProfileHandle != "") {
+								echo '<h3 class="bbg__sidebar-label bbg__contact-label">Follow on Twitter</h3>';
+								echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
+								echo $latestTweetsStr;	//see top of this page template for definition of this string
+							}
+
+							// Insert standard sidebar content
+							// See Secretary of State Rex Tillerson for  an example 
 							echo "<!-- Sidebar content -->";
 							if ( $includeSidebar && $sidebarTitle != "" ) {
 								echo $sidebar;
 							}
-						?>
 
-						<ul class="bbg__article-share">
-						<?php
-						if ($email != ""){
-							echo '<li class="bbg__article-share__link email"><a href="mailto:'.$email.'" title="Email '.get_the_title().'"><span class="bbg__article-share__icon email"></span><span class="bbg__article-share__text">'.$email.'</span></a></li>';
-						}
-						if ($twitterProfileHandle != ""){
-							echo '<li class="bbg__article-share__link twitter"><a href="https://twitter.com/'.$twitterProfileHandle.'" title="Follow '.get_the_title().' on Twitter"><span class="bbg__article-share__icon twitter"></span><span class="bbg__article-share__text">@'.$twitterProfileHandle.'</span></a></li>';
-						}
-
-						if ($phone != ""){
-							echo '<li class="bbg__article-share__link phone"><span class="bbg__article-share__icon phone"></span><span class="bbg__article-share__text">'.$phone.'</span></li>';
-						}
-						?>
-						</ul>
-						<?php echo $latestTweetsStr; ?>
-
-						<?php
-
+							//Some board members were given a resolution of honor. For example, see Victor Ashe
 							if ($resolution) {
 								echo '<h3 class="bbg__sidebar-label">Resolution of Honor</h3>';
 								echo "<p><a href='" . $resolution['url'] ."'>" . $resolution['title'] .'</a></p>';
@@ -296,14 +294,10 @@ get_header(); ?>
 								wp_reset_postdata();
 							}
 						?>
-
 					</div><!-- .bbg__article-sidebar -->
 				</div><!-- .usa-grid -->
-
 			</article><!-- #post-## -->
-
 		<?php endwhile; // End of the loop. ?>
-
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
