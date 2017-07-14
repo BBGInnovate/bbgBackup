@@ -363,7 +363,34 @@
 
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
+	function transcript_list_shortcode() {
+		$the_query = new WP_Query( array(
+			'post_type' => 'attachment',
+    		'post_status' => 'inherit',	//for some reason, this is required
+			'posts_per_page' => 3,
+			'tax_query' => array(
+				array (
+					'taxonomy' => 'media_category',
+					'field' => 'slug',
+					'terms' => array('transcript'),
+					'operator' => 'IN'
+				)
+			),
+		) );
+		$str = "";
+		while ( $the_query->have_posts() ) :
+		    $the_query->the_post();
+			$link = get_permalink();
+			$title = get_the_title();
 
+			$str .= "<a href='$link'>$title</a><BR>";
+		endwhile;
+
+		wp_reset_postdata();		
+		return $str;
+	}
+
+	add_shortcode('transcript_list', 'transcript_list_shortcode'); 
 
 
 ?>
