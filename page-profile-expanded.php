@@ -258,7 +258,7 @@ get_header(); ?>
 							// Insert standard sidebar content
 							// See Secretary of State Rex Tillerson for  an example 
 							echo "<!-- Sidebar content -->";
-							if ( $includeSidebar && $sidebarTitle != "" ) {
+							if ( $includeSidebar) {
 								echo $sidebar;
 							}
 
