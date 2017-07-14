@@ -15,21 +15,17 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-
 				<?php get_template_part( 'author-bio' ); ?>
 
-
-				<?php /* Start the Loop */ 
-					$counter=0;
+				<?php /* Start the Loop */
+					$counter = 0;
 				?>
 				<div>
 				<section class="usa-section usa-grid">
 				<?php while ( have_posts() ) : the_post(); ?>
 
-
-
-					<?php 
-						$counter=$counter+1;
+					<?php
+						$counter = $counter + 1;
 						$gridClass = "";
 						if ($counter < 2) {
 							$gridClass = "bbg-grid--1-2-2";
@@ -40,7 +36,7 @@ get_header(); ?>
 							echo '</section>';
 							echo '<section class="usa-section usa-grid">';
 						} else {
-							$gridClass = " ";
+							$gridClass = "";
 							$includeMeta = FALSE;
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 						}
@@ -49,7 +45,6 @@ get_header(); ?>
 				<?php endwhile; ?>
 					</section>
 				</div>
-
 
 			<?php else : ?>
 				<?php get_template_part( 'author-bio' ); ?>

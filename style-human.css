@@ -4821,7 +4821,7 @@ ul.bbg__article-content__list--inline li:before, ul.bbg__article-content__list--
   background-image: url(img/social-icons/png/linkedin-icon.png);
   background-image: url(img/social-icons/svg/linkedin-icon.svg);
 }
-.bbg__related-links a[href*="youtube.com/watch?"] {
+.bbg__related-links a[href*="youtu.be/"], .bbg__related-links a[href*="youtube.com/watch?"], .bbg__related-links a[href*="youtube.com/playlist?"] {
   background-image: url(img/social-icons/png/youtube-icon.png);
   background-image: url(img/social-icons/svg/youtube-icon.svg);
 }

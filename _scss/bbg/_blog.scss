@@ -342,7 +342,9 @@ ul.bbg__article-content__list--inline {
 		}
 
 		//YouTube links
-		&[href*="youtube.com/watch?"] {
+		&[href*="youtu.be/"],
+		&[href*="youtube.com/watch?"],
+		&[href*="youtube.com/playlist?"] {
 			background: {
 				image: url(img/social-icons/png/youtube-icon.png);
 				image: url(img/social-icons/svg/youtube-icon.svg);
