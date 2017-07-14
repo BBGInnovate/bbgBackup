@@ -51,7 +51,7 @@ if ( $includeSidebar ) {
 				}
 
 				$sidebarDownload = "";
-				$sidebarDownload = "<a href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a> <span class='bbg__file-size'>($ext, $filesize)</span></h5>" . $sidebarDescription;
+				$sidebarDownload = "<a target='_blank' href='" . $sidebarDownloadLink . "'>" . $sidebarImage . "</a><h5 class='bbg__sidebar__download__title'><a target='_blank' href='" . $sidebarDownloadLink . "'>" . $sidebarDownloadTitle . "</a> <span class='bbg__file-size'>($ext, $filesize)</span></h5>" . $sidebarDescription;
 
 				$s .= "<div class='bbg__sidebar__download'>" . $sidebarDownload . "</div>";
 			/* END DOWNLOAD FILES */
@@ -511,7 +511,7 @@ if ( $listsInclude ) {
 										$sidebarDownloadsLinkName = $name;
 									}
 
-								$s .= "<li><h5 class='bbg__sidebar__download__title'><a href='" . $fileLink . "'>" . $sidebarDownloadsLinkName . "</a> <span class='bbg__file-size'>(" . $ext . ", " . $size . ")</span>" . "</h5></li>";
+								$s .= "<li><h5 class='bbg__sidebar__download__title'><a target='_blank' href='" . $fileLink . "'>" . $sidebarDownloadsLinkName . "</a> <span class='bbg__file-size'>(" . $ext . ", " . $size . ")</span>" . "</h5></li>";
 							}
 						$s .= "</ul>";
 					}
