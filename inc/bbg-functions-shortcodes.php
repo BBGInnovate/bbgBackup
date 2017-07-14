@@ -363,11 +363,16 @@
 
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
-	function transcript_list_shortcode() {
+	function transcript_list_shortcode($atts) {
+		
+		$limit = 0;
+		if (isset($atts['limit'])) {
+	    	$limit = $atts['limit'];
+	    }
 		$the_query = new WP_Query( array(
 			'post_type' => 'attachment',
     		'post_status' => 'inherit',	//for some reason, this is required
-			'posts_per_page' => 99,
+			'posts_per_page' => $limit,
 			'tax_query' => array(
 				array (
 					'taxonomy' => 'media_category',
@@ -376,23 +381,33 @@
 					'operator' => 'IN'
 				)
 			),
+			'meta_key'			=> 'transcript_appearance_date',
+			'orderby'			=> 'meta_value',
+			'order'				=> 'DESC'
 		) );
 		$str = "";
 		while ( $the_query->have_posts() ) :
 		    $the_query->the_post();
 			$link = get_permalink();
+			$link = wp_get_attachment_url( get_post_thumbnail_id() );
 			$title = get_the_title();
 			$excerpt = get_the_content();
+
 			$date = get_field('transcript_appearance_date', get_the_ID(), true);
 			$relatedPost = get_field('transcript_related_post', get_the_ID(), true);
-			$p = $relatedPost[0];
+			$p = false;
+			if (is_array($relatedPost)) {
+				$p = $relatedPost[0];
+			}
 			$str .= '<article class="bbg-blog__excerpt--list">';
 			$str .= '<header class="entry-header bbg-blog__excerpt-header">';
-			$str .= '<h3 class="entry-title bbg-blog__excerpt-title--list  selectionShareable"><a href="' . $link . '" rel="bookmark">' . $title . '</a></h3>';
+			$str .= '<h3 class="entry-title bbg-blog__excerpt-title--list  selectionShareable"><a target="_blank" href="' . $link . '" rel="bookmark">' . $title . '</a></h3>';
 			$str .= '</header><!-- .bbg-blog__excerpt-header -->';
 			$str .= '<div class="entry-content bbg-blog__excerpt-content">';
+			if ($p) {
+				$str .= '<div style="margin-bottom: 1rem;" ><a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';	
+			}
 			$str .= '<div class="posted-on bbg__excerpt-meta" ><time class="entry-date published updated">' . $date . '</time></div>';
-			$str .= '<div >Appears in: <a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';
 			$str .= '<p>' . $excerpt . '</p>';
 			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
 			$str .= '</article>';
