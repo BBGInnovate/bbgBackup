@@ -367,7 +367,7 @@
 		$the_query = new WP_Query( array(
 			'post_type' => 'attachment',
     		'post_status' => 'inherit',	//for some reason, this is required
-			'posts_per_page' => 3,
+			'posts_per_page' => 99,
 			'tax_query' => array(
 				array (
 					'taxonomy' => 'media_category',
@@ -382,8 +382,15 @@
 		    $the_query->the_post();
 			$link = get_permalink();
 			$title = get_the_title();
-
-			$str .= "<a href='$link'>$title</a><BR>";
+			$excerpt = get_the_content();
+			$str .= '<article class="bbg-blog__excerpt--list">';
+			$str .= '<header class="entry-header bbg-blog__excerpt-header">';
+			$str .= '<h3 class="entry-title bbg-blog__excerpt-title--list  selectionShareable"><a href="' . $link . '" rel="bookmark">' . $title . '</a></h3>';
+			$str .= '</header><!-- .bbg-blog__excerpt-header -->';
+			$str .= '<div class="entry-content bbg-blog__excerpt-content">';
+			$str .= '<p>' . $excerpt . '</p>';
+			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
+			$str .= '</article>';
 		endwhile;
 
 		wp_reset_postdata();		
