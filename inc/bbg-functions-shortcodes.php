@@ -383,11 +383,16 @@
 			$link = get_permalink();
 			$title = get_the_title();
 			$excerpt = get_the_content();
+			$date = get_field('transcript_appearance_date', get_the_ID(), true);
+			$relatedPost = get_field('transcript_related_post', get_the_ID(), true);
+			$p = $relatedPost[0];
 			$str .= '<article class="bbg-blog__excerpt--list">';
 			$str .= '<header class="entry-header bbg-blog__excerpt-header">';
 			$str .= '<h3 class="entry-title bbg-blog__excerpt-title--list  selectionShareable"><a href="' . $link . '" rel="bookmark">' . $title . '</a></h3>';
 			$str .= '</header><!-- .bbg-blog__excerpt-header -->';
 			$str .= '<div class="entry-content bbg-blog__excerpt-content">';
+			$str .= '<div class="posted-on bbg__excerpt-meta" ><time class="entry-date published updated">' . $date . '</time></div>';
+			$str .= '<div >Appears in: <a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';
 			$str .= '<p>' . $excerpt . '</p>';
 			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
 			$str .= '</article>';
