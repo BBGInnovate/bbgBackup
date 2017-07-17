@@ -4398,7 +4398,7 @@ body:not(.home) .bbg__main-navigation {
 
 .bbg__staff__author-name {
   clear: none;
-  font-size: 2.4rem;
+  font-size: 3rem;
   line-height: 1;
   margin-top: 1rem;
   margin-bottom: .1rem;
@@ -4463,18 +4463,16 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
-.bbg__staff__author-bio {
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
-  line-height: 1.8;
-  margin-top: 1rem;
+.bbg__staff__author-occupation {
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 @media screen and (min-width: 481px) {
-  .bbg__staff__author-bio {
-    font-size: 1.8rem;
-    font-weight: 300;
-    margin-top: 2rem;
-    margin-left: 110px;
-    max-width: 600px;
+  .bbg__staff__author-occupation {
+    padding-left: 110px;
+    text-align: left;
   }
 }
 
@@ -4490,54 +4488,19 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
-.bbg__staff__author-occupation {
-  font-weight: 300;
-  margin-bottom: 2rem;
-  text-align: center;
-  text-transform: uppercase;
+.bbg__staff__author-bio {
+  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  line-height: 1.8;
+  margin-top: 1rem;
 }
 @media screen and (min-width: 481px) {
-  .bbg__staff__author-occupation {
-    padding-left: 110px;
-    text-align: left;
+  .bbg__staff__author-bio {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 2rem;
+    margin-left: 110px;
+    max-width: 600px;
   }
-}
-
-.bbg__staff__author-projects {
-  margin-top: 2rem;
-}
-@media screen and (min-width: 481px) {
-  .bbg__staff__author-projects {
-    padding-left: 110px;
-  }
-}
-@media screen and (min-width: 600px) {
-  .bbg__staff__author-projects {
-    padding-left: 0;
-    margin-top: 3.5rem;
-  }
-}
-
-.bbg__staff__author-projects__list {
-  display: block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0;
-  padding-left: 2rem;
-}
-.bbg__staff__author-projects__list li {
-  display: list-item;
-  margin: 0;
-}
-.bbg__staff__author-projects__list li:before {
-  display: none;
-}
-.bbg__staff__author-projects__list li:after {
-  display: none;
-}
-.bbg__staff__author-projects__list li {
-  list-style: disc;
 }
 
 /** HEADER AREA */

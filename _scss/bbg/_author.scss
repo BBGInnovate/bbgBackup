@@ -36,7 +36,6 @@
 	}
 }
 
-
 //Styles for the team icons
 .bbg__entity,
 .bbg__team {
@@ -69,11 +68,10 @@
 	margin: 0 auto 2.5rem;
 	width: $bbg__team__icon-width;
 
-	@include media($small-screen)  {
+	@include media($small-screen) {
 		margin-bottom: 0;
 	}
 }
-
 
 .bbg__entity__text,
 .bbg__team__text {
@@ -106,29 +104,22 @@
 			height: $bbg__avatar-small;
 			width: $bbg__avatar-small;
 		}
-
 		.bbg__entity__text,
 		.bbg__team__text {
 			padding-left: $bbg__avatar-small + 10px;
 		}
-
 		.bbg__entity__name,
 		.bbg__team__name {
 			font-size: 2.3rem;
 		}
-
-
 	}
 }
-
 
 .usa-intro.bbg__broadcasters__intro {
 	margin-bottom: $site-margins;
 }
 
-
-
-//staff page author profiles
+// Author section on author archive page
 .bbg__staff__author {
 	margin-bottom: $site-margins;
 
@@ -141,17 +132,9 @@
 	width: 100%;
 }
 
-.bbg__staff__author-bio {
-}
-
-.bbg__staff__author-bio {
-	@extend .readin;
-}
-
-
-.bbg__staff__author-name{
+.bbg__staff__author-name {
 	clear: none;
-	font-size: $h2-font-size * .8;
+	font-size: $h2-font-size;
 	line-height: 1;
 	margin: {
 		top: 1rem;
@@ -187,7 +170,9 @@
 	}
 }
 
-
+.bbg__staff__author-bio {
+	@extend .readin;
+}
 
 .bbg__staff__roster .bbg__staff__author-bio {
 	font-size: $read-in-font-size * .8;
@@ -196,8 +181,7 @@
 
 
 /* Individual author page */
-
-.bbg__staff__author-name{
+.bbg__staff__author-name {
 	clear: none;
 	font-size: $h2-font-size * .8;
 	line-height: 1;
@@ -218,20 +202,15 @@
 	}
 }
 
-.bbg__staff__author-bio {
-	font-family: $font-serif;
-	line-height: 1.8;
-	margin-top: 1rem;
+.bbg__staff__author-occupation {
+	font-weight: $font-light;
+	margin-bottom: $site-margins-medium;
+	text-align: center;
+	text-transform: uppercase;
 
 	@include media($small-screen) {
-		font-size: 1.8rem;
-		font-weight: 300;
-
-		margin: {
-			top: 2rem;
-			left: $bbg__team__icon-width + 10px;
-		}
-		max-width: $article-max-width;
+		padding-left: $bbg__team__icon-width + 10px;
+		text-align: left;
 	}
 }
 
@@ -246,37 +225,18 @@
 	}
 }
 
-.bbg__staff__author-occupation {
-	font-weight: $font-light;
-	margin-bottom: $site-margins-medium-plus;
-	text-align: center;
-	text-transform: uppercase;
+.bbg__staff__author-bio {
+	font-family: $font-serif;
+	line-height: 1.8;
+	margin-top: 1rem;
 
 	@include media($small-screen) {
-		padding-left: $bbg__team__icon-width + 10px;
-		text-align: left;
+		font-size: 1.8rem;
+		font-weight: 300;
+		margin: {
+			top: 2rem;
+			left: $bbg__team__icon-width + 10px;
+		}
+		max-width: $article-max-width;
 	}
-}
-
-.bbg__staff__author-projects {
-	margin-top: 2rem;
-
-	@include media($small-screen) {
-		padding-left: $bbg__team__icon-width + 10px;
-	}
-
-	@include media($medium-screen) {
-		padding-left: 0;
-		margin-top: 3.5rem;
-	}
-}
-
-.bbg__staff__author-projects__list {
-	@include unstyled-list();
-
-	li {
-		list-style: disc;
-	}
-	margin-bottom: 0;
-	padding-left: 2rem;
 }

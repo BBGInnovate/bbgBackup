@@ -9,7 +9,7 @@
  * @package bbgRedesign
  */
 
-/* ODDI CUSTOM: several variables can be passed into the header */ 
+/* ODDI CUSTOM: several variables can be passed into the header */
 global $ogImage, $ogTitle, $ogDescription, $ogUrl;
 global $pageBodyID, $metaAuthor, $metaAuthorTwitter, $metaKeywords;
 global $templateName;
@@ -48,14 +48,14 @@ if (! isset( $ogUrl ) ) {
 }
 
 /* remove smart quotes from title */
-//$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);  
+//$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);
 $ogTitle = convertSmartQuotes($ogTitle);
 
 /* remove html tags, smart quotes and trailing ellipses from description */
-$ogDescription = wp_strip_all_tags($ogDescription); 
-//$ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription); 
+$ogDescription = wp_strip_all_tags($ogDescription);
+//$ogDescription = iconv('UTF-8', 'ASCII//TRANSLIT', $ogDescription);
 $ogDescription = convertSmartQuotes($ogDescription);
-$ogDescription = str_replace("[&hellip;]", "...", $ogDescription); 
+$ogDescription = str_replace("[&hellip;]", "...", $ogDescription);
 $ogDescription = str_replace('"','&quot;',$ogDescription);
 
 $sitewideAlert = get_field('sitewide_alert', 'option');
@@ -135,6 +135,9 @@ $moveUSAbannerBecauseOfAlert = '';
 	<!-- picturefill - polyfill for srcset sizes on older and/or mobile browsers -->
 	<script src="<?php echo get_template_directory_uri() ?>/js/vendor/picturefill.min.js"></script>
 
+	<!-- FortAwesome kit of 20 Font Awesome icons -->
+	<script src="https://use.fortawesome.com/e3cb8134.js"></script>
+
 
 <!-- Favicons
 ================================================== -->
@@ -173,7 +176,7 @@ $moveUSAbannerBecauseOfAlert = '';
 			$moveUSAbannerBecauseOfAlert = " bbg__site-alert--active";
 			echo '<div class="bbg__site-alert">';
 			if ($sitewideAlertLink != "") {
-				
+
 				$targetStr="";
 				if ($sitewideAlertNewWindow && $sitewideAlertNewWindow != "") {
 					$targetStr = " target ='_blank' ";
@@ -186,21 +189,21 @@ $moveUSAbannerBecauseOfAlert = '';
 		}
 		?>
 
-		<?php 
+		<?php
 			if ($_SERVER['HTTP_HOST'] == "bbgredesign.voanews.com" && !is_user_logged_in()):
 
 		?>
 			<div style="background-color:#FF0000; color:#FFFFFF; z-index:9999; position:fixed; width:100%;" class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
 			<div class="usa-grid">
 				<span class="usa-disclaimer-official">
-					Development server.  Content may be dated or innacurate.  
+					Development server.  Content may be dated or innacurate.
 				</span>
 			</div>
 		</div>
-		<?php 
+		<?php
 			endif;
 		?>
-		
+
 		<div class="usa-disclaimer<?php echo $moveUSAbannerBecauseOfAlert; ?>">
 			<div class="usa-grid">
 				<span class="usa-disclaimer-official">
@@ -216,7 +219,7 @@ $moveUSAbannerBecauseOfAlert = '';
 
 
 
-		<?php 
+		<?php
 			/* exclude default site-branding on the custom home page */
 			if ($templateName!="customBBGHome"){
 		?>
@@ -241,7 +244,7 @@ $moveUSAbannerBecauseOfAlert = '';
 		<?php } ?>
 
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
-			<?php 
+			<?php
 
 			$btnSearch = "<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
 			$btnSearch = "";
@@ -256,9 +259,9 @@ $moveUSAbannerBecauseOfAlert = '';
 			$searchBox .= '</div>';
 			$searchBox .= '</form>';
 
-			wp_nav_menu( array( 
-				'theme_location' => 'primary', 
-				'menu_id' => 'primary-menu', 
+			wp_nav_menu( array(
+				'theme_location' => 'primary',
+				'menu_id' => 'primary-menu',
 				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul><div class="bbg__main-navigation__search">' . $searchBox . '</div>',
 				'walker' => new bbginnovate_walker_header_usa_menu() ) ); ?>
 		</nav><!-- #site-navigation -->

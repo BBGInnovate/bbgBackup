@@ -22,63 +22,53 @@ get_header(); ?>
 					</header><!-- .page-header -->
 				</div>
 
-
-				<?php /* Start the Loop */ 
+				<?php /* Start the Loop */
 					$counter = 0;
-				?>
-
-
-
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php
+					while ( have_posts() ) : the_post();
 						$counter++;
-						/*
+						/*if( $counter == 1 ) {
+							echo '<div class="usa-grid-full">';
+							echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
+						} elseif( $counter==3 ){
+							echo '</div><!-- left column -->';
+							echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
+							echo '<header class="page-header">';
+							echo '<h6 class="page-title bbg__label small">More news</h6>';
+							echo '</header>';
 
-							if( $counter == 1 ) {
-								echo '<div class="usa-grid-full">';
-								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-							} elseif( $counter==3 ){
-								echo '</div><!-- left column -->';
-								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-								echo '<header class="page-header">';
-								echo '<h6 class="page-title bbg__label small">More news</h6>';
-								echo '</header>';
+							//These values are used for every excerpt >=4
+							$includeImage = FALSE;
+							$includeMeta = FALSE;
+							$includeExcerpt=FALSE;
+						}
 
-								//These values are used for every excerpt >=4
-								$includeImage = FALSE;
-								$includeMeta = FALSE;
-								$includeExcerpt=FALSE;
-							}
-							
+						get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+						*/
 
-							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
-							*/
-													//Add a check here to only show featured if it's not paginated.
-						if (  (!is_paged() && $counter==1 || is_category('BBG360')) ){
+						//Add a check here to only show featured if it's not paginated.
+						if ( (!is_paged() && $counter == 1 || is_category('BBG360')) ){
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 						} else {
-							if( (!is_paged() && $counter == 2) || (is_paged() && $counter==1) ){
+							if( (!is_paged() && $counter == 2) || (is_paged() && $counter == 1) ){
 								echo '</div>';
 								echo '<div class="usa-grid">';
-								echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
-							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter==3)){
+									echo '<div class="bbg-grid--1-1-1-2 secondary-stories">';
+							} elseif( (!is_paged() && $counter == 4) || (is_paged() && $counter == 3)){
 								echo '</div><!-- left column -->';
 								echo '<div class="bbg-grid--1-1-1-2 tertiary-stories">';
-								echo '<header class="page-header">';
-								$moreLabel = "More News";
-								
-								if (is_category('Board Meetings')) {
-									$moreLabel = "More Board Meetings";
-								}
-								echo '<h6 class="page-title bbg__label small">' . $moreLabel . '</h6>';
-								echo '</header>';
+									echo '<header class="page-header">';
+									$moreLabel = "More News";
+
+									if (is_category('Board Meetings')) {
+										$moreLabel = "More Board Meetings";
+									}
+										echo '<h6 class="page-title bbg__label small">' . $moreLabel . '</h6>';
+									echo '</header>';
 
 								//These values are used for every excerpt >=4
 								$includeImage = FALSE;
 								$includeMeta = FALSE;
-								$includeExcerpt=FALSE;
+								$includeExcerpt = FALSE;
 							}
 							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
 						}
@@ -90,15 +80,14 @@ get_header(); ?>
 						 */
 					?>
 
-				<?php endwhile; ?>
+					<?php endwhile; ?>
 
-				<?php the_posts_navigation(); ?>
+					<?php the_posts_navigation(); ?>
 				</div><!-- .usa-grid -->
-			<?php else : ?>
 
-				<?php get_template_part( 'template-parts/content', 'none' ); ?>
-
-			<?php endif; ?>
+				<?php else : ?>
+					<?php get_template_part( 'template-parts/content', 'none' ); ?>
+				<?php endif; ?>
 			</div><!-- .usa-grid -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
