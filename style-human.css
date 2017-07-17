@@ -4445,7 +4445,7 @@ body:not(.home) .bbg__main-navigation {
 }
 
 /* Individual author page */
-.bbg-author-name {
+.bbg__staff__author-name {
   clear: none;
   font-size: 2.4rem;
   line-height: 1;
@@ -4454,7 +4454,7 @@ body:not(.home) .bbg__main-navigation {
   text-align: center;
 }
 @media screen and (min-width: 481px) {
-  .bbg-author-name {
+  .bbg__staff__author-name {
     font-size: 3rem;
     margin-top: 0;
     margin-bottom: .5rem;
@@ -4463,13 +4463,13 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
-.bbg-author-bio {
+.bbg__staff__author-bio {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   line-height: 1.8;
   margin-top: 1rem;
 }
 @media screen and (min-width: 481px) {
-  .bbg-author-bio {
+  .bbg__staff__author-bio {
     font-size: 1.8rem;
     font-weight: 300;
     margin-top: 2rem;
@@ -4478,46 +4478,47 @@ body:not(.home) .bbg__main-navigation {
   }
 }
 
-.bbg-author-contact {
+.bbg__staff__author-contact {
   font-weight: 300;
   margin-bottom: 0;
   text-align: center;
 }
 @media screen and (min-width: 481px) {
-  .bbg-author-contact {
+  .bbg__staff__author-contact {
     padding-left: 110px;
     text-align: left;
   }
 }
 
-.bbg-author-occupation {
+.bbg__staff__author-occupation {
   font-weight: 300;
+  margin-bottom: 2rem;
   text-align: center;
   text-transform: uppercase;
 }
 @media screen and (min-width: 481px) {
-  .bbg-author-occupation {
+  .bbg__staff__author-occupation {
     padding-left: 110px;
     text-align: left;
   }
 }
 
-.bbg-author-projects {
+.bbg__staff__author-projects {
   margin-top: 2rem;
 }
 @media screen and (min-width: 481px) {
-  .bbg-author-projects {
+  .bbg__staff__author-projects {
     padding-left: 110px;
   }
 }
 @media screen and (min-width: 600px) {
-  .bbg-author-projects {
+  .bbg__staff__author-projects {
     padding-left: 0;
     margin-top: 3.5rem;
   }
 }
 
-.bbg-author-projects__list {
+.bbg__staff__author-projects__list {
   display: block;
   list-style-type: none;
   margin: 0;
@@ -4525,17 +4526,17 @@ body:not(.home) .bbg__main-navigation {
   margin-bottom: 0;
   padding-left: 2rem;
 }
-.bbg-author-projects__list li {
+.bbg__staff__author-projects__list li {
   display: list-item;
   margin: 0;
 }
-.bbg-author-projects__list li:before {
+.bbg__staff__author-projects__list li:before {
   display: none;
 }
-.bbg-author-projects__list li:after {
+.bbg__staff__author-projects__list li:after {
   display: none;
 }
-.bbg-author-projects__list li {
+.bbg__staff__author-projects__list li {
   list-style: disc;
 }
 

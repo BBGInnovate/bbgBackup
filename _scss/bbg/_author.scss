@@ -197,7 +197,7 @@
 
 /* Individual author page */
 
-.bbg-author-name{
+.bbg__staff__author-name{
 	clear: none;
 	font-size: $h2-font-size * .8;
 	line-height: 1;
@@ -218,7 +218,7 @@
 	}
 }
 
-.bbg-author-bio {
+.bbg__staff__author-bio {
 	font-family: $font-serif;
 	line-height: 1.8;
 	margin-top: 1rem;
@@ -235,7 +235,7 @@
 	}
 }
 
-.bbg-author-contact {
+.bbg__staff__author-contact {
 	font-weight: $font-light;
 	margin-bottom: 0;
 	text-align: center;
@@ -246,8 +246,9 @@
 	}
 }
 
-.bbg-author-occupation {
+.bbg__staff__author-occupation {
 	font-weight: $font-light;
+	margin-bottom: $site-margins-medium-plus;
 	text-align: center;
 	text-transform: uppercase;
 
@@ -257,7 +258,7 @@
 	}
 }
 
-.bbg-author-projects {
+.bbg__staff__author-projects {
 	margin-top: 2rem;
 
 	@include media($small-screen) {
@@ -270,7 +271,7 @@
 	}
 }
 
-.bbg-author-projects__list {
+.bbg__staff__author-projects__list {
 	@include unstyled-list();
 
 	li {

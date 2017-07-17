@@ -91,13 +91,13 @@
 
 				<div class="bbg__staff__author__text">
 					<!-- Author's full name -->
-					<h1 class="bbg-author-name"><?php echo $authorName; ?></h1>
+					<h1 class="bbg__staff__author-name"><?php echo $authorName; ?></h1>
 
 					<div class="bbg__staff__author-description">
 
 						<?php
 							// Author's occupation
-							echo '<div class="bbg-author-occupation">' . $occupation . '</div>';
+							echo '<div class="bbg__staff__author-occupation">' . $occupation . '</div>';
 
 							// Author's URL
 							if ( $website && $website != '' ) {
@@ -116,25 +116,25 @@
 						?>
 
 						<!-- Author's email and Twitter handle -->
-						<div class="bbg-author-contact">
+						<div class="bbg__staff__author-contact">
 							<?php echo $authorEmail . $twitterLink; ?>
 						</div>
 
 						<!-- Author's short bio -->
-						<!-- <div class="bbg-author-bio">
+						<!-- <div class="bbg__staff__author-bio">
 							<?php echo $description; ?>
 						</div> -->
 
 					</div><!-- .author-description -->
-				</div><!-- .bbg-author-text -->
+				</div><!-- .bbg__staff__author-text -->
 			</header><!-- .bbg__page-header -->
 		<?php
 
 			if ( count( $projects ) ) {
 				$maxProjectsToShow=3;
-				echo '<div class="usa-width-one-third bbg-author-projects">';
+				echo '<div class="usa-width-one-third bbg__staff__author-projects">';
 					echo '<h6 class="bbg__label small">Recent projects</h2>';
-					echo '<ul class="bbg-author-projects__list">';
+					echo '<ul class="bbg__staff__author-projects__list">';
 						for ( $i = 0; $i < min( $maxProjectsToShow, count( $projects ) ); $i++ ) {
 							$p = $projects[$i];
 							echo '<li><a href="' . get_permalink( $p ) . '">' . $p -> post_title . '</a></li>';
