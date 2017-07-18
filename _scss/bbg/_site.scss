@@ -635,6 +635,12 @@ article {
 	*/
 }
 
+.bbg__profile__content__section {
+	margin: {
+		bottom: $site-margins;
+	}
+}
+
 .bbg__article-sidebar--left {
 	border-bottom: $border-solid;
 	margin: 0 auto 3rem auto;

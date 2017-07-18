@@ -5887,6 +5887,10 @@ article {
   }
   */
 }
+.bbg__profile__content__section {
+  margin-bottom: 3rem;
+}
+
 .bbg__article-sidebar--left {
   border-bottom: 1px solid #CCC;
   margin: 0 auto 3rem auto;
