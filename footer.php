@@ -41,12 +41,6 @@
 							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
 								<a href="/news/network-highlights/newsletter-archives/signup/">Sign up</a>
 							</li>
-							<!--
-							JBF 7/18/2017: we are removing this as a live link on the site. Feel free to remove the code completely, including this comment
-							<li class="usa-width-one-fourth usa-footer-primary-content bbg__footer__subnav--links">
-								<a href="/submit-your-ideas/">Submit your ideas</a>
-							</li>
-							-->
 						</ul>
 					</nav>
 				</div>
