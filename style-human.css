@@ -5464,6 +5464,7 @@ img > a:focus,
 }
 .bbg__label_inverted a {
   color: #FFF;
+  text-transform: uppercase;
 }
 
 .bbg__label--advisory {
