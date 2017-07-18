@@ -184,21 +184,70 @@ get_header(); ?>
 
 
 					<div class="entry-content bbg__article-content <?php echo $featuredImageClass; ?>">
-						<div class="bbg__profile__content">
-						<?php the_content(); ?>
-
-						<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
-
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<?php } ?>
+						
+						<!-- section for biography -->
+						<div class="bbg__profile__content__section">
+							<?php the_content(); ?>
+							<p class="bbg-tagline" style="text-align: right;">Last modified: <?php the_modified_date('F d, Y'); ?></p>
 						</div>
+						
+						<!-- section for content below biography -->
+						<?php
+							$contentBelowBio = get_field('profile_content_below_biography', $id);
+							if ( $contentBelowBio != "" ) {
+								echo "<div class='bbg__profile__content__section' >$contentBelowBio</div>";	
+							}
+						?>
 
+						<!-- section for CEO -->
+						<?php 
+							$ceo = get_post_meta( $id, 'ceo', true );
+							if ( $ceo ) {
 
+								$tax_query = array(
+									'relation' => 'AND',
+									array(
+										'taxonomy' => 'post_tag',
+										'field' => 'slug',
+										'terms' => array('john-lansing'),
+										'operator' => 'IN'
+									),
+									array(
+										'taxonomy' => 'category',
+										'field' => 'slug',
+										'terms' => array('appearance','bbg-in-the-news'),
+										'operator' => 'IN'
+									)
+								);
 
+								$qParams2 = array(
+									'post_type' => array('post'),
+									'posts_per_page' => 2,
+									'tax_query' => $tax_query,
+									'orderby' => 'date',
+									'order' => 'DESC'
+								); 
+
+								$categoryUrl = "https://www.bbg.gov/tag/john-lansing/?category_name=appearance,bbg-in-the-news";
+								$categoryLabel = "News & Appearances";
+								$custom_query = new WP_Query( $qParams2 );
+								if ( $custom_query -> have_posts() ) {
+									echo '<div class="bbg__profile__content__section" >';
+									echo '<h6 class="bbg__label"><a href="'.$categoryUrl.'">' . $categoryLabel . '</a></h6>';
+									echo '<div class="usa-grid-full">';
+									while ( $custom_query->have_posts() )  {
+										$custom_query->the_post();
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									}
+									echo '</div>';
+									echo '</div>';
+								}
+								wp_reset_postdata();
+							}
+
+						?>
+
+						<!-- section for related blog posts. Previously was used for "from the ceo". Currently not used on any profiles. -->
 						<?php
 							//Add blog posts below the main content
 							$relatedCategory=get_field('profile_related_category', $id);
@@ -214,12 +263,14 @@ get_header(); ?>
 								$categoryUrl = get_category_link( $relatedCategory->term_id );
 								$custom_query = new WP_Query( $qParams2 );
 								if ( $custom_query -> have_posts() ) {
+									echo '<div class="bbg__profile__content__section" >';
 									echo '<h6 class="bbg__label"><a href="'.$categoryUrl.'">'.$relatedCategory->name.'</a></h6>';
 									echo '<div class="usa-grid-full">';
 									while ( $custom_query->have_posts() )  {
 										$custom_query->the_post();
 										get_template_part( 'template-parts/content-portfolio', get_post_format() );
 									}
+									echo '</div>';
 									echo '</div>';
 								}
 								wp_reset_postdata();
