@@ -121,16 +121,15 @@ get_header(); ?>
 							echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
 						echo '</article>';
 						/* END SECOND POST - COLUMN 2 OF SECOND ROW */
-
-						/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
-						echo '<article class="usa-width-one-third">';
-							echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
-							echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
-								echo $latestTweetsStr;
-							echo '</div>';
-						echo '</div>';
-						/* END TWEET - COLUMN 3 OF SECOND ROW */
 					echo '</div>';
+					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
+					echo '<div class="usa-width-one-third">';
+						echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
+						echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
+							echo $latestTweetsStr;
+						echo '</div>';
+					echo '</div>';
+					/* END TWEET - COLUMN 3 OF SECOND ROW */
 				echo '</div>';
 			echo '</section>';
 			/* END SECOND ROW */
