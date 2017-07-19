@@ -52,17 +52,18 @@
 
 	// Set author short bio
 	// Now hidden for new template (July 2017/GF)
-	/*$description = "";
+	
+	$description = "";
 	if ( isset( $m['description'] ) ) {
 		$description = $m['description'][0];
-	}*/
+	}
 	/**** DONE PREPARING AUTHOR vars ****/
 ?>
 
 <div class="usa-section">
 	<div class="usa-grid clearAll bbg__page-header" >
 
-		<header class="page-header usa-width-two-thirds">
+		<header class="page-header "> <!-- usa-width-two-thirds -->
 			<!-- Display author profile photo -->
 			<div class="bbg__avatar__container bbg__team__icon">
 				<?php
@@ -103,9 +104,9 @@
 					</div>
 
 					<!-- Author's short bio -->
-					<!-- <div class="bbg__staff__author-bio">
+					<div class="bbg__staff__author-bio">
 						<?php echo $description; ?>
-					</div> -->
+					</div>
 
 				</div><!-- .author-description -->
 			</div><!-- .bbg__staff__author-text -->

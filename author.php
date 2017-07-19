@@ -135,7 +135,7 @@ get_header(); ?>
 			echo '<section class="usa-section">';
 				echo '<div class="usa-grid">';
 					echo '<div class="usa-width-two-thirds">';
-						echo '<h6 class="bbg__label"><a href="' . $blogLink . '">John\'s Take</a></h6>';
+						echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
 						echo '<div class="usa-grid-full">';
 							/* BEGIN FIRST BLOG POST -  COLUMN 1 OF SECOND ROW */
 							echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
@@ -161,10 +161,16 @@ get_header(); ?>
 									endwhile;
 								}
 								wp_reset_query();
-								echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More blogs posts »</a></div>';
+								///echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more blog posts »</a></div>';
 							echo '</article>';
 							/* END SECOND BLOG POST - COLUMN 2 OF SECOND ROW */
 						echo '</div>';
+						
+						echo '<div class="usa-grid-full u--space-below-mobile--large">';
+							//echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more posts from John\'s blog about his work in support of BBG\'s mission »</a>';
+						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">John blogs about issues affecting U.S. international media. Read more <strong>Media Diplomacy</strong> »</a>';
+						echo '</div>';
+
 					echo '</div>';
 					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
 					echo '<div class="usa-width-one-third">';
