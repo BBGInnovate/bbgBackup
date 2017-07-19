@@ -25,6 +25,7 @@ if (stristr($occupation, "ceo")) {
 	$isCEO = true;
 }
 $latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="1" class="twitter-timeline" href="https://twitter.com/'.$twitterHandle.'" data-screen-name="'.$twitterHandle.'" >Tweets by @'.$twitterHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+$latestTweetsStr = '<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Our Impact Model measures 40+ indicators beyond audience size to hold our activities accountable. <a href="https://twitter.com/hashtag/BBGannualReport?src=hash">#BBGannualReport</a> <a href="https://t.co/r8geNg47OP">https://t.co/r8geNg47OP</a> <a href="https://t.co/e6T3Zea443">pic.twitter.com/e6T3Zea443</a></p>&mdash; BBG (@BBGgov) <a href="https://twitter.com/BBGgov/status/881886454485528576">July 3, 2017</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'; 
 get_header(); ?>
 
 <div id="content" class="site-content" role="main">
@@ -77,7 +78,6 @@ get_header(); ?>
 			/* BEGIN FIRST ROW */
 			echo '<div class="usa-grid-full">';
 
-				echo '<h6 class="bbg__label"><a href="/category/from-the-ceo+blog/">Blog</a></h6>';
 				
 				/* BEGIN FIRST POST - ONLY COLUMN OF FIRST ROW */
 				query_posts( array( 'post__in' => array( $featuredPostID ) ) );
@@ -91,17 +91,17 @@ get_header(); ?>
 			echo '</div>';
 			/* END FIRST ROW */
 			
+			$blogLink =  '/category/from-the-ceo+blog/';
 			/* BEGIN SECOND ROW */
 			echo '<div class="usa-grid">';
 				/* BEGIN SECOND POST -  COLUMN 1 OF SECOND ROW */
 				echo "<div class='usa-width-one-third'>";
+					echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
 					query_posts( array( 'post__in' => array ( $secondPostID) ) );
 					if (have_posts()) {
 						while ( have_posts() ) : the_post();
-							$includeImage = true;
-							$includeMeta=false;
-							$includeExcerpt=true;
-							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+							$gridClass = "bbg-grid--1-1-1";
+							get_template_part( 'template-parts/content-portfolio', get_post_format() );
 						endwhile;
 					}
 					wp_reset_query();
@@ -109,27 +109,27 @@ get_header(); ?>
 				/* END SECOND POST - COLUMN 1 OF SECOND ROW */
 
 				/* BEGIN SECOND POST -  COLUMN 2 OF SECOND ROW */
-				echo "<div class='usa-width-one-third'>";
+				echo '<div class="usa-width-one-third">';
+					echo "<h6 class='bbg__label'>&nbsp;</h6>";
 					query_posts( array( 'post__in' => array ( $thirdPostID) ) );
 					if (have_posts()) {
 						while ( have_posts() ) : the_post();
-							$includeImage = true;
-							$includeMeta=false;
-							$includeExcerpt=true;
-							get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+							$gridClass = "bbg-grid--1-1-1";
+							get_template_part( 'template-parts/content-portfolio', get_post_format() );
 						endwhile;
 					}
 					wp_reset_query();
+				echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
 				echo "</div>";
 				/* END SECOND POST - COLUMN 1 OF SECOND ROW */
 
 				/* BEGIN TWEET - COLUMN 2 OF SECOND ROW */
-				echo "<div class='usa-width-one-third'>";
+				echo '<div class="usa-width-one-third">';
 				echo "<h6 class='bbg__label'><a target='_blank' href='https://twitter.com/$twitterHandle'>On Twitter</a></h6>";
-				echo "<div class='bbg__quotation' style='margin-top:0rem; padding:1rem;'>";
+				echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
 				echo $latestTweetsStr;
-				echo "</div>";
-				echo "</div>";
+				echo '</div>';
+				echo '</div>';
 				/* END TWEET - COLUMN 2 OF SECOND ROW */
 			echo '</div>';
 			/* END SECOND ROW */
@@ -138,8 +138,8 @@ get_header(); ?>
 			?>
 			</section>
 			<?php 
-				$remarksLink = "https://bbgredesign.voanews.com/statements-and-remarks/";
-				$ceoImage = "https://bbgredesign.voanews.com/wp-content/media/2017/07/lansingspeaks.jpg";
+				$remarksLink = 'https://bbgredesign.voanews.com/statements-and-remarks/';
+				$ceoImage = 'https://bbgredesign.voanews.com/wp-content/media/2017/07/lansingspeaks.jpg';
 
 			?>
 
@@ -152,7 +152,7 @@ get_header(); ?>
 				                <h6 class="bbg__label">On the Record</h6>
 				                <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $remarksLink; ?>">Transcribed Remarks</a></h2>
 				                <p>View transcripts of CEO Lansing's remarks and statements at each of his appearances since he joined the BBG in September 2015.
-									<a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">Read more »</a>
+									<BR><BR><a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">View All »</a>
 				                </p>
 				            </div>
 				        </div><!-- .bbg__announcement__flexbox -->
@@ -187,9 +187,10 @@ get_header(); ?>
 				'tax_query' => $tax_query
 			);
 
+			$statementsLink = "/category/from-the-ceo+statements/"; 
+			echo '<div class="usa-width-one-half">';
+				echo "<h6 class='bbg__label'><a target='_blank' href='<?php echo $statementsLink; ?>'>Statements</a></h6>";
 			
-			echo "<div class='usa-width-one-half'>";
-				echo "<h6 class='bbg__label'><a target='_blank' href='/category/from-the-ceo+statements/'>Statements</a></h6>";
 				query_posts( $qParams );
 				if (have_posts()) {
 					$counter = 0;
@@ -206,7 +207,7 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
-			echo '<div align="right"><a href="/tag/john-lansing/?category_name=statement" class="bbg__kits__intro__more--link">More Statements »</a></div>';
+			echo '<div align="right"><a href="' . $statementsLink . '" class="bbg__kits__intro__more--link">More Statements »</a></div>';
 			echo '</div>';
 
 
@@ -234,9 +235,9 @@ get_header(); ?>
 				'tax_query' => $tax_query
 			);
 
-			
+			$opEdLink = "/category/from-the-ceo+op-ed/"; 
 			echo "<div class='usa-width-one-half'>";
-				echo "<h6 class='bbg__label'><a target='_blank' href='/category/from-the-ceo+op-ed/'>Op-Eds</a></h6>";
+				echo "<h6 class='bbg__label'><a target='_blank' href='<?php echo $opEdLink; ?>'>Op-Eds</a></h6>";
 				query_posts( $qParams );
 				if (have_posts()) {
 					$counter = 0;
@@ -253,7 +254,7 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
-			echo '<div align="right"><a href="/tag/john-lansing/?category_name=op-ed" class="bbg__kits__intro__more--link">More Op-Eds »</a></div>';
+			echo '<div align="right"><a href="' . $opEdLink . '" class="bbg__kits__intro__more--link">More Op-Eds »</a></div>';
 			echo '</div>';
 			echo '</div>';
 
