@@ -91,36 +91,38 @@ get_header(); ?>
 
 			/* BEGIN SECOND ROW */
 			echo '<section class="usa-section">';
-				echo '<div class="usa-grid-full">';
+				echo '<div class="usa-grid">';
 					echo '<div class="usa-width-two-thirds">';
 						echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
-						/* BEGIN SECOND POST -  COLUMN 1 OF SECOND ROW */
-						echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
-							query_posts( array( 'post__in' => array ( $secondPostID) ) );
-							if ( have_posts() ) {
-								while ( have_posts() ) : the_post();
-									$gridClass = "bbg-grid--1-1-1";
-									get_template_part( 'template-parts/content-portfolio', get_post_format() );
-								endwhile;
-							}
-							wp_reset_query();
-						echo '</article>';
-						/* END SECOND POST - COLUMN 1 OF SECOND ROW */
+						echo '<div class="usa-grid-full">';
+							/* BEGIN FIRST BLOG POST -  COLUMN 1 OF SECOND ROW */
+							echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
+								query_posts( array( 'post__in' => array ( $secondPostID) ) );
+								if ( have_posts() ) {
+									while ( have_posts() ) : the_post();
+										$gridClass = "bbg-grid--1-1-1";
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									endwhile;
+								}
+								wp_reset_query();
+							echo '</article>';
+							/* END FIRST BLOG POST - COLUMN 1 OF SECOND ROW */
 
-						/* BEGIN SECOND POST -  COLUMN 2 OF SECOND ROW */
-						echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
-							// echo '<h6>&nbsp;</h6>';
-							query_posts( array( 'post__in' => array ( $thirdPostID) ) );
-							if (have_posts()) {
-								while ( have_posts() ) : the_post();
-									$gridClass = "bbg-grid--1-1-1";
-									get_template_part( 'template-parts/content-portfolio', get_post_format() );
-								endwhile;
-							}
-							wp_reset_query();
-							echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
-						echo '</article>';
-						/* END SECOND POST - COLUMN 2 OF SECOND ROW */
+							/* BEGIN SECOND BLOG POST -  COLUMN 2 OF SECOND ROW */
+							echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
+								// echo '<h6>&nbsp;</h6>';
+								query_posts( array( 'post__in' => array ( $thirdPostID) ) );
+								if (have_posts()) {
+									while ( have_posts() ) : the_post();
+										$gridClass = "bbg-grid--1-1-1";
+										get_template_part( 'template-parts/content-portfolio', get_post_format() );
+									endwhile;
+								}
+								wp_reset_query();
+								echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
+							echo '</article>';
+							/* END SECOND BLOG POST - COLUMN 2 OF SECOND ROW */
+						echo '</div>';
 					echo '</div>';
 					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
 					echo '<div class="usa-width-one-third">';
