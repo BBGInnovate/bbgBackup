@@ -90,11 +90,11 @@ get_header(); ?>
 			$blogLink = '/category/from-the-ceo+blog/';
 
 			/* BEGIN SECOND ROW */
-			echo '<section class="usa-grid">';
+			echo '<section class="usa-grid-full">';
 				echo '<div class="usa-width-two-thirds">';
 					echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
 					/* BEGIN SECOND POST -  COLUMN 1 OF SECOND ROW */
-					echo '<article class="usa-one-half">';
+					echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
 						query_posts( array( 'post__in' => array ( $secondPostID) ) );
 						if ( have_posts() ) {
 							while ( have_posts() ) : the_post();
@@ -107,7 +107,7 @@ get_header(); ?>
 					/* END SECOND POST - COLUMN 1 OF SECOND ROW */
 
 					/* BEGIN SECOND POST -  COLUMN 2 OF SECOND ROW */
-					echo '<article class="usa-one-half">';
+					echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
 						// echo '<h6>&nbsp;</h6>';
 						query_posts( array( 'post__in' => array ( $thirdPostID) ) );
 						if (have_posts()) {
