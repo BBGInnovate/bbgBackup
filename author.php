@@ -24,7 +24,10 @@ $isCEO = false;
 if (stristr($occupation, "ceo")) {
 	$isCEO = true;
 }
-$latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="1" class="twitter-timeline" href="https://twitter.com/'.$twitterHandle.'" data-screen-name="'.$twitterHandle.'" >Tweets by @'.$twitterHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+// Most recent tweet
+/*$latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="1" class="twitter-timeline" href="https://twitter.com/'.$twitterHandle.'" data-screen-name="'.$twitterHandle.'" >Tweets by @'.$twitterHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';*/
+
+// Featured tweet selected by us
 $latestTweetsStr = '<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Our Impact Model measures 40+ indicators beyond audience size to hold our activities accountable. <a href="https://twitter.com/hashtag/BBGannualReport?src=hash">#BBGannualReport</a> <a href="https://t.co/r8geNg47OP">https://t.co/r8geNg47OP</a> <a href="https://t.co/e6T3Zea443">pic.twitter.com/e6T3Zea443</a></p>&mdash; BBG (@BBGgov) <a href="https://twitter.com/BBGgov/status/881886454485528576">July 3, 2017</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
 get_header(); ?>
 
@@ -73,8 +76,12 @@ get_header(); ?>
 			}
 			wp_reset_query();
 
+			$ceoLink = '/category/from-the-ceo';
+
+
 			/* BEGIN FIRST ROW */
 			echo '<div class="usa-grid-full">';
+				echo '<h6 class="bbg__label"><a href="' . $ceoLink . '">From the CEO</a></h6>';
 				/* BEGIN FIRST POST - ONLY COLUMN OF FIRST ROW */
 				query_posts( array( 'post__in' => array( $featuredPostID ) ) );
 				if (have_posts()) {
@@ -87,6 +94,7 @@ get_header(); ?>
 			echo '</div>';
 			/* END FIRST ROW */
 
+			// set link to CEO blog
 			$blogLink = '/category/from-the-ceo+blog/';
 
 			/* BEGIN SECOND ROW */
@@ -119,7 +127,7 @@ get_header(); ?>
 									endwhile;
 								}
 								wp_reset_query();
-								echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
+								echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More blogs posts »</a></div>';
 							echo '</article>';
 							/* END SECOND BLOG POST - COLUMN 2 OF SECOND ROW */
 						echo '</div>';
