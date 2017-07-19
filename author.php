@@ -137,17 +137,22 @@ get_header(); ?>
 			/* TRANSCRIPTS */
 			?>
 			</section>
+			<?php 
+				$remarksLink = "https://bbgredesign.voanews.com/statements-and-remarks/";
+				$ceoImage = "https://bbgredesign.voanews.com/wp-content/media/2017/07/lansingspeaks.jpg";
+
+			?>
+
 			<section class="bbg__kits__section">
 				<section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
 				    <div class="usa-grid">
 				        <div class="bbg__announcement__flexbox">
-				            <div class="bbg__announcement__photo" style="background-image: url(https://bbgredesign.voanews.com/wp-content/media/2017/07/lansingspeaks.jpg);"></div>
+				            <div class="bbg__announcement__photo" style="background-image: url(<?php echo $ceoImage; ?>)"></div>
 				            <div>
-				                <!-- <h6 class="bbg__label">Transcripts</h6> -->
-				                <BR>
-				                <h2 class="bbg__announcement__headline selectionShareable"><a href="#">Statements and Remarks</a></h2>
+				                <h6 class="bbg__label">On the Record</h6>
+				                <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $remarksLink; ?>">Transcribed Remarks</a></h2>
 				                <p>View transcripts of CEO Lansing's remarks and statements at each of his appearances since he joined the BBG in September 2015.
-									<a href="https://bbgredesign.voanews.com/statements-and-remarks/" class="bbg__kits__intro__more--link">Read more »</a>
+									<a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">Read more »</a>
 				                </p>
 				            </div>
 				        </div><!-- .bbg__announcement__flexbox -->
@@ -176,7 +181,7 @@ get_header(); ?>
 
 			$qParams = array(
 				'post_type' => array( 'post' ),
-				'posts_per_page' => 5,
+				'posts_per_page' => 1,
 				'orderby' => 'post_date',
 				'order' => 'desc',
 				'tax_query' => $tax_query
@@ -201,11 +206,8 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
+			echo '<div align="right"><a href="/tag/john-lansing/?category_name=statement" class="bbg__kits__intro__more--link">More Statements »</a></div>';
 			echo '</div>';
-
-
-
-
 
 
 			$tax_query = array(
@@ -226,7 +228,7 @@ get_header(); ?>
 
 			$qParams = array(
 				'post_type' => array( 'post' ),
-				'posts_per_page' => 5,
+				'posts_per_page' => 1,
 				'orderby' => 'post_date',
 				'order' => 'desc',
 				'tax_query' => $tax_query
@@ -251,12 +253,8 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
+			echo '<div align="right"><a href="/tag/john-lansing/?category_name=op-ed" class="bbg__kits__intro__more--link">More Op-Eds »</a></div>';
 			echo '</div>';
-		
-
-
-
-
 			echo '</div>';
 
 
