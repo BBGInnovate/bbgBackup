@@ -10,11 +10,6 @@
 
 
 
-/**** BEGIN: get next post link for project links ****/
-$projectCategoryID = get_cat_id('Project');
-$isProject = has_category($projectCategoryID);
-$prevLink = "";
-$nextLink = "";
 
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
@@ -349,69 +344,10 @@ if( have_rows('media_dev_presenters') ):
 endif;
 
 
-/* Displaying award info -- not implemented yet*/
+/* Displaying award info -- not implemented yet
 /*$awardCategoryID = get_cat_id('Award');
-$isAward = has_category($awardCategoryID);*/
-
-if ($isProject) {
-	//$categories=get_the_category();
-	$post_id = $post->ID; // current post ID
-	if (isset($_GET['category_id'])) {
-		$args = array(
-			'category__and' => array($projectCategoryID,$_GET['category_id']),
-			'orderby'  => 'post_date',
-			'order'    => 'DESC',
-			'posts_per_page' => -1
-		);
-	} else {
-		$args = array(
-			'category' => $projectCategoryID,
-			'orderby'  => 'post_date',
-			'order'    => 'DESC',
-			'posts_per_page' => -1
-		);
-	}
-
-	$posts = get_posts( $args );
-	// get IDs of posts retrieved from get_posts
-	$ids = array();
-	foreach ( $posts as $thepost ) {
-	    $ids[] = $thepost->ID;
-	}
-	// get and echo previous and next post in the same category
-	$thisindex = array_search( $post_id, $ids );
-
-	if ($thisindex > 0) {
-		$previd = $ids[ $thisindex - 1 ];
-		$prevPost = get_post($previd);
-		$prevPostTitle = $prevPost->post_title;
-
-		$prevPostPermalink=esc_url( get_permalink($previd) );
-		if (isset($_GET['category_id'])) {
-			$prevPostPermalink=add_query_arg('category_id', $_GET['category_id'], $prevPostPermalink);
-		}
-
-		$prevLink = '<a rel="prev" href="' . $prevPostPermalink . '" title="' . $prevPostTitle . '"><span class="bbg__article__nav-icon left-arrow"></span><span class="bbg__article__nav-text">Previous: ' . $prevPostTitle . '</span></a>';
-		$prevLink = '<div class="bbg__article__nav-link bbg__article__nav-previous">' . $prevLink . '</div>';
-	}
-	if ($thisindex < (count($ids)-1)) {
-		$nextid = $ids[ $thisindex + 1 ];
-		$nextPost = get_post($nextid);
-		$nextPostTitle = $nextPost->post_title;
-
-		$nextPostPermalink=esc_url( get_permalink($nextid) );
-		if (isset($_GET['category_id'])) {
-			$nextPostPermalink=add_query_arg('category_id', $_GET['category_id'], $nextPostPermalink);
-		}
-
-		$nextLink = '<a rel="next" href="' . $nextPostPermalink . '" title="' . $nextPostTitle . '"><span class="bbg__article__nav-icon right-arrow"></span><span class="bbg__article__nav-text">Next: ' . $nextPostTitle . '</span></a>';
-		$nextLink = '<div class="bbg__article__nav-link bbg__article__nav-next">' . $nextLink . '</div>';
-	}
-
-	$prevLink = "";
-	$nextLink = "";
-}
-/**** END CREATING NEXT/PREV LINKS ****/
+$isAward = has_category($awardCategoryID);
+*/
 
 /* Displaying award info -- not implemented yet*/
 $podcastCategoryID = get_cat_id('Podcasts');
@@ -484,12 +420,6 @@ $hideFeaturedImage = FALSE;
 			echo '</div> <!-- usa-grid-full -->';
 		}
 	?><!-- .bbg__article-header__thumbnail -->
-
-	<div class="bbg__article__nav">
-		<?php echo $prevLink; ?>
-		<?php echo $nextLink; ?>
-	</div><!-- .bbg__article__nav -->
-
 
 	<div class="usa-grid">
 
@@ -573,29 +503,29 @@ $hideFeaturedImage = FALSE;
 				}
 
 				/* START AWARD INFO */
-				if ($isAward) {
-					$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
-					if ( isset($awardDescription) && $awardDescription!= "" ) {
-						$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
-						$awardOrganization = $awardOrganization -> name;
+				// if ($isAward) {
+				// 	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
+				// 	if ( isset($awardDescription) && $awardDescription!= "" ) {
+				// 		$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
+				// 		$awardOrganization = $awardOrganization -> name;
 
-						$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
-						$awardLogoImage = "";
-						if ( $awardLogo ){
-							$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
-							$awardLogoImage = $awardLogoImage[0];
-							// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
-							$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
-						}
+				// 		$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+				// 		$awardLogoImage = "";
+				// 		if ( $awardLogo ){
+				// 			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+				// 			$awardLogoImage = $awardLogoImage[0];
+				// 			// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+				// 			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+				// 		}
 
-						echo '<div class="usa-grid-full bbg__contact-box">';
-							echo '<h3>About ' . $awardOrganization . '</h3>';
-							echo $awardLogoImage;
-							echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
-						echo '</div>';
-					}
-					/* END AWARD INFO */
-				}
+				// 		echo '<div class="usa-grid-full bbg__contact-box">';
+				// 			echo '<h3>About ' . $awardOrganization . '</h3>';
+				// 			echo $awardLogoImage;
+				// 			echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
+				// 		echo '</div>';
+				// 	}
+				// 	/* END AWARD INFO */
+				// }
 
 
 				/* START CONTACT CARDS */
@@ -623,12 +553,12 @@ $hideFeaturedImage = FALSE;
 					echo "</div>";
 				}
 
-				if ( $isAward ) {
-					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
-					echo '<div class="bbg__sidebar__primary">';
-					echo getAwardInfo(get_the_ID(), true);	//getAwardInfo is found in bbg-functions-awards.php
-					echo '</div>';
-				}
+				// if ( $isAward ) {
+				// 	echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
+				// 	echo '<div class="bbg__sidebar__primary">';
+				// 	echo getAwardInfo(get_the_ID(), true);	//getAwardInfo is found in bbg-functions-awards.php
+				// 	echo '</div>';
+				// }
 
 				if ( $includeSidebar ) {
 					echo $sidebar;
