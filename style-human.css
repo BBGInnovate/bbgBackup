@@ -4440,7 +4440,7 @@ body:not(.home) .bbg__main-navigation {
 }
 
 .bbg__staff__author-bio {
-  max-width: none;
+  max-width: none !important;
   font-size: 1.6rem;
   line-height: 1.7;
 }

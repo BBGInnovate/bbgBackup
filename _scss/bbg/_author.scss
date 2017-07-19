@@ -172,7 +172,7 @@
 
 .bbg__staff__author-bio {
 	@extend .readin;
-	max-width: none;
+	max-width: none !important;
 	font-size: $read-in-font-size * .8;
 	line-height: $base-line-height;
 }
