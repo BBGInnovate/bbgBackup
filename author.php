@@ -78,13 +78,12 @@ get_header(); ?>
 
 			$ceoLink = '/category/from-the-ceo';
 
-
 			/* BEGIN FIRST ROW */
 			echo '<div class="usa-grid-full">';
 				echo '<h6 class="bbg__label"><a href="' . $ceoLink . '">From the CEO</a></h6>';
 				/* BEGIN FIRST POST - ONLY COLUMN OF FIRST ROW */
-				query_posts( array( 'post__in' => array( $featuredPostID ) ) );
-				if (have_posts()) {
+				query_posts( array( 'post__in' => array( $featuredPostID ) ));
+				if ( have_posts() ) {
 					while ( have_posts() ) : the_post();
 						get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 					endwhile;
@@ -105,7 +104,7 @@ get_header(); ?>
 						echo '<div class="usa-grid-full">';
 							/* BEGIN FIRST BLOG POST -  COLUMN 1 OF SECOND ROW */
 							echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
-								query_posts( array( 'post__in' => array ( $secondPostID) ) );
+								query_posts( array( 'post__in' => array ( $secondPostID ) ));
 								if ( have_posts() ) {
 									while ( have_posts() ) : the_post();
 										$gridClass = "bbg-grid--1-1-1";
@@ -119,8 +118,8 @@ get_header(); ?>
 							/* BEGIN SECOND BLOG POST -  COLUMN 2 OF SECOND ROW */
 							echo '<article class="bbg-portfolio__excerpt usa-width-one-half">';
 								// echo '<h6>&nbsp;</h6>';
-								query_posts( array( 'post__in' => array ( $thirdPostID) ) );
-								if (have_posts()) {
+								query_posts( array( 'post__in' => array ( $thirdPostID ) ));
+								if ( have_posts() ) {
 									while ( have_posts() ) : the_post();
 										$gridClass = "bbg-grid--1-1-1";
 										get_template_part( 'template-parts/content-portfolio', get_post_format() );
@@ -134,7 +133,7 @@ get_header(); ?>
 					echo '</div>';
 					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
 					echo '<div class="usa-width-one-third">';
-						echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
+						echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/' . $twitterHandle . '">On Twitter</a></h6>';
 						echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
 							echo $latestTweetsStr;
 						echo '</div>';
