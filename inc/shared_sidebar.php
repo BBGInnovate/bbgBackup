@@ -220,7 +220,7 @@ if ( $includeSidebar ) {
 					$s .= '</ul>';
 
 					if ($widgetAuthor) {
-						$s .= '<a data-tweet-limit="2" show-replies="false" data-chrome="noheader nofooter noborders transparent noscrollbar" class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/' . $widgetAuthor . '">Tweets by ' . $widgetAuthor . '</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
+						$s .= '<a data-tweet-limit="2" data-show-replies="false" data-chrome="noheader nofooter noborders transparent noscrollbar" data-dnt="true" data-theme="light" class="twitter-timeline" href="https://twitter.com/' . $widgetAuthor . '">Tweets by ' . $widgetAuthor . '</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
 					} else if ($widgetHashtag) {
 						$s .= '<a data-chrome="noheader" class="twitter-timeline"  href="https://twitter.com/hashtag/' . $widgetHashtag . '" data-widget-id="' . $widgetID . '">#' . $widgetHashtag . ' Tweets</a>';
 						$s .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?';
