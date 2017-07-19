@@ -122,8 +122,8 @@ get_header(); ?>
 					/* END SECOND POST - COLUMN 2 OF SECOND ROW */
 
 					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
+					echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
 					echo '<div class="usa-width-one-third">';
-						echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
 						echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
 							echo $latestTweetsStr;
 						echo '</div>';
