@@ -194,7 +194,7 @@ get_header(); ?>
 		            <div class="bbg__announcement__photo" style="background-image: url(<?php echo $ceoImage; ?>)"></div>
 		            <div>
 		                <h6 class="bbg__label">On the Record</h6>
-		                <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $remarksLink; ?>">Transcribed Remarks</a></h2>
+		                <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $remarksLink; ?>">Speeches and Remarks</a></h2>
 		                <p>View transcripts of CEO Lansing’s remarks and statements at each of his appearances since he joined the BBG in September 2015.
 							<br/><br/><a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">View All »</a>
 		                </p>
