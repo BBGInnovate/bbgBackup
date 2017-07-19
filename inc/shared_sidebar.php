@@ -220,7 +220,7 @@ if ( $includeSidebar ) {
 					$s .= '</ul>';
 
 					if ($widgetAuthor) {
-						$s .= '<a data-tweet-limit="2"  data-chrome="noheader nofooter noborders transparent noscrollbar" class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/' . $widgetAuthor . '">Tweets by ' . $widgetAuthor . '</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
+						$s .= '<a data-tweet-limit="2" show-replies="false" data-chrome="noheader nofooter noborders transparent noscrollbar" class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/' . $widgetAuthor . '">Tweets by ' . $widgetAuthor . '</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
 					} else if ($widgetHashtag) {
 						$s .= '<a data-chrome="noheader" class="twitter-timeline"  href="https://twitter.com/hashtag/' . $widgetHashtag . '" data-widget-id="' . $widgetID . '">#' . $widgetHashtag . ' Tweets</a>';
 						$s .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?';
@@ -243,11 +243,11 @@ if ( $includeSidebar ) {
 					$tagIDs[] = $tag -> term_id;
 					$tagMap[$tag -> term_id]= true;
 				}
-				
+
 				if ($categoryRestriction) {
 					foreach ($categoryRestriction as $cat) {
 						$catIDs[] = $cat -> term_id;
-					}	
+					}
 				}
 				if (!count($tagIDs)) {
 					$s .= "Dynamic accordion requires at least one tag.<BR>";
@@ -255,9 +255,9 @@ if ( $includeSidebar ) {
 					if ($accordionTitle != "") {
 						$s .= "<h5 class='bbg__label small bbg__sidebar__download__label'>$accordionTitle</h5>";
 					}
-					
+
 					if ($sectionDescription) {
-						$s .= '<p>' . $sectionDescription . '</p>';	
+						$s .= '<p>' . $sectionDescription . '</p>';
 					}
 					$s .= '<style>
 					div.usa-accordion-content {
@@ -281,9 +281,9 @@ if ( $includeSidebar ) {
 					$postsByTag = array();
 					$custom_query = new WP_Query($qParams);
 
-					//create a 2 dimensional data structure called "postsByTag".   
-					//the first key is the tagID, and then each entry is an array of id/title/link 
-					while ( $custom_query->have_posts() )  { 
+					//create a 2 dimensional data structure called "postsByTag".
+					//the first key is the tagID, and then each entry is an array of id/title/link
+					while ( $custom_query->have_posts() )  {
 						$custom_query->the_post();
 						$id = get_the_ID();
 						$posttags = get_the_tags();
@@ -294,7 +294,7 @@ if ( $includeSidebar ) {
 								$term_id = $tag -> term_id;
 								if (isset($tagMap[$term_id])) {
 									if (!isset($postsByTag[$term_id])) {
-										$postsByTag[$term_id] = array();	
+										$postsByTag[$term_id] = array();
 									}
 									$postsByTag[$term_id][] = array(
 										'id' => $id,
@@ -350,14 +350,14 @@ if ( $includeSidebar ) {
 				if ($taglist) {
 					foreach ($taglist as $tag) {
 						$tagIDs[] = $tag->term_id;
-					}	
+					}
 				}
 
-				
+
 				if ($categoryRestriction) {
 					foreach ($categoryRestriction as $cat) {
 						$catIDs[] = $cat->term_id;
-					}	
+					}
 				}
 
 				if (!count($tagIDs) && !count($catIDs)) {
@@ -378,7 +378,7 @@ if ( $includeSidebar ) {
 						$qParams['order'] = 'asc';
 						$qParams['post_status'] = 'future';
 					}
-					
+
 					if (count($tagIDs)) {
 						$qParams['tag__and'] = $tagIDs;
 					}
@@ -390,7 +390,7 @@ if ( $includeSidebar ) {
 					if ($custom_query -> found_posts || $sectionDescription) {
 						$s .= '<h5 class="bbg__label small bbg__sidebar__download__label">' . $sectionTitle . '</h5>';
 						if ($sectionDescription) {
-							$s .= '<p>' . $sectionDescription . '</p>';	
+							$s .= '<p>' . $sectionDescription . '</p>';
 						}
 						if ($custom_query -> found_posts) {
 							$i=0;
@@ -412,7 +412,7 @@ if ( $includeSidebar ) {
 									$my_post->post_name = sanitize_title($my_post->post_name ? $my_post->post_name : $my_post->post_title, $my_post->ID);
 									$permalink = get_permalink($my_post);
 								}
-								
+
 								$title = get_the_title();
 								$s .= "<a style='text-decoration:none;' href='$permalink'>$title</a>";
 							}
