@@ -93,8 +93,8 @@ get_header(); ?>
 			echo '<section class="usa-grid">';
 				echo '<div class="usa-grid">';
 					/* BEGIN SECOND POST -  COLUMN 1 OF SECOND ROW */
-					echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
-					echo '<div class="usa-width-one-third">';
+					echo '<article class="usa-width-one-third">';
+						echo '<h6 class="bbg__label"><a href="' . $blogLink . '">Blog</a></h6>';
 						query_posts( array( 'post__in' => array ( $secondPostID) ) );
 						if ( have_posts() ) {
 							while ( have_posts() ) : the_post();
@@ -103,11 +103,11 @@ get_header(); ?>
 							endwhile;
 						}
 						wp_reset_query();
-					echo '</div>';
+					echo '</article>';
 					/* END SECOND POST - COLUMN 1 OF SECOND ROW */
 
 					/* BEGIN SECOND POST -  COLUMN 2 OF SECOND ROW */
-					echo '<div class="usa-width-one-third">';
+					echo '<article class="usa-width-one-third">';
 						// echo "<h6 class='bbg__label'>&nbsp;</h6>";
 						query_posts( array( 'post__in' => array ( $thirdPostID) ) );
 						if (have_posts()) {
@@ -118,12 +118,12 @@ get_header(); ?>
 						}
 						wp_reset_query();
 						echo '<div align="right"><a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More Blogs »</a></div>';
-					echo '</div>';
+					echo '</article>';
 					/* END SECOND POST - COLUMN 2 OF SECOND ROW */
 
 					/* BEGIN TWEET - COLUMN 3 OF SECOND ROW */
-					echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
-					echo '<div class="usa-width-one-third">';
+					echo '<article class="usa-width-one-third">';
+						echo '<h6 class="bbg__label"><a target="_blank" href="https://twitter.com/$twitterHandle">On Twitter</a></h6>';
 						echo '<div class="bbg__quotation" style="margin-top:0; padding:0;">';
 							echo $latestTweetsStr;
 						echo '</div>';
