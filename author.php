@@ -182,7 +182,7 @@ get_header(); ?>
 
 	<?php
 		/* TRANSCRIPTS */
-		$remarksLink = '/ceo-speeches-and-remarks/ ‎';
+		$remarksLink = '/ceo-speeches-and-remarks/ ';
 		$ceoImage = '/wp-content/media/2017/07/lansingspeaks.jpg';
 
 	?>
