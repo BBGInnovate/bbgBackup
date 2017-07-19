@@ -4441,9 +4441,6 @@ body:not(.home) .bbg__main-navigation {
 
 .bbg__staff__author-bio {
   max-width: none;
-}
-
-.bbg__staff__roster .bbg__staff__author-bio {
   font-size: 1.6rem;
   line-height: 1.7;
 }

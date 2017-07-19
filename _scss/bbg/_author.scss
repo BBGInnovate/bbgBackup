@@ -173,9 +173,6 @@
 .bbg__staff__author-bio {
 	@extend .readin;
 	max-width: none;
-}
-
-.bbg__staff__roster .bbg__staff__author-bio {
 	font-size: $read-in-font-size * .8;
 	line-height: $base-line-height;
 }
