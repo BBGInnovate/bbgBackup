@@ -168,7 +168,7 @@ get_header(); ?>
 						
 						echo '<div class="usa-grid-full u--space-below-mobile--large">';
 							//echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more posts from John\'s blog about his work in support of BBG\'s mission »</a>';
-						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">John blogs about issues affecting U.S. international media. Read more <strong>Media Diplomacy</strong> »</a>';
+						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">John blogs about issues affecting U.S. international media. Read more »</a>'; //<strong>Media Diplomacy</strong>
 						echo '</div>';
 
 					echo '</div>';
@@ -192,23 +192,38 @@ get_header(); ?>
 		$ceoImage = '/wp-content/media/2017/07/lansingspeaks.jpg';
 
 	?>
+	
+	<style>
+		#lansingPhoto {
+			background-position: center top;
+		}
+		@media screen and (min-width: 900px) {
+		  #lansingPhoto {
+			background-position: center top;
+		  }
+		}
+	</style>
 
-	<section class="bbg__kits__section">
-		<section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
-		    <div class="usa-grid">
-		        <div class="bbg__announcement__flexbox">
-		            <div class="bbg__announcement__photo" style="background-image: url(<?php echo $ceoImage; ?>)"></div>
-		            <div>
-		                <h6 class="bbg__label">On the Record</h6>
-		                <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $remarksLink; ?>">Speeches and Remarks</a></h2>
-		                <p>View transcripts of CEO Lansing’s remarks and statements at each of his appearances since he joined the BBG in September 2015.
-							<br/><br/><a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">View All »</a>
-		                </p>
-		            </div>
-		        </div><!-- .bbg__announcement__flexbox -->
-		    </div><!-- .usa-grid -->
-		</section>
-	</section>
+
+	
+	<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
+	    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
+	        <div class="usa-grid">
+	            <div class="bbg__announcement__flexbox">
+	                <div id="lansingPhoto" class="bbg__announcement__photo" style="background-image: url(/wp-content/media/2017/07/lansingspeaks.jpg);"></div>
+	                <div>
+	                    <h6 class="bbg__label">On the record</h6>
+	                    <h2 class="bbg__announcement__headline selectionShareable"><a href="/ceo-speeches-and-remarks">Speeches and Remarks</a></h2>
+	                    <p>View transcripts of CEO Lansing’s remarks and statements at each of his appearances since he joined the BBG in September 2015. <a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">View All »</a></p>
+	                </div>
+	            </div>
+	            <!-- .bbg__announcement__flexbox -->
+	        </div>
+	        <!-- .usa-grid -->
+	    </section>
+	</div>
+
+
 	<?php
 		
 			// OPEN THE CONTAINER FOR THE OFIRST ROW AFTER RIBBON 
