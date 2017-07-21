@@ -145,7 +145,7 @@
 
 		$quote = ''; 
 		$quote .= '<div class="bbg__quotation">';
-			$quote .= '<div class="bbg__quotation-label" style="background-color:' . $networkBackgroundColor . '">BBG</div>';
+			$quote .= '<div class="bbg__quotation-label" style="background-color:' . $networkBackgroundColor . '">' . $calloutNetwork . '</div>';
 			$quote .= '<h2 class="bbg__quotation-text--large"><strong>' . $title . '</strong></h2><p>' . $body . '</p>';
 
 			if ($mugshot != '' ||  $callToAction != '' || $callToActionLabel != '') {
