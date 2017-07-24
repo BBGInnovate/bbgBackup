@@ -1,7 +1,18 @@
 <?php 
 
+/*
+    Author: Joe Flowers
+    Date: 3/7c/2017
+    Description: We have a custom taxonomy called "Language Services". This list can be pasted into the "BulkPress" authoring interface to populate the taxonomy. 
+
+        Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. Each language service from that aggregate list is represented below. 
+
+       	Note that websites are also associated with Language Services. To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
+*/
+
 require ('../../../../wp-load.php');
-switch_to_blog(2);
+//switch_to_blog(2);
+die();
 
 $serviceCountryStr = "Martinoticias	Cuba
 Alhurra TV	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen

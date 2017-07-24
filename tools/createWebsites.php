@@ -1,8 +1,18 @@
 <?php 
 
+/*
+    Author: Joe Flowers
+    Date: 2/8/2017
+    
+    Description: We store language services in a custom taxonomy. To keep the data model simple, we duplicate a language service if it serves content in more than one language. This scirpt associates each language service with its website by filling out the value for the language_service_site_url custom field
+
+	Data Source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. I compared that list of language services to the publicly available lists of websites to come up with this list.
+
+*/
 
  require ('../../../../wp-load.php');
- switch_to_blog(2);
+ //switch_to_blog(2);
+ die();
 
 $serviceCountryStr = "Martinoticias	http://www.martinoticias.com/
 Afia Darfur	http://www.afiadarfur.com/

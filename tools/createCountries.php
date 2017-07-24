@@ -1,5 +1,16 @@
 <?php 
 
+	/*
+        Author: Joe Flowers
+        Date: 2/28/2017
+        Description: 
+			We use the 'country' custom post type to track every country that is represented on our coverage map. The purposes of this script is to populate the list of countries, as well as to store the 'Ammap' code for each country.  The Ammap code is a two letter code used by our mapping library - https://www.amcharts.com/demos/#javascript-maps - to represent each country
+
+		Data Source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target
+			(VOA, RFERL, OCB, RFA, MBN). Each country in the aggregate list is represented below.
+
+    */
+
 require ('../../../../wp-load.php');
 //switch_to_blog(2);
 die();
