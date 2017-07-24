@@ -166,9 +166,9 @@ get_header(); ?>
 							/* END SECOND BLOG POST - COLUMN 2 OF SECOND ROW */
 						echo '</div>';
 						
-						echo '<div class="usa-grid-full u--space-below-mobile--large">';
+						echo '<div class="usa-grid-full u--space-below-mobile--large" style="text-align:right;">';
 							//echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more posts from John\'s blog about his work in support of BBG\'s mission »</a>';
-						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">John blogs about issues affecting U.S. international media. Read more »</a>'; //<strong>Media Diplomacy</strong>
+						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more blog posts »</a>'; //<strong>Media Diplomacy</strong>
 						echo '</div>';
 
 					echo '</div>';
