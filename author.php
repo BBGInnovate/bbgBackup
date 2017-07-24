@@ -168,7 +168,7 @@ get_header(); ?>
 						
 						echo '<div class="usa-grid-full u--space-below-mobile--large" style="text-align:right;">';
 							//echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more posts from John\'s blog about his work in support of BBG\'s mission »</a>';
-						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more blog posts »</a>'; //<strong>Media Diplomacy</strong>
+						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More blog posts »</a>'; //<strong>Media Diplomacy</strong>
 						echo '</div>';
 
 					echo '</div>';
@@ -264,7 +264,7 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
-			echo '<div align="right"><a href="' . $statementsLink . '" class="bbg__kits__intro__more--link">More Statements »</a></div>';
+			echo '<div align="right"><a href="' . $statementsLink . '" class="bbg__kits__intro__more--link">More statements »</a></div>';
 			echo '</div>';
 			// END FIRST COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS 
 
@@ -296,7 +296,7 @@ get_header(); ?>
 					endwhile;
 				}
 				wp_reset_query();
-			echo '<div align="right"><a href="' . $opEdLink . '" class="bbg__kits__intro__more--link">More Op-Eds »</a></div>';
+			echo '<div align="right"><a href="' . $opEdLink . '" class="bbg__kits__intro__more--link">More op-eds »</a></div>';
 			echo '</div>';
 			// END SECOND COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS
 
@@ -331,7 +331,7 @@ get_header(); ?>
 						endwhile;
 					}
 					wp_reset_query();
-				echo '<div align="right"><a href="' . $podcastsLink . '" class="bbg__kits__intro__more--link">More Podcasts »</a></div>';
+				echo '<div align="right"><a href="' . $podcastsLink . '" class="bbg__kits__intro__more--link">More podcasts »</a></div>';
 				echo '</div>';
 			}
 			// END THIRD COLUMN OF FIRST ROW AFTER RIBBON - PODCASTS
