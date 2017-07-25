@@ -795,7 +795,8 @@ function getEntityLinks_taxonomy($termSlug) {
 	$terms = get_terms(array(
 		 'taxonomy' => 'language_services',
 		 'parent' => $entityTerm ->term_id,
-		 'orderby'    => 'name'
+		 'orderby'    => 'name',
+		 'hide_empty' => false 	//allows us to use language service taxonomy for websites before we launch it and associate countries
 	));
 	$g = array();
 	foreach ($terms as $t) {
