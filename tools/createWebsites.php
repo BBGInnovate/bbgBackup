@@ -20,7 +20,7 @@ Alhurra TV	http://www.alhurra.com/
 Radio Sawa	http://www.radiosawa.com/
 RFA Burmese	http://www.rfa.org/burmese/
 RFA Cantonese	http://www.rfa.org/cantonese
-RFA English http://www.rfa.org/english
+RFA English	http://www.rfa.org/english
 RFA Khmer	http://www.rfa.org/khmer
 RFA Korean	http://www.rfa.org/korean
 RFA Lao	http://www.rfa.org/laos
@@ -45,8 +45,8 @@ RFERL Kazakh	http://www.azattyq.org/
 RFERL Kazakh (Russian)	http://rus.azattyq.org/
 RFERL Kyrgyz	http://www.azattyk.kg/
 RFERL Kyrgyz (Russian)	http://rus.azattyk.org/
-Gandhara (English to AfPak) http://gandhara.rferl.org
-Radio Mashaal http://www.mashaalradio.com
+Gandhara (English to AfPak)	http://gandhara.rferl.org
+Radio Mashaal	http://www.mashaalradio.com
 RFERL Moldovan	http://www.europalibera.org/
 RFERL Moldovan (Russian)	http://www.europalibera.org/p/5065.html
 RFERL North Caucasus (Avar)	http://www.radioerkenli.com/
