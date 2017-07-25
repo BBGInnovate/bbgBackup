@@ -29,11 +29,25 @@ $showPodcasts = false;
 if ( isset($_GET['showPodcasts'] )) {
 	$showPodcasts = true;
 }
-// Most recent tweet
-/*$latestTweetsStr = '<a data-chrome="noheader nofooter noborders transparent noscrollbar" data-tweet-limit="1" class="twitter-timeline" href="https://twitter.com/'.$twitterHandle.'" data-screen-name="'.$twitterHandle.'" >Tweets by @'.$twitterHandle.'</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';*/
+$tweets = [];
+$profilePageID = "";
+$latestTweetsStr = "";
+$featuredPostID = 0;
+if ( isset( $m['author_profile_page'] ) ) {
+	$profilePageID =  $m['author_profile_page'][0];
 
-// Featured tweet selected by us
-$latestTweetsStr = '<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Our Impact Model measures 40+ indicators beyond audience size to hold our activities accountable. <a href="https://twitter.com/hashtag/BBGannualReport?src=hash">#BBGannualReport</a> <a href="https://t.co/r8geNg47OP">https://t.co/r8geNg47OP</a> <a href="https://t.co/e6T3Zea443">pic.twitter.com/e6T3Zea443</a></p>&mdash; BBG (@BBGgov) <a href="https://twitter.com/BBGgov/status/881886454485528576">July 3, 2017</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
+	$tweets = get_field( 'profile_related_author_page_tweets', $profilePageID, true);
+	$featuredPostID = get_field( 'profile_related_author_page_featured_post', $profilePageID, true);
+	if ( count( $tweets )) {
+		$randKey = array_rand( $tweets );
+		$latestTweetsStr = $tweets[$randKey]['profile_related_author_page_tweet'];
+		/* THE HTML OF A TWEET SHOULD LOOK LIKE THIS
+		$latestTweetsStr = '<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Our Impact Model measures 40+ indicators beyond audience size to hold our activities accountable. <a href="https://twitter.com/hashtag/BBGannualReport?src=hash">#BBGannualReport</a> <a href="https://t.co/r8geNg47OP">https://t.co/r8geNg47OP</a> <a href="https://t.co/e6T3Zea443">pic.twitter.com/e6T3Zea443</a></p>&mdash; BBG (@BBGgov) <a href="https://twitter.com/BBGgov/status/881886454485528576">July 3, 2017</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>';
+	*/
+	}
+}
+
+
 
 get_header(); ?>
 
@@ -50,29 +64,34 @@ get_header(); ?>
 			
 			$postIDsUsed = [];
 			
+			
 			/**** BEGIN FETCH FEATURED POSTID ****/
-			$qParams = array(
-				'post_type' => array( 'post' ),
-				'posts_per_page' => 1,
-				'orderby' => 'post_date',
-				'order' => 'desc',
-				'post__not_in' => $postIDsUsed,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'category',
-						'field' => 'slug',
-						'terms' => array( 'from-the-ceo'),
-						'operator' => 'AND'
+			
+			if ( $featuredPostID == 0 ) {	//only fetch a featured post ID if one is not selected.
+				$qParams = array(
+					'post_type' => array( 'post' ),
+					'posts_per_page' => 1,
+					'orderby' => 'post_date',
+					'order' => 'desc',
+					'post__not_in' => $postIDsUsed,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'field' => 'slug',
+							'terms' => array( 'from-the-ceo'),
+							'operator' => 'AND'
+						)
 					)
-				)
-			);
-			query_posts( $qParams );
-			if ( have_posts() ) {
-				while ( have_posts() ) : the_post();
-					$featuredPostID = get_the_ID();
-				endwhile;
+				);
+				query_posts( $qParams );
+				if ( have_posts() ) {
+					while ( have_posts() ) : the_post();
+						$featuredPostID = get_the_ID();
+					endwhile;
+				}
+				wp_reset_query();
 			}
-			wp_reset_query();
+			$postIDsUsed []= $featuredPostID;
 			/**** END FETCH FEATURED POSTID ****/
 
 			/**** BEGIN FETCH FEATURED SECOND AND THIRD POSTIDS ****/
