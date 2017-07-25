@@ -20,6 +20,7 @@ Alhurra TV	http://www.alhurra.com/
 Radio Sawa	http://www.radiosawa.com/
 RFA Burmese	http://www.rfa.org/burmese/
 RFA Cantonese	http://www.rfa.org/cantonese
+RFA English http://www.rfa.org/english
 RFA Khmer	http://www.rfa.org/khmer
 RFA Korean	http://www.rfa.org/korean
 RFA Lao	http://www.rfa.org/laos
@@ -37,6 +38,7 @@ RFERL Balkan (Albanian)	www.evropaelire.org
 RFERL Balkan (Macedonian)	www.slobodnaevropa.mk
 RFERL Belarus	http://www.svaboda.org/
 RFERL Current Time	http://www.currenttime.tv/
+RFERL English	http://www.rferl.org/
 Radio Farda	http://www.radiofarda.com/
 RFERL Georgian	http://www.tavisupleba.org/
 RFERL Kazakh	http://www.azattyq.org/
@@ -73,6 +75,7 @@ VOA Cantonese	http://www.voacantonese.com/
 VOA Central Africa	http://www.radiyoyacuvoa.com/
 VOA Creole	http://www.voanouvel.com/
 VOA Deewa	http://www.voadeewaradio.com/
+VOA English	http://www.voanews.com/
 VOA French to Africa	http://www.voaafrique.com
 VOA Georgian	http://www.amerikiskhma.com/
 VOA Hausa	http://www.voahausa.com/
@@ -82,8 +85,10 @@ VOA Horn of Africa (Tigrigna)	http://tigrigna.voanews.com/
 VOA Indonesian	http://www.voaindonesia.com/
 VOA Khmer	http://www.khmer.voanews.com/
 VOA Korean	http://www.voakorea.com/
+VOA Kurdi	http://www.dengeamerika.com
 VOA Kurdish	http://www.dengiamerika.com/
 VOA Lao	http://lao.voanews.com/
+VOA Learning English	https://learningenglish.voanews.com/
 VOA Macedonian	http://mk.voanews.com/
 VOA Mandarin	http://www.voachinese.com/
 VOA Persian	http://ir.voanews.com/

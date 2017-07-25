@@ -8,6 +8,8 @@
         Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. Each language service from that aggregate list is represented below. 
 
        	Note that websites are also associated with Language Services. To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
+
+       	Note that RFA English and RFERL English are websites, but they aren't really language services.
 			
     */
 ?>
@@ -24,6 +26,7 @@ OCB/Martinoticias
 MBN/Radio Sawa
 RFA/RFA Burmese
 RFA/RFA Cantonese
+RFA/RFA English
 RFA/RFA Khmer
 RFA/RFA Korean
 RFA/RFA Lao
@@ -41,6 +44,7 @@ RFERL/RFERL Balkan (Albanian)
 RFERL/RFERL Balkan (Macedonian)
 RFERL/RFERL Belarus
 RFERL/RFERL Current Time
+RFERL/RFERL English
 RFERL/Radio Farda
 RFERL/RFERL Georgian
 RFERL/RFERL Kazakh
@@ -78,6 +82,7 @@ VOA/VOA Central Africa
 VOA/VOA Creole
 VOA/VOA Deewa
 VOA/VOA English
+VOA/VOA English to Africa
 VOA/VOA French to Africa
 VOA/VOA Georgian
 VOA/VOA Hausa
@@ -87,8 +92,10 @@ VOA/VOA Horn of Africa (Tigrigna)
 VOA/VOA Indonesian
 VOA/VOA Khmer
 VOA/VOA Korean
+VOA/VOA Kurdi
 VOA/VOA Kurdish
 VOA/VOA Lao
+VOA/VOA Learning English
 VOA/VOA Macedonian
 VOA/VOA Mandarin
 VOA/VOA Persian
@@ -106,5 +113,3 @@ VOA/VOA Urdu
 VOA/VOA Uzbek
 VOA/VOA Vietnamese
 VOA/VOA Zimbabwe
-VOA/VOA English to Africa
-VOA/VOA Learning English
