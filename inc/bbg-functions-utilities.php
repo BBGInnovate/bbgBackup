@@ -176,6 +176,8 @@
 		if ( $labelText != "" ) {
 			$label = "<div class='bbg__label_inverted'>$labelText</div>";
 		}
+		//JBF 7/25/2017: removing this functionality for now
+		$label = "";
 		return $label;
 	}
 	/****** END OF UTILITY FUNCTIONS - KEEP UP TOP ****/
