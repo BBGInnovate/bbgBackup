@@ -40,6 +40,7 @@ if ( $includeSidebar ) {
 				$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 				$filesize = formatBytes(filesize($file));
 
+				// ADDING A FALLBACK TO FETCH THE FILE NAME WHEN WE DON'T ENTER ONE IN THE CUSTOM FIELD
 				if ( $sidebarDownloadTitle == "" ) {
 					$sidebarDownloadTitle = $sidebarDownloadLinkObj['post_title'];
 				}

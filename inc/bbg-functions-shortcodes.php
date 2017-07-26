@@ -364,7 +364,7 @@
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
 	function transcript_list_shortcode($atts) {
-		
+
 		$limit = 0;
 		if (isset($atts['limit'])) {
 	    	$limit = $atts['limit'];
@@ -377,7 +377,7 @@
 				array (
 					'taxonomy' => 'media_category',
 					'field' => 'slug',
-					'terms' => array('transcript'),
+					'terms' => array( 'transcript','ceo-transcript' ), //******** JOE: I added the sub-category for John's transcripts but realized we need a way to also check for Board ones and separate them, we need to pass a variable to this code
 					'operator' => 'IN'
 				)
 			),
@@ -386,8 +386,8 @@
 			'order'				=> 'DESC'
 		) );
 		$str = "";
-		while ( $the_query->have_posts() ) :
-		    $the_query->the_post();
+		while ( $the_query -> have_posts() ) :
+		    $the_query -> the_post();
 			$link = get_permalink();
 			$link = wp_get_attachment_url( get_post_thumbnail_id() );
 			$title = get_the_title();
@@ -405,19 +405,19 @@
 			$str .= '</header><!-- .bbg-blog__excerpt-header -->';
 			$str .= '<div class="entry-content bbg-blog__excerpt-content">';
 			if ($p) {
-				$str .= '<div style="margin-bottom: 1rem;" ><a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';	
+				$str .= '<div style="margin-bottom: 1rem;" ><a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';
 			}
 			$str .= '<div class="posted-on bbg__excerpt-meta" ><time class="entry-date published updated">' . $date . '</time></div>';
 			$str .= '<p>' . $excerpt . '</p>';
-			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
+			$str .='</div><!-- .bbg-blog__excerpt-content -->';
 			$str .= '</article>';
 		endwhile;
 
-		wp_reset_postdata();		
+		wp_reset_postdata();
 		return $str;
 	}
 
-	add_shortcode('transcript_list', 'transcript_list_shortcode'); 
+	add_shortcode('transcript_list', 'transcript_list_shortcode');
 
 
 ?>
