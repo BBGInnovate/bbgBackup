@@ -40,6 +40,10 @@ if ( $includeSidebar ) {
 				$ext = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
 				$filesize = formatBytes(filesize($file));
 
+				if ( $sidebarDownloadTitle == "" ) {
+					$sidebarDownloadTitle = $sidebarDownloadLinkObj['post_title'];
+				}
+
 				$sidebarImage = "";
 				if ($sidebarDownloadThumbnail && $sidebarDownloadThumbnail != "") {
 					$sidebarImage = "<img src='" . $sidebarDownloadThumbnail . "' class='bbg__sidebar__download__thumbnail' alt='Thumbnail image for download' />";
