@@ -364,30 +364,54 @@
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
 	function transcript_list_shortcode($atts) {
-
+		
+		//if you want to only show X transcripts, use the 'limit' variable
 		$limit = 0;
-		if (isset($atts['limit'])) {
+		if ( isset( $atts['limit'] ))  {
 	    	$limit = $atts['limit'];
 	    }
+
+	    //for pagination
+	    $transcriptPage = 1;
+	    if ( isset ( $_GET['transcriptPage'] )) {
+	    	$transcriptPage = $_GET['transcriptPage'];
+	    }
+	    
+	    //BEGIN: MODIFY TAXONOMY QUERY AS NEEDED TO ACCOMMODATE SUBCATEGORIES
+		$tax_query = array(
+			'relation' => 'AND',
+			array (
+				'taxonomy' => 'media_category',
+				'field' => 'slug',
+				'terms' => array('transcript'),
+				'operator' => 'IN'
+			)
+		);
+
+		if ( isset ( $atts['subcategory'] )) {
+			$tax_query []= array (
+				'taxonomy' => 'media_category',
+				'field' => 'slug',
+				'terms' => array($atts['subcategory']),
+				'operator' => 'IN'
+			);
+	    }
+	    //END: MODIFY TAXONOMY QUERY AS NEEDED TO ACCOMMODATE SUBCATEGORIES
+
 		$the_query = new WP_Query( array(
 			'post_type' => 'attachment',
     		'post_status' => 'inherit',	//for some reason, this is required
 			'posts_per_page' => $limit,
-			'tax_query' => array(
-				array (
-					'taxonomy' => 'media_category',
-					'field' => 'slug',
-					'terms' => array( 'transcript','ceo-transcript' ), //******** JOE: I added the sub-category for John's transcripts but realized we need a way to also check for Board ones and separate them, we need to pass a variable to this code
-					'operator' => 'IN'
-				)
-			),
+			'paged'          => $transcriptPage, 
+			'tax_query' => $tax_query,
 			'meta_key'			=> 'transcript_appearance_date',
 			'orderby'			=> 'meta_value',
 			'order'				=> 'DESC'
 		) );
+
 		$str = "";
-		while ( $the_query -> have_posts() ) :
-		    $the_query -> the_post();
+		while ( $the_query->have_posts() ) :
+		    $the_query->the_post();
 			$link = get_permalink();
 			$link = wp_get_attachment_url( get_post_thumbnail_id() );
 			$title = get_the_title();
@@ -396,7 +420,7 @@
 			$date = get_field('transcript_appearance_date', get_the_ID(), true);
 			$relatedPost = get_field('transcript_related_post', get_the_ID(), true);
 			$p = false;
-			if (is_array($relatedPost)) {
+			if ( is_array( $relatedPost)) {
 				$p = $relatedPost[0];
 			}
 			$str .= '<article class="bbg-blog__excerpt--list">';
@@ -405,19 +429,19 @@
 			$str .= '</header><!-- .bbg-blog__excerpt-header -->';
 			$str .= '<div class="entry-content bbg-blog__excerpt-content">';
 			if ($p) {
-				$str .= '<div style="margin-bottom: 1rem;" ><a href="' . get_permalink($p -> ID) . '">' . $p->post_title .'</a></div>';
+				$str .= '<div style="margin-bottom: 1rem;" ><a href="' . get_permalink( $p -> ID ) . '">' . $p->post_title .'</a></div>';	
 			}
 			$str .= '<div class="posted-on bbg__excerpt-meta" ><time class="entry-date published updated">' . $date . '</time></div>';
 			$str .= '<p>' . $excerpt . '</p>';
-			$str .='</div><!-- .bbg-blog__excerpt-content -->';
+			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
 			$str .= '</article>';
 		endwhile;
 
-		wp_reset_postdata();
+		wp_reset_postdata();		
 		return $str;
 	}
 
-	add_shortcode('transcript_list', 'transcript_list_shortcode');
+	add_shortcode('transcript_list', 'transcript_list_shortcode'); 
 
 
 ?>
