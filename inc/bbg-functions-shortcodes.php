@@ -453,23 +453,32 @@
 		endwhile;
 
 		if ( $showPagination ) {
-			$paginationStr = paginate_links( array(
-			    'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-			    'total'        => $the_query->max_num_pages,
-			    'current'      => max( 1, get_query_var( 'paged' ) ),
-			    'format'       => '?paged=%#%',
-			    'show_all'     => true,
-			    'type'         => 'plain',
-			    'prev_next'    => true,
-				'prev_text'    => sprintf( '%1$s', __( '<span style="margin-right:3rem;">« Newer</span>', 'text-domain' ) ),
-				'next_text'    => sprintf( '%1$s', __( '<span style="margin-left:3rem;">Older »</span>', 'text-domain' ) ),
+			// $paginationStr = paginate_links( array(
+			//     'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+			//     'total'        => $the_query->max_num_pages,
+			//     'current'      => max( 1, get_query_var( 'paged' ) ),
+			//     'format'       => '?paged=%#%',
+			//     'show_all'     => true,
+			//     'type'         => 'plain',
+			//     'prev_next'    => true,
+			// 	'prev_text'    => sprintf( '%1$s', __( '<span style="margin-right:3rem;">« Newer</span>', 'text-domain' ) ),
+			// 	'next_text'    => sprintf( '%1$s', __( '<span style="margin-left:3rem;">Older »</span>', 'text-domain' ) ),
             
-			) );
+			// ) );
 			
-			if ($paginationStr != "") {
-				$str .= '<BR><nav class="navigation posts-navigation" role="navigation">' . $paginationStr . '</nav>';
-			}
+			// if ($paginationStr != "") {
+			// 	$str .= '<BR><nav class="navigation posts-navigation" role="navigation">' . $paginationStr . '</nav>';
+			// }
 
+			$temp = $GLOBALS['wp_query'];
+			$GLOBALS['wp_query'] = NULL;
+			$GLOBALS['wp_query'] = $the_query;
+
+			$paginationStr = '<BR>' . get_the_posts_navigation() . '<BR>';
+			$paginationStr = str_replace("Newer posts", "Newer", $paginationStr);
+			$paginationStr = str_replace("Older posts", "Older", $paginationStr);
+			$str .= $paginationStr;
+			$GLOBALS['wp_query'] = $temp;
 		}
 
 
