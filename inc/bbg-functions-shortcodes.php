@@ -364,18 +364,33 @@
 	add_shortcode( 'entityfastfact', 'entityfastfact_shortcode' );
 
 	function transcript_list_shortcode($atts) {
-		
-		//if you want to only show X transcripts, use the 'limit' variable
-		$limit = 0;
-		if ( isset( $atts['limit'] ))  {
-	    	$limit = $atts['limit'];
+		//$atts may include 
+		//	show_pagination (1 or 0 for true or false)
+		//	transcripts_per_page (any number)
+		//	subcategory (either 'gov-transcripts' or 'ceo-transcripts' )
+
+
+		//if you want to only show X transcripts, use the 'transcriptsPerPage' variable and turn off 
+		$transcriptsPerPage = 0; //0 means unlimited
+		$showPagination = true;  //show or hide the newer / older transcript links
+		$pageNumber = 1;		 //which page are we on
+
+		if ( isset( $atts['transcripts_per_page'] ))  {
+	    	$transcriptsPerPage = $atts['transcripts_per_page'];
+	    }
+	    
+		if ( isset( $atts['show_pagination'] ))  {
+	    	$showPagination = $atts['show_pagination'];
+	    	if ( $showPagination == "false" || $showPagination == "0") {
+	    		$showPagination = false;
+	    	}
 	    }
 
 	    //for pagination
-	    $transcriptPage = 1;
-	    if ( isset ( $_GET['transcriptPage'] )) {
-	    	$transcriptPage = $_GET['transcriptPage'];
+	    if ( get_query_var('paged')) {
+	    	$pageNumber = get_query_var('paged');
 	    }
+	    
 	    
 	    //BEGIN: MODIFY TAXONOMY QUERY AS NEEDED TO ACCOMMODATE SUBCATEGORIES
 		$tax_query = array(
@@ -401,8 +416,8 @@
 		$the_query = new WP_Query( array(
 			'post_type' => 'attachment',
     		'post_status' => 'inherit',	//for some reason, this is required
-			'posts_per_page' => $limit,
-			'paged'          => $transcriptPage, 
+			'posts_per_page' => $transcriptsPerPage,
+			'paged'          => $pageNumber, 
 			'tax_query' => $tax_query,
 			'meta_key'			=> 'transcript_appearance_date',
 			'orderby'			=> 'meta_value',
@@ -436,6 +451,27 @@
 			$str .='</div><!-- .bbg-blog__excerpt-content -->';		
 			$str .= '</article>';
 		endwhile;
+
+		if ( $showPagination ) {
+			$paginationStr = paginate_links( array(
+			    'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+			    'total'        => $the_query->max_num_pages,
+			    'current'      => max( 1, get_query_var( 'paged' ) ),
+			    'format'       => '?paged=%#%',
+			    'show_all'     => true,
+			    'type'         => 'plain',
+			    'prev_next'    => true,
+				'prev_text'    => sprintf( '%1$s', __( '<span style="margin-right:3rem;">« Newer</span>', 'text-domain' ) ),
+				'next_text'    => sprintf( '%1$s', __( '<span style="margin-left:3rem;">Older »</span>', 'text-domain' ) ),
+            
+			) );
+			
+			if ($paginationStr != "") {
+				$str .= '<BR><nav class="navigation posts-navigation" role="navigation">' . $paginationStr . '</nav>';
+			}
+
+		}
+
 
 		wp_reset_postdata();		
 		return $str;
