@@ -191,6 +191,31 @@ if (in_category($categoriesThatShowEntityIcons))  {
 $threatCategoryID = get_cat_id( 'threats-to-press' );
 $isThreat = has_category( $threatCategoryID );
 
+$advisoryExpertsStr = '';
+if ( has_category('Media Advisory')) {
+	$includeExperts = get_field( 'media_advisory_include_experts', get_the_ID(), true );
+	if ($includeExperts) {
+		$expertLabel =  get_field( 'media_advisory_experts_label', get_the_ID(), true );
+		$expertDescription =  get_field( 'media_advisory_experts_description', get_the_ID(), true );
+
+		$advisoryExpertsStr .= '<h3 class="bbg__sidebar-label">' . $expertLabel . '</h3>';
+		$advisoryExpertsStr .= '<p class="bbg-tagline bbg-tagline--main">' . $expertDescription . '</p>';
+
+	    if ( have_rows( 'media_advisory_list_of_experts' )) {
+			$advisoryExpertsStr .= '<ul class="usa-unstyled-list">';
+		    while ( have_rows('media_advisory_list_of_experts') ) : the_row();
+				$expertName = get_sub_field( 'expert_name' );
+				$expertTitle = get_sub_field( 'expert_name' );
+					$advisoryExpertsStr .= '<li>';
+						$advisoryExpertsStr .= '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name">' . $expertName . '</h5>';
+						$advisoryExpertsStr .= '<span class="bbg__profile-excerpt__occupation">' . $expertTitle . '</span>';
+					$advisoryExpertsStr .= '</li>';
+		    endwhile;
+	    	$advisoryExpertsStr .= '</ul>';
+		}
+	}
+}
+
 $journos = get_field( 'featured_journalists_section' );
 
 $featuredJournalists = "";
@@ -542,6 +567,7 @@ $hideFeaturedImage = FALSE;
 				}
 
 				echo $featuredJournalists;
+				echo $advisoryExpertsStr;
 
 				echo getInterviewees();
 
