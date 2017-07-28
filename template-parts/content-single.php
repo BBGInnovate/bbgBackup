@@ -205,7 +205,7 @@ if ( has_category('Media Advisory')) {
 			$advisoryExpertsStr .= '<ul class="usa-unstyled-list">';
 		    while ( have_rows('media_advisory_list_of_experts') ) : the_row();
 				$expertName = get_sub_field( 'expert_name' );
-				$expertTitle = get_sub_field( 'expert_name' );
+				$expertTitle = get_sub_field( 'expert_title' );
 					$advisoryExpertsStr .= '<li>';
 						$advisoryExpertsStr .= '<h5 class="bbg__sidebar__primary-headline bbg__profile-excerpt__name">' . $expertName . '</h5>';
 						$advisoryExpertsStr .= '<span class="bbg__profile-excerpt__occupation">' . $expertTitle . '</span>';
