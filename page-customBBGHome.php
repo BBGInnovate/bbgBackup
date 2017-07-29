@@ -271,7 +271,10 @@ get_header();
 					<div class="usa-width-one-third">
 					<?php
 						if ( $featuredEvent && $showFeaturedEvent ) {
-
+							$featuredEventClass = "bbg__event-announcement";
+							if (has_category('Media Advisory', $featuredEvent)) {
+								$featuredEventClass = "";
+							} 
 							$id = $featuredEvent -> ID;
 							$labelText = $featuredEventLabel;
 							$eventPermalink = get_the_permalink( $id );
@@ -288,7 +291,7 @@ get_header();
 							$excerpt = my_excerpt( $id );
 					?>
 
-							<article class="bbg-portfolio__excerpt bbg__event-announcement">
+							<article class="bbg-portfolio__excerpt <?php echo $featuredEventClass; ?>">
 								<header class="entry-header bbg__article-icons-container">
 									<div class="bbg__article-icon"></div>
 
