@@ -220,9 +220,8 @@ section.usa-section.bbg-banner__section {
 			size: $bbg__category-icon;
 			position: left top;
 			repeat: no-repeat;
-			//local image urls
-			image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png');
-			image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg');
+			image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png');
+			image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg');
 		}
 		display: table-cell;
 		width: $bbg__category-icon + 5px;

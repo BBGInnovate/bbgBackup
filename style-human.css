@@ -6973,8 +6973,8 @@ section.usa-section.bbg-banner__section {
   background-size: 30px;
   background-position: left top;
   background-repeat: no-repeat;
-  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red@4x.png");
-  background-image: url("/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_advisory_red.svg");
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png");
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg");
   display: table-cell;
   width: 35px;
 }
