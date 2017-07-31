@@ -273,7 +273,7 @@ get_header();
 						if ( $featuredEvent && $showFeaturedEvent ) {
 							$featuredEventClass = "bbg__event-announcement";
 							if (has_category('Media Advisory', $featuredEvent)) {
-								$featuredEventClass = "";
+								$featuredEventClass = "bbg__advisory-announcement";
 							} 
 							$id = $featuredEvent -> ID;
 							$labelText = $featuredEventLabel;
@@ -288,7 +288,7 @@ get_header();
 							}
 
 							$eventTitle = $featuredEvent -> post_title;
-							$excerpt = my_excerpt( $id );
+							$excerpt = my_excerpt( $id ); 
 					?>
 
 							<article class="bbg-portfolio__excerpt <?php echo $featuredEventClass; ?>">
