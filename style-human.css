@@ -7041,35 +7041,43 @@ section.usa-section.bbg-banner__section {
   display: none;
 }
 
+.bbg__event-announcement .bbg__event-announcement__content, .bbg__advisory-announcement .bbg__event-announcement__content {
+  background-color: #F1F1F1;
+  border-radius: 0 3px 3px 3px;
+  padding: 1rem 2rem;
+}
+.bbg__event-announcement .bbg__event-announcement__title, .bbg__advisory-announcement .bbg__event-announcement__title {
+  font-size: 2.4rem;
+}
+@media screen and (min-width: 600px) {
+  .bbg__event-announcement .bbg__event-announcement__excerpt, .bbg__advisory-announcement .bbg__event-announcement__excerpt {
+    display: none;
+  }
+  .bbg__event-announcement .bbg__event-announcement__title, .bbg__advisory-announcement .bbg__event-announcement__title {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .bbg__event-announcement .bbg__event-announcement__excerpt, .bbg__advisory-announcement .bbg__event-announcement__excerpt {
+    display: block;
+  }
+  .bbg__event-announcement .bbg__event-announcement__title, .bbg__advisory-announcement .bbg__event-announcement__title {
+    font-size: 2rem;
+  }
+}
+
 .bbg__event-announcement .bbg__article-icon {
   /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
   background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
   background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red@4x.png");
   background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red.svg");
 }
-.bbg__event-announcement .bbg__event-announcement__content {
-  background-color: #F1F1F1;
-  border-radius: 0 3px 3px 3px;
-  padding: 1rem 2rem;
-}
-.bbg__event-announcement .bbg__event-announcement__title {
-  font-size: 2.4rem;
-}
-@media screen and (min-width: 600px) {
-  .bbg__event-announcement .bbg__event-announcement__excerpt {
-    display: none;
-  }
-  .bbg__event-announcement .bbg__event-announcement__title {
-    font-size: 2.4rem;
-  }
-}
-@media screen and (min-width: 900px) {
-  .bbg__event-announcement .bbg__event-announcement__excerpt {
-    display: block;
-  }
-  .bbg__event-announcement .bbg__event-announcement__title {
-    font-size: 2rem;
-  }
+
+.bbg__advisory-announcement .bbg__article-icon {
+  /* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
+  background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png");
+  background-image: url("/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg");
 }
 
 @media screen and (min-width: 600px) {

@@ -286,16 +286,7 @@ section.usa-section.bbg-banner__section {
 }
 
 // focus box: event announcement
-.bbg__event-announcement {
-	.bbg__article-icon {
-		//local image urls for dev
-		/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
-		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
-		// icon image urls
-		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red@4x.png');
-		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red.svg');
-	}
-
+.bbg__event-announcement, .bbg__advisory-announcement {
 	.bbg__event-announcement__content {
 		background-color: #F1F1F1;
 		border-radius: 0 3px 3px 3px;
@@ -324,6 +315,27 @@ section.usa-section.bbg-banner__section {
 		}
 	}
 }
+.bbg__event-announcement {
+	.bbg__article-icon {
+		//local image urls for dev
+		/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
+		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
+		// icon image urls
+		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red@4x.png');
+		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_event_red.svg');
+	}
+}
+.bbg__advisory-announcement {
+	.bbg__article-icon {
+		//local image urls for dev
+		/* background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red@4x.png');
+		background-image: url('/innovationWP/wp-content/themes/BBGredesign/img/site-icons/BBG_event_red.svg'); */
+		// icon image urls
+		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red@4x.png');
+		background-image: url('/wp-content/themes/bbgRedesign/img/site-icons/BBG_advisory_red.svg');
+	}
+}
+
 
 .bbg__home__recent-posts {
 	.bbg__secondary-stories {
