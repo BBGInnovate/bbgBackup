@@ -89,6 +89,17 @@ $burkeBioImage = "/wp-content/media/2017/08/Burke-obit-superJumbo.jpg";
 get_header();
 
 ?>
+<style>
+	.bbg-burke__network {
+		font-style: italic;
+	}
+	.bbg-burke__occupation {
+		font-weight: normal;
+	}
+	.bbg-burke__tagline {
+		font-weight: normal;
+	}
+</style>
 
 <div id="main" class="site-main">
 	<div id="primary" class="content-area">
@@ -187,9 +198,14 @@ get_header();
 			</section><!-- Site introduction -->
 
 			
-			<section id="something" class="usa-section usa-grid">
+				
+			
+			<section id="winners" class="usa-section ">
 			<div class="usa-grid">
 			<h6 class="bbg__label">Meet the Winners</h6>
+			<p>
+				Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners, and you may <a href='/burke_candidates'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.
+			</p>
 			</div>
 			<div class="usa-grid">
 			<?php
@@ -197,7 +213,7 @@ get_header();
 					/*** USED FOR AWARDS ****/
 					$qParams=array(
 						'post_type' => 'burke_candidate'
-						,'posts_per_page' => 6
+						,'posts_per_page' => 3
 						,'order' => 'ASC'
 					);
 					$custom_query = new WP_Query( $qParams );
@@ -205,15 +221,12 @@ get_header();
 					while ( $custom_query->have_posts() )  {
 						$custom_query->the_post();
 						$counter++;
-						if ( $counter < 4 ) {
-							$gridClass = "bbg-grid--1-2-3";
-							$includePortfolioDescription = false;
-							get_template_part( 'template-parts/content-burke', get_post_format() );
-						}
+						get_template_part( 'template-parts/content-burke', get_post_format() );
 					}
 			?>
+			<div align="right"><a href="/burke_candidates/" class="bbg__kits__intro__more--link">View all nominees and winners »</a></div>
 			</div>
-			
+
 			</section>
 
 
@@ -243,7 +256,7 @@ get_header();
 						$quote = '';
 						$networkColor = '#FF0000';
 						$quoteNetwork = 'BBG';
-						$quoteText = 'The Burke Awards give us an opportunity to recognize greatness throughout the BBG.';
+						$quoteText = 'These journalists have exemplified the definition of bravery and courage by risking their lives to report from some of the most dangerous places in the world.';
 						$speaker = 'John Lansing';
 						$tagline = 'BBG CEO and Director';
 						$mugshot = '/wp-content/media/2017/07/john_lansing_ceo-sq.jpg';
