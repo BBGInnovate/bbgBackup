@@ -204,7 +204,7 @@ get_header();
 			<div class="usa-grid">
 			<h6 class="bbg__label">Meet the Winners</h6>
 			<p>
-				Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners, and you may <a href='/burke_candidates'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.
+				Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners, and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.
 			</p>
 			</div>
 			<div class="usa-grid">
@@ -224,7 +224,7 @@ get_header();
 						get_template_part( 'template-parts/content-burke', get_post_format() );
 					}
 			?>
-			<div align="right"><a href="/burke_candidates/" class="bbg__kits__intro__more--link">View all nominees and winners »</a></div>
+			<div align="right"><a href="/burke-candidates/" class="bbg__kits__intro__more--link">View all nominees and winners »</a></div>
 			</div>
 
 			</section>
