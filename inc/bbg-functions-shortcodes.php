@@ -435,8 +435,8 @@
 			$date = get_field('transcript_appearance_date', get_the_ID(), true);
 			$relatedPost = get_field('transcript_related_post', get_the_ID(), true);
 			$p = false;
-			if ( is_array( $relatedPost)) {
-				$p = $relatedPost[0];
+			if ( $relatedPost ) {
+				$p = $relatedPost;
 			}
 			$str .= '<article class="bbg-blog__excerpt--list">';
 			$str .= '<header class="entry-header bbg-blog__excerpt-header">';
