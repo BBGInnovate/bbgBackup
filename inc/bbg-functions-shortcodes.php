@@ -489,4 +489,93 @@
 	add_shortcode('transcript_list', 'transcript_list_shortcode'); 
 
 
+	/**
+	 * Add shortcode reference for the number of total countries
+	 * @return Text
+	 * Returns total number of countries covered from custom field set in 'BBG settings'
+	 */
+	function infobox_shortcode($atts) {
+		$atts = shortcode_atts( array(
+			'width' => 'full', //full, half, third
+			'categories' => '', //comma separated list, will be AND-ed
+			'title' => '', //the header in the box
+			'archivelinktext' => 'View all'
+		), $atts ); 
+
+
+		$width = $atts['width'];
+		$categoryStr = $atts['categories'];
+		$boxTitle = $atts['title'];
+
+		$archiveLinkText = $atts['archivelinktext'] . " »";
+
+		$tax_query = false;
+		if ( strlen( $categoryStr ) ) {
+			$tax_query = array(
+				'relation' => 'AND'
+			);
+			$categories = explode( ",", $categoryStr );
+			foreach ($categories as $cat) {
+				$tax_query []= array (
+					'taxonomy' => 'category',
+					'field' => 'slug',
+					'terms' => array($cat),
+					'operator' => 'IN'
+				);
+			}
+		}
+		
+		$qParams = array (
+			'posts_per_page' => 1,
+			'orderby'			=> 'post_date',
+			'order'				=> 'DESC'
+		);
+
+		if ( $tax_query ) {
+			$qParams['tax_query'] = $tax_query;
+		}
+
+		$url = '';
+		$title = '';
+		$excerpt = '';
+		$categoryLink = '';
+		if ( $categoryStr != '' ) {
+			$categoryLink = '/category/' . str_replace(',', '+', $categoryStr ) . "/";
+		}
+		
+		$custom_query = new WP_Query( $qParams );
+		while ( $custom_query->have_posts() ) : 
+			$custom_query->the_post();
+			$id = get_the_ID();
+
+			$url = get_the_permalink();
+			$title = get_the_title();
+			$excerpt = my_excerpt($id);
+
+			
+		endwhile;
+
+		$classes = 'bbg__infobox ';
+		
+		if ( $width == 'half' ) {
+			$classes .= ' bbg-grid--1-2-2 usa-width-one-half ';
+		} else if ($width == 'third') {
+			$classes .= ' bbg-grid--1-3-3 usa-width-one-third ';
+		}
+		//style="margin-right:2.35765%; " 
+		
+
+		$str = '';
+		$str .= '<div class="' . $classes . '">';
+			$str .= '<h2 class="entry-title">' . $boxTitle . '</h2>';
+			$str .= '<h3 class="bbg__award-excerpt__title"><a href="' . $url . '">' . $title . '</a></h3>';
+			$str .= '<p>' . $excerpt . '</p>';
+			$str .= '<div style="text-align:right;"><a href="' . $categoryLink . '" class="bbg__kits__intro__more--link">' . $archiveLinkText . '</a></div>';
+		$str .= '</div>';
+		
+		return $str;
+	}
+	add_shortcode('infobox', 'infobox_shortcode');
+
+
 ?>
