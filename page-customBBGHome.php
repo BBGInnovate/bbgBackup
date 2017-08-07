@@ -126,8 +126,10 @@ if ( $soap ) {
 	$postIDsUsed[] = $soap[0] -> ID;
 }
 
+$randomFeaturedThreatsID = false;
 if ( $threatsToPressPost ) {
-	$postIDsUsed[] = $threatsToPressPost -> ID;
+	$randKey = array_rand( $threatsToPressPost );
+	$randomFeaturedThreatsID = $threatsToPressPost[$randKey];
 }
 
 /*** output the standard header ***/
@@ -421,12 +423,12 @@ get_header();
 						<?php
 							/* let's get our featured post, which is either selected in homepage settings or is most recent post */
 							$threatsUsedPosts = array();
-							if ($threatsToPressPost) {
-								$qParams=array(
-									'post__in' => array($threatsToPressPost->ID)
+							if ( $randomFeaturedThreatsID ) {
+								$qParams= array(
+									'post__in' => array( $randomFeaturedThreatsID )
 								);
 							} else {
-								$qParams=getThreatsPostQueryParams(1,$threatsUsedPosts);
+								$qParams=getThreatsPostQueryParams( 1,$threatsUsedPosts );
 							}
 							query_posts($qParams);
 							if (have_posts()) {
