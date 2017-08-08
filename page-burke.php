@@ -1,78 +1,24 @@
 <?php
+
 /**
- * The custom home page for the Broadcasting Board of Governors.
+ * The custom page for the Burke Awards.
  * It includes:
- *      - the mission
- *      - a portfolio of recent impact stories,
- *      - recent stories,
- *      - an optional soapbox for senior leadership commentary,
- *      - updates on threats to press around the world
- *      - and a list of the entities.
+ *      - the lead image
+ *      - the blurb
+ *      - three randomly selected winners
+ *      - david burke ribbon
+ *      - a quote from John Lansing
  *
  * @package bbgRedesign
   template name: Burke Awards
  */
-
-//helper function used only in this template
-
-$templateName = "customBBGHome";
-
-/*** get all custom fields ***/
-$siteIntroContent = get_field('site_setting_mission_statement','options','false');
-$siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
-$soap = get_field('homepage_soapbox_post', 'option');
-
-$showFeaturedEvent = get_field('show_homepage_event', 'option');
-$featuredEventLabel = get_field('homepage_event_label', 'option');
-if ($featuredEventLabel == "") {
-	$featuredEventLabel = "This week";
-}
-
-$showFeaturedCallout = get_field('show_homepage_featured_callout', 'option');
-$featuredCallout = get_field('homepage_featured_callout', 'option');
-
-
-$featuredEvent = get_field('homepage_featured_event', 'option');
-$featuredPost = get_field('homepage_featured_post', 'option');
-$threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
-
-/*** get impact category ***/
-//$impactCat = get_category_by_slug('impact');
-//$impactPermalink = get_category_link($impactCat->term_id);
-$impactPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results' ) );
-$impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio' ) );
-
-//$threatsCat=get_category_by_slug('threats-to-press');
-//$threatsPermalink = get_category_link($threatsCat->term_id);
-$threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
-
-/*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
-$postIDsUsed = array();
-
-if ( $featuredPost ) {
-	$postIDsUsed[] = $featuredPost -> ID;
-}
-
-if ( $showFeaturedEvent && $featuredEvent ) {
-	$postIDsUsed[] = $featuredEvent -> ID;
-}
-
-if ( $soap ) {
-	$postIDsUsed[] = $soap[0] -> ID;
-}
-
-if ( $threatsToPressPost ) {
-	$postIDsUsed[] = $threatsToPressPost -> ID;
-}
-
-
 
 /******* BEGIN BURKE AWARDS ****/ 
 
 function getBurkeImage() {
 	return array(
 		'imageID' => 37332,
-		'imageCutline' => 'Burke Awards Logo',
+		'imageCutline' => '',//'imageCutline' => 'Burke Awards Logo',
 		'bannerAdjustStr' => 'center center'
 	);
 }
@@ -81,9 +27,9 @@ $bannerLogo = "/wp-content/media/2017/07/burkeDemo.jpg";
 $siteIntroContent = "The David Burke Awards are named after David W. Burke, founding chairman of the Broadcasting Board of Governors and leader for its first three years. The Burke Awards are presented annually to recognize the courage, integrity, and professionalism of journalists with the BBG.";
 $burkeBioLink = "/who-we-are/our-leadership/board/david-w-burke/";
 $burkeBioImage = "/wp-content/media/2017/08/Burke-obit-superJumbo.jpg";
+$activeYear = date("Y");  //in theory we could let the user pick this 
+
 /******* END BURKE AWARDS ****/
-
-
 
 /*** output the standard header ***/
 get_header();
@@ -106,9 +52,6 @@ get_header();
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
 			<?php
 				/*** output our <style> node for use by the responsive banner ***/
-				$data = get_theme_mod('header_image_data');
-
-				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
 				$randomImg= getBurkeImage();
 				$bannerCutline="";
 				$bannerAdjustStr="";
@@ -196,9 +139,6 @@ get_header();
 				//echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
-
-			
-				
 			
 			<section id="winners" class="usa-section ">
 			<div class="usa-grid">
@@ -209,12 +149,41 @@ get_header();
 			</div>
 			<div class="usa-grid">
 			<?php
-					$counter=0;
-					/*** USED FOR AWARDS ****/
-					$qParams=array(
+
+					// BEGIN: Create an array of three random IDs of burke candidate winners from this year
+					$counter = 0;
+					$qParams = array(
+						'post_type' => 'burke_candidate'
+						,'meta_query' => array( 
+							'key' => 'burke_year_of_eligibility',
+							'value' => $activeYear,
+							'compare' => '='
+						)
+					);
+					$custom_query = new WP_Query( $qParams );
+					$counter = 0;
+					$allCandidateIDs = array();
+					while ( $custom_query->have_posts() )  {
+						$custom_query->the_post();
+						$allCandidateIDs []= get_the_ID();
+					}
+					shuffle( $allCandidateIDs );
+					$randomCandidateIDs = array_slice( $allCandidateIDs, 0, min(3,count($allCandidateIDs) ) );
+					// END: Create an array of three random IDs of burke candidate winners from this year
+
+					// BEGIN: Query and display our three burke candidates
+
+					/*  THIS OLD VERSION OF THE QUERY GETS THREE MOST RECENTLY UPDATED CANDIDATES
+						$qParams=array(
 						'post_type' => 'burke_candidate'
 						,'posts_per_page' => 3
-						,'order' => 'ASC'
+						,'order' => 'DESC'
+					); 
+					*/
+
+					$qParams=array(
+						'post_type' => 'burke_candidate',
+						'post__in' => $randomCandidateIDs
 					);
 					$custom_query = new WP_Query( $qParams );
 					$counter = 0;
@@ -223,13 +192,13 @@ get_header();
 						$counter++;
 						get_template_part( 'template-parts/content-burke', get_post_format() );
 					}
+					wp_reset_query();
+					// END: Create an array of three random IDs of burke candidate winners from this year
 			?>
 			<div align="right"><a href="/burke-candidates/" class="bbg__kits__intro__more--link">View all nominees and winners »</a></div>
 			</div>
 
 			</section>
-
-
 
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 			    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
@@ -247,7 +216,6 @@ get_header();
 			        <!-- .usa-grid -->
 			    </section>
 			</div>
-
 
 			<!-- Quotation -->
 			<section class="usa-section ">
@@ -290,25 +258,3 @@ get_header();
 
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>
-
-
-<script type="text/javascript">
-function navSlide(){
-	var currentScroll = jQuery( "html" );
-	//console.log("Currently scrolled to: " + currentScroll.scrollTop());
-
-	var p = jQuery( "#threats-to-journalism" );
-	var offset = p.offset();
-	//console.log("#threats-to-journalism position: " + offset.top);
-
-	if (currentScroll.scrollTop() > offset.top){
-		//console.log("the Threats-to-press section should be at the top of the page");
-		jQuery(".bbg__social__container").hide();
-	} else {
-		//console.log("the Threats-to-press section is below the top of the page");
-		jQuery(".bbg__social__container").show();
-	}
-}
-
-jQuery(window).scroll(navSlide);
-</script>
