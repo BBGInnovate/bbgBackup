@@ -596,11 +596,14 @@
 		$oldYear = 0;
 		$newYear=0;
 
+		$s .= '<div class="usa-accordion"><ul class="usa-unstyled-list" aria-expanded="true">';		 
+		$counter = 0;
+		$totalPosts= $custom_query -> found_posts;
 
-		
 		while ( $custom_query->have_posts() ) : 
 			$custom_query->the_post();
 			
+			$counter++;
 			$id = get_the_ID();
 			$title = get_the_title();
 			$newYear = get_post_meta( $id, 'burke_year_of_eligibility', true );
@@ -611,17 +614,27 @@
 			$excerpt = my_excerpt($id);
 
 			if ( $newYear != $oldYear ) {
-				$s .= "<h2>$newYear winners</h2>";
 				$oldYear = $newYear;
+				$hidden = "false";
+				$expanded = "true";
+				if ( $counter > 1 ) {
+					$s .= '</div></li>';
+					$hidden = "true";
+					$expanded = "false";
+				}
+				$s .= '<li>';
+				$s .= '<button class="usa-button-unstyled" aria-expanded="' . $expanded . '" aria-controls="collapsible-winner-' . $network . '">' . $newYear . ' winners</button>';
+				$s .= '<div id="collapsible-winner-' . $network . '" aria-hidden="' . $hidden . '" class="usa-accordion-content">';
 			}
+			
 			$s .= '<header class="entry-header bbg__article-icons-container">';
 				$s .= '<div class="bbg__article-icon" style="background-position: left 0.25rem; background-image: url(' . $imgSrc . ');"></div>';
 				$s .= '<h3 class="entry-title" style="color:#4773aa"><a href="'. $url . '">' . $title . '</a></h3>';
 				$s .= '<div class="bbg-blog__excerpt-content"><p>' . $tagline . '</p></div>';
 			$s .= '</header>';
 			
-			
 		endwhile;
+		$s .= '</div></li></ul></div>';
 
 		return $s;
 	}
