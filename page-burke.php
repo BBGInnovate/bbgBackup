@@ -142,10 +142,15 @@ get_header();
 			
 			<section id="winners" class="usa-section ">
 			<div class="usa-grid">
-			<h6 class="bbg__label">Meet the Winners</h6>
-			<p>
-				Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners, and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.
-			</p>
+				<h6 class="bbg__label">Meet the Winners</h6>
+				<div class="bbg-blog__excerpt-content">
+					<p >
+						Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners.
+						<a href="/burke-candidates/" class="bbg__kits__intro__more--link">Complete list of this year's winners »</a>
+
+						<!-- and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.-->
+					</p>
+				</div>
 			</div>
 			<div class="usa-grid">
 			<?php
