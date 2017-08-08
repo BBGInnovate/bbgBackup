@@ -490,9 +490,8 @@
 
 
 	/**
-	 * Add shortcode reference for the number of total countries
+	 * Add shortcode for an infobox that can take a category and show its latest post
 	 * @return Text
-	 * Returns total number of countries covered from custom field set in 'BBG settings'
 	 */
 	function infobox_shortcode($atts) {
 		$atts = shortcode_atts( array(
@@ -576,6 +575,58 @@
 		return $str;
 	}
 	add_shortcode('infobox', 'infobox_shortcode');
+
+	/**
+	 * Add a shortcde that will output a list of all burke award candidtes on a year by year basis.
+	 */
+	function burkelist_shortcode() {
+		$qParams = array(
+			'post_type'  => 'burke_candidate'
+			,'order'     => 'desc'
+			,'orderby'   => array(
+				'burke_year_of_eligibility' => 'DESC',
+				'burke_network'    => 'ASC'
+			)
+			,'meta_key'  => 'burke_year_of_eligibility'
+			,'posts_per_page' => -1
+		);
+
+		$s = "";
+		$custom_query = new WP_Query( $qParams );
+		$oldYear = 0;
+		$newYear=0;
+
+
+		
+		while ( $custom_query->have_posts() ) : 
+			$custom_query->the_post();
+			
+			$id = get_the_ID();
+			$title = get_the_title();
+			$newYear = get_post_meta( $id, 'burke_year_of_eligibility', true );
+			$network = get_post_meta( $id, 'burke_network', true );
+			$tagline = get_post_meta( $id, 'burke_reason_tagline', true );
+			$imgSrc = get_template_directory_uri() . '/img/logo_' . strtolower($network) . '--circle-200.png'; //
+			$url = get_the_permalink();
+			$excerpt = my_excerpt($id);
+
+			if ( $newYear != $oldYear ) {
+				$s .= "<h2>$newYear winners</h2>";
+				$oldYear = $newYear;
+			}
+			$s .= '<header class="entry-header bbg__article-icons-container">';
+				$s .= '<div class="bbg__article-icon" style="background-position: left 0.25rem; background-image: url(' . $imgSrc . ');"></div>';
+				$s .= '<h3 class="entry-title" style="color:#4773aa"><a href="'. $url . '">' . $title . '</a></h3>';
+				$s .= '<div class="bbg-blog__excerpt-content"><p>' . $tagline . '</p></div>';
+			$s .= '</header>';
+			
+			
+		endwhile;
+
+		return $s;
+	}
+
+	add_shortcode('burkelist', 'burkelist_shortcode');
 
 
 ?>
