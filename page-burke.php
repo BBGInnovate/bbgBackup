@@ -27,7 +27,7 @@ $bannerLogo = "/wp-content/media/2017/07/burkeDemo.jpg";
 $siteIntroContent = "The David Burke Awards are named after David W. Burke, founding chairman of the Broadcasting Board of Governors and leader for its first three years. The Burke Awards are presented annually to recognize the courage, integrity, and professionalism of journalists with the BBG.";
 $burkeBioLink = "/who-we-are/our-leadership/board/david-w-burke/";
 $burkeBioImage = "/wp-content/media/2017/08/Burke-obit-superJumbo.jpg";
-$activeYear = date("Y");  //in theory we could let the user pick this 
+$activeYear = 2016;  //in theory we could let the user pick this 
 
 /******* END BURKE AWARDS ****/
 
@@ -155,9 +155,11 @@ get_header();
 					$qParams = array(
 						'post_type' => 'burke_candidate'
 						,'meta_query' => array( 
-							'key' => 'burke_year_of_eligibility',
-							'value' => $activeYear,
-							'compare' => '='
+							array(
+								'key' => 'burke_year_of_eligibility',
+								'value' => $activeYear,
+								'compare' => '='
+							)
 						)
 					);
 					$custom_query = new WP_Query( $qParams );
@@ -169,6 +171,7 @@ get_header();
 					}
 					shuffle( $allCandidateIDs );
 					$randomCandidateIDs = array_slice( $allCandidateIDs, 0, min(3,count($allCandidateIDs) ) );
+					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
 
 					// BEGIN: Query and display our three burke candidates
