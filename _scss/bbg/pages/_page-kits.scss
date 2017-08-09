@@ -442,6 +442,16 @@
 	}
 }
 
-.bbg__kits__section--tile {
+.bbg__kits__button {
+	@extend .usa-button-outline;
+	float: right;
+	font {
+		size: $caption-font-size;
+	}
+	position: relative;
+	top: 80%;
 
+	.fa {
+		font-size: $base-font-size;
+	}
 }

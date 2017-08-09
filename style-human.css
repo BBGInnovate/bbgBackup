@@ -1177,83 +1177,139 @@ button.usa-button-gray.usa-button-active,
 [type="image"].usa-button-gray.usa-button-active {
   background-color: #212121;
 }
-.usa-button.usa-button-outline, .bbg__comments-list .reply,
+.usa-button.usa-button-outline, .bbg__comments-list .reply, .usa-button.bbg__kits__button,
 .usa-button-primary.usa-button-outline,
+.usa-button-primary.bbg__kits__button,
 .usa-button:visited.usa-button-outline,
 .bbg__comments-list .reply:visited,
+.usa-button.bbg__kits__button:visited,
 .usa-button-primary:visited.usa-button-outline,
+.usa-button-primary.bbg__kits__button:visited,
 button.usa-button-outline,
+button.bbg__kits__button,
 [type="button"].usa-button-outline,
+[type="button"].bbg__kits__button,
 [type="submit"].usa-button-outline,
+[type="submit"].bbg__kits__button,
 [type="reset"].usa-button-outline,
-[type="image"].usa-button-outline {
+[type="reset"].bbg__kits__button,
+[type="image"].usa-button-outline,
+[type="image"].bbg__kits__button {
   background-color: #ffffff;
   box-shadow: inset 0 0 0 2px #0071bc;
   color: #0071bc;
 }
-.usa-button.usa-button-outline:hover, .bbg__comments-list .reply:hover, .usa-button.usa-button-outline.usa-button-hover, .bbg__comments-list .usa-button-hover.reply,
+.usa-button.usa-button-outline:hover, .bbg__comments-list .reply:hover, .usa-button.bbg__kits__button:hover, .usa-button.usa-button-outline.usa-button-hover, .bbg__comments-list .usa-button-hover.reply, .usa-button.usa-button-hover.bbg__kits__button,
 .usa-button-primary.usa-button-outline:hover,
+.usa-button-primary.bbg__kits__button:hover,
 .usa-button-primary.usa-button-outline.usa-button-hover,
+.usa-button-primary.usa-button-hover.bbg__kits__button,
 .usa-button:visited.usa-button-outline:hover,
 .bbg__comments-list .reply:visited:hover,
+.usa-button.bbg__kits__button:visited:hover,
 .usa-button:visited.usa-button-outline.usa-button-hover,
 .bbg__comments-list .reply:visited.usa-button-hover,
+.usa-button.bbg__kits__button:visited.usa-button-hover,
 .usa-button-primary:visited.usa-button-outline:hover,
+.usa-button-primary.bbg__kits__button:visited:hover,
 .usa-button-primary:visited.usa-button-outline.usa-button-hover,
+.usa-button-primary.bbg__kits__button:visited.usa-button-hover,
 button.usa-button-outline:hover,
+button.bbg__kits__button:hover,
 button.usa-button-outline.usa-button-hover,
+button.usa-button-hover.bbg__kits__button,
 [type="button"].usa-button-outline:hover,
+[type="button"].bbg__kits__button:hover,
 [type="button"].usa-button-outline.usa-button-hover,
+[type="button"].usa-button-hover.bbg__kits__button,
 [type="submit"].usa-button-outline:hover,
+[type="submit"].bbg__kits__button:hover,
 [type="submit"].usa-button-outline.usa-button-hover,
+[type="submit"].usa-button-hover.bbg__kits__button,
 [type="reset"].usa-button-outline:hover,
+[type="reset"].bbg__kits__button:hover,
 [type="reset"].usa-button-outline.usa-button-hover,
+[type="reset"].usa-button-hover.bbg__kits__button,
 [type="image"].usa-button-outline:hover,
-[type="image"].usa-button-outline.usa-button-hover {
+[type="image"].bbg__kits__button:hover,
+[type="image"].usa-button-outline.usa-button-hover,
+[type="image"].usa-button-hover.bbg__kits__button {
   box-shadow: inset 0 0 0 2px #205493;
   color: #205493;
 }
-.usa-button.usa-button-outline:active, .bbg__comments-list .reply:active, .usa-button.usa-button-outline.usa-button-active, .bbg__comments-list .usa-button-active.reply,
+.usa-button.usa-button-outline:active, .bbg__comments-list .reply:active, .usa-button.bbg__kits__button:active, .usa-button.usa-button-outline.usa-button-active, .bbg__comments-list .usa-button-active.reply, .usa-button.usa-button-active.bbg__kits__button,
 .usa-button-primary.usa-button-outline:active,
+.usa-button-primary.bbg__kits__button:active,
 .usa-button-primary.usa-button-outline.usa-button-active,
+.usa-button-primary.usa-button-active.bbg__kits__button,
 .usa-button:visited.usa-button-outline:active,
 .bbg__comments-list .reply:visited:active,
+.usa-button.bbg__kits__button:visited:active,
 .usa-button:visited.usa-button-outline.usa-button-active,
 .bbg__comments-list .reply:visited.usa-button-active,
+.usa-button.bbg__kits__button:visited.usa-button-active,
 .usa-button-primary:visited.usa-button-outline:active,
+.usa-button-primary.bbg__kits__button:visited:active,
 .usa-button-primary:visited.usa-button-outline.usa-button-active,
+.usa-button-primary.bbg__kits__button:visited.usa-button-active,
 button.usa-button-outline:active,
+button.bbg__kits__button:active,
 button.usa-button-outline.usa-button-active,
+button.usa-button-active.bbg__kits__button,
 [type="button"].usa-button-outline:active,
+[type="button"].bbg__kits__button:active,
 [type="button"].usa-button-outline.usa-button-active,
+[type="button"].usa-button-active.bbg__kits__button,
 [type="submit"].usa-button-outline:active,
+[type="submit"].bbg__kits__button:active,
 [type="submit"].usa-button-outline.usa-button-active,
+[type="submit"].usa-button-active.bbg__kits__button,
 [type="reset"].usa-button-outline:active,
+[type="reset"].bbg__kits__button:active,
 [type="reset"].usa-button-outline.usa-button-active,
+[type="reset"].usa-button-active.bbg__kits__button,
 [type="image"].usa-button-outline:active,
-[type="image"].usa-button-outline.usa-button-active {
+[type="image"].bbg__kits__button:active,
+[type="image"].usa-button-outline.usa-button-active,
+[type="image"].usa-button-active.bbg__kits__button {
   box-shadow: inset 0 0 0 2px #112e51;
   color: #112e51;
 }
-.usa-button.usa-button-outline:focus, .bbg__comments-list .reply:focus, .usa-button.usa-button-outline.usa-button-focus, .bbg__comments-list .usa-button-focus.reply,
+.usa-button.usa-button-outline:focus, .bbg__comments-list .reply:focus, .usa-button.bbg__kits__button:focus, .usa-button.usa-button-outline.usa-button-focus, .bbg__comments-list .usa-button-focus.reply, .usa-button.usa-button-focus.bbg__kits__button,
 .usa-button-primary.usa-button-outline:focus,
+.usa-button-primary.bbg__kits__button:focus,
 .usa-button-primary.usa-button-outline.usa-button-focus,
+.usa-button-primary.usa-button-focus.bbg__kits__button,
 .usa-button:visited.usa-button-outline:focus,
 .bbg__comments-list .reply:visited:focus,
+.usa-button.bbg__kits__button:visited:focus,
 .usa-button:visited.usa-button-outline.usa-button-focus,
 .bbg__comments-list .reply:visited.usa-button-focus,
+.usa-button.bbg__kits__button:visited.usa-button-focus,
 .usa-button-primary:visited.usa-button-outline:focus,
+.usa-button-primary.bbg__kits__button:visited:focus,
 .usa-button-primary:visited.usa-button-outline.usa-button-focus,
+.usa-button-primary.bbg__kits__button:visited.usa-button-focus,
 button.usa-button-outline:focus,
+button.bbg__kits__button:focus,
 button.usa-button-outline.usa-button-focus,
+button.usa-button-focus.bbg__kits__button,
 [type="button"].usa-button-outline:focus,
+[type="button"].bbg__kits__button:focus,
 [type="button"].usa-button-outline.usa-button-focus,
+[type="button"].usa-button-focus.bbg__kits__button,
 [type="submit"].usa-button-outline:focus,
+[type="submit"].bbg__kits__button:focus,
 [type="submit"].usa-button-outline.usa-button-focus,
+[type="submit"].usa-button-focus.bbg__kits__button,
 [type="reset"].usa-button-outline:focus,
+[type="reset"].bbg__kits__button:focus,
 [type="reset"].usa-button-outline.usa-button-focus,
+[type="reset"].usa-button-focus.bbg__kits__button,
 [type="image"].usa-button-outline:focus,
-[type="image"].usa-button-outline.usa-button-focus {
+[type="image"].bbg__kits__button:focus,
+[type="image"].usa-button-outline.usa-button-focus,
+[type="image"].usa-button-focus.bbg__kits__button {
   box-shadow: inset 0 0 0 2px #112e51, none;
 }
 .usa-button.usa-button-outline-inverse,
@@ -8449,6 +8505,18 @@ div.appropriations-small > p.header {
 *****/
 .bbg__kits__child__intro p:first-of-type {
   line-height: 2.5;
+}
+
+.bbg__kits__button {
+  float: right;
+  position: relative;
+  top: 80%;
+}
+.bbg__kits__button font {
+  size: 1.2rem;
+}
+.bbg__kits__button .fa {
+  font-size: 1.6rem;
 }
 
 @media print {
