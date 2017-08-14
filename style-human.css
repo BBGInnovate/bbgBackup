@@ -5097,11 +5097,11 @@ e.g. on the intern testimonial page */
   text-transform: uppercase;
 }
 
-.page-template-page-burke,
-.page-id-37373,
-.burke_candidate-template-default,
-.page-id-37417 {
-  body: background-color #DDD;
+body.page-template-page-burke,
+body.page-id-37373,
+body.burke_candidate-template-default,
+body.page-id-37417 {
+  background-color: #DDD;
 }
 
 @media screen and (min-width: 600px) {
