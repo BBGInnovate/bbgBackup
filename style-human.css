@@ -5097,6 +5097,10 @@ e.g. on the intern testimonial page */
   text-transform: uppercase;
 }
 
+.page-template-page-burke, .page-id-37373, .burke_candidate-template-default, .page-id-37427 {
+  body: background #DDD;
+}
+
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;
