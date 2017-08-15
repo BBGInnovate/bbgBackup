@@ -5903,7 +5903,8 @@ article {
     font-family: "Lato", "Helvetica", "Arial", sans-serif;
     width: 30%;
   }
-  .bbg__article-sidebar p, .bbg__article-sidebar li {
+  .bbg__article-sidebar p,
+  .bbg__article-sidebar li {
     font-size: 90%;
     line-height: 1.5;
   }
@@ -5917,23 +5918,23 @@ article {
 
   /* Used for private author guide pages */
   /* Flips the sidebar to the left */
-  /*
-  .status-private {
-  	.bbg__article-content.large{
-  		border-right: none;
-  		border-left: $border-dotted;
-  		float: right;
-  		margin-left: auto;
-  		padding: {
-  			right: 0;
-  			left: 2%;
-  		}
-  	}
-  	.bbg__article-sidebar.large {
-  		float: left;
-  	}
-  }
-  */
+    /*
+	.status-private {
+		.bbg__article-content.large{
+			border-right: none;
+			border-left: $border-dotted;
+			float: right;
+			margin-left: auto;
+			padding: {
+				right: 0;
+				left: 2%;
+			}
+		}
+		.bbg__article-sidebar.large {
+			float: left;
+		}
+	}
+	*/
 }
 .bbg__profile__content__section {
   margin-bottom: 3rem;
@@ -6562,10 +6563,10 @@ article {
   margin: 0 -10%;
   max-width: 110vw;
   padding-right: 1rem;
-  /* @include media($large-screen) {
-  	margin: 0 -50%;
-  	max-width: none;
-  } */
+    /* @include media($large-screen) {
+		margin: 0 -50%;
+		max-width: none;
+	} */
 }
 @media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
@@ -6740,14 +6741,70 @@ article {
   margin-bottom: 3rem;
   padding: 2rem;
 }
-.bbg__infobox p, .bbg__infobox a, .bbg__infobox ul, .bbg__infobox li {
+.bbg__infobox p,
+.bbg__infobox a,
+.bbg__infobox ul,
+.bbg__infobox li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
-.bbg__infobox ul li:after, .bbg__infobox ol li:after {
+.bbg__infobox ul li:after,
+.bbg__infobox ol li:after {
   margin-bottom: 0;
 }
 .bbg__infobox article {
   margin-bottom: 1rem;
+}
+
+#dismissableBanner {
+  width: 100%;
+  background-color: #323a45;
+}
+
+.bbg__banner-table,
+.bbg__banner-table__cell,
+.bbg__banner-table__cell--middle,
+.bbg__banner-table__cell--right {
+  vertical-align: middle;
+}
+
+.bbg__banner-table__cell {
+  display: table-cell;
+}
+
+.bbg__banner-table__cell--middle {
+  display: table-cell;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.bbg__banner-table__cell--right {
+  display: table-cell;
+  vertical-align: top;
+  padding-top: 1.5rem;
+}
+
+.bbg__banner-table__cell--middle h3, .bbg__banner-table__cell--middle .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__banner-table__cell--middle caption,
+.bbg__banner-table__cell--middle h6 {
+  color: #9bdaf1;
+  text-transform: none;
+}
+
+div#banner_readmore h6 {
+  text-align: right;
+  color: #CCC;
+}
+
+div#banner_readmore h6 a,
+div#banner_readmore h6 a:visited {
+  color: #CCC;
+  text-transform: uppercase;
+}
+
+img#banner_promo {
+  width: auto;
+  height: 100%;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .bbg__form__sign-up {
