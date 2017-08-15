@@ -305,7 +305,7 @@ get_header();
 
 								<div class="bbg__event-announcement__content">
 									<header class="entry-header bbg-portfolio__excerpt-header">
-										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $cornerHeroPermalink; ?>" rel="bookmark"><?php echo $cornerHeroPost; ?></a></h3>
+										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $cornerHeroPermalink; ?>" rel="bookmark"><?php echo $cornerHeroTitle; ?></a></h3>
 									</header><!-- .entry-header -->
 
 									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt">
