@@ -1128,188 +1128,172 @@ button.usa-button-secondary.usa-button-active,
 [type="image"].usa-button-secondary.usa-button-active {
   background-color: #981b1e;
 }
-.usa-button.usa-button-gray,
+.usa-button.usa-button-gray, .usa-button.bbg__kits__button,
 .usa-button-primary.usa-button-gray,
+.usa-button-primary.bbg__kits__button,
 .usa-button:visited.usa-button-gray,
+.usa-button.bbg__kits__button:visited,
 .usa-button-primary:visited.usa-button-gray,
+.usa-button-primary.bbg__kits__button:visited,
 button.usa-button-gray,
+button.bbg__kits__button,
 [type="button"].usa-button-gray,
+[type="button"].bbg__kits__button,
 [type="submit"].usa-button-gray,
+[type="submit"].bbg__kits__button,
 [type="reset"].usa-button-gray,
-[type="image"].usa-button-gray {
+[type="reset"].bbg__kits__button,
+[type="image"].usa-button-gray,
+[type="image"].bbg__kits__button {
   background-color: #5b616b;
 }
-.usa-button.usa-button-gray:hover, .usa-button.usa-button-gray.usa-button-hover,
+.usa-button.usa-button-gray:hover, .usa-button.bbg__kits__button:hover, .usa-button.usa-button-gray.usa-button-hover, .usa-button.usa-button-hover.bbg__kits__button,
 .usa-button-primary.usa-button-gray:hover,
+.usa-button-primary.bbg__kits__button:hover,
 .usa-button-primary.usa-button-gray.usa-button-hover,
+.usa-button-primary.usa-button-hover.bbg__kits__button,
 .usa-button:visited.usa-button-gray:hover,
+.usa-button.bbg__kits__button:visited:hover,
 .usa-button:visited.usa-button-gray.usa-button-hover,
+.usa-button.bbg__kits__button:visited.usa-button-hover,
 .usa-button-primary:visited.usa-button-gray:hover,
+.usa-button-primary.bbg__kits__button:visited:hover,
 .usa-button-primary:visited.usa-button-gray.usa-button-hover,
+.usa-button-primary.bbg__kits__button:visited.usa-button-hover,
 button.usa-button-gray:hover,
+button.bbg__kits__button:hover,
 button.usa-button-gray.usa-button-hover,
+button.usa-button-hover.bbg__kits__button,
 [type="button"].usa-button-gray:hover,
+[type="button"].bbg__kits__button:hover,
 [type="button"].usa-button-gray.usa-button-hover,
+[type="button"].usa-button-hover.bbg__kits__button,
 [type="submit"].usa-button-gray:hover,
+[type="submit"].bbg__kits__button:hover,
 [type="submit"].usa-button-gray.usa-button-hover,
+[type="submit"].usa-button-hover.bbg__kits__button,
 [type="reset"].usa-button-gray:hover,
+[type="reset"].bbg__kits__button:hover,
 [type="reset"].usa-button-gray.usa-button-hover,
+[type="reset"].usa-button-hover.bbg__kits__button,
 [type="image"].usa-button-gray:hover,
-[type="image"].usa-button-gray.usa-button-hover {
+[type="image"].bbg__kits__button:hover,
+[type="image"].usa-button-gray.usa-button-hover,
+[type="image"].usa-button-hover.bbg__kits__button {
   background-color: #323a45;
 }
-.usa-button.usa-button-gray:active, .usa-button.usa-button-gray.usa-button-active,
+.usa-button.usa-button-gray:active, .usa-button.bbg__kits__button:active, .usa-button.usa-button-gray.usa-button-active, .usa-button.usa-button-active.bbg__kits__button,
 .usa-button-primary.usa-button-gray:active,
+.usa-button-primary.bbg__kits__button:active,
 .usa-button-primary.usa-button-gray.usa-button-active,
+.usa-button-primary.usa-button-active.bbg__kits__button,
 .usa-button:visited.usa-button-gray:active,
+.usa-button.bbg__kits__button:visited:active,
 .usa-button:visited.usa-button-gray.usa-button-active,
+.usa-button.bbg__kits__button:visited.usa-button-active,
 .usa-button-primary:visited.usa-button-gray:active,
+.usa-button-primary.bbg__kits__button:visited:active,
 .usa-button-primary:visited.usa-button-gray.usa-button-active,
+.usa-button-primary.bbg__kits__button:visited.usa-button-active,
 button.usa-button-gray:active,
+button.bbg__kits__button:active,
 button.usa-button-gray.usa-button-active,
+button.usa-button-active.bbg__kits__button,
 [type="button"].usa-button-gray:active,
+[type="button"].bbg__kits__button:active,
 [type="button"].usa-button-gray.usa-button-active,
+[type="button"].usa-button-active.bbg__kits__button,
 [type="submit"].usa-button-gray:active,
+[type="submit"].bbg__kits__button:active,
 [type="submit"].usa-button-gray.usa-button-active,
+[type="submit"].usa-button-active.bbg__kits__button,
 [type="reset"].usa-button-gray:active,
+[type="reset"].bbg__kits__button:active,
 [type="reset"].usa-button-gray.usa-button-active,
+[type="reset"].usa-button-active.bbg__kits__button,
 [type="image"].usa-button-gray:active,
-[type="image"].usa-button-gray.usa-button-active {
+[type="image"].bbg__kits__button:active,
+[type="image"].usa-button-gray.usa-button-active,
+[type="image"].usa-button-active.bbg__kits__button {
   background-color: #212121;
 }
-.usa-button.usa-button-outline, .bbg__comments-list .reply, .usa-button.bbg__kits__button,
+.usa-button.usa-button-outline, .bbg__comments-list .reply,
 .usa-button-primary.usa-button-outline,
-.usa-button-primary.bbg__kits__button,
 .usa-button:visited.usa-button-outline,
 .bbg__comments-list .reply:visited,
-.usa-button.bbg__kits__button:visited,
 .usa-button-primary:visited.usa-button-outline,
-.usa-button-primary.bbg__kits__button:visited,
 button.usa-button-outline,
-button.bbg__kits__button,
 [type="button"].usa-button-outline,
-[type="button"].bbg__kits__button,
 [type="submit"].usa-button-outline,
-[type="submit"].bbg__kits__button,
 [type="reset"].usa-button-outline,
-[type="reset"].bbg__kits__button,
-[type="image"].usa-button-outline,
-[type="image"].bbg__kits__button {
+[type="image"].usa-button-outline {
   background-color: #ffffff;
   box-shadow: inset 0 0 0 2px #0071bc;
   color: #0071bc;
 }
-.usa-button.usa-button-outline:hover, .bbg__comments-list .reply:hover, .usa-button.bbg__kits__button:hover, .usa-button.usa-button-outline.usa-button-hover, .bbg__comments-list .usa-button-hover.reply, .usa-button.usa-button-hover.bbg__kits__button,
+.usa-button.usa-button-outline:hover, .bbg__comments-list .reply:hover, .usa-button.usa-button-outline.usa-button-hover, .bbg__comments-list .usa-button-hover.reply,
 .usa-button-primary.usa-button-outline:hover,
-.usa-button-primary.bbg__kits__button:hover,
 .usa-button-primary.usa-button-outline.usa-button-hover,
-.usa-button-primary.usa-button-hover.bbg__kits__button,
 .usa-button:visited.usa-button-outline:hover,
 .bbg__comments-list .reply:visited:hover,
-.usa-button.bbg__kits__button:visited:hover,
 .usa-button:visited.usa-button-outline.usa-button-hover,
 .bbg__comments-list .reply:visited.usa-button-hover,
-.usa-button.bbg__kits__button:visited.usa-button-hover,
 .usa-button-primary:visited.usa-button-outline:hover,
-.usa-button-primary.bbg__kits__button:visited:hover,
 .usa-button-primary:visited.usa-button-outline.usa-button-hover,
-.usa-button-primary.bbg__kits__button:visited.usa-button-hover,
 button.usa-button-outline:hover,
-button.bbg__kits__button:hover,
 button.usa-button-outline.usa-button-hover,
-button.usa-button-hover.bbg__kits__button,
 [type="button"].usa-button-outline:hover,
-[type="button"].bbg__kits__button:hover,
 [type="button"].usa-button-outline.usa-button-hover,
-[type="button"].usa-button-hover.bbg__kits__button,
 [type="submit"].usa-button-outline:hover,
-[type="submit"].bbg__kits__button:hover,
 [type="submit"].usa-button-outline.usa-button-hover,
-[type="submit"].usa-button-hover.bbg__kits__button,
 [type="reset"].usa-button-outline:hover,
-[type="reset"].bbg__kits__button:hover,
 [type="reset"].usa-button-outline.usa-button-hover,
-[type="reset"].usa-button-hover.bbg__kits__button,
 [type="image"].usa-button-outline:hover,
-[type="image"].bbg__kits__button:hover,
-[type="image"].usa-button-outline.usa-button-hover,
-[type="image"].usa-button-hover.bbg__kits__button {
+[type="image"].usa-button-outline.usa-button-hover {
   box-shadow: inset 0 0 0 2px #205493;
   color: #205493;
 }
-.usa-button.usa-button-outline:active, .bbg__comments-list .reply:active, .usa-button.bbg__kits__button:active, .usa-button.usa-button-outline.usa-button-active, .bbg__comments-list .usa-button-active.reply, .usa-button.usa-button-active.bbg__kits__button,
+.usa-button.usa-button-outline:active, .bbg__comments-list .reply:active, .usa-button.usa-button-outline.usa-button-active, .bbg__comments-list .usa-button-active.reply,
 .usa-button-primary.usa-button-outline:active,
-.usa-button-primary.bbg__kits__button:active,
 .usa-button-primary.usa-button-outline.usa-button-active,
-.usa-button-primary.usa-button-active.bbg__kits__button,
 .usa-button:visited.usa-button-outline:active,
 .bbg__comments-list .reply:visited:active,
-.usa-button.bbg__kits__button:visited:active,
 .usa-button:visited.usa-button-outline.usa-button-active,
 .bbg__comments-list .reply:visited.usa-button-active,
-.usa-button.bbg__kits__button:visited.usa-button-active,
 .usa-button-primary:visited.usa-button-outline:active,
-.usa-button-primary.bbg__kits__button:visited:active,
 .usa-button-primary:visited.usa-button-outline.usa-button-active,
-.usa-button-primary.bbg__kits__button:visited.usa-button-active,
 button.usa-button-outline:active,
-button.bbg__kits__button:active,
 button.usa-button-outline.usa-button-active,
-button.usa-button-active.bbg__kits__button,
 [type="button"].usa-button-outline:active,
-[type="button"].bbg__kits__button:active,
 [type="button"].usa-button-outline.usa-button-active,
-[type="button"].usa-button-active.bbg__kits__button,
 [type="submit"].usa-button-outline:active,
-[type="submit"].bbg__kits__button:active,
 [type="submit"].usa-button-outline.usa-button-active,
-[type="submit"].usa-button-active.bbg__kits__button,
 [type="reset"].usa-button-outline:active,
-[type="reset"].bbg__kits__button:active,
 [type="reset"].usa-button-outline.usa-button-active,
-[type="reset"].usa-button-active.bbg__kits__button,
 [type="image"].usa-button-outline:active,
-[type="image"].bbg__kits__button:active,
-[type="image"].usa-button-outline.usa-button-active,
-[type="image"].usa-button-active.bbg__kits__button {
+[type="image"].usa-button-outline.usa-button-active {
   box-shadow: inset 0 0 0 2px #112e51;
   color: #112e51;
 }
-.usa-button.usa-button-outline:focus, .bbg__comments-list .reply:focus, .usa-button.bbg__kits__button:focus, .usa-button.usa-button-outline.usa-button-focus, .bbg__comments-list .usa-button-focus.reply, .usa-button.usa-button-focus.bbg__kits__button,
+.usa-button.usa-button-outline:focus, .bbg__comments-list .reply:focus, .usa-button.usa-button-outline.usa-button-focus, .bbg__comments-list .usa-button-focus.reply,
 .usa-button-primary.usa-button-outline:focus,
-.usa-button-primary.bbg__kits__button:focus,
 .usa-button-primary.usa-button-outline.usa-button-focus,
-.usa-button-primary.usa-button-focus.bbg__kits__button,
 .usa-button:visited.usa-button-outline:focus,
 .bbg__comments-list .reply:visited:focus,
-.usa-button.bbg__kits__button:visited:focus,
 .usa-button:visited.usa-button-outline.usa-button-focus,
 .bbg__comments-list .reply:visited.usa-button-focus,
-.usa-button.bbg__kits__button:visited.usa-button-focus,
 .usa-button-primary:visited.usa-button-outline:focus,
-.usa-button-primary.bbg__kits__button:visited:focus,
 .usa-button-primary:visited.usa-button-outline.usa-button-focus,
-.usa-button-primary.bbg__kits__button:visited.usa-button-focus,
 button.usa-button-outline:focus,
-button.bbg__kits__button:focus,
 button.usa-button-outline.usa-button-focus,
-button.usa-button-focus.bbg__kits__button,
 [type="button"].usa-button-outline:focus,
-[type="button"].bbg__kits__button:focus,
 [type="button"].usa-button-outline.usa-button-focus,
-[type="button"].usa-button-focus.bbg__kits__button,
 [type="submit"].usa-button-outline:focus,
-[type="submit"].bbg__kits__button:focus,
 [type="submit"].usa-button-outline.usa-button-focus,
-[type="submit"].usa-button-focus.bbg__kits__button,
 [type="reset"].usa-button-outline:focus,
-[type="reset"].bbg__kits__button:focus,
 [type="reset"].usa-button-outline.usa-button-focus,
-[type="reset"].usa-button-focus.bbg__kits__button,
 [type="image"].usa-button-outline:focus,
-[type="image"].bbg__kits__button:focus,
-[type="image"].usa-button-outline.usa-button-focus,
-[type="image"].usa-button-focus.bbg__kits__button {
+[type="image"].usa-button-outline.usa-button-focus {
   box-shadow: inset 0 0 0 2px #112e51, none;
 }
 .usa-button.usa-button-outline-inverse,
@@ -5919,7 +5903,8 @@ article {
     font-family: "Lato", "Helvetica", "Arial", sans-serif;
     width: 30%;
   }
-  .bbg__article-sidebar p, .bbg__article-sidebar li {
+  .bbg__article-sidebar p,
+  .bbg__article-sidebar li {
     font-size: 90%;
     line-height: 1.5;
   }
@@ -5933,23 +5918,23 @@ article {
 
   /* Used for private author guide pages */
   /* Flips the sidebar to the left */
-  /*
-  .status-private {
-  	.bbg__article-content.large{
-  		border-right: none;
-  		border-left: $border-dotted;
-  		float: right;
-  		margin-left: auto;
-  		padding: {
-  			right: 0;
-  			left: 2%;
-  		}
-  	}
-  	.bbg__article-sidebar.large {
-  		float: left;
-  	}
-  }
-  */
+    /*
+	.status-private {
+		.bbg__article-content.large{
+			border-right: none;
+			border-left: $border-dotted;
+			float: right;
+			margin-left: auto;
+			padding: {
+				right: 0;
+				left: 2%;
+			}
+		}
+		.bbg__article-sidebar.large {
+			float: left;
+		}
+	}
+	*/
 }
 .bbg__profile__content__section {
   margin-bottom: 3rem;
@@ -6578,10 +6563,10 @@ article {
   margin: 0 -10%;
   max-width: 110vw;
   padding-right: 1rem;
-  /* @include media($large-screen) {
-  	margin: 0 -50%;
-  	max-width: none;
-  } */
+    /* @include media($large-screen) {
+		margin: 0 -50%;
+		max-width: none;
+	} */
 }
 @media screen and (min-width: 900px) {
   .bbg__ribbon--thin {
@@ -6756,14 +6741,70 @@ article {
   margin-bottom: 3rem;
   padding: 2rem;
 }
-.bbg__infobox p, .bbg__infobox a, .bbg__infobox ul, .bbg__infobox li {
+.bbg__infobox p,
+.bbg__infobox a,
+.bbg__infobox ul,
+.bbg__infobox li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
-.bbg__infobox ul li:after, .bbg__infobox ol li:after {
+.bbg__infobox ul li:after,
+.bbg__infobox ol li:after {
   margin-bottom: 0;
 }
 .bbg__infobox article {
   margin-bottom: 1rem;
+}
+
+#dismissableBanner {
+  width: 100%;
+  background-color: #323a45;
+}
+
+.bbg__banner-table,
+.bbg__banner-table__cell,
+.bbg__banner-table__cell--middle,
+.bbg__banner-table__cell--right {
+  vertical-align: middle;
+}
+
+.bbg__banner-table__cell {
+  display: table-cell;
+}
+
+.bbg__banner-table__cell--middle {
+  display: table-cell;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.bbg__banner-table__cell--right {
+  display: table-cell;
+  vertical-align: top;
+  padding-top: 1.5rem;
+}
+
+.bbg__banner-table__cell--middle h3, .bbg__banner-table__cell--middle .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__banner-table__cell--middle caption,
+.bbg__banner-table__cell--middle h6 {
+  color: #9bdaf1;
+  text-transform: none;
+}
+
+div#banner_readmore h6 {
+  text-align: right;
+  color: #CCC;
+}
+
+div#banner_readmore h6 a,
+div#banner_readmore h6 a:visited {
+  color: #CCC;
+  text-transform: uppercase;
+}
+
+img#banner_promo {
+  width: auto;
+  height: 100%;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .bbg__form__sign-up {
@@ -8516,14 +8557,14 @@ div.appropriations-small > p.header {
 
 .bbg__kits__button {
   float: right;
+  font-size: 1.2rem;
+  padding: 1rem;
   position: relative;
-  top: 80%;
-}
-.bbg__kits__button font {
-  size: 1.2rem;
+  bottom: -85%;
+  width: auto;
 }
 .bbg__kits__button .fa {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 @media print {

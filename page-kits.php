@@ -593,7 +593,7 @@ get_header(); ?>
 										echo "<div class='bbg__announcement__photo' style='background-image: url($imageURL);'>";
 											//if download checked add button
 											if ( $imageDownload ) {
-												echo '<button class="bbg__kits__button" type="button"><i class="fa fa-download"></i> high-res photo</button>';
+												echo '<button class="usa-button bbg__kits__button" type="button"><span class="fa fa-download"></span> high-res photo</button>';
 											}
 										echo '</div>';
 									}
