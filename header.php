@@ -57,12 +57,8 @@ $ogDescription = wp_strip_all_tags($ogDescription);
 $ogDescription = convertSmartQuotes($ogDescription);
 $ogDescription = str_replace("[&hellip;]", "...", $ogDescription);
 $ogDescription = str_replace('"','&quot;',$ogDescription);
+$sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or complex
 
-$sitewideAlert = get_field('sitewide_alert', 'option');
-$sitewideAlertText = get_field('sitewide_alert_text', 'option');
-$sitewideAlertLink = get_field('sitewide_alert_link', 'option');
-$sitewideAlertNewWindow = get_field('sitewide_alert_new_window', 'option');
-$moveUSAbannerBecauseOfAlert = '';
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -138,6 +134,8 @@ $moveUSAbannerBecauseOfAlert = '';
 	<!-- FortAwesome kit of 20 Font Awesome icons -->
 	<script src="https://use.fortawesome.com/e3cb8134.js"></script>
 
+	<!-- Original FULL FontAwesome embed -->
+	<script src="https://use.fontawesome.com/41d1f06a97.js"></script>
 
 <!-- Favicons
 ================================================== -->
@@ -170,23 +168,104 @@ $moveUSAbannerBecauseOfAlert = '';
 <div id="page" class="site main-content" role="main">
 	<a class="skipnav skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bbginnovate' ); ?></a>
 
+	<?php 
+
+	if ( $sitewideAlert == "complex" && (true || !isset( $_COOKIE['bannerDismissed'] ))  ) {
+		
+		$q = get_field( 'sitewide_alert_complex', 'option' );	//off, simple, or complex
+		$alertCalloutID = $q -> ID;
+		$bannerTitleText = $q -> post_title;
+		$calloutMugshot = get_field( 'callout_mugshot', $alertCalloutID, true);
+		$bannerPromoImage = $calloutMugshot['url'];
+
+		$calloutNetwork = get_post_meta( $alertCalloutID, 'callout_network', true );
+		$callToAction = get_post_meta( $alertCalloutID, 'callout_call_to_action', true );
+		$bannerPromoReadCTA = get_post_meta( $alertCalloutID, 'callout_action_label', true );
+		$bannerPromoLink = get_post_meta( $alertCalloutID, 'callout_action_link', true );
+		$bannerSubtitle = my_excerpt( $alertCalloutID );
+		
+		$bannerPromoAlt = "";
+
+		if ($calloutNetwork == "") {
+			$calloutNetwork = "BBG";
+		}
+		$colors = array(
+			'VOA' =>  '#1330bf',
+			'OCB' => '#003a8d',
+			'RFE/RL' => '#EA6903',
+			'RFA' => '#478406',
+			'MBN' => '#E64C66',
+			'BBG' => '#981B1E'
+		);
+		$networkBackgroundColor = $colors[$calloutNetwork];
+
+		
+	?>
+			<div id="dismissableBanner">
+				<div class="usa-grid-full" >
+					<div class="bbg__banner-table" >
+						<div class="bbg__banner-table__cell">
+							<img id='banner_promo' src="<?php echo $bannerPromoImage; ?>" alt="<?php echo $bannerPromoAlt; ?>" >
+						</div>
+						<div class="bbg__banner-table__cell--middle"> <!-- padding:0rem; -->
+							<h3><?php echo $bannerTitleText; ?></h3>
+							<h6><?php echo $bannerSubtitle; ?></h6> 
+							<div id="banner_readmore" >
+								<h6><a href="<?php echo $bannerPromoLink; ?>"><?php echo $bannerPromoReadCTA; ?></a></h6>
+							</div>
+						</div>
+						<div class="bbg__banner-table__cell--right">
+							<i id='dismissBanner' style="color:#CCC; cursor:pointer;" aria-role="button" class="fa fa-times-circle"></i> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<script type='text/javascript'>
+				jQuery( document ).ready(function() {
+					
+					function setCookie(cname, cvalue, exdays) {
+						var d = new Date();
+						d.setTime(d.getTime() + (exdays*24*60*60*1000));
+						var expires = "expires="+d.toUTCString();
+						document.cookie = cname + "=" + cvalue + "; " + expires;
+					} 
+
+
+					jQuery( '#dismissBanner' ).click(function(e) {
+						setCookie( 'bannerDismissed', 1, 365 );
+						jQuery('#dismissableBanner').hide();
+					});
+
+				});
+			</script>	
+<?php 
+	} 
+?>
+	
+
 	<header id="masthead" class="site-header bbg-header" role="banner">
 
-		<?php if ($sitewideAlert && $sitewideAlertText != "") {
-			$moveUSAbannerBecauseOfAlert = " bbg__site-alert--active";
-			echo '<div class="bbg__site-alert">';
-			if ($sitewideAlertLink != "") {
+		<?php 
+			$moveUSAbannerBecauseOfAlert = '';
+			
+			if ( $sitewideAlert == "simple" ) {
+				$sitewideAlertText = get_field( 'sitewide_alert_text', 'option' );
+				$sitewideAlertLink = get_field( 'sitewide_alert_link', 'option' );
+				$sitewideAlertNewWindow = get_field( 'sitewide_alert_new_window', 'option' );
+				$moveUSAbannerBecauseOfAlert = " bbg__site-alert--active";
+				echo '<div class="bbg__site-alert">';
+				if ( $sitewideAlertLink != "" ) {
 
-				$targetStr="";
-				if ($sitewideAlertNewWindow && $sitewideAlertNewWindow != "") {
-					$targetStr = " target ='_blank' ";
+					$targetStr="";
+					if ( $sitewideAlertNewWindow && $sitewideAlertNewWindow != "" ) {
+						$targetStr = " target ='_blank' ";
+					}
+					echo "<span class='bbg__site-alert__text'><a $targetStr href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
+				} else {
+					echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
 				}
-				echo "<span class='bbg__site-alert__text'><a $targetStr href='$sitewideAlertLink'>$sitewideAlertText</a></span>";
-			} else {
-				echo "<span class='bbg__site-alert__text'>$sitewideAlertText</span>";
+				echo '</div>';
 			}
-			echo '</div>';
-		}
 		?>
 
 		<?php
@@ -210,9 +289,6 @@ $moveUSAbannerBecauseOfAlert = '';
 					<img class="usa-flag_icon" alt="U.S. flag signifying that this is a United States federal government website" src="<?php echo get_template_directory_uri() ?>/img/us_flag_small.png">
 					An official website of <span class="u--no-wrap">the United States government</span>
 				</span>
-				<!--
-				<span class="usa-disclaimer-stage">This site is an alpha version of the USWDS. <a href="https://playbook.cio.gov/designstandards/">Learn more.</a>
-				--></span>
 			</div>
 		</div>
 
