@@ -88,7 +88,7 @@ $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'fa
 
 
 //What will go in the corner hero? off (gives random quote), event, callout, advisory
-$homepage_hero_corner = get_field( 'homepage_featured_event', 'option' ); 
+$homepage_hero_corner = get_field( 'homepage_hero_corner', 'option' ); 
 if ( $homepage_hero_corner  == 'event' ) {
 	$featuredEvent = get_field( 'homepage_featured_event', 'option' );
 } else if ( $homepage_hero_corner == 'advisory' ) {
