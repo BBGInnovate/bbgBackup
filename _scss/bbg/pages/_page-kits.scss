@@ -443,15 +443,19 @@
 }
 
 .bbg__kits__button {
-	@extend .usa-button-outline;
+	@extend .usa-button-gray;
 	float: right;
-	font {
-		size: $caption-font-size;
-	}
+	font-size: $caption-font-size;
+	padding: $site-margins-small;
 	position: relative;
-	top: 80%;
+	bottom: -85%;
+	width: auto;
 
 	.fa {
-		font-size: $base-font-size;
+		font-size: $medium-font-size;
+	}
+
+	@include media($medium-screen) {
+
 	}
 }
