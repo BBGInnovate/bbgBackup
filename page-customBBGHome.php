@@ -80,45 +80,41 @@ function getThreatsPostQueryParams( $numPosts, $used ) {
 	return $qParams;
 }
 
-$templateName = "customBBGHome";
+$templateName = 'customBBGHome';
 
 /*** get all custom fields ***/
 $siteIntroContent = get_field('site_setting_mission_statement','options','false');
 $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'false');
-$soap = get_field('homepage_soapbox_post', 'option');
 
-$showFeaturedEvent = get_field('show_homepage_event', 'option');
-$featuredEventLabel = get_field('homepage_event_label', 'option');
-if ($featuredEventLabel == "") {
-	$featuredEventLabel = "This week";
+
+//What will go in the corner hero? off (gives random quote), event, callout, advisory
+$homepage_hero_corner = get_field( 'homepage_featured_event', 'option' ); 
+if ( $homepage_hero_corner  == 'event' ) {
+	$featuredEvent = get_field( 'homepage_featured_event', 'option' );
+} else if ( $homepage_hero_corner == 'advisory' ) {
+	$featuredAdvisory = get_field( 'homepage_featured_advisory', 'option' );
+} else if ( $homepage_hero_corner == "callout" ) {
+	$featuredCallout = get_field('homepage_featured_callout', 'option');
+}
+$cornerHeroLabel = get_field( 'corner_hero_label', 'option' );
+if ( $cornerHeroLabel == '' ) {
+	$cornerHeroLabel = 'This week';
 }
 
-$showFeaturedCallout = get_field('show_homepage_featured_callout', 'option');
-$featuredCallout = get_field('homepage_featured_callout', 'option');
-
-
-$featuredEvent = get_field('homepage_featured_event', 'option');
 $featuredPost = get_field('homepage_featured_post', 'option');
+$soap = get_field('homepage_soapbox_post', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 
-/*** get impact category ***/
-//$impactCat = get_category_by_slug('impact');
-//$impactPermalink = get_category_link($impactCat->term_id);
-$impactPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results' ) );
-$impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio' ) );
-
-//$threatsCat=get_category_by_slug('threats-to-press');
-//$threatsPermalink = get_category_link($threatsCat->term_id);
-$threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 
 /*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
 $postIDsUsed = array();
 
 if ( $featuredPost ) {
-	$postIDsUsed[] = $featuredPost -> ID;
+	$featuredPost = $featuredPost[0]; 
+	$postIDsUsed[] = $featuredPost -> ID; 
 }
 
-if ( $showFeaturedEvent && $featuredEvent ) {
+if ( $homepage_hero_corner == 'event' && $featuredEvent ) {
 	$postIDsUsed[] = $featuredEvent -> ID;
 }
 
@@ -131,6 +127,11 @@ if ( $threatsToPressPost ) {
 	$randKey = array_rand( $threatsToPressPost );
 	$randomFeaturedThreatsID = $threatsToPressPost[$randKey];
 }
+
+/*** store a handful of page links that we'll use in a few places ***/
+$impactPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results' ) );
+$impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio' ) );
+$threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 
 /*** output the standard header ***/
 get_header();
@@ -272,37 +273,39 @@ get_header();
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php
-						if ( $featuredEvent && $showFeaturedEvent ) {
-							$featuredEventClass = "bbg__event-announcement";
+						if ( ($homepage_hero_corner == 'event' && $featuredEvent) || ( $homepage_hero_corner == 'advisory' && $featuredAdvisory ) ) {
+							if ( $homepage_hero_corner == 'event' ) {
+								$cornerHeroPost = $featuredEvent;
+							} else {
+								$cornerHeroPost = $featuredAdvisory;
+							}
+							$cornerHeroClass = 'bbg__event-announcement';
 							if (has_category('Media Advisory', $featuredEvent)) {
-								$featuredEventClass = "bbg__advisory-announcement";
+								$cornerHeroClass = 'bbg__advisory-announcement';
 							} 
-							$id = $featuredEvent -> ID;
-							$labelText = $featuredEventLabel;
-							$eventPermalink = get_the_permalink( $id );
+							$id = $cornerHeroPost -> ID;
+							$$cornerHeroPermalink = get_the_permalink( $id );
 
 							/* permalinks for future posts by default don't return properly. fix that. */
 							if ( $featuredEvent -> post_status == 'future' ) {
 								$my_post = clone $featuredEvent;
 								$my_post -> post_status = 'published';
 								$my_post -> post_name = sanitize_title( $my_post -> post_name ? $my_post -> post_name : $my_post -> post_title, $my_post -> ID);
-								$eventPermalink = get_permalink( $my_post );
+								$cornerHeroPermalink = get_permalink( $my_post );
 							}
 
-							$eventTitle = $featuredEvent -> post_title;
+							$cornerHeroTitle = $cornerHeroPost -> post_title;
 							$excerpt = my_excerpt( $id ); 
 					?>
-
-							<article class="bbg-portfolio__excerpt <?php echo $featuredEventClass; ?>">
+							<article class="bbg-portfolio__excerpt <?php echo $cornerHeroClass; ?>">
 								<header class="entry-header bbg__article-icons-container">
 									<div class="bbg__article-icon"></div>
-
-									<h6 class="bbg__label bbg__label--outside"><?php echo $labelText ?></h6>
+									<h6 class="bbg__label bbg__label--outside"><?php echo $cornerHeroLabel ?></h6>
 								</header>
 
 								<div class="bbg__event-announcement__content">
 									<header class="entry-header bbg-portfolio__excerpt-header">
-										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $eventPermalink; ?>" rel="bookmark"><?php echo $eventTitle; ?></a></h3>
+										<h3 class="entry-title bbg-portfolio__excerpt-title bbg__event-announcement__title"><a href="<?php echo $cornerHeroPermalink; ?>" rel="bookmark"><?php echo $cornerHeroPost; ?></a></h3>
 									</header><!-- .entry-header -->
 
 									<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content bbg__event-announcement__excerpt">
@@ -311,19 +314,20 @@ get_header();
 								</div>
 							</article>
 
-					<?php } else if ($showFeaturedCallout) {
-						outputCallout($featuredCallout);
-					?> 
-
-					<?php } else {
-						$q = getRandomQuote( 'allEntities', $postIDsUsed );
-						if ( $q ) {
-							$postIDsUsed[] = $q['ID'];
-							outputQuote( $q, '' );
-						}
-					} ?>
+					<?php 
+						} else if ( $homepage_hero_corner == 'callout' && $featuredCallout ) {
+							outputCallout($featuredCallout);
+						} else {
+							//in this case, either the user selected 'off' for the hero corner, or there was no valid callout/event/advisory selected
+							$q = getRandomQuote( 'allEntities', $postIDsUsed );
+							if ( $q ) {
+								$postIDsUsed[] = $q['ID'];
+								outputQuote( $q, '' );
+							}
+						} 
+					?>
 					</div><!-- usa-grid-one-third -->
-					</div><!-- .usa-grid-->
+				</div><!-- .usa-grid-->
 			</section><!-- Impact stories + 1 Quotation - #impact-stories .usa-section .bbg-portfolio -->
 
 			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
@@ -406,8 +410,6 @@ get_header();
 					?>
 				</div><!-- headlines -->
 			</section><!-- .BBG News -->
-
-
 
 
 			<!-- Threats to Journalism.  -->
