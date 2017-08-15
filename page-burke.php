@@ -95,8 +95,19 @@ get_header();
 					echo "</style>";
 				}
 			?>
+			
 
-			<!-- Responsive Banner -->
+
+			<?php 
+				
+				if ( isset ($_GET['slider'] ) ) : 
+					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
+					echo do_shortcode( '[rev_slider alias="home-default-slider"]' );
+					echo '</section>';	
+				else:
+			?>
+			
+				<!-- Responsive Banner -->
 			<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">
 				<div class="bbg-banner">
 					<div class="bbg-banner__gradient"></div>
@@ -116,6 +127,13 @@ get_header();
 					<?php echo $bannerCutline; ?>
 				</div>
 			</section><!-- Responsive Banner -->
+
+				<?php
+				endif;
+
+			?>
+
+			
 
 
 			<div class="bbg__social__container">
@@ -203,10 +221,16 @@ get_header();
 					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
 			?>
-			<div align="right"><a href="/burke-candidates/" class="bbg__kits__intro__more--link">View all nominees and winners »</a></div>
+			
+			</section>
+
+<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
+			<section class="usa-grid-full bbg__kits__section--row " style="margin-top:-50px;">
+			<div align="right"><a href="/burke-awards-archive/" class="bbg__kits__intro__more--link">View full winner archive »</a></div>
+			</div>
+			</section>
 			</div>
 
-			</section>
 
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 			    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">

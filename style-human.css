@@ -5081,6 +5081,13 @@ e.g. on the intern testimonial page */
   text-transform: uppercase;
 }
 
+body.page-template-page-burke,
+body.page-id-37373,
+body.burke_candidate-template-default,
+body.page-id-37417 {
+  background-color: #DDD;
+}
+
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;
