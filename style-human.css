@@ -5333,37 +5333,21 @@ ol li:before {
 }
 
 /**
- * CH01 - BASIC TYPOGRAPHY
- * CH02 - SITE TITLE AND HEADER
- * CH03 - 2- and 3-COLUMN PAGE STRUCTURE
- * CH04 - FOOTER STYLES
- * CH05 - EXCERPT STYLES
- * CH06 - SITEWIDE ALERT STYLES
- * CH07 - Misc post/page styles
+ * CH 01 - BASIC TYPOGRAPHY
+ * CH 02 - SITE TITLE + HEADER
+ * CH 03 - 2- and 3-COLUMN PAGE STRUCTURE
+ * CH 04 - FOOTER STYLES
+ * CH 05 - EXCERPT STYLES
+ * CH 06 - SITEWIDE ALERT STYLES
+ * CH 07 - Misc post/page styles
 **/
-h1,
-h2,
-h3,
-.bbg__sidebar__table caption,
-h4,
-.bbg__board__committee-list li a,
-h5,
-.bbg__sidebar__table th,
-h6 {
+/******************************/
+/* CH 01 - BASIC TYPOGRAPHY  */
+/* used on the entire site  */
+h1, h2, h3, .bbg__sidebar__table caption, h4, .bbg__board__committee-list li a, h5, .bbg__sidebar__table th, h6 {
+  color: #112e51;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin-top: .5rem;
-}
-
-h1,
-h2,
-h3,
-.bbg__sidebar__table caption,
-h4,
-.bbg__board__committee-list li a,
-h5,
-.bbg__sidebar__table th,
-h6 {
-  color: #112e51;
 }
 
 h1 a,
@@ -5575,7 +5559,7 @@ article {
 }
 
 /******************************/
-/* SITE TITLE AND HEADER      */
+/* CH 02 – SITE TITLE + HEADER */
 /* used on all internal pages */
 .bbg-header__container, .bbg-header__container--home {
   padding-right: 6rem;
@@ -5678,7 +5662,7 @@ article {
 }
 
 /***************************************************/
-/*    2- and 3-COLUMN PAGE STRUCTURE               */
+/*    CH 03 – 2- and 3-COLUMN PAGE STRUCTURE       */
 /*    3-column: used on most posts and many pages  */
 /*    2-column: used on expanded profiles e.g. CEO */
 .bbg__article-header {
@@ -5958,9 +5942,8 @@ article {
   }
 }
 
-/***************************************/
-/*    FOOTER STYLES                    */
-/*                                     */
+/*******************************/
+/*    CH 04 – FOOTER STYLES    */
 .bbg__footer {
   position: relative;
   z-index: 9999;
@@ -6037,7 +6020,7 @@ article {
 }
 
 /****************************************/
-/*    EXCERPT STYLES                    */
+/*    CH 05 – EXCERPT STYLES            */
 /*    Used on home page, landing pages, */
 /*    profiles and entity pages         */
 .bbg__excerpt-meta {
@@ -6208,16 +6191,21 @@ article {
   margin-bottom: 0;
 }
 
-/*******************************************/
-/*    SITEWIDE ALERT STYLES                */
-/*    Used for breaking news alerts        */
-/*    and live events like board meetings  */
+/**********************************************/
+/*    CH 06 – SITEWIDE ALERT STYLES           */
+/*    Styles for simple/persistent ribbon     */
+/*    Styles for rich, dismissible ribbon     */
 .bbg__site-alert {
   background-color: #323a45;
   max-width: none;
   padding: 0.5rem 3rem;
   width: 100%;
   z-index: 9999;
+}
+@media screen and (min-width: 600px) {
+  .bbg__site-alert--active {
+    margin-top: 3.2rem;
+  }
 }
 .bbg__site-alert .bbg__site-alert__text {
   color: #f1f1f1;
@@ -6243,10 +6231,100 @@ article {
   }
 }
 
+.bbg__site-alert--complex {
+  width: 100%;
+  background-color: #323a45;
+}
+
+.bbg__banner-table,
+.bbg__banner-table__cell,
+.bbg__banner-table__cell--middle,
+.bbg__banner-table__cell--right {
+  vertical-align: middle;
+}
+
+.bbg__banner-table__cell {
+  display: table-cell;
+}
+.bbg__banner-table__cell--middle {
+  display: table-cell;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.bbg__banner-table__cell--middle h3, .bbg__banner-table__cell--middle .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__banner-table__cell--middle caption, .bbg__banner-table__cell--middle h6 {
+  color: #9bdaf1;
+  text-transform: none;
+}
+.bbg__banner-table__cell--right {
+  display: table-cell;
+  vertical-align: top;
+  padding-top: 1.5rem;
+}
+
+img.banner_image {
+  display: none;
+  width: 0;
+}
 @media screen and (min-width: 600px) {
-  .bbg__site-alert--active {
-    margin-top: 3.2rem;
+  img.banner_image {
+    display: block;
+    height: 100%;
+    max-height: 12rem;
+    width: auto;
   }
+}
+
+div.banner_readmore h6 {
+  text-align: right;
+  color: #CCC;
+}
+div.banner_readmore h6::after {
+  content: " »";
+}
+
+div.banner_readmore h6 a,
+div.banner_readmore h6 a:visited {
+  color: #CCC;
+  text-transform: uppercase;
+}
+
+/***************************************/
+/*    CH 07 - Misc post/page styles    */
+.bbg__form__sign-up {
+  display: inline-block;
+  position: relative;
+}
+
+.bbg__form--required:after {
+  color: #e31c3d;
+  content: '*';
+  font-weight: 700;
+}
+
+.bbg__button--close {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  font-weight: 400;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  -webkit-font-smoothing: auto;
+  background-image: url("img//close.png");
+  background-image: url("img//close.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 1.3rem;
+  cursor: pointer;
+  height: 100%;
+  width: 1.3rem;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+}
+.bbg__button--close:hover {
+  background-color: transparent;
 }
 
 /******************************/
@@ -6741,10 +6819,7 @@ article {
   margin-bottom: 3rem;
   padding: 2rem;
 }
-.bbg__infobox p,
-.bbg__infobox a,
-.bbg__infobox ul,
-.bbg__infobox li {
+.bbg__infobox p, .bbg__infobox a, .bbg__infobox ul, .bbg__infobox li {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
 .bbg__infobox ul li:after,
@@ -6753,95 +6828,6 @@ article {
 }
 .bbg__infobox article {
   margin-bottom: 1rem;
-}
-
-#dismissableBanner {
-  width: 100%;
-  background-color: #323a45;
-}
-
-.bbg__banner-table,
-.bbg__banner-table__cell,
-.bbg__banner-table__cell--middle,
-.bbg__banner-table__cell--right {
-  vertical-align: middle;
-}
-
-.bbg__banner-table__cell {
-  display: table-cell;
-}
-
-.bbg__banner-table__cell--middle {
-  display: table-cell;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.bbg__banner-table__cell--right {
-  display: table-cell;
-  vertical-align: top;
-  padding-top: 1.5rem;
-}
-
-.bbg__banner-table__cell--middle h3, .bbg__banner-table__cell--middle .bbg__sidebar__table caption, .bbg__sidebar__table .bbg__banner-table__cell--middle caption,
-.bbg__banner-table__cell--middle h6 {
-  color: #9bdaf1;
-  text-transform: none;
-}
-
-div#banner_readmore h6 {
-  text-align: right;
-  color: #CCC;
-}
-
-div#banner_readmore h6 a,
-div#banner_readmore h6 a:visited {
-  color: #CCC;
-  text-transform: uppercase;
-}
-
-img#banner_promo {
-  width: auto;
-  height: 100%;
-  max-width: 120px;
-  max-height: 120px;
-}
-
-.bbg__form__sign-up {
-  display: inline-block;
-  position: relative;
-}
-
-.bbg__form--required:after {
-  color: #e31c3d;
-  content: '*';
-  font-weight: 700;
-}
-
-.bbg__button--close {
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  font-weight: 400;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  text-align: left;
-  -webkit-font-smoothing: auto;
-  background-image: url("img//close.png");
-  background-image: url("img//close.svg");
-  background-position: right top;
-  background-repeat: no-repeat;
-  background-size: 1.3rem;
-  cursor: pointer;
-  height: 100%;
-  width: 1.3rem;
-  position: absolute;
-  top: 3rem;
-  right: 0;
-}
-.bbg__button--close:hover {
-  background-color: transparent;
 }
 
 .bbg-banner {

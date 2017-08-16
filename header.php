@@ -168,25 +168,30 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 <div id="page" class="site main-content" role="main">
 	<a class="skipnav skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bbginnovate' ); ?></a>
 
-	<?php 
+	<?php
 
 	if ( $sitewideAlert == "complex" && (true || !isset( $_COOKIE['bannerDismissed'] ))  ) {
-		
+
 		$q = get_field( 'sitewide_alert_complex', 'option' );	//off, simple, or complex
+		// var_dump($q);
+
+
 		$alertCalloutID = $q -> ID;
 		$bannerTitleText = $q -> post_title;
-		$calloutMugshot = get_field( 'callout_mugshot', $alertCalloutID, true);
-		$bannerPromoImage = $calloutMugshot['url'];
+		// $calloutMugshot = get_field( 'callout_mugshot', $alertCalloutID, true);
+		//
+		// check if the post has a Post Thumbnail assigned to it.
+		if ( has_post_thumbnail($alertCalloutID) ) {
+			$calloutMugshot = get_the_post_thumbnail( $alertCalloutID, 'small-thumb', array( 'class' => 'banner_image' ) );
+		}
 
 		$calloutNetwork = get_post_meta( $alertCalloutID, 'callout_network', true );
 		$callToAction = get_post_meta( $alertCalloutID, 'callout_call_to_action', true );
 		$bannerPromoReadCTA = get_post_meta( $alertCalloutID, 'callout_action_label', true );
 		$bannerPromoLink = get_post_meta( $alertCalloutID, 'callout_action_link', true );
 		$bannerSubtitle = my_excerpt( $alertCalloutID );
-		
-		$bannerPromoAlt = "";
 
-		if ($calloutNetwork == "") {
+		if ( $calloutNetwork == "" ) {
 			$calloutNetwork = "BBG";
 		}
 		$colors = array(
@@ -198,37 +203,35 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 			'BBG' => '#981B1E'
 		);
 		$networkBackgroundColor = $colors[$calloutNetwork];
-
-		
 	?>
-			<div id="dismissableBanner">
+			<div id="dismissableBanner" class="bbg__site-alert--complex">
 				<div class="usa-grid-full" >
 					<div class="bbg__banner-table" >
 						<div class="bbg__banner-table__cell">
-							<img id='banner_promo' src="<?php echo $bannerPromoImage; ?>" alt="<?php echo $bannerPromoAlt; ?>" >
+							<?php echo $calloutMugshot; ?>
 						</div>
-						<div class="bbg__banner-table__cell--middle"> <!-- padding:0rem; -->
+						<div class="bbg__banner-table__cell--middle">
 							<h3><?php echo $bannerTitleText; ?></h3>
-							<h6><?php echo $bannerSubtitle; ?></h6> 
-							<div id="banner_readmore" >
+							<h6><?php echo $bannerSubtitle; ?></h6>
+							<div class="banner_readmore" >
 								<h6><a href="<?php echo $bannerPromoLink; ?>"><?php echo $bannerPromoReadCTA; ?></a></h6>
 							</div>
 						</div>
 						<div class="bbg__banner-table__cell--right">
-							<i id='dismissBanner' style="color:#CCC; cursor:pointer;" aria-role="button" class="fa fa-times-circle"></i> 
+							<i id="dismissBanner" style="color:#CCC; cursor:pointer;" aria-role="button" class="fa fa-times-circle"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 			<script type='text/javascript'>
 				jQuery( document ).ready(function() {
-					
+
 					function setCookie(cname, cvalue, exdays) {
 						var d = new Date();
 						d.setTime(d.getTime() + (exdays*24*60*60*1000));
 						var expires = "expires="+d.toUTCString();
 						document.cookie = cname + "=" + cvalue + "; " + expires;
-					} 
+					}
 
 
 					jQuery( '#dismissBanner' ).click(function(e) {
@@ -237,17 +240,17 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 					});
 
 				});
-			</script>	
-<?php 
-	} 
+			</script>
+<?php
+	}
 ?>
-	
+
 
 	<header id="masthead" class="site-header bbg-header" role="banner">
 
-		<?php 
+		<?php
 			$moveUSAbannerBecauseOfAlert = '';
-			
+
 			if ( $sitewideAlert == "simple" ) {
 				$sitewideAlertText = get_field( 'sitewide_alert_text', 'option' );
 				$sitewideAlertLink = get_field( 'sitewide_alert_link', 'option' );
