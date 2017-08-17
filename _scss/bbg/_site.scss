@@ -1014,8 +1014,11 @@ article {
 
     &--middle {
     	display: table-cell;
-	    padding-left: 2rem;
-	    padding-right: 2rem;
+	    padding: {
+	    	top: 1rem;
+	    	right: 2rem;
+	    	left: 2rem;
+	    }
 
 	    h3, h6 {
 		    color: #9bdaf1;
@@ -1025,12 +1028,16 @@ article {
 
 	&--right {
     	display: table-cell;
+    	max-width: 2%;
+	    padding: {
+	    	top: 1.5rem;
+	    	right: 0.5rem;
+	    }
 	    vertical-align: top;
-	    padding-top: 1.5rem;
 	}
 }
 
-img.banner_image {
+/* img.banner_image {
     display: none;
     width: 0;
 
@@ -1040,11 +1047,12 @@ img.banner_image {
     	max-height: 12rem;
     	width: auto;
     }
-}
+} */
 
 div.banner_readmore h6 {
-    text-align: right;
     color: #CCC;
+    margin: 1.5rem 0;
+    text-align: right;
 
     &::after {
     	content: " »";
