@@ -6232,19 +6232,29 @@ article {
 }
 
 .bbg__site-alert--complex {
-  width: 100%;
   background-color: #323a45;
+  display: table;
+  width: 100%;
 }
 
-.bbg__banner-table,
-.bbg__banner-table__cell,
-.bbg__banner-table__cell--middle,
-.bbg__banner-table__cell--right {
-  vertical-align: middle;
+.bbg__banner-table {
+  display: table-row;
 }
 
-.bbg__banner-table__cell {
-  display: table-cell;
+.bbg__banner-table__cell--left {
+  background: none;
+  display: none;
+  width: 0;
+}
+@media screen and (min-width: 481px) {
+  .bbg__banner-table__cell--left {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table-cell;
+    padding: 0;
+    width: 20%;
+  }
 }
 .bbg__banner-table__cell--middle {
   display: table-cell;

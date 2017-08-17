@@ -983,22 +983,37 @@ article {
 // taller and more robust content, uses callout posts as input
 // may include an optional image, sets cookie after dismissal
 .bbg__site-alert--complex {
-    width: 100%;
     background-color: #323a45;
+	display: table;
+    width: 100%;
 }
 
-.bbg__banner-table,
-.bbg__banner-table__cell,
-.bbg__banner-table__cell--middle,
-.bbg__banner-table__cell--right {
-    vertical-align: middle;
+.bbg__banner-table {
+	display: table-row;
 }
 
 .bbg__banner-table__cell {
-    display: table-cell;
+
+    &--left {
+    	background: none;
+    	display: none;
+    	width: 0;
+
+    	@include media ($small-screen) {
+    		background: {
+	    		position: center;
+	    		repeat: no-repeat;
+	    		size: cover;
+	    	}
+	    	display: table-cell;
+	    	padding: 0;
+	    	// max-width: 10rem;
+	    	width: 20%;
+    	}
+    }
 
     &--middle {
-	    display: table-cell;
+    	display: table-cell;
 	    padding-left: 2rem;
 	    padding-right: 2rem;
 
@@ -1009,7 +1024,7 @@ article {
 	}
 
 	&--right {
-	    display: table-cell;
+    	display: table-cell;
 	    vertical-align: top;
 	    padding-top: 1.5rem;
 	}

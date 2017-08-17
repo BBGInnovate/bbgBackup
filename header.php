@@ -179,10 +179,10 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 		$alertCalloutID = $q -> ID;
 		$bannerTitleText = $q -> post_title;
 		// $calloutMugshot = get_field( 'callout_mugshot', $alertCalloutID, true);
-		//
 		// check if the post has a Post Thumbnail assigned to it.
 		if ( has_post_thumbnail($alertCalloutID) ) {
-			$calloutMugshot = get_the_post_thumbnail( $alertCalloutID, 'small-thumb', array( 'class' => 'banner_image' ) );
+			$calloutImageID = get_post_thumbnail_id( $q );
+			$calloutImageURL = wp_get_attachment_image_url( $calloutImageID, $size = 'small-thumb', $icon = false );
 		}
 
 		$calloutNetwork = get_post_meta( $alertCalloutID, 'callout_network', true );
@@ -190,6 +190,9 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 		$bannerPromoReadCTA = get_post_meta( $alertCalloutID, 'callout_action_label', true );
 		$bannerPromoLink = get_post_meta( $alertCalloutID, 'callout_action_link', true );
 		$bannerSubtitle = my_excerpt( $alertCalloutID );
+		$bannerPromoImage = wp_get_attachment_image_src( $calloutImageID , 'single-post-thumbnail');
+
+		// var_dump($bannerPromoImage);
 
 		if ( $calloutNetwork == "" ) {
 			$calloutNetwork = "BBG";
@@ -207,8 +210,7 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 			<div id="dismissableBanner" class="bbg__site-alert--complex">
 				<div class="usa-grid-full" >
 					<div class="bbg__banner-table" >
-						<div class="bbg__banner-table__cell">
-							<?php echo $calloutMugshot; ?>
+						<div class="bbg__banner-table__cell--left" style="background-image: url('<?php echo $calloutImageURL ?>');">
 						</div>
 						<div class="bbg__banner-table__cell--middle">
 							<h3><?php echo $bannerTitleText; ?></h3>
