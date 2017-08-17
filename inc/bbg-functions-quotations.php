@@ -129,6 +129,9 @@
 		$callToActionLink = get_post_meta( $id, 'callout_action_link', true );
 
 		$mugshot = $calloutMugshot['url'];
+		if ( isset ( $calloutMugshot['sizes']) && isset( $calloutMugshot['sizes']['mugshot'] )) {
+			$mugshot = $calloutMugshot['sizes']['mugshot'];
+		}
 
 		if ($calloutNetwork == "") {
 			$calloutNetwork = "BBG";
