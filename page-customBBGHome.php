@@ -197,7 +197,7 @@ get_header();
 						$bannerAdjustStr = $randomImg['bannerAdjustStr'];
 					}
 
-					$tempSources= bbgredesign_get_image_size_links( 37500 );
+					$tempSources= bbgredesign_get_image_size_links( $attachment_id );
 					//sources aren't automatically in numeric order.  ksort does the trick.
 					ksort( $tempSources );
 					$prevWidth=0;
