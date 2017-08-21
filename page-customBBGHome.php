@@ -153,7 +153,7 @@ get_header();
 					echo '</section>';	
 				} else {
 					
-					$useRandomImage = false;
+					$useRandomImage = true;
 					$includeBannerLogo = true;
 					$bannerCutline = '';
 					$bannerAdjustStr = '';
