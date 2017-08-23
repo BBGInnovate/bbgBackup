@@ -176,7 +176,7 @@
 		global $post;
 
 		// set variables based on custom fields
-	    $hours_of_programming = get_field( 'site_setting_total_countries', 'options', 'false' );
+	    $hours_of_programming = get_field( 'site_setting_weekly_programming', 'options', 'false' );
 
 		return $hours_of_programming . " hours of original programming each week";
 	}
