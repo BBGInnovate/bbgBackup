@@ -377,6 +377,7 @@
 				}
 
 				.bbg__announcement__container {
+					// container for a download button — button styles below
 					&--button {
 						margin: {
 							top: -$site-margins-medium;
@@ -453,11 +454,13 @@
 	}
 }
 
+/*****
+	Download button style
+*****/
 .bbg__kits__button {
 	@extend .usa-button-gray;
 
 	font-size: $caption-font-size;
-	margin-top: $site-margins-medium-plus;
 	padding: $site-margins-small;
 	right: 0;
 	width: auto;

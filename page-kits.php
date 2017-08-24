@@ -580,7 +580,9 @@ get_header(); ?>
 							$headlineLink = get_sub_field( 'kits_ribbon_headline_link' );
 							$summary = get_sub_field( 'kits_ribbon_summary' );
 							$imageURL = get_sub_field( 'kits_ribbon_image' );
-							$imageDownload = get_sub_field( 'kits_ribbon_download_photo' );
+							$fileDownload = get_sub_field( 'kits_ribbon_download_button' );
+							$fileDownloadURL = get_sub_field( 'kits_ribbon_download_url' );
+							$fileDownloadText = get_sub_field( 'kits_ribbon_download_prompt' );
 
 							// allow shortcodes in intro text
 							$summary = apply_filters( 'the_content', $summary );
@@ -613,8 +615,8 @@ get_header(); ?>
 										echo $summary;
 
 										//if download checked add button
-										if ( $imageDownload ) {
-											echo '<div class="bbg__announcement__container--button"> <button class="usa-button bbg__kits__button" type="button"><span class="fa fa-download"></span> high-res photo</button>';
+										if ( $fileDownload ) {
+											echo "<div class='bbg__announcement__container--button'><a href='$fileDownloadURL' class='usa-button bbg__kits__button' target='_blank' download><span class='fa fa-download'></span>&emsp;$fileDownloadText</a>";
 										}
 									echo '</div>';
 								echo '</div><!-- .bbg__announcement__flexbox -->';

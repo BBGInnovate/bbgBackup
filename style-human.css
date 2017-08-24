@@ -8604,9 +8604,11 @@ div.appropriations-small > p.header {
   line-height: 2.5;
 }
 
+/*****
+	Download button style
+*****/
 .bbg__kits__button {
   font-size: 1.2rem;
-  margin-top: 2rem;
   padding: 1rem;
   right: 0;
   width: auto;
