@@ -371,8 +371,20 @@
 				.bbg__announcement__headline,
 				p {
 					padding: {
-						right: 2rem;
-						left: 2rem;
+						right: $site-margins-medium-plus;
+						left: $site-margins-medium-plus;
+					}
+				}
+
+				.bbg__announcement__container {
+					&--button {
+						margin: {
+							top: -$site-margins-medium;
+							bottom: $site-margins-medium;
+						}
+						padding-right: 10%;
+						text-align: right;
+						width: 100%;
 					}
 				}
 			}
@@ -435,7 +447,6 @@
 	Umbrella child styles
 *****/
 .bbg__kits__child__intro {
-
 	p:first-of-type {
 		@extend .usa-font-lead;
 		line-height: 2.5;
@@ -444,18 +455,19 @@
 
 .bbg__kits__button {
 	@extend .usa-button-gray;
-	float: right;
+
 	font-size: $caption-font-size;
+	margin-top: $site-margins-medium-plus;
 	padding: $site-margins-small;
-	position: relative;
-	bottom: -85%;
+	right: 0;
 	width: auto;
+
+	&:hover {
+		background-color: #046b99 !important;
+		color: #d6d7d9;
+	}
 
 	.fa {
 		font-size: $medium-font-size;
-	}
-
-	@include media($medium-screen) {
-
 	}
 }

@@ -985,6 +985,7 @@ article {
 .bbg__site-alert--complex {
     background-color: #323a45;
 	display: table;
+	margin: 0 auto;
     width: 100%;
 }
 
@@ -1007,7 +1008,6 @@ article {
 	    	}
 	    	display: table-cell;
 	    	padding: 0;
-	    	// max-width: 10rem;
 	    	width: 20%;
     	}
     }

@@ -591,10 +591,6 @@ get_header(); ?>
 									// output image
 									if ( $imageURL ) {
 										echo "<div class='bbg__announcement__photo' style='background-image: url($imageURL);'>";
-											//if download checked add button
-											if ( $imageDownload ) {
-												echo '<button class="usa-button bbg__kits__button" type="button"><span class="fa fa-download"></span> high-res photo</button>';
-											}
 										echo '</div>';
 									}
 
@@ -615,6 +611,11 @@ get_header(); ?>
 
 										// output summary text
 										echo $summary;
+
+										//if download checked add button
+										if ( $imageDownload ) {
+											echo '<div class="bbg__announcement__container--button"> <button class="usa-button bbg__kits__button" type="button"><span class="fa fa-download"></span> high-res photo</button>';
+										}
 									echo '</div>';
 								echo '</div><!-- .bbg__announcement__flexbox -->';
 							echo '</div><!-- .usa-grid -->';

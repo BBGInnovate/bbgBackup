@@ -6234,6 +6234,7 @@ article {
 .bbg__site-alert--complex {
   background-color: #323a45;
   display: table;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -8504,6 +8505,13 @@ div.appropriations-small > p.header {
   padding-right: 2rem;
   padding-left: 2rem;
 }
+.bbg__kits__section .bbg__kits__section--row.bbg__ribbon--thin .bbg__announcement__flexbox .bbg__announcement__container--button {
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+  padding-right: 10%;
+  text-align: right;
+  width: 100%;
+}
 @media screen and (min-width: 900px) {
   .bbg__kits__section .bbg__kits__section--row.bbg__ribbon--thin {
     margin: 0 -50% 5rem;
@@ -8554,12 +8562,15 @@ div.appropriations-small > p.header {
 }
 
 .bbg__kits__button {
-  float: right;
   font-size: 1.2rem;
+  margin-top: 2rem;
   padding: 1rem;
-  position: relative;
-  bottom: -85%;
+  right: 0;
   width: auto;
+}
+.bbg__kits__button:hover {
+  background-color: #046b99 !important;
+  color: #d6d7d9;
 }
 .bbg__kits__button .fa {
   font-size: 1.8rem;
