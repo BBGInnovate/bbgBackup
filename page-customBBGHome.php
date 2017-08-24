@@ -101,6 +101,8 @@ if ( $cornerHeroLabel == '' ) {
 	$cornerHeroLabel = 'This week';
 }
 
+$homepageBannerType = get_field( 'homepage_banner_type', 'option' );
+
 $featuredPost = get_field('homepage_featured_post', 'option');
 $soap = get_field('homepage_soapbox_post', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
@@ -143,39 +145,81 @@ get_header();
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
 			<?php
 				/*** output our <style> node for use by the responsive banner ***/
-				$data = get_theme_mod('header_image_data');
+				if ( $homepageBannerType == 'revolution_slider' ) {
+					$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' ); 
+					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
+					$sliderAlias = get_field( 'homepage_banner_revolution_slider_alias', 'option' );
+					echo do_shortcode( '[rev_slider alias="' . $sliderAlias . '"]' );
+					echo '</section>';	
+				} else {
+					
+					$useRandomImage = true;
+					$includeBannerLogo = true;
+					$bannerCutline = '';
+					$bannerAdjustStr = '';
 
-				$attachment_id = is_object($data) && isset($data->attachment_id) ? $data->attachment_id : false;
-				$randomImg= getRandomEntityImage();
-				$bannerCutline="";
-				$bannerAdjustStr="";
-				if ($randomImg) {
-					$attachment_id = $randomImg['imageID'];
-					$bannerCutline = $randomImg['imageCutline'];
-					$bannerAdjustStr = $randomImg['bannerAdjustStr'];
-				}
-				if($attachment_id) {
-					$tempSources= bbgredesign_get_image_size_links($attachment_id);
-					//sources aren't automatically in numeric order.  ksort does the trick.
-					ksort($tempSources);
-					$counter=0;
-					$prevWidth=0;
-					// Let's prevent any images with width > 1200px from being an output as part of responsive banner
-					foreach( $tempSources as $key => $tempSource ) {
-						if ($key > 1900) {
-							unset($tempSources[$key]);
+					if ( $homepageBannerType == 'specific_image' ) {
+						
+						$includeBannerLogo = get_field( 'homepage_banner_image_include_logo', 'option' );
+
+						$img = get_field( 'homepage_banner_image', 'option' );
+						
+						if ( $img ) {
+
+							$attachment_id = $img['ID'];
+							$useRandomImage = false;
+
+							$featuredImageCutline='';
+							$thumbnail_image = get_posts( 
+								array(
+									'p' => $attachment_id, 
+									'post_type' => 'attachment'
+								) 
+							);
+							
+							if ($thumbnail_image && isset($thumbnail_image[0])) {
+								$bannerCutline=$thumbnail_image[0]->post_excerpt;
+							}
+							
+							$bannerAdjustStr = '';
+							$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' ); 
+							if ( $bannerBackgroundPosition ) {
+								$bannerAdjustStr = $bannerBackgroundPosition;
+							}
 						}
 					}
+
+					//deilibarately didn't do an 'else' here in case they checked 'specific_image' without actually selecting one
+					if ( $useRandomImage ) {
+						$randomImg= getRandomEntityImage();
+						$attachment_id = $randomImg['imageID'];
+						$bannerCutline = $randomImg['imageCutline'];
+						$bannerAdjustStr = $randomImg['bannerAdjustStr'];
+					}
+
+					$tempSources= bbgredesign_get_image_size_links( $attachment_id );
+					//sources aren't automatically in numeric order.  ksort does the trick.
+					ksort( $tempSources );
+					$prevWidth=0;
+					
+					// Let's prevent any images with width > 1200px from being an output as part of responsive banner
+					foreach( $tempSources as $key => $tempSource ) {
+						if ( $key > 1900 ) {
+							unset( $tempSources[$key] );
+						}
+					}
+
 					echo "<style>";
-					if ($bannerAdjustStr != "") {
+					if ( $bannerAdjustStr != "" ) {
 						echo "\t.bbg-banner { background-position: $bannerAdjustStr; }";
 					}
+					$counter=0;
 					foreach( $tempSources as $key => $tempSourceObj ) {
 						$counter++;
 						$tempSource=$tempSourceObj['src'];
-						if ($counter == 1) {
+						if ( $counter == 1 ) {
 							echo "\t.bbg-banner { background-image: url($tempSource) !important; }\n";
-						} elseif ($counter < count($tempSources)) {
+						} elseif ( $counter < count($tempSources) ) {
 							echo "\t@media (min-width: " . ($prevWidth+1) . "px) and (max-width: " . $key . "px) {\n";
 							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
@@ -184,46 +228,36 @@ get_header();
 							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
 						}
-						$prevWidth=$key;
+						$prevWidth = $key;
 					}
 					echo "</style>";
-				}
-			?>
 
-			<!-- Responsive Banner -->
-			<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">
-				<div class="bbg-banner">
-					<div class="bbg-banner__gradient"></div>
-					<div class="usa-grid bbg-banner__container--home">
-						<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-						<div class="bbg-banner-box">
-							<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-						</div>
-						<div class="bbg-social__container">
-							<div class="bbg-social">
+					?>
+					<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">
+						<div class="bbg-banner">
+							<div class="bbg-banner__gradient"></div>
+							<div class="usa-grid bbg-banner__container--home">
+								<?php if ( $includeBannerLogo ): ?>
+								<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
+								<?php endif; ?>
+								<div class="bbg-banner-box">
+									<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
+								</div>
+								<div class="bbg-social__container">
+									<div class="bbg-social">
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 
-				<div class="bbg-banner__cutline usa-grid">
-					<?php echo $bannerCutline; ?>
-				</div>
-			</section><!-- Responsive Banner -->
+						<div class="bbg-banner__cutline usa-grid">
+							<?php echo $bannerCutline; ?>
+						</div>
+					</section><!-- Responsive Banner -->
+					<?php  
 
-
-			<div class="bbg__social__container">
-				<?php if (isset($_GET['social'])): ?>
-				<div class="bbg__social">
-					<h3 class="bbg__social-list__label">FOLLOW US</h3>
-					<ul class="bbg__social-list">
-						<li class="bbg__social-list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook" tabindex="-1"></a></li>
-						<li class="bbg__social-list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter" tabindex="-1"></a></li>
-						<li class="bbg__social-list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube" tabindex="-1"></a></li>
-					</ul>
-				</div>
-				<?php endif; ?>
-			</div>
+				}
+			?>
 
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
@@ -245,7 +279,7 @@ get_header();
 						<div class="usa-grid-full" style="margin-bottom: 1.5rem;">
 						<?php
 
-							$impactPostIDs = getTwoRandomImpactPostIDs($postIDsUsed);
+							$impactPostIDs = getTwoRandomImpactPostIDs( $postIDsUsed );
 
 							$qParams=array(
 								'post_type' => array('post'),
@@ -254,7 +288,7 @@ get_header();
 								'order' => 'desc',
 								'post__in' => $impactPostIDs
 							);
-							query_posts($qParams);
+							query_posts( $qParams );
 							if ( have_posts() ) :
 								while ( have_posts() ) : the_post();
 									$gridClass = "usa-width-one-half";
@@ -269,7 +303,7 @@ get_header();
 						<div class="usa-grid-full u--space-below-mobile--large">
 							<a href="<?php echo $impactPermalink; ?>">Find out how the BBG defines and measures impact »</a>
 						</div><!-- .usa-grid -->
-					</div>
+					</div> 
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php

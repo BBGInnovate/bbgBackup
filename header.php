@@ -170,7 +170,7 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 
 	<?php
 
-	if ( $sitewideAlert == "complex" && (true || !isset( $_COOKIE['bannerDismissed'] ))  ) {
+	if ( $sitewideAlert == "complex" && ( !isset( $_COOKIE['bannerDismissed'] ))  ) {
 
 		$q = get_field( 'sitewide_alert_complex', 'option' );	//off, simple, or complex
 		// var_dump($q);
