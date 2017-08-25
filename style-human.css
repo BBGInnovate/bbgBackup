@@ -5081,56 +5081,6 @@ e.g. on the intern testimonial page */
   text-transform: uppercase;
 }
 
-body.page-template-page-burke,
-body.page-id-37373,
-body.burke_candidate-template-default,
-body.page-id-37417 {
-  background-color: #828f9e;
-  color: #EEE;
-}
-body.page-template-page-burke p, body.page-template-page-burke .usa-font-lead, body.page-template-page-burke .bbg__about__intro p:first-of-type, .bbg__about__intro body.page-template-page-burke p:first-of-type, body.page-template-page-burke .bbg__about__child__intro p:first-of-type, .bbg__about__child__intro body.page-template-page-burke p:first-of-type, body.page-template-page-burke .bbg__kits__intro p, .bbg__kits__intro body.page-template-page-burke p, body.page-template-page-burke .bbg__kits__child__intro p:first-of-type, .bbg__kits__child__intro body.page-template-page-burke p:first-of-type, body.page-template-page-burke div, body.page-template-page-burke span, body.page-template-page-burke a,
-body.page-id-37373 p,
-body.page-id-37373 .usa-font-lead,
-body.page-id-37373 .bbg__about__intro p:first-of-type,
-.bbg__about__intro body.page-id-37373 p:first-of-type,
-body.page-id-37373 .bbg__about__child__intro p:first-of-type,
-.bbg__about__child__intro body.page-id-37373 p:first-of-type,
-body.page-id-37373 .bbg__kits__intro p,
-.bbg__kits__intro body.page-id-37373 p,
-body.page-id-37373 .bbg__kits__child__intro p:first-of-type,
-.bbg__kits__child__intro body.page-id-37373 p:first-of-type,
-body.page-id-37373 div,
-body.page-id-37373 span,
-body.page-id-37373 a,
-body.burke_candidate-template-default p,
-body.burke_candidate-template-default .usa-font-lead,
-body.burke_candidate-template-default .bbg__about__intro p:first-of-type,
-.bbg__about__intro body.burke_candidate-template-default p:first-of-type,
-body.burke_candidate-template-default .bbg__about__child__intro p:first-of-type,
-.bbg__about__child__intro body.burke_candidate-template-default p:first-of-type,
-body.burke_candidate-template-default .bbg__kits__intro p,
-.bbg__kits__intro body.burke_candidate-template-default p,
-body.burke_candidate-template-default .bbg__kits__child__intro p:first-of-type,
-.bbg__kits__child__intro body.burke_candidate-template-default p:first-of-type,
-body.burke_candidate-template-default div,
-body.burke_candidate-template-default span,
-body.burke_candidate-template-default a,
-body.page-id-37417 p,
-body.page-id-37417 .usa-font-lead,
-body.page-id-37417 .bbg__about__intro p:first-of-type,
-.bbg__about__intro body.page-id-37417 p:first-of-type,
-body.page-id-37417 .bbg__about__child__intro p:first-of-type,
-.bbg__about__child__intro body.page-id-37417 p:first-of-type,
-body.page-id-37417 .bbg__kits__intro p,
-.bbg__kits__intro body.page-id-37417 p,
-body.page-id-37417 .bbg__kits__child__intro p:first-of-type,
-.bbg__kits__child__intro body.page-id-37417 p:first-of-type,
-body.page-id-37417 div,
-body.page-id-37417 span,
-body.page-id-37417 a {
-  color: #EEE;
-}
-
 @media screen and (min-width: 600px) {
   .bbg-grid--1-2-3 {
     float: left;
@@ -7499,6 +7449,68 @@ section.usa-section.bbg-banner__section {
 #entityUrlGo {
   margin: 0;
   width: 25%;
+}
+
+.page-template-page-burke,
+.page-id-37373,
+.burke_candidate-template-default,
+.page-id-37417 {
+  background-color: #828f9e;
+  color: #EEE;
+}
+.page-template-page-burke p,
+.page-template-page-burke .usa-font-lead,
+.page-template-page-burke .bbg__about__intro p:first-of-type,
+.bbg__about__intro .page-template-page-burke p:first-of-type,
+.page-template-page-burke .bbg__about__child__intro p:first-of-type,
+.bbg__about__child__intro .page-template-page-burke p:first-of-type,
+.page-template-page-burke .bbg__kits__intro p,
+.bbg__kits__intro .page-template-page-burke p,
+.page-template-page-burke .bbg__kits__child__intro p:first-of-type,
+.bbg__kits__child__intro .page-template-page-burke p:first-of-type,
+.page-template-page-burke div,
+.page-template-page-burke span,
+.page-template-page-burke a,
+.page-id-37373 p,
+.page-id-37373 .usa-font-lead,
+.page-id-37373 .bbg__about__intro p:first-of-type,
+.bbg__about__intro .page-id-37373 p:first-of-type,
+.page-id-37373 .bbg__about__child__intro p:first-of-type,
+.bbg__about__child__intro .page-id-37373 p:first-of-type,
+.page-id-37373 .bbg__kits__intro p,
+.bbg__kits__intro .page-id-37373 p,
+.page-id-37373 .bbg__kits__child__intro p:first-of-type,
+.bbg__kits__child__intro .page-id-37373 p:first-of-type,
+.page-id-37373 div,
+.page-id-37373 span,
+.page-id-37373 a,
+.burke_candidate-template-default p,
+.burke_candidate-template-default .usa-font-lead,
+.burke_candidate-template-default .bbg__about__intro p:first-of-type,
+.bbg__about__intro .burke_candidate-template-default p:first-of-type,
+.burke_candidate-template-default .bbg__about__child__intro p:first-of-type,
+.bbg__about__child__intro .burke_candidate-template-default p:first-of-type,
+.burke_candidate-template-default .bbg__kits__intro p,
+.bbg__kits__intro .burke_candidate-template-default p,
+.burke_candidate-template-default .bbg__kits__child__intro p:first-of-type,
+.bbg__kits__child__intro .burke_candidate-template-default p:first-of-type,
+.burke_candidate-template-default div,
+.burke_candidate-template-default span,
+.burke_candidate-template-default a,
+.page-id-37417 p,
+.page-id-37417 .usa-font-lead,
+.page-id-37417 .bbg__about__intro p:first-of-type,
+.bbg__about__intro .page-id-37417 p:first-of-type,
+.page-id-37417 .bbg__about__child__intro p:first-of-type,
+.bbg__about__child__intro .page-id-37417 p:first-of-type,
+.page-id-37417 .bbg__kits__intro p,
+.bbg__kits__intro .page-id-37417 p,
+.page-id-37417 .bbg__kits__child__intro p:first-of-type,
+.bbg__kits__child__intro .page-id-37417 p:first-of-type,
+.page-id-37417 div,
+.page-id-37417 span,
+.page-id-37417 a {
+  color: #EEE;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */
