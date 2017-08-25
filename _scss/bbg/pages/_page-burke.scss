@@ -6,8 +6,13 @@
     background-color: #828f9e;
     // color: #EEE;
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2, h3, h4, h5, h6,
+	.bbg-header__site-title {
 		color: #fff;
+
+		&:hover {
+			color: #fff;
+		}
 	}
 
     p, div, span {
