@@ -7451,38 +7451,52 @@ section.usa-section.bbg-banner__section {
   width: 25%;
 }
 
-.page-template-page-burke .usa-grid-full, .page-template-page-burke .bbg__svg__content,
+.page-template-page-burke .main-content,
 .page-id-37373,
 .burke_candidate-template-default,
 .page-id-37417 {
   background-color: #828f9e;
-  color: #EEE;
 }
-.page-template-page-burke .usa-grid-full p, .page-template-page-burke .bbg__svg__content p,
-.page-template-page-burke .usa-grid-full .usa-font-lead,
-.page-template-page-burke .bbg__svg__content .usa-font-lead,
-.page-template-page-burke .usa-grid-full .bbg__about__intro p:first-of-type,
-.bbg__about__intro .page-template-page-burke .usa-grid-full p:first-of-type,
-.page-template-page-burke .bbg__svg__content .bbg__about__intro p:first-of-type,
-.bbg__about__intro .page-template-page-burke .bbg__svg__content p:first-of-type,
-.page-template-page-burke .usa-grid-full .bbg__about__child__intro p:first-of-type,
-.bbg__about__child__intro .page-template-page-burke .usa-grid-full p:first-of-type,
-.page-template-page-burke .bbg__svg__content .bbg__about__child__intro p:first-of-type,
-.bbg__about__child__intro .page-template-page-burke .bbg__svg__content p:first-of-type,
-.page-template-page-burke .usa-grid-full .bbg__kits__intro p,
-.bbg__kits__intro .page-template-page-burke .usa-grid-full p,
-.page-template-page-burke .bbg__svg__content .bbg__kits__intro p,
-.bbg__kits__intro .page-template-page-burke .bbg__svg__content p,
-.page-template-page-burke .usa-grid-full .bbg__kits__child__intro p:first-of-type,
-.bbg__kits__child__intro .page-template-page-burke .usa-grid-full p:first-of-type,
-.page-template-page-burke .bbg__svg__content .bbg__kits__child__intro p:first-of-type,
-.bbg__kits__child__intro .page-template-page-burke .bbg__svg__content p:first-of-type,
-.page-template-page-burke .usa-grid-full div,
-.page-template-page-burke .bbg__svg__content div,
-.page-template-page-burke .usa-grid-full span,
-.page-template-page-burke .bbg__svg__content span,
-.page-template-page-burke .usa-grid-full a,
-.page-template-page-burke .bbg__svg__content a,
+.page-template-page-burke .main-content h1, .page-template-page-burke .main-content h2, .page-template-page-burke .main-content h3, .page-template-page-burke .main-content .bbg__sidebar__table caption, .bbg__sidebar__table .page-template-page-burke .main-content caption, .page-template-page-burke .main-content h4, .page-template-page-burke .main-content .bbg__board__committee-list li a, .bbg__board__committee-list li .page-template-page-burke .main-content a, .page-template-page-burke .main-content h5, .page-template-page-burke .main-content .bbg__sidebar__table th, .bbg__sidebar__table .page-template-page-burke .main-content th, .page-template-page-burke .main-content h6,
+.page-id-37373 h1,
+.page-id-37373 h2,
+.page-id-37373 h3,
+.page-id-37373 .bbg__sidebar__table caption,
+.bbg__sidebar__table .page-id-37373 caption,
+.page-id-37373 h4,
+.page-id-37373 .bbg__board__committee-list li a,
+.bbg__board__committee-list li .page-id-37373 a,
+.page-id-37373 h5,
+.page-id-37373 .bbg__sidebar__table th,
+.bbg__sidebar__table .page-id-37373 th,
+.page-id-37373 h6,
+.burke_candidate-template-default h1,
+.burke_candidate-template-default h2,
+.burke_candidate-template-default h3,
+.burke_candidate-template-default .bbg__sidebar__table caption,
+.bbg__sidebar__table .burke_candidate-template-default caption,
+.burke_candidate-template-default h4,
+.burke_candidate-template-default .bbg__board__committee-list li a,
+.bbg__board__committee-list li .burke_candidate-template-default a,
+.burke_candidate-template-default h5,
+.burke_candidate-template-default .bbg__sidebar__table th,
+.bbg__sidebar__table .burke_candidate-template-default th,
+.burke_candidate-template-default h6,
+.page-id-37417 h1,
+.page-id-37417 h2,
+.page-id-37417 h3,
+.page-id-37417 .bbg__sidebar__table caption,
+.bbg__sidebar__table .page-id-37417 caption,
+.page-id-37417 h4,
+.page-id-37417 .bbg__board__committee-list li a,
+.bbg__board__committee-list li .page-id-37417 a,
+.page-id-37417 h5,
+.page-id-37417 .bbg__sidebar__table th,
+.bbg__sidebar__table .page-id-37417 th,
+.page-id-37417 h6 {
+  color: #fff;
+}
+.page-template-page-burke .main-content p, .page-template-page-burke .main-content .usa-font-lead, .page-template-page-burke .main-content .bbg__about__intro p:first-of-type, .bbg__about__intro .page-template-page-burke .main-content p:first-of-type, .page-template-page-burke .main-content .bbg__about__child__intro p:first-of-type, .bbg__about__child__intro .page-template-page-burke .main-content p:first-of-type, .page-template-page-burke .main-content .bbg__kits__intro p, .bbg__kits__intro .page-template-page-burke .main-content p, .page-template-page-burke .main-content .bbg__kits__child__intro p:first-of-type, .bbg__kits__child__intro .page-template-page-burke .main-content p:first-of-type, .page-template-page-burke .main-content div, .page-template-page-burke .main-content span,
 .page-id-37373 p,
 .page-id-37373 .usa-font-lead,
 .page-id-37373 .bbg__about__intro p:first-of-type,
@@ -7495,7 +7509,6 @@ section.usa-section.bbg-banner__section {
 .bbg__kits__child__intro .page-id-37373 p:first-of-type,
 .page-id-37373 div,
 .page-id-37373 span,
-.page-id-37373 a,
 .burke_candidate-template-default p,
 .burke_candidate-template-default .usa-font-lead,
 .burke_candidate-template-default .bbg__about__intro p:first-of-type,
@@ -7508,7 +7521,6 @@ section.usa-section.bbg-banner__section {
 .bbg__kits__child__intro .burke_candidate-template-default p:first-of-type,
 .burke_candidate-template-default div,
 .burke_candidate-template-default span,
-.burke_candidate-template-default a,
 .page-id-37417 p,
 .page-id-37417 .usa-font-lead,
 .page-id-37417 .bbg__about__intro p:first-of-type,
@@ -7520,9 +7532,8 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .bbg__kits__child__intro p:first-of-type,
 .bbg__kits__child__intro .page-id-37417 p:first-of-type,
 .page-id-37417 div,
-.page-id-37417 span,
-.page-id-37417 a {
-  color: #EEE;
+.page-id-37417 span {
+  color: #eee;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */

@@ -1,16 +1,16 @@
-.page-template-page-burke .usa-grid-full, //main burke landing page
+.page-template-page-burke .main-content, //main burke landing page
 .page-id-37373, // category browser with this year's candidates
 .burke_candidate-template-default, //candidate detail page
 .page-id-37417 //full archive with every year
 {
     background-color: #828f9e;
-    color: #EEE;
+    // color: #EEE;
 
-    p,
-    .usa-font-lead,
-    div,
-    span,
-    a {
-        color: #EEE;
+	h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+
+    p, .usa-font-lead, div, span {
+        color: #eee;
     }
 }
