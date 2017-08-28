@@ -7451,21 +7451,21 @@ section.usa-section.bbg-banner__section {
   width: 25%;
 }
 
-.page-template-page-burke .main-content,
+.page-template-page-burke,
 .page-id-37373,
 .burke_candidate-template-default,
 .page-id-37417 {
   background-color: #828f9e;
 }
-.page-template-page-burke .main-content .usa-disclaimer,
+.page-template-page-burke .usa-disclaimer,
 .page-id-37373 .usa-disclaimer,
 .burke_candidate-template-default .usa-disclaimer,
 .page-id-37417 .usa-disclaimer {
   background-color: #828f9e;
   border-bottom: 1px solid #777777;
 }
-.page-template-page-burke .main-content h1, .page-template-page-burke .main-content h2, .page-template-page-burke .main-content h3, .page-template-page-burke .main-content .bbg__sidebar__table caption, .bbg__sidebar__table .page-template-page-burke .main-content caption, .page-template-page-burke .main-content h4, .page-template-page-burke .main-content .bbg__board__committee-list li a, .bbg__board__committee-list li .page-template-page-burke .main-content a, .page-template-page-burke .main-content h5, .page-template-page-burke .main-content .bbg__sidebar__table th, .bbg__sidebar__table .page-template-page-burke .main-content th, .page-template-page-burke .main-content h6,
-.page-template-page-burke .main-content .bbg-header__site-title,
+.page-template-page-burke h1, .page-template-page-burke h2, .page-template-page-burke h3, .page-template-page-burke .bbg__sidebar__table caption, .bbg__sidebar__table .page-template-page-burke caption, .page-template-page-burke h4, .page-template-page-burke .bbg__board__committee-list li a, .bbg__board__committee-list li .page-template-page-burke a, .page-template-page-burke h5, .page-template-page-burke .bbg__sidebar__table th, .bbg__sidebar__table .page-template-page-burke th, .page-template-page-burke h6,
+.page-template-page-burke .bbg-header__site-title,
 .page-id-37373 h1,
 .page-id-37373 h2,
 .page-id-37373 h3,
@@ -7507,8 +7507,8 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .bbg-header__site-title {
   color: #fff;
 }
-.page-template-page-burke .main-content h1:hover, .page-template-page-burke .main-content h2:hover, .page-template-page-burke .main-content h3:hover, .page-template-page-burke .main-content .bbg__sidebar__table caption:hover, .bbg__sidebar__table .page-template-page-burke .main-content caption:hover, .page-template-page-burke .main-content h4:hover, .page-template-page-burke .main-content .bbg__board__committee-list li a:hover, .bbg__board__committee-list li .page-template-page-burke .main-content a:hover, .page-template-page-burke .main-content h5:hover, .page-template-page-burke .main-content .bbg__sidebar__table th:hover, .bbg__sidebar__table .page-template-page-burke .main-content th:hover, .page-template-page-burke .main-content h6:hover,
-.page-template-page-burke .main-content .bbg-header__site-title:hover,
+.page-template-page-burke h1:hover, .page-template-page-burke h2:hover, .page-template-page-burke h3:hover, .page-template-page-burke .bbg__sidebar__table caption:hover, .bbg__sidebar__table .page-template-page-burke caption:hover, .page-template-page-burke h4:hover, .page-template-page-burke .bbg__board__committee-list li a:hover, .bbg__board__committee-list li .page-template-page-burke a:hover, .page-template-page-burke h5:hover, .page-template-page-burke .bbg__sidebar__table th:hover, .bbg__sidebar__table .page-template-page-burke th:hover, .page-template-page-burke h6:hover,
+.page-template-page-burke .bbg-header__site-title:hover,
 .page-id-37373 h1:hover,
 .page-id-37373 h2:hover,
 .page-id-37373 h3:hover,
@@ -7550,7 +7550,7 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .bbg-header__site-title:hover {
   color: #fff;
 }
-.page-template-page-burke .main-content p, .page-template-page-burke .main-content div, .page-template-page-burke .main-content span,
+.page-template-page-burke p, .page-template-page-burke div, .page-template-page-burke span,
 .page-id-37373 p,
 .page-id-37373 div,
 .page-id-37373 span,

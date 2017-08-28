@@ -35,26 +35,15 @@ $activeYear = 2016;  //in theory we could let the user pick this
 get_header();
 
 ?>
-<style>
-	.bbg-burke__network {
-		font-style: italic;
-	}
-	.bbg-burke__occupation {
-		font-weight: normal;
-	}
-	.bbg-burke__tagline {
-		font-weight: normal;
-	}
-</style>
 
 <div id="main" class="site-main">
 	<div id="primary" class="content-area">
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
 			<?php
 				/*** output our <style> node for use by the responsive banner ***/
-				$randomImg= getBurkeImage();
-				$bannerCutline="";
-				$bannerAdjustStr="";
+				$randomImg = getBurkeImage();
+				$bannerCutline = "";
+				$bannerAdjustStr = "";
 				if ($randomImg) {
 					$attachment_id = $randomImg['imageID'];
 					$bannerCutline = $randomImg['imageCutline'];
