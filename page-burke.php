@@ -87,7 +87,7 @@ get_header();
 
 			<?php
 
-				if ( isset ($_GET['slider'] ) ) :
+				if ( true || isset ($_GET['slider'] ) ) :
 					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
 					echo do_shortcode( '[rev_slider alias="home-default-slider"]' );
 					echo '</section>';
@@ -120,19 +120,6 @@ get_header();
 
 			?>
 
-
-			<div class="bbg__social__container">
-				<?php if ( isset( $_GET['social'] ) ): ?>
-				<div class="bbg__social">
-					<h3 class="bbg__social-list__label">FOLLOW US</h3>
-					<ul class="bbg__social-list">
-						<li class="bbg__social-list__link"><a href="https://www.facebook.com/BBGgov/" title="Like BBG on Facebook" class="bbg-icon-facebook" tabindex="-1"></a></li>
-						<li class="bbg__social-list__link"><a href="https://twitter.com/BBGgov" title="Follow BBG on Twitter" class="bbg-icon-twitter" tabindex="-1"></a></li>
-						<li class="bbg__social-list__link"><a href="https://www.youtube.com/user/bbgtunein" title="Check out BBG videos on YouTube" class="bbg-icon-youtube" tabindex="-1"></a></li>
-					</ul>
-				</div>
-				<?php endif; ?>
-			</div>
 
 			<!-- Site introduction -->
 			<section id="mission" class="usa-section usa-grid">
@@ -200,10 +187,11 @@ get_header();
 					while ( $custom_query -> have_posts() )  {
 						$custom_query -> the_post();
 						$counter++;
-						get_template_part( 'template-parts/content-burke', get_post_format() );
+						//get_template_part( 'template-parts/content-burke', get_post_format() );
 					}
 					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
+					echo do_shortcode('[smartslider3 slider=3]');
 				?>
 			</section>
 
