@@ -7603,16 +7603,13 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .bbg-header__link:visited {
   color: #fff;
 }
-.page-template-page-burke p, .page-template-page-burke div, .page-template-page-burke span,
+.page-template-page-burke p, .page-template-page-burke div,
 .page-id-37373 p,
 .page-id-37373 div,
-.page-id-37373 span,
 .burke_candidate-template-default p,
 .burke_candidate-template-default div,
-.burke_candidate-template-default span,
 .page-id-37417 p,
-.page-id-37417 div,
-.page-id-37417 span {
+.page-id-37417 div {
   color: #eee;
 }
 
