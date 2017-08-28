@@ -13,21 +13,21 @@
   template name: Burke Awards
  */
 
-/******* BEGIN BURKE AWARDS ****/ 
+/******* BEGIN BURKE AWARDS ****/
 
 function getBurkeImage() {
 	return array(
 		'imageID' => 37332,
-		'imageCutline' => '',//'imageCutline' => 'Burke Awards Logo',
+		'imageCutline' => '', //'imageCutline' => 'Burke Awards Logo',
 		'bannerAdjustStr' => 'center center'
 	);
 }
-$bannerText = "David Burke Awards"; 
+$bannerText = "David Burke Awards";
 $bannerLogo = "/wp-content/media/2017/07/burkeDemo.jpg";
 $siteIntroContent = "The David Burke Awards are named after David W. Burke, founding chairman of the Broadcasting Board of Governors and leader for its first three years. The Burke Awards are presented annually to recognize the courage, integrity, and professionalism of journalists with the BBG.";
 $burkeBioLink = "/who-we-are/our-leadership/board/david-w-burke/";
-$burkeBioImage = "/wp-content/media/2017/08/Burke-obit-superJumbo.jpg";
-$activeYear = 2016;  //in theory we could let the user pick this 
+$burkeBioImage = "/wp-content/media/2017/08/David-Burke-profile.png";
+$activeYear = 2016;  //in theory we could let the user pick this
 
 /******* END BURKE AWARDS ****/
 
@@ -95,19 +95,17 @@ get_header();
 					echo "</style>";
 				}
 			?>
-			
 
+			<?php
 
-			<?php 
-				
-				if ( isset ($_GET['slider'] ) ) : 
+				if ( isset ($_GET['slider'] ) ) :
 					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
 					echo do_shortcode( '[rev_slider alias="home-default-slider"]' );
-					echo '</section>';	
+					echo '</section>';
 				else:
 			?>
-			
-				<!-- Responsive Banner -->
+
+			<!-- Responsive Banner -->
 			<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">
 				<div class="bbg-banner">
 					<div class="bbg-banner__gradient"></div>
@@ -133,11 +131,9 @@ get_header();
 
 			?>
 
-			
-
 
 			<div class="bbg__social__container">
-				<?php if (isset($_GET['social'])): ?>
+				<?php if ( isset( $_GET['social'] ) ): ?>
 				<div class="bbg__social">
 					<h3 class="bbg__social-list__label">FOLLOW US</h3>
 					<ul class="bbg__social-list">
@@ -157,27 +153,26 @@ get_header();
 				//echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
-			
+
 			<section id="winners" class="usa-section ">
-			<div class="usa-grid">
-				<h6 class="bbg__label">Meet the Winners</h6>
-				<div class="bbg-blog__excerpt-content">
-					<p >
-						Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16th year in which the awards have been given. Below is a random sampling of this year's winners.
-						<a href="/burke-candidates/" class="bbg__kits__intro__more--link">Complete list of this year's winners »</a>
+				<div class="usa-grid">
+					<h6 class="bbg__label">Meet the winners</h6>
+					<div class="bbg-blog__excerpt-content">
+						<p>
+							Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16<sup>th</sup> year in which the awards have been given. Below is a random sampling of this year’s winners.
+							<a href="/burke-candidates/" class="bbg__kits__intro__more--link">Complete list of this year’s winners »</a>
 
-						<!-- and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.-->
-					</p>
+							<!-- and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.-->
+						</p>
+					</div>
 				</div>
-			</div>
-			<div class="usa-grid">
-			<?php
-
+				<div class="usa-grid">
+				<?php
 					// BEGIN: Create an array of three random IDs of burke candidate winners from this year
 					$counter = 0;
 					$qParams = array(
 						'post_type' => 'burke_candidate'
-						,'meta_query' => array( 
+						,'meta_query' => array(
 							array(
 								'key' => 'burke_year_of_eligibility',
 								'value' => $activeYear,
@@ -188,12 +183,12 @@ get_header();
 					$custom_query = new WP_Query( $qParams );
 					$counter = 0;
 					$allCandidateIDs = array();
-					while ( $custom_query->have_posts() )  {
-						$custom_query->the_post();
-						$allCandidateIDs []= get_the_ID();
+					while ( $custom_query -> have_posts() )  {
+						$custom_query -> the_post();
+						$allCandidateIDs [] = get_the_ID();
 					}
 					shuffle( $allCandidateIDs );
-					$randomCandidateIDs = array_slice( $allCandidateIDs, 0, min(3,count($allCandidateIDs) ) );
+					$randomCandidateIDs = array_slice( $allCandidateIDs, 0, min( 3, count($allCandidateIDs) ) );
 					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
 
@@ -204,24 +199,23 @@ get_header();
 						'post_type' => 'burke_candidate'
 						,'posts_per_page' => 3
 						,'order' => 'DESC'
-					); 
+					);
 					*/
 
-					$qParams=array(
+					$qParams = array(
 						'post_type' => 'burke_candidate',
 						'post__in' => $randomCandidateIDs
 					);
 					$custom_query = new WP_Query( $qParams );
 					$counter = 0;
-					while ( $custom_query->have_posts() )  {
-						$custom_query->the_post();
+					while ( $custom_query -> have_posts() )  {
+						$custom_query -> the_post();
 						$counter++;
 						get_template_part( 'template-parts/content-burke', get_post_format() );
 					}
 					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
-			?>
-			
+				?>
 			</section>
 
 <div class="usa-section usa-grid bbg__kits__section" id="page-sections">
@@ -230,7 +224,6 @@ get_header();
 			</div>
 			</section>
 			</div>
-
 
 			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 			    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">

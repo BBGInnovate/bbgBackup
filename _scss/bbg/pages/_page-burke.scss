@@ -4,7 +4,11 @@
 .page-id-37417 //full archive with every year
 {
     background-color: #828f9e;
-    // color: #EEE;
+
+	.usa-disclaimer {
+		background-color: #828f9e;
+		border-bottom: 1px solid #777777;
+	}
 
 	h1, h2, h3, h4, h5, h6,
 	.bbg-header__site-title {

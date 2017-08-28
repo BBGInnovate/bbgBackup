@@ -7457,6 +7457,13 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 {
   background-color: #828f9e;
 }
+.page-template-page-burke .main-content .usa-disclaimer,
+.page-id-37373 .usa-disclaimer,
+.burke_candidate-template-default .usa-disclaimer,
+.page-id-37417 .usa-disclaimer {
+  background-color: #828f9e;
+  border-bottom: 1px solid #777777;
+}
 .page-template-page-burke .main-content h1, .page-template-page-burke .main-content h2, .page-template-page-burke .main-content h3, .page-template-page-burke .main-content .bbg__sidebar__table caption, .bbg__sidebar__table .page-template-page-burke .main-content caption, .page-template-page-burke .main-content h4, .page-template-page-burke .main-content .bbg__board__committee-list li a, .bbg__board__committee-list li .page-template-page-burke .main-content a, .page-template-page-burke .main-content h5, .page-template-page-burke .main-content .bbg__sidebar__table th, .bbg__sidebar__table .page-template-page-burke .main-content th, .page-template-page-burke .main-content h6,
 .page-template-page-burke .main-content .bbg-header__site-title,
 .page-id-37373 h1,
