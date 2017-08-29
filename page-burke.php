@@ -89,7 +89,7 @@ get_header();
 
 				if ( true || isset ($_GET['slider'] ) ) :
 					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
-					echo do_shortcode( '[rev_slider alias="home-default-slider"]' );
+					echo do_shortcode( '[rev_slider alias="burke-slider"]' );
 					echo '</section>';
 				else:
 			?>
