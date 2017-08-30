@@ -321,8 +321,8 @@ get_header();
 							$$cornerHeroPermalink = get_the_permalink( $id );
 
 							/* permalinks for future posts by default don't return properly. fix that. */
-							if ( $featuredEvent -> post_status == 'future' ) {
-								$my_post = clone $featuredEvent;
+							if ( $cornerHeroPost -> post_status == 'future' ) {
+								$my_post = clone $cornerHeroPost;
 								$my_post -> post_status = 'published';
 								$my_post -> post_name = sanitize_title( $my_post -> post_name ? $my_post -> post_name : $my_post -> post_title, $my_post -> ID);
 								$cornerHeroPermalink = get_permalink( $my_post );
