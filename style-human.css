@@ -7455,7 +7455,7 @@ section.usa-section.bbg-banner__section {
 .page-id-37373,
 .burke_candidate-template-default,
 .page-id-37417 {
-  background-color: #828f9e;
+  background-color: #3c6773;
   color: #fff;
 }
 .page-template-page-burke .usa-disclaimer,
@@ -7611,6 +7611,12 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 p,
 .page-id-37417 div {
   color: #eee;
+}
+.page-template-page-burke a,
+.page-id-37373 a,
+.burke_candidate-template-default a,
+.page-id-37417 a {
+  color: #7aa3aa;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */
