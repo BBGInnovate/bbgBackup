@@ -7462,8 +7462,7 @@ section.usa-section.bbg-banner__section {
 .page-id-37373 .usa-disclaimer,
 .burke_candidate-template-default .usa-disclaimer,
 .page-id-37417 .usa-disclaimer {
-  background-color: #828f9e;
-  border-bottom: 1px solid #777777;
+  background-color: #7aa3aa;
 }
 .page-template-page-burke h1, .page-template-page-burke h2, .page-template-page-burke h3, .page-template-page-burke .bbg__sidebar__table caption, .bbg__sidebar__table .page-template-page-burke caption, .page-template-page-burke h4, .page-template-page-burke .bbg__board__committee-list li a, .bbg__board__committee-list li .page-template-page-burke a, .page-template-page-burke h5, .page-template-page-burke .bbg__sidebar__table th, .bbg__sidebar__table .page-template-page-burke th, .page-template-page-burke h6,
 .page-template-page-burke .bbg-header__site-title,
@@ -7616,7 +7615,7 @@ section.usa-section.bbg-banner__section {
 .page-id-37373 a,
 .burke_candidate-template-default a,
 .page-id-37417 a {
-  color: #7aa3aa;
+  color: #b2ccd1;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */
