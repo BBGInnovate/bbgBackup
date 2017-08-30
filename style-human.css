@@ -5072,13 +5072,14 @@ e.g. on the intern testimonial page */
   margin-top: 5rem;
 }
 
-/** Read more tagline **/
+/** Read more link **/
 .bbg__read-more, .bbg__kits__intro a.bbg__kits__intro__more--link {
   color: #0071bc;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 80%;
   font-weight: bold;
-  text-transform: uppercase;
+  font-transform: uppercase;
+  margin-left: 1rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -7481,6 +7482,25 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .usa-disclaimer {
   background-color: #b2ccd1;
 }
+.page-template-page-burke a,
+.page-id-37373 a,
+.burke_candidate-template-default a,
+.page-id-37417 a {
+  color: #112e51;
+  text-decoration: none;
+}
+.page-template-page-burke a:hover,
+.page-id-37373 a:hover,
+.burke_candidate-template-default a:hover,
+.page-id-37417 a:hover {
+  text-decoration: underline;
+}
+.page-template-page-burke a:visited,
+.page-id-37373 a:visited,
+.burke_candidate-template-default a:visited,
+.page-id-37417 a:visited {
+  color: #112e51;
+}
 .page-template-page-burke .bbg__ribbon--thin,
 .page-id-37373 .bbg__ribbon--thin,
 .burke_candidate-template-default .bbg__ribbon--thin,
@@ -7489,16 +7509,12 @@ section.usa-section.bbg-banner__section {
 }
 .page-template-page-burke .bbg__ribbon--thin h2,
 .page-template-page-burke .bbg__ribbon--thin .bbg__announcement__headline,
-.page-template-page-burke .bbg__ribbon--thin a,
 .page-id-37373 .bbg__ribbon--thin h2,
 .page-id-37373 .bbg__ribbon--thin .bbg__announcement__headline,
-.page-id-37373 .bbg__ribbon--thin a,
 .burke_candidate-template-default .bbg__ribbon--thin h2,
 .burke_candidate-template-default .bbg__ribbon--thin .bbg__announcement__headline,
-.burke_candidate-template-default .bbg__ribbon--thin a,
 .page-id-37417 .bbg__ribbon--thin h2,
-.page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline,
-.page-id-37417 .bbg__ribbon--thin a {
+.page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline {
   color: #112e51;
 }
 .page-template-page-burke .bbg__footer__return-to-top,
@@ -8286,7 +8302,6 @@ div.appropriations-small > p.header {
   }
 }
 .bbg__kits__intro a.bbg__kits__intro__more--link {
-  margin-left: 1rem;
   text-align: right;
   text-decoration: none;
   text-transform: uppercase;

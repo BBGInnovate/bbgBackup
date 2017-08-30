@@ -9,12 +9,24 @@
 		background-color: #b2ccd1;
 	}
 
+	a {
+		color: #112e51;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&:visited {
+			color: #112e51;
+		}
+	}
+
 	.bbg__ribbon--thin {
 		background-color: #7aa3aa;
 
 		h2,
-		.bbg__announcement__headline,
-		a {
+		.bbg__announcement__headline {
 			color: #112e51;
 		}
 	}

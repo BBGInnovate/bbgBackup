@@ -657,11 +657,14 @@ e.g. on the intern testimonial page */
 	margin-top: 5rem;
 }
 
-/** Read more tagline **/
+/** Read more link **/
 .bbg__read-more {
 	color: $color-primary;
-	font-family: $font-sans;
-	font-size: 80%;
-	font-weight: bold;
-	text-transform: uppercase;
+	font: {
+		family: $font-sans;
+		size: 80%;
+		weight: bold;
+		transform: uppercase;
+	}
+	margin-left: $site-margins-small;
 }
