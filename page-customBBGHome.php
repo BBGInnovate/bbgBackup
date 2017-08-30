@@ -318,7 +318,7 @@ get_header();
 								$cornerHeroClass = 'bbg__advisory-announcement';
 							} 
 							$id = $cornerHeroPost -> ID;
-							$$cornerHeroPermalink = get_the_permalink( $id );
+							$cornerHeroPermalink = get_the_permalink( $id );
 
 							/* permalinks for future posts by default don't return properly. fix that. */
 							if ( $cornerHeroPost -> post_status == 'future' ) {
