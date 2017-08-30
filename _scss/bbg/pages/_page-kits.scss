@@ -27,22 +27,22 @@
 			}
 		}
 	}
+}
 
-	// "Read more" link
-	a.bbg__kits__intro__more--link {
-		@extend .bbg__read-more;
-		// margin-left: $site-margins-small;
+// "Read more" link
+a.bbg__kits__intro__more--link {
+	@extend .bbg__read-more;
+	margin-left: $site-margins-small;
 
-		text: {
-			align: right;
-			decoration: none;
-			transform: uppercase;
-		}
-		white-space: nowrap;
+	text: {
+		align: right;
+		decoration: none;
+		transform: uppercase;
+	}
+	white-space: nowrap;
 
-		&:hover {
-			text-decoration: underline;
-		}
+	&:hover {
+		text-decoration: underline;
 	}
 }
 

@@ -5073,7 +5073,7 @@ e.g. on the intern testimonial page */
 }
 
 /** Read more link **/
-.bbg__read-more, .bbg__kits__intro a.bbg__kits__intro__more--link {
+.bbg__read-more, a.bbg__kits__intro__more--link {
   color: #0071bc;
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 80%;
@@ -8301,13 +8301,15 @@ div.appropriations-small > p.header {
     line-height: 1.9;
   }
 }
-.bbg__kits__intro a.bbg__kits__intro__more--link {
+
+a.bbg__kits__intro__more--link {
+  margin-left: 1rem;
   text-align: right;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
 }
-.bbg__kits__intro a.bbg__kits__intro__more--link:hover {
+a.bbg__kits__intro__more--link:hover {
   text-decoration: underline;
 }
 
