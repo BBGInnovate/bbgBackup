@@ -3,8 +3,8 @@
 .burke_candidate-template-default, //candidate detail page
 .page-id-37417 //full archive with every year
 {
-    background-color: #3c6773; //#828f9e
-	color: #fff;
+    background-color: #b2ccd1; //#828f9e
+	// color: #000;
 
 	.usa-disclaimer {
 		background-color: #7aa3aa;
@@ -14,20 +14,20 @@
 	h1, h2, h3, h4, h5, h6,
 	.bbg-header__site-title,
 	.bbg-header__link {
-		color: #fff;
+		// color: #000;
 
 		&:hover,
 		&:visited {
-			color: #fff;
+			// color: #000;
 		}
 	}
 
     p, div {
-        color: #eee;
+        // color: #eee;
     }
 
     a {
-    	color: #b2ccd1;
+    	// color: #b2ccd1;
     }
 
 }
