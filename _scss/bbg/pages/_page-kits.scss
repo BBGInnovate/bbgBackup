@@ -21,7 +21,7 @@
 			line-height: 1.7;
 			margin: 0;
 
-			@include media($large-screen) {
+			@include media( $large-screen ) {
 				font-size: 3rem;
 				line-height: 1.9;
 			}
@@ -31,6 +31,7 @@
 	// "Read more" link
 	a.bbg__kits__intro__more--link {
 		@extend .bbg__read-more;
+		margin-left: $site-margins-small;
 
 		text: {
 			align: right;

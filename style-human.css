@@ -7455,13 +7455,57 @@ section.usa-section.bbg-banner__section {
 .page-id-37373,
 .burke_candidate-template-default,
 .page-id-37417 {
-  background-color: #b2ccd1;
+  background-color: #e4ebec;
+  	/* h1, h2, h3, h4, h5, h6,
+  	.bbg-header__site-title,
+  	.bbg-header__link {
+  		// color: #000;
+  
+  		&:hover,
+  		&:visited {
+  			// color: #000;
+  		}
+  	}
+  
+      p, div {
+          // color: #eee;
+      }
+  
+      a {
+      	// color: #b2ccd1;
+      } */
 }
 .page-template-page-burke .usa-disclaimer,
 .page-id-37373 .usa-disclaimer,
 .burke_candidate-template-default .usa-disclaimer,
 .page-id-37417 .usa-disclaimer {
+  background-color: #b2ccd1;
+}
+.page-template-page-burke .bbg__ribbon--thin,
+.page-id-37373 .bbg__ribbon--thin,
+.burke_candidate-template-default .bbg__ribbon--thin,
+.page-id-37417 .bbg__ribbon--thin {
   background-color: #7aa3aa;
+}
+.page-template-page-burke .bbg__ribbon--thin h2,
+.page-template-page-burke .bbg__ribbon--thin .bbg__announcement__headline,
+.page-template-page-burke .bbg__ribbon--thin a,
+.page-id-37373 .bbg__ribbon--thin h2,
+.page-id-37373 .bbg__ribbon--thin .bbg__announcement__headline,
+.page-id-37373 .bbg__ribbon--thin a,
+.burke_candidate-template-default .bbg__ribbon--thin h2,
+.burke_candidate-template-default .bbg__ribbon--thin .bbg__announcement__headline,
+.burke_candidate-template-default .bbg__ribbon--thin a,
+.page-id-37417 .bbg__ribbon--thin h2,
+.page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline,
+.page-id-37417 .bbg__ribbon--thin a {
+  color: #112e51;
+}
+.page-template-page-burke .bbg__footer__return-to-top,
+.page-id-37373 .bbg__footer__return-to-top,
+.burke_candidate-template-default .bbg__footer__return-to-top,
+.page-id-37417 .bbg__footer__return-to-top {
+  background-color: #fff;
 }
 
 /*@import 'bbg/pages/page-fuego'; // Not using this on the BBG site. */
@@ -8242,6 +8286,7 @@ div.appropriations-small > p.header {
   }
 }
 .bbg__kits__intro a.bbg__kits__intro__more--link {
+  margin-left: 1rem;
   text-align: right;
   text-decoration: none;
   text-transform: uppercase;
