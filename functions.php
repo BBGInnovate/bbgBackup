@@ -62,6 +62,7 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 		//add_image_size( 'largest', 1200, 9999 ); // new size at our max breaking point
 		add_image_size( 'gigantic', 1900, 9999 ); // for some huge monitors
 		add_image_size( 'mugshot', 200, 200, true );
+		add_image_size( 'large-mugshot', 300, 300, true ); // larger mugshot size for profile photos in sidebar
 
 		function my_custom_sizes( $sizes ) {
 			/*  NOTE: the $sizes array here is simply an associative array.  It doesn't provide actual dimensions.
@@ -77,6 +78,7 @@ if ( ! function_exists( 'bbginnovate_setup' ) ) :
 			*/
 			return array_merge( $sizes, array(
 		        'mugshot' => __('Mugshot'),
+		        'large-mugshot' => __('Large Mugshot'),
 		        'large-thumb' => __('Extra Large'),
 		    ) );
 
@@ -213,7 +215,7 @@ function bbginnovate_scripts() {
 		wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
 		wp_enqueue_script('livereload');
 	}
-	
+
 	wp_enqueue_style( 'selector-css', get_stylesheet_directory_uri() . '/js/vendor/selection-sharer.css' );
 	wp_enqueue_script( 'selector-script', get_stylesheet_directory_uri() . '/js/vendor/selection-sharer.js' );
 
@@ -998,7 +1000,7 @@ add_action('admin_menu', 'wpdocs_register_my_custom_submenu_page');
 function wpdocs_register_my_custom_submenu_page() {
 	/* NOTE - this isn't officially supported by WP ****/
 	global $submenu;
-	$submenu['edit.php?post_type=media_clips'][500] = array( 'Sending with Mailchimp', 'Sending with Mailchimp' , 'https://docs.google.com/document/d/11POafEgz5MInKEyQCCepuViizySzqxqJQRgxoLl74cE/edit?usp=sharing' ); 
+	$submenu['edit.php?post_type=media_clips'][500] = array( 'Sending with Mailchimp', 'Sending with Mailchimp' , 'https://docs.google.com/document/d/11POafEgz5MInKEyQCCepuViizySzqxqJQRgxoLl74cE/edit?usp=sharing' );
 }
 
 
@@ -1140,7 +1142,7 @@ function getSoapboxStr( $soap ) {
 
 	//Allow an override for the SOAPBOX LABEL
 	$homepageSoapboxLabel = get_field( 'homepage_soapbox_label', 'options' );
-	
+
 	//use the blue background by default
 	$soapClass = "bbg__voice--featured";
 	if ( $homepageSoapboxLabel != "" ) {
@@ -1148,7 +1150,7 @@ function getSoapboxStr( $soap ) {
 		$soapHeaderText = $homepageSoapboxLabel;
 		$soapHeaderPermalink = get_field( 'homepage_soapbox_link', 'options' );
 	} else {
-		/** if the user did not manually enter a soapbox label, use the categories on this post 
+		/** if the user did not manually enter a soapbox label, use the categories on this post
 			to decide the class (background color) as well as the header link, and in some cases the profile photo/name
 		**/
 
@@ -1174,7 +1176,7 @@ function getSoapboxStr( $soap ) {
 		}
 	}
 
-	//users may manually override the soapbox image 
+	//users may manually override the soapbox image
 	$homepageSoapboxImage = get_field( 'homepage_soapbox_image', 'option' );
 	if ( $homepageSoapboxImage ) {
 		$profilePhoto = wp_get_attachment_image_src( $homepageSoapboxImage , 'profile_photo' );
@@ -1197,9 +1199,9 @@ function getSoapboxStr( $soap ) {
 
 		$s .= '<header class="entry-header bbg__article-icons-container">';
 			if ( $homepageSoapboxLabel == '' ) {
-				$s .= '<div class="bbg__article-icon"></div>';	
+				$s .= '<div class="bbg__article-icon"></div>';
 			}
-			
+
 
 			if ( $soapHeaderPermalink != "" ) {
 					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
@@ -1291,6 +1293,6 @@ function my_acf_init() {
 	//see https://www.advancedcustomfields.com/resources/google-map/ - this is for backend Google Maps custom field usage
 	acf_update_setting('google_api_key', 'AIzaSyDOdFiB1nc6J-XeeTnQisIfYonl3UHUNgQ');
 }
-add_action('acf/init', 'my_acf_init'); 
+add_action('acf/init', 'my_acf_init');
 
 ?>
