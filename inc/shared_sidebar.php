@@ -83,7 +83,7 @@ if ( $includeSidebar ) {
 				$sidebarImage = "";
 				if ($sidebarLinkImage && $sidebarLinkImage != ""){
 
-					$sidebarImageSrc = $sidebarLinkImage['sizes']['Large Mugshot'];
+					$sidebarImageSrc = $sidebarLinkImage['sizes']['medium'];
 					$sidebarImage = '<a target="blank" href="' . $sidebarLinkLink . '"><img class="bbg__sidebar__primary-image" src="' . $sidebarImageSrc . '"/></a>';
 				}
 

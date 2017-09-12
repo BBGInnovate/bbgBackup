@@ -57,7 +57,7 @@ if ($relatedProfileID) {
 	$profilePhoto = "";
 
 	if ($profilePhotoID) {
-		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot');
+		$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'Large Mugshot');
 		$profilePhoto = $profilePhoto[0];
 	}
 	$twitterProfileHandle = get_post_meta( $relatedProfileID, 'twitter_handle', true );
