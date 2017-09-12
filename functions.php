@@ -472,6 +472,16 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 
 				/******* TODO: Rewrite this section ... no need for so many loops ****/
 
+				/* JBF 9/12/2017: 'From the CEO' takes precedence over all */
+				if ( !$selectedCategory ) {
+					foreach ( $categories as $category ) {
+						if ( $category->name == "From the CEO" ) {
+							$selectedCategory = $category;
+							break;
+						}
+					}
+				}
+
 				/* JBF 12/12/2016 - 'Press Release' takes precedence over everything else */
 				if ( !$selectedCategory ) {
 					foreach ( $categories as $category ) {
@@ -495,14 +505,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 					}
 				}
 
-				if ( !$selectedCategory ) {
-					foreach ( $categories as $category ) {
-						if ( $category->name == "From the CEO" ) {
-							$selectedCategory = $category;
-							break;
-						}
-					}
-				}
+				
 
 				if ( !$selectedCategory ) {
 					foreach ( $categories as $category ) {
