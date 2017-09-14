@@ -61,12 +61,12 @@ get_header(); ?>
 			echo '</div>';
 			/* END AUTHOR BIO - LITTLE HEADER  AT TOP WITH THUMBNAIL */
 		if ($isCEO) {
-			
+
 			$postIDsUsed = [];
-			
-			
+
+
 			/**** BEGIN FETCH FEATURED POSTID ****/
-			
+
 			if ( $featuredPostID == 0 ) {	//only fetch a featured post ID if one is not selected.
 				$qParams = array(
 					'post_type' => array( 'post' ),
@@ -184,7 +184,7 @@ get_header(); ?>
 							echo '</article>';
 							/* END SECOND BLOG POST - COLUMN 2 OF SECOND ROW */
 						echo '</div>';
-						
+
 						echo '<div class="usa-grid-full u--space-below-mobile--large" style="text-align:right;">';
 							//echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">Read more posts from John\'s blog about his work in support of BBG\'s mission »</a>';
 						echo '<a href="' . $blogLink . '" class="bbg__kits__intro__more--link">More blog posts »</a>'; //<strong>Media Diplomacy</strong>
@@ -211,7 +211,7 @@ get_header(); ?>
 		$ceoImage = '/wp-content/media/2017/07/lansingspeaks.jpg';
 
 	?>
-	
+
 	<style>
 		#lansingPhoto {
 			background-position: center top;
@@ -224,7 +224,7 @@ get_header(); ?>
 	</style>
 
 
-	
+
 	<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 	    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
 	        <div class="usa-grid">
@@ -232,7 +232,7 @@ get_header(); ?>
 	                <div id="lansingPhoto" class="bbg__announcement__photo" style="background-image: url(/wp-content/media/2017/07/lansingspeaks.jpg);"></div>
 	                <div>
 	                    <h6 class="bbg__label">On the record</h6>
-	                    <h2 class="bbg__announcement__headline selectionShareable"><a href="/ceo-speeches-and-remarks">Speeches and Remarks</a></h2>
+	                    <h2 class="bbg__announcement__headline selectionShareable"><a href="/ceo-speeches-remarks">Speeches and Remarks</a></h2>
 	                    <p>View transcripts of CEO Lansing’s remarks and statements at each of his appearances since he joined the BBG in September 2015. <a href="<?php echo $remarksLink; ?>" class="bbg__kits__intro__more--link">View All »</a></p>
 	                </div>
 	            </div>
@@ -244,11 +244,11 @@ get_header(); ?>
 
 
 	<?php
-		
-			// OPEN THE CONTAINER FOR THE OFIRST ROW AFTER RIBBON 
+
+			// OPEN THE CONTAINER FOR THE OFIRST ROW AFTER RIBBON
 			echo '<div class="usa-grid">';
 
-			// BEGIN FIRST COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS 
+			// BEGIN FIRST COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS
 			$qParams = array(
 				'post_type' => array( 'post' ),
 				'posts_per_page' => 1,
@@ -256,7 +256,7 @@ get_header(); ?>
 				'order' => 'desc',
 				'post__not_in' => $postIDsUsed,
 				'tax_query' => array(
-					array( 
+					array(
 						'taxonomy' => 'category',
 						'field' => 'slug',
 						'terms' => array('statement', 'from-the-ceo'),
@@ -285,9 +285,9 @@ get_header(); ?>
 				wp_reset_query();
 			echo '<div align="right"><a href="' . $statementsLink . '" class="bbg__kits__intro__more--link">More statements »</a></div>';
 			echo '</div>';
-			// END FIRST COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS 
+			// END FIRST COLUMN OF FIRST ROW AFTER RIBBON - STATEMENTS
 
-			// BEGIN SECOND COLUMN OF FIRST ROW AFTER RIBBON - OP-EDS 
+			// BEGIN SECOND COLUMN OF FIRST ROW AFTER RIBBON - OP-EDS
 			$qParams = array(
 				'post_type' => array( 'post' ),
 				'posts_per_page' => 1,
@@ -295,7 +295,7 @@ get_header(); ?>
 				'order' => 'desc',
 				'post__not_in' => $postIDsUsed,
 				'tax_query' => array(
-					array( 
+					array(
 						'taxonomy' => 'category',
 						'field' => 'slug',
 						'terms' => array('op-ed', 'from-the-ceo'),
@@ -329,7 +329,7 @@ get_header(); ?>
 					'order' => 'desc',
 					'post__not_in' => $postIDsUsed,
 					'tax_query' => array(
-						array( 
+						array(
 							'taxonomy' => 'category',
 							'field' => 'slug',
 							'terms' => array('podcasts', 'from-the-ceo'),
@@ -388,6 +388,6 @@ get_header(); ?>
 </div>
 <?php get_footer();
 
-	
+
 
  ?>
