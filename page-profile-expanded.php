@@ -43,7 +43,11 @@ if ( have_posts() ) {
 	$videoUrl = get_field( 'featured_video_url', '', true );
 
 	/**** Get profile fields *****/
-	$occupation = get_post_meta( $id, 'occupation', true );
+	$isActing = get_post_meta( $id, 'acting', true );
+	if ( $isActing ) {
+		$occupation = "Acting ";
+	}
+	$occupation .= get_post_meta( $id, 'occupation', true );
 	$email = get_post_meta( $id, 'email', true );
 	$phone = get_post_meta( $id, 'phone', true );
 	$twitterProfileHandle = get_post_meta( $id, 'twitter_handle', true );
