@@ -21,13 +21,13 @@ Alhurra TV	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebano
 Radio Sawa	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
 Afia Darfur	Chad,South Sudan
 RFA Burmese	Myanmar [Burma]
-RFA Cantonese	China
+RFA Cantonese	China,China (Taiwan)
 RFA Khmer	Cambodia
 RFA Korean	North Korea
 RFA Lao	Laos
-RFA Mandarin	China,Taiwan
-RFA Tibet	China
-RFA Uyghur	China
+RFA Mandarin	China,China (Taiwan)
+RFA Tibet	China,China (Taiwan)
+RFA Uyghur	China,China (Taiwan)
 RFA Vietnamese	Vietnam
 RFERL Afghan (Dari)	Afghanistan
 RFERL Afghan (Pashto)	Afghanistan
@@ -71,7 +71,7 @@ VOA Bambara	Mali
 VOA Bangla	Bangladesh
 VOA Bosnian	Bosnia and Herzegovina
 VOA Burmese	Myanmar [Burma]
-VOA Cantonese	China,Hong Kong
+VOA Cantonese	China,China (Taiwan),Hong Kong
 VOA Central Africa	Burundi,Congo - Kinshasa,Rwanda
 VOA Creole	Haiti
 VOA Deewa	Afghanistan,Pakistan
@@ -87,7 +87,7 @@ VOA Korean	North Korea
 VOA Kurdish	Iran,Iraq,Syria,Turkey
 VOA Lao	Laos
 VOA Macedonian	Macedonia
-VOA Mandarin	China,Taiwan
+VOA Mandarin	China,China (Taiwan)
 VOA Persian	Iran
 VOA Portuguese to Africa	Angola,Cape Verde,Guinea-Bissau,Mozambique,São Tomé and Príncipe
 VOA Russian	Georgia,Kazakhstan,Kyrgyzstan,Latvia,Lithuania,Moldova,Russia,Tajikistan,Ukraine
@@ -96,7 +96,7 @@ VOA Somali	Kenya,Somalia
 VOA Spanish	Argentina,Bolivia,Chile,Colombia,Costa Rica,Cuba,Dominican Republic,Ecuador,El Salvador,Guatemala,Honduras,Mexico,Nicaragua,Panama,Paraguay,Peru,Uruguay,Venezuela
 VOA Swahili	Burundi,Congo - Kinshasa,Kenya,Rwanda,Tanzania,Uganda
 VOA Thai	Thailand
-VOA Tibetan	China
+VOA Tibetan	China,China (Taiwan)
 VOA Turkish	Turkey
 VOA Ukrainian	Ukraine
 VOA Urdu	Pakistan
