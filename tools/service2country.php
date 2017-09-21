@@ -17,9 +17,10 @@ require ('../../../../wp-load.php');
 die();
 
 $serviceCountryStr = "Martinoticias	Cuba
-Alhurra TV	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
-Radio Sawa	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
-Afia Darfur	Chad,South Sudan
+Alhurra TV	Algeria,Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
+Alhurra-Iraq Iraq
+Radio Sawa	Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Palestinian Territories,Qatar,Saudi Arabia,Sudan,Syria,United Arab Emirates,Yemen
+Afia Darfur	Sudan
 RFA Burmese	Myanmar [Burma]
 RFA Cantonese	China,China (Taiwan)
 RFA Khmer	Cambodia
@@ -54,7 +55,7 @@ RFERL North Caucasus (Chechen)	Russia
 RFERL North Caucasus (Russian)	Russia
 RFERL Russian	Russia
 RFERL Tajik	Kyrgyzstan,Tajikistan
-RFERL Tajik (Russian)	Kyrgyzstan,Russia,Tajikistan
+RFERL Tajik (Russian)	Kyrgyzstan,Tajikistan
 RFERL Tatar-Bashkir	Russia
 RFERL Tatar-Bashkir (Russian)	Russia
 RFERL Turkmen	Turkmenistan
