@@ -137,9 +137,11 @@ function getMapData() {
 	}
 	echo "</ul>";
 
-	echo "<pre>";
-	var_dump($countries);
-	echo "</pre>";
+	if (isset($_GET['json'])) {
+		echo "<pre>";
+		var_dump($countries);
+		echo "</pre>";
+	}
 	die();
 	
 
