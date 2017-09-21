@@ -3,7 +3,7 @@
     /*
         Author: Joe Flowers
         Date: 2/8/2017
-        Description: The purpose of this script was to migrate all of the threats to press entries from a Google Spreadsheet into a custom post type    inside of WordPress.
+        Description: The purpose of this script was to migrate all of the threats to press entries from a Google Spreadsheet into a custom post type inside of WordPress.
         Origin of data source: The Google Spreadsheet was  filled out over the years by the Office of Public Affairs
     */
 
