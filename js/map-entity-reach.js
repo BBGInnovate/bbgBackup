@@ -231,19 +231,27 @@ function shadeColor( color, percent ) {
 			var en = entities[ entity ];
 			var entityDetailsStr = '<p>' + en.description + '</p>';
 			//entityDetailsStr += 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
-			var currentTimeStr = "";
-
-			if ( entity == "voa" || entity == "rferl" ) {
-				currentTimeStr = '<article class="bbg__entity"><div class="bbg__avatar__container bbg__entity__icon"><a href="https://www.bbg.gov/2017/02/06/current-time-network-launches-real-news-real-people-real-time/"><div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/media/2017/09/Current-Time-avatar-200x200.png);"></div></a></div><div class="bbg__entity__text"><h2 class="bbg__entity__name"><a href="https://www.currenttime.tv/">Current Time</a></h2><p class="bbg__entity__text-description"></p><p>Led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.</p></div></article>';
-			}
-
-			var voaEnglishStr = "";
+			
+			
+			var globalStr = "";
 
 			if ( entity == "voa" ) {
-				voaEnglishStr += "<p>VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.</p>";
+				//globalStr += "<p>VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.</p>";
+				globalStr += '<li><a target="_blank" href="https://www.voanews.com/">English-language News Center</a></li>';
+				globalStr += '<li><a target="_blank" href="https://learningenglish.voanews.com/">Learning English programming</a></li>';
 			}
 
-			entityDetailsStr += voaEnglishStr + currentTimeStr;
+			if ( entity == "voa" || entity == "rferl" ) {
+				//<article class="bbg__entity"><div class="bbg__avatar__container bbg__entity__icon"><a href="https://www.bbg.gov/2017/02/06/current-time-network-launches-real-news-real-people-real-time/"><div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/media/2017/09/Current-Time-avatar-200x200.png);"></div></a></div><div class="bbg__entity__text"><h2 class="bbg__entity__name"><a href="https://www.currenttime.tv/">Current Time</a></h2><p class="bbg__entity__text-description"></p><p>Led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.</p></div></article>';
+				globalStr += '<li><a href="https://www.currenttime.tv">Current Time</a></li>';
+			}
+
+//			entityDetailsStr += voaEnglishStr + currentTimeStr;
+			
+			if (globalStr != "") {
+				globalStr = "<h3>Global Content</h3><ul>" + globalStr + "</ul>";
+			}
+			$( '#globalBlock' ).html(globalStr);
 
 			$( '#entityName' ).html( "<a href='" + en.url + "'>" + en.fullName + "</a>" );
 			$( '.bbg__map__entity-details' ).html( entityDetailsStr ).show();

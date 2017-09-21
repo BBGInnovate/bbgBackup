@@ -234,6 +234,8 @@ for (serviceName in servicesByName) {
 									<button id="view-on-map">View on map</button>
 									<button id="submit">Visit site</button>
 								</div>
+								<div id="globalBlock">
+								</div>
 
 							</div>
 
