@@ -49,14 +49,14 @@ function shadeColor(color, percent) {
 	$(document).ready(function() {
 
 		var defaultEntity='bbg'; //might fill this from a global JS var later.
-		
+
 		/* keep activeCountries & map as global vars else they won't be available in callbacks */
 		activeCountries=[];
-		
+
 		/* create an ordered array of country names - nice to have later */
 		fullCountryList = Object.keys(countriesByName);
-		
-		/* create a lookup for our country data based on the ammap code 
+
+		/* create a lookup for our country data based on the ammap code
 		   as well as a lookup for countries by language service  */
 
 
@@ -79,8 +79,8 @@ function shadeColor(color, percent) {
 				}
 			}
 		}
-		
-		
+
+
 		balloonText = '[[title]]';
 		if (isMobile) {
 			balloonText = '';
@@ -133,7 +133,7 @@ function shadeColor(color, percent) {
 				$('.country-label-tooltip').show();
 				hideCountryLabel = true;
 			}
-			
+
 			if (hideServiceLabel === false) {
 				$('.service-label').show();
 				hideServiceLabel = true;
@@ -178,7 +178,7 @@ function shadeColor(color, percent) {
 		});
 
 		function setDisplayMode(displayMode) {
-			
+
 			currentDisplayMode = displayMode;
 			$('.service-label').hide();
 			$('.country-label-tooltip').hide();
@@ -213,7 +213,7 @@ function shadeColor(color, percent) {
 		function getCountryObj(countryName) {
 			var countryColor = colorBase;
 			var countryRolloverColor = colorRollOver;
-			var countrySelectedColor = colorSelected; 
+			var countrySelectedColor = colorSelected;
 			if (selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty(countryName.toLowerCase())) {
 				countryColor = CURRENT_TIME_MAIN_COLOR;
 				countrySelectedColor = shadeColor(countryColor, -50);
@@ -231,7 +231,7 @@ function shadeColor(color, percent) {
 			}
 		}
 		function updateActiveCountries(list) {
-			
+
 			activeCountries=[];
 			for (var i = 0; i < list.length; i++) {
 				var countryName = list[i];
@@ -239,11 +239,11 @@ function shadeColor(color, percent) {
 			}
 			addCountriesToDropdown(activeCountries);
 			map.dataProvider.areas = activeCountries;
-			map.validateData();	
+			map.validateData();
 		}
 
 		function displayEntity(entity) {
-			
+
 			selectedEntity = entity;
 			setHighlightedEntity(entity);
 			setBaseColors();	//update global vars that are used to color the map
@@ -260,7 +260,7 @@ function shadeColor(color, percent) {
 			//entityDetailsStr += 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
 			var currentTimeStr = "";
 			if (entity == "voa" || entity == "rferl") {
-				currentTimeStr = "<img src='https://www.bbg.gov/wp-content/media/2016/03/cropped-Current-Time-logo-e1480704470926-300x78.jpg'><BR />Current Time, led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.<BR /><BR />";
+				currentTimeStr = '<article class="bbg__entity"><div class="bbg__avatar__container bbg__entity__icon"><a href="https://www.bbg.gov/2017/02/06/current-time-network-launches-real-news-real-people-real-time/"><div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/media/2017/09/Current-Time-avatar-200x200.png);"></div></a></div><div class="bbg__entity__text"><h2 class="bbg__entity__name"><a href="https://www.currenttime.tv/">Current Time</a></h2><p class="bbg__entity__text-description"></p><p>Led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.</p></div></article>';
 			}
 
 			var voaEnglishStr = "";
@@ -270,7 +270,7 @@ function shadeColor(color, percent) {
 
 			entityDetailsStr += voaEnglishStr + currentTimeStr;
 
-			
+
 			$('#entityName').html("<a href='" + en.url + "'>" + en.fullName + "</a>");
 			$('.entity-details').html(entityDetailsStr).show();
 
@@ -316,9 +316,9 @@ function shadeColor(color, percent) {
 			setCountryLabelPosition(countryName);
 			hideCountryLabel=false;
 
-			$('h4.country-label-tooltip #country-name').html(countryName);	
+			$('h4.country-label-tooltip #country-name').html(countryName);
 			$('#countryDisplay h2#countryName').html(countryName);
-			
+
 			var networks = countriesByName[countryName].networks;
 			var s = '';
 
@@ -408,7 +408,7 @@ function shadeColor(color, percent) {
 			//console.log("show language service " + serviceName + " which are " + countryList);
 
 			updateActiveCountries(countryList);
-			
+
 		});
 
 		$('#submit').on('click', function () {
@@ -421,10 +421,10 @@ function shadeColor(color, percent) {
 
 	});
 
-	
-	
 
-	
+
+
+
 })(jQuery,bbgConfig, entities);
 
 /*
@@ -433,10 +433,10 @@ function shadeColor(color, percent) {
  $color-primary-alt-darkest:  #046b99;
  $color-primary-alt-light:    #9bdaf1; // lighten($color-primary-alt, 60%)
  $color-primary-alt-lightest: #e1f3f8; // lighten($color-primary-alt, 90%)
- 
+
 //bbgConfig={};
 //bbgConfig.template_directory_uri = 'https://bbgredesign.voanews.com/wp-content/themes/bbgRedesign/';
-	
+
 
 /*
 	 if (entity == 'bbg'){
@@ -458,8 +458,8 @@ function shadeColor(color, percent) {
 	 }
  */
 
-/* 
-// put this back if we ever go back to having a 'select' box at mobile for entities 
+/*
+// put this back if we ever go back to having a 'select' box at mobile for entities
 $('#entity').on('change', function () {
 	//map.zoomToLongLat(1, 14.0671, 10.7988, false);
 	map.zoomDuration = 0;
@@ -473,7 +473,7 @@ $('#entity').on('change', function () {
 // this is for selecting from dropdown
 //selectedEntity = $('#entity').val();
 
-// Do we need this scroll? 
+// Do we need this scroll?
 /*
 	function scrollToMap() {
 		// scroll to map viewport
@@ -483,7 +483,7 @@ $('#entity').on('change', function () {
 
 	}
 
-	 else { 
+	 else {
 				// this is the default color for non-BBG covered countries
 				country.color = '#DDDDDD';
 				country.rollOverColor = "#B7B7B7";
