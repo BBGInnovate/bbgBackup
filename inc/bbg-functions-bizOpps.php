@@ -42,8 +42,8 @@
 					file_put_contents($bizOppsFilepath, $result);
 				}
 			} catch (Exception $e){
-				// echo "error ";
-				// var_dump($e);
+				echo "error ";
+				var_dump($e);
 			}
 		}
 

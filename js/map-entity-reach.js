@@ -1,95 +1,77 @@
 // this function will return true if the user is on a mobile device or false otherwise
-function isMobileDevice () {
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+function isMobileDevice() {
+	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
-
 //Select "a" VOA Country vs Select "an" OCB country
-function getArticleByEntity (entity) {
-	if (entity.toLowerCase() === 'voa') {
+function getArticleByEntity( entity ) {
+	if ( entity.toLowerCase() === 'voa' ) {
 		return 'a';
 	} else {
 		return 'an';
 	}
 }
 
-function shadeColor(color, percent) {
-	var range = color.substring(4, color.length - 1);
-	var rangeArr = range.split(',');
-
-	var r = parseInt(rangeArr[0]) + percent;
-	var g = parseInt(rangeArr[1]) + percent;
-	var b = parseInt(rangeArr[2]) + percent;
-
-	var newColor = 'rgb(' + r + ',' + g + ',' + b  + ')';
+function shadeColor( color, percent ) {
+	var range = color.substring( 4, color.length - 1 );
+	var rangeArr = range.split( ',' );
+	var r = parseInt( rangeArr[ 0 ] ) + percent;
+	var g = parseInt( rangeArr[ 1 ] ) + percent;
+	var b = parseInt( rangeArr[ 2 ] ) + percent;
+	var newColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 	return newColor;
 }
-
-
-(function ($,bbgConfig, entities) {
-
+( function ( $, bbgConfig, entities ) {
 	// find out if the user is on a mobile device or not (used for zoomDuration)
 	var isMobile = isMobileDevice();
-
 	// this global variable is used to determine whether or not the current item selected is an entity or country
 	var hideCountryLabel = true;
 	var hideServiceLabel = true;
-
 	/* note that these colors are changed later */
 	var colorBase = '#0071bc',
 		colorRollOver = '#205493',
 		colorSelected = '#112e51';
-
 	//the colors for the entities are 'inherited' from their buttons, but curren time doesn't have a button, so we set its base color here
-	var CURRENT_TIME_MAIN_COLOR = "rgb(31, 155, 222)";	//ff0355 (255, 3, 85) is the current time red, (31, 155, 222) is their blue
-
-	$(document).ready(function() {
-
-		var defaultEntity='bbg'; //might fill this from a global JS var later.
-
+	var CURRENT_TIME_MAIN_COLOR = "rgb(31, 155, 222)"; //ff0355 (255, 3, 85) is the current time red, (31, 155, 222) is their blue
+	$( document ).ready( function () {
+		var defaultEntity = 'bbg'; //might fill this from a global JS var later.
 		/* keep activeCountries & map as global vars else they won't be available in callbacks */
-		activeCountries=[];
-
+		activeCountries = [];
 		/* create an ordered array of country names - nice to have later */
-		fullCountryList = Object.keys(countriesByName);
-
+		fullCountryList = Object.keys( countriesByName );
 		/* create a lookup for our country data based on the ammap code
 		   as well as a lookup for countries by language service  */
-
-
 		countriesByID = [];
 		currentTimeOnly = {};
-		for ( i=0; i<fullCountryList.length; i++) {
-			var cname = fullCountryList[i];
-			var countryID = countriesByName[cname].ammapCode;
-			countriesByID[countryID] = countriesByName[cname];
-			var networks = countriesByName[cname].networks;
-			for (var j=0; j<networks.length; j++) {
-				var n = networks[j];
+		for ( i = 0; i < fullCountryList.length; i++ ) {
+			var cname = fullCountryList[ i ];
+			var countryID = countriesByName[ cname ].ammapCode;
+			countriesByID[ countryID ] = countriesByName[ cname ];
+			var networks = countriesByName[ cname ].networks;
+			for ( var j = 0; j < networks.length; j++ ) {
+				var n = networks[ j ];
 				//console.log(Object.keys(n));
-				if (n.networkName.toLowerCase() == "rferl" && n.services.length==1 && n.services[0]=="RFERL Current Time") {
-					currentTimeOnly[cname.toLowerCase()] = 1;
+				if ( n.networkName.toLowerCase() == "rferl" && n.services.length == 1 && n.services[ 0 ] == "RFERL Current Time" ) {
+					currentTimeOnly[ cname.toLowerCase() ] = 1;
 				}
-				for (var k=0; k<n.services.length; k++) {
-					var serviceName = n.services[k];
-					servicesByName[serviceName].countries[cname]=1;
+				for ( var k = 0; k < n.services.length; k++ ) {
+					var serviceName = n.services[ k ];
+					servicesByName[ serviceName ].countries[ cname ] = 1;
 				}
 			}
 		}
-
-
 		balloonText = '[[title]]';
-		if (isMobile) {
+		if ( isMobile ) {
 			balloonText = '';
 		}
 		map = AmCharts.makeChart( "chartdiv", {
 			type: "map",
 			borderColor: 'red',
 			theme: "light",
-			projection:"eckert3",
+			projection: "eckert3",
 			dataProvider: {
 				map: "worldLow",
 				areas: activeCountries
@@ -112,321 +94,298 @@ function shadeColor(color, percent) {
 			zoomControl: {
 				maxZoomLevel: 6
 			},
-			zoomDuration:0,
+			zoomDuration: 0,
 			backgroundZoomsToTop: false //water zooms out
 		} );
-
-
 		// hide the tooltip if the position of the map changes (user drags the map)
-		map.addListener('positionChanged', function () {
-			$('.country-label-tooltip').hide();
-		});
-
+		map.addListener( 'positionChanged', function () {
+			$( '.country-label-tooltip' ).hide();
+		} );
 		// some UI tips related to country / service labels when zoom completes
-		map.addListener('zoomCompleted', function (event) {
+		map.addListener( 'zoomCompleted', function ( event ) {
 			//console.log("zoomCompleted");
-			if (!isMobile) {
+			if ( !isMobile ) {
 				map.zoomDuration = 0.2;
 			}
-
-			if (hideCountryLabel === false && currentDisplayMode == "country" &&  event.chart.zoomLevel() > 1) {
-				$('.country-label-tooltip').show();
+			if ( hideCountryLabel === false && currentDisplayMode == "country" && event.chart.zoomLevel() > 1 ) {
+				$( '.country-label-tooltip' ).show();
 				hideCountryLabel = true;
 			}
-
-			if (hideServiceLabel === false) {
-				$('.service-label').show();
+			if ( hideServiceLabel === false ) {
+				$( '.service-label' ).show();
 				hideServiceLabel = true;
 			}
-		});
-
+		} );
 		window.selectedCountryID = '';
-
 		//if someone clicks a country that's already selected, zoom out.
-		map.addListener("clickMapObject", function (event) {
-
-			if (window.selectedCountryID && window.selectedCountryID==event.mapObject.id) {
+		map.addListener( "clickMapObject", function ( event ) {
+			if ( window.selectedCountryID && window.selectedCountryID == event.mapObject.id ) {
 				//we had a country selected, and they clicked it again. reset
 				window.selectedCountryID = "";
-				event.chart.zoomToGroup(activeCountries);
-				setDisplayMode('entity');
-				$('#service-list').val(0);
+				event.chart.zoomToGroup( activeCountries );
+				setDisplayMode( 'entity' );
+				$( '#service-list' ).val( 0 );
 				map.selectObject();
-
 			} else {
 				//a country was not previously selected and now one has been clicked
-				displayCountry(event.mapObject.id);
-
+				displayCountry( event.mapObject.id );
 				// set the country list value to the same as the map selection
-				$('#country-list').val(event.mapObject.id);
+				$( '#country-list' ).val( event.mapObject.id );
 			}
-		});
-
+		} );
 		// zoom in on the new entity once it's updated
-		map.addListener('dataUpdated', function (event) {
-			if (currentDisplayMode == 'entity') {
+		map.addListener( 'dataUpdated', function ( event ) {
+			if ( currentDisplayMode == 'entity' ) {
 				map.zoomDuration = 0;
 			}
-			event.chart.zoomToGroup(activeCountries);
+			event.chart.zoomToGroup( activeCountries );
 			// prevent countries that are not covered from zooming in on click
 			// for (var i = 0; i < map.dataProvider.areas.length; i++) {
 			// 	if (map.dataProvider.areas[i].region_ids == null) {
 			// 		map.dataProvider.areas[i].autoZoomReal = false;
 			// 	}
 			// }
+		} );
 
-		});
-
-		function setDisplayMode(displayMode) {
-
+		function setDisplayMode( displayMode ) {
 			currentDisplayMode = displayMode;
-			$('.service-label').hide();
-			$('.country-label-tooltip').hide();
-			if ( displayMode == "entity") {
+			$( '.service-label' ).hide();
+			$( '.country-label-tooltip' ).hide();
 
-				$('#country-name').hide();
-				$('#entityDisplay').show();
-				$('#countryDisplay').hide();
-
+			if ( displayMode == "entity" ) {
+				$( '#country-name' ).hide();
+				$( '#entityDisplay' ).show();
+				$( '#countryDisplay' ).hide();
 				window.selectedCountryID = '';
 			} else if ( displayMode == "country" ) {
-				$('#country-name').show();
-				$('#entityDisplay').hide();
-				$('#countryDisplay').show();
+				$( '#country-name' ).show();
+				$( '#entityDisplay' ).hide();
+				$( '#countryDisplay' ).show();
 			}
 		}
 
-		function setHighlightedEntity(entity) {
-			$('.entity-buttons button').removeClass('selected active');
-			$('.entity-buttons button.'+entity).addClass('selected active');
+		function setHighlightedEntity( entity ) {
+			$( '.entity-buttons button' ).removeClass( 'selected active' );
+			$( '.entity-buttons button.' + entity ).addClass( 'selected active' );
 		}
 
 		function setBaseColors() {
 			//We set the color for an entity based on the color of it's button that picks it
 			//we then provide slightly darkened (mathematically) colors for rollover and selection
-			var buttonColor = $('.selected').css('background-color');
+			var buttonColor = $( '.selected' ).css( 'background-color' );
 			colorBase = buttonColor;
-			colorRollOver = shadeColor(buttonColor, -30);
-			colorSelected = shadeColor(buttonColor, -50);
+			colorRollOver = shadeColor( buttonColor, -30 );
+			colorSelected = shadeColor( buttonColor, -50 );
 		}
 
-		function getCountryObj(countryName) {
+		function getCountryObj( countryName ) {
 			var countryColor = colorBase;
 			var countryRolloverColor = colorRollOver;
 			var countrySelectedColor = colorSelected;
-			if (selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty(countryName.toLowerCase())) {
+
+			if ( selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty( countryName.toLowerCase() ) ) {
 				countryColor = CURRENT_TIME_MAIN_COLOR;
-				countrySelectedColor = shadeColor(countryColor, -50);
-				countryRolloverColor = shadeColor(countryColor, -30);
+				countrySelectedColor = shadeColor( countryColor, -50 );
+				countryRolloverColor = shadeColor( countryColor, -30 );
 			}
+
 			return {
-				id : countriesByName[countryName].ammapCode,
-				countryCode : countriesByName[countryName].ammapCode,
-				name : countryName,
-				countryName : countryName,
-				color : countryColor,
-				rollOverColor : countryRolloverColor,
-				selectedColor : countrySelectedColor,
-				selectable : true
+				id: countriesByName[ countryName ].ammapCode,
+				countryCode: countriesByName[ countryName ].ammapCode,
+				name: countryName,
+				countryName: countryName,
+				color: countryColor,
+				rollOverColor: countryRolloverColor,
+				selectedColor: countrySelectedColor,
+				selectable: true
 			}
 		}
-		function updateActiveCountries(list) {
 
-			activeCountries=[];
-			for (var i = 0; i < list.length; i++) {
-				var countryName = list[i];
-				activeCountries.push(getCountryObj(countryName));
+		function updateActiveCountries( list ) {
+			activeCountries = [];
+
+			for ( var i = 0; i < list.length; i++ ) {
+				var countryName = list[ i ];
+				activeCountries.push( getCountryObj( countryName ) );
 			}
-			addCountriesToDropdown(activeCountries);
+
+			addCountriesToDropdown( activeCountries );
 			map.dataProvider.areas = activeCountries;
 			map.validateData();
 		}
 
-		function displayEntity(entity) {
-
+		function displayEntity( entity ) {
 			selectedEntity = entity;
-			setHighlightedEntity(entity);
-			setBaseColors();	//update global vars that are used to color the map
+			setHighlightedEntity( entity );
+			setBaseColors(); //update global vars that are used to color the map
 
 			/**** pick our list of countries to highlight  */
 			var clist = fullCountryList;
-			if (entity != "bbg") {
-				clist = Object.keys(entitiesByName[entity].countries);
-			}
-			updateActiveCountries(clist);
 
-			var en = entities[entity];
-			var entityDetailsStr = '<p>' + en.description + '<p>';
+			if ( entity != "bbg" ) {
+				clist = Object.keys( entitiesByName[ entity ].countries );
+			}
+
+			updateActiveCountries( clist );
+
+			var en = entities[ entity ];
+			var entityDetailsStr = '<p>' + en.description + '</p>';
 			//entityDetailsStr += 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
 			var currentTimeStr = "";
-			if (entity == "voa" || entity == "rferl") {
+
+			if ( entity == "voa" || entity == "rferl" ) {
 				currentTimeStr = '<article class="bbg__entity"><div class="bbg__avatar__container bbg__entity__icon"><a href="https://www.bbg.gov/2017/02/06/current-time-network-launches-real-news-real-people-real-time/"><div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/media/2017/09/Current-Time-avatar-200x200.png);"></div></a></div><div class="bbg__entity__text"><h2 class="bbg__entity__name"><a href="https://www.currenttime.tv/">Current Time</a></h2><p class="bbg__entity__text-description"></p><p>Led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.</p></div></article>';
 			}
 
 			var voaEnglishStr = "";
-			if (entity == "voa") {
-				voaEnglishStr += "VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.";
+
+			if ( entity == "voa" ) {
+				voaEnglishStr += "<p>VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.</p>";
 			}
 
 			entityDetailsStr += voaEnglishStr + currentTimeStr;
 
+			$( '#entityName' ).html( "<a href='" + en.url + "'>" + en.fullName + "</a>" );
+			$( '.bbg__map__entity-details' ).html( entityDetailsStr ).show();
 
-			$('#entityName').html("<a href='" + en.url + "'>" + en.fullName + "</a>");
-			$('.entity-details').html(entityDetailsStr).show();
-
-			if (entity != "bbg") {
-				$('#service-list').empty();
+			if ( entity != "bbg" ) {
+				$( '#service-list' ).empty();
 				var subgroupListString = '';
-				var article = getArticleByEntity(selectedEntity);
-				subgroupListString += '<option value="0">Select ' +article + ' ' + selectedEntity.toUpperCase() + ' service...</option>';
-				for (var i = 0; i < entitiesByName[entity].services.length; i++) {
-					var srv = entitiesByName[entity].services[i];
-					var srvo = servicesByName[srv];
-					subgroupListString += '<option value="'+srv+'" data-href="'+srvo.siteUrl+'">'+srvo.serviceName+'</option>';
+				var article = getArticleByEntity( selectedEntity );
+
+				subgroupListString += '<option value="0">Select ' + article + ' ' + selectedEntity.toUpperCase() + ' service...</option>';
+
+				for ( var i = 0; i < entitiesByName[ entity ].services.length; i++ ) {
+					var srv = entitiesByName[ entity ].services[ i ];
+					var srvo = servicesByName[ srv ];
+					subgroupListString += '<option value="' + srv + '" data-href="' + srvo.siteUrl + '">' + srvo.serviceName + '</option>';
 				}
-				$('#service-list').html(subgroupListString);
-				$('#serviceDropdownBlock button').hide();
-				$('#serviceDropdownBlock').show();
+
+				$( '#service-list' ).html( subgroupListString );
+				$( '#serviceDropdownBlock button' ).hide();
+				$( '#serviceDropdownBlock' ).show();
 			} else {
-				$('#serviceDropdownBlock').hide();
+				$( '#serviceDropdownBlock' ).hide();
 			}
-
-
-
-			setDisplayMode('entity');
+			setDisplayMode( 'entity' );
 		}
 
-		function addCountriesToDropdown (countriesDropdown) {
-			$('#country-list').empty();
+		function addCountriesToDropdown( countriesDropdown ) {
+			$( '#country-list' ).empty();
 			var countryListString = '';
-
 			countryListString += '<option value="0">Select a country...</option>';
-			for (var i = 0; i < countriesDropdown.length; i++) {
-				var country = countriesDropdown[i];
-				countryListString += '<option value="'+country.id+'">'+country.name+'</option>';
+
+			for ( var i = 0; i < countriesDropdown.length; i++ ) {
+				var country = countriesDropdown[ i ];
+				countryListString += '<option value="' + country.id + '">' + country.name + '</option>';
 			}
 
-			$('#country-list').html(countryListString);
-
+			$( '#country-list' ).html( countryListString );
 		}
 
-		function displayCountry(selectedCountryID) {
+		function displayCountry( selectedCountryID ) {
 			window.selectedCountryID = selectedCountryID;
-			countryName = countriesByID[selectedCountryID].countryName;
-			setCountryLabelPosition(countryName);
-			hideCountryLabel=false;
+			countryName = countriesByID[ selectedCountryID ].countryName;
+			setCountryLabelPosition( countryName );
+			hideCountryLabel = false;
 
-			$('h4.country-label-tooltip #country-name').html(countryName);
-			$('#countryDisplay h2#countryName').html(countryName);
+			$( 'h4.country-label-tooltip #country-name' ).html( countryName );
+			$( '#countryDisplay h2#countryName' ).html( countryName );
 
-			var networks = countriesByName[countryName].networks;
+			var networks = countriesByName[ countryName ].networks;
 			var s = '';
-
 			var newSortOrder = [];
 			var firstItemIndex = -1;
 			//we alternate the order of the networks if an entity is selected
+			var desiredNetworkOrder = [ "voa", "rferl", "ocb", "rfa", "mbn" ];
 
-			var desiredNetworkOrder = ["voa","rferl","ocb","rfa","mbn"];
-			for (var j=0; j < desiredNetworkOrder.length; j++) {
-				if (desiredNetworkOrder[j] == selectedEntity) {
-					var temp = desiredNetworkOrder[j];
-					desiredNetworkOrder[j] = desiredNetworkOrder[0];
-					desiredNetworkOrder[0]= temp;
+			for ( var j = 0; j < desiredNetworkOrder.length; j++ ) {
+				if ( desiredNetworkOrder[ j ] == selectedEntity ) {
+					var temp = desiredNetworkOrder[ j ];
+					desiredNetworkOrder[ j ] = desiredNetworkOrder[ 0 ];
+					desiredNetworkOrder[ 0 ] = temp;
 				}
 			}
 
-			for (var j=0; j<desiredNetworkOrder.length; j++) {
-				for (var k=0; k < networks.length; k++) {
-					if (networks[k].networkName.toLowerCase() == desiredNetworkOrder[j]) {
-						newSortOrder.push(k);
+			for ( var j = 0; j < desiredNetworkOrder.length; j++ ) {
+				for ( var k = 0; k < networks.length; k++ ) {
+					if ( networks[ k ].networkName.toLowerCase() == desiredNetworkOrder[ j ] ) {
+						newSortOrder.push( k );
 					}
 				}
 			}
 
-			for (var i=0; i < newSortOrder.length; i++) {
-				var sortedIndex = newSortOrder[i];
-				var n = networks[sortedIndex];
+			for ( var i = 0; i < newSortOrder.length; i++ ) {
+				var sortedIndex = newSortOrder[ i ];
+				var n = networks[ sortedIndex ];
 				s += '<h3><a target="_blank" href="' + n.siteUrl + '">' + n.networkName + '</a></h3>';
 				s += '<ul class="bbg__map-area__list">';
-				for (var j=0; j < n.services.length; j++) {
-					var srv = n.services[j];
-					var srvo = servicesByName[srv];
-					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="' + srvo.siteUrl + '">' + srvo.serviceName+'</a></li>';
+				for ( var j = 0; j < n.services.length; j++ ) {
+					var srv = n.services[ j ];
+					var srvo = servicesByName[ srv ];
+					s += '<li class="bbg__map-area__list-item"><a target="_blank" href="' + srvo.siteUrl + '">' + srvo.serviceName + '</a></li>';
 				}
 				s += '</ul>';
 			}
 
-			$('.service-block').html(s);
-			setDisplayMode('country');
+			$( '.service-block' ).html( s );
+			setDisplayMode( 'country' );
 		}
-
-
 		// these countries require special left position adjustments
-		function setCountryLabelPosition(country) {
+		function setCountryLabelPosition( country ) {
 			var clp = {};
-			clp['Chile'] = '19';
-			clp['Croatia'] = '22.5';
-			clp['Vietnam'] = '27';
+			clp[ 'Chile' ] = '19';
+			clp[ 'Croatia' ] = '22.5';
+			clp[ 'Vietnam' ] = '27';
 			var leftPos = '25';
-			if (clp.hasOwnProperty(country)) {
-				leftPos = clp[country];
+
+			if ( clp.hasOwnProperty( country ) ) {
+				leftPos = clp[ country ];
 			}
-			$('.country-label-tooltip').css('left', leftPos + '%');
+
+			$( '.country-label-tooltip' ).css( 'left', leftPos + '%' );
 		}
-
-		$('.entity-buttons button').on('click', function () {
-			var entity = $(this).text().toLowerCase();
+		$( '.entity-buttons button' ).on( 'click', function () {
+			var entity = $( this ).text().toLowerCase();
 			map.zoomDuration = 0;
-			displayEntity(entity);
-		});
-
+			displayEntity( entity );
+		} );
 		// this event listener is for select countries through the drop-down (for mobile devices)
-		$('#country-list').on('change', function () {
-			var countryCode = $(this).val();
-			if (countryCode != "0") {
-				var mapObject = map.getObjectById(countryCode);
-				map.clickMapObject(mapObject);
+		$( '#country-list' ).on( 'change', function () {
+			var countryCode = $( this ).val();
+
+			if ( countryCode != "0" ) {
+				var mapObject = map.getObjectById( countryCode );
+				map.clickMapObject( mapObject );
 			}
 			//scrollToMap();
+		} );
+		$( '#service-list' ).on( 'change', function () {
+			var subgroupID = $( this ).val();
 
-		});
-		$('#service-list').on('change', function () {
-			var subgroupID = $(this).val();
-			if (subgroupID == 0) {
-				$('#serviceDropdownBlock button').hide();
+			if ( subgroupID == 0 ) {
+				$( '#serviceDropdownBlock button' ).hide();
 			} else {
-				$('#serviceDropdownBlock button').show();
+				$( '#serviceDropdownBlock button' ).show();
 			}
-		});
-
+		} );
 		// when someone clicks "view on map" for VOA Spanish, show all the VOA Spanish countries
-		$('#view-on-map').on('click', function () {
-			var serviceName = $('#service-list').val();
-			$('.service-label').html(serviceName);
+		$( '#view-on-map' ).on( 'click', function () {
+			var serviceName = $( '#service-list' ).val();
+			$( '.service-label' ).html( serviceName );
 			hideServiceLabel = false;
-			var countryList = Object.keys(servicesByName[serviceName].countries);
+			var countryList = Object.keys( servicesByName[ serviceName ].countries );
 			//console.log("show language service " + serviceName + " which are " + countryList);
-
-			updateActiveCountries(countryList);
-
-		});
-
-		$('#submit').on('click', function () {
-			var url = $('#service-list option:selected').data('href');
-			window.open(url, '_blank');
-		});
-
+			updateActiveCountries( countryList );
+		} );
+		$( '#submit' ).on( 'click', function () {
+			var url = $( '#service-list option:selected' ).data( 'href' );
+			window.open( url, '_blank' );
+		} );
 		// click on the first element of entity-buttons class (BBG) which will kick off our display.
-		$('.entity-buttons :first').click();
-
-	});
-
-
-
-
-
-})(jQuery,bbgConfig, entities);
-
+		$( '.entity-buttons :first' ).click();
+	} );
+} )( jQuery, bbgConfig, entities );
 /*
  $color-primary-alt:          #02bfe7; //blue
  $color-primary-alt-dark:     #00a6d2;
@@ -457,7 +416,6 @@ function shadeColor(color, percent) {
 	 setColors('#9F1D26', "#891E25", "#7A1A21");
 	 }
  */
-
 /*
 // put this back if we ever go back to having a 'select' box at mobile for entities
 $('#entity').on('change', function () {
@@ -489,7 +447,6 @@ $('#entity').on('change', function () {
 				country.rollOverColor = "#B7B7B7";
 			}
 */
-
 /*
 function generateLanguagesSupportedString(languages) {
 

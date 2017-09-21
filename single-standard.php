@@ -20,6 +20,8 @@ if ( have_posts() ) {
 	$ogImage = $thumb['0'];
 
 	$socialImageID = get_post_meta( $post->ID, 'social_image',true );
+	$coordinates = get_post_meta( $post->ID, 'media_dev_coordinates',true );
+	//var_dump($coordinates); die();
 	if ($socialImageID) {
 		$socialImage = wp_get_attachment_image_src( $socialImageID , 'Full');
 		$ogImage = $socialImage[0];

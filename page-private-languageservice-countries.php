@@ -10,7 +10,7 @@
 function outputTerm($t, $headerTag) {
 	echo "<$headerTag>" . $t->name ."</$headerTag>";
 	$termMeta = get_term_meta( $t->term_id );
-	
+
 	$siteName = "";
 	$siteUrl = "";
 	if ( count( $termMeta ) ) {
@@ -47,7 +47,7 @@ function outputTerm($t, $headerTag) {
 	// echo "</ul>";
 	echo "<em>Countries: </em>&nbsp;" ;
 	$i=0;
-	
+
 	foreach ($countries as $c) {
 		$i++;
 		if ($i > 1) {
@@ -56,7 +56,7 @@ function outputTerm($t, $headerTag) {
 		echo $c;
 	}
 
-	echo "<BR><BR>";
+	echo "<br /><br />";
 }
 
 function getMapData() {

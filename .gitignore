@@ -4,6 +4,8 @@ tmp
 .sass-cache
 *.css.map
 
+page-private-fields.php
+
 compiled/
 30.xml
 external-feed-cache/
