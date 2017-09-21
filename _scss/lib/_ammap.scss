@@ -140,9 +140,16 @@
 
 	.bbg__map__entity-details {
 		p {
-			font-family: $font-sans;
-			font-size: $base-font-size;
+			font: {
+				family: $font-sans;
+				size: $small-font-size;
+			}
 			line-height: $small-line-height;
+
+			&:first-of-type {
+				font-size: $base-font-size;
+				line-height: $base-line-height;
+			}
 		}
 	}
 
