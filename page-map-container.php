@@ -61,7 +61,7 @@ function getMapData() {
 		$id = get_the_ID();
 		$countryName = get_the_title();
 		$countryAmmapCode = get_post_meta( $id, 'country_ammap_country_code', true );
-		
+
 		$networks = array();
 		$terms = get_the_terms( $id, "language_services" , array('hide_empty' => false));
 		if ($terms) {
@@ -109,7 +109,7 @@ function getMapData() {
 		}
 
 		$termMeta = get_term_meta( $t->term_id );
-		
+
 		$siteName = "";
 		$siteUrl = "";
 		if ( count( $termMeta ) ) {
@@ -127,17 +127,17 @@ function getMapData() {
 
 	wp_reset_postdata();
 	wp_reset_query();
-	
+
 	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
 	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
 	$serviceStr = json_encode(new ArrayValue($servicesByName), JSON_PRETTY_PRINT);
-	
+
 	echo "<script type='text/javascript'>\n";
 	echo "entitiesByName = $entityStr\n";
 	echo "servicesByName = $serviceStr\n";
 	echo "countriesByName = $countryStr\n";
 	echo "</script>";
- 
+
 }?>
 
 <?php getMapData(); ?>
@@ -223,8 +223,8 @@ for (serviceName in servicesByName) {
 
 							<div id="entityDisplay">
 								<h2 id="entityName" class="bbg__map-area__country-name">Entity Name</h2>
-								<div class="entity-details">
-									<p class="detail"></p>
+								<div class="bbg__map__entity-details">
+									<!-- <p class="detail"></p> -->
 								</div>
 
 								<div id="serviceDropdownBlock">
@@ -238,7 +238,7 @@ for (serviceName in servicesByName) {
 							</div>
 
 							<div id="languageServiceDisplay">
-								
+
 							</div>
 
 						</div><!-- div.usa-width-one-third -->
@@ -259,7 +259,7 @@ for (serviceName in servicesByName) {
 
 <?php /*get_sidebar();*/ ?>
 <?php get_footer(); ?>
-<!-- 
+<!--
 <div class="usa-grid">
 	<form style="margin-bottom: 2rem; max-width: none;">
 		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
