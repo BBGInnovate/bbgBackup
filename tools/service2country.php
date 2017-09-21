@@ -84,6 +84,7 @@ VOA Horn of Africa (Tigrigna)	Eritrea,Ethiopia
 VOA Indonesian	Indonesia
 VOA Khmer	Cambodia
 VOA Korean	North Korea
+VOA Kurdi	Iran,Iraq,Syria,Turkey
 VOA Kurdish	Iran,Iraq,Syria,Turkey
 VOA Lao	Laos
 VOA Macedonian	Macedonia
@@ -102,7 +103,9 @@ VOA Ukrainian	Ukraine
 VOA Urdu	Pakistan
 VOA Uzbek	Afghanistan,Kazakhstan,Kyrgyzstan,Tajikistan,Turkmenistan,Uzbekistan
 VOA Vietnamese	Vietnam
-VOA Zimbabwe	Botswana,South Africa,Zambia,Zimbabwe";
+VOA Zimbabwe	Botswana,South Africa,Zambia,Zimbabwe
+VOA Zimbabwe (Ndebele)	Botswana,South Africa,Zambia,Zimbabwe
+VOA Zimbabwe (Shona)	Botswana,South Africa,Zambia,Zimbabwe";
 
 $serviceCountryLines = explode("\n", $serviceCountryStr);
 $counter = 0;

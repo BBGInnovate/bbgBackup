@@ -113,3 +113,5 @@ VOA/VOA Urdu
 VOA/VOA Uzbek
 VOA/VOA Vietnamese
 VOA/VOA Zimbabwe
+VOA/VOA Zimbabwe (Ndebele)
+VOA/VOA Zimbabwe (Shona)
