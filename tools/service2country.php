@@ -46,22 +46,22 @@ RFERL Kazakh (Russian)	Kazakhstan
 RFERL Kyrgyz	Kyrgyzstan
 RFERL Kyrgyz (Russian)	Kyrgyzstan
 Gandhara (English to AfPak)	Afghanistan,Pakistan
-Radio Mashaal	Afghanistan,Pakistan
+Radio Mashaal	Pakistan
 RFERL Moldovan	Moldova
 RFERL Moldovan (Russian)	Moldova
 RFERL North Caucasus (Avar)	Russia
 RFERL North Caucasus (Chechen)	Russia
 RFERL North Caucasus (Russian)	Russia
 RFERL Russian	Russia
-RFERL Tajik	Kyrgyzstan,Russia,Tajikistan
+RFERL Tajik	Kyrgyzstan,Tajikistan
 RFERL Tajik (Russian)	Kyrgyzstan,Russia,Tajikistan
 RFERL Tatar-Bashkir	Russia
 RFERL Tatar-Bashkir (Russian)	Russia
-RFERL Turkmen	Afghanistan,Iran,Russia,Turkey,Turkmenistan,Uzbekistan
+RFERL Turkmen	Turkmenistan
 RFERL Ukrainian	Ukraine
 RFERL Ukrainian (Russian)	Ukraine
 RFERL Ukrainian (Crimean Tatar)	Ukraine
-RFERL Uzbek	Afghanistan,Kazakhstan,Kyrgyzstan,Russia,Tajikistan,Turkey,Turkmenistan,Uzbekistan
+RFERL Uzbek	Uzbekistan
 VOA Afghan (Dari)	Afghanistan
 VOA Afghan (Pashto)	Afghanistan
 VOA Albanian	Albania,Kosovo,Macedonia,Montenegro
