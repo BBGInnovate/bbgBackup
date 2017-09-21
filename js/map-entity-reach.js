@@ -256,9 +256,22 @@ function shadeColor(color, percent) {
 			updateActiveCountries(clist);
 
 			var en = entities[entity];
-			var entityDetailsStr = '<p>' + en.description + '<p>' + 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
+			var entityDetailsStr = '<p>' + en.description + '<p>';
+			//entityDetailsStr += 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
+			var currentTimeStr = "";
+			if (entity == "voa" || entity == "rferl") {
+				currentTimeStr = "<img src='https://www.bbg.gov/wp-content/media/2016/03/cropped-Current-Time-logo-e1480704470926-300x78.jpg'><BR />Current Time, led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.<BR /><BR />";
+			}
 
-			$('#entityName').html(en.fullName);
+			var voaEnglishStr = "";
+			if (entity == "voa") {
+				voaEnglishStr += "VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.";
+			}
+
+			entityDetailsStr += voaEnglishStr + currentTimeStr;
+
+			
+			$('#entityName').html("<a href='" + en.url + "'>" + en.fullName + "</a>");
 			$('.entity-details').html(entityDetailsStr).show();
 
 			if (entity != "bbg") {
@@ -277,6 +290,8 @@ function shadeColor(color, percent) {
 			} else {
 				$('#serviceDropdownBlock').hide();
 			}
+
+
 
 			setDisplayMode('entity');
 		}
