@@ -148,11 +148,9 @@ foreach( $serviceCountryLines as $str ) {
 	}
 }
 
-if (isset($_GET['json'])) {
 	echo "<pre>";
 	var_dump($errors);
 	echo "</pre>";
-}
 
 
 ?>
