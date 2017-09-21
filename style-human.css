@@ -7509,12 +7509,16 @@ section.usa-section.bbg-banner__section {
 }
 .page-template-page-burke .bbg__ribbon--thin h2,
 .page-template-page-burke .bbg__ribbon--thin .bbg__announcement__headline,
+.page-template-page-burke .bbg__ribbon--thin a.bbg__kits__intro__more--link,
 .page-id-37373 .bbg__ribbon--thin h2,
 .page-id-37373 .bbg__ribbon--thin .bbg__announcement__headline,
+.page-id-37373 .bbg__ribbon--thin a.bbg__kits__intro__more--link,
 .burke_candidate-template-default .bbg__ribbon--thin h2,
 .burke_candidate-template-default .bbg__ribbon--thin .bbg__announcement__headline,
+.burke_candidate-template-default .bbg__ribbon--thin a.bbg__kits__intro__more--link,
 .page-id-37417 .bbg__ribbon--thin h2,
-.page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline {
+.page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline,
+.page-id-37417 .bbg__ribbon--thin a.bbg__kits__intro__more--link {
   color: #112e51;
 }
 .page-template-page-burke .bbg__footer__return-to-top,
@@ -8932,7 +8936,7 @@ a.bbg__kits__intro__more--link:hover {
 .bbg__map-area__text .bbg__map-area__country-name {
   font-size: 2.25rem;
 }
-.bbg__map-area__text .entity-details p {
+.bbg__map-area__text .bbg__map__entity-details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 90%;
   line-height: 1.4;
