@@ -17,7 +17,7 @@ require ('../../../../wp-load.php');
 die();
 
 $serviceCountryStr = "Martinoticias	Cuba
-Alhurra TV	Algeria,Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
+Alhurra TV	Algeria,Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,South Sudan,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
 Alhurra-Iraq Iraq
 Radio Sawa	Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Palestinian Territories,Qatar,Saudi Arabia,Sudan,Syria,United Arab Emirates,Yemen
 Afia Darfur	Sudan
