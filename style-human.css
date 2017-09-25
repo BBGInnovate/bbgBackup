@@ -8951,6 +8951,11 @@ a.bbg__kits__intro__more--link:hover {
 .bbg__map-area__text .subgroup-block {
   margin-bottom: 3rem;
 }
+.bbg__map-area__text .bbg__map__entity-global {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  margin-top: 2rem;
+}
 @media screen and (min-width: 600px) {
   .bbg__map-area__text .bbg__map-area__country-name {
     font-size: 2.5rem;

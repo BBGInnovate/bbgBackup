@@ -161,6 +161,14 @@
 		margin-bottom: $site-margins;
 	}
 
+	.bbg__map__entity-global {
+		font: {
+			family: $font-sans;
+			weight: $font-bold;
+		}
+		margin-top: $site-margins-medium-plus;
+	}
+
 	@include media($medium-screen) {
 		.bbg__map-area__country-name {
 			font-size: 2.5rem;
