@@ -87,7 +87,7 @@
 			'post_status' => array( 'publish' ),
 			'posts_per_page' => 6,
 			'cat' => get_cat_id( 'Employee' ),
-			'order' => 'DESC'
+			'order' => 'DESC',
 			'order_by' => 'RAND(3)',
 		);
 		$custom_query = new WP_Query( $qParams );
