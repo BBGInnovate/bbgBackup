@@ -121,7 +121,7 @@ South Sudan	SS
 Sudan	SD
 Swaziland	SZ
 Syria	SY
-Taiwan	TW
+China (Taiwan)	TW
 Tajikistan	TJ
 Tanzania	TZ
 Thailand	TH

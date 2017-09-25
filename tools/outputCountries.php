@@ -1,26 +1,18 @@
-<?php
-/**
- * The template for containing maps created using our ammap.js Vector maps
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package bbgRedesign
- * template name: Map Container
- */
+<?php 
 
-$pageContent="";
-if ( have_posts() ) :
-	while ( have_posts() ) : the_post();
-		$pageContent = get_the_content();
-		$pageContent = apply_filters('the_content', $pageContent);
-		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
-	endwhile;
-endif;
-wp_reset_postdata();
-wp_reset_query();
+/*
+    Author: Joe Flowers
+    Description: The map data for worldwide ops is represented as follows:
+    	custom post type "country"
+    	custom taxonomy called "Language Services"
+    	custom field "website name" and "website url" on each language service taxonomy term
+    	
+    	To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
 
-get_header();
-echo getNetworkExcerptJS();
+        Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
+*/
 
+require ('../../../../wp-load.php');
 function getMapData() {
 
 	$entities = array(
@@ -124,6 +116,34 @@ function getMapData() {
 			,'countries' => array() //filled out by JS
 		);
 	}
+	
+	echo "<ul>";
+	foreach ($countries as $c) {
+		echo "<li><strong style='font-size:22px;'>" . $c['countryName'] . "</strong></li>";
+		$networks = $c['networks'];
+		echo "<ul>";
+		for ($j = 0; $j < count($networks); $j++) {
+			echo "<li>" . $networks[$j]['networkName'] . "</li>";
+			$services = $networks[$j]['services'];
+			echo "<ul>";
+			for ($k=0; $k < count($services); $k++) {
+				$s = $services[$k];
+				echo "<li>" . $s . "</li>";
+			}
+			echo "</ul>";
+		}
+		echo "</ul>";
+		echo "<BR>";
+	}
+	echo "</ul>";
+
+	if (isset($_GET['json'])) {
+		echo "<pre>";
+		var_dump($countries);
+		echo "</pre>";
+	}
+	die();
+	
 
 	wp_reset_postdata();
 	wp_reset_query();
@@ -257,22 +277,7 @@ for (serviceName in servicesByName) {
 
 			</div><!-- .usa-grid-full -->
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	
 
-<?php /*get_sidebar();*/ ?>
-<?php get_footer(); ?>
-<!--
-<div class="usa-grid">
-	<form style="margin-bottom: 2rem; max-width: none;">
-		<label for="options" style="display: inline-block; font-size: 2rem; font-weight: bold;">Select an entity</label>
-		<select id="entity" name="options" id="options" style=" display: inline-block;">
-			<option value="bbg">BBG</option>
-			<option value="voa">VOA</option>
-			<option value="rfa">RFA</option>
-			<option value="rferl">RFERL</option>
-			<option value="ocb">OCB</option>
-			<option value="mbn">MBN</option>
-		</select>
-	</form>
-</div>
--->
+
+?>

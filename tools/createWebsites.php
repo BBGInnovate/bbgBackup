@@ -100,12 +100,14 @@ VOA Spanish	http://www.voanoticias.com/
 VOA Swahili	http://www.voaswahili.com/
 VOA Thai	http://www.voathai.com/
 VOA Tibetan	http://www.voatibetan.com/
-VOA Turkish	http://www.amerikaninsesi.org/
+VOA Turkish	http://www.amerikaninsesi.com/
 VOA Ukrainian	http://ukrainian.voanews.com/
 VOA Urdu	http://www.urduvoa.com/
 VOA Uzbek	http://www.amerikaovozi.com/
 VOA Vietnamese	http://www.voatiengviet.com/
-VOA Zimbabwe	http://www.voazimbabwe.com/";
+VOA Zimbabwe	http://www.voazimbabwe.com/
+VOA Zimbabwe (Ndebele) http://www.voandebele.com/
+VOA Zimbabwe (Shona) http://www.voashona.com/";
 
 $serviceWebsiteLines = explode("\n", $serviceCountryStr);
 $counter = 0;

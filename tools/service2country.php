@@ -2,12 +2,14 @@
 
 /*
     Author: Joe Flowers
-    Date: 3/7c/2017
-    Description: We have a custom taxonomy called "Language Services". This list can be pasted into the "BulkPress" authoring interface to populate the taxonomy. 
+    Description: The map data for worldwide ops is represented as follows:
+    	custom post type "country"
+    	custom taxonomy called "Language Services"
+    	custom field "website name" and "website url" on each language service taxonomy term
+    	
+    	To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
 
-        Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. Each language service from that aggregate list is represented below. 
-
-       	Note that websites are also associated with Language Services. To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
+        Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
 */
 
 require ('../../../../wp-load.php');
@@ -15,17 +17,18 @@ require ('../../../../wp-load.php');
 die();
 
 $serviceCountryStr = "Martinoticias	Cuba
-Alhurra TV	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
-Radio Sawa	Algeria,Bahrain,Chad,Comoros,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
-Afia Darfur	Chad,South Sudan
+Alhurra TV	Algeria,Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Oman,Palestinian Territories,Qatar,Saudi Arabia,Somalia,South Sudan,Sudan,Syria,Tunisia,United Arab Emirates,Yemen
+Alhurra-Iraq Iraq
+Radio Sawa	Bahrain,Djibouti,Egypt,Iraq,Jordan,Kuwait,Lebanon,Libya,Mauritania,Morocco,Palestinian Territories,Qatar,Saudi Arabia,Sudan,Syria,United Arab Emirates,Yemen
+Afia Darfur	Sudan
 RFA Burmese	Myanmar [Burma]
-RFA Cantonese	China
+RFA Cantonese	China,China (Taiwan)
 RFA Khmer	Cambodia
 RFA Korean	North Korea
 RFA Lao	Laos
-RFA Mandarin	China,Taiwan
-RFA Tibet	China
-RFA Uyghur	China
+RFA Mandarin	China,China (Taiwan)
+RFA Tibet	China,China (Taiwan)
+RFA Uyghur	China,China (Taiwan)
 RFA Vietnamese	Vietnam
 RFERL Afghan (Dari)	Afghanistan
 RFERL Afghan (Pashto)	Afghanistan
@@ -44,22 +47,22 @@ RFERL Kazakh (Russian)	Kazakhstan
 RFERL Kyrgyz	Kyrgyzstan
 RFERL Kyrgyz (Russian)	Kyrgyzstan
 Gandhara (English to AfPak)	Afghanistan,Pakistan
-Radio Mashaal	Afghanistan,Pakistan
+Radio Mashaal	Pakistan
 RFERL Moldovan	Moldova
 RFERL Moldovan (Russian)	Moldova
 RFERL North Caucasus (Avar)	Russia
 RFERL North Caucasus (Chechen)	Russia
 RFERL North Caucasus (Russian)	Russia
 RFERL Russian	Russia
-RFERL Tajik	Kyrgyzstan,Russia,Tajikistan
-RFERL Tajik (Russian)	Kyrgyzstan,Russia,Tajikistan
+RFERL Tajik	Kyrgyzstan,Tajikistan
+RFERL Tajik (Russian)	Kyrgyzstan,Tajikistan
 RFERL Tatar-Bashkir	Russia
 RFERL Tatar-Bashkir (Russian)	Russia
-RFERL Turkmen	Afghanistan,Iran,Russia,Turkey,Turkmenistan,Uzbekistan
+RFERL Turkmen	Turkmenistan
 RFERL Ukrainian	Ukraine
 RFERL Ukrainian (Russian)	Ukraine
 RFERL Ukrainian (Crimean Tatar)	Ukraine
-RFERL Uzbek	Afghanistan,Kazakhstan,Kyrgyzstan,Russia,Tajikistan,Turkey,Turkmenistan,Uzbekistan
+RFERL Uzbek	Uzbekistan
 VOA Afghan (Dari)	Afghanistan
 VOA Afghan (Pashto)	Afghanistan
 VOA Albanian	Albania,Kosovo,Macedonia,Montenegro
@@ -69,7 +72,7 @@ VOA Bambara	Mali
 VOA Bangla	Bangladesh
 VOA Bosnian	Bosnia and Herzegovina
 VOA Burmese	Myanmar [Burma]
-VOA Cantonese	China,Hong Kong
+VOA Cantonese	China,China (Taiwan),Hong Kong
 VOA Central Africa	Burundi,Congo - Kinshasa,Rwanda
 VOA Creole	Haiti
 VOA Deewa	Afghanistan,Pakistan
@@ -82,10 +85,11 @@ VOA Horn of Africa (Tigrigna)	Eritrea,Ethiopia
 VOA Indonesian	Indonesia
 VOA Khmer	Cambodia
 VOA Korean	North Korea
+VOA Kurdi	Iran,Iraq,Syria,Turkey
 VOA Kurdish	Iran,Iraq,Syria,Turkey
 VOA Lao	Laos
 VOA Macedonian	Macedonia
-VOA Mandarin	China,Taiwan
+VOA Mandarin	China,China (Taiwan)
 VOA Persian	Iran
 VOA Portuguese to Africa	Angola,Cape Verde,Guinea-Bissau,Mozambique,São Tomé and Príncipe
 VOA Russian	Georgia,Kazakhstan,Kyrgyzstan,Latvia,Lithuania,Moldova,Russia,Tajikistan,Ukraine
@@ -94,13 +98,15 @@ VOA Somali	Kenya,Somalia
 VOA Spanish	Argentina,Bolivia,Chile,Colombia,Costa Rica,Cuba,Dominican Republic,Ecuador,El Salvador,Guatemala,Honduras,Mexico,Nicaragua,Panama,Paraguay,Peru,Uruguay,Venezuela
 VOA Swahili	Burundi,Congo - Kinshasa,Kenya,Rwanda,Tanzania,Uganda
 VOA Thai	Thailand
-VOA Tibetan	China
+VOA Tibetan	China,China (Taiwan)
 VOA Turkish	Turkey
 VOA Ukrainian	Ukraine
 VOA Urdu	Pakistan
 VOA Uzbek	Afghanistan,Kazakhstan,Kyrgyzstan,Tajikistan,Turkmenistan,Uzbekistan
 VOA Vietnamese	Vietnam
-VOA Zimbabwe	Botswana,South Africa,Zambia,Zimbabwe";
+VOA Zimbabwe	Botswana,South Africa,Zambia,Zimbabwe
+VOA Zimbabwe (Ndebele)	Botswana,South Africa,Zambia,Zimbabwe
+VOA Zimbabwe (Shona)	Botswana,South Africa,Zambia,Zimbabwe";
 
 $serviceCountryLines = explode("\n", $serviceCountryStr);
 $counter = 0;
@@ -146,9 +152,9 @@ foreach( $serviceCountryLines as $str ) {
 	}
 }
 
-echo "<pre>";
-var_dump($errors);
-echo "</pre>";
+	echo "<pre>";
+	var_dump($errors);
+	echo "</pre>";
 
 
 ?>
