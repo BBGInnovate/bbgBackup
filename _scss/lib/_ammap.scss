@@ -138,6 +138,36 @@
 		font-size: 2.25rem;
 	}
 
+	.bbg__map__entity-logo__container {
+		border-radius: 50%;
+		height: $bbg__avatar-width-small;
+		max-width: $bbg__avatar-width-small;
+		margin: 0 auto 1rem;
+		width: $bbg__avatar-width-small;
+
+		@include media($small-screen) {
+			float: left;
+			margin: 0 1rem .5rem 0;
+		}
+
+		@include media($medium-screen) {
+			clear: left;
+		}
+
+
+		/* @include media($small-screen) {
+			margin-bottom: 0;
+		} */
+	}
+
+	.bbg__map__entity-logo__image {
+		@include backgroundCover;
+		display: block;
+		height: 100%;
+		width: 100%;
+		border-radius: 50%;
+	}
+
 	.bbg__map__entity-details {
 		p {
 			font: {

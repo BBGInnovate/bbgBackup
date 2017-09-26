@@ -8936,6 +8936,36 @@ a.bbg__kits__intro__more--link:hover {
 .bbg__map-area__text .bbg__map-area__country-name {
   font-size: 2.25rem;
 }
+.bbg__map-area__text .bbg__map__entity-logo__container {
+  border-radius: 50%;
+  height: 50px;
+  max-width: 50px;
+  margin: 0 auto 1rem;
+  width: 50px;
+  /* @include media($small-screen) {
+  	margin-bottom: 0;
+  } */
+}
+@media screen and (min-width: 481px) {
+  .bbg__map-area__text .bbg__map__entity-logo__container {
+    float: left;
+    margin: 0 1rem .5rem 0;
+  }
+}
+@media screen and (min-width: 600px) {
+  .bbg__map-area__text .bbg__map__entity-logo__container {
+    clear: left;
+  }
+}
+.bbg__map-area__text .bbg__map__entity-logo__image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
 .bbg__map-area__text .bbg__map__entity-details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 1.3rem;
