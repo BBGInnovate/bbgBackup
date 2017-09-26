@@ -8949,7 +8949,7 @@ a.bbg__kits__intro__more--link:hover {
   border-radius: 50%;
   display: table-cell;
   max-width: 60px;
-  padding: 0 1rem 0 0;
+  padding-right: 1rem;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;
@@ -8964,7 +8964,7 @@ a.bbg__kits__intro__more--link:hover {
   border-radius: 50%;
   display: table-cell;
   max-width: 40px;
-  padding: 0 1rem 0 0;
+  padding-right: 0.5rem;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small .bbg__map__entity-logo__image--small {
   background-size: cover;
@@ -8985,7 +8985,7 @@ a.bbg__kits__intro__more--link:hover {
   text-transform: uppercase;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name--small {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-transform: none;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details {
@@ -9003,9 +9003,10 @@ a.bbg__kits__intro__more--link:hover {
   }
 }
 .bbg__map-area__text .bbg__map__entity--small {
-  margin: 0;
+  margin: -2rem 0 0;
 }
 .bbg__map-area__text .bbg__map__entity--small p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 1.6rem;
   line-height: 1.4;
 }

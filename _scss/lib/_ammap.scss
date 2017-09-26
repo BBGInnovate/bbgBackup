@@ -150,7 +150,7 @@
 			border-radius: 50%;
 			display: table-cell;
 			max-width: $bbg__avatar-width-small + 10px;
-			padding: 0 1rem 0 0;
+			padding-right: 1rem;
 
 			.bbg__map__entity-logo__image {
 				@include backgroundCover;
@@ -164,7 +164,7 @@
 				border-radius: 50%;
 				display: table-cell;
 				max-width: $bbg__avatar-width-tiny + 10px;
-				padding: 0 1rem 0 0;
+				padding-right: 0.5rem;
 
 				.bbg__map__entity-logo__image--small {
 					@include backgroundCover;
@@ -186,7 +186,7 @@
 				text-transform: uppercase;
 
 				&--small {
-					font-size: $base-font-size;
+					font-size: $medium-font-size;
 					text-transform: none;
 				}
 			}
@@ -210,10 +210,13 @@
 			}
 
 		&--small {
-			margin: 0;
+			margin: -2rem 0 0;
 
 			p {
-				font-size: $base-font-size;
+				font: {
+					family: $font-sans;
+					size: $base-font-size;
+				}
 				line-height: $small-line-height;
 			}
 
