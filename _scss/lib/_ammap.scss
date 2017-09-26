@@ -170,10 +170,11 @@
 		.bbg__map__entity-text {
 			display: table-cell;
 			padding: 0;
+			vertical-align: middle;
 
-			@include media($small-screen) {
+			/* @include media($small-screen) {
 				padding-left: $bbg__avatar-width-small + 10px;
-			}
+			} */
 
 			&__details {
 				clear: none;
