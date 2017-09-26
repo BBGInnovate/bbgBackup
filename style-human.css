@@ -8938,13 +8938,13 @@ a.bbg__kits__intro__more--link:hover {
 }
 .bbg__map-area__text .bbg__map__entity {
   margin-bottom: 3rem;
+  min-height: 50px;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container {
   border-radius: 50%;
   display: table-cell;
-  height: 50px;
-  max-width: 50px;
   margin: 0;
+  height: 50px;
   width: 50px;
   			/* @include media($small-screen) {
   				float: left;

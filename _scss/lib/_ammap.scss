@@ -140,13 +140,13 @@
 
 	.bbg__map__entity {
 		margin-bottom: $site-margins;
+		min-height: $bbg__avatar-width-small;
 
 		.bbg__map__entity-logo__container {
 			border-radius: 50%;
 			display: table-cell;
-			height: $bbg__avatar-width-small;
-			max-width: $bbg__avatar-width-small;
 			margin: 0;
+			height: $bbg__avatar-width-small;
 			width: $bbg__avatar-width-small;
 
 			/* @include media($small-screen) {
