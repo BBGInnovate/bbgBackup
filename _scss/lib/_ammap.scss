@@ -139,8 +139,12 @@
 	}
 
 	.bbg__map__entity {
-		margin-bottom: $site-margins;
+		margin: $site-margins 0;
 		min-height: $bbg__avatar-width-small;
+
+		@include media($small-screen) {
+			margin: 0;
+		}
 
 		.bbg__map__entity-logo__container {
 			border-radius: 50%;
@@ -189,7 +193,6 @@
 
 		.bbg__map__entity-text__details {
 				margin-top: 0;
-				// max-width: $article-max-width;
 
 				p {
 					font: {
@@ -197,11 +200,6 @@
 						size: $small-font-size;
 					}
 					line-height: $small-line-height;
-
-					&:first-of-type {
-						font-size: $base-font-size;
-						line-height: $base-line-height;
-					}
 				}
 			}
 
