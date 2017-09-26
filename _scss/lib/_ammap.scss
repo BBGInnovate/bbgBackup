@@ -153,11 +153,6 @@
 		@include media($medium-screen) {
 			clear: left;
 		}
-
-
-		/* @include media($small-screen) {
-			margin-bottom: 0;
-		} */
 	}
 
 	.bbg__map__entity-logo__image {
@@ -166,6 +161,14 @@
 		height: 100%;
 		width: 100%;
 		border-radius: 50%;
+	}
+
+	.bbg__map__entity-text {
+		padding: 0;
+
+		@include media($small-screen) {
+			padding-left: $bbg__avatar-width-small + 10px;
+		}
 	}
 
 	.bbg__map__entity-details {
