@@ -152,6 +152,10 @@
 			padding: 0 1rem 0 0;
 			max-width: $bbg__avatar-width-small + 10px;
 
+			&--small {
+				max-width: $bbg__avatar-width-tiny + 10px;
+			}
+
 			.bbg__map__entity-logo__image {
 				@include backgroundCover;
 				display: block;
@@ -160,6 +164,7 @@
 				border-radius: 50%;
 
 				&--small {
+					@include backgroundCover;
 					height: $bbg__avatar-width-tiny;
 					width: $bbg__avatar-width-tiny;
 				}
@@ -203,6 +208,11 @@
 
 		&--small {
 			margin: 0;
+
+			p {
+				font-size: $base-font-size;
+				line-height: $small-line-height;
+			}
 
 			.bbg__map__entity-text {
 				display: table-cell;

@@ -8951,6 +8951,9 @@ a.bbg__kits__intro__more--link:hover {
   padding: 0 1rem 0 0;
   max-width: 60px;
 }
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small {
+  max-width: 40px;
+}
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;
   background-repeat: no-repeat;
@@ -8961,6 +8964,9 @@ a.bbg__kits__intro__more--link:hover {
   border-radius: 50%;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image--small {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   height: 30px;
   width: 30px;
 }
@@ -8995,6 +9001,10 @@ a.bbg__kits__intro__more--link:hover {
 }
 .bbg__map-area__text .bbg__map__entity--small {
   margin: 0;
+}
+.bbg__map-area__text .bbg__map__entity--small p {
+  font-size: 1.6rem;
+  line-height: 1.4;
 }
 .bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text {
   display: table-cell;
