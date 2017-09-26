@@ -8971,12 +8971,17 @@ a.bbg__kits__intro__more--link:hover {
     padding-left: 60px;
   }
 }
-.bbg__map-area__text .bbg__map__entity-details p {
+.bbg__map-area__text .bbg__map__entity-text__details {
+  clear: none;
+  margin-top: 0;
+  max-width: 600px;
+}
+.bbg__map-area__text .bbg__map__entity-text__details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
   font-size: 1.3rem;
   line-height: 1.4;
 }
-.bbg__map-area__text .bbg__map__entity-details p:first-of-type {
+.bbg__map-area__text .bbg__map__entity-text__details p:first-of-type {
   font-size: 1.6rem;
   line-height: 1.7;
 }

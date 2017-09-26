@@ -169,19 +169,23 @@
 		@include media($small-screen) {
 			padding-left: $bbg__avatar-width-small + 10px;
 		}
-	}
 
-	.bbg__map__entity-details {
-		p {
-			font: {
-				family: $font-sans;
-				size: $small-font-size;
-			}
-			line-height: $small-line-height;
+		&__details {
+			clear: none;
+			margin-top: 0;
+			max-width: $article-max-width;
 
-			&:first-of-type {
-				font-size: $base-font-size;
-				line-height: $base-line-height;
+			p {
+				font: {
+					family: $font-sans;
+					size: $small-font-size;
+				}
+				line-height: $small-line-height;
+
+				&:first-of-type {
+					font-size: $base-font-size;
+					line-height: $base-line-height;
+				}
 			}
 		}
 	}
