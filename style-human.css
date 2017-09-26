@@ -8940,7 +8940,7 @@ a.bbg__kits__intro__more--link:hover {
   margin: 3rem 0;
   min-height: 50px;
 }
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 600px) {
   .bbg__map-area__text .bbg__map__entity {
     margin: 0;
   }
@@ -8950,14 +8950,6 @@ a.bbg__kits__intro__more--link:hover {
   display: table-cell;
   padding: 0 1rem 0 0;
   max-width: 60px;
-  			/* @include media($small-screen) {
-  				float: left;
-  				margin: 0 1rem .5rem 0;
-  			}
-  
-  			@include media($medium-screen) {
-  				clear: left;
-  			} */
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;
@@ -8967,6 +8959,10 @@ a.bbg__kits__intro__more--link:hover {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image--small {
+  height: 30px;
+  width: 30px;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text {
   display: table-cell;
@@ -8979,13 +8975,51 @@ a.bbg__kits__intro__more--link:hover {
   text-align: left;
   text-transform: uppercase;
 }
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name--small {
+  font-size: 1.6rem;
+  text-transform: none;
+}
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details {
   margin-top: 0;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.4;
+  font-size: 1.8rem;
+  line-height: 1.7;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details p {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+}
+.bbg__map-area__text .bbg__map__entity--small {
+  margin: 0;
+}
+.bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text {
+  display: table-cell;
+  padding-left: 0;
+  vertical-align: middle;
+}
+.bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text .bbg__map__entity-text__name {
+  font-size: 2rem;
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+.bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text__details {
+  margin-top: 0;
+}
+.bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text__details p {
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.7;
+}
+@media screen and (min-width: 600px) {
+  .bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text__details p {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
 }
 .bbg__map-area__text .bbg__map-area__list-item {
   line-height: 1;
