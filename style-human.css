@@ -8943,8 +8943,8 @@ a.bbg__kits__intro__more--link:hover {
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container {
   border-radius: 50%;
   display: table-cell;
-  margin: 0 1rem 0;
-  max-width: 50px;
+  padding: 0 1rem 0 0;
+  max-width: 60px;
   			/* @include media($small-screen) {
   				float: left;
   				margin: 0 1rem .5rem 0;
@@ -8965,7 +8965,7 @@ a.bbg__kits__intro__more--link:hover {
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text {
   display: table-cell;
-  padding: 0;
+  padding-left: 0;
   vertical-align: middle;
   /* @include media($small-screen) {
   	padding-left: $bbg__avatar-width-small + 10px;

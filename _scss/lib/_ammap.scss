@@ -145,8 +145,8 @@
 		.bbg__map__entity-logo__container {
 			border-radius: 50%;
 			display: table-cell;
-			margin: 0 1rem 0;
-			max-width: $bbg__avatar-width-small;
+			padding: 0 1rem 0 0;
+			max-width: $bbg__avatar-width-small + 10px;
 
 			/* @include media($small-screen) {
 				float: left;
@@ -168,7 +168,7 @@
 
 		.bbg__map__entity-text {
 			display: table-cell;
-			padding: 0;
+			padding-left: 0;
 			vertical-align: middle;
 
 			.bbg__map__entity-text__name {
