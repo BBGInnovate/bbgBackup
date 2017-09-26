@@ -138,56 +138,65 @@
 		font-size: 2.25rem;
 	}
 
-	.bbg__map__entity-logo__container {
-		border-radius: 50%;
-		height: $bbg__avatar-width-small;
-		max-width: $bbg__avatar-width-small;
-		margin: 0 auto 1rem;
-		width: $bbg__avatar-width-small;
+	.bbg__map__entity {
+		margin-bottom: $site-margins;
 
-		@include media($small-screen) {
-			float: left;
-			margin: 0 1rem .5rem 0;
+		.bbg__map__entity-logo__container {
+			border-radius: 50%;
+			display: table-cell;
+			height: $bbg__avatar-width-small;
+			max-width: $bbg__avatar-width-small;
+			margin: 0 auto 1rem;
+			width: $bbg__avatar-width-small;
+
+			@include media($small-screen) {
+				float: left;
+				margin: 0 1rem .5rem 0;
+			}
+
+			@include media($medium-screen) {
+				clear: left;
+			}
+
+			.bbg__map__entity-logo__image {
+				@include backgroundCover;
+				display: block;
+				height: 100%;
+				width: 100%;
+				border-radius: 50%;
+			}
 		}
 
-		@include media($medium-screen) {
-			clear: left;
-		}
-	}
+		.bbg__map__entity-text {
+			display: table-cell;
+			padding: 0;
 
-	.bbg__map__entity-logo__image {
-		@include backgroundCover;
-		display: block;
-		height: 100%;
-		width: 100%;
-		border-radius: 50%;
-	}
+			@include media($small-screen) {
+				padding-left: $bbg__avatar-width-small + 10px;
+			}
 
-	.bbg__map__entity-text {
-		padding: 0;
+			&__details {
+				clear: none;
+				display: table-row;
+				margin-top: 0;
+				max-width: $article-max-width;
 
-		@include media($small-screen) {
-			padding-left: $bbg__avatar-width-small + 10px;
-		}
+				p {
+					font: {
+						family: $font-sans;
+						size: $small-font-size;
+					}
+					line-height: $small-line-height;
 
-		&__details {
-			clear: none;
-			margin-top: 0;
-			max-width: $article-max-width;
-
-			p {
-				font: {
-					family: $font-sans;
-					size: $small-font-size;
-				}
-				line-height: $small-line-height;
-
-				&:first-of-type {
-					font-size: $base-font-size;
-					line-height: $base-line-height;
+					&:first-of-type {
+						font-size: $base-font-size;
+						line-height: $base-line-height;
+					}
 				}
 			}
 		}
+
+
 	}
 
 	.bbg__map-area__list-item {
