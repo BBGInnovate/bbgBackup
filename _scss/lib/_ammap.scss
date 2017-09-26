@@ -146,8 +146,7 @@
 			border-radius: 50%;
 			display: table-cell;
 			margin: 0;
-			height: $bbg__avatar-width-small;
-			width: $bbg__avatar-width-small;
+			max-width: $bbg__avatar-width-small;
 
 			/* @include media($small-screen) {
 				float: left;
@@ -161,8 +160,8 @@
 			.bbg__map__entity-logo__image {
 				@include backgroundCover;
 				display: block;
-				height: 100%;
-				width: 100%;
+				height: $bbg__avatar-width-small;
+				width: $bbg__avatar-width-small;
 				border-radius: 50%;
 			}
 		}
