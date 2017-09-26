@@ -35,7 +35,7 @@ function shadeColor( color, percent ) {
 		colorRollOver = '#205493',
 		colorSelected = '#112e51';
 	//the colors for the entities are 'inherited' from their buttons, but curren time doesn't have a button, so we set its base color here
-	var CURRENT_TIME_MAIN_COLOR = "rgb(31, 155, 222)"; //ff0355 (255, 3, 85) is the current time red, (31, 155, 222) is their blue
+	var CURRENT_TIME_MAIN_COLOR = "rgb(27, 153, 214)"; //#ec1e58 (236, 30, 88) is Current Time red, #1b99d6 (27, 153, 214) is the blue in their avatar
 	$( document ).ready( function () {
 		var defaultEntity = 'bbg'; //might fill this from a global JS var later.
 		/* keep activeCountries & map as global vars else they won't be available in callbacks */
@@ -230,33 +230,43 @@ function shadeColor( color, percent ) {
 
 			var en = entities[ entity ];
 			var entityDetailsStr = '<p>' + en.description + '</p>';
+			// set variable for logos
+			var imgSrc = template_directory_uri + '/img/logo_' + entity + '--circle-200.png';
 			//entityDetailsStr += 'Website: <a target="_blank" href="'+en.url+'">'+en.url+'</a>';
-			
-			
+
 			var globalStr = "";
 
 			if ( entity == "voa" ) {
 				//globalStr += "<p>VOA’s <a target='_blank' href='https://www.voanews.com'>English-language News Center</a> and VOA’s <a target='_blank' href='https://learningenglish.voanews.com/'>Learning English programming</a> are available worldwide.</p>";
-				globalStr += '<li><a target="_blank" href="https://www.voanews.com/">English-language News Center</a></li>';
-				globalStr += '<li><a target="_blank" href="https://learningenglish.voanews.com/">Learning English programming</a></li>';
+				globalStr += '<ul style="margin-bottom: 0;"><li><a target="_blank" href="https://www.voanews.com/">English-language News Center</a></li>';
+				globalStr += '<li><a target="_blank" href="https://learningenglish.voanews.com/">Learning English programming</a></li></ul>';
 			}
 
 			if ( entity == "voa" || entity == "rferl" ) {
-				//<article class="bbg__entity"><div class="bbg__avatar__container bbg__entity__icon"><a href="https://www.bbg.gov/2017/02/06/current-time-network-launches-real-news-real-people-real-time/"><div class="bbg__avatar bbg__entity__icon__image" style="background-image: url(https://www.bbg.gov/wp-content/media/2017/09/Current-Time-avatar-200x200.png);"></div></a></div><div class="bbg__entity__text"><h2 class="bbg__entity__name"><a href="https://www.currenttime.tv/">Current Time</a></h2><p class="bbg__entity__text-description"></p><p>Led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), is a 24/7 Russian-language digital network that provides news and information to Russian speakers worldwide.</p></div></article>';
-				globalStr += '<li><a href="https://www.currenttime.tv">Current Time</a></li>';
+				// globalStr += '<li><a href="https://www.currenttime.tv">Current Time</a></li>';
+
+				globalStr += '<div id="entityDisplay" class="bbg__map__entity--small">';
+					globalStr += '<div id="entityLogo" class="bbg__map__entity-logo__container--small"><a href="https://www.currenttime.tv" tabindex="-1"><div class="bbg__map__entity-logo__image--small" style="background-image: url(' + template_directory_uri + '/img/logo_ct--circle-40.png);"></div></a></div>';
+
+					globalStr += '<div class="bbg__map__entity-text">';
+						globalStr += '<h2 id="entityName" class="bbg__map__entity-text__name--small"><a href="https://www.currenttime.tv" tabindex="-1">Current Time</a></h2>';
+						globalStr += '<p>A 24/7 Russian-language digital network, led by Radio Free Europe/Radio Liberty (RFE/RL) in cooperation with the Voice of America (VOA), that provides news and information to Russian speakers worldwide.</p>';
+					globalStr += '</div>';
+				globalStr += '</div>';
 			}
 
-//			entityDetailsStr += voaEnglishStr + currentTimeStr;
-			
 			if (globalStr != "") {
-				globalStr = "<h3>Global Content</h3><ul>" + globalStr + "</ul>";
+				globalStr = "<h3 class='bbg__map__entity-global'>Global Content</h3>" + globalStr ;
 			}
-			$( '#globalBlock' ).html(globalStr);
+			$( '#globalBlock' ).html( globalStr );
 
+
+			$( '#entityLogo' ).html( "<a href='" +  en.url + "' tabindex='-1'><div class='bbg__map__entity-logo__image' style='background-image: url(" + imgSrc + ");'></div></a>" );
 			$( '#entityName' ).html( "<a href='" + en.url + "'>" + en.fullName + "</a>" );
-			$( '.bbg__map__entity-details' ).html( entityDetailsStr ).show();
+			$( '#entityDescription' ).html( entityDetailsStr ).show();
 
 			if ( entity != "bbg" ) {
+
 				$( '#service-list' ).empty();
 				var subgroupListString = '';
 				var article = getArticleByEntity( selectedEntity );

@@ -7,12 +7,12 @@
  * template name: Map Container
  */
 
-$pageContent="";
+$pageContent = "";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
-		$pageContent = apply_filters('the_content', $pageContent);
-		$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
+		$pageContent = apply_filters( 'the_content', $pageContent );
+		$pageContent = str_replace( ']]>', ']]&gt;', $pageContent );
 	endwhile;
 endif;
 wp_reset_postdata();
@@ -46,37 +46,37 @@ function getMapData() {
 		),
 	);
 
-	$qParams=array(
+	$qParams = array(
 		'post_type' => 'country'
 		,'post_status' => array('publish')
 		,'posts_per_page' => -1
 		,'orderby' => 'post_title'
 		,'order' => 'asc'
 	);
-	$custom_query = new WP_Query($qParams);
+	$custom_query = new WP_Query( $qParams );
 	$countries = array();
 
 	while ( $custom_query -> have_posts() )  {
-		$custom_query->the_post();
+		$custom_query -> the_post();
 		$id = get_the_ID();
 		$countryName = get_the_title();
 		$countryAmmapCode = get_post_meta( $id, 'country_ammap_country_code', true );
 
 		$networks = array();
-		$terms = get_the_terms( $id, "language_services" , array('hide_empty' => false));
+		$terms = get_the_terms( $id, "language_services" , array( 'hide_empty' => false ) );
 		if ($terms) {
 			$categoryHierarchy = array();
-			sort_terms_hierarchically($terms, $categoryHierarchy);
+			sort_terms_hierarchically( $terms, $categoryHierarchy );
 			foreach ( $categoryHierarchy as $t ) {
 				$n1 = array(
-					'networkName' => $t->name,
+					'networkName' => $t -> name,
 					'services' => array()
 				);
-				$entities [strtolower($t->name)]['countries'][$countryName] = 1;
-				foreach ($t->children as $service) {
-					$n1['services'][]= $service -> name;
+				$entities [strtolower( $t -> name )]['countries'][$countryName] = 1;
+				foreach ( $t -> children as $service ) {
+					$n1['services'][] = $service -> name;
 				}
-				$networks []= $n1;
+				$networks [] = $n1;
 			}
 		}
 		$countries[$countryName] = array(
@@ -93,22 +93,22 @@ function getMapData() {
 
 	$parentTerms = array();
 	foreach ( $terms as $t ) {
-		$isParent = ($t -> parent == 0);
-		if ($isParent) {
-			$parentTerms[$t->term_id] = $t->name;
+		$isParent = ( $t -> parent == 0 );
+		if ( $isParent ) {
+			$parentTerms[$t -> term_id] = $t -> name;
 		}
 	}
 
 	$servicesByName = array();
 	foreach ( $terms as $t ) {
-		$isParent = ($t -> parent == 0);
-		$parentTerm="";
+		$isParent = ( $t -> parent == 0 );
+		$parentTerm = "";
 
-		if (!$isParent) {
-			$parentTerm = $parentTerms[$t->parent];
+		if ( !$isParent ) {
+			$parentTerm = $parentTerms[$t -> parent];
 		}
 
-		$termMeta = get_term_meta( $t->term_id );
+		$termMeta = get_term_meta( $t -> term_id );
 
 		$siteName = "";
 		$siteUrl = "";
@@ -116,8 +116,8 @@ function getMapData() {
 			$siteName = $termMeta['language_service_site_name'][0];
 			$siteUrl = $termMeta['language_service_site_url'][0];
 		}
-		$servicesByName[$t->name] = array(
-			'serviceName' => $t->name
+		$servicesByName[$t -> name] = array(
+			'serviceName' => $t -> name
 			,'siteName' => $siteName
 			,'siteUrl' => $siteUrl
 			,'parent' => $parentTerm
@@ -128,34 +128,32 @@ function getMapData() {
 	wp_reset_postdata();
 	wp_reset_query();
 
-	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
-	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
-	$serviceStr = json_encode(new ArrayValue($servicesByName), JSON_PRETTY_PRINT);
+	$countryStr = json_encode( new ArrayValue( $countries ), JSON_PRETTY_PRINT );
+	$entityStr = json_encode( new ArrayValue( $entities ), JSON_PRETTY_PRINT );
+	$serviceStr = json_encode( new ArrayValue( $servicesByName ), JSON_PRETTY_PRINT );
 
 	echo "<script type='text/javascript'>\n";
 	echo "entitiesByName = $entityStr\n";
 	echo "servicesByName = $serviceStr\n";
 	echo "countriesByName = $countryStr\n";
 	echo "</script>";
-
 }?>
 
 <?php getMapData(); ?>
 
-<script>
-for (serviceName in servicesByName) {
-	if (servicesByName.hasOwnProperty(serviceName)) {
+<script type="text/javascript">
+// setting a variable to pass into the entity map
+var template_directory_uri = '<?php echo get_template_directory_uri(); ?>';
+
+for ( serviceName in servicesByName ) {
+	if ( servicesByName.hasOwnProperty( serviceName ) ) {
 		s = servicesByName[serviceName];
 		if (s.parent != "") {
-			entitiesByName[s.parent.toLowerCase()]['services'].push(serviceName);
+			entitiesByName[s.parent.toLowerCase()]['services'].push( serviceName );
 		}
 	}
 }
 </script>
-
-	<style>
-	/*temp styles */
-	</style>
 
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
 	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
@@ -167,12 +165,12 @@ for (serviceName in servicesByName) {
 				<div class="usa-grid">
 					<header class="page-header">
 
-						<?php if($post->post_parent) {
+						<?php if( $post -> post_parent ) {
 							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
+							$parent = $wpdb->get_row( "SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent" );
 							$parent_link = get_permalink($post->post_parent);
 						?>
-						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
+						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent -> post_title; ?></a></h5>
 
 						<?php } ?>
 
@@ -207,7 +205,7 @@ for (serviceName in servicesByName) {
 								 <h4 class="service-label"></h4>
 							</div>
 							<select id="country-list">
-								<option value="0">Select a country...</option>
+								<option value="0">Select a country…</option>
 							</select>
 						</div>
 						<div class="usa-width-one-third bbg__map-area__text" style="">
@@ -221,11 +219,14 @@ for (serviceName in servicesByName) {
 								<div class="service-block"></div>
 							</div>
 
-							<div id="entityDisplay">
-								<h2 id="entityName" class="bbg__map-area__country-name">Entity Name</h2>
-								<div class="bbg__map__entity-details">
-									<!-- <p class="detail"></p> -->
+							<div id="entityDisplay" class="bbg__map__entity">
+								<div id="entityLogo" class="bbg__map__entity-logo__container"></div>
+
+								<div class="bbg__map__entity-text">
+									<h2 id="entityName" class="bbg__map__entity-text__name">Entity Name</h2>
 								</div>
+
+								<div id="entityDescription" class="bbg__map__entity-text__details">Entity description</div>
 
 								<div id="serviceDropdownBlock">
 									<select id="service-list">
