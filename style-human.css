@@ -8948,11 +8948,14 @@ a.bbg__kits__intro__more--link:hover {
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container {
   border-radius: 50%;
   display: table-cell;
-  padding: 0 1rem 0 0;
   max-width: 60px;
+  padding: 0 1rem 0 0;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small {
+  border-radius: 50%;
+  display: table-cell;
   max-width: 40px;
+  padding: 0 1rem 0 0;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;

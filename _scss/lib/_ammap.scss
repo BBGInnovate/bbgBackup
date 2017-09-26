@@ -149,11 +149,14 @@
 		.bbg__map__entity-logo__container {
 			border-radius: 50%;
 			display: table-cell;
-			padding: 0 1rem 0 0;
 			max-width: $bbg__avatar-width-small + 10px;
+			padding: 0 1rem 0 0;
 
 			&--small {
+				border-radius: 50%;
+				display: table-cell;
 				max-width: $bbg__avatar-width-tiny + 10px;
+				padding: 0 1rem 0 0;
 			}
 
 			.bbg__map__entity-logo__image {
