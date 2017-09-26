@@ -171,6 +171,17 @@
 			padding: 0;
 			vertical-align: middle;
 
+			.bbg__map__entity-text__name {
+				font-size: 3rem;
+				margin: 0;
+				text-align: center;
+				text-transform: uppercase;
+
+				@include media($small-screen) {
+					text-align: left;
+				}
+			}
+
 			/* @include media($small-screen) {
 				padding-left: $bbg__avatar-width-small + 10px;
 			} */

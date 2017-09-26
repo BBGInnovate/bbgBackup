@@ -8971,6 +8971,17 @@ a.bbg__kits__intro__more--link:hover {
   	padding-left: $bbg__avatar-width-small + 10px;
   } */
 }
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name {
+  font-size: 3rem;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 481px) {
+  .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name {
+    text-align: left;
+  }
+}
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details {
   clear: none;
   display: table-row;
