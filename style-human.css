@@ -9007,8 +9007,14 @@ a.bbg__kits__intro__more--link:hover {
 }
 .bbg__map-area__text .bbg__map__entity--small p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 1.3rem;
-  line-height: 1.4;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+@media screen and (min-width: 481px) {
+  .bbg__map-area__text .bbg__map__entity--small p {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
 }
 .bbg__map-area__text .bbg__map__entity--small .bbg__map__entity-text {
   display: table-cell;

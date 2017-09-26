@@ -215,9 +215,14 @@
 			p {
 				font: {
 					family: $font-sans;
-					size: $small-font-size;
+					size: $base-font-size;
 				}
-				line-height: $small-line-height;
+				line-height: $base-line-height;
+
+				@include media ($small-screen) {
+					font-size: $small-font-size;
+					line-height: $small-line-height;
+				}
 			}
 
 			.bbg__map__entity-text {
