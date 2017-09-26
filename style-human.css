@@ -8944,19 +8944,16 @@ a.bbg__kits__intro__more--link:hover {
   display: table-cell;
   height: 50px;
   max-width: 50px;
-  margin: 0 auto 1rem;
+  margin: 0;
   width: 50px;
-}
-@media screen and (min-width: 481px) {
-  .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container {
-    float: left;
-    margin: 0 1rem .5rem 0;
-  }
-}
-@media screen and (min-width: 600px) {
-  .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container {
-    clear: left;
-  }
+  			/* @include media($small-screen) {
+  				float: left;
+  				margin: 0 1rem .5rem 0;
+  			}
+  
+  			@include media($medium-screen) {
+  				clear: left;
+  			} */
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;

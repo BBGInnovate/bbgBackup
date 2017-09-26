@@ -146,17 +146,17 @@
 			display: table-cell;
 			height: $bbg__avatar-width-small;
 			max-width: $bbg__avatar-width-small;
-			margin: 0 auto 1rem;
+			margin: 0;
 			width: $bbg__avatar-width-small;
 
-			@include media($small-screen) {
+			/* @include media($small-screen) {
 				float: left;
 				margin: 0 1rem .5rem 0;
 			}
 
 			@include media($medium-screen) {
 				clear: left;
-			}
+			} */
 
 			.bbg__map__entity-logo__image {
 				@include backgroundCover;
