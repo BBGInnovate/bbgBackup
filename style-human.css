@@ -8951,12 +8951,6 @@ a.bbg__kits__intro__more--link:hover {
   max-width: 60px;
   padding: 0 1rem 0 0;
 }
-.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small {
-  border-radius: 50%;
-  display: table-cell;
-  max-width: 40px;
-  padding: 0 1rem 0 0;
-}
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image {
   background-size: cover;
   background-repeat: no-repeat;
@@ -8966,7 +8960,13 @@ a.bbg__kits__intro__more--link:hover {
   width: 50px;
   border-radius: 50%;
 }
-.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container .bbg__map__entity-logo__image--small {
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small {
+  border-radius: 50%;
+  display: table-cell;
+  max-width: 40px;
+  padding: 0 1rem 0 0;
+}
+.bbg__map-area__text .bbg__map__entity .bbg__map__entity-logo__container--small .bbg__map__entity-logo__image--small {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
