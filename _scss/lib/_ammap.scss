@@ -178,17 +178,9 @@
 			.bbg__map__entity-text__name {
 				font-size: $h3-font-size;
 				margin: 0;
-				text-align: center;
+				text-align: left;
 				text-transform: uppercase;
-
-				@include media($small-screen) {
-					text-align: left;
-				}
 			}
-
-			/* @include media($small-screen) {
-				padding-left: $bbg__avatar-width-small + 10px;
-			} */
 		}
 
 		.bbg__map__entity-text__details {
@@ -197,7 +189,7 @@
 				p {
 					font: {
 						family: $font-sans;
-						size: $small-font-size;
+						size: $base-font-size;
 					}
 					line-height: $small-line-height;
 				}

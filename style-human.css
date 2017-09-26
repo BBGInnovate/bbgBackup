@@ -8972,27 +8972,19 @@ a.bbg__kits__intro__more--link:hover {
   display: table-cell;
   padding-left: 0;
   vertical-align: middle;
-  /* @include media($small-screen) {
-  	padding-left: $bbg__avatar-width-small + 10px;
-  } */
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name {
   font-size: 2rem;
   margin: 0;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
-}
-@media screen and (min-width: 481px) {
-  .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name {
-    text-align: left;
-  }
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details {
   margin-top: 0;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   line-height: 1.4;
 }
 .bbg__map-area__text .bbg__map-area__list-item {
