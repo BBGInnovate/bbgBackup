@@ -172,7 +172,7 @@
 			vertical-align: middle;
 
 			.bbg__map__entity-text__name {
-				font-size: 3rem;
+				font-size: $h3-font-size;
 				margin: 0;
 				text-align: center;
 				text-transform: uppercase;
@@ -185,12 +185,11 @@
 			/* @include media($small-screen) {
 				padding-left: $bbg__avatar-width-small + 10px;
 			} */
+		}
 
-			&__details {
-				clear: none;
-				display: table-row;
+		.bbg__map__entity-text__details {
 				margin-top: 0;
-				max-width: $article-max-width;
+				// max-width: $article-max-width;
 
 				p {
 					font: {
@@ -205,7 +204,6 @@
 					}
 				}
 			}
-		}
 
 
 	}

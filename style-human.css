@@ -8972,7 +8972,7 @@ a.bbg__kits__intro__more--link:hover {
   } */
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text .bbg__map__entity-text__name {
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 0;
   text-align: center;
   text-transform: uppercase;
@@ -8983,10 +8983,7 @@ a.bbg__kits__intro__more--link:hover {
   }
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details {
-  clear: none;
-  display: table-row;
   margin-top: 0;
-  max-width: 600px;
 }
 .bbg__map-area__text .bbg__map__entity .bbg__map__entity-text__details p {
   font-family: "Lato", "Helvetica", "Arial", sans-serif;
