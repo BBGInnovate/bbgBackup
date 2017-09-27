@@ -40,8 +40,7 @@ function getNetworkExcerptJS() {
 	}
 	wp_reset_postdata();
 	$e['bbg'] = array(
-		'description' => 'The mission of the Broadcasting Board of Governors is to inform, engage, and connect people around the world in support of freedom and democracy.',
-		'fullName' => 'Broadcasting Board of Governors',
+		'description' => 'The five networks of the BBG are trusted news sources, providing high-quality journalism and programming to more than [audience] people each week. They provide international, U.S. and local news in more than 100 countries and in 61 languages.',
 		'url' => 'https://www.bbg.gov'
 	);
 	$s = "<script type='text/javascript'>\n";

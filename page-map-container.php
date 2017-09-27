@@ -142,7 +142,7 @@ function getMapData() {
 <?php getMapData(); ?>
 
 <script type="text/javascript">
-// setting a variable to pass into the entity map
+// setting a variable with the base url to pass into the entity map
 var template_directory_uri = '<?php echo get_template_directory_uri(); ?>';
 
 for ( serviceName in servicesByName ) {
