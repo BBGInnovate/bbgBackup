@@ -35,7 +35,7 @@ function shadeColor( color, percent ) {
 		colorRollOver = '#205493',
 		colorSelected = '#112e51';
 	//the colors for the entities are 'inherited' from their buttons, but curren time doesn't have a button, so we set its base color here
-	var CURRENT_TIME_MAIN_COLOR = "rgb(27, 153, 214)"; //#ec1e58 (236, 30, 88) is Current Time red, #1b99d6 (27, 153, 214) is the blue in their avatar
+	// var CURRENT_TIME_MAIN_COLOR = "rgb(27, 153, 214)"; //#ec1e58 (236, 30, 88) is Current Time red, #1b99d6 (27, 153, 214) is the blue in their avatar
 	$( document ).ready( function () {
 		var defaultEntity = 'bbg'; //might fill this from a global JS var later.
 		/* keep activeCountries & map as global vars else they won't be available in callbacks */
@@ -183,11 +183,11 @@ function shadeColor( color, percent ) {
 			var countryRolloverColor = colorRollOver;
 			var countrySelectedColor = colorSelected;
 
-			if ( selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty( countryName.toLowerCase() ) ) {
+			/*if ( selectedEntity.toLowerCase() == "rferl" && currentTimeOnly.hasOwnProperty( countryName.toLowerCase() ) ) {
 				countryColor = CURRENT_TIME_MAIN_COLOR;
 				countrySelectedColor = shadeColor( countryColor, -50 );
 				countryRolloverColor = shadeColor( countryColor, -30 );
-			}
+			}*/
 
 			return {
 				id: countriesByName[ countryName ].ammapCode,
