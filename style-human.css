@@ -3653,7 +3653,7 @@ svg {
 
 .wp-caption-text, .bbg__article-header__caption, .bbg-banner__cutline {
   color: #323a45;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-family: Georgia, serif;
   font-size: 1.2rem;
   font-style: italic;
   font-weight: 300;

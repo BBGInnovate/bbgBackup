@@ -27,7 +27,7 @@
 .wp-caption-text {
 	color: $color-gray-dark;
 	font: {
-		family: $font-serif;
+		family: Georgia, serif; // editing to fix font rendering issue on Windows machines
 		size: $caption-font-size;
 		style: italic;
 		weight: $font-light;
@@ -77,7 +77,7 @@
 				right: auto;
 				left: auto;
 			};
-			max-width: 300px; 
+			max-width: 300px;
 		}
 
 		.size-medium {
