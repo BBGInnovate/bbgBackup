@@ -7505,7 +7505,9 @@ section.usa-section.bbg-banner__section {
 .page-id-37373 .bbg__ribbon--thin,
 .burke_candidate-template-default .bbg__ribbon--thin,
 .page-id-37417 .bbg__ribbon--thin {
-  background-color: #7aa3aa;
+  background-color: #999;
+  background-image: url(img/bg-pattern_burke.png);
+  background-blend-mode: soft-light;
 }
 .page-template-page-burke .bbg__ribbon--thin h2,
 .page-template-page-burke .bbg__ribbon--thin .bbg__announcement__headline,

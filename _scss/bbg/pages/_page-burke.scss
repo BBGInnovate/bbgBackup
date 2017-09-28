@@ -23,7 +23,10 @@
 	}
 
 	.bbg__ribbon--thin {
-		background-color: #7aa3aa;
+		// background-color: #7aa3aa;
+		background-color: #999;
+		background-image: url(img/bg-pattern_burke.png);
+		background-blend-mode: soft-light;
 
 		h2,
 		.bbg__announcement__headline,
