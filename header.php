@@ -47,7 +47,7 @@ if (! isset( $ogUrl ) ) {
 	$ogUrl = get_permalink();
 }
 
-$squareLogo = "/img/logo-agency-square.png";
+$squareLogo = "/img/logo-refresh.png";
 
 /* remove smart quotes from title */
 //$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);
