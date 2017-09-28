@@ -47,6 +47,8 @@ if (! isset( $ogUrl ) ) {
 	$ogUrl = get_permalink();
 }
 
+$squareLogo = "/img/logo-agency-square.png";
+
 /* remove smart quotes from title */
 //$ogTitle = iconv('UTF-8', 'ASCII//TRANSLIT', $ogTitle);
 $ogTitle = convertSmartQuotes($ogTitle);
@@ -309,7 +311,7 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 
 				<div class="bbg-header__container">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
-						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
+						<img src="<?php echo get_template_directory_uri() . "/$logo-agency-square"; ?>/img/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
 						<h1 class="bbg-header__site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
 					</a>
 
