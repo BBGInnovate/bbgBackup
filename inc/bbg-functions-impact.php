@@ -90,18 +90,24 @@
 		
 
 		if (count($impacts['inform'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . get_category_link($informCategoryID) . '">INFORM</a></h3>';
+			//https://www.bbg.gov/category/impact/inform/
+			$informLink = "/category/impact/inform/";
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . $informLink . '">INFORM</a></h3>';
 			$s .= "<p>$informDesc</p>";
 			$s .= oneImpactStory($impacts['inform'][0]);
 		} 
 		if (count($impacts['engage'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'. get_category_link($engageCategoryID) . '">ENGAGE</a></h3>';	
+			//https://www.bbg.gov/category/impact/engage,inform/
+			$engageLink = "/category/impact/engage,inform/";
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="'. $engageLink . '">ENGAGE</a></h3>';	
 			$s .= "<p>$engageDesc</p>";		
 			$s .= oneImpactStory($impacts['engage'][0]);
 
 		} 
 		if (count($impacts['be-influential'])) {
-			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . get_category_link($influentialCategoryID) . '">BE INFLUENTIAL</a></h3>';
+			//https://www.bbg.gov/category/impact/be-influential,engage,inform/
+			$beInfluentialLink = "/category/impact/be-influential,engage,inform/";
+			$s .= '<h3 class="bbg__about__grandchild__title"><a href="' . $beInfluentialLink . '">BE INFLUENTIAL</a></h3>';
 			$s .= "<p>$beInfluentialDesc</p>";
 			$s .= oneImpactStory($impacts['be-influential'][0]);
 		}
