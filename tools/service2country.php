@@ -10,6 +10,7 @@
     	To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
 
         Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
+        RFERL Current Time	Estonia,Georgia,Israel,Kazakhstan,Kyrgyzstan,Latvia,Lithuania,Moldova,Russia,Tajikistan,Ukraine
 */
 
 require ('../../../../wp-load.php');
@@ -39,7 +40,6 @@ RFERL Balkan	Bosnia and Herzegovina,Kosovo,Macedonia,Montenegro,Serbia
 RFERL Balkan (Albanian)	Bosnia and Herzegovina,Kosovo,Macedonia,Montenegro,Serbia
 RFERL Balkan (Macedonian)	Bosnia and Herzegovina,Kosovo,Macedonia,Montenegro,Serbia
 RFERL Belarus	Belarus
-RFERL Current Time	Estonia,Georgia,Israel,Kazakhstan,Kyrgyzstan,Latvia,Lithuania,Moldova,Russia,Tajikistan,Ukraine
 Radio Farda	Iran
 RFERL Georgian	Georgia
 RFERL Kazakh	Kazakhstan

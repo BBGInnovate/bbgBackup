@@ -7,6 +7,7 @@
     Description: We store language services in a custom taxonomy. To keep the data model simple, we duplicate a language service if it serves content in more than one language. This scirpt associates each language service with its website by filling out the value for the language_service_site_url custom field
 
 	Data Source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. I compared that list of language services to the publicly available lists of websites to come up with this list.
+	RFERL Current Time	http://www.currenttime.tv/
 
 */
 
@@ -37,7 +38,6 @@ RFERL Balkan	www.slobodnaevropa.org
 RFERL Balkan (Albanian)	www.evropaelire.org
 RFERL Balkan (Macedonian)	www.slobodnaevropa.mk
 RFERL Belarus	http://www.svaboda.org/
-RFERL Current Time	http://www.currenttime.tv/
 RFERL English	http://www.rferl.org/
 Radio Farda	http://www.radiofarda.com/
 RFERL Georgian	http://www.tavisupleba.org/

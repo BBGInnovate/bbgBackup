@@ -10,7 +10,7 @@
        	Note that websites are also associated with Language Services. To keep the data model simple and in a format that could be managed with WordPress's built in taxonomy and custom field capabilities, we elected to duplicate language services when they have more than one website. For instance, many RFERL services have sites in both their native language as well as Russian.
 
        	Note that RFA English and RFERL English are websites, but they aren't really language services.
-			
+			RFERL/RFERL Current Time
     */
 ?>
 
@@ -44,7 +44,6 @@ RFERL/RFERL Balkan
 RFERL/RFERL Balkan (Albanian)
 RFERL/RFERL Balkan (Macedonian)
 RFERL/RFERL Belarus
-RFERL/RFERL Current Time
 RFERL/RFERL English
 RFERL/Radio Farda
 RFERL/RFERL Georgian
