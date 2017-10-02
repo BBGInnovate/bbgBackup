@@ -41,7 +41,8 @@ function getNetworkExcerptJS() {
 	wp_reset_postdata();
 	$e['bbg'] = array(
 		'description' => 'The five networks of the BBG are trusted news sources, providing high-quality journalism and programming to more than 278 million people each week. They provide international, U.S. and local news in more than 100 countries and in 61 languages.',
-		'url' => 'https://www.bbg.gov'
+		'url' => 'https://www.bbg.gov',
+		'fullName' => 'Broadcasting Board of Governors'
 	);
 	$s = "<script type='text/javascript'>\n";
 	$entityJson = json_encode(new ArrayValue($e), JSON_PRETTY_PRINT);
