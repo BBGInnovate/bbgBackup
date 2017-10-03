@@ -167,7 +167,11 @@ foreach( $countries as $str ) {
 		$post_id = wp_insert_post( $post_information );
 		echo "created id " . $post_id . "<BR>";
 		flush();
-		update_field('field_58b4b1001b5df', $countryCode, $post_id); //threats_to_press_country = field_5890db9048521
+		//NOTE: the value of field__ can change in different environments (not always)
+
+		//staging - field_58b4c500bf80d
+		//prod - field_58b4b1001b5df
+		update_field('field_58b4c500bf80d', $countryCode, $post_id); 
 		usleep(1100000); //we do this to make sure the timestamps are created in our desired order
 	}
 
