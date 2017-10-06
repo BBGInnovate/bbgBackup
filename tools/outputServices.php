@@ -11,10 +11,101 @@
 
         Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
 */
+?>
 
+<style>
+	h1,h2 { margin-bottom:0px; }
+	/*div:nth-of-type(odd) {
+	    background: #e0e0e0;
+	}*/
+</style>
+
+<a href="outputCountries.php">View By Country</a> | <a href="outputServices.php">View By Service</a> <BR />
+
+<?php
 require ('../../../../wp-load.php');
-function getMapData() {
 
+
+$taxonomies = get_terms( array(
+    'taxonomy' => 'language_services',
+    'hide_empty' => false
+) );
+
+
+if ( !empty($taxonomies) ) :
+    foreach( $taxonomies as $category ) {
+        if( $category->parent == 0 ) {
+            echo "<div class='entity'><h1>" . $category->name . "</h1>";
+           
+            $the_query = new WP_Query( array(
+			    'post_type' => 'country',
+			    'post_status' => array('publish'),
+			    'tax_query' => array(
+			        array (
+			            'taxonomy' => 'language_services',
+			            'field' => 'term_id',
+			            'terms' => $category->term_id
+			        )
+			    ),
+			) );
+
+            echo "<ul>";
+			while ( $the_query->have_posts() ) :
+			    $the_query->the_post();
+			    echo "<li>" .  get_the_title() . "</li>";
+			    // Show Posts ...
+			endwhile;
+
+
+            foreach( $taxonomies as $subcategory ) {
+                if($subcategory->parent == $category->term_id) {
+               	 	
+                	$termMeta = get_term_meta( $subcategory->term_id );
+				    $siteName = "";
+					$siteUrl = "";
+					if ( count( $termMeta ) ) {
+						$siteName = $termMeta['language_service_site_name'][0];
+						$siteUrl = $termMeta['language_service_site_url'][0];
+					}
+
+               	 	echo "<h2>" . $subcategory->name . " <span style='font-size:12px;'>$siteUrl</a></h2>";
+               	 	
+
+					$the_query = new WP_Query( array(
+					    'post_type' => 'country',
+					    'post_status' => array('publish'),
+					    'tax_query' => array(
+					        array (
+					            'taxonomy' => 'language_services',
+					            'field' => 'term_id',
+					            'terms' => $subcategory->term_id
+					        )
+					    ),
+					) );
+
+
+
+					echo "<ul>";
+					while ( $the_query->have_posts() ) :
+					    $the_query->the_post();
+
+					    echo "<li>" .  get_the_title() . "</li>";
+					    // Show Posts ...
+					endwhile;
+					echo "</ul>";
+               	}
+            }
+            echo "</ul></div><hr />";
+
+        }
+    }
+endif;
+
+
+die();
+
+
+function getMapData() {
 	$entities = array(
 		'voa' => array(
 			'countries' => array()

@@ -11,7 +11,15 @@
 
         Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
 */
+?>
 
+<style>
+	h1,h2 { margin-bottom:0px; }
+</style>
+
+<a href="outputCountries.php">View By Country</a> | <a href="outputServices.php">View By Service</a> <BR />
+
+<?php 
 require ('../../../../wp-load.php');
 function getMapData() {
 
@@ -117,25 +125,23 @@ function getMapData() {
 		);
 	}
 	
-	echo "<ul>";
 	foreach ($countries as $c) {
-		echo "<li><strong style='font-size:22px;'>" . $c['countryName'] . "</strong></li>";
+		echo "<h1><strong style='font-size:28px;'>" . $c['countryName'] . "</strong></h1>";
 		$networks = $c['networks'];
 		echo "<ul>";
 		for ($j = 0; $j < count($networks); $j++) {
-			echo "<li>" . $networks[$j]['networkName'] . "</li>";
+			echo "<li style='font-size:22px;'>" . $networks[$j]['networkName'] . "</li>";
 			$services = $networks[$j]['services'];
 			echo "<ul>";
 			for ($k=0; $k < count($services); $k++) {
 				$s = $services[$k];
-				echo "<li>" . $s . "</li>";
+				echo "<li style='font-size:18px;'>" . $s . " <span style='font-size:12px;'>" . $servicesByName[$s]['siteUrl'].  "</span></li>";
 			}
 			echo "</ul>";
 		}
 		echo "</ul>";
 		echo "<BR>";
 	}
-	echo "</ul>";
 
 	if (isset($_GET['json'])) {
 		echo "<pre>";
