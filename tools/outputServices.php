@@ -60,6 +60,9 @@ if ( !empty($taxonomies) ) :
             $the_query = new WP_Query( array(
 			    'post_type' => 'country',
 			    'post_status' => array('publish'),
+			     'posts_per_page' => -1,
+			     'orderby' => 'title', 
+			     'order' => 'ASC',
 			    'tax_query' => array(
 			        array (
 			            'taxonomy' => 'language_services',
@@ -93,6 +96,9 @@ if ( !empty($taxonomies) ) :
 					$the_query = new WP_Query( array(
 					    'post_type' => 'country',
 					    'post_status' => array('publish'),
+					    'posts_per_page' => -1,
+					    'orderby' => 'title', 
+			     		'order' => 'ASC',
 					    'tax_query' => array(
 					        array (
 					            'taxonomy' => 'language_services',
