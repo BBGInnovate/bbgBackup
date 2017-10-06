@@ -144,3 +144,5 @@ function getMapData() {
 	}
 }?>
 
+<?php getMapData(); ?>
+
