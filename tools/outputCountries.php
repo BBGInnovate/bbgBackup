@@ -13,11 +13,31 @@
 */
 ?>
 
+
+<html><head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head><body style='padding:10px'>
+
+<div style='font-size:20px;'><a href="outputCountries.php">View By Country</a> | <a href="outputServices.php">View By Service</a> </div>
+
+<h1>Operations Map Data Reference - By Country</h1><BR />
+<div class="alert alert-info" role="alert">
+This page dynamically lists the data that drives the display of the operations map. It lists each network and language service that targets a given country. It is intended only for reference / data confirmation and not external users.
+</div>
+
 <style>
 	h1,h2 { margin-bottom:0px; }
+	h1 { font-size:26px; }
+	h2 {font-size:20px;}
+
+	/*div:nth-of-type(odd) {
+	    background: #e0e0e0;
+	}*/
 </style>
 
-<a href="outputCountries.php">View By Country</a> | <a href="outputServices.php">View By Service</a> <BR />
+
 
 <?php 
 require ('../../../../wp-load.php');
@@ -126,16 +146,16 @@ function getMapData() {
 	}
 	
 	foreach ($countries as $c) {
-		echo "<h1><strong style='font-size:28px;'>" . $c['countryName'] . "</strong></h1>";
+		echo "<h1>" . $c['countryName'] . "</h1>";
 		$networks = $c['networks'];
 		echo "<ul>";
 		for ($j = 0; $j < count($networks); $j++) {
-			echo "<li style='font-size:22px;'>" . $networks[$j]['networkName'] . "</li>";
+			echo "<li >" . $networks[$j]['networkName'] . "</li>";
 			$services = $networks[$j]['services'];
 			echo "<ul>";
 			for ($k=0; $k < count($services); $k++) {
 				$s = $services[$k];
-				echo "<li style='font-size:18px;'>" . $s . " <span style='font-size:12px;'>" . $servicesByName[$s]['siteUrl'].  "</span></li>";
+				echo "<li >" . $s . " <span style='font-size:12px; margin-left:20px; '>" . $servicesByName[$s]['siteUrl'].  "</span></li>";
 			}
 			echo "</ul>";
 		}
