@@ -191,6 +191,8 @@ get_header();
 					}
 					wp_reset_query();
 					// END: Create an array of three random IDs of burke candidate winners from this year
+					//
+					// INSERT SHORTCODE FOR BURKE CANDIDATES SMART SLIDER
 					echo do_shortcode('[smartslider3 slider=3]');
 				?>
 			</section>
