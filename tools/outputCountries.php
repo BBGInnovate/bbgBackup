@@ -11,7 +11,35 @@
 
         Data source: We asked the Office of Policy and Research to provide us a list of countries that each of our five networks target, and also which language services are used to target each country. 
 */
+?>
 
+
+<html><head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head><body style='padding:10px'>
+
+<div style='font-size:20px;'><a href="outputCountries.php">View By Country</a> | <a href="outputServices.php">View By Service</a> </div>
+
+<h1>Operations Map Data Reference - By Country</h1><BR />
+<div class="alert alert-info" role="alert">
+This page dynamically lists the data that drives the display of the operations map. It lists each network and language service that targets a given country. It is intended only for reference / data confirmation and not external users.
+</div>
+
+<style>
+	h1,h2 { margin-bottom:0px; }
+	h1 { font-size:26px; }
+	h2 {font-size:20px;}
+
+	/*div:nth-of-type(odd) {
+	    background: #e0e0e0;
+	}*/
+</style>
+
+
+
+<?php 
 require ('../../../../wp-load.php');
 function getMapData() {
 
@@ -117,167 +145,30 @@ function getMapData() {
 		);
 	}
 	
-	echo "<ul>";
 	foreach ($countries as $c) {
-		echo "<li><strong style='font-size:22px;'>" . $c['countryName'] . "</strong></li>";
+		echo "<h1>" . $c['countryName'] . "</h1>";
 		$networks = $c['networks'];
 		echo "<ul>";
 		for ($j = 0; $j < count($networks); $j++) {
-			echo "<li>" . $networks[$j]['networkName'] . "</li>";
+			echo "<li >" . $networks[$j]['networkName'] . "</li>";
 			$services = $networks[$j]['services'];
 			echo "<ul>";
 			for ($k=0; $k < count($services); $k++) {
 				$s = $services[$k];
-				echo "<li>" . $s . "</li>";
+				echo "<li >" . $s . " <span style='font-size:12px; margin-left:20px; '>" . $servicesByName[$s]['siteUrl'].  "</span></li>";
 			}
 			echo "</ul>";
 		}
 		echo "</ul>";
 		echo "<BR>";
 	}
-	echo "</ul>";
 
 	if (isset($_GET['json'])) {
 		echo "<pre>";
 		var_dump($countries);
 		echo "</pre>";
 	}
-	die();
-	
-
-	wp_reset_postdata();
-	wp_reset_query();
-
-	$countryStr = json_encode(new ArrayValue($countries), JSON_PRETTY_PRINT);
-	$entityStr = json_encode(new ArrayValue($entities), JSON_PRETTY_PRINT);
-	$serviceStr = json_encode(new ArrayValue($servicesByName), JSON_PRETTY_PRINT);
-
-	echo "<script type='text/javascript'>\n";
-	echo "entitiesByName = $entityStr\n";
-	echo "servicesByName = $serviceStr\n";
-	echo "countriesByName = $countryStr\n";
-	echo "</script>";
-
 }?>
 
 <?php getMapData(); ?>
 
-<script>
-for (serviceName in servicesByName) {
-	if (servicesByName.hasOwnProperty(serviceName)) {
-		s = servicesByName[serviceName];
-		if (s.parent != "") {
-			entitiesByName[s.parent.toLowerCase()]['services'].push(serviceName);
-		}
-	}
-}
-</script>
-
-	<style>
-	/*temp styles */
-	</style>
-
-	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/vendor/ammap.js'></script>
-	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/mapdata-worldLow.js'></script>
-	<script type='text/javascript' src='<?php echo get_template_directory_uri(); ?>/js/map-entity-reach.js'></script>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<div class="usa-grid-full" style="margin-bottom: 5rem;">
-				<div class="usa-grid">
-					<header class="page-header">
-
-						<?php if($post->post_parent) {
-							//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-							$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-							$parent_link = get_permalink($post->post_parent);
-						?>
-						<h5 class="bbg__label--mobile large"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-
-						<?php } ?>
-
-						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-
-					</header><!-- .page-header -->
-					<h3 id="site-intro" class="usa-font-lead"><?php echo get_the_excerpt(); ?> <!--<a href="/who-we-are/" class="bbg__read-more">LEARN MORE »</a>--></h3>
-				</div><!-- div.usa-grid -->
-			</div><!-- div.usa-grid-full -->
-
-			<section class="usa-section">
-
-				<div class="usa-grid">
-					<div class="btn-group entity-buttons" role="group" aria-label="..." style="display: inline; clear: none;">
-						<button type="button" title="BBG" class=" btn-default bbg"><span class="bbg__map__button-text">BBG</span></button><!--
-						--><button type="button" title="VOA" class=" btn-default voa"><span class="bbg__map__button-text">VOA</span></button><!--
-						--><button type="button" title="RFA" class=" btn-default rfa"><span class="bbg__map__button-text">RFA</span></button><!--
-						--><button type="button" title="RFERL" class=" btn-default rferl"><span class="bbg__map__button-text">RFERL</span></button><!--
-						--><button type="button" title="OCB" class=" btn-default ocb"><span class="bbg__map__button-text">OCB</span></button><!--
-						--><button type="button" title="MBN" class=" btn-default mbn"><span class="bbg__map__button-text">MBN</span></button>
-					</div>
-					<!--<h5 class="bbg__map__entity-buttons__instructions" style=""> (Select a network) </h5>-->
-				</div>
-
-
-				<div class="usa-grid">
-					<div class="usa-grid-full" style="/*background-color: #F1F1F1;*/">
-						<div class="usa-width-two-thirds bbg__map-area">
-							<div class="bbg__map-area__container " style="position: relative; background-color: #FFF;">
-								<div id="chartdiv"></div>
-								 <h4 class="country-label-tooltip"><span id="country-name"></span></h4>
-								 <h4 class="service-label"></h4>
-							</div>
-							<select id="country-list">
-								<option value="0">Select a country...</option>
-							</select>
-						</div>
-						<div class="usa-width-one-third bbg__map-area__text" style="">
-							<div id="countryDisplay">
-								<h2 id="countryName" class="bbg__map-area__country-name">Country Name</h2>
-								<div class="country-details">
-									<div style="display:none;" id="languagesSupported">
-										<p><strong>Languages supported: </strong><span class="languages-served"></span></p>
-									</div>
-								</div>
-								<div class="service-block"></div>
-							</div>
-
-							<div id="entityDisplay">
-								<h2 id="entityName" class="bbg__map-area__country-name">Entity Name</h2>
-								<div class="bbg__map__entity-details">
-									<!-- <p class="detail"></p> -->
-								</div>
-
-								<div id="serviceDropdownBlock">
-									<select id="service-list">
-										<option value="0"></option><!-- Select an [entity] service -->
-									</select>
-									<button id="view-on-map">View on map</button>
-									<button id="submit">Visit site</button>
-								</div>
-								<div id="globalBlock">
-								</div>
-
-							</div>
-
-							<div id="languageServiceDisplay">
-
-							</div>
-
-						</div><!-- div.usa-width-one-third -->
-					</div><!-- .usa-grid-full -->
-				</div><!-- div.usa-grid -->
-
-			</section><!-- map -->
-
-
-
-			<section id="" class="usa-section usa-grid" style="margin-bottom: 2rem;">
-				<?php /* echo $pageContent;*/ ?>
-			</section>
-
-			</div><!-- .usa-grid-full -->
-		</main><!-- #main -->
-	
-
-
-?>
