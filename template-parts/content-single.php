@@ -371,7 +371,8 @@ endif;
 
 // Displaying award info
 $awardCategoryID = get_cat_id('Award');
-$isAward = ( 'Award' == get_post_type() );
+$isAward = ( 'award' == get_post_type() );
+echo "<!---this is an award-->";
 
 
 /* Displaying award info -- not implemented yet*/
@@ -582,7 +583,7 @@ $hideFeaturedImage = FALSE;
 				if ( $isAward ) {
 					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
 					echo '<div class="bbg__sidebar__primary">';
-					echo getAwardInfo(get_the_ID(), true);	//getAwardInfo is found in bbg-functions-awards.php
+						echo getAwardInfo( get_the_ID(), true );	//getAwardInfo is found in bbg-functions-awards.php
 					echo '</div>';
 				}
 
