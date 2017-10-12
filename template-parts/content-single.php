@@ -579,12 +579,12 @@ $hideFeaturedImage = FALSE;
 					echo "</div>";
 				}
 
-				if ( $isAward ) {
+				/*if ( $isAward ) {
 					echo "<h5 class='bbg__label small bbg__sidebar__download__label'>About the Award</h5>";
 					echo '<div class="bbg__sidebar__primary">';
 					echo getAwardInfo(get_the_ID(), true);	//getAwardInfo is found in bbg-functions-awards.php
 					echo '</div>';
-				}
+				}*/
 
 				if ( $includeSidebar ) {
 					echo $sidebar;
