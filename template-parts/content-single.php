@@ -528,29 +528,29 @@ $hideFeaturedImage = FALSE;
 				}
 
 				/* START AWARD INFO */
-				if ($isAward) {
-					$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
-					if ( isset($awardDescription) && $awardDescription!= "" ) {
-						$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
-						$awardOrganization = $awardOrganization -> name;
+				// if ($isAward) {
+				// 	$awardDescription = get_post_meta( get_the_ID(), 'standardpost_award_description', true );
+				// 	if ( isset($awardDescription) && $awardDescription!= "" ) {
+				// 		$awardOrganization = get_field( 'standardpost_award_organization', get_the_ID(), true);
+				// 		$awardOrganization = $awardOrganization -> name;
 
-						$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
-						$awardLogoImage = "";
-						if ( $awardLogo ){
-							$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
-							$awardLogoImage = $awardLogoImage[0];
-							// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
-							$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
-						}
+				// 		$awardLogo = get_post_meta( get_the_ID(), 'standardpost_award_logo', true );
+				// 		$awardLogoImage = "";
+				// 		if ( $awardLogo ){
+				// 			$awardLogoImage = wp_get_attachment_image_src( $awardLogo , 'small-thumb-uncropped');
+				// 			$awardLogoImage = $awardLogoImage[0];
+				// 			// $awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__sidebar__primary-image"/>';
+				// 			$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
+				// 		}
 
-						echo '<div class="usa-grid-full bbg__contact-box">';
-							echo '<h3>About ' . $awardOrganization . '</h3>';
-							echo $awardLogoImage;
-							echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
-						echo '</div>';
-					}
-					/* END AWARD INFO */
-				}
+				// 		echo '<div class="usa-grid-full bbg__contact-box">';
+				// 			echo '<h3>About ' . $awardOrganization . '</h3>';
+				// 			echo $awardLogoImage;
+				// 			echo '<p><span class="bbg__tagline">' . $awardDescription . '</span></p>';
+				// 		echo '</div>';
+				// 	}
+				// 	/* END AWARD INFO */
+				// }
 
 
 				/* START CONTACT CARDS */
