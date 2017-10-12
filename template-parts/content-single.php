@@ -371,7 +371,7 @@ endif;
 
 // Displaying award info
 $awardCategoryID = get_cat_id('Award');
-$isAward = if( 'Award' == get_post_type() );
+$isAward = ( 'Award' == get_post_type() );
 
 
 /* Displaying award info -- not implemented yet*/
