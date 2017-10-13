@@ -165,7 +165,7 @@ get_header(); ?>
 								$burkeNetwork = $profile[ "burke_network" ];
 								$burkeService = $profile[ "burke_service" ];
 								if ( $burkeService ) {
-									$b .= " of " . $burkeNetwork . "’s" . $burkeService;
+									$b .= " of " . $burkeNetwork . "’s " . $burkeService;
 								} else {
 									$b .= " of " . $burkeNetwork;
 								}
@@ -181,8 +181,8 @@ get_header(); ?>
 							echo "</div>";
 						}
 					?>
-class="bbg__sidebar__primary-headline"
-					<?php wp_reset_postdata();?>
+<!-- class="bbg__sidebar__primary-headline"
+ -->					<?php wp_reset_postdata();?>
 				</div><!-- .bbg__article-sidebar -->
 			</div><!-- .usa-grid -->
 		</article><!-- #post-## -->
