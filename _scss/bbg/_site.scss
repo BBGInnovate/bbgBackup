@@ -200,7 +200,7 @@ img,
 }
 
 .bbg__label--burke {
-	background-color: $color-primary-alt-light; // light alternate blue
+	background-color: $color-primary-alt; // alternate blue
 }
 
 
@@ -407,6 +407,14 @@ article {
             top: 0;
             bottom: $site-margins-medium;
         }
+    }
+
+    .bbg__article-sidebar__emphasis--italic {
+    	color: $color-gray;
+    	font: {
+    		size: $base-font-size;
+    		style: italic;
+    	}
     }
 
     .bbg__article-sidebar__promo-photo {
