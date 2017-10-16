@@ -5509,6 +5509,10 @@ img > a:focus,
   background-color: #981b1e;
 }
 
+.bbg__label--burke {
+  background-color: #9bdaf1;
+}
+
 .bbg__file-size {
   color: #323a45;
   font-size: 75%;

@@ -188,15 +188,19 @@ img,
 }
 
 .bbg__label--rumor {
-    background-color: $color-primary; // dark blue
+    background-color: $color-primary; // main blue
 }
 
 .bbg__label--myth {
-    background-color: $color-gray-medium; // dark blue
+    background-color: $color-gray-medium; // medium gray
 }
 
 .bbg__label--untruth {
-    background-color: $color-secondary-darkest; // dark blue
+    background-color: $color-secondary-darkest; // darkest red
+}
+
+.bbg__label--burke {
+	background-color: $color-primary-alt-light; // light alternate blue
 }
 
 
