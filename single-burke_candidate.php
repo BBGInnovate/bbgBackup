@@ -164,52 +164,110 @@ get_header(); ?>
 				</div><!-- .entry-content -->
 
 				<div class="bbg__article-sidebar">
-					<h3 class='bbg__label'>Nominations</h3>
 					<?php
+						// output sidebar header
+						if ( $numRows > 1 ) { // plurarize the header if more than 1 award
+							echo "<h3 class='bbg__label'>About the awards</h3>";
+						} else { // otherwise leave single
+							echo "<h3 class='bbg__label'>About the award</h3>";
+						}
+						// loop through all award entries
 						foreach ( array_values($burkeProfileObj) as $i => $profile ) {
 							$i = $i + 1; // add a number to the item key to start at 1
 							$b = ""; // create a variable for all the award content
 
 							echo "<div id='award-$i' class='bbg__sidebar__primary'>";
 								// output year and winner label
-								$b .=  '<h3 class="bbg__label small">' . $profile[ "burke_ceremony_year" ];
+								$b .=  '<h3 class="bbg__label small bbg__label--burke">' . $profile[ "burke_ceremony_year" ];
 									if ( $profile[ "burke_is_winner" ] ) {
-										$b .= ' <span class="usa-label bbg__label--burke">Winner</span>';
+										$b .= ' Winner';
+									} else {
+										$b .= ' Nominee';
 									}
 								$b .= '</h3>';
 								// output reason for award
 								$b .= "<p class='bbg__article-sidebar__emphasis--italic'>" . $profile[ "burke_reason" ] . "</p>";
 								$b .= "<p>";
-									// output work title if available
-									if ( $profile[ "burke_occupation" ] ) {
-										$b .= "<strong>Honoree:</strong> " . $profile[ "burke_occupation" ] . "<br/>";
+								// convert network name to uppercase
+								$burkeNetwork = strtoupper( $profile[ "burke_network" ] );
+									// add backward slash to RFERL
+									if ( $burkeNetwork == "RFERL" ) {
+										$burkeNetwork = "RFE/RL";
 									}
-									// convert network name to uppercase
-									$burkeNetwork = strtoupper( $profile[ "burke_network" ] );
-										// add backward slash to RFERL
-										if ( $burkeNetwork == "RFERL" ) {
-											$burkeNetwork = "RFE/RL";
-										}
+									// check for service and occupation
 									$burkeService = $profile[ "burke_service" ];
-									// output network and service name (if latter is available)
-									if ( $burkeService ) {
-										$b .= "<strong>Recognized by:</strong> " . $burkeNetwork . "’s " . $burkeService . "<br/>";
-									} else {
-										$b .= "<strong>Recognized by:</strong> " . $burkeNetwork . "<br/>";
+									$burkeTitle = $profile[ "burke_occupation" ];
+									// output service name and occupation (if set)
+									if ( $burkeService && $burkeTitle ) {
+										// output both, separate with comma
+										$b .= "<strong>Honored as:</strong> " . $burkeService . ", " . $burkeTitle . "<br/>";
+									} elseif ( $burkeService && !$burkeTitle ) {
+										// output service only
+										$b .= "<strong>Honored as:</strong> " . $burkeService . "<br/>";
+									} elseif ( $burkeTitle && !$burkeService ) {
+										// output title only
+										$b .= "<strong>Honored as:</strong> " . $burkeTitle . "<br/>";
 									}
+									// output network name
+									$b .= "<strong>Network:</strong> " . $burkeNetwork . "<br/>";
 								$b .= "</p>";
 								// set variable for sample work URL repeater
 								$burkeWorkObj = $profile[ "burke_sample_works" ];
+								// create variables to separate link types
+								$workLinks = array();
+								$otherLinks = array();
 								// output links to work
 								if ( $burkeWorkObj ) {
-									$b .= "<h4>Award-winning work</h4>";
-									$b .= "<ul>";
-										// loop through URLs of award-winning work
-										foreach( $burkeWorkObj as $burkeWorkURL ) {
-											// var_dump( $burkeWorkURL );
-											$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $burkeWorkURL[ "burke_sample_works_link" ] . '">' . $burkeWorkURL[ "burke_sample_works_title" ] . ' »</a></li>';
+									$links = count( $burkeWorkObj );
+									// populate order
+									for ( $l = 0; $l + 1 <= $links; $l++ ) {
+										// check link type
+										$linkType = $burkeWorkObj[$l][ 'burke_sample_works_type' ];
+										// add to link type array
+										if ( $linkType == 'work' ) {
+										 	$workLinks[] = array (
+									 						'type' => $linkType,
+									 						'title' => $burkeWorkObj[$l][ 'burke_sample_works_title' ],
+									 						'url' => $burkeWorkObj[$l][ 'burke_sample_works_link' ]
+									 						);
+										} elseif ( $linkType == 'related' ) {
+											$otherLinks[] = array (
+									 						'type' => $linkType,
+									 						'title' => $burkeWorkObj[$l][ 'burke_sample_works_title' ],
+									 						'url' => $burkeWorkObj[$l][ 'burke_sample_works_link' ]
+									 						);
 										}
-									$b .= "</ul>";
+									}
+									// output work links header
+									if ( count( $workLinks ) == 1 && $workLinks[0]['url'] ) { // if only one singular
+										$b .= "<h4>Award-winning work</h4>";
+										$b .= '<p class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $workLinks[0]["url"] . '">' . $workLinks[0]["title"] . ' »</a></p>';
+
+									} elseif ( count( $workLinks ) > 1 ) { // if 1+ pluralize
+										$b .= "<h4>Award-winning works</h4>";
+										$b .= "<ul style='margin-bottom:1rem;'>";
+											// loop through URLs of award-winning work
+											foreach( $workLinks as $workURL ) {
+												// var_dump( $burkeWorkURL );
+												$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $workURL[ "url" ] . '">' . $workURL[ "title" ] . ' »</a></li>';
+											}
+										$b .= "</ul>";
+									}
+									// output other links header
+									if ( count( $otherLinks ) == 1 && $otherLinks[0]['url'] ) { // if only one singular
+										$b .= "<h4>Related link</h4>";
+										$b .= '<p class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $otherLinks[0]["url"] . '">' . $otherLinks[0]["title"] . ' »</a></p>';
+
+									} elseif ( count( $otherLinks ) > 1 ) { // if 1+ pluralize
+										$b .= "<h4>Related links</h4>";
+										$b .= "<ul style='margin-bottom:1rem;'>";
+											// loop through URLs of award-winning work
+											foreach( $otherLinks as $otherURL ) {
+												// var_dump( $burkeWorkURL );
+												$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $otherURL[ "url" ] . '">' . $otherURL[ "title" ] . ' »</a></li>';
+											}
+										$b .= "</ul>";
+									}
 								}
 								// output related profiles
 								$burkeRelated = $profile [ "burke_associated_profiles" ];
