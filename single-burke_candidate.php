@@ -166,51 +166,74 @@ get_header(); ?>
 				<div class="bbg__article-sidebar">
 					<?php
 						// output sidebar header
-						if ( $numRows > 1 ) { // plurarize the header if more than 1 award
+						/*if ( $numRows > 1 ) { // plurarize the header if more than 1 award
 							echo "<h3 class='bbg__label'>About the awards</h3>";
 						} else { // otherwise leave single
 							echo "<h3 class='bbg__label'>About the award</h3>";
-						}
+						}*/
 						// loop through all award entries
-						foreach ( array_values($burkeProfileObj) as $i => $profile ) {
+						foreach ( array_values( $burkeProfileObj ) as $i => $profile ) {
 							$i = $i + 1; // add a number to the item key to start at 1
 							$b = ""; // create a variable for all the award content
+							// populate variables
+							$burkeTitle = $profile[ "burke_occupation" ]; // check for full title
+							$burkeNetwork = strtoupper( $profile[ "burke_network" ] ); // convert network name to uppercase
+							if ( $burkeNetwork == "RFERL" ) { // add backward slash to RFERL
+								$burkeNetwork = "RFE/RL";
+							}
+							// check for language service
+							$burkeService = $profile[ "burke_service" ];
 
+							// output all award details
 							echo "<div id='award-$i' class='bbg__sidebar__primary'>";
 								// output year and winner label
-								$b .=  '<h3 class="bbg__label small bbg__label--burke">' . $profile[ "burke_ceremony_year" ];
+								$b .=  '<h3 class="bbg__label">' . $profile[ "burke_ceremony_year" ];
 									if ( $profile[ "burke_is_winner" ] ) {
 										$b .= ' Winner';
 									} else {
 										$b .= ' Nominee';
 									}
 								$b .= '</h3>';
+
+								$b .= '<p>';
+									// output honoree details
+									if ( $burkeTitle ) {
+										// output bold title
+										$b .= '<strong class="bbg__label--burke">' . $burkeTitle . '</strong><br/>';
+										// output network + service (if set)
+										if ( $burkeService ) {
+											$b .= $burkeNetwork . ', ' . $burkeService;
+										} else {
+											$b .= $burkeNetwork;
+										}
+									} else {
+										// output network + service (if set)
+										if ( $burkeService ) {
+											$b .= '<strong class="bbg__label--burke">' . $burkeNetwork . ', ' . $burkeService . '</strong>';
+										} else {
+											$b .= '<strong class="bbg__label--burke">' . $burkeNetwork . '</strong>';
+										}
+									}
+
+								$b .= "</p>";
+
 								// output reason for award
 								$b .= "<p class='bbg__article-sidebar__emphasis--italic'>" . $profile[ "burke_reason" ] . "</p>";
-								$b .= "<p>";
-								// convert network name to uppercase
-								$burkeNetwork = strtoupper( $profile[ "burke_network" ] );
-									// add backward slash to RFERL
-									if ( $burkeNetwork == "RFERL" ) {
-										$burkeNetwork = "RFE/RL";
-									}
-									// check for service and occupation
-									$burkeService = $profile[ "burke_service" ];
-									$burkeTitle = $profile[ "burke_occupation" ];
-									// output service name and occupation (if set)
-									if ( $burkeService && $burkeTitle ) {
-										// output both, separate with comma
-										$b .= "<strong>Honored as:</strong> " . $burkeService . ", " . $burkeTitle . "<br/>";
-									} elseif ( $burkeService && !$burkeTitle ) {
-										// output service only
-										$b .= "<strong>Honored as:</strong> " . $burkeService . "<br/>";
-									} elseif ( $burkeTitle && !$burkeService ) {
-										// output title only
-										$b .= "<strong>Honored as:</strong> " . $burkeTitle . "<br/>";
-									}
-									// output network name
-									$b .= "<strong>Network:</strong> " . $burkeNetwork . "<br/>";
-								$b .= "</p>";
+
+								// output related profiles
+								$burkeRelated = $profile [ "burke_associated_profiles" ];
+								// var_dump($burkeRelated);
+								if ( $burkeRelated ) {
+									$b .= "<h4>Recognized with</h4>";
+									$b .= "<ul class='usa-unstyled-list'>";
+										// loop through URLs of award-winning work
+										foreach( $burkeRelated as $burkeRelProfile ) {
+											// var_dump( $burkeRelProfile->guid );
+											$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $burkeRelProfile->guid . '">' . $burkeRelProfile->post_title . ' »</a></li>';
+										}
+									$b .= "</ul>";
+								}
+
 								// set variable for sample work URL repeater
 								$burkeWorkObj = $profile[ "burke_sample_works" ];
 								// create variables to separate link types
@@ -268,19 +291,6 @@ get_header(); ?>
 											}
 										$b .= "</ul>";
 									}
-								}
-								// output related profiles
-								$burkeRelated = $profile [ "burke_associated_profiles" ];
-								// var_dump($burkeRelated);
-								if ( $burkeRelated ) {
-									$b .= "<h4>Related Burke honorees</h4>";
-									$b .= "<ul class='usa-unstyled-list'>";
-										// loop through URLs of award-winning work
-										foreach( $burkeRelated as $burkeRelProfile ) {
-											// var_dump( $burkeRelProfile->guid );
-											$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $burkeRelProfile->guid . '">' . $burkeRelProfile->post_title . ' »</a></li>';
-										}
-									$b .= "</ul>";
 								}
 
 								echo $b;

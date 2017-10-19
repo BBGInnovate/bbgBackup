@@ -5511,6 +5511,7 @@ img > a:focus,
 
 .bbg__label--burke {
   color: #6A7C7D;
+  text-transform: uppercase;
 }
 
 .bbg__file-size {
