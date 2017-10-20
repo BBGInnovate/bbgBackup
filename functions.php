@@ -1280,7 +1280,8 @@ function order_post_objects_by_date( $args, $field, $post_id ) {
     $args['orderby'] = 'post_date';
     $args['post_status'] = array(
     	'publish',
-    	'future'
+    	'future',
+    	'pending'
     );
     return $args;
 }
