@@ -3,10 +3,10 @@
 .burke_candidate-template-default, //candidate detail page
 .page-id-37417 //full archive with every year
 {
-    background-color: #e4ebec;
+    background-color: $color-burke-light;
 
 	.usa-disclaimer {
-		background-color: #b2ccd1;
+		background-color: $color-burke-dark;
 	}
 
 	a {

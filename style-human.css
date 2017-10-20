@@ -5509,6 +5509,11 @@ img > a:focus,
   background-color: #981b1e;
 }
 
+.bbg__label--burke {
+  color: #6A7C7D;
+  text-transform: uppercase;
+}
+
 .bbg__file-size {
   color: #323a45;
   font-size: 75%;
@@ -5715,6 +5720,11 @@ article {
   font-size: 90%;
   margin-top: 0;
   margin-bottom: 1.5rem;
+}
+.bbg__article-sidebar .bbg__article-sidebar__emphasis--italic {
+  color: #5b616b;
+  font-size: 1.6rem;
+  font-style: italic;
 }
 .bbg__article-sidebar .bbg__article-sidebar__promo-photo {
   float: left;
