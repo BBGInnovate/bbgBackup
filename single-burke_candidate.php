@@ -182,7 +182,7 @@ get_header(); ?>
 								$burkeNetwork = "RFE/RL";
 							}
 							// check for language service
-							$burkeService = $profile[ "burke_service" ];
+							$burkeService = $profile[ "burke_service" ] . ' Service';
 
 							// output all award details
 							echo "<div id='award-$i' class='bbg__sidebar__primary'>";
@@ -229,7 +229,7 @@ get_header(); ?>
 										// loop through URLs of award-winning work
 										foreach( $burkeRelated as $burkeRelProfile ) {
 											// var_dump( $burkeRelProfile->guid );
-											$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . $burkeRelProfile->guid . '">' . $burkeRelProfile->post_title . ' »</a></li>';
+											$b .= '<li class="bbg__sidebar__primary-headline"><a target="_blank" href="' . get_post_permalink( $burkeRelProfile -> ID ) . '">' . $burkeRelProfile->post_title . ' »</a></li>';
 										}
 									$b .= "</ul>";
 								}
