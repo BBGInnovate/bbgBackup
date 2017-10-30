@@ -46,7 +46,7 @@ if ( have_posts() ) {
 	}
 
 	$meetingTime = get_post_meta( get_the_ID(), 'board_meeting_time', true );
-	
+
 	$today = new DateTime("now", new DateTimeZone('America/New_York'));
 	$todayStr = $today->format('Y-m-d H:i:s');
 
@@ -66,7 +66,7 @@ if ( have_posts() ) {
 	if ($commentFormCloseTime) {
 		$commentFormIsClosed = ($commentFormCloseTime <  $todayStr);
 		$commentFormCloseDateObj = DateTime::createFromFormat('Y-m-d H:i:s', $commentFormCloseTime);
-		
+
 		//get a display friendly version of this date for later
 		$commentFormCloseStr = $commentFormCloseDateObj->format("F j, Y");
 	}
@@ -87,15 +87,16 @@ if ( have_posts() ) {
 	$eventbriteUrl = get_post_meta( get_the_ID(), 'board_meeting_eventbrite_url', true );
 	if ($eventbriteUrl && $eventbriteUrl != "" && !$isPressRelease) {
 		if (!$registrationIsClosed) {
-			$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";	
+			$eventBriteButtonStr = "<a target='_blank' class='usa-button style='color:white;text-decoration:none;' href='" . $eventbriteUrl . "'>Register for this Event</a>";
 		} else {
-			$eventBriteButtonStr = "<p style='font-style:italic;' class='registrationClosed'>Registration for this event has closed.</p>";	
+			$eventBriteButtonStr = "<p style='font-style:italic;' class='registrationClosed'>Registration for this event has closed.</p>";
 		}
 	}
 
 	rewind_posts();
 }
 
+//Add shared sidebar
 include get_template_directory() . "/inc/shared_sidebar.php";
 
 //Add featured video
@@ -126,7 +127,7 @@ get_header(); ?>
 			$twitterText .= " by @bbggov " . get_permalink();
 			$twitterURL = "//twitter.com/intent/tweet?text=" . rawurlencode( $twitterText );
 			$fbUrl = "//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
-			$postDate = get_the_date(); 
+			$postDate = get_the_date();
 
 			?>
 
@@ -198,7 +199,7 @@ get_header(); ?>
 					</div>
 
 					<div class="entry-content bbg__article-content">
-						
+
 						<?php
 
 						if (isset($_GET['success'])) {
@@ -210,9 +211,9 @@ get_header(); ?>
 									</div><BR>';
 						}
 
-						 the_content(); 
+						 the_content();
 						 ?>
-						 <?php 
+						 <?php
 						 	if (!$isPressRelease && $isBoardMeeting && !isset($_GET['success'])):
 						 		if ($commentFormIsClosed):
 						 			echo "<p>The deadline for public comments for this meeting has passed.</p>";
@@ -225,7 +226,7 @@ get_header(); ?>
 									<p>The public comments you provide to the Broadcasting Board of Governors are collected by the agency voluntarily and may be publicly disclosed on the Internet and/or via requests submitted to the BBG under the Freedom of Information Act.</p>
 
 									<p>By providing public comments, you are consenting to their use and consideration by the Board and to their possible public dissemination. Personal contact information will not be made available to the public and will only be used by agency staff to engage with submitters regarding their own comments.</p>
-						<?php 
+						<?php
 									$redirectLink = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 									if(strpos($redirectLink, "?" )) {
@@ -234,9 +235,9 @@ get_header(); ?>
 										$redirectLink .= "?";
 									}
 									$redirectLink .= "success=true";
-									echo do_shortcode("[si-contact-form form='2' redirect='$redirectLink']"); 
+									echo do_shortcode("[si-contact-form form='2' redirect='$redirectLink']");
 									echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/meeting-comment-form.js"></script>';
-								endif; 
+								endif;
 							endif;
 
 							//echo "<pre>"; var_dump($_POST); echo "</pre>";
@@ -303,7 +304,7 @@ get_header(); ?>
 												}
 
 					        				}
-					        				echo "</ul>"; 
+					        				echo "</ul>";
 						        		// end internal speaker list
 						        		}
 							        } else if ( get_row_layout() == 'board_meeting_speakers_external' ) {

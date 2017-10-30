@@ -36,6 +36,9 @@ if ( have_posts() ) {
 	rewind_posts();
 }
 
+//Add shared sidebar
+include get_template_directory() . "/inc/shared_sidebar.php";
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -165,12 +168,6 @@ get_header(); ?>
 
 				<div class="bbg__article-sidebar">
 					<?php
-						// output sidebar header
-						/*if ( $numRows > 1 ) { // plurarize the header if more than 1 award
-							echo "<h3 class='bbg__label'>About the awards</h3>";
-						} else { // otherwise leave single
-							echo "<h3 class='bbg__label'>About the award</h3>";
-						}*/
 						// loop through all award entries
 						foreach ( array_values( $burkeProfileObj ) as $i => $profile ) {
 							$i = $i + 1; // add a number to the item key to start at 1
@@ -297,8 +294,18 @@ get_header(); ?>
 							echo "</div>";
 						}
 					?>
-<!-- class="bbg__sidebar__primary-headline"
- -->					<?php wp_reset_postdata();?>
+					<!-- class="bbg__sidebar__primary-headline" -->
+					<section id="added-sidebar" class="usa-grid-full">
+						<?php
+							echo "<!-- Additional sidebar content -->";
+							if ( $includeSidebar ) {
+								echo $sidebar;
+							}
+
+							echo $sidebarDownloads;
+						?>
+					</section>
+					<?php wp_reset_postdata();?>
 				</div><!-- .bbg__article-sidebar -->
 			</div><!-- .usa-grid -->
 		</article><!-- #post-## -->
@@ -308,7 +315,7 @@ get_header(); ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-	<section class="usa-grid">
-		<?php get_sidebar(); ?>
-	</section>
+<section class="usa-grid">
+	<?php get_sidebar(); ?>
+</section>
 <?php get_footer(); ?>
