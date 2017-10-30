@@ -53,7 +53,7 @@ if ( isset($_GET['category_id']) ) {
 					$thumbnail = the_post_thumbnail( 'medium-thumb' );
 				}
 				echo $thumbnail;
-
+				
 
 			?>
 			</a>
@@ -74,6 +74,18 @@ if ( isset($_GET['category_id']) ) {
 	<?php if ($includeDescription) { ?>
 
 	<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">
+		<?php 
+
+			if (get_post_type() == 'burke_candidate') {
+					$burkeNetwork = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_network' );
+					$burkeNetwork = strtoupper( $burkeNetwork[0] );
+					if ( $burkeNetwork == "RFERL" ) {
+						$burkeNetwork = "RFE/RL";
+					}
+					echo '<strong>Network:</strong> ' . $burkeNetwork . "<BR>"; 
+				}
+		?>
+
 		<?php the_excerpt(); ?>
 
 		<?php
