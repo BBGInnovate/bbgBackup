@@ -13,6 +13,9 @@ $pageTagline = get_post_meta( get_the_ID(), 'page_tagline', true );
 if ($pageTagline && $pageTagline!=""){
 	$pageTagline = '<h6 class="bbg__page-header__tagline">' . $pageTagline . '</h6>';
 }
+
+$videoUrl = get_field( 'featured_video_url', '', true );
+
 $pageContent = "";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
@@ -141,6 +144,13 @@ get_header(); ?>
 					<?php echo $pageTagline; ?>
 				</header><!-- .page-header -->
 			</div>
+
+			<?php 
+				if ( $videoUrl != "" ) {
+					echo featured_video($videoUrl);
+					$hideFeaturedImage = TRUE;
+				}
+			?>
 
 			<div class="usa-grid-full">
 				<?php
