@@ -582,6 +582,7 @@
 	function burkelist_shortcode() {
 		$qParams = array(
 			'post_type'  => 'burke_candidate'
+			 ,'post_status' => array('publish', 'private', 'pending', 'draft')
 			,'posts_per_page' => -1
 		);
 
