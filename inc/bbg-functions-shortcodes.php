@@ -577,41 +577,59 @@
 	add_shortcode('infobox', 'infobox_shortcode');
 
 	/**
-	 * Add a shortcde that will output a list of all burke award candidtes on a year by year basis.
+	 * Add a shortcode that will output a list of all burke award candidtes on a year by year basis.
 	 */
 	function burkelist_shortcode() {
 		$qParams = array(
 			'post_type'  => 'burke_candidate'
-			,'order'     => 'desc'
-			,'orderby'   => array(
-				'burke_year_of_eligibility' => 'DESC',
-				'burke_network'    => 'ASC'
-			)
-			,'meta_key'  => 'burke_year_of_eligibility'
 			,'posts_per_page' => -1
 		);
 
 		$s = "";
-		$custom_query = new WP_Query( $qParams );
-		$oldYear = 0;
-		$newYear=0;
-
 		$s .= '<div class="usa-accordion"><ul class="usa-unstyled-list" aria-expanded="true">';		 
-		$counter = 0;
-		$totalPosts= $custom_query -> found_posts;
 
+		$bPosts = array();
+		$custom_query = new WP_Query( $qParams );
 		while ( $custom_query->have_posts() ) : 
 			$custom_query->the_post();
-			
-			$counter++;
 			$id = get_the_ID();
-			$title = get_the_title();
-			$newYear = get_post_meta( $id, 'burke_year_of_eligibility', true );
-			$network = get_post_meta( $id, 'burke_network', true );
-			$tagline = get_post_meta( $id, 'burke_reason_tagline', true );
+
+			if ( have_rows('burke_award_info') ) {
+				$counter2=0;
+				while( have_rows( 'burke_award_info' ) ) : the_row();
+					$counter2++;
+					$bPost = array (
+						'year' => get_sub_field( 'burke_ceremony_year' )
+					   ,'network' => get_sub_field( 'burke_network' )
+					   ,'reason' => get_sub_field( 'burke_reason' )
+					   ,'title' => get_the_title()
+					   ,'url' => get_the_permalink()
+					);
+					array_push($bPosts, $bPost);
+			    endwhile;
+			}
+		endwhile;
+
+		$years = array();
+		foreach ($bPosts as $key => $row) {
+		    $years[$key] = $row['year'];
+		}
+		array_multisort($years, SORT_DESC, $bPosts);
+
+		$oldYear = 0;
+		$newYear=0;
+		$counter = 0;
+
+		//echo "<pre>"; var_dump($bPosts); echo "</pre>"; die();
+		foreach ($bPosts as $bPost) {
+			$counter++;
+			$newYear = $bPost['year'];
+			$network = $bPost['network'];
+			$url = $bPost['url'];
+			$title = $bPost['title'];
+			$reason = $bPost['reason'];
+			
 			$imgSrc = get_template_directory_uri() . '/img/logo_' . strtolower($network) . '--circle-200.png'; //
-			$url = get_the_permalink();
-			$excerpt = my_excerpt($id);
 
 			if ( $newYear != $oldYear ) {
 				$oldYear = $newYear;
@@ -623,17 +641,16 @@
 					$expanded = "false";
 				}
 				$s .= '<li>';
-				$s .= '<button class="usa-button-unstyled" aria-expanded="' . $expanded . '" aria-controls="collapsible-winner-' . $network . '">' . $newYear . ' winners</button>';
-				$s .= '<div id="collapsible-winner-' . $network . '" aria-hidden="' . $hidden . '" class="usa-accordion-content">';
+				$s .= '<button class="usa-button-unstyled" aria-expanded="' . $expanded . '" aria-controls="collapsible-winner-' . $counter . '">' . $newYear . ' winners</button>';
+				$s .= '<div id="collapsible-winner-' . $counter . '" aria-hidden="' . $hidden . '" class="usa-accordion-content">';
 			}
 			
 			$s .= '<header class="entry-header bbg__article-icons-container">';
 				$s .= '<div class="bbg__article-icon" style="background-position: left 0.25rem; background-image: url(' . $imgSrc . ');"></div>';
 				$s .= '<h3 class="entry-title" style="color:#4773aa"><a href="'. $url . '">' . $title . '</a></h3>';
-				$s .= '<div class="bbg-blog__excerpt-content"><p>' . $tagline . '</p></div>';
+				$s .= '<div class="bbg-blog__excerpt-content"><p>' . $reason . '</p></div>';
 			$s .= '</header>';
-			
-		endwhile;
+		}
 		$s .= '</div></li></ul></div>';
 
 		return $s;
