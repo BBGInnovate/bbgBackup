@@ -199,7 +199,7 @@ get_header();
 
 <div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 			<section class="usa-grid-full bbg__kits__section--row " style="margin-top:-50px;">
-			<div align="right"><a href="/burke-awards-archive/" class="bbg__kits__intro__more--link">View full winner archive »</a></div>
+			<div align="right"><a href="/burke-awards/burke-awards-archive/" class="bbg__kits__intro__more--link">View full winner archive »</a></div>
 			</div>
 			</section>
 			</div>
