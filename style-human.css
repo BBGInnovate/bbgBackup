@@ -7497,7 +7497,7 @@ section.usa-section.bbg-banner__section {
 .burke_candidate-template-default a,
 .page-id-37417 a {
   color: #112e51;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .page-template-page-burke a:hover,
 .page-id-37373 a:hover,
@@ -7509,7 +7509,7 @@ section.usa-section.bbg-banner__section {
 .page-id-37373 a:visited,
 .burke_candidate-template-default a:visited,
 .page-id-37417 a:visited {
-  color: #112e51;
+  color: #b2ccd1;
 }
 .page-template-page-burke .bbg__ribbon--thin,
 .page-id-37373 .bbg__ribbon--thin,

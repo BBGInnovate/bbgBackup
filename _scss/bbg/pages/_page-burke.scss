@@ -11,14 +11,14 @@
 
 	a {
 		color: #112e51;
-		text-decoration: none;
+		text-decoration: underline;
 
 		&:hover {
 			text-decoration: underline;
 		}
 
 		&:visited {
-			color: #112e51;
+			color: $color-burke-dark;
 		}
 	}
 
