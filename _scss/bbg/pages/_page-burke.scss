@@ -11,6 +11,19 @@
 
 	a {
 		color: #112e51;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&:visited {
+			color: #112e51;
+		}
+	}
+
+	.bbg__article-content a {
+		color: #112e51;
 		text-decoration: underline;
 
 		&:hover {
@@ -18,7 +31,8 @@
 		}
 
 		&:visited {
-			color: $color-burke-dark;
+			color: $color-burke-darker;
+			text-decoration: none;
 		}
 	}
 

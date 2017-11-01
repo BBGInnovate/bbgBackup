@@ -7497,7 +7497,7 @@ section.usa-section.bbg-banner__section {
 .burke_candidate-template-default a,
 .page-id-37417 a {
   color: #112e51;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .page-template-page-burke a:hover,
 .page-id-37373 a:hover,
@@ -7509,7 +7509,27 @@ section.usa-section.bbg-banner__section {
 .page-id-37373 a:visited,
 .burke_candidate-template-default a:visited,
 .page-id-37417 a:visited {
-  color: #b2ccd1;
+  color: #112e51;
+}
+.page-template-page-burke .bbg__article-content a,
+.page-id-37373 .bbg__article-content a,
+.burke_candidate-template-default .bbg__article-content a,
+.page-id-37417 .bbg__article-content a {
+  color: #112e51;
+  text-decoration: underline;
+}
+.page-template-page-burke .bbg__article-content a:hover,
+.page-id-37373 .bbg__article-content a:hover,
+.burke_candidate-template-default .bbg__article-content a:hover,
+.page-id-37417 .bbg__article-content a:hover {
+  text-decoration: underline;
+}
+.page-template-page-burke .bbg__article-content a:visited,
+.page-id-37373 .bbg__article-content a:visited,
+.burke_candidate-template-default .bbg__article-content a:visited,
+.page-id-37417 .bbg__article-content a:visited {
+  color: #6A7C7D;
+  text-decoration: none;
 }
 .page-template-page-burke .bbg__ribbon--thin,
 .page-id-37373 .bbg__ribbon--thin,
