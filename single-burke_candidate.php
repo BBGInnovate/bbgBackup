@@ -179,7 +179,10 @@ get_header(); ?>
 								$burkeNetwork = "RFE/RL";
 							}
 							// check for language service
-							$burkeService = $profile[ "burke_service" ] . ' Service';
+							$burkeService = "";
+							if ( $profile[ "burke_service" ] ) {
+								$burkeService = $profile[ "burke_service" ] . ' Service';
+							}
 
 							// output all award details
 							echo "<div id='award-$i' class='bbg__sidebar__primary'>";
