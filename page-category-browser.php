@@ -102,6 +102,7 @@ if ($category_browser_type == "Page Children") {
 		    array('key' => 'burke_award_info_1_burke_ceremony_year','compare' => '=','value' => $burkeYear),
 		    array('key' => 'burke_award_info_2_burke_ceremony_year','compare' => '=','value' => $burkeYear)
 		);
+		$qParams['post_status'] = array( 'publish','private','pending','draft' );
 	}
 } else {
 	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
