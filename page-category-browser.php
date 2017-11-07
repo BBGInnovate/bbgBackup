@@ -21,7 +21,7 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
 		$pageTitle = get_the_title();
-		$pageTitle = str_replace("Private:", "", $pageTitle);
+		$pageTitle = str_replace("Private: ", "", $pageTitle);
 		//$pageContent = apply_filters('the_content', $pageContent);
    		//$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
