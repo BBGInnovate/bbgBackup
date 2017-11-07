@@ -95,7 +95,7 @@ if ($category_browser_type == "Page Children") {
 	if ($categoryBrowsePostType == 'burke_candidate') {
 		// $qParams['meta_key'] = 'burke_award_info_0_burke_ceremony_year';
 		// $qParams['orderby'] = 'meta_value';
-		
+		$qParams['posts_per_page'] = -1;
 		$qParams['meta_query'] = array(
 		    'relation' => 'OR',
 		    array('key' => 'burke_award_info_0_burke_ceremony_year','compare' => '=','value' => $burkeYear),
