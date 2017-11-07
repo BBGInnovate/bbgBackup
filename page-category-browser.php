@@ -41,7 +41,7 @@ $paginationLabel=  get_post_meta( get_the_ID(), 'category_browser_pagination_lab
 $category_browser_type = get_post_meta( get_the_ID(), 'category_browser_type', true );
 $burkeYear =  get_post_meta( get_the_ID(), 'category_browser_burke_year', true);
 
-
+$videoUrl = get_field( 'featured_video_url', '', true );
 $hasIntroFeature = FALSE;
 if ( $videoUrl != "" ) {
 	$hasIntroFeature = true;
@@ -183,6 +183,7 @@ get_header(); ?>
 			<?php
 				if ( $videoUrl != "" ) {
 					echo featured_video($videoUrl);
+					echo "<BR><BR>";
 				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 					echo '<div class="usa-grid-full">';
 						$featuredImageClass = "";
