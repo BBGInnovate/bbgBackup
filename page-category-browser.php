@@ -21,6 +21,7 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
 		$pageTitle = get_the_title();
+		$pageTitle = str_replace("Private:", "", $pageTitle);
 		//$pageContent = apply_filters('the_content', $pageContent);
    		//$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
@@ -80,7 +81,6 @@ if ($category_browser_type == "Page Children") {
 		$qParams['orderby'] = 'menu_order';
 		$qParams['order'] = 'ASC';
 	}
-
 } else if ($category_browser_type == "Custom Post Type") { 
 	/*** USED FOR AWARDS AND BURKE CANDIDATES ****/
 	$categoryBrowsePostType=  get_post_meta( get_the_ID(), 'category_browser_post_type', true );
