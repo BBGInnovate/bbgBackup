@@ -16,9 +16,11 @@ if ($pageTagline && $pageTagline!=""){
 
 
 $pageContent = "";
+$pageTitle = "";
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$pageContent = get_the_content();
+		$pageTitle = get_the_title();
 		//$pageContent = apply_filters('the_content', $pageContent);
    		//$pageContent = str_replace(']]>', ']]&gt;', $pageContent);
 	endwhile;
@@ -34,18 +36,24 @@ http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
 
 $currentPage = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-$hasIntroFeature = FALSE;
-if ( $videoUrl != "" ) {
-	$hasIntroFeature = true;
-} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-	$hasIntroFeature = true;
-}
+$paginationLabel=  get_post_meta( get_the_ID(), 'category_browser_pagination_label', true );
+$category_browser_type = get_post_meta( get_the_ID(), 'category_browser_type', true );
+$burkeYear =  get_post_meta( get_the_ID(), 'category_browser_burke_year', true);
+
+
+// $hasIntroFeature = FALSE;
+// if ( $videoUrl != "" ) {
+// 	$hasIntroFeature = true;
+// } elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+// 	$hasIntroFeature = true;
+// }
 
 $numPostsFirstPage=7;
-if ($hasIntroFeature) {
-	$numPostsFirstPage = 6;
-}
+// if ($hasIntroFeature) {
+// 	$numPostsFirstPage = 6;
+// }
 $numPostsSubsequentPages=6;
+
 
 $postsPerPage=$numPostsFirstPage;
 $offset=0;
@@ -57,18 +65,22 @@ if ($currentPage > 1) {
 $hasTeamFilter=false;
 $mobileAppsPostContent="";
 
-$paginationLabel=  get_post_meta( get_the_ID(), 'category_browser_pagination_label', true );
-$category_browser_type = get_post_meta( get_the_ID(), 'category_browser_type', true );
-
 
 if ($category_browser_type == "Page Children") {
+	
 	/*** USED FOR APPS LANDING PAGE ****/
-	$qParams=array(
+	$qParams = array (
 		'post_type' => array('page'),
 		'posts_per_page' => -1,
 		'post_parent' => get_the_ID(),
 		'order' => 'DESC'
 	);
+	if ( $pageTitle == "Burke Awards Archive" ) {
+		$qParams['post_status'] = array( 'publish','private','pending','draft' );
+		$qParams['orderby'] = 'menu_order';
+		$qParams['order'] = 'ASC';
+	}
+
 } else if ($category_browser_type == "Custom Post Type") { 
 	/*** USED FOR AWARDS AND BURKE CANDIDATES ****/
 	$categoryBrowsePostType=  get_post_meta( get_the_ID(), 'category_browser_post_type', true );
@@ -81,8 +93,15 @@ if ($category_browser_type == "Page Children") {
 		,'order' => 'DESC'
 	);
 	if ($categoryBrowsePostType == 'burke_candidate') {
-		$qParams['meta_key'] = 'burke_award_info_0_burke_ceremony_year';
-		$qParams['orderby'] = 'meta_value';
+		// $qParams['meta_key'] = 'burke_award_info_0_burke_ceremony_year';
+		// $qParams['orderby'] = 'meta_value';
+		
+		$qParams['meta_query'] = array(
+		    'relation' => 'OR',
+		    array('key' => 'burke_award_info_0_burke_ceremony_year','compare' => '=','value' => $burkeYear),
+		    array('key' => 'burke_award_info_1_burke_ceremony_year','compare' => '=','value' => $burkeYear),
+		    array('key' => 'burke_award_info_2_burke_ceremony_year','compare' => '=','value' => $burkeYear)
+		);
 	}
 } else {
 	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true);
@@ -161,23 +180,23 @@ get_header(); ?>
 			</div>
 
 			<?php
-				if ( $videoUrl != "" ) {
-					echo featured_video($videoUrl);
-				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-					echo '<div class="usa-grid-full">';
-						$featuredImageClass = "";
-						$featuredImageCutline = "";
-						$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
-						if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
-							$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-						}
+				// if ( $videoUrl != "" ) {
+				// 	echo featured_video($videoUrl);
+				// } elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+				// 	echo '<div class="usa-grid-full">';
+				// 		$featuredImageClass = "";
+				// 		$featuredImageCutline = "";
+				// 		$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
+				// 		if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
+				// 			$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+				// 		}
 
-						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+				// 		$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerAdjustStr . '">';
-						echo '</div>';
-					echo '</div> <!-- usa-grid-full -->';
-				}
+				// 		echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerAdjustStr . '">';
+				// 		echo '</div>';
+				// 	echo '</div> <!-- usa-grid-full -->';
+				// }
 			?><!-- .bbg__article-header__thumbnail -->
 
 			<div class="usa-grid-full">
@@ -186,7 +205,7 @@ get_header(); ?>
 					while ( $custom_query->have_posts() )  {
 						$custom_query->the_post();
 						$counter=$counter+1;
-						if ( $counter == 1 && $currentPage==1 && !$hasIntroFeature) {
+						if ( $counter == 1 && $currentPage==1 ) { //  && !$hasIntroFeature
 							$includeMetaFeatured = FALSE;
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 							echo '<div class="usa-grid">';
