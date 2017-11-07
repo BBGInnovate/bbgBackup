@@ -42,17 +42,17 @@ $category_browser_type = get_post_meta( get_the_ID(), 'category_browser_type', t
 $burkeYear =  get_post_meta( get_the_ID(), 'category_browser_burke_year', true);
 
 
-// $hasIntroFeature = FALSE;
-// if ( $videoUrl != "" ) {
-// 	$hasIntroFeature = true;
-// } elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-// 	$hasIntroFeature = true;
-// }
+$hasIntroFeature = FALSE;
+if ( $videoUrl != "" ) {
+	$hasIntroFeature = true;
+} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+	$hasIntroFeature = true;
+}
 
 $numPostsFirstPage=7;
-// if ($hasIntroFeature) {
-// 	$numPostsFirstPage = 6;
-// }
+if ($hasIntroFeature) {
+	$numPostsFirstPage = 6;
+}
 $numPostsSubsequentPages=6;
 
 
@@ -181,23 +181,23 @@ get_header(); ?>
 			</div>
 
 			<?php
-				// if ( $videoUrl != "" ) {
-				// 	echo featured_video($videoUrl);
-				// } elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
-				// 	echo '<div class="usa-grid-full">';
-				// 		$featuredImageClass = "";
-				// 		$featuredImageCutline = "";
-				// 		$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
-				// 		if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
-				// 			$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
-				// 		}
+				if ( $videoUrl != "" ) {
+					echo featured_video($videoUrl);
+				} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+					echo '<div class="usa-grid-full">';
+						$featuredImageClass = "";
+						$featuredImageCutline = "";
+						$thumbnail_image = get_posts( array('p' => get_post_thumbnail_id($id), 'post_type' => 'attachment') );
+						if ( $thumbnail_image && isset($thumbnail_image[0]) ) {
+							$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+						}
 
-				// 		$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
+						$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 700,450 ), false, '' );
 
-				// 		echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerAdjustStr . '">';
-				// 		echo '</div>';
-				// 	echo '</div> <!-- usa-grid-full -->';
-				// }
+						echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large bbg__article-header__banner" style="background-image: url(' . $src[0] . '); background-position: ' . $bannerAdjustStr . '">';
+						echo '</div>';
+					echo '</div> <!-- usa-grid-full -->';
+				}
 			?><!-- .bbg__article-header__thumbnail -->
 
 			<div class="usa-grid-full">
@@ -206,7 +206,7 @@ get_header(); ?>
 					while ( $custom_query->have_posts() )  {
 						$custom_query->the_post();
 						$counter=$counter+1;
-						if ( $counter == 1 && $currentPage==1 ) { //  && !$hasIntroFeature
+						if ( $counter == 1 && $currentPage==1 && !$hasIntroFeature ) { //  
 							$includeMetaFeatured = FALSE;
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 							echo '<div class="usa-grid">';
