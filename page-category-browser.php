@@ -104,11 +104,11 @@ if ( $category_browser_type == "Page Children" ) {
 		$qParams['post_status'] = array( 'publish','private','pending','draft' );
 	}
 } else {
-	$categoryToBrowse =  get_field( 'category_browser_category', get_the_ID(), true );
+	$categoryToBrowse = get_field( 'category_browser_category', get_the_ID(), true );
 	$projectCatObj = get_category_by_slug( $categoryToBrowse -> slug );
 
-	$awardYear = get_query_var( 'awardyear', '' );
-	$entity = get_query_var( 'entity', '' );
+	$awardYear = get_query_var( 'awardyear','' );
+	$entity = get_query_var( 'entity','' );
 
 	$qParams = array(
 		'post_type' => array('post'),
@@ -148,7 +148,7 @@ $custom_query = new WP_Query( $custom_query_args );
 
 $totalPages = 1;
 if ( $custom_query -> found_posts > $numPostsFirstPage ) {
-	$totalPages = 1 + ceil( ( $custom_query ->f ound_posts - $numPostsFirstPage ) / $numPostsSubsequentPages );
+	$totalPages = 1 + ceil( ( $custom_query -> found_posts - $numPostsFirstPage ) / $numPostsSubsequentPages );
 }
 
 //query_posts($qParams);
