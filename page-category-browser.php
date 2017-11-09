@@ -77,7 +77,7 @@ if ( $category_browser_type == "Page Children" ) {
 	if ( $pageTitle == "Burke Awards archive" ) {
 		$qParams['post_status'] = array( 'publish','private','pending' );
 		$qParams['orderby'] = 'menu_order';
-		$qParams['order'] = 'DESC';
+		$qParams['order'] = 'ASC';
 	}
 } else if ( $category_browser_type == "Custom Post Type" ) {
 	/*** USED FOR AWARDS AND BURKE CANDIDATES ****/
@@ -88,7 +88,7 @@ if ( $category_browser_type == "Page Children" ) {
 		'post_type' => array( $categoryBrowsePostType ),
 		'posts_per_page' => $postsPerPage,
 		'offset' => $offset,
-		'order' => 'ASC'
+		'order' => 'DESC'
 	);
 
 	if ( $categoryBrowsePostType == 'burke_candidate' ) {
