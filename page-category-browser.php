@@ -75,9 +75,9 @@ if ( $category_browser_type == "Page Children" ) {
 		'order' => 'DESC'
 	);
 	if ( $pageTitle == "Burke Awards Archive" ) {
-		$qParams['post_status'] = array( 'publish','private','pending','draft' );
+		$qParams['post_status'] = array( 'publish','private','pending' );
 		$qParams['orderby'] = 'menu_order';
-		$qParams['order'] = 'ASC';
+		$qParams['order'] = 'DESC';
 	}
 } else if ( $category_browser_type == "Custom Post Type" ) {
 	/*** USED FOR AWARDS AND BURKE CANDIDATES ****/
@@ -195,11 +195,11 @@ get_header(); ?>
 
 			<div class="usa-grid-full">
 				<?php
-					$counter=0;
-					while ( $custom_query->have_posts() )  {
-						$custom_query->the_post();
-						$counter=$counter+1;
-						if ( $counter == 1 && $currentPage==1 && !$hasIntroFeature ) { //
+					$counter = 0;
+					while ( $custom_query -> have_posts() )  {
+						$custom_query -> the_post();
+						$counter = $counter + 1;
+						if ( $counter == 1 && $currentPage == 1 && !$hasIntroFeature ) { //
 							$includeMetaFeatured = FALSE;
 							get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
 							echo '<div class="usa-grid">';
@@ -215,36 +215,33 @@ get_header(); ?>
 					echo '</div><!-- .usa-grid -->';
 
 					echo '<div class="usa-grid">';
-					/*
-					$args = array(
-						'prev_text'          => __( 'Older projects' ),
-						'next_text'          => __( 'Newer projects' ),
-						'screen_reader_text' => __( 'Project navigation' )
-					);*/
+						/*$args = array(
+							'prev_text'          => __( 'Older projects' ),
+							'next_text'          => __( 'Newer projects' ),
+							'screen_reader_text' => __( 'Project navigation' )
+						);*/
 
-					echo '<nav class="navigation posts-navigation" role="navigation">';
-					echo '<h2 class="screen-reader-text">Event navigation</h2>';
-					echo '<div class="nav-links">';
-					$nextLink=get_next_posts_link('Older ' . $paginationLabel, $totalPages);
-					$prevLink=get_previous_posts_link('Newer ' . $paginationLabel);
-					if ($nextLink != "") {
-						echo '<div class="nav-previous">';
-						echo $nextLink;
-						echo '</div>';
-					}
+						echo '<nav class="navigation posts-navigation" role="navigation">';
+							echo '<h2 class="screen-reader-text">Event navigation</h2>';
+							echo '<div class="nav-links">';
+								$nextLink = get_next_posts_link('Older ' . $paginationLabel, $totalPages );
+								$prevLink = get_previous_posts_link('Newer ' . $paginationLabel );
 
-					if ($prevLink != "") {
-						echo '<div class="nav-next">';
-						echo $prevLink;
-						echo '</div>';
-					}
+								if ( $nextLink != "" ) {
+									echo '<div class="nav-previous">';
+										echo $nextLink;
+									echo '</div>';
+								}
 
-					echo '</div>';
-					echo '</nav>';
+								if ( $prevLink != "" ) {
+									echo '<div class="nav-next">';
+										echo $prevLink;
+									echo '</div>';
+								}
+							echo '</div>';
+						echo '</nav>';
 					echo '</div><!-- .usa-grid -->';
-
 				?>
-
 			<?php else : ?>
 
 				<?php get_template_part( 'template-parts/content', 'none' ); ?>
