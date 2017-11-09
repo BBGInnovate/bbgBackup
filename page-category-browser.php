@@ -107,8 +107,8 @@ if ( $category_browser_type == "Page Children" ) {
 	$categoryToBrowse = get_field( 'category_browser_category', get_the_ID(), true );
 	$projectCatObj = get_category_by_slug( $categoryToBrowse -> slug );
 
-	$awardYear = get_query_var( 'awardyear','' );
-	$entity = get_query_var( 'entity','' );
+	$awardYear = get_query_var( 'awardyear', '' );
+	$entity = get_query_var( 'entity', '' );
 
 	$qParams = array(
 		'post_type' => array('post'),
@@ -214,33 +214,30 @@ get_header(); ?>
 					}
 					echo '</div><!-- .usa-grid -->';
 
-					echo '<div class="usa-grid">';
-						/*$args = array(
-							'prev_text'          => __( 'Older projects' ),
-							'next_text'          => __( 'Newer projects' ),
-							'screen_reader_text' => __( 'Project navigation' )
-						);*/
+					if ( $pageTitle != "Burke Awards archive" ) {
 
-						echo '<nav class="navigation posts-navigation" role="navigation">';
-							echo '<h2 class="screen-reader-text">Event navigation</h2>';
-							echo '<div class="nav-links">';
-								$nextLink = get_next_posts_link('Older ' . $paginationLabel, $totalPages );
-								$prevLink = get_previous_posts_link('Newer ' . $paginationLabel );
+						echo '<div class="usa-grid">';
+							echo '<nav class="navigation posts-navigation" role="navigation">';
+								echo '<h2 class="screen-reader-text">Event navigation</h2>';
+								echo '<div class="nav-links">';
+									$nextLink = get_next_posts_link('Older ' . $paginationLabel, $totalPages );
+									$prevLink = get_previous_posts_link('Newer ' . $paginationLabel );
 
-								if ( $nextLink != "" ) {
-									echo '<div class="nav-previous">';
-										echo $nextLink;
-									echo '</div>';
-								}
+									if ( $nextLink != "" ) {
+										echo '<div class="nav-previous">';
+											echo $nextLink;
+										echo '</div>';
+									}
 
-								if ( $prevLink != "" ) {
-									echo '<div class="nav-next">';
-										echo $prevLink;
-									echo '</div>';
-								}
-							echo '</div>';
-						echo '</nav>';
-					echo '</div><!-- .usa-grid -->';
+									if ( $prevLink != "" ) {
+										echo '<div class="nav-next">';
+											echo $prevLink;
+										echo '</div>';
+									}
+								echo '</div>';
+							echo '</nav>';
+						echo '</div><!-- .usa-grid -->';
+					}
 				?>
 			<?php else : ?>
 
