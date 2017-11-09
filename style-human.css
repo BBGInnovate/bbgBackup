@@ -7538,8 +7538,7 @@ section.usa-section.bbg-banner__section {
   background-blend-mode: soft-light;
   background-color: #999;
   background-image: url(img/burke_ribbon-bg-full.jpg);
-  background-size: contain;
-  position: relative;
+  background-size: cover;
 }
 .page-template-page-burke .bbg__ribbon--thin h2,
 .page-template-page-burke .bbg__ribbon--thin .bbg__announcement__headline,
@@ -7554,6 +7553,14 @@ section.usa-section.bbg-banner__section {
 .page-id-37417 .bbg__ribbon--thin .bbg__announcement__headline,
 .page-id-37417 .bbg__ribbon--thin a.bbg__kits__intro__more--link {
   color: #112e51;
+}
+@media screen and (min-width: 900px) {
+  .page-template-page-burke .bbg__ribbon--thin,
+  .page-id-37373 .bbg__ribbon--thin,
+  .burke_candidate-template-default .bbg__ribbon--thin,
+  .page-id-37417 .bbg__ribbon--thin {
+    margin: 0;
+  }
 }
 .page-template-page-burke .bbg__footer__return-to-top,
 .page-id-37373 .bbg__footer__return-to-top,
