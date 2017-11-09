@@ -74,7 +74,7 @@ if ( $category_browser_type == "Page Children" ) {
 		'post_parent' => get_the_ID(),
 		'order' => 'DESC'
 	);
-	if ( $pageTitle == "Burke Awards Archive" ) {
+	if ( $pageTitle == "Burke Awards archive" ) {
 		$qParams['post_status'] = array( 'publish','private','pending' );
 		$qParams['orderby'] = 'menu_order';
 		$qParams['order'] = 'DESC';
