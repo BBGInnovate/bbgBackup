@@ -1475,7 +1475,7 @@ div.banner_readmore h6 a:visited {
     padding-right: 1rem;
 
     @include media($medium-large-screen) {
-        margin: 0 -14vw;
+        margin: 0 0 8rem;
     }
 
     /* @include media($large-screen) {

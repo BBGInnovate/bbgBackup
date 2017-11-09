@@ -50,9 +50,9 @@
 			color: #112e51;
 		}
 
-		@include media($medium-large-screen) {
-	        margin: 0;
-	    }
+		/* @include media($medium-large-screen) {
+	        margin: 0 0 8rem;
+	    } */
 	}
 
 	.bbg__footer__return-to-top {
