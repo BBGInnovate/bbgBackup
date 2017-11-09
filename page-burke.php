@@ -44,21 +44,21 @@ get_header();
 				$randomImg = getBurkeImage();
 				$bannerCutline = "";
 				$bannerAdjustStr = "";
-				if ($randomImg) {
+				if ( $randomImg ) {
 					$attachment_id = $randomImg['imageID'];
 					$bannerCutline = $randomImg['imageCutline'];
 					$bannerAdjustStr = $randomImg['bannerAdjustStr'];
 				}
-				if($attachment_id) {
-					$tempSources= bbgredesign_get_image_size_links($attachment_id);
+				if( $attachment_id ) {
+					$tempSources = bbgredesign_get_image_size_links( $attachment_id );
 					//sources aren't automatically in numeric order.  ksort does the trick.
-					ksort($tempSources);
-					$counter=0;
-					$prevWidth=0;
+					ksort( $tempSources );
+					$counter = 0;
+					$prevWidth = 0;
 					// Let's prevent any images with width > 1200px from being an output as part of responsive banner
 					foreach( $tempSources as $key => $tempSource ) {
-						if ($key > 1900) {
-							unset($tempSources[$key]);
+						if ( $key > 1900 ) {
+							unset( $tempSources[$key] );
 						}
 					}
 					echo "<style>";
@@ -67,19 +67,19 @@ get_header();
 					}
 					foreach( $tempSources as $key => $tempSourceObj ) {
 						$counter++;
-						$tempSource=$tempSourceObj['src'];
-						if ($counter == 1) {
+						$tempSource = $tempSourceObj['src'];
+						if ( $counter == 1 ) {
 							echo "\t.bbg-banner { background-image: url($tempSource) !important; }\n";
-						} elseif ($counter < count($tempSources)) {
-							echo "\t@media (min-width: " . ($prevWidth+1) . "px) and (max-width: " . $key . "px) {\n";
+						} elseif ( $counter < count( $tempSources ) ) {
+							echo "\t@media (min-width: " . ( $prevWidth + 1 ) . "px) and (max-width: " . $key . "px) {\n";
 							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
 						} else {
-							echo "\t@media (min-width: " . ($prevWidth+1) . "px) {\n";
+							echo "\t@media (min-width: " . ( $prevWidth + 1 ) . "px) {\n";
 							echo "\t\t.bbg-banner { background-image: url($tempSource) !important; }\n";
 							echo "\t}\n";
 						}
-						$prevWidth=$key;
+						$prevWidth = $key;
 					}
 					echo "</style>";
 				}
@@ -87,7 +87,7 @@ get_header();
 
 			<?php
 
-				if ( true || isset ($_GET['slider'] ) ) :
+				if ( true || isset ( $_GET['slider'] ) ) :
 					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
 					echo do_shortcode( '[rev_slider alias="burke-awards"]' );
 					echo '</section>';
@@ -115,14 +115,12 @@ get_header();
 				</div>
 			</section><!-- Responsive Banner -->
 
-				<?php
+			<?php
 				endif;
-
 			?>
 
-
 			<!-- Site introduction -->
-			<section id="mission" class="usa-section usa-grid">
+			<section id="burke-intro" class="usa-section usa-grid">
 			<?php
 				echo '<h3 id="site-intro" class="usa-font-lead">';
 				echo $siteIntroContent;
@@ -196,33 +194,32 @@ get_header();
 					echo do_shortcode('[smartslider3 slider=3]');
 				?>
 			</section>
-
-<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
+		<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 			<section class="usa-grid-full bbg__kits__section--row " style="margin-top:-50px;">
 			<div align="right"><a href="/burke-awards/burke-awards-archive/" class="bbg__kits__intro__more--link">View full winner archive »</a></div>
 			</div>
 			</section>
 			</div>
 
-			<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
-			    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
-			        <div class="usa-grid">
-			            <div class="bbg__announcement__flexbox">
-			                <div id="lansingPhoto" class="bbg__announcement__photo" style="background-image: url(<?php echo $burkeBioImage; ?>);"></div>
-			                <div>
-			                    <h6 class="bbg__label">BBG History</h6>
-			                    <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $burkeBioLink; ?>">David Burke</a></h2>
-			                    <p>David W. Burke was named to the first Broadcasting Board of Governors (BBG) by President Clinton in 1995 and served as its first chairman. <a href="<?php echo $burkeBioLink; ?>" class="bbg__kits__intro__more--link">Learn More »</a></p>
-			                </div>
-			            </div>
-			            <!-- .bbg__announcement__flexbox -->
-			        </div>
-			        <!-- .usa-grid -->
-			    </section>
-			</div>
+			<!-- <div class="usa-section usa-grid bbg__kits__section" id="page-sections"> -->
+		    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
+		        <div class="usa-grid">
+		            <div class="bbg__announcement__flexbox">
+		                <div id="DBurke" class="bbg__announcement__photo" style="background-image: url(<?php echo $burkeBioImage; ?>);"></div>
+		                <div>
+		                    <h6 class="bbg__label">BBG History</h6>
+		                    <h2 class="bbg__announcement__headline selectionShareable"><a href="<?php echo $burkeBioLink; ?>">David Burke</a></h2>
+		                    <p>David W. Burke was named to the first Broadcasting Board of Governors (BBG) by President Clinton in 1995 and served as its first chairman. <a href="<?php echo $burkeBioLink; ?>" class="bbg__kits__intro__more--link">Learn More »</a></p>
+		                </div>
+		            </div>
+		            <!-- .bbg__announcement__flexbox -->
+		        </div>
+		        <!-- .usa-grid -->
+		    </section>
+			<!-- </div> -->
 
 			<!-- Quotation -->
-			<section class="usa-section ">
+			<section class="usa-section">
 				<div class="usa-grid">
 					<?php
 						$quote = '';
