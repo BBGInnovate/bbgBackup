@@ -88,7 +88,7 @@ if ( $category_browser_type == "Page Children" ) {
 		'post_type' => array( $categoryBrowsePostType ),
 		'posts_per_page' => $postsPerPage,
 		'offset' => $offset,
-		'order' => 'DESC'
+		'order' => 'ASC'
 	);
 
 	if ( $categoryBrowsePostType == 'burke_candidate' ) {
