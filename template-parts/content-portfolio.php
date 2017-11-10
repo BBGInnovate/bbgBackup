@@ -80,11 +80,12 @@ if ( isset($_GET['category_id']) ) {
 						if ( $burkeNetwork == "RFERL" ) {
 							$burkeNetwork = "RFE/RL";
 						}
-						$burkeReason = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_reason_taglien' );
+						$burkeReason = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_reason' );
 
 						echo '<p><strong>Network:</strong> ' . $burkeNetwork . '</p>';
 						// echo '<p>' . $burkeReason[0] . '</p>';
-						var_dump($burkeReason);
+						// var_dump($burkeReason);
+						the_excerpt();
 				} else {
 					the_excerpt();
 				}
