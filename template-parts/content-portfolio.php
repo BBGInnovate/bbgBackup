@@ -41,8 +41,8 @@ if ( isset($_GET['category_id']) ) {
 	?>
 		<div class="single-post-thumbnail clear bbg__excerpt-header__thumbnail--medium">
 			<?php
-				
-				
+
+
 
 				echo $linkImage;
 
@@ -53,12 +53,12 @@ if ( isset($_GET['category_id']) ) {
 					$thumbnail = the_post_thumbnail( 'medium-thumb' );
 				}
 				echo $thumbnail;
-				
+
 
 			?>
 			</a>
 		</div>
-		<?php echo buildLabel(implode(get_post_class($classNames)));	//check bbg-functions-utilities ?>
+		<?php echo buildLabel( implode( get_post_class( $classNames ) ) );	//check bbg-functions-utilities ?>
 		<?php the_title( sprintf( $linkH3, $postPermalink ), '</a></h3>' ); ?>
 
 		<?php if ( 'post' === get_post_type() ) : ?>
@@ -70,31 +70,31 @@ if ( isset($_GET['category_id']) ) {
 
 	</header><!-- .entry-header -->
 
+	<?php if ( $includeDescription ) { ?>
+		<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">
+			<?php
 
-	<?php if ($includeDescription) { ?>
-
-	<div class="entry-content bbg-portfolio__excerpt-content bbg-blog__excerpt-content">
-		<?php 
-
-			if (get_post_type() == 'burke_candidate') {
-					$burkeNetwork = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_network' );
-					$burkeNetwork = strtoupper( $burkeNetwork[0] );
-					if ( $burkeNetwork == "RFERL" ) {
-						$burkeNetwork = "RFE/RL";
-					}
-					echo '<strong>Network:</strong> ' . $burkeNetwork . "<BR>"; 
+				if ( get_post_type() == 'burke_candidate' ) {
+						$burkeNetwork = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_network' );
+						$burkeNetwork = strtoupper( $burkeNetwork[0] );
+						if ( $burkeNetwork == "RFERL" ) {
+							$burkeNetwork = "RFE/RL";
+						}
+						$burkeReason = get_post_meta( get_the_ID(), 'burke_award_info_0_burke_reason_tagline' );
+						echo '<p><strong>Network:</strong> ' . $burkeNetwork . '</p>';
+						echo '<p>' . $burkeReason . '</p>';
+				} else {
+					the_excerpt();
 				}
-		?>
+			?>
 
-		<?php the_excerpt(); ?>
-
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .bbg-portfolio__excerpt-title -->
+			<?php
+				wp_link_pages( array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
+					'after'  => '</div>',
+				) );
+			?>
+		</div><!-- .bbg-portfolio__excerpt-title -->
 	<?php } ?>
 
 </article><!-- .bbg-portfolio__excerpt -->
