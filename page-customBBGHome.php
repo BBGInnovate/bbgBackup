@@ -88,7 +88,7 @@ $siteIntroLink = get_field('site_setting_mission_statement_link', 'options', 'fa
 
 
 //What will go in the corner hero? off (gives random quote), event, callout, advisory
-$homepage_hero_corner = get_field( 'homepage_hero_corner', 'option' ); 
+$homepage_hero_corner = get_field( 'homepage_hero_corner', 'option' );
 if ( $homepage_hero_corner  == 'event' ) {
 	$featuredEvent = get_field( 'homepage_featured_event', 'option' );
 } else if ( $homepage_hero_corner == 'advisory' ) {
@@ -112,8 +112,8 @@ $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 $postIDsUsed = array();
 
 if ( $featuredPost ) {
-	$featuredPost = $featuredPost[0]; 
-	$postIDsUsed[] = $featuredPost -> ID; 
+	$featuredPost = $featuredPost[0];
+	$postIDsUsed[] = $featuredPost -> ID;
 }
 
 if ( $homepage_hero_corner == 'event' && $featuredEvent ) {
@@ -146,43 +146,43 @@ get_header();
 			<?php
 				/*** output our <style> node for use by the responsive banner ***/
 				if ( $homepageBannerType == 'revolution_slider' ) {
-					$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' ); 
+					$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' );
 					echo '<section class="usa-section bbg-banner__section" style="position: relative; z-index:9990;">';
 					$sliderAlias = get_field( 'homepage_banner_revolution_slider_alias', 'option' );
 					echo do_shortcode( '[rev_slider alias="' . $sliderAlias . '"]' );
-					echo '</section>';	
+					echo '</section>';
 				} else {
-					
+
 					$useRandomImage = true;
 					$includeBannerLogo = true;
 					$bannerCutline = '';
 					$bannerAdjustStr = '';
 
 					if ( $homepageBannerType == 'specific_image' ) {
-						
+
 						$includeBannerLogo = get_field( 'homepage_banner_image_include_logo', 'option' );
 
 						$img = get_field( 'homepage_banner_image', 'option' );
-						
+
 						if ( $img ) {
 
 							$attachment_id = $img['ID'];
 							$useRandomImage = false;
 
 							$featuredImageCutline='';
-							$thumbnail_image = get_posts( 
+							$thumbnail_image = get_posts(
 								array(
-									'p' => $attachment_id, 
+									'p' => $attachment_id,
 									'post_type' => 'attachment'
-								) 
+								)
 							);
-							
+
 							if ($thumbnail_image && isset($thumbnail_image[0])) {
 								$bannerCutline=$thumbnail_image[0]->post_excerpt;
 							}
-							
+
 							$bannerAdjustStr = '';
-							$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' ); 
+							$bannerBackgroundPosition = get_field( 'homepage_banner_background_position', 'option' );
 							if ( $bannerBackgroundPosition ) {
 								$bannerAdjustStr = $bannerBackgroundPosition;
 							}
@@ -201,7 +201,7 @@ get_header();
 					//sources aren't automatically in numeric order.  ksort does the trick.
 					ksort( $tempSources );
 					$prevWidth=0;
-					
+
 					// Let's prevent any images with width > 1200px from being an output as part of responsive banner
 					foreach( $tempSources as $key => $tempSource ) {
 						if ( $key > 1900 ) {
@@ -254,7 +254,7 @@ get_header();
 							<?php echo $bannerCutline; ?>
 						</div>
 					</section><!-- Responsive Banner -->
-					<?php  
+					<?php
 
 				}
 			?>
@@ -303,7 +303,7 @@ get_header();
 						<div class="usa-grid-full u--space-below-mobile--large">
 							<a href="<?php echo $impactPermalink; ?>">Find out how the BBG defines and measures impact »</a>
 						</div><!-- .usa-grid -->
-					</div> 
+					</div>
 					<!-- Quotation -->
 					<div class="usa-width-one-third">
 					<?php
@@ -316,7 +316,7 @@ get_header();
 							$cornerHeroClass = 'bbg__event-announcement';
 							if (has_category('Media Advisory', $featuredEvent)) {
 								$cornerHeroClass = 'bbg__advisory-announcement';
-							} 
+							}
 							$id = $cornerHeroPost -> ID;
 							$cornerHeroPermalink = get_the_permalink( $id );
 
@@ -329,7 +329,7 @@ get_header();
 							}
 
 							$cornerHeroTitle = $cornerHeroPost -> post_title;
-							$excerpt = my_excerpt( $id ); 
+							$excerpt = my_excerpt( $id );
 					?>
 							<article class="bbg-portfolio__excerpt <?php echo $cornerHeroClass; ?>">
 								<header class="entry-header bbg__article-icons-container">
@@ -348,7 +348,7 @@ get_header();
 								</div>
 							</article>
 
-					<?php 
+					<?php
 						} else if ( $homepage_hero_corner == 'callout' && $featuredCallout ) {
 							outputCallout($featuredCallout);
 						} else {
@@ -358,7 +358,7 @@ get_header();
 								$postIDsUsed[] = $q['ID'];
 								outputQuote( $q, '' );
 							}
-						} 
+						}
 					?>
 					</div><!-- usa-grid-one-third -->
 				</div><!-- .usa-grid-->
@@ -525,7 +525,7 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 					<div class="usa-intro bbg__broadcasters__intro">
-						<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> million listeners, viewers and Internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
+						<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> listeners, viewers and internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
 					</div>
 					<?php echo outputBroadcasters('2'); ?>
 				</div>
