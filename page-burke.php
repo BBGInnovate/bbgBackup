@@ -132,7 +132,7 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg__label">Meet the winners</h6>
 					<div class="bbg-blog__excerpt-content">
-						<p>The BBG networks nominates an exemplary journalist, production team, bureau, or language service for work done in the previous calendar year. <a href="/burke-awards/burke-awards-archive/2017-winners/" class="bbg__kits__intro__more--link">View the complete list of <?php echo $activeYear ?> honorees »</a></p>
+						<p>The BBG networks nominates an exemplary journalist, production team, bureau, or language service for work done in the previous calendar year.<br/><a href="/burke-awards/burke-awards-archive/2017-winners/" class="bbg__kits__intro__more--link" style="text-align:right;">View the complete list of <?php echo $activeYear ?> honorees »</a></p>
 					</div>
 				</div>
 				<div class="usa-grid">
