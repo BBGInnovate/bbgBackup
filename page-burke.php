@@ -24,10 +24,10 @@ function getBurkeImage() {
 }
 $bannerText = "David Burke Awards";
 $bannerLogo = "/wp-content/media/2017/07/burkeDemo.jpg";
-$siteIntroContent = "The David Burke Awards are named after David W. Burke, founding chairman of the Broadcasting Board of Governors and leader for its first three years. The Burke Awards are presented annually to recognize the courage, integrity, and professionalism of journalists with the BBG.";
+$siteIntroContent = "The David Burke Awards are named after David W. Burke, founding chairman of the Broadcasting Board of Governors and leader for its first three years. The Burke Awards are presented annually to recognize the courage, integrity, and professionalism of journalists with the BBG networks.";
 $burkeBioLink = "/who-we-are/our-leadership/board/david-w-burke/";
 $burkeBioImage = "/wp-content/media/2017/08/David-Burke-profile.png";
-$activeYear = 2016;  //in theory we could let the user pick this
+$activeYear = 2017;  //in theory we could let the user pick this
 
 /******* END BURKE AWARDS ****/
 
@@ -132,12 +132,7 @@ get_header();
 				<div class="usa-grid">
 					<h6 class="bbg__label">Meet the winners</h6>
 					<div class="bbg-blog__excerpt-content">
-						<p>
-							Each network nominates a minimum of one Burke award winner every year. 2017 marks the 16<sup>th</sup> year in which the awards have been given. Below is a random sampling of this year’s winners.
-							<a href="/burke-awards/burke-awards-archive/2017-winners/" class="bbg__kits__intro__more--link">Complete list of this year’s winners »</a>
-
-							<!-- and you may <a href='/burke-candidates/'>view the archive</a> to see a complete listing of nominees and winners for this year as well as years past.-->
-						</p>
+						<p>Each of the BBG networks nominates at least one journalist each year. The Burke Awards have been presented every year since 2001. Meet some of the latest winners. <a href="/burke-awards/burke-awards-archive/2017-winners/" class="bbg__kits__intro__more--link">Access the complete list of <?php echo $activeYear ?> winners »</a></p>
 					</div>
 				</div>
 				<div class="usa-grid">
