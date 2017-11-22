@@ -238,7 +238,7 @@ get_header();
 							<div class="bbg-banner__gradient"></div>
 							<div class="usa-grid bbg-banner__container--home">
 								<?php if ( $includeBannerLogo ): ?>
-								<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo_refresh.jpg" alt="alternate BBG logo">
+								<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-usima-square_300.png" alt="alternate BBG logo">
 								<?php endif; ?>
 								<div class="bbg-banner-box">
 									<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
