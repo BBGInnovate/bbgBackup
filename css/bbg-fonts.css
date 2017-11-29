@@ -81,7 +81,7 @@
     src: url('../fonts/Carrara-Light.eot?#iefix') format('embedded-opentype'),
          url('../fonts/Carrara-Light.woff2') format('woff2'),
          url('../fonts/Carrara-Light.woff') format('woff'),
-         url('../fonts/Carrara-Light.ttf') format('truetype'),
+         url('../fonts/Carrara-Light.otf') format('truetype'),
          url('../fonts/Carrara-Light.svg#source_sans_proitalic') format('svg');
 }
 
