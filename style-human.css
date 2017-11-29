@@ -6920,15 +6920,13 @@ div.banner_readmore h6 a:visited {
   padding-right: 3rem;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
+  /* @include media( $large-screen ) {
+  	font-size: 5.5rem;
+  } */
 }
 @media screen and (min-width: 600px) {
   .bbg-banner .bbg-banner-box .bbg-banner-site-title {
     font-size: 4.8rem;
-  }
-}
-@media screen and (min-width: 1201px) {
-  .bbg-banner .bbg-banner-box .bbg-banner-site-title {
-    font-size: 5.5rem;
   }
 }
 .bbg-banner .bbg-banner-box .bbg-banner-site-description {
