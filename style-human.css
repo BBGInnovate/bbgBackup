@@ -6911,13 +6911,14 @@ div.banner_readmore h6 a:visited {
 }
 .bbg-banner .bbg-banner-box .bbg-banner-site-title {
   color: #FFF;
-  font-family: "AlegreyaSans", "Helvetica", "Arial", sans-serif !important;
+  font-family: "Amiri", "Georgia", "Times New Roman", serif !important;
   font-size: 3.2rem;
   line-height: 1;
   margin-bottom: 5px;
   max-width: 1040px;
   padding-right: 3rem;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
 }
 @media screen and (min-width: 600px) {
   .bbg-banner .bbg-banner-box .bbg-banner-site-title {
