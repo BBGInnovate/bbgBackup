@@ -5649,7 +5649,7 @@ article {
 .bbg-header__site-title--breakline {
   display: block;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1201px) {
   .bbg-header__site-title--breakline {
     display: inline-block;
   }

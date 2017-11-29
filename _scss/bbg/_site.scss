@@ -334,7 +334,7 @@ article {
 
 .bbg-header__site-title--breakline {
     display: block;
-    @include media($medium-large-screen) {
+    @include media($large-screen) {
         display: inline-block;
     }
 }
