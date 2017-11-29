@@ -241,7 +241,7 @@ get_header();
 								<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-usima-square_300.png" alt="alternate BBG logo">
 								<?php endif; ?>
 								<div class="bbg-banner-box">
-									<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
+									<h1 class="bbg-banner-site-title">U.S. International Media Agency<?php /*echo bbginnovate_site_name_html();*/ ?></h1>
 								</div>
 								<div class="bbg-social__container">
 									<div class="bbg-social">
@@ -264,7 +264,7 @@ get_header();
 			<?php
 				echo '<h3 id="site-intro" class="usa-font-lead">';
 				echo $siteIntroContent;
-				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
+				echo ' <a href="' . $siteIntroLink . '" class="bbg__read-more">LEARN MORE »</a></h3>';
 			?>
 			</section><!-- Site introduction -->
 

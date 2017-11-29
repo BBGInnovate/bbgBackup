@@ -189,7 +189,7 @@ add_action( 'widgets_init', 'bbginnovate_widgets_init' );
 function bbginnovate_scripts() {
 	wp_enqueue_style( 'bbginnovate-style', get_stylesheet_uri() );
 
-	// wp_enqueue_style( 'bbginnovate-style-fonts-google', get_template_directory_uri() . "/css/google-fonts.css" );
+	// wp_enqueue_style( 'bbginnovate-style-fonts-google', get_template_directory_uri() . "/css/google-fonts.css" ); // Original USDWS fonts
 
 	wp_enqueue_style( 'bbginnovate-style-fonts', get_template_directory_uri() . "/css/bbg-fonts.css" );
 
@@ -507,7 +507,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 					}
 				}
 
-				
+
 
 				if ( !$selectedCategory ) {
 					foreach ( $categories as $category ) {

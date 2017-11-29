@@ -1,3 +1,126 @@
+/* **************** TESTING NEW FONTS **************** */
+/* SANS SERIF: Alegreya Sans */
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/AlegreyaSans-Thin.eot');
+    src: url('../fonts/AlegreyaSans-Thin.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-Thin.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-Thin.woff') format('woff'),
+         url('../fonts/AlegreyaSans-Thin.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-Thin.svg#source_sans_proregular') format('svg');
+}
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: italic;
+    font-weight: 100;
+    src: url('../fonts/AlegreyaSans-ThinItalic.eot');
+    src: url('../fonts/AlegreyaSans-ThinItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-ThinItalic.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-ThinItalic.woff') format('woff'),
+         url('../fonts/AlegreyaSans-ThinItalic.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-ThinItalic.svg#source_sans_proregular') format('svg');
+}
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/AlegreyaSans-Regular.eot');
+    src: url('../fonts/AlegreyaSans-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-Regular.woff') format('woff'),
+         url('../fonts/AlegreyaSans-Regular.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-Regular.svg#source_sans_proitalic') format('svg');
+}
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/AlegreyaSans-Italic.eot');
+    src: url('../fonts/AlegreyaSans-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-Italic.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-Italic.woff') format('woff'),
+         url('../fonts/AlegreyaSans-Italic.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-Italic.svg#source_sans_proitalic') format('svg');
+}
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/AlegreyaSans-Bold.eot');
+    src: url('../fonts/AlegreyaSans-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-Bold.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-Bold.woff') format('woff'),
+         url('../fonts/AlegreyaSans-Bold.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-Bold.svg#source_sans_probold') format('svg');
+}
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    font-style: italic;
+    font-weight: 700;
+    src: url('../fonts/AlegreyaSans-BoldItalic.eot');
+    src: url('../fonts/AlegreyaSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/AlegreyaSans-BoldItalic.woff2') format('woff2'),
+         url('../fonts/AlegreyaSans-BoldItalic.woff') format('woff'),
+         url('../fonts/AlegreyaSans-BoldItalic.ttf') format('truetype'),
+         url('../fonts/AlegreyaSans-BoldItalic.svg#source_sans_probold') format('svg');
+}
+/* SERIF: Amiri (placeholder for Carrara—to be purchased at https://www.myfonts.com/fonts/hoftype/carrara) */
+@font-face {
+    font-family: 'Amiri';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Amiri-Regular.eot');
+    src: url('../fonts/Amiri-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Amiri-Regular.woff2') format('woff2'),
+         url('../fonts/Amiri-Regular.woff') format('woff'),
+         url('../fonts/Amiri-Regular.ttf') format('truetype'),
+         url('../fonts/Amiri-Regular.svg#source_sans_proitalic') format('svg');
+}
+
+@font-face {
+    font-family: 'Amiri';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/Amiri-Italic.eot');
+    src: url('../fonts/Amiri-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Amiri-Italic.woff2') format('woff2'),
+         url('../fonts/Amiri-Italic.woff') format('woff'),
+         url('../fonts/Amiri-Italic.ttf') format('truetype'),
+         url('../fonts/Amiri-Italic.svg#source_sans_proitalic') format('svg');
+}
+
+@font-face {
+    font-family: 'Amiri';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Amiri-Bold.eot');
+    src: url('../fonts/Amiri-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Amiri-Bold.woff2') format('woff2'),
+         url('../fonts/Amiri-Bold.woff') format('woff'),
+         url('../fonts/Amiri-Bold.ttf') format('truetype'),
+         url('../fonts/Amiri-Bold.svg#source_sans_probold') format('svg');
+}
+
+@font-face {
+    font-family: 'Amiri';
+    font-style: italic;
+    font-weight: 700;
+    src: url('../fonts/Amiri-BoldItalic.eot');
+    src: url('../fonts/Amiri-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Amiri-BoldItalic.woff2') format('woff2'),
+         url('../fonts/Amiri-BoldItalic.woff') format('woff'),
+         url('../fonts/Amiri-BoldItalic.ttf') format('truetype'),
+         url('../fonts/Amiri-BoldItalic.svg#source_sans_probold') format('svg');
+}
+
+/*
 @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -131,4 +254,4 @@
          url('../fonts/merriweather-bold-italic-webfont.ttf') format('truetype'),
          url('../fonts/merriweather-bold-italic-webfont.svg#source_sans_probold') format('svg');
 
-}
+}*/
