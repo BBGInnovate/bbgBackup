@@ -19,12 +19,10 @@ $twitterHandle = "";
 if ( isset( $m['twitterHandle'] ) ) {
 	$twitterHandle = $m['twitterHandle'][0];
 }
-
 $isCEO = false;
 if ( stristr($occupation, "ceo") ) {
 	$isCEO = true;
 }
-
 $showPodcasts = false;
 if ( isset($_GET['showPodcasts'] )) {
 	$showPodcasts = true;
@@ -46,8 +44,6 @@ if ( isset( $m['author_profile_page'] ) ) {
 	*/
 	}
 }
-
-
 
 get_header(); ?>
 
@@ -223,8 +219,6 @@ get_header(); ?>
 		}
 	</style>
 
-
-
 	<div class="usa-section usa-grid bbg__kits__section" id="page-sections">
 	    <section class="usa-grid-full bbg__kits__section--row bbg__ribbon--thin">
 	        <div class="usa-grid">
@@ -242,9 +236,7 @@ get_header(); ?>
 	    </section>
 	</div>
 
-
 	<?php
-
 			// OPEN THE CONTAINER FOR THE OFIRST ROW AFTER RIBBON
 			echo '<div class="usa-grid">';
 
@@ -354,12 +346,6 @@ get_header(); ?>
 				echo '</div>';
 			}
 			// END THIRD COLUMN OF FIRST ROW AFTER RIBBON - PODCASTS
-
-
-
-
-
-
 			echo '</div>';
 		} else {
 			// BEGIN REGULAR NON-CEO AUTHOR PAGE
@@ -382,12 +368,10 @@ get_header(); ?>
 			endwhile;
 			// END REGULAR NON-CEO AUTHOR PAGE
 		}
-	endif;	//if ( have_posts() ) :
+	endif;
 	?>
 
 </div>
 <?php get_footer();
-
-
 
  ?>

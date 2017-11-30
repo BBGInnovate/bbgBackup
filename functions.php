@@ -10,7 +10,7 @@
 //can't 'DEFINE' an array, so we just set a var.  Note that this should be kept here and not called on 'init' else it won't be available globally.
 $STANDARD_POST_CATEGORY_EXCLUDES = array(
 	get_cat_id('Special Days'),
-	get_cat_id("From the CEO"),
+	get_cat_id('From the CEO'),
 	get_cat_id('Employee'),
 	get_cat_id('Intern Testimonial'),
 	get_cat_id('Impact'),
@@ -230,9 +230,6 @@ function enqueueAdminStyles() {
 	//wp_enqueue_style( 'qtipcss', 'https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.css', array(), '20160403' );
 	wp_enqueue_script('qtipjs', get_template_directory_uri() . '/js/vendor/jquery.qtip.js', array('jquery'), '20160223', true );
 	wp_enqueue_style('qtipcss', get_template_directory_uri() . '/css/jquery.qtip.css', array(), '20160403');
-
-
-
 }
 
 add_action( 'admin_enqueue_scripts', 'enqueueAdminStyles' );
@@ -279,6 +276,7 @@ require get_template_directory() . '/inc/bbg-functions-sidebar-more.php';
 require get_template_directory() . '/inc/bbg-functions-tinyMCE.php';
 //require get_template_directory() . '/inc/bbg-functions-category-tooltip.php';
 require get_template_directory() . '/inc/bbg-functions-tag-hierarchy.php'; // sets up hierarchy in tags
+require get_template_directory() . '/inc/bbg-functions-users.php'; // outputs current user role
 
 /**
  * Add Twitter handle to author metadata using built-in wp hook for contact methods
@@ -507,7 +505,7 @@ if ( ! function_exists( 'bbginnovate_post_categories' ) ) :
 					}
 				}
 
-				
+
 
 				if ( !$selectedCategory ) {
 					foreach ( $categories as $category ) {
