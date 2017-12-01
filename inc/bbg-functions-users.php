@@ -30,6 +30,7 @@ function hide_from_users() {
 				remove_meta_box( 'slugdiv','post','normal' ); // Slug Metabox
 				remove_meta_box( 'trackbacksdiv','post','normal' ); // Trackback Metabox
 				remove_meta_box( 'tagsdiv-{$organizations}','post','normal' ); // Trackback Metabox
+				remove_meta_box( 'mymetabox_revslider_0', 'post', 'normal' ); // Slider Revolution Metabox
 				// remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );  // Recent Drafts from Dashboard
 			}
 			add_action('admin_menu','remove_my_post_metaboxes');
