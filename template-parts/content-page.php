@@ -24,7 +24,7 @@ $fbUrl="//www.facebook.com/sharer/sharer.php?u=" . urlencode( get_permalink() );
 
 // Include sidebar list of people who worked on the project
 $teamRoster = "";
-if( have_rows('project_team_members') ):
+if( have_rows( 'project_team_members' ) ):
 
 	$s = "<div class='bbg__project-team'><h5 class='bbg__project-team__header'>Project team</h5>";
 	while ( have_rows('project_team_members') ) : the_row();
@@ -57,7 +57,7 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 
 		// If a featured video is set, include it.
 		if ( $videoUrl != "" ) {
-			echo featured_video($videoUrl);
+			echo featured_video( $videoUrl );
 			$hideFeaturedImage = TRUE;
 
 		//ELSE if a featured timeline is set, include it.
@@ -78,16 +78,16 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 			echo '<div class="usa-grid-full">';
 			$featuredImageClass = "";
 			$featuredImageCutline = "";
-			$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+			$thumbnail_image = get_posts( array( 'p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment' ) );
 
-			if ($thumbnail_image && isset($thumbnail_image[0])) {
-				$featuredImageCutline = $thumbnail_image[0]->post_excerpt;
+			if ( $thumbnail_image && isset( $thumbnail_image[0] ) ) {
+				$featuredImageCutline = $thumbnail_image[0] -> post_excerpt;
 			}
 
 			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
 			echo the_post_thumbnail( 'large-thumb' );
 
-			if ($featuredImageCutline != "") {
+			if ( $featuredImageCutline != "" ) {
 				echo '<div class="usa-grid">';
 					echo "<div class='bbg__article-header__caption'>$featuredImageCutline</div>";
 				echo '</div> <!-- usa-grid -->';
@@ -100,21 +100,19 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 	?><!-- .bbg__article-header__thumbnail -->
 
 	<div class="usa-grid">
-
-	<?php /*echo bbginnovate_post_categories();*/ ?>
-
 		<header class="entry-header">
 
-			<?php if($post->post_parent) {
+			<?php if( $post -> post_parent ) {
 				//borrowed from: https://wordpress.org/support/topic/link-to-parent-page
-				$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-				$parent_link = get_permalink($post->post_parent);
-				?>
-				<h5 class="bbg__label"><a href="<?php echo $parent_link; ?>"><?php echo $parent->post_title; ?></a></h5>
-			<?php } else{ ?>
-				<h5 class="bbg__label"><?php the_title(); ?></h5>
+				$parent = $wpdb -> get_row( "SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent" );
+				$parent_link = get_permalink( $post -> post_parent) ;
+			?>
+				<h5 class="bbg__label">
+					<a href="<?php echo $parent_link; ?>"><?php echo $parent -> post_title; ?></a>
+				</h5>
+			<?php /*} else {*/ ?>
+				<!-- <h5 class="bbg__label"><?php the_title(); ?></h5> -->
 			<?php } ?>
-
 
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->

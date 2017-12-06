@@ -10,9 +10,9 @@
  */
 
 $parentTitle = "";
-if($post->post_parent) {
-	$parent = $wpdb->get_row("SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent");
-	$parentTitle = $parent->post_title;
+if( $post -> post_parent ) {
+	$parent = $wpdb -> get_row( "SELECT post_title FROM $wpdb->posts WHERE ID = $post->post_parent" );
+	$parentTitle = $parent -> post_title;
 }
 
 get_header(); ?>
@@ -24,7 +24,7 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post();
 					// IF the page is a law under the Legislation parent:
-					if ($parentTitle == "Legislation") {
+					if ( $parentTitle == "Legislation" ) {
 						get_template_part( 'template-parts/content-law', 'page' );
 					} else {
 						get_template_part( 'template-parts/content', 'page' );
