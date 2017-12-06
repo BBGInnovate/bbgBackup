@@ -1,5 +1,5 @@
 <?php
-	function getAwardInfo($awardPostID, $isAwardDetailPage) {
+	function getAwardInfo( $awardPostID, $isAwardDetailPage ) {
 		//$isAwardDetailPage=true means we're on the landing page for a post that has been categorized as an award
 		//$isAwardDetailPage=false means that we're this information on the sidebar of a post where a user picked a related award in the sidebar
 
@@ -16,7 +16,9 @@
 		$awardLogo = get_post_meta( $awardPostID, 'standardpost_award_logo', true );
 		$awardOrgUrl = get_post_meta( $awardPostID, 'standardpost_award_org_url', true );
 		$awardDescription = get_post_meta( $awardPostID, 'standardpost_award_description', true );
-		$awardPermalink = get_permalink($awardPostID);
+		$awardPermalink = get_permalink( $awardPostID );
+
+		$awardYearAndTitle = $awardYear . ' ' . $awardTitle;
 
 		// $awardLogoImage = "";
 		// if ( $awardLogo ){
@@ -26,38 +28,35 @@
 		// 	$awardLogoImage = '<img src="' . $awardLogoImage . '" class="bbg__profile-excerpt__photo"/>';
 		// }
 
-		
-		$awardYearAndTitle = $awardYear . ' ' . $awardTitle;
-
-		if ($isAwardDetailPage) {
+		if ( $isAwardDetailPage ) {
 			$award .= '<p>';
 
 			/*** TITLE ***/
 			$award .= '<strong>Name: </strong>' . $awardYearAndTitle . '<br />';
-			
+
 			/*** BEGIN AWARD WINNING WORK ***/
-			if ($awardWinningWork) {
+			if ( $awardWinningWork ) {
 				$award .= '<strong>Project: </strong>';
-				if ($awardLink) {
-					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
+				if ( $awardLink ) {
+					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork . '</a>';
 				}  else {
 					$award .= $awardWinningWork;
 				}
 				$award .= '<br/>';
 			}
 			/*** END AWARD WINNING WORK ***/
-			
+
 			/*** AWARD WINNER ***/
-			if ($awardWinner) {
+			if ( $awardWinner ) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
 
 			/*** NETWORK ***/
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br/>';
-			
+
 			/*** BEGIN ORG ***/
 			$award .= '<strong>Presented by: </strong>';
-			if ($awardOrgUrl != "") {
+			if ( $awardOrgUrl != "" ) {
 				$award .= '<a target="_blank" href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
 				$award .= $awardOrganization;
@@ -65,11 +64,9 @@
 			/*** END ORG ***/
 
 			$award .= '</p>';
-			
-			
+
 		} else {
 
-			
 			/*** BEGIN TITLE ***/
 			$award .= '<h4 class="bbg__sidebar__primary-headline">';
 			if ( $awardPermalink && $awardPermalink != "" ){
@@ -80,20 +77,20 @@
 			$award .= '</h4>';
 			/*** END TITLE ***/
 
-			$award .= "<p>";
+			$award .= '<p>';
 			/*** AWARD WINNER ***/
-			if ($awardWinner) {
+			if ( $awardWinner ) {
 				$award .= '<strong>Winner: </strong>' . $awardWinner . '<br/>';
 			}
 
 			/*** NETWORK ***/
 			$award .= '<strong>Network: </strong>' . $awardRecipient . '<br />';
-			
+
 			/*** BEGIN AWARD WINNING WORK ***/
-			if ($awardWinningWork) {
+			if ( $awardWinningWork ) {
 				$award .= '<strong>Project: </strong>';
-				if ($awardLink) {
-					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork;
+				if ( $awardLink ) {
+					$award .= '<a target="_blank" href="' . $awardLink .'">' . $awardWinningWork . '</a>';
 				}  else {
 					$award .= $awardWinningWork;
 				}
@@ -103,7 +100,7 @@
 
 			/*** BEGIN ORG ***/
 			$award .= '<strong>Presented by: </strong>';
-			if ($awardOrgUrl != "") {
+			if ( $awardOrgUrl != "" ) {
 				$award .= '<a href="' . $awardOrgUrl .'">' . $awardOrganization . '</a>';
 			} else {
 				$award .= $awardOrganization;
