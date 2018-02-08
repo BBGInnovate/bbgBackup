@@ -35,7 +35,7 @@ We've documented our usage of custom fields and plugins in our [SETUP.md] (https
 
 ## Got feedback?
 
-You can reach us at bwilliamson@bbg.gov.
+You can reach us at bbgpublicaffairs@bbg.gov.
 
 
 
