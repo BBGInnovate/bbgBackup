@@ -237,11 +237,17 @@ get_header();
 						<div class="bbg-banner">
 							<div class="bbg-banner__gradient"></div>
 							<div class="usa-grid bbg-banner__container--home">
-								<?php if ( $includeBannerLogo ): ?>
-								<img class="bbg-banner__site-logo" src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
-								<?php endif; ?>
-								<div class="bbg-banner-box">
-									<h1 class="bbg-banner-site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
+								<!-- <?php if ( $includeBannerLogo ): ?>
+								<img class="bbg-banner__site-logo" src="<?php //echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="BBG logo">
+								<?php endif; ?> -->
+								<div id="mission" class="bbg-banner-box">
+									<section id="mission" class="">
+									<?php
+										echo '<h3 id="site-intro" class="usa-font-lead">';
+										echo $siteIntroContent;
+										echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
+									?>
+									</section>
 								</div>
 								<div class="bbg-social__container">
 									<div class="bbg-social">
@@ -258,15 +264,6 @@ get_header();
 
 				}
 			?>
-
-			<!-- Site introduction -->
-			<section id="mission" class="usa-section usa-grid">
-			<?php
-				echo '<h3 id="site-intro" class="usa-font-lead">';
-				echo $siteIntroContent;
-				echo ' <a href="'.$siteIntroLink.'" class="bbg__read-more">LEARN MORE »</a></h3>';
-			?>
-			</section><!-- Site introduction -->
 
 			<!-- Impact stories + 1 Quotation-->
 			<section id="impact-stories" class="usa-section bbg-portfolio">
