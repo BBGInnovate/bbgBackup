@@ -714,7 +714,7 @@ function clearFBCache( $post_ID, $post) {
 	curl_close ($ch);
 
 }
-add_action( 'publish_post', 'clearFBCache', 10, 2 );
+// add_action( 'publish_post', 'clearFBCache', 10, 2 );
 
 function sortByTitle($a, $b) {
     return strcmp($a["title"], $b["title"]);

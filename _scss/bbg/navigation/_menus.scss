@@ -129,8 +129,6 @@ body:not(.home) {
 
 }
 
-
-
 /* Small menu. */
 .menu-toggle{
 	background: {
@@ -145,7 +143,7 @@ body:not(.home) {
 	}
 
 	border-radius: 0 0 $border-radius $border-radius;
-	margin-top: 0;
+	margin: 0;
 	min-height: 4.5rem;
 	min-width: 4.5rem;
 	padding-right: 0;
@@ -188,9 +186,6 @@ body:not(.home) {
 	display:block;
 }
 
- 
-
-
 .menu-item-has-children > a {
 	border-left: 1px solid $color-gray-lightest;
 	display:inline-block !important;
@@ -201,14 +196,13 @@ body:not(.home) {
 .menu-item-has-children > a.bbg__main-navigation__link-text {
 	width: calc(100% - 5rem);
 }
-
 .bbg__main-navigation.toggled ul.sub-menu {
 	display:none;
 }
+
 .bbg__main-navigation__toggler {
 	background: none;
 	background-color: transparent;
-
 	cursor: pointer;
 	display: inline-block !important;
 	height: 4.7rem;
@@ -216,7 +210,6 @@ body:not(.home) {
 	padding: 1.5rem;
 	vertical-align: top;
 	width: 5rem;
-
 	&:hover {background-color: transparent;}
 	&:focus {background-color: $color-cool-blue-lightest; }
 }
@@ -235,7 +228,7 @@ body:not(.home) {
 		/* drop down navigation */
 		ul {
 			position: absolute;
-				right: auto;
+			right: auto;
 			width: auto;
 
 			li {
@@ -247,10 +240,9 @@ body:not(.home) {
 				a {
 					padding-left: 2.2rem;
 				}
-
 				a:before {
 					content: "";
-				}
+			}
 
 			}
 			li:first-of-type {
@@ -269,8 +261,7 @@ body:not(.home) {
 			background-color: #FFF;
 			border-bottom: $border-solid;
 			border-right: $border-solid;
-			font-size: 14px;
-			font-weight: 700;
+			font-size: 13px;
 			float: left;
 			margin: 0;
 			padding: 0;
@@ -294,9 +285,7 @@ body:not(.home) {
 			display: block !important;
 		}
 
-		.menu-item-has-children > ul {
-			display: none;
-		}
+		.menu-item-has-children > ul {display: none;}
 
 		li:first-of-type {
 			border-left: $border-solid;
@@ -307,10 +296,7 @@ body:not(.home) {
 		li:first-of-type a:focus{
 			border-radius: 0 0 0 $border-radius;
 		}
-
-		li:after {
-			display: none;
-		}
+		li:after {display: none;}
 
 		a {
 			padding: 1.5rem 1.5rem 1rem 1.5rem;
@@ -321,7 +307,6 @@ body:not(.home) {
 			text-decoration: underline;
 		}
 	} 
-
 
 	.bbg__main-navigation__toggler {
 		background: none;
@@ -336,12 +321,6 @@ body:not(.home) {
 		display:block !important;
 	}
 }
-
-
-
-
-
-
 
 
 .bbg__navigation__pagination {
@@ -396,7 +375,6 @@ body:not(.home) {
 			padding-right: 25px;
 		}
 
-
 		a:hover {
 			background: {
 				image: url('img/arrow-next-hover.png');
@@ -407,19 +385,16 @@ body:not(.home) {
 }
 
 
-
-
 /** POST AUTHOR Previous/next links on project posts */
 .bbg__article__nav {
 	display: block;
 	margin: 0 auto;
 	pointer-events: none;
 	position: fixed;
-		bottom: 100px;
+	bottom: 100px;
 	text-align: center;
 	width: 100%;
 	z-index: 1;
-
 
 	.bbg__article__nav-link {
 		height: 45px;
@@ -446,7 +421,6 @@ body:not(.home) {
 				image: url(img/arrow_left.png);
 			}
 		}
-
 		&.right-arrow{
 			background: {
 				position: right top;
@@ -457,17 +431,13 @@ body:not(.home) {
 		}
 
 	}
-
 	.bbg__article__nav-text {
 		display: none;
 	}
-
 	.bbg__article__nav-previous {
 		float: left;
 	}
-
 	.bbg__article__nav-next {
 		float: right;
 	}
 }
-

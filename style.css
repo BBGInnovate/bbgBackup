@@ -3025,7 +3025,6 @@ svg {
   font-style: italic;
   font-weight: 300;
   line-height: 1.7;
-  margin-top: 1rem;
   text-align: left; }
 
 /* Mugshot used in the Soapbox on the homepage */
@@ -3318,7 +3317,7 @@ body:not(.home) .bbg__main-navigation {
   background-repeat: no-repeat;
   background-size: 20px;
   border-radius: 0 0 0.3rem 0.3rem;
-  margin-top: 0;
+  margin: 0;
   min-height: 4.5rem;
   min-width: 4.5rem;
   padding-right: 0;
@@ -3410,8 +3409,7 @@ body:not(.home) .bbg__main-navigation {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
     border-right: 1px solid #CCC;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 13px;
     float: left;
     margin: 0;
     padding: 0; }
@@ -5599,15 +5597,7 @@ div.banner_readmore h6 a:visited {
     .bbg-banner .bbg-banner__site-logo :focus {
       box-shadow: none; }
   .bbg-banner .bbg-banner-box {
-    margin: 0 auto;
-    position: absolute;
-    width: 100%;
-    right: 0;
-    bottom: 0;
-    background: -moz-linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
-    background: -webkit-linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
-    background: -linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
-    filter: progid:DXImagesTransform.Microsoft.gradient(startColorstr='#00283166', endColorstr='#283166',GradientType=1); }
+    margin: 0 auto; }
     @media screen and (min-width: 600px) {
       .bbg-banner .bbg-banner-box {
         padding-right: 3rem; } }
@@ -5641,18 +5631,6 @@ div.banner_readmore h6 a:visited {
       @media screen and (min-width: 1201px) {
         .bbg-banner .bbg-banner-box .bbg-banner-site-description {
           font-size: 2rem; } }
-    .bbg-banner .bbg-banner-box #mission {
-      padding: 1em;
-      padding-left: 30%;
-      right: 0; }
-      .bbg-banner .bbg-banner-box #mission h3, .bbg-banner .bbg-banner-box #mission .bbg__sidebar__table caption, .bbg__sidebar__table .bbg-banner .bbg-banner-box #mission caption {
-        margin-bottom: 0;
-        line-height: 1.7em; }
-        .bbg-banner .bbg-banner-box #mission h3 .bbg__read-more, .bbg-banner .bbg-banner-box #mission .bbg__sidebar__table caption .bbg__read-more, .bbg__sidebar__table .bbg-banner .bbg-banner-box #mission caption .bbg__read-more, .bbg-banner .bbg-banner-box #mission h3 a.bbg__kits__intro__more--link, .bbg-banner .bbg-banner-box #mission .bbg__sidebar__table caption a.bbg__kits__intro__more--link, .bbg__sidebar__table .bbg-banner .bbg-banner-box #mission caption a.bbg__kits__intro__more--link {
-          color: #d6d2c4; }
-      .bbg-banner .bbg-banner-box #mission .usa-font-lead, .bbg-banner .bbg-banner-box #mission .bbg__about__intro p:first-of-type, .bbg__about__intro .bbg-banner .bbg-banner-box #mission p:first-of-type, .bbg-banner .bbg-banner-box #mission .bbg__about__child__intro p:first-of-type, .bbg__about__child__intro .bbg-banner .bbg-banner-box #mission p:first-of-type, .bbg-banner .bbg-banner-box #mission .bbg__kits__intro p, .bbg__kits__intro .bbg-banner .bbg-banner-box #mission p, .bbg-banner .bbg-banner-box #mission .bbg__kits__child__intro p:first-of-type, .bbg__kits__child__intro .bbg-banner .bbg-banner-box #mission p:first-of-type {
-        color: #fff;
-        text-align: right; }
   .bbg-banner .bbg-banner__gradient {
     background-image: linear-gradient(transparent 0%, #000 200%);
     height: 25%;
@@ -5734,7 +5712,14 @@ div.banner_readmore h6 a:visited {
             background-image: url(img/social-icons/svg/facebook25.svg); } }
 
 .bbg-banner__cutline {
-  color: #999 !important; }
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: -moz-linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
+  background: -webkit-linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
+  background: -linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
+  filter: progid:DXImagesTransform.Microsoft.gradient(startColorstr='#00283166', endColorstr='#283166',GradientType=1); }
   @media screen and (min-width: 600px) {
     .bbg-banner__cutline {
       text-align: right !important; } }
