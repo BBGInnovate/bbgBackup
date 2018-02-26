@@ -300,38 +300,19 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 		</div>
 
 
+		<button id="bbg__menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
 
-
-		<?php
-			/* exclude default site-branding on the custom home page */
-			if ($templateName!="customBBGHome"){
-		?>
-		<div>
-			<div id="header" class="usa-grid-full bbg-header__container__box" style="">
-
-				<div class="bbg-header__container">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="bbg-header__link">
-						<img src="<?php echo get_template_directory_uri() ?>/img/logo-agency-square.png" alt="Logo for the Broadcasting Board of Governors" class="bbg-header__logo">
-						<h1 class="bbg-header__site-title"><?php echo bbginnovate_site_name_html(); ?></h1>
-					</a>
-
-					<button id="bbg__menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
-				</div>
-
-			</div>
-		</div>
-
-
-		<?php } else { ?>
-			<button id="bbg__menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="menu-toggle-label"><?php esc_html_e( 'Menu', 'bbginnovate' ); ?></span></button>
-		<?php } ?>
 
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
 			<?php
 
-			$new_logo_img  = "<img id='usim-nav-logo' src='";
-			$new_logo_img .= get_template_directory_uri();
-			$new_logo_img .= "/img/usim-logo-interim.png' alt='USIM Logo'>";
+			$new_logo_img  = "<a href='";
+			$new_logo_img .= esc_url( home_url( '/' ) );
+			$new_logo_img .= "' rel='home' class='bbg-header__link'>";
+			$new_logo_img .= 	"<img id='usim-nav-logo' src='";
+			$new_logo_img .= 		get_template_directory_uri();
+			$new_logo_img .= 	"/img/usim-logo-interim.png' alt='USIM Logo'>";
+			$new_logo_img .= "</a>";
 			echo $new_logo_img;
 
 			$btnSearch = "<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";

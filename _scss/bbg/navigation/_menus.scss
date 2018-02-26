@@ -4,7 +4,7 @@
 	clear: both;
 	display: block;
 	width: 100%;
-	padding: 0.5em;
+	padding: 0.5em 0;
 
 	.menu-all-pages-container {
 		margin: 0 auto;
@@ -47,7 +47,7 @@
 		li:after {display: none;}
 		a {
 			display: block;
-			padding: 1rem $site-margins;
+			padding: 1rem 0;
 			text-decoration: none;
 		}
 		a:hover {background-color: $color-light-gray;}
@@ -59,7 +59,13 @@
 		.bbg__top-nav__link-text {width: calc(100% - 5rem);}
 	}
 
-	.bbg__main-navigation__search {padding: $site-margins-medium;}
+	.bbg__main-navigation__search {
+		padding: $site-margins-medium;
+		button {
+			background-color: $color-usim-blue-royal;
+			border: 0;
+		}
+	}
 }
 
 
@@ -87,7 +93,9 @@ body:not(.home) {
 		repeat: no-repeat;
 		size: 20px;
 	}
-	&:focus {background-color: $color-cool-blue;}
+	&:active {background-color: #ff00ff; border-bottom: 1px solid #c9c4ba;}
+	&:hover {border-bottom: 1px solid #c9c4ba;}
+	&:focus {background-color: transparent;}
 	.menu-toggle-label {display: none;}
 }
 
@@ -101,10 +109,11 @@ body:not(.home) {
 .bbg__main-navigation.toggled .bbg__main-navigation__search {display:block;}
 
  
-
+.menu-item-has-children .bbg__main-navigation__toggler {
+	border: 0;
+}
 
 .menu-item-has-children > a {
-	border-left: 1px solid $color-gray-lightest;
 	display:inline-block !important;
 	padding-left: 1rem;
 }
@@ -130,6 +139,117 @@ body:not(.home) {
 
         &:hover {background-color: transparent;}
         &:focus {background-color: $color-cool-blue-lightest; }
+}
+
+
+
+
+.bbg__navigation__pagination {
+	@include clearfix();
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		//overflow: hidden;//Disabling this because of post nav on portfolio page. 
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+
+		a {
+			background: {
+				image: url('img/arrow-previous.png');
+				image: url('img/arrow-previous.svg');
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+			}
+			padding-left: 25px;
+		}
+
+		a:hover {
+			background: {
+				image: url('img/arrow-previous-hover.png');
+				image: url('img/arrow-previous-hover.svg');
+			}
+		}
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+
+		a {
+			background: {
+				image: url('img/arrow-next.png');
+				image: url('img/arrow-next.svg');
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+			}
+			padding-right: 25px;
+		}
+
+		a:hover {
+			background: {
+				image: url('img/arrow-next-hover.png');
+				image: url('img/arrow-next-hover.svg');
+			}
+		}
+	}
+}
+
+/** POST AUTHOR Previous/next links on project posts */
+.bbg__article__nav {
+	display: block;
+	margin: 0 auto;
+	pointer-events: none;
+	position: fixed;
+	bottom: 100px;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+
+	.bbg__article__nav-link {
+		height: 45px;
+		pointer-events: initial;
+		width: 30px;
+	}
+
+	.bbg__article__nav-icon {
+		display: block;
+		height: 100%;
+		padding: 0;
+		width: 100%;
+
+		&.left-arrow{
+			background: {
+				position: left top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_left.png);
+			}
+		}
+
+		&.right-arrow{
+			background: {
+				position: right top;
+				repeat: no-repeat;
+				size: contain;
+				image: url(img/arrow_right.png);
+			}
+		}
+	}
+
+	.bbg__article__nav-text {display: none;}
+	.bbg__article__nav-previous {float: left;}
+	.bbg__article__nav-next {float: right;}
 }
 
 @include media($small-screen) {
@@ -163,6 +283,16 @@ body:not(.home) {
 		/* drop down navigation */
 		li.menu-item-has-children:last-of-type {border-right: 0;}
 		li.menu-item-has-children:last-of-type > .sub-menu {right: 0;}
+		li.menu-item-has-children ul.sub-menu {
+			border: 0;
+			li {
+				border-left: 0;
+				border-right: 0;
+				border-top: 0;
+				border-bottom: 1px dotted #CCC
+			}
+		}
+
 		ul {
 			position: absolute;
 			right: auto;
@@ -192,13 +322,20 @@ body:not(.home) {
 		padding-right: 0;
 		ul li {border-bottom: 0;}
 		ul .bbg__top-nav__link-text {width: auto;}
+
+		ul a:hover {
+			color: $color-usim-blue;
+			text-decoration: none;
+			background-color: transparent;
+		}
 		.menu-all-pages-container {
 			position: absolute;
 			top: 3.75em;
-			right: 0;
+			right: 0.5em;
 
 			ul.nav-menu {float: right;}
 		}
+		.menu-all-pages-container {width: auto}
 
 		li {
 			background-color: #FFF;
@@ -232,12 +369,16 @@ body:not(.home) {
 		li:after {display: none;}
 
 		a {padding: 1.5rem 1.5rem 1rem 1.5rem;}
-
 		a:hover {
 			background-color: transparent;
 			text-decoration: underline;
 		}
-	} 
+		.bbg-header__link {
+			padding: 0 0 0 0.25em;
+			display: inline-block;
+			z-index: 10000;
+		}
+	}
 
 	.bbg__main-navigation__toggler {
 		background: none;
@@ -252,159 +393,31 @@ body:not(.home) {
 	.bbg__main-navigation__search {
 		display: block !important;
 		position: absolute;
-		top: 3.5em;
-		right: 0;
+		top: 4.2em;
+		right: -0.5em;
 		border: none;
 		display: block;
 		padding: 0;
 		width: 200px;
-		width: calc(100% - 743px); //740px is the width of the nav.
+		// width: calc(100% - 743px); //740px is the width of the nav.
 		z-index: 9999;
+
+		button {
+			background-color: $color-cool-blue-lighter;
+			border-color: transparent;
+		}
 	}
 
 	body:not(.home) {
-		.menu-all-pages-container {
-			background-color: #F1F1F1;
-			min-height: 5rem;
-			margin-bottom: 2rem;
-		}
-
 		.bbg__main-navigation__search {
-			margin: .8rem $site-margins-medium 0 0;
+			margin: 0;
 		}
 	}
-}
-// END MEDIUM-LARGE SCREEEN STYLES
 
-
-
-
-
-
-
-.bbg__navigation__pagination {
-        @include clearfix();
-}
-
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-        .site-main & {
-                margin: 0 0 1.5em;
-                //overflow: hidden;//Disabling this because of post nav on portfolio page. 
-        }
-
-        .nav-previous {
-                float: left;
-                width: 50%;
-
-                a {
-                        background: {
-                                image: url('img/arrow-previous.png');
-                                image: url('img/arrow-previous.svg');
-                                position: left top;
-                                repeat: no-repeat;
-                                size: contain;
-                        }
-                        padding-left: 25px;
-                }
-
-                a:hover {
-                        background: {
-                                image: url('img/arrow-previous-hover.png');
-                                image: url('img/arrow-previous-hover.svg');
-                        }
-                }
-        }
-
-        .nav-next {
-                float: right;
-                text-align: right;
-                width: 50%;
-
-                a {
-                        background: {
-                                image: url('img/arrow-next.png');
-                                image: url('img/arrow-next.svg');
-                                position: right top;
-                                repeat: no-repeat;
-                                size: contain;
-                        }
-                        padding-right: 25px;
-                }
-
-
-                a:hover {
-                        background: {
-                                image: url('img/arrow-next-hover.png');
-                                image: url('img/arrow-next-hover.svg');
-                        }
-                }
-        }
-}
-
-
-
-
-/** POST AUTHOR Previous/next links on project posts */
-.bbg__article__nav {
-        display: block;
-        margin: 0 auto;
-        pointer-events: none;
-        position: fixed;
-                bottom: 100px;
-        text-align: center;
-        width: 100%;
-        z-index: 1;
-
-
-        .bbg__article__nav-link {
-                height: 45px;
-                pointer-events: initial;
-                width: 30px;
-
-                @include media($medium-large-screen) {
-                        width: 60px;
-                        height: 90px;
-                }
-        }
-
-        .bbg__article__nav-icon {
-                display: block;
-                height: 100%;
-                padding: 0;
-                width: 100%;
-
-                &.left-arrow{
-                        background: {
-                                position: left top;
-                                repeat: no-repeat;
-                                size: contain;
-                                image: url(img/arrow_left.png);
-                        }
-                }
-
-                &.right-arrow{
-                        background: {
-                                position: right top;
-                                repeat: no-repeat;
-                                size: contain;
-                                image: url(img/arrow_right.png);
-                        }
-                }
-
-        }
-
-        .bbg__article__nav-text {
-                display: none;
-        }
-
-        .bbg__article__nav-previous {
-                float: left;
-        }
-
-        .bbg__article__nav-next {
-                float: right;
-        }
+	.bbg__article__nav {
+		.bbg__article__nav-link {
+			width: 60px;
+			height: 90px;
+		}
+	}
 }
