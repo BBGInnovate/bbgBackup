@@ -161,6 +161,8 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 	<!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
 	<script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=BBG&pua=ua-33523145-2" id="_fed_an_ua_tag" ></script>
 	<?php endif; ?>
+	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,400i,500,700" rel="stylesheet">
 </head>
 
 
@@ -326,6 +328,11 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 
 		<nav id="site-navigation" class="bbg__main-navigation" role="navigation">
 			<?php
+
+			$new_logo_img  = "<img id='usim-nav-logo' src='";
+			$new_logo_img .= get_template_directory_uri();
+			$new_logo_img .= "/img/usim-logo-interim.png' alt='USIM Logo'>";
+			echo $new_logo_img;
 
 			$btnSearch = "<input alt='Search' type='image' class='bbg__main-navigation__search-toggle' src='" . get_template_directory_uri() . "/img/search.png'>";
 			$btnSearch = "";

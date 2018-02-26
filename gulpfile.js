@@ -8,6 +8,10 @@ gulp.task('sass', function(){
   return gulp.src('_scss/style.scss')
     .pipe(sourcemaps.init())
     .pipe(sass()) // Converts Sass to CSS with gulp-sass
+    .on('error', function (err) {
+        console.log(err.toString());
+        this.emit('end');
+    })
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(''))
 });

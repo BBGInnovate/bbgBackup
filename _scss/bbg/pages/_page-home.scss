@@ -10,7 +10,7 @@
 		height: $banner-image-height;
 	}
 	@include media($medium-large-screen) {
-		margin-top: 4.8rem;
+		// margin-top: 4.8rem;
 	}
 	@include media($large-screen) {
 		height: $banner-image-height * 1.25;
