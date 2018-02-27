@@ -5740,6 +5740,7 @@ div.banner_readmore h6 a:visited {
 
 .bbg-banner__cutline {
   color: #ffffff;
+  text-align: right !important;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -5747,9 +5748,6 @@ div.banner_readmore h6 a:visited {
   background: -webkit-linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
   background: -linear-gradient(left, rgba(40, 49, 102, 0) 0%, #283166 100%);
   filter: progid:DXImagesTransform.Microsoft.gradient(startColorstr='#00283166', endColorstr='#283166',GradientType=1); }
-  @media screen and (min-width: 600px) {
-    .bbg-banner__cutline {
-      text-align: right !important; } }
 
 section.usa-section.bbg-banner__section {
   margin-bottom: 3rem; }

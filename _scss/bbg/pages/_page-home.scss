@@ -213,9 +213,7 @@
 .bbg-banner__cutline {
 	@extend .wp-caption-text;
 	color: #ffffff;
-	@include media($medium-screen) {
-		text-align: right !important;
-	}
+	text-align: right !important;
 	position: absolute;
 	right: 0;
 	bottom: 0;
