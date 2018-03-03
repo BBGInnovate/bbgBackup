@@ -37,14 +37,10 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("bbg-blog__excerpt--featured usa-grid-full"); ?>>
 	<header class="entry-header bbg-blog__excerpt-header--featured usa-grid-full">
-
 		<?php
-			$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
-			$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
-			$linkH2 = '<h2 class="entry-title bbg-blog__excerpt-title--featured">'.$link;
-
-
-
+		$link = sprintf( '<a href="%s" rel="bookmark">', $postPermalink );
+		$linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', $postPermalink );
+		$linkH2 = '<h2 class="entry-title bbg-blog__excerpt-title--featured kr-re-feat-post-title">'.$link;
 
 		//If a featured video is set, include it.
 		//ELSE if a featured image is set, include it.
@@ -52,63 +48,27 @@ $videoUrl = get_post_meta( get_the_ID(), 'featured_video_url', true );
 		if ($videoUrl!="") {
 			echo featured_video($videoUrl);
 			$hideFeaturedImage = TRUE;
-		} elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
+		} 
+		elseif ( has_post_thumbnail() && ( $hideFeaturedImage != 1 ) ) {
 			$featuredImageClass = "";
-			$featuredImageCutline="";
+			$featuredImageCutline= "";
 			$thumbnail_image = get_posts(array('p' => get_post_thumbnail_id(get_the_ID()), 'post_type' => 'attachment'));
+
 			if ($thumbnail_image && isset($thumbnail_image[0])) {
 				$featuredImageCutline=$thumbnail_image[0]->post_excerpt;
 			}
 			echo $linkImage;
 
-			echo '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
-			//echo '<div style="position: absolute;"><h5 class="bbg__label">Label</h5></div>';
-			echo the_post_thumbnail( 'large-thumb' );
-			echo "</a>";
-
-			echo '</div>';
-
+			$post_thumb_div = '<div class="single-post-thumbnail clear bbg__article-header__thumbnail--large">';
+			$post_thumb_div .= 	the_post_thumbnail( 'large-thumb' );
+			$post_thumb_div .= 	'</a>';
+			$post_thumb_div .= '</div>';
+			echo $post_thumb_div;
 		}
-
-
-			/*
-			echo $linkImage;
-
-			if (has_post_thumbnail()) {
-				echo '<div class="single-post-thumbnail clear usa-single_post_thumbnail bbg__excerpt-header__thumbnail--large">';
-				echo the_post_thumbnail('large-thumb');
-				echo '</div>';
-			}
-			*/
+		if ($includeMetaFeatured) {
+			bbginnovate_posted_on();
+		}
+		the_title( $linkH2, '</a></h2>' );
 		?>
-		<!--</a>-->
-<div class="usa-grid">
-		<?php 
-			//the_title( sprintf( $linkH2, $postPermalink ), '</a></h2>' );
-			the_title( $linkH2, '</a></h2>' );
-
-		 ?>
-
-
-		<?php if ($includeMetaFeatured){ ?>
-		<div class="entry-meta bbg__excerpt-meta bbg__excerpt-meta--featured">
-			<?php bbginnovate_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php }?>
-</div>
-
-	</header><!-- .bbg-blog__excerpt-header--featured -->
-
-	<div class="entry-content bbg-blog__excerpt-content--featured usa-grid">
-		<h3 class="usa-font-lead">
-			<?php echo get_the_excerpt(); ?>
-		</h3>
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
+	</header>
 </article><!-- #post-## -->

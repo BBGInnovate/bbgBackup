@@ -60,6 +60,16 @@ if ( isset($_GET['category_id']) ) {
 		</div>
 		<?php echo buildLabel( implode( get_post_class( $classNames ) ) );	//check bbg-functions-utilities ?>
 		<?php the_title( sprintf( $linkH3, $postPermalink ), '</a></h3>' ); ?>
+<!--kr edit-->
+<?php 
+$content = get_the_content();
+$trimmed_content = wp_trim_words($content, 30, '... '. '<a href="' . get_permalink() . '">READ MORE</a>');
+$content_block  = '<p>';
+$content_block .= $trimmed_content;
+$content_block .= '</p>';
+echo $content_block;
+?>
+<!--end kr edit-->
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<!--
