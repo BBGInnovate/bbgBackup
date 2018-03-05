@@ -16,8 +16,8 @@ button,
 [type="image"] {
   @include margin(0.5em 0.5em 0.5em null);
   appearance: none;
-  background-color: #ffffff;
-  border: 1px solid #c9c4ba;
+  background-color: $color-primary;
+  border: 0;
   border-radius: $border-radius;
   color: $color-white;
   cursor: pointer;
