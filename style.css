@@ -519,19 +519,7 @@ body {
     .usa-grid,
     .usa-grid-full,
     .bbg__svg__content {
-      /*
-    .usa-width-one-sixth {
-      @include span-columns(2);
-
-      &:nth-child(3n) {
-        @include span-columns(2);
-      }
-
-      &:nth-child(6n) {
-        margin-right: 0;
-      }
-    }
-    */ }
+      /* .usa-width-one-sixth {@include span-columns(2); &:nth-child(3n) {@include span-columns(2);} &:nth-child(6n) {margin-right: 0;}}n */ }
       .usa-grid .usa-width-one-whole,
       .usa-grid-full .usa-width-one-whole, .bbg__svg__content .usa-width-one-whole {
         float: left;
@@ -691,7 +679,7 @@ body {
       display: table-cell; } }
 
 .u--space-below-mobile--large {
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
   @media screen and (min-width: 600px) {
     .u--space-below-mobile--large {
       margin-bottom: 0; } }
@@ -747,8 +735,8 @@ button,
   margin-right: 0.5em;
   margin-bottom: 0.5em;
   appearance: none;
-  background-color: #ffffff;
-  border: 1px solid #c9c4ba;
+  background-color: #0071bc;
+  border: 0;
   border-radius: 0.3rem;
   color: #ffffff;
   cursor: pointer;
@@ -1625,7 +1613,7 @@ p {
   margin-top: 1em; }
 
 a {
-  color: #283166;
+  color: #0071bc;
   text-decoration: none; }
   a:hover, a:active {
     color: #205493;
@@ -2842,7 +2830,7 @@ a:focus .bbg__article-share__icon {
 .bbg__sidebar__table {
   font-size: 90%;
   margin-top: 0;
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
   .bbg__sidebar__table td,
   .bbg__sidebar__table th {
     padding-left: 0; }
@@ -3674,7 +3662,7 @@ body:not(.home) .bbg__main-navigation {
   margin-bottom: 3rem; }
   @media screen and (min-width: 600px) {
     .bbg__staff__author {
-      margin-bottom: 6rem; } }
+      margin-bottom: 4rem; } }
 
 .bbg__staff__author__text {
   width: 100%; }
@@ -3785,7 +3773,7 @@ body:not(.home) .bbg__main-navigation {
   margin-top: 3rem; }
   @media screen and (min-width: 600px) {
     .bbg__article--no-featured-image {
-      margin-top: 6rem; } }
+      margin-top: 4rem; } }
 
 /* Post title */
 .bbg__article-header__title {
@@ -3891,7 +3879,7 @@ body:not(.home) .bbg__main-navigation {
   color: #323a45;
   font-size: 2rem;
   line-height: 1.3;
-  margin-top: 6rem;
+  margin-top: 4rem;
   margin-bottom: 0; }
 
 .bbg__article-content .bbg__article-content__image--extra-large {
@@ -4183,7 +4171,7 @@ ul.bbg__article-content__list--inline {
   max-width: 600px; }
 
 .bbg__article-footer {
-  margin-top: 6rem; }
+  margin-top: 4rem; }
 
 /* At the end of a post, add a small tagline credit for authors
 e.g. on the intern testimonial page */
@@ -4388,17 +4376,16 @@ ol li:before {
   width: 1.2rem; }
 
 /**
- * CH 01 - BASIC TYPOGRAPHY
- * CH 02 - SITE TITLE + HEADER
- * CH 03 - 2- and 3-COLUMN PAGE STRUCTURE
- * CH 04 - FOOTER STYLES
- * CH 05 - EXCERPT STYLES
- * CH 06 - SITEWIDE ALERT STYLES
- * CH 07 - Misc post/page styles
+ * CH 01 - BASIC TYPOGRAPHY                Used on the entire site
+ * CH 02 - SITE TITLE + HEADER             Used on all internal pages
+ * CH 03 - 2- and 3-COLUMN PAGE STRUCTURE  3-column: most posts, many pages and 2-column: expanded profiles e.g. CEO
+ * CH 04 - FOOTER STYLES                   x
+ * CH 05 - EXCERPT STYLES                  Used on home page, landing pages, profiles and entity pages
+ * CH 06 - SITEWIDE ALERT STYLES           Styles for simple/persistent ribbon, Styles for rich, dismissible ribbon
+ * CH 07 - Misc post/page styles           x
 **/
 /******************************/
 /* CH 01 - BASIC TYPOGRAPHY  */
-/* used on the entire site  */
 .testing_staging {
   color: green; }
 
@@ -4468,19 +4455,16 @@ img > a:focus,
   text-align: center; }
 
 .bbg__label {
-  background-color: #981b1e;
-  color: #FFF;
-  display: inline-block;
+  color: #b4211d;
+  text-transform: uppercase;
   font-family: "Alegreya Sans", "Helvetica", "Arial", sans-serif;
   font-size: 1.7rem;
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  text-transform: uppercase; }
+  padding: .5rem 0; }
   .bbg__label a {
-    color: #FFF;
-    text-decoration: underline; }
+    color: #b4211d; }
   .bbg__label--mobile {
     background-color: transparent;
     color: #981b1e;
@@ -4562,7 +4546,7 @@ img > a:focus,
       font-size: 1.7rem; } }
 
 section.usa-section {
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
 
 .bbg__section--medium {
   margin-bottom: 4rem; }
@@ -4578,9 +4562,8 @@ article {
 
 /******************************/
 /* CH 02 – SITE TITLE + HEADER */
-/* used on all internal pages */
 .bbg-header__container, .bbg-header__container--home {
-  padding-right: 6rem; }
+  padding-right: 4rem; }
   .bbg-header__container:after, .bbg-header__container--home:after {
     content: ".";
     display: block;
@@ -4652,8 +4635,6 @@ article {
 
 /***************************************************/
 /*    CH 03 – 2- and 3-COLUMN PAGE STRUCTURE       */
-/*    3-column: used on most posts and many pages  */
-/*    2-column: used on expanded profiles e.g. CEO */
 .bbg__article-header {
   margin: 0 auto 3rem auto;
   max-width: 600px; }
@@ -4933,8 +4914,6 @@ article {
 
 /****************************************/
 /*    CH 05 – EXCERPT STYLES            */
-/*    Used on home page, landing pages, */
-/*    profiles and entity pages         */
 .bbg__excerpt-meta {
   font-family: "Merriweather", "Georgia", "Times New Roman", serif;
   font-size: 1.4rem;
@@ -4957,14 +4936,11 @@ article {
     margin-bottom: 3rem; } }
 
 .bbg-blog__excerpt-title--featured {
-  margin-top: 1.5rem;
   margin-bottom: 1rem; }
   @media screen and (min-width: 600px) {
     .bbg-blog__excerpt-title--featured {
-      font-size: 4rem; } }
-  @media screen and (min-width: 900px) {
-    .bbg-blog__excerpt-title--featured {
-      font-size: 5rem; } }
+      font-weight: 700;
+      margin-top: 0; } }
 
 .bbg__excerpt-header__thumbnail--large {
   background-color: #f1f1f1; }
@@ -4977,7 +4953,7 @@ article {
   margin-top: 1rem;
   margin-bottom: .75rem; }
 
-.bbg-portfolio__excerpt-content > p {
+.bbg-portfolio__excerpt-conten t > p {
   margin-top: 0; }
 
 .bbg__excerpt-header__thumbnail--medium a {
@@ -5060,8 +5036,6 @@ article {
 
 /**********************************************/
 /*    CH 06 – SITEWIDE ALERT STYLES           */
-/*    Styles for simple/persistent ribbon     */
-/*    Styles for rich, dismissible ribbon     */
 .bbg__site-alert {
   background-color: #323a45;
   max-width: none;
@@ -5311,7 +5285,7 @@ div.banner_readmore h6 a:visited {
       font-size: 1rem; } }
 
 .bbg__entity__pullquote {
-  margin-top: 6rem; }
+  margin-top: 4rem; }
 
 /****************************************************/
 /* PAGE HEADER STYLES                               */
@@ -5341,8 +5315,6 @@ div.banner_readmore h6 a:visited {
 
 /***************************************/
 /*    Misc post/page styles            */
-/*                                     */
-/* .bbg__article-sidebar.large {*/
 .bbg__article-sidebar div {
   margin-bottom: 3rem; }
 
@@ -5443,11 +5415,7 @@ div.banner_readmore h6 a:visited {
   background-color: #323a45;
   margin: 0 -10%;
   max-width: 110vw;
-  padding-right: 1rem;
-  /* @include media($large-screen) {
-		margin: 0 -50%;
-		max-width: none;
-	} */ }
+  padding-right: 1rem; }
   @media screen and (min-width: 900px) {
     .bbg__ribbon--thin {
       margin: 0 0 8rem; } }
@@ -5852,7 +5820,7 @@ section.usa-section.bbg-banner__section {
   line-height: 2.5; }
 
 .bbg__about__children--row {
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
 
 /*****
 	Multi-column child styles
@@ -5982,7 +5950,7 @@ section.usa-section.bbg-banner__section {
 .bbg__jobs__table {
   font-size: 90%;
   margin-top: 0;
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
   .bbg__jobs__table td,
   .bbg__jobs__table th {
     padding-left: 0; }
@@ -6271,7 +6239,7 @@ section.usa-section.bbg-banner__section {
       margin-bottom: 1.5rem; } }
 
 .bbg__article-sidebar__aside {
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
 
 .bbg__contact-label {
   display: inline;
@@ -6828,7 +6796,7 @@ a.bbg__kits__intro__more--link {
     margin-bottom: 0; }
 
 .bbg__kits__section .bbg__kits__section--row {
-  margin-bottom: 6rem; }
+  margin-bottom: 4rem; }
   .bbg__kits__section .bbg__kits__section--row .bbg__kits__section--tiles .bbg__kits__section--tile {
     display: block;
     min-height: 15rem;
@@ -7424,15 +7392,61 @@ a.bbg__kits__intro__more--link {
   text-align: center;
   width: auto; }
 
-.kr-re-feat-post-title {
-  font-size: 30px;
-  font-weight: 300; }
+header button.menu-toggle {
+  background-color: #ffffff;
+  border: 1px solid #d6d2c9; }
 
-#featured-post-re {
-  margin-bottom: 0; }
+#featured-BBG-post article .post-date {
+  text-align: right; }
 
-#impact-stories {
+#home-impact-story {
   background-color: #d6d2c9;
   padding: 1em; }
+
+#sub-posts {
+  display: none; }
+
+@media screen and (min-width: 600px) {
+  #featured-BBG-post {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 57.35098%; }
+    #featured-BBG-post:last-child {
+      margin-right: 0; }
+  #home-impact-story {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 40.29137%; }
+    #home-impact-story:last-child {
+      margin-right: 0; }
+  #sub-posts {
+    display: block; }
+    #sub-posts article {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%; }
+      #sub-posts article:last-child {
+        margin-right: 0; } }
+
+@media screen and (min-width: 1201px) {
+  #featured-BBG-post {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%; }
+    #featured-BBG-post:last-child {
+      margin-right: 0; }
+    #featured-BBG-post #featured-post-excerpt {
+      display: none; }
+  #home-impact-story {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%; }
+    #home-impact-story:last-child {
+      margin-right: 0; } }
 
 /*# sourceMappingURL=style.css.map */

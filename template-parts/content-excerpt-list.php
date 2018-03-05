@@ -77,9 +77,9 @@ $linkImage = sprintf( '<a href="%s" rel="bookmark" tabindex="-1">', esc_url( get
 		<?php if ($includeExcerpt) { ?>
 			<div class="entry-content bbg-blog__excerpt-content">
 				<?php
-					// the_excerpt();
-					$post_content = wp_trim_words(get_the_content(), 18);
-					echo $post_content;
+					the_excerpt();
+					// $post_content = wp_trim_words(get_the_content(), 18);
+					// echo $post_content;
 					wp_link_pages( array(
 						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bbginnovate' ),
 						'after'  => '</div>',

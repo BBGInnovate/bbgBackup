@@ -254,126 +254,93 @@ get_header();
 			?>
 
 			<!-- MISSION -->
-            <section id="mission" class="usa-section usa-grid">
-            	<?php
-					$leadin_content  = '<h3 id="site-intro" class="usa-font-lead">';
-					$leadin_content .= 	$siteIntroContent;
-					$leadin_content .= 	' <a href="';
-					$leadin_content .= 		$siteIntroLink;
-					$leadin_content .= 		'" class="bbg__read-more">LEARN MORE »</a></h3>';
-					echo $leadin_content;
-            	?>
+            <section class="usa-section usa-grid">
+            	<div id="mission">
+            		<h3 id="site-intro" class="usa-font-lead">
+            			<?php echo $siteIntroContent; ?>
+						 <a href="<?php $siteIntroLink; ?>">LEARN MORE »</a>
+        			</h3>
+            	</div>
             </section>
 
-			<!-- FEATURED POST AND IMPACT STORY -->
-			<section id="featured-post-re" class="usa-section bbg-portfolio">
-				<div class="usa-grid">
-					<div class="usa-width-one-whole">
-						<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ) ?>">BBG News</a></h6>
-						<div class="usa-width-two-thirds">
-							<?php
-								/* featured post, selected in homepage settings or is most recent post */
-								if ($featuredPost) {
-									$qParams=array(
-										'post__in' => array($featuredPost->ID),
-										'post_status' => array('publish','future')
-									);
-								} else {
-									$qParams=getRecentPostQueryParams(1,$postIDsUsed,$STANDARD_POST_CATEGORY_EXCLUDES);
-								}
-								query_posts($qParams);
-								
-								if (have_posts()) {
-									while ( have_posts() ) : the_post();
-										$counter++;
-										$postIDsUsed[] = get_the_ID();
-										get_template_part( 'template-parts/content-excerpt-featured', get_post_format() );
-									endwhile;
-								}
-								wp_reset_query();
-							?>
-						</div>
+			<!-- BBG NEWS -->
+			<section class="usa-section usa-grid">
+				<h6 class="bbg__label"><a href="#">BBG News</a></h6>
+				<div id="featured-BBG-post">
+					<?php
+						// GET FEATURED POST FROM EITHER HOMEPAGE SETTINGS OR MOST RECENT POST
+						if ($featuredPost) {
+							$qParams=array(
+								'post__in' => array($featuredPost->ID),
+								'post_status' => array('publish','future')
+							);
+						} else {
+							$qParams = getRecentPostQueryParams(1, $postIDsUsed, $STANDARD_POST_CATEGORY_EXCLUDES);
+						}
+						query_posts($qParams);
 
-						<div id="impact-stories" class="usa-width-one-third">
-							<h6 class="bbg__label">
-								<a href="<?php echo $impactPortfolioPermalink; ?>">IMPACT STORIES</a>
-							</h6>
-							<?php
-								$impactPostIDs = getRandomImpactPostIDs( $postIDsUsed );
-								$qParams=array(
-									'post_type' => array('post'),
-									'posts_per_page' => 1,
-									'orderby' => 'post_date',
-									'order' => 'desc',
-									'post__in' => $impactPostIDs
-								);
-								query_posts( $qParams );
-								if ( have_posts() ) :
-									while ( have_posts() ) : the_post();
-										$gridClass = "";
-										$includePortfolioDescription = FALSE;
-										$postIDsUsed[] = get_the_ID();
-										get_template_part( 'template-parts/content-portfolio', get_post_format() );
-									endwhile;
-								endif;
-								wp_reset_query();
-							?>
-						</div><!-- #impact-stories -->
-					</div><!-- .usa-width-one-whole -->
-				</div><!-- .usa-grid-->
-			</section><!-- #featured-post-re -->
+						if (have_posts()) {
+							while ( have_posts() ) {
+								the_post();
+								$counter++;
+								$postIDsUsed[] = get_the_ID();
+								get_template_part('template-parts/content-excerpt-featured-re', get_post_format());
+							};
+						}
+						wp_reset_query();
+					?>
+				</div>
 
-			<!-- Recent posts (Featured, left 2 headline/teasers, right soapbox/headlines) -->
-			<section id="recent-posts" class="usa-section bbg__home__recent-posts">
-				<div class="usa-grid">
-					<div class="usa-width-one-whole bbg__secondary-stories">
+				<!-- IMPACT STORIES -->
+				<div id="home-impact-story">
+					<h6 class="bbg__label"><a href="#">IMPACT STORY</a></h6>
+					<?php
+						$impactPostIDs = getRandomImpactPostIDs($postIDsUsed);
+						$qParams=array(
+							'post_type' => array('post'),
+							'posts_per_page' => 1,
+							'orderby' => 'post_date',
+							'order' => 'desc',
+							'post__in' => $impactPostIDs
+						);
+						query_posts( $qParams );
+						if ( have_posts() ) :
+							while ( have_posts() ) : the_post();
+								$includePortfolioDescription = false;
+								$postIDsUsed[] = get_the_ID();
+								get_template_part( 'template-parts/content-portfolio-re', get_post_format() );
+							endwhile;
+						endif;
+						wp_reset_query();
+					?>
+				</div>
+			</section>
+			<section class="usa-section usa-grid">
+				<!-- SUB STORIES -->
+				<div id="sub-posts">
 					<?php
 						/* BEWARE: sticky posts add a record */
-						$maxPostsToShow=9;
-						if ($soap) {
-							$maxPostsToShow=3;
-						}
-						$qParams=getRecentPostQueryParams($maxPostsToShow,$postIDsUsed,$STANDARD_POST_CATEGORY_EXCLUDES);
+						$qParams=getRecentPostQueryParams(3, $postIDsUsed, $STANDARD_POST_CATEGORY_EXCLUDES);
 						query_posts($qParams);
+
 						if ( have_posts() ) {
 							$counter = 0;
+							$includeImage = false;
+
 							while ( have_posts() ) : the_post();
 								$counter++;
 								$postIDsUsed[] = get_the_ID();
-								$gridClass = "bbg-grid--full-width";
-								if ($counter > 3) {
-									$includeImage=false;
-									$includeMeta=false;
-									$includeExcerpt=false;
-									if ($counter==3) {
-										echo '</div><div class="usa-width-one-half tertiary-stories"><header class="page-header"><h6 class="page-title bbg__label small">More news</h6></header>';
-									}
-								}
-								get_template_part( 'template-parts/content-excerpt-list', get_post_format() );
+								get_template_part( 'template-parts/content-excerpt-list-re', get_post_format() );
 							endwhile;
 						}
 						wp_reset_query();
 					?>
-					</div>
-					<div class="usa-width-one-whole">
-						<nav class="navigation posts-navigation bbg__navigation__pagination" role="navigation">
-							<h2 class="screen-reader-text">Posts navigation</h2>
-							<div class="nav-links"><div class="nav-previous"><a href="<?php echo get_permalink( get_page_by_path('news') ); ?>" >Previous posts</a></div></div>
-						</nav>
-					</div>
 				</div>
-
-				<!-- CEO BOX -->
-				<!-- <div class="usa-grid bbg__ceo-post">
-					<?php echo getSoapboxStr($soap); ?>
-				</div> -->
-			</section><!-- .BBG News -->
-
+			</section>
 		</main>
-	</div><!-- #primary .content-area -->
-</div><!-- #main .site-main -->
+	</div>
+</div>
 
-<?php //get_sidebar(); ?>
 <?php get_footer(); ?>
 
 

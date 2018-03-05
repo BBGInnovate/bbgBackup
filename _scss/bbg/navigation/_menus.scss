@@ -65,7 +65,6 @@
 	}
 }
 
-
 body:not(.home) {
 	.bbg__main-navigation {
 		margin-bottom: $site-margins-medium;
@@ -249,6 +248,7 @@ body:not(.home) {
 	.bbg__article__nav-next {float: right;}
 }
 
+// SMALL SCREEN MEDIA QUERY
 @include media($small-screen) {
 	.menu-toggle {
 		background-position: 10px center;
@@ -262,8 +262,8 @@ body:not(.home) {
 		}
 	}
 }
-// END SMALL SCREEEN STYLES
 
+// MEDIUM-LARGE SCREEN MEDIA QUERY
 @include media($medium-large-screen) {
 	.bbg-header__container__box {
 		border-bottom: 1px solid #CCC;

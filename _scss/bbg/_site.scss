@@ -1,16 +1,15 @@
 /**
- * CH 01 - BASIC TYPOGRAPHY
- * CH 02 - SITE TITLE + HEADER
- * CH 03 - 2- and 3-COLUMN PAGE STRUCTURE
- * CH 04 - FOOTER STYLES
- * CH 05 - EXCERPT STYLES
- * CH 06 - SITEWIDE ALERT STYLES
- * CH 07 - Misc post/page styles
+ * CH 01 - BASIC TYPOGRAPHY                Used on the entire site
+ * CH 02 - SITE TITLE + HEADER             Used on all internal pages
+ * CH 03 - 2- and 3-COLUMN PAGE STRUCTURE  3-column: most posts, many pages and 2-column: expanded profiles e.g. CEO
+ * CH 04 - FOOTER STYLES                   x
+ * CH 05 - EXCERPT STYLES                  Used on home page, landing pages, profiles and entity pages
+ * CH 06 - SITEWIDE ALERT STYLES           Styles for simple/persistent ribbon, Styles for rich, dismissible ribbon
+ * CH 07 - Misc post/page styles           x
 **/
 
 /******************************/
 /* CH 01 - BASIC TYPOGRAPHY  */
-/* used on the entire site  */
 .testing_staging {color: green;}
 h1, h2, h3, h4, h5, h6 {
     color: $color-primary-darkest;
@@ -91,9 +90,8 @@ img,
 }
 
 .bbg__label {
-    background-color: $color-secondary-darkest;
-    color: #FFF;
-    display: inline-block;
+    color: $color-usim-red;
+    text-transform: uppercase;
     font: {
         family: $font-sans;
         size: 1.7rem;
@@ -103,13 +101,9 @@ img,
         top: 0;
         bottom: $site-margins-small;
     }
-    padding: .5rem $site-margins-small;
-    text-transform: uppercase;
+    padding: .5rem 0;
 
-    a {
-        color: #FFF;
-        text-decoration: underline;
-    }
+    a {color: $color-usim-red;}
 
     &--mobile {
         background-color: transparent;
@@ -122,9 +116,7 @@ img,
         margin-bottom: $site-margins-medium;
         padding: 0;
 
-        a {
-            color: $color-secondary-darkest;
-        }
+        a {color: $color-secondary-darkest;}
     }
 
     @include media($small-screen) {
@@ -134,22 +126,16 @@ img,
         font-size: 2.5rem;
         padding: 0;
 
-        &--mobile {
-            font-size: 3rem;
-        }
+        &--mobile {font-size: 3rem;}
 
-        a {
-            color: $color-secondary-darkest;
-        }
+        a {color: $color-secondary-darkest;}
     }
 
     &--mobile.small,
     &.small {
         font-size: 1.3rem;
 
-        @include media($small-screen) {
-            font-size: 2rem;
-        }
+        @include media($small-screen) {font-size: 2rem;}
     }
 
     &--mobile.large,
@@ -158,7 +144,6 @@ img,
         text-transform: uppercase;
 
         @include media($small-screen) {
-            //font-size: 3rem;
             font-size: 2.5rem;
             margin-bottom: $site-margins-medium;
         }
@@ -253,8 +238,6 @@ article {
 
 /******************************/
 /* CH 02 – SITE TITLE + HEADER */
-/* used on all internal pages */
-
 .bbg-header__container {
     @include clearfix();
     padding-right: $site-margins-large; // bump down at small widths so it doesn't hit the navigation dropdown button
@@ -346,9 +329,6 @@ article {
 
 /***************************************************/
 /*    CH 03 – 2- and 3-COLUMN PAGE STRUCTURE       */
-/*    3-column: used on most posts and many pages  */
-/*    2-column: used on expanded profiles e.g. CEO */
-
 .bbg__article-header {
     @include clearfix();
     margin: 0 auto $site-margins auto;
@@ -659,7 +639,6 @@ article {
 
 /*******************************/
 /*    CH 04 – FOOTER STYLES    */
-
 .bbg__footer {
     position: relative;
     z-index: 9999;
@@ -756,33 +735,22 @@ article {
 
 /****************************************/
 /*    CH 05 – EXCERPT STYLES            */
-/*    Used on home page, landing pages, */
-/*    profiles and entity pages         */
-
 .bbg__excerpt-meta {
     font: {
         family: $font-serif;
         size: 1.4rem;
         style: italic;
     }
-    a {
-        text-decoration: underline;
-    }
+    a {text-decoration: underline;}
 }
 
 .bbg__excerpt__event-date {
-    //color: $color-gray-medium;
     color: $color-secondary-darkest;
     text-transform: uppercase;
 }
 
-.bbg__excerpt-meta--featured {
-    margin-bottom: $site-margins-medium;
-}
-
-.bbg-blog__excerpt--featured {
-    margin-bottom: $site-margins;
-}
+.bbg__excerpt-meta--featured {margin-bottom: $site-margins-medium;}
+.bbg-blog__excerpt--featured {margin-bottom: $site-margins;}
 
 .bbg-blog__excerpt {
     @include media($medium-screen) {
@@ -791,17 +759,11 @@ article {
 }
 
 .bbg-blog__excerpt-title--featured {
-    margin: {
-        top: $site-margins-medium;
-        bottom: $site-margins-small;
-    }
+	margin-bottom: $site-margins-small;
 
     @include media($medium-screen) {
-        font-size: $h1-font-size;
-    }
-
-    @include media($medium-large-screen) {
-        font-size: $h1-font-size * 1.25;
+    	font-weight: 700;
+    	margin-top: 0;
     }
 }
 
@@ -821,9 +783,7 @@ article {
     }
 }
 
-.bbg-portfolio__excerpt-content>p {
-    margin-top: 0;
-}
+.bbg-portfolio__excerpt-conten t> p {margin-top: 0;}
 
 .bbg__excerpt-header__thumbnail--medium a {
     display: block;
@@ -846,9 +806,7 @@ article {
     }
 }
 
-.bbg-blog__excerpt-title--list {
-    clear: none;
-}
+.bbg-blog__excerpt-title--list {clear: none;}
 
 .bbg__excerpt-header__thumbnail--small {
     display: block;
@@ -858,9 +816,7 @@ article {
     width: 50%;
 }
 
-.bbg-blog__excerpt-content p {
-    font-family: $font-sans;
-}
+.bbg-blog__excerpt-content p {font-family: $font-sans;}
 
 .secondary-stories .bbg-blog__excerpt-title--list {
     @include media($medium-screen) {
@@ -889,9 +845,7 @@ article {
         }
     }
 
-    .bbg__label.small {
-        margin-bottom: $site-margins;
-    }
+    .bbg__label.small {margin-bottom: $site-margins;}
 
     .bbg__excerpt__event-date {
         @include media($medium-large-screen) {
@@ -904,9 +858,7 @@ article {
         }
     }
 
-    .nav-previous {
-        margin-top: $site-margins-medium;
-    }
+    .nav-previous {margin-top: $site-margins-medium;}
 
     @include media($medium-large-screen) {
         border: {
@@ -934,18 +886,11 @@ article {
         }
     }
 
-    .bbg-blog__excerpt--list:last-of-type {
-        margin-bottom: 0;
-    }
+    .bbg-blog__excerpt--list:last-of-type {margin-bottom: 0;}
 }
-
 
 /**********************************************/
 /*    CH 06 – SITEWIDE ALERT STYLES           */
-/*    Styles for simple/persistent ribbon     */
-/*    Styles for rich, dismissible ribbon     */
-
-
 // SIMPLE, PERSISTENT RIBBON: for alerts and event announcements
 // thin/short, uses custom content set at time of activation
 .bbg__site-alert {
@@ -972,9 +917,7 @@ article {
         max-width: $site-max-width;
         text-align: center;
 
-        a {
-            color: $color-primary-alt-light;
-        }
+        a {color: $color-primary-alt-light;}
     }
 
     @include media($medium-screen) {
@@ -1305,9 +1248,7 @@ div.banner_readmore h6 a:visited {
     }
 }
 
-.bbg__entity__pullquote {
-    margin-top: $site-margins-large;
-}
+.bbg__entity__pullquote {margin-top: $site-margins-large;}
 
 
 /****************************************************/
@@ -1351,29 +1292,19 @@ div.banner_readmore h6 a:visited {
 
 /***************************************/
 /*    Misc post/page styles            */
-/*                                     */
-
-/* .bbg__article-sidebar.large {*/
 
 .bbg__article-sidebar {
-    div {
-        margin-bottom: $site-margins
-    }
+    div {margin-bottom: $site-margins}
 
     .bbg-portfolio__excerpt {
         margin-bottom: 4rem;
-
-        div {
-            margin-bottom: 0;
-        }
+        div {margin-bottom: 0;}
     }
 
     .bbg__sidebar__primary {
         @include clearfix();
 
-        .bbg__sidebar__primary-headline {
-            clear: none;
-        }
+        .bbg__sidebar__primary-headline {clear: none;}
 
         .bbg__sidebar__primary-image {
             float: left;
@@ -1401,9 +1332,7 @@ div.banner_readmore h6 a:visited {
                 max-width: none;
             }
 
-            .bbg__sidebar__primary-headline {
-                @include clearfix();
-            }
+            .bbg__sidebar__primary-headline {@include clearfix();}
         }
     }
 }
@@ -1428,9 +1357,7 @@ div.banner_readmore h6 a:visited {
 }
 
 
-.bbg__award-excerpt__title {
-    margin-bottom: 3px;
-}
+.bbg__award-excerpt__title {margin-bottom: 3px;}
 
 .bbg__award-excerpt__source {
     color: $color-gray-medium;
@@ -1443,7 +1370,6 @@ div.banner_readmore h6 a:visited {
 
 
 /* Used on the jobs page? */
-
 .usa-width-one-third.bbg__sidebar,
 .usa-width-one-third.bbg__sidebar p {
     font-family: $font-sans;
@@ -1461,10 +1387,7 @@ div.banner_readmore h6 a:visited {
 
     li {
         margin-bottom: $site-margins-medium;
-
-        a {
-            @extend h4;
-        }
+        a {@extend h4;}
     }
 }
 
@@ -1478,10 +1401,6 @@ div.banner_readmore h6 a:visited {
         margin: 0 0 8rem;
     }
 
-    /* @include media($large-screen) {
-		margin: 0 -50%;
-		max-width: none;
-	} */
     .bbg__label {
         background-color: $color-secondary-darkest;
         color: #FFF;
@@ -1489,9 +1408,7 @@ div.banner_readmore h6 a:visited {
         font-size: 1.7rem;
         padding: .5rem 1rem;
 
-        a {
-            color: #FFF;
-        }
+        a {color: #FFF;}
     }
 
     p {
@@ -1500,9 +1417,7 @@ div.banner_readmore h6 a:visited {
         padding-bottom: $site-margins;
     }
 
-    a {
-        color: $color-primary-alt-light;
-    }
+    a {color: $color-primary-alt-light;}
 
 
     .bbg__announcement__flexbox {
@@ -1557,14 +1472,10 @@ div.banner_readmore h6 a:visited {
         font-size: 1.7rem;
         padding: .5rem 1rem;
 
-        a {
-            color: #FFF;
-        }
+        a {color: #FFF;}
     }
 
-    h2 {
-        color: #FFF;
-    }
+    h2 {color: #FFF;}
 
     p {
         color: #000;
@@ -1572,9 +1483,7 @@ div.banner_readmore h6 a:visited {
         padding-bottom: $site-margins;
     }
 
-    a {
-        color: $color-primary-alt-darkest;
-    }
+    a {color: $color-primary-alt-darkest;}
 
     .bbg__announcement__flexbox {
         .bbg__announcement__photo {
@@ -1592,9 +1501,7 @@ div.banner_readmore h6 a:visited {
             }
         }
 
-        .bbg__announcement__text {
-            padding: 0 $site-margins;
-        }
+        .bbg__announcement__text {padding: 0 $site-margins;}
 
         @include media($medium-screen) {
             display: flex;
@@ -1610,9 +1517,7 @@ div.banner_readmore h6 a:visited {
                 width: auto;
             }
 
-            .bbg__announcement__text {
-                padding: 0;
-            }
+            .bbg__announcement__text {padding: 0;}
         }
 
         @include media($medium-large-screen) {
@@ -1627,13 +1532,9 @@ div.banner_readmore h6 a:visited {
     background-color: $color-gray-dark;
     padding-bottom: $site-margins;
 
-    a {
-        color: $color-primary-alt-light;
-    }
+    a {color: $color-primary-alt-light;}
 
-    p {
-        color: #FFF;
-    }
+    p {color: #FFF;}
 
     .bbg__label {
         background-color: $color-secondary-darkest;
@@ -1661,9 +1562,7 @@ div.banner_readmore h6 a:visited {
             padding-top: 0;
             padding-left: $bbg-grid-gutter;
 
-            .bbg-blog__excerpt-title--list:first-of-type {
-                margin-top: -.8rem;
-            }
+            .bbg-blog__excerpt-title--list:first-of-type {margin-top: -.8rem;}
         }
     }
 }
@@ -1674,16 +1573,10 @@ div.banner_readmore h6 a:visited {
     margin-bottom: $site-margins;
     padding: 2rem;
 
-    p, a, ul, li {
-        font-family: $font-sans;
-    }
+    p, a, ul, li {font-family: $font-sans;}
 
     ul li:after,
-    ol li:after {
-        margin-bottom: 0;
-    }
+    ol li:after {margin-bottom: 0;}
 
-    article {
-        margin-bottom: $site-margins-small;
-    }
+    article {margin-bottom: $site-margins-small;}
 }

@@ -1,9 +1,30 @@
-.kr-re-feat-post-title {
-	font-size: 30px;
-	font-weight: 300;
+header {
+	button.menu-toggle {
+		background-color: $white;
+		border: 1px solid $color-usim-beige-lightest;
+	}
 }
-#featured-post-re {margin-bottom: 0;}
-#impact-stories {
+#featured-BBG-post {
+	article {.post-date {text-align: right;}}
+}
+#home-impact-story {
 	background-color: $color-usim-beige-lightest;
 	padding: 1em;
+}
+#sub-posts {display: none}
+
+@include media($medium-screen) {
+	#featured-BBG-post {@include span-columns(7);}
+	#home-impact-story {@include span-columns(5);}
+	#sub-posts {
+		display: block;
+		article {@include span-columns(4);}
+	}
+}
+@include media($large-screen) {
+	#featured-BBG-post {
+		@include span-columns(8);
+		#featured-post-excerpt {display: none;}
+	}
+	#home-impact-story {@include span-columns(4);}
 }

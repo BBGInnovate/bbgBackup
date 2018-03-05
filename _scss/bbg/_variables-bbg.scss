@@ -21,8 +21,6 @@ $font-bold:     700;
 
 $focus-shadow: none; //overwriting default set in _variables.scss
 
-// USIM COLORS
-$beige1:                      #d6d2c4;
 /* USIM SET */
 $color-usim-blue-dark:       #283166;
 $color-usim-blue-royal:      #284f91;
@@ -37,6 +35,13 @@ $color-usim-beige-lightest:  #d6d2c9;
 $color-usim-red:             #b4211d;
 $color-usim-gold:            #c0ba86;
 $color-usim-creme:           #d5d1c4;
+
+$black:         #000000;
+$black3:        #333333;
+$black6:        #666666;
+$black9:        #999999;
+$black-c:       #cccccc;
+$white:         #ffffff;
 /* END USIM SET */
 
 
@@ -86,11 +91,11 @@ $social-icon-home:				40px;
 
 
 // Site margins
+$site-margins:                3rem;
 $site-margins-small:          1rem;
-$site-margins-medium:         $site-margins / 2; // 1.5rem
-$site-margins-medium-plus:	  $site-margins-small * 2; // 2rem
-//$site-margins:              3rem; //defined in _variables.scss
-$site-margins-large:          $site-margins * 2; // 6rem
+$site-margins-medium:         1.5rem;
+$site-margins-medium-plus:	  2rem;
+$site-margins-large:          4rem;
 $bbg-grid-gutter:             2.35765%;
 
 
