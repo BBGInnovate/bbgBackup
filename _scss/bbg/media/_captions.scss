@@ -11,17 +11,12 @@
 		width: 100%;
 
 		+ .wp-caption-text {
-			margin: {
-				right: auto;
-				left: auto;
-			}
+			margin: 0 auto;
 			max-width: $article-max-width;
 		}
 	}
 
-	.wp-caption-text {
-		margin: 0.8075em 0;
-	}
+	.wp-caption-text {margin: 0.8075em 0;}
 }
 
 .wp-caption-text {
@@ -39,23 +34,21 @@
 
 /* Mugshot used in the Soapbox on the homepage */
 .bbg__mugshot {
-	float: left;
-	margin-right: 2rem;
-	min-width: 100px;
-	width: 20%;
+	// margin-right: 2rem;
+	// min-width: 100px;
+	// width: 20%;
 
-	@include media($small-screen) {
-		margin-top: $site-margins-small;
-	}
+	// @include media($small-screen) {
+	// 	margin-top: $site-margins-small;
+	// }
 }
 
 .bbg__mugshot__caption {
-	display: block;
 	font-family: $font-sans;
-	font-weight: bold;
 	line-height: 1;
+	text-align: right;
 	margin: {
-		top: -.5rem;
+		top: 0;
 		bottom: $site-margins-small;
 	}
 }
@@ -72,10 +65,7 @@
 		}
 
 		.wp-caption-text {
-			margin: {
-				right: auto;
-				left: auto;
-			};
+			margin: 0 auto;
 			max-width: 300px;
 		}
 

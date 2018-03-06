@@ -1,0 +1,25 @@
+a.excerpt-learn-more {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+a:not(.bbg__article-share__icon) {
+	&:focus {
+		background-color: $color-gray-cool-light;
+
+		img,
+		*[class*="avatar"],
+		*[class*="image"],
+		*[class*="photo"],
+		*[class*="thumbnail"] {
+			background-color: transparent;
+			text-decoration: none;
+
+			>a:hover,
+			>a:focus {
+				background-color: transparent;
+				text-decoration: none;
+			}
+		}
+	}
+}

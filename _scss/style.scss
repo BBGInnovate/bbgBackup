@@ -76,12 +76,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 // BBG -------------- //
 
 /*@import 'bbg/variables-bbg'; MOVED ABOVE TO UPDATE FONTS */
+@import 'bbg/components/blog_post';
 @import 'bbg/components/comments';
 @import 'bbg/components/sharing';
 @import 'bbg/components/sidebar';
 @import 'bbg/elements/tables-forms';
 @import 'bbg/elements/responsive-svg';
 @import 'bbg/elements/typography';
+@import 'bbg/elements/buttons';
 @import 'bbg/media/media';
 @import 'bbg/media/maps';
 

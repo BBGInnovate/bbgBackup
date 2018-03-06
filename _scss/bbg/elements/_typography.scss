@@ -1,6 +1,107 @@
-// $h1-font-size:        rem(40px);
-// $h2-font-size:        rem(30px);
-// $h3-font-size:        rem(20px);
-// $h4-font-size:        rem(17px);
-// $h5-font-size:        rem(15px);
-// $h6-font-size:        rem(13px);
+body {font-size: 12px}
+
+h2 {
+    font-size: 1.75em;
+}
+h6 {font-size: 1.5em;}
+h1, h2, h3, h4, h5, h6 {
+    color: $color-primary-darkest;
+    font-family: $font-sans;
+    margin-top: .5rem;
+}
+
+h1 a, h2 a, h3 a, h4 a {color: $color-primary-darker;}
+
+
+p.lead-in {
+	font-size: 1.2em;
+	line-height: 2em;
+	font-weight: 500;
+	color: $black;
+}
+
+
+
+.bbg__links--right-angle-quote {
+    font-size: calc(100% * 1.3);
+    page-break: {
+        before: avoid;
+        inside: avoid;
+    }
+    word-break: keep-all;
+}
+
+p {font-family: $font-serif;}
+
+
+.usa-disclaimer {text-align: center;}
+
+.bbg__label {
+    color: $color-usim-red;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0 0 0.5em 0;
+
+    a {color: $color-usim-red;}
+}
+
+.bbg__label_inverted {
+    background-color: $color-primary;
+    color: #FFF;
+    display: inline-block;
+    font-size: 1.7rem;
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+    a {
+        color: #FFF;
+        text-transform: uppercase;
+    }
+}
+
+.bbg__label--advisory {background-color: $color-primary-darker;}
+.bbg__label--rumor {background-color: $color-primary;}
+.bbg__label--myth {background-color: $color-gray-medium;}
+.bbg__label--untruth {background-color: $color-secondary-darkest;}
+.bbg__label--burke {color: $color-burke-darker; text-transform: uppercase;}
+
+
+.bbg__page-header__tagline {
+    color: $color-gray-medium;
+    font: {
+        family: $font-serif;
+        size: 1.4rem;
+        style: italic;
+        weight: 500;
+    }
+    margin: {
+        top: 0;
+        bottom: 2rem;
+    }
+    text-transform: none;
+
+    @include media($medium-large-screen) {
+        font-size: 1.7rem;
+    }
+}
+
+
+
+// MEDIA QUERIES MEDIUM
+@include media($medium-screen) {
+	body {font-size: 14px;}
+	.usa-font-lead {
+		font-size: 1.1em;
+		line-height: 2.25em;
+	}
+}
+
+
+
+// MEDIA QUERIES LARGE
+@include media($large-screen) {
+	body {font-size: 14px;}
+	.usa-font-lead {
+		font-size: 1.1em;
+		line-height: 2.25em;
+	}
+}

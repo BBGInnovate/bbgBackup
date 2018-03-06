@@ -7,3 +7,22 @@
 ## Galleries
 --------------------------------------------------------------*/
 @import "embeds";
+
+img,
+*[class*="avatar"],
+*[class*="icon"],
+*[class*="image"],
+*[class*="photo"],
+*[class*="thumbnail"],
+*[style*="background-image"] {
+    >a:hover,
+    >a:focus {
+        background-color: transparent;
+        text-decoration: none;
+    }
+}
+
+.bbg__file-size {
+    color: $color-gray-dark;
+    font-size: 75%;
+}
