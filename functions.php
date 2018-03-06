@@ -1164,8 +1164,8 @@ function getSoapboxStr( $soap ) {
 				$isCEOPost = TRUE;
 				$soapClass = "bbg__voice--ceo";
 				$soapHeaderText = "From the CEO";
-				$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
-				// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
+				// $profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg"; // live 
+				$profilePhoto = "/wp-content/uploads/2018/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 				$profileName = "John Lansing";
 			} else if ( $cat -> slug == "usim-matters" ) {
 				$isSpeech = TRUE;
@@ -1196,37 +1196,36 @@ function getSoapboxStr( $soap ) {
 		$mugshotImageFloat = $homepageSoapboxImageFloat;
 	}
 
-	$s .= '<div class="usa-width-one-half ' . $soapClass . '">';
-
-		$s .= '<header class="entry-header bbg__article-icons-container">';
-			if ( $homepageSoapboxLabel == '' ) {
-				$s .= '<div class="bbg__article-icon"></div>';
-			}
-
-
-			if ( $soapHeaderPermalink != "" ) {
-					$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
-			} else if ( $soapHeaderText != "" ) {
-				$s .= '<h6 class="bbg__label small">' . $soapHeaderText . '</h6>';
-			}
-		$s .= '</header>';
-
-	$s .= '<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
-	$s .= $soap -> post_title;
-	$s .= '</a></h2>';
-
-	$s .= '<p class="">';
-
+	$s .= '<div class="usa-section ' . $soapClass . '">';
+	$s .= '<div class="usa-grid">';
+	$s .= '<header class="entry-header bbg__article-icons-container">';
+		if ( $homepageSoapboxLabel == '' ) {
+			$s .= '<div class="bbg__article-icon"></div>';
+		}
+		if ( $soapHeaderPermalink != "" ) {
+				$s .= '<h6 class="bbg__label small"><a href="' . $soapHeaderPermalink . '">' . $soapHeaderText . '</a></h6>';
+		} else if ( $soapHeaderText != "" ) {
+			$s .= '<h6 class="bbg__label small">' . $soapHeaderText . '</h6>';
+		}
+	$s .= '</header>';
+	$s .= 	'<div class="ceo-statement">';
+	$s .= 		'<h2 class="bbg-blog__excerpt-title"><a href="' . $soapPostPermalink. '">';
+	$s .= 			$soap -> post_title;
+	$s .= 			'</a></h2>';
+	$s .= 		'<p class="">';
+	$s .= 			my_excerpt( $id );
+	$s .= 			' <a href="' . $soapPostPermalink. '" class="bbg__read-more">' . $readMoreLabel . ' »</a></p>';
+	$s .= 	'</div>';
+	$s .= 	'<div class="ceo-image">';
 	if ( $profilePhoto != "" ) {
-		$s .= '<span class="bbg__mugshot" style="float: ' . $mugshotImageFloat . ' !important;"><img src="' . $profilePhoto . '" class="bbg__ceo-post__mugshot" />';
+		$s .= '<span class="bbg__mugshot"><img src="' . $profilePhoto . '" class="bbg__ceo-post__mugshot" />';
 		if ( $profileName != "" ) {
 			$s .= '<span class="bbg__mugshot__caption">' . $profileName . '</span>';
 		}
 		$s .= '</span>';
 	}
-
-	$s .= my_excerpt( $id );
-	$s .= ' <a href="' . $soapPostPermalink. '" class="bbg__read-more">' . $readMoreLabel . ' »</a></p>';
+	$s .= '</div>';
+	$s .= '</div>';
 	$s .= '</div>';
 	return $s;
 }

@@ -4,6 +4,7 @@ header {
 		border: 1px solid $color-usim-beige-lightest;
 	}
 }
+
 #featured-BBG-post {
 	article {.post-date {text-align: right;}}
 }
@@ -11,7 +12,13 @@ header {
 	background-color: $color-usim-beige-lightest;
 	padding: 1em;
 }
-#sub-posts {display: none}
+
+// CEO SOAP
+.bbg__voice--featured {
+	background-color: #f0f0f0;
+	.ceo-statement {@include span-columns(8);}
+	.ceo-image {@include span-columns(4);}
+}
 
 @include media($medium-screen) {
 	#featured-BBG-post {@include span-columns(7);}
@@ -19,6 +26,11 @@ header {
 	#sub-posts {
 		display: block;
 		article {@include span-columns(4);}
+	}
+	.bbg__voice--featured {
+		background-color: #f0f0f0;
+		.ceo-statement {@include span-columns(10);}
+		.ceo-image {@include span-columns(2);}
 	}
 }
 @include media($large-screen) {

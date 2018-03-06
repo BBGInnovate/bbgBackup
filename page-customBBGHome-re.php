@@ -315,8 +315,9 @@ get_header();
 					?>
 				</div>
 			</section>
+
+			<!-- SUB STORIES -->
 			<section class="usa-section usa-grid">
-				<!-- SUB STORIES -->
 				<div id="sub-posts">
 					<?php
 						/* BEWARE: sticky posts add a record */
@@ -337,6 +338,13 @@ get_header();
 					?>
 				</div>
 			</section>
+
+			<?php
+				if ($soap) {
+					$s = getSoapboxStr($soap);
+					echo $s;
+				}
+			?>
 		</main>
 	</div>
 </div>
