@@ -4,9 +4,6 @@ header {
 		border: 1px solid $color-usim-beige-lightest;
 	}
 }
-.usim-lead-in {
-	margin: 2em 0;
-}
 #featured-BBG-post {
 	article {.post-date {text-align: right;}}
 }
@@ -14,50 +11,17 @@ header {
 	background-color: $color-usim-beige-lightest;
 	padding: 1em;
 }
-#sub-posts {
-	article {
-		padding-bottom: $site-margins-medium-plus;
-		margin-bottom: $site-margins-medium-plus;
-		border-bottom: 1px solid $color-usim-beige-lightest;
-	}
-}
-// SOAPBOX STYLE
-#ceo-statement {
-	padding: $site-margins-medium-plus;
-	background-color: #f0f0f0;
-	#ceo-content {
-		@include span-columns(9);
-	}
-	#ceo-image {
-		@include span-columns(3);
-	}
-}
+#sub-posts {display: none}
 
-// MEDIA QUERIES
 @include media($medium-screen) {
-	.usim-lead-in {margin: 3em 0;}
 	#featured-BBG-post {@include span-columns(7);}
 	#home-impact-story {@include span-columns(5);}
 	#sub-posts {
 		display: block;
-		article {
-			@include span-columns(4);
-			padding-bottom: inherit;
-			margin-bottom: inherit;
-			border-bottom: 0;
-		}
-	}
-	#ceo-statement{
-		#ceo-content {
-			@include span-columns(10);
-		}
-		#ceo-image {
-			@include span-columns(2);
-		}
+		article {@include span-columns(4);}
 	}
 }
 @include media($large-screen) {
-	.usim-lead-in {margin: 4em 0;}
 	#featured-BBG-post {
 		@include span-columns(8);
 		#featured-post-excerpt {display: none;}

@@ -1164,8 +1164,8 @@ function getSoapboxStr( $soap ) {
 				$isCEOPost = TRUE;
 				$soapClass = "bbg__voice--ceo";
 				$soapHeaderText = "From the CEO";
-				$profilePhoto = "/wp-content/uploads/2018/03/john_lansing_ceo-sq-200x200.jpg";
-				// $profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+				$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
+				// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 				$profileName = "John Lansing";
 			} else if ( $cat -> slug == "usim-matters" ) {
 				$isSpeech = TRUE;

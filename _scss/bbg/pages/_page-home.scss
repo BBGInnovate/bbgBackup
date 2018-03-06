@@ -223,9 +223,9 @@
 	filter: progid:DXImagesTransform.Microsoft.gradient(startColorstr='#00283166', endColorstr='#283166',GradientType=1);
 }
 
-// section.usa-section.bbg-banner__section {
-// 	margin-bottom: $site-margins-large;
-// }
+section.usa-section.bbg-banner__section {
+	margin-bottom: $site-margins;
+}
 // icons on focus boxes (soapbox/events announcement)
 .bbg__article-icons-container {
 	display: table-row;

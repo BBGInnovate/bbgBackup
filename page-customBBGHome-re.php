@@ -254,12 +254,14 @@ get_header();
 			?>
 
 			<!-- MISSION -->
-			<section  id="mission" class="usa-section usa-grid">
-				<p class="lead-in">
-					<?php echo $siteIntroContent; ?>
-					 <a class="excerpt-learn-more" href="<?php $siteIntroLink; ?>">LEARN MORE »</a>
-				</p>
-			</section>
+            <section class="usa-section usa-grid">
+            	<div id="mission">
+            		<h3 id="site-intro" class="usa-font-lead">
+            			<?php echo $siteIntroContent; ?>
+						 <a href="<?php $siteIntroLink; ?>">LEARN MORE »</a>
+        			</h3>
+            	</div>
+            </section>
 
 			<!-- BBG NEWS -->
 			<section class="usa-section usa-grid">
@@ -282,7 +284,7 @@ get_header();
 								the_post();
 								$counter++;
 								$postIDsUsed[] = get_the_ID();
-								get_template_part('template-parts/kr-post-featured', get_post_format());
+								get_template_part('template-parts/content-excerpt-featured-re', get_post_format());
 							};
 						}
 						wp_reset_query();
@@ -313,7 +315,6 @@ get_header();
 					?>
 				</div>
 			</section>
-
 			<section class="usa-section usa-grid">
 				<!-- SUB STORIES -->
 				<div id="sub-posts">
@@ -334,30 +335,6 @@ get_header();
 						}
 						wp_reset_query();
 					?>
-				</div>
-			</section>
-			<?php
-				// if ($soap) {
-				// 	$s = getSoapboxStr($soap);
-				// 	echo $s;
-				// }
-			?>
-			<!-- CEO STATEMENT -->
-			<section id="ceo-statement">
-				<div class="usa-grid">
-					<header class="entry-header bbg__article-icons-container">
-						<h6 class="bbg__label small">Statement</h6>
-					</header>
-					<div id="ceo-content">
-						<h2>On the VOA casualties in Mogadishu</h2>
-						<p>
-							The tragic events in Mogadishu have devastated so many lives, and I was saddened to learn that they affected the U.S international media family as well. 
-						</p>
-					</div>
-					<div id="ceo-image">
-						<img src="/wp-content/uploads/2018/03/john_lansing_ceo-sq-200x200.jpg" alt="">
-						<p class="bbg__mugshot__caption">John Lansing</p>
-					</div>
 				</div>
 			</section>
 		</main>

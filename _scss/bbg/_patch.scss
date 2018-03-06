@@ -1,18 +1,32 @@
 // Temporary patch for gaps in CSS as USWDS updates their styles
-img {height: auto;}
+img {
+	height: auto;
+}
+
 // fix relative img links for background-images in the footer
 // from: ../img/
 // to: img/
+
+
 ul.usa-footer-primary-content,
 li.usa-footer-primary-content,
 li.usa-footer-primary-content {
 	border-top: 1px solid #CCC;
-	@include media($medium-screen) {border: none;}
+
+	@include media($medium-screen) {
+		border: none;
+	}
+
 	&:last-child {
 		border-bottom: 1px solid #CCC;
-		@include media($medium-screen) {border-bottom: none;}
+
+		@include media($medium-screen) {
+			border-bottom: none;
+		}
 	}
 }
+
+
 //Switching padding for margin to make 3 dropdowns fit in grid.
 .usa-input-grid {
 	@include media($medium-screen) {
@@ -20,23 +34,87 @@ li.usa-footer-primary-content {
 		padding-right: 0;
 	}
 }
+/*
+.usa-input-grid:last-of-type {
+	@include media($medium-screen) {
+		margin-right: 0;
+	}
+}
+*/
+
 //Not sure we use this on the site now
 .usa-input-grid-small {
-	@include media($medium-screen) {width: 30%;}
+	@include media($medium-screen) {
+		width: 30%;
+	}
 }
-.usa-grid {padding: 0 2rem;}
+
+
+
+.usa-grid {
+  padding: 0 2rem;
+}
+
+
 //Primary footer category links should have a hand cursor on hover
 .usa-footer-big nav .usa-footer-primary-link {
 	cursor: pointer;
-	@include media($medium-screen) {cursor: default;}
+
+	@include media($medium-screen) {
+		cursor: default;
+	}
 }
 
-input, input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="tel"], input[type="number"], input[type="search"], input[type="file"], input[type="date"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"], textarea, select {border: 1px solid #CCC;}
 
-form select:focus {background-color: $color-gray-cool-light;}
+//Should this be styled with a custom .bbg class?
+.usa-font-lead {
+	font: {
+		size: $lead-font-size * .8;
+		weight: 300;
+	}
 
-.usa-social-links a {display: inline-block;}
+	@include media($medium-screen) {
+		font-size: $lead-font-size;
+		line-height: 2.5;
+	}
+}
 
-.screen-reader-text {@extend .usa-sr-only;}
+input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+input[type="file"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+textarea,
+select {
+	border: 1px solid #CCC;
+}
 
-ul, ol {li:before {width: 1.2rem;}}
+form select:focus {
+	background-color: $color-gray-cool-light;
+}
+
+.usa-social-links a {
+	display: inline-block;
+}
+
+.screen-reader-text {
+	@extend .usa-sr-only;
+}
+
+
+
+ul,
+ol {
+	li:before {
+		width: 1.2rem;
+	}
+}
