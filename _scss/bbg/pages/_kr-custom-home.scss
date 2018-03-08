@@ -20,6 +20,33 @@ header {
 	.ceo-image {@include span-columns(4);}
 }
 
+#threats-to-journalism {
+	background-image: url('http://local-bbg.localhost/wp-content/uploads/2018/03/usim-tourch.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: $color-usim-blue-dark;
+	#threat_padding {display: none;}
+	.usa-grid.threat_content,
+	.usa-grid.threat-article {padding:0;}
+	.threat-article:first-of-type {margin-bottom: 1em;}
+	.threat_content {
+		padding: 0;
+		.threat-article:first-of-type {margin-bottom: 2em;}
+		.threat-article {
+			.threat_image {@include span-columns(12);}
+			.threat_copy {
+				@include span-columns(12);
+				.threat_title {
+					h3 {color: $color-usim-blue-light;}
+				}
+				.threat_excerpt {
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
 @include media($medium-screen) {
 	#featured-BBG-post {@include span-columns(7);}
 	#home-impact-story {@include span-columns(5);}
@@ -32,11 +59,67 @@ header {
 		.ceo-statement {@include span-columns(10);}
 		.ceo-image {@include span-columns(2);}
 	}
+	#threats-to-journalism {
+		.threat-article:first-of-type {margin-bottom: 1em;}
+		.threat_content {
+			padding: 0;
+			.threat-article:first-of-type {margin-bottom: 2em;}
+			.threat-article {
+				.threat_image {@include span-columns(5);}
+				.threat_copy {
+					@include span-columns(7);
+					.threat_title {
+						h3 {color: $color-usim-blue-light;}
+					}
+					.threat_excerpt {
+						color: $white;
+					}
+				}
+			}
+		}
+	}
 }
+
+@include media($medium-plus-screen) {
+	#threats-to-journalism {
+		background-position: -5% center;
+		#threat_padding {
+			@include span-columns(2);
+			display: block;
+		}
+		.threat_content {
+			@include span-columns(10);
+			.threat-article {
+				.threat_image {@include span-columns(4);}
+				.threat_copy {@include span-columns(8);}
+			}
+		}
+	}
+}
+
 @include media($large-screen) {
 	#featured-BBG-post {
 		@include span-columns(8);
 		#featured-post-excerpt {display: none;}
 	}
 	#home-impact-story {@include span-columns(4);}
+
+	#threats-to-journalism {
+		background-position: 15% center;
+		#threat_padding {
+			@include span-columns(3);
+			display: block;
+		}
+		.threat_content {
+			@include span-columns(9);
+			.threat-article {
+				.threat_image {@include span-columns(5);}
+				.threat_copy {
+					@include span-columns(7);
+					.threat_title {}
+					.threat_excerpt {}
+				}
+			}
+		}
+	}
 }

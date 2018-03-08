@@ -1,9 +1,16 @@
 // Add custom grid settings here (i.e. gutters, columns, etc)
 
 // Mobile First Breakpoints
-$small-screen:  481px;
-$medium-screen: 600px;
-$large-screen:  1201px;
+// ORIGINAL
+// $small-screen:  481px;
+// $medium-screen: 600px;
+// $large-screen:  1201px;
+
+// KR SIZES
+$small-screen:       400px;
+$medium-screen:      641px;
+$medium-plus-screen: 769px;
+$large-screen:       1201px;
 
 $large: new-breakpoint(min-width $large-screen 12);
 $medium: new-breakpoint(min-width $medium-screen 6);

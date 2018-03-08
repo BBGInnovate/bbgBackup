@@ -71,7 +71,7 @@ function getThreatsPostQueryParams( $numPosts, $used ) {
 	$qParams = array(
 		'post_type' => array( 'post' ),
 		'posts_per_page' => $numPosts,
-		'orderby' => 'post_date',
+		'orderby' => 'rand',
 		'order' => 'desc',
 		'cat' => get_cat_id( 'Threats to Press' ),
 		'post__not_in' => $used
@@ -123,12 +123,6 @@ if ( $soap ) {
 	$postIDsUsed[] = $soap[0] -> ID;
 }
 
-$randomFeaturedThreatsID = false;
-if ( $threatsToPressPost ) {
-	$randKey = array_rand( $threatsToPressPost );
-	$randomFeaturedThreatsID = $threatsToPressPost[$randKey];
-}
-
 /*** store a handful of page links that we'll use in a few places ***/
 $impactPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results' ) );
 $impactPortfolioPermalink = get_permalink( get_page_by_path( 'our-work/impact-and-results/impact-portfolio' ) );
@@ -138,7 +132,6 @@ $threatsPermalink = get_permalink( get_page_by_path( 'threats-to-press' ) );
 get_header();
 
 ?>
-
 <div id="main" class="site-main">
 	<div id="primary" class="content-area">
 		<main id="bbg-home" class="site-content bbg-home-main" role="main">
@@ -345,6 +338,57 @@ get_header();
 					echo $s;
 				}
 			?>
+
+			<!-- THREATS TO PRESS  -->
+			<section id="threats-to-journalism" class="usa-section bbg__ribbon">
+				<div class="usa-grid">
+					<h6 class="bbg__label small"><a href="<?php echo $threatsPermalink; ?>">Threats to Press</a></h6>
+				</div>
+				<?php
+				$threatsUsedPosts = array();
+				$qParams = getThreatsPostQueryParams(2, $threatsUsedPosts);
+
+				$threat_article = new WP_Query($qParams);
+				if ($threat_article -> have_posts()) {
+					$grid_opennings  = '<div class="usa-grid">';
+					$grid_opennings .= 	'<div id="threat_padding" class="usa-grid">&nbsp;</div>';
+					$grid_opennings .= 		'<div class="usa-grid threat_content">';
+					echo $grid_opennings;
+					while ($threat_article -> have_posts()) :
+						$threat_article -> the_post();
+						$teaser = wp_trim_words(get_the_content(), 40);
+					?>
+					<div class="usa-grid threat-article">
+						<div class="threat_image">
+							<?php the_post_thumbnail(); ?>
+						</div>
+						<div class="threat_copy">
+							<div class="threat_title">
+								<a href="<?php the_permalink(); ?>">
+									<h3 class="entry-title bbg-blog__excerpt-title--list"><?php the_title(); ?></h3>
+								</a>
+							</div>
+							<div class="threat_excerpt"><?php echo $teaser; ?></div>
+						</div>
+					</div>
+					<?php
+					endwhile;
+					echo '</div></div>';
+				}
+				wp_reset_query();
+				?>
+			</section>
+			
+			<!-- NETWORKS -->
+			<section id="entities" class="usa-section bbg__staff">
+				<div class="usa-grid">
+					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
+					<div class="usa-intro bbg__broadcasters__intro">
+						<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> listeners, viewers and internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
+					</div>
+					<?php echo outputBroadcasters('2'); ?>
+				</div>
+			</section>
 		</main>
 	</div>
 </div>
