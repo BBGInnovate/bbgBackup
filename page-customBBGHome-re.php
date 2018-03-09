@@ -106,19 +106,15 @@ $featuredPost = get_field('homepage_featured_post', 'option');
 $soap = get_field('homepage_soapbox_post', 'option');
 $threatsToPressPost = get_field('homepage_threats_to_press_post', 'option');
 
-
-/*** add any posts from custom fields to our array that tracks post IDs that have already been used on the page ***/
+// ADD CUSTOM FIELDS POSTS TO ARRAY OF POST IDs ALREADY USED ON PAGE
 $postIDsUsed = array();
-
 if ( $featuredPost ) {
 	$featuredPost = $featuredPost[0];
 	$postIDsUsed[] = $featuredPost -> ID;
 }
-
 if ( $homepage_hero_corner == 'event' && $featuredEvent ) {
 	$postIDsUsed[] = $featuredEvent -> ID;
 }
-
 if ( $soap ) {
 	$postIDsUsed[] = $soap[0] -> ID;
 }
@@ -379,16 +375,23 @@ get_header();
 				?>
 			</section>
 			
-			<!-- NETWORKS -->
+			<!-- NETWORKS BLURB -->
 			<section id="entities" class="usa-section bbg__staff">
 				<div class="usa-grid">
 					<h6 class="bbg__label"><a href="<?php echo get_permalink( get_page_by_path( 'networks' ) ); ?>" title="A list of the BBG broadcasters.">Our networks</a></h6>
 					<div class="usa-intro bbg__broadcasters__intro">
 						<h3 class="usa-font-lead">Every week, more than <?php echo do_shortcode('[audience]'); ?> listeners, viewers and internet users around the world turn on, tune in and log onto U.S. international broadcasting programs. The day-to-day broadcasting activities are carried out by the individual BBG international broadcasters.</h3>
 					</div>
-					<?php echo outputBroadcasters('2'); ?>
 				</div>
 			</section>
+
+			<!-- NETWORK ENTITIES -->
+			<section id="network-group" class="usa-section">
+				<div class="usa-grid">
+					<?php echo networks_output(); ?>
+				</div>
+			</section>
+
 		</main>
 	</div>
 </div>

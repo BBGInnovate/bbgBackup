@@ -11,3 +11,4 @@ compiled/
 external-feed-cache/
 .phpintel/
 _scss/bbg/navigation/_menus_bak.scss
+inc/.DS_Store

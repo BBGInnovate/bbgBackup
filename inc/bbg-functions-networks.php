@@ -67,10 +67,10 @@ function outputBroadcasters($cols) {
 	if ($cols == 2){
 		$columnsClass = " bbg-grid--1-1-1-2";
 	}
-
 	$s = '';
 	$s .= '<div class="usa-grid-full">';
 	$custom_query = new WP_Query($qParams);
+	
 	if ($custom_query -> have_posts()) {
 		while ( $custom_query -> have_posts() )  {
 			$custom_query->the_post();
@@ -108,4 +108,45 @@ function broadcasters_list_shortcode($atts) {
 }
 add_shortcode('broadcasters_list', 'broadcasters_list_shortcode');
 
+function networks_output() {
+	$entityParentPage = get_page_by_path('networks');
+	$qParams = array(
+		'post_type' => array('page'),
+		'post_parent' => $entityParentPage->ID,
+		'orderby' => 'meta_value_num',
+		'meta_key' => 'entity_year_established',
+		'order' => 'ASC'
+	);
+	$custom_query = new WP_Query($qParams);
+	
+	if ($custom_query -> have_posts()) {
+		while ($custom_query -> have_posts())  {
+			$custom_query -> the_post();
+			$id = get_the_ID();
+			$fullName = get_post_meta($id, 'entity_full_name', true);
+
+			if ($fullName != "") {
+				$abbreviation = strtolower(get_post_meta($id, 'entity_abbreviation', true));
+				$abbreviation = str_replace("/", "",$abbreviation);
+				$description = get_post_meta($id, 'entity_description', true);
+				$description = apply_filters('the_content', $description);
+				$link = get_permalink( get_page_by_path("/networks/$abbreviation/" ));
+				$imgSrc = get_template_directory_uri().'/img/logo_'.$abbreviation.'--circle-200.png'; //need to fix this
+
+				$s .= '<section class="network-tester usa-section">';
+				$s .= 	'<div class="usa-grid entity-container">';
+				$s .= 		'<div class="entity-logo">';
+				$s .= 			'<a href="' . $link . '" tabindex="-1">';
+				$s .= 				'<img class="circle-logo" src="' . $imgSrc . '">';
+				$s .= 			'</a></div>';
+				$s .= 		'<div class="entity-text">';
+				$s .= 			'<h2><a href="' . $link . '">' . $fullName . '</a></h2>';
+				$s .= 			'<p>' . $description . '</p>';
+				$s .= '</div></div></section>';
+			}
+		}
+	}
+	wp_reset_postdata();
+	return $s;
+}
 ?>

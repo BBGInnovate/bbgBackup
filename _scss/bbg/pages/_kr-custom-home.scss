@@ -46,6 +46,22 @@ header {
 		}
 	}
 }
+// NETWORKS
+section.usa-section#entities {margin-bottom: 1em;}
+section.usa-section.network-tester {margin-bottom: 1em;}
+.network-tester {
+	.entity-logo {
+		float: left;
+		width: 10%;
+	}
+	.entity-text {
+		float: right;
+		width: 87%;
+		h2 {font-size: 1.25em;}
+		p {font-size: 0.876em;}
+	}
+}
+
 
 @include media($medium-screen) {
 	#featured-BBG-post {@include span-columns(7);}
@@ -78,6 +94,14 @@ header {
 			}
 		}
 	}
+
+	section.usa-section.network-tester {margin-bottom: 2em;}
+	.network-tester:nth-child(even) {
+		.entity-container {
+			.entity-logo {float: right;}
+			.entity-text {float: left; text-align: right;}
+		}
+	}
 }
 
 @include media($medium-plus-screen) {
@@ -92,6 +116,40 @@ header {
 			.threat-article {
 				.threat_image {@include span-columns(4);}
 				.threat_copy {@include span-columns(8);}
+			}
+		}
+	}
+
+	section.usa-section#entities {margin-bottom: 2em;}
+	.network-tester {
+		vertical-align: top;
+		display: inline-block;
+		width: 19.79%;
+		padding: 0 15px;
+		margin: 0;
+	}
+	.network-tester:first-of-type() {
+		padding-left: 0;
+		.entity-container .entity-logo {width: 45.899%;}
+	}
+	.network-tester:last-of-type() {
+		padding-right: 0;
+		.entity-container .entity-logo {width: 45.899%;}
+	}
+	.network-tester, 
+	.network-tester:nth-child(even) {
+		.entity-container {
+			padding: 0;
+
+			.entity-logo {
+				float: none;
+				width: 50%;
+				margin: 0 auto 1em auto;
+			}
+			.entity-text {
+				float: none;
+				width: 100%;
+				text-align: center;
 			}
 		}
 	}
