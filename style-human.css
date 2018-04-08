@@ -437,8 +437,7 @@ body {
 }
 
 .lt-ie9 * {
-  -webkit-filter: none !important;
-          filter: none !important;
+  filter: none !important;
 }
 
 [aria-hidden=true] {
@@ -466,7 +465,7 @@ body {
   .bbg__svg__content .usa-width-one-whole {
     float: left;
     display: block;
-    margin-right: 4.82916%;
+    margin-right: 4.8291579146%;
     width: 100%;
   }
   .usa-grid .usa-width-one-whole:last-child,
@@ -481,8 +480,8 @@ body {
   .bbg__svg__content .bbg__profile-excerpt {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 47.58542%;
+    margin-right: 4.8291579146%;
+    width: 47.5854210427%;
   }
   .usa-grid .usa-width-one-half:last-child, .usa-grid .bbg__profile-excerpt:last-child,
   .usa-grid-full .usa-width-one-half:last-child,
@@ -503,8 +502,8 @@ body {
   .bbg__svg__content .usa-width-one-third {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 30.11389%;
+    margin-right: 4.8291579146%;
+    width: 30.1138947236%;
   }
   .usa-grid .usa-width-one-third:last-child,
   .usa-grid-full .usa-width-one-third:last-child,
@@ -516,8 +515,8 @@ body {
   .bbg__svg__content .usa-width-two-thirds {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 65.05695%;
+    margin-right: 4.8291579146%;
+    width: 65.0569473618%;
   }
   .usa-grid .usa-width-two-thirds:last-child,
   .usa-grid-full .usa-width-two-thirds:last-child,
@@ -529,8 +528,8 @@ body {
   .bbg__svg__content .usa-width-one-fourth {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 47.58542%;
+    margin-right: 4.8291579146%;
+    width: 47.5854210427%;
   }
   .usa-grid .usa-width-one-fourth:last-child,
   .usa-grid-full .usa-width-one-fourth:last-child,
@@ -547,7 +546,7 @@ body {
   .bbg__svg__content .usa-width-three-fourths {
     float: left;
     display: block;
-    margin-right: 4.82916%;
+    margin-right: 4.8291579146%;
     width: 100%;
   }
   .usa-grid .usa-width-three-fourths:last-child,
@@ -562,8 +561,8 @@ body {
   .bbg__svg__content .bbg__profile-grid__profile {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 30.11389%;
+    margin-right: 4.8291579146%;
+    width: 30.1138947236%;
   }
   .usa-grid .usa-width-one-sixth:last-child, .usa-grid .bbg__profile-grid__profile:last-child,
   .usa-grid-full .usa-width-one-sixth:last-child,
@@ -584,8 +583,8 @@ body {
   .bbg__svg__content .usa-width-five-sixths {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 82.52847%;
+    margin-right: 4.8291579146%;
+    width: 82.5284736809%;
   }
   .usa-grid .usa-width-five-sixths:last-child,
   .usa-grid-full .usa-width-five-sixths:last-child,
@@ -597,8 +596,8 @@ body {
   .bbg__svg__content .usa-width-one-twelfth {
     float: left;
     display: block;
-    margin-right: 4.82916%;
-    width: 30.11389%;
+    margin-right: 4.8291579146%;
+    width: 30.1138947236%;
   }
   .usa-grid .usa-width-one-twelfth:last-child,
   .usa-grid-full .usa-width-one-twelfth:last-child,
@@ -634,7 +633,7 @@ body {
   .bbg__svg__content .usa-width-one-whole {
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%;
   }
   .usa-grid .usa-width-one-whole:last-child,
@@ -649,8 +648,8 @@ body {
   .bbg__svg__content .bbg__profile-excerpt {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
   }
   .usa-grid .usa-width-one-half:last-child, .usa-grid .bbg__profile-excerpt:last-child,
   .usa-grid-full .usa-width-one-half:last-child,
@@ -664,8 +663,8 @@ body {
   .bbg__svg__content .usa-width-one-third {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
+    margin-right: 2.3576515979%;
+    width: 31.7615656014%;
   }
   .usa-grid .usa-width-one-third:last-child,
   .usa-grid-full .usa-width-one-third:last-child,
@@ -677,8 +676,8 @@ body {
   .bbg__svg__content .usa-width-two-thirds {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 65.88078%;
+    margin-right: 2.3576515979%;
+    width: 65.8807828007%;
   }
   .usa-grid .usa-width-two-thirds:last-child,
   .usa-grid-full .usa-width-two-thirds:last-child,
@@ -690,8 +689,8 @@ body {
   .bbg__svg__content .usa-width-one-fourth {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%;
+    margin-right: 2.3576515979%;
+    width: 23.2317613015%;
   }
   .usa-grid .usa-width-one-fourth:last-child,
   .usa-grid-full .usa-width-one-fourth:last-child,
@@ -703,8 +702,8 @@ body {
   .bbg__svg__content .usa-width-one-fourth:nth-child(2n) {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%;
+    margin-right: 2.3576515979%;
+    width: 23.2317613015%;
   }
   .usa-grid .usa-width-one-fourth:nth-child(2n):last-child,
   .usa-grid-full .usa-width-one-fourth:nth-child(2n):last-child,
@@ -721,8 +720,8 @@ body {
   .bbg__svg__content .usa-width-three-fourths {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 74.41059%;
+    margin-right: 2.3576515979%;
+    width: 74.4105871005%;
   }
   .usa-grid .usa-width-three-fourths:last-child,
   .usa-grid-full .usa-width-three-fourths:last-child,
@@ -734,8 +733,8 @@ body {
   .bbg__svg__content .usa-width-five-sixths {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 82.94039%;
+    margin-right: 2.3576515979%;
+    width: 82.9403914003%;
   }
   .usa-grid .usa-width-five-sixths:last-child,
   .usa-grid-full .usa-width-five-sixths:last-child,
@@ -747,8 +746,8 @@ body {
   .bbg__svg__content .usa-width-one-twelfth {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 6.17215%;
+    margin-right: 2.3576515979%;
+    width: 6.1721527019%;
   }
   .usa-grid .usa-width-one-twelfth:last-child,
   .usa-grid-full .usa-width-one-twelfth:last-child,
@@ -760,8 +759,8 @@ body {
   .bbg__svg__content .usa-width-one-twelfth:nth-child(3n) {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 6.17215%;
+    margin-right: 2.3576515979%;
+    width: 6.1721527019%;
   }
   .usa-grid .usa-width-one-twelfth:nth-child(3n):last-child,
   .usa-grid-full .usa-width-one-twelfth:nth-child(3n):last-child,
@@ -782,8 +781,8 @@ body {
   .bbg__svg__content .bbg__profile-grid__profile {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
+    margin-right: 2.3576515979%;
+    width: 14.7019570017%;
   }
   .usa-grid .usa-width-one-sixth:last-child, .usa-grid .bbg__profile-grid__profile:last-child,
   .usa-grid-full .usa-width-one-sixth:last-child,
@@ -799,8 +798,8 @@ body {
   .bbg__svg__content .bbg__profile-grid__profile:nth-child(3n) {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
+    margin-right: 2.3576515979%;
+    width: 14.7019570017%;
   }
   .usa-grid .usa-width-one-sixth:nth-child(3n):last-child, .usa-grid .bbg__profile-grid__profile:nth-child(3n):last-child,
   .usa-grid-full .usa-width-one-sixth:nth-child(3n):last-child,
@@ -923,9 +922,10 @@ body {
 }
 
 /*MOVED FROM BELOW TO UPDATE FONTS*/
-.usa-button,
+.usa-button, .bbg__comments-list .reply,
 .usa-button-primary,
 .usa-button:visited,
+.bbg__comments-list .reply:visited,
 .usa-button-primary:visited,
 button,
 [type="button"],
@@ -956,9 +956,10 @@ button,
   -webkit-font-smoothing: antialiased;
 }
 @media screen and (min-width: 481px) {
-  .usa-button,
+  .usa-button, .bbg__comments-list .reply,
   .usa-button-primary,
   .usa-button:visited,
+  .bbg__comments-list .reply:visited,
   .usa-button-primary:visited,
   button,
   [type="button"],
@@ -968,11 +969,13 @@ button,
     width: auto;
   }
 }
-.usa-button:hover, .usa-button.usa-button-hover,
+.usa-button:hover, .bbg__comments-list .reply:hover, .usa-button.usa-button-hover, .bbg__comments-list .usa-button-hover.reply,
 .usa-button-primary:hover,
 .usa-button-primary.usa-button-hover,
 .usa-button:visited:hover,
+.bbg__comments-list .reply:visited:hover,
 .usa-button:visited.usa-button-hover,
+.bbg__comments-list .reply:visited.usa-button-hover,
 .usa-button-primary:visited:hover,
 .usa-button-primary:visited.usa-button-hover,
 button:hover,
@@ -990,11 +993,13 @@ button.usa-button-hover,
   color: #ffffff;
   text-decoration: none;
 }
-.usa-button:focus, .usa-button.usa-button-focus,
+.usa-button:focus, .bbg__comments-list .reply:focus, .usa-button.usa-button-focus, .bbg__comments-list .usa-button-focus.reply,
 .usa-button-primary:focus,
 .usa-button-primary.usa-button-focus,
 .usa-button:visited:focus,
+.bbg__comments-list .reply:visited:focus,
 .usa-button:visited.usa-button-focus,
+.bbg__comments-list .reply:visited.usa-button-focus,
 .usa-button-primary:visited:focus,
 .usa-button-primary:visited.usa-button-focus,
 button:focus,
@@ -1009,11 +1014,13 @@ button.usa-button-focus,
 [type="image"].usa-button-focus {
   box-shadow: none;
 }
-.usa-button:active, .usa-button.usa-button-active,
+.usa-button:active, .bbg__comments-list .reply:active, .usa-button.usa-button-active, .bbg__comments-list .usa-button-active.reply,
 .usa-button-primary:active,
 .usa-button-primary.usa-button-active,
 .usa-button:visited:active,
+.bbg__comments-list .reply:visited:active,
 .usa-button:visited.usa-button-active,
+.bbg__comments-list .reply:visited.usa-button-active,
 .usa-button-primary:visited:active,
 .usa-button-primary:visited.usa-button-active,
 button:active,
@@ -1028,9 +1035,10 @@ button.usa-button-active,
 [type="image"].usa-button-active {
   background-color: #112e51;
 }
-.usa-button.usa-button-primary-alt,
+.usa-button.usa-button-primary-alt, .bbg__comments-list .usa-button-primary-alt.reply,
 .usa-button-primary.usa-button-primary-alt,
 .usa-button:visited.usa-button-primary-alt,
+.bbg__comments-list .reply:visited.usa-button-primary-alt,
 .usa-button-primary:visited.usa-button-primary-alt,
 button.usa-button-primary-alt,
 [type="button"].usa-button-primary-alt,
@@ -1040,11 +1048,13 @@ button.usa-button-primary-alt,
   background-color: #02bfe7;
   color: #212121;
 }
-.usa-button.usa-button-primary-alt:hover, .usa-button.usa-button-primary-alt.usa-button-hover,
+.usa-button.usa-button-primary-alt:hover, .bbg__comments-list .usa-button-primary-alt.reply:hover, .usa-button.usa-button-primary-alt.usa-button-hover, .bbg__comments-list .usa-button-primary-alt.usa-button-hover.reply,
 .usa-button-primary.usa-button-primary-alt:hover,
 .usa-button-primary.usa-button-primary-alt.usa-button-hover,
 .usa-button:visited.usa-button-primary-alt:hover,
+.bbg__comments-list .reply:visited.usa-button-primary-alt:hover,
 .usa-button:visited.usa-button-primary-alt.usa-button-hover,
+.bbg__comments-list .reply:visited.usa-button-primary-alt.usa-button-hover,
 .usa-button-primary:visited.usa-button-primary-alt:hover,
 .usa-button-primary:visited.usa-button-primary-alt.usa-button-hover,
 button.usa-button-primary-alt:hover,
@@ -1059,11 +1069,13 @@ button.usa-button-primary-alt.usa-button-hover,
 [type="image"].usa-button-primary-alt.usa-button-hover {
   background-color: #00a6d2;
 }
-.usa-button.usa-button-primary-alt:active, .usa-button.usa-button-primary-alt.usa-button-active,
+.usa-button.usa-button-primary-alt:active, .bbg__comments-list .usa-button-primary-alt.reply:active, .usa-button.usa-button-primary-alt.usa-button-active, .bbg__comments-list .usa-button-primary-alt.usa-button-active.reply,
 .usa-button-primary.usa-button-primary-alt:active,
 .usa-button-primary.usa-button-primary-alt.usa-button-active,
 .usa-button:visited.usa-button-primary-alt:active,
+.bbg__comments-list .reply:visited.usa-button-primary-alt:active,
 .usa-button:visited.usa-button-primary-alt.usa-button-active,
+.bbg__comments-list .reply:visited.usa-button-primary-alt.usa-button-active,
 .usa-button-primary:visited.usa-button-primary-alt:active,
 .usa-button-primary:visited.usa-button-primary-alt.usa-button-active,
 button.usa-button-primary-alt:active,
@@ -1079,9 +1091,10 @@ button.usa-button-primary-alt.usa-button-active,
   background-color: #046b99;
   color: #ffffff;
 }
-.usa-button.usa-button-secondary,
+.usa-button.usa-button-secondary, .bbg__comments-list .usa-button-secondary.reply,
 .usa-button-primary.usa-button-secondary,
 .usa-button:visited.usa-button-secondary,
+.bbg__comments-list .reply:visited.usa-button-secondary,
 .usa-button-primary:visited.usa-button-secondary,
 button.usa-button-secondary,
 [type="button"].usa-button-secondary,
@@ -1090,11 +1103,13 @@ button.usa-button-secondary,
 [type="image"].usa-button-secondary {
   background-color: #e31c3d;
 }
-.usa-button.usa-button-secondary:hover, .usa-button.usa-button-secondary.usa-button-hover,
+.usa-button.usa-button-secondary:hover, .bbg__comments-list .usa-button-secondary.reply:hover, .usa-button.usa-button-secondary.usa-button-hover, .bbg__comments-list .usa-button-secondary.usa-button-hover.reply,
 .usa-button-primary.usa-button-secondary:hover,
 .usa-button-primary.usa-button-secondary.usa-button-hover,
 .usa-button:visited.usa-button-secondary:hover,
+.bbg__comments-list .reply:visited.usa-button-secondary:hover,
 .usa-button:visited.usa-button-secondary.usa-button-hover,
+.bbg__comments-list .reply:visited.usa-button-secondary.usa-button-hover,
 .usa-button-primary:visited.usa-button-secondary:hover,
 .usa-button-primary:visited.usa-button-secondary.usa-button-hover,
 button.usa-button-secondary:hover,
@@ -1109,11 +1124,13 @@ button.usa-button-secondary.usa-button-hover,
 [type="image"].usa-button-secondary.usa-button-hover {
   background-color: #cd2026;
 }
-.usa-button.usa-button-secondary:active, .usa-button.usa-button-secondary.usa-button-active,
+.usa-button.usa-button-secondary:active, .bbg__comments-list .usa-button-secondary.reply:active, .usa-button.usa-button-secondary.usa-button-active, .bbg__comments-list .usa-button-secondary.usa-button-active.reply,
 .usa-button-primary.usa-button-secondary:active,
 .usa-button-primary.usa-button-secondary.usa-button-active,
 .usa-button:visited.usa-button-secondary:active,
+.bbg__comments-list .reply:visited.usa-button-secondary:active,
 .usa-button:visited.usa-button-secondary.usa-button-active,
+.bbg__comments-list .reply:visited.usa-button-secondary.usa-button-active,
 .usa-button-primary:visited.usa-button-secondary:active,
 .usa-button-primary:visited.usa-button-secondary.usa-button-active,
 button.usa-button-secondary:active,
@@ -1128,10 +1145,12 @@ button.usa-button-secondary.usa-button-active,
 [type="image"].usa-button-secondary.usa-button-active {
   background-color: #981b1e;
 }
-.usa-button.usa-button-gray, .usa-button.bbg__kits__button,
+.usa-button.usa-button-gray, .bbg__comments-list .usa-button-gray.reply, .bbg__comments-list .reply.bbg__kits__button, .usa-button.bbg__kits__button,
 .usa-button-primary.usa-button-gray,
 .usa-button-primary.bbg__kits__button,
 .usa-button:visited.usa-button-gray,
+.bbg__comments-list .reply:visited.usa-button-gray,
+.bbg__comments-list .reply.bbg__kits__button:visited,
 .usa-button.bbg__kits__button:visited,
 .usa-button-primary:visited.usa-button-gray,
 .usa-button-primary.bbg__kits__button:visited,
@@ -1147,14 +1166,18 @@ button.bbg__kits__button,
 [type="image"].bbg__kits__button {
   background-color: #5b616b;
 }
-.usa-button.usa-button-gray:hover, .usa-button.bbg__kits__button:hover, .usa-button.usa-button-gray.usa-button-hover, .usa-button.usa-button-hover.bbg__kits__button,
+.usa-button.usa-button-gray:hover, .bbg__comments-list .usa-button-gray.reply:hover, .bbg__comments-list .reply.bbg__kits__button:hover, .usa-button.bbg__kits__button:hover, .usa-button.usa-button-gray.usa-button-hover, .bbg__comments-list .usa-button-gray.usa-button-hover.reply, .bbg__comments-list .usa-button-hover.reply.bbg__kits__button, .usa-button.usa-button-hover.bbg__kits__button,
 .usa-button-primary.usa-button-gray:hover,
 .usa-button-primary.bbg__kits__button:hover,
 .usa-button-primary.usa-button-gray.usa-button-hover,
 .usa-button-primary.usa-button-hover.bbg__kits__button,
 .usa-button:visited.usa-button-gray:hover,
+.bbg__comments-list .reply:visited.usa-button-gray:hover,
+.bbg__comments-list .reply.bbg__kits__button:visited:hover,
 .usa-button.bbg__kits__button:visited:hover,
 .usa-button:visited.usa-button-gray.usa-button-hover,
+.bbg__comments-list .reply:visited.usa-button-gray.usa-button-hover,
+.bbg__comments-list .reply.bbg__kits__button:visited.usa-button-hover,
 .usa-button.bbg__kits__button:visited.usa-button-hover,
 .usa-button-primary:visited.usa-button-gray:hover,
 .usa-button-primary.bbg__kits__button:visited:hover,
@@ -1182,14 +1205,18 @@ button.usa-button-hover.bbg__kits__button,
 [type="image"].usa-button-hover.bbg__kits__button {
   background-color: #323a45;
 }
-.usa-button.usa-button-gray:active, .usa-button.bbg__kits__button:active, .usa-button.usa-button-gray.usa-button-active, .usa-button.usa-button-active.bbg__kits__button,
+.usa-button.usa-button-gray:active, .bbg__comments-list .usa-button-gray.reply:active, .bbg__comments-list .reply.bbg__kits__button:active, .usa-button.bbg__kits__button:active, .usa-button.usa-button-gray.usa-button-active, .bbg__comments-list .usa-button-gray.usa-button-active.reply, .bbg__comments-list .usa-button-active.reply.bbg__kits__button, .usa-button.usa-button-active.bbg__kits__button,
 .usa-button-primary.usa-button-gray:active,
 .usa-button-primary.bbg__kits__button:active,
 .usa-button-primary.usa-button-gray.usa-button-active,
 .usa-button-primary.usa-button-active.bbg__kits__button,
 .usa-button:visited.usa-button-gray:active,
+.bbg__comments-list .reply:visited.usa-button-gray:active,
+.bbg__comments-list .reply.bbg__kits__button:visited:active,
 .usa-button.bbg__kits__button:visited:active,
 .usa-button:visited.usa-button-gray.usa-button-active,
+.bbg__comments-list .reply:visited.usa-button-gray.usa-button-active,
+.bbg__comments-list .reply.bbg__kits__button:visited.usa-button-active,
 .usa-button.bbg__kits__button:visited.usa-button-active,
 .usa-button-primary:visited.usa-button-gray:active,
 .usa-button-primary.bbg__kits__button:visited:active,
@@ -1219,86 +1246,136 @@ button.usa-button-active.bbg__kits__button,
 }
 .usa-button.usa-button-outline, .bbg__comments-list .reply,
 .usa-button-primary.usa-button-outline,
+.bbg__comments-list .usa-button-primary.reply,
 .usa-button:visited.usa-button-outline,
 .bbg__comments-list .reply:visited,
 .usa-button-primary:visited.usa-button-outline,
+.bbg__comments-list .usa-button-primary.reply:visited,
 button.usa-button-outline,
+.bbg__comments-list button.reply,
 [type="button"].usa-button-outline,
+.bbg__comments-list [type="button"].reply,
 [type="submit"].usa-button-outline,
+.bbg__comments-list [type="submit"].reply,
 [type="reset"].usa-button-outline,
-[type="image"].usa-button-outline {
+.bbg__comments-list [type="reset"].reply,
+[type="image"].usa-button-outline,
+.bbg__comments-list [type="image"].reply {
   background-color: #ffffff;
   box-shadow: inset 0 0 0 2px #0071bc;
   color: #0071bc;
 }
 .usa-button.usa-button-outline:hover, .bbg__comments-list .reply:hover, .usa-button.usa-button-outline.usa-button-hover, .bbg__comments-list .usa-button-hover.reply,
 .usa-button-primary.usa-button-outline:hover,
+.bbg__comments-list .usa-button-primary.reply:hover,
 .usa-button-primary.usa-button-outline.usa-button-hover,
+.bbg__comments-list .usa-button-primary.usa-button-hover.reply,
 .usa-button:visited.usa-button-outline:hover,
 .bbg__comments-list .reply:visited:hover,
 .usa-button:visited.usa-button-outline.usa-button-hover,
 .bbg__comments-list .reply:visited.usa-button-hover,
 .usa-button-primary:visited.usa-button-outline:hover,
+.bbg__comments-list .usa-button-primary.reply:visited:hover,
 .usa-button-primary:visited.usa-button-outline.usa-button-hover,
+.bbg__comments-list .usa-button-primary.reply:visited.usa-button-hover,
 button.usa-button-outline:hover,
+.bbg__comments-list button.reply:hover,
 button.usa-button-outline.usa-button-hover,
+.bbg__comments-list button.usa-button-hover.reply,
 [type="button"].usa-button-outline:hover,
+.bbg__comments-list [type="button"].reply:hover,
 [type="button"].usa-button-outline.usa-button-hover,
+.bbg__comments-list [type="button"].usa-button-hover.reply,
 [type="submit"].usa-button-outline:hover,
+.bbg__comments-list [type="submit"].reply:hover,
 [type="submit"].usa-button-outline.usa-button-hover,
+.bbg__comments-list [type="submit"].usa-button-hover.reply,
 [type="reset"].usa-button-outline:hover,
+.bbg__comments-list [type="reset"].reply:hover,
 [type="reset"].usa-button-outline.usa-button-hover,
+.bbg__comments-list [type="reset"].usa-button-hover.reply,
 [type="image"].usa-button-outline:hover,
-[type="image"].usa-button-outline.usa-button-hover {
+.bbg__comments-list [type="image"].reply:hover,
+[type="image"].usa-button-outline.usa-button-hover,
+.bbg__comments-list [type="image"].usa-button-hover.reply {
   box-shadow: inset 0 0 0 2px #205493;
   color: #205493;
 }
 .usa-button.usa-button-outline:active, .bbg__comments-list .reply:active, .usa-button.usa-button-outline.usa-button-active, .bbg__comments-list .usa-button-active.reply,
 .usa-button-primary.usa-button-outline:active,
+.bbg__comments-list .usa-button-primary.reply:active,
 .usa-button-primary.usa-button-outline.usa-button-active,
+.bbg__comments-list .usa-button-primary.usa-button-active.reply,
 .usa-button:visited.usa-button-outline:active,
 .bbg__comments-list .reply:visited:active,
 .usa-button:visited.usa-button-outline.usa-button-active,
 .bbg__comments-list .reply:visited.usa-button-active,
 .usa-button-primary:visited.usa-button-outline:active,
+.bbg__comments-list .usa-button-primary.reply:visited:active,
 .usa-button-primary:visited.usa-button-outline.usa-button-active,
+.bbg__comments-list .usa-button-primary.reply:visited.usa-button-active,
 button.usa-button-outline:active,
+.bbg__comments-list button.reply:active,
 button.usa-button-outline.usa-button-active,
+.bbg__comments-list button.usa-button-active.reply,
 [type="button"].usa-button-outline:active,
+.bbg__comments-list [type="button"].reply:active,
 [type="button"].usa-button-outline.usa-button-active,
+.bbg__comments-list [type="button"].usa-button-active.reply,
 [type="submit"].usa-button-outline:active,
+.bbg__comments-list [type="submit"].reply:active,
 [type="submit"].usa-button-outline.usa-button-active,
+.bbg__comments-list [type="submit"].usa-button-active.reply,
 [type="reset"].usa-button-outline:active,
+.bbg__comments-list [type="reset"].reply:active,
 [type="reset"].usa-button-outline.usa-button-active,
+.bbg__comments-list [type="reset"].usa-button-active.reply,
 [type="image"].usa-button-outline:active,
-[type="image"].usa-button-outline.usa-button-active {
+.bbg__comments-list [type="image"].reply:active,
+[type="image"].usa-button-outline.usa-button-active,
+.bbg__comments-list [type="image"].usa-button-active.reply {
   box-shadow: inset 0 0 0 2px #112e51;
   color: #112e51;
 }
 .usa-button.usa-button-outline:focus, .bbg__comments-list .reply:focus, .usa-button.usa-button-outline.usa-button-focus, .bbg__comments-list .usa-button-focus.reply,
 .usa-button-primary.usa-button-outline:focus,
+.bbg__comments-list .usa-button-primary.reply:focus,
 .usa-button-primary.usa-button-outline.usa-button-focus,
+.bbg__comments-list .usa-button-primary.usa-button-focus.reply,
 .usa-button:visited.usa-button-outline:focus,
 .bbg__comments-list .reply:visited:focus,
 .usa-button:visited.usa-button-outline.usa-button-focus,
 .bbg__comments-list .reply:visited.usa-button-focus,
 .usa-button-primary:visited.usa-button-outline:focus,
+.bbg__comments-list .usa-button-primary.reply:visited:focus,
 .usa-button-primary:visited.usa-button-outline.usa-button-focus,
+.bbg__comments-list .usa-button-primary.reply:visited.usa-button-focus,
 button.usa-button-outline:focus,
+.bbg__comments-list button.reply:focus,
 button.usa-button-outline.usa-button-focus,
+.bbg__comments-list button.usa-button-focus.reply,
 [type="button"].usa-button-outline:focus,
+.bbg__comments-list [type="button"].reply:focus,
 [type="button"].usa-button-outline.usa-button-focus,
+.bbg__comments-list [type="button"].usa-button-focus.reply,
 [type="submit"].usa-button-outline:focus,
+.bbg__comments-list [type="submit"].reply:focus,
 [type="submit"].usa-button-outline.usa-button-focus,
+.bbg__comments-list [type="submit"].usa-button-focus.reply,
 [type="reset"].usa-button-outline:focus,
+.bbg__comments-list [type="reset"].reply:focus,
 [type="reset"].usa-button-outline.usa-button-focus,
+.bbg__comments-list [type="reset"].usa-button-focus.reply,
 [type="image"].usa-button-outline:focus,
-[type="image"].usa-button-outline.usa-button-focus {
+.bbg__comments-list [type="image"].reply:focus,
+[type="image"].usa-button-outline.usa-button-focus,
+.bbg__comments-list [type="image"].usa-button-focus.reply {
   box-shadow: inset 0 0 0 2px #112e51, none;
 }
-.usa-button.usa-button-outline-inverse,
+.usa-button.usa-button-outline-inverse, .bbg__comments-list .usa-button-outline-inverse.reply,
 .usa-button-primary.usa-button-outline-inverse,
 .usa-button:visited.usa-button-outline-inverse,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse,
 .usa-button-primary:visited.usa-button-outline-inverse,
 button.usa-button-outline-inverse,
 [type="button"].usa-button-outline-inverse,
@@ -1309,11 +1386,13 @@ button.usa-button-outline-inverse,
   box-shadow: inset 0 0 0 2px #ffffff;
   color: #ffffff;
 }
-.usa-button.usa-button-outline-inverse:hover, .usa-button.usa-button-outline-inverse.usa-button-hover,
+.usa-button.usa-button-outline-inverse:hover, .bbg__comments-list .usa-button-outline-inverse.reply:hover, .usa-button.usa-button-outline-inverse.usa-button-hover, .bbg__comments-list .usa-button-outline-inverse.usa-button-hover.reply,
 .usa-button-primary.usa-button-outline-inverse:hover,
 .usa-button-primary.usa-button-outline-inverse.usa-button-hover,
 .usa-button:visited.usa-button-outline-inverse:hover,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse:hover,
 .usa-button:visited.usa-button-outline-inverse.usa-button-hover,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse.usa-button-hover,
 .usa-button-primary:visited.usa-button-outline-inverse:hover,
 .usa-button-primary:visited.usa-button-outline-inverse.usa-button-hover,
 button.usa-button-outline-inverse:hover,
@@ -1329,11 +1408,13 @@ button.usa-button-outline-inverse.usa-button-hover,
   box-shadow: inset 0 0 0 2px #d6d7d9;
   color: #d6d7d9;
 }
-.usa-button.usa-button-outline-inverse:active, .usa-button.usa-button-outline-inverse.usa-button-active,
+.usa-button.usa-button-outline-inverse:active, .bbg__comments-list .usa-button-outline-inverse.reply:active, .usa-button.usa-button-outline-inverse.usa-button-active, .bbg__comments-list .usa-button-outline-inverse.usa-button-active.reply,
 .usa-button-primary.usa-button-outline-inverse:active,
 .usa-button-primary.usa-button-outline-inverse.usa-button-active,
 .usa-button:visited.usa-button-outline-inverse:active,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse:active,
 .usa-button:visited.usa-button-outline-inverse.usa-button-active,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse.usa-button-active,
 .usa-button-primary:visited.usa-button-outline-inverse:active,
 .usa-button-primary:visited.usa-button-outline-inverse.usa-button-active,
 button.usa-button-outline-inverse:active,
@@ -1349,11 +1430,13 @@ button.usa-button-outline-inverse.usa-button-active,
   box-shadow: inset 0 0 0 2px #aeb0b5;
   color: #d6d7d9;
 }
-.usa-button.usa-button-outline-inverse:focus, .usa-button.usa-button-outline-inverse.usa-button-focus,
+.usa-button.usa-button-outline-inverse:focus, .bbg__comments-list .usa-button-outline-inverse.reply:focus, .usa-button.usa-button-outline-inverse.usa-button-focus, .bbg__comments-list .usa-button-outline-inverse.usa-button-focus.reply,
 .usa-button-primary.usa-button-outline-inverse:focus,
 .usa-button-primary.usa-button-outline-inverse.usa-button-focus,
 .usa-button:visited.usa-button-outline-inverse:focus,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse:focus,
 .usa-button:visited.usa-button-outline-inverse.usa-button-focus,
+.bbg__comments-list .reply:visited.usa-button-outline-inverse.usa-button-focus,
 .usa-button-primary:visited.usa-button-outline-inverse:focus,
 .usa-button-primary:visited.usa-button-outline-inverse.usa-button-focus,
 button.usa-button-outline-inverse:focus,
@@ -1368,9 +1451,10 @@ button.usa-button-outline-inverse.usa-button-focus,
 [type="image"].usa-button-outline-inverse.usa-button-focus {
   box-shadow: inset 0 0 0 2px #aeb0b5, none;
 }
-.usa-button.usa-button-big,
+.usa-button.usa-button-big, .bbg__comments-list .usa-button-big.reply,
 .usa-button-primary.usa-button-big,
 .usa-button:visited.usa-button-big,
+.bbg__comments-list .reply:visited.usa-button-big,
 .usa-button-primary:visited.usa-button-big,
 button.usa-button-big,
 [type="button"].usa-button-big,
@@ -1585,13 +1669,12 @@ legend {
 /**
  * Custom checkboxes
  */
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"], input[type="radio"] {
   position: absolute;
   left: -999em;
 }
-.lt-ie9 input[type="checkbox"], .lt-ie9
-input[type="radio"] {
+.lt-ie9 input[type="checkbox"],
+.lt-ie9 input[type="radio"] {
   border: 0;
   float: left;
   margin: 0.4em 0.4em 0 0;
@@ -2483,9 +2566,8 @@ p a,
 }
 @media screen and (min-width: 600px) {
   .usa-footer-medium .usa-footer-nav ul {
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
   }
 }
 
@@ -2501,9 +2583,8 @@ p a,
     padding-top: 1rem;
   }
   .usa-footer-slim .usa-footer-primary-section .usa-grid-full, .usa-footer-slim .usa-footer-primary-section .bbg__svg__content {
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
   }
 }
 @media screen and (min-width: 600px) {
@@ -2526,8 +2607,8 @@ p a,
   .usa-footer-slim .usa-footer-contact_info {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
   }
   .usa-footer-slim .usa-footer-contact_info:last-child {
     margin-right: 0;
@@ -4197,20 +4278,16 @@ body:not(.home) .bbg__main-navigation {
   visibility: hidden;
 }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
-.post-navigation {
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
   margin: 0 0 1.5em;
 }
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
+.comment-navigation .nav-previous, .posts-navigation .nav-previous, .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-.comment-navigation .nav-previous a,
-.posts-navigation .nav-previous a,
-.post-navigation .nav-previous a {
+.comment-navigation .nav-previous a, .posts-navigation .nav-previous a, .post-navigation .nav-previous a {
   background-image: url("img/arrow-previous.png");
   background-image: url("img/arrow-previous.svg");
   background-position: left top;
@@ -4218,22 +4295,16 @@ body:not(.home) .bbg__main-navigation {
   background-size: contain;
   padding-left: 25px;
 }
-.comment-navigation .nav-previous a:hover,
-.posts-navigation .nav-previous a:hover,
-.post-navigation .nav-previous a:hover {
+.comment-navigation .nav-previous a:hover, .posts-navigation .nav-previous a:hover, .post-navigation .nav-previous a:hover {
   background-image: url("img/arrow-previous-hover.png");
   background-image: url("img/arrow-previous-hover.svg");
 }
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
+.comment-navigation .nav-next, .posts-navigation .nav-next, .post-navigation .nav-next {
   float: right;
   text-align: right;
   width: 50%;
 }
-.comment-navigation .nav-next a,
-.posts-navigation .nav-next a,
-.post-navigation .nav-next a {
+.comment-navigation .nav-next a, .posts-navigation .nav-next a, .post-navigation .nav-next a {
   background-image: url("img/arrow-next.png");
   background-image: url("img/arrow-next.svg");
   background-position: right top;
@@ -4241,9 +4312,7 @@ body:not(.home) .bbg__main-navigation {
   background-size: contain;
   padding-right: 25px;
 }
-.comment-navigation .nav-next a:hover,
-.posts-navigation .nav-next a:hover,
-.post-navigation .nav-next a:hover {
+.comment-navigation .nav-next a:hover, .posts-navigation .nav-next a:hover, .post-navigation .nav-next a:hover {
   background-image: url("img/arrow-next-hover.png");
   background-image: url("img/arrow-next-hover.svg");
 }
@@ -5086,8 +5155,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--1-2-3 {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
     margin-right: 0;
   }
   .bbg-grid--1-2-3:last-child {
@@ -5103,8 +5172,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--1-2-3 {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
+    margin-right: 2.3576515979%;
+    width: 31.7615656014%;
     margin-right: 2%;
     clear: none;
   }
@@ -5130,8 +5199,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--1-1-1-2 {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
     clear: none;
     margin-right: 0;
   }
@@ -5148,8 +5217,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--1-2-2 {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
     margin-right: 0;
   }
   .bbg-grid--1-2-2:last-child {
@@ -5165,8 +5234,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--1-3-3 {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
+    margin-right: 2.3576515979%;
+    width: 31.7615656014%;
     margin-right: 2%;
     clear: none;
   }
@@ -5186,8 +5255,8 @@ e.g. on the intern testimonial page */
 .bbg-grid--2-3-3, .bbg__employee-profile__excerpt {
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%;
+  margin-right: 2.3576515979%;
+  width: 48.821174201%;
   margin-right: 2.35765%;
 }
 .bbg-grid--2-3-3:last-child, .bbg__employee-profile__excerpt:last-child {
@@ -5203,8 +5272,8 @@ e.g. on the intern testimonial page */
   .bbg-grid--2-3-3, .bbg__employee-profile__excerpt {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
+    margin-right: 2.3576515979%;
+    width: 31.7615656014%;
     clear: none;
     margin-right: 2.35765%;
   }
@@ -5634,7 +5703,7 @@ article {
 }
 @media screen and (min-width: 481px) {
   .bbg-header__site-title {
-    font-size: 2.66667rem;
+    font-size: 2.6666666667rem;
     padding-top: 1rem;
   }
 }
@@ -6704,7 +6773,6 @@ div.banner_readmore h6 a:visited {
 }
 @media screen and (min-width: 600px) {
   .bbg__ribbon--thin .bbg__announcement__flexbox {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     min-height: 200px;
@@ -6768,7 +6836,6 @@ div.banner_readmore h6 a:visited {
 }
 @media screen and (min-width: 600px) {
   .bbg__banner--thin .bbg__announcement__flexbox {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     min-height: 200px;
@@ -7796,7 +7863,6 @@ section.usa-section.bbg-banner__section {
 }
 
 .bbg__former-member {
-  -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
 
@@ -8261,12 +8327,10 @@ div.appropriations-small > p.header {
   margin-bottom: 3rem;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__mugshot {
-  -webkit-filter: grayscale(1);
   filter: grayscale(1);
   width: 100%;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__mugshot:hover {
-  -webkit-filter: none;
   filter: none;
 }
 .bbg__profile-grid__profile .bbg__profile-grid__profile__dates {
@@ -8282,8 +8346,8 @@ div.appropriations-small > p.header {
   .bbg__profile-grid__profile.usa-width-one-sixth, .bbg__profile-grid__profile {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
   }
   .bbg__profile-grid__profile.usa-width-one-sixth:last-child, .bbg__profile-grid__profile:last-child {
     margin-right: 0;
@@ -8362,7 +8426,6 @@ a.bbg__kits__intro__more--link:hover {
     min-height: 20rem;
   }
   .bbg__kits__section .bbg__article-content.large {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
   }
@@ -8730,7 +8793,8 @@ a.bbg__kits__intro__more--link:hover {
 
   nav,
   button,
-  .usa-button {
+  .usa-button,
+  .bbg__comments-list .reply {
     display: none;
   }
 
@@ -8768,10 +8832,8 @@ a.bbg__kits__intro__more--link:hover {
   .bbg__article .bbg__article-header .bbg__label {
     float: left;
     text-decoration: none;
-    -webkit-transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -50, 400, 0, 1);
-            transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -50, 400, 0, 1);
-    -webkit-transform-origin: left top 0px;
-            transform-origin: left top 0px;
+    transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, -50, 400, 0, 1);
+    transform-origin: left top 0px;
   }
   .bbg__article .bbg__article-header .bbg__label a[href^=http]:after {
     content: "";
