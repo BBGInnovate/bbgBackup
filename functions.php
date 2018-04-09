@@ -704,17 +704,17 @@ function search_excerpt_footer() {
 endif;
 
 /* ODDI CUSTOM: Clear FB Cache when someone updates or publishes a post */
-// function clearFBCache( $post_ID, $post) {
-// 	$urlToClear = get_permalink($post_ID);
-// 	$ch = curl_init();
-// 	curl_setopt ($ch, CURLOPT_URL,"https://graph.facebook.com");
-// 	curl_setopt ($ch, CURLOPT_POST, 1);
-// 	curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array('scrape' => 'true','id' => $urlToClear)));
-// 	curl_exec ($ch);
-// 	curl_close ($ch);
+function clearFBCache( $post_ID, $post) {
+	$urlToClear = get_permalink($post_ID);
+	$ch = curl_init();
+	curl_setopt ($ch, CURLOPT_URL,"https://graph.facebook.com");
+	curl_setopt ($ch, CURLOPT_POST, 1);
+	curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array('scrape' => 'true','id' => $urlToClear)));
+	curl_exec ($ch);
+	curl_close ($ch);
 
-// }
-// add_action( 'publish_post', 'clearFBCache', 10, 2 );
+}
+add_action( 'publish_post', 'clearFBCache', 10, 2 );
 
 function sortByTitle($a, $b) {
     return strcmp($a["title"], $b["title"]);
