@@ -679,14 +679,12 @@ if ($media_dev_map) {
 ?>
 
 <?php
-if ($addFeaturedMap != "") {
+if ($addFeaturedMap && $media_dev_map == "") {
 ?>
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
 	<script type="text/javascript">
-		// var $phpx = "<?php //echo $addFeaturedMap; ?>";
-		// console.log($phpx);
-		console.log("featured map request");
+		console.log("featured map request also");
 		L.mapbox.accessToken = '<?php echo MAPBOX_API_KEY; ?>';
 		var map = L.mapbox.map('map-featured', 'mapbox.emerald')
 	    var markers = L.mapbox.featureLayer();
