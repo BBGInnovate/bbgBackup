@@ -679,7 +679,7 @@ if ($media_dev_map) {
 ?>
 
 <?php
-if ( $addFeaturedMap){
+if ($addFeaturedMap != "") {
 ?>
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
