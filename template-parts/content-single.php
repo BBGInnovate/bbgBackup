@@ -7,10 +7,6 @@
  * @package bbginnovate
  */
 
-
-
-
-
 //Default adds a space above header if there's no image set
 $featuredImageClass = " bbg__article--no-featured-image";
 
@@ -282,6 +278,37 @@ $addFeaturedGallery = get_post_meta( get_the_ID(), 'featured_gallery_add', true 
 $addFeaturedMap = get_post_meta( get_the_ID(), 'featured_map_add', true );
 $featuredMapCaption = get_post_meta( get_the_ID(), 'featured_map_caption', true );
 
+// kr edit media dev map
+$media_dev_map = get_field('media_dev_coordinates');
+if ($media_dev_map) {
+	$features = [];
+	$location_title = $media_dev_map['address'];
+	$media_dev_lat = $media_dev_map['lat'];
+	$media_dev_lng = $media_dev_map['lng'];
+	$zoom = 14;
+
+	$media_dev_features[] = array(
+		'type' => 'Feature',
+		'geometry' => array(
+			'type' => 'Point',
+			'coordinates' => array($media_dev_map['lng'], $media_dev_map['lat'])
+		),
+		'properties' => array(
+			'marker-size' => 'large',
+			'marker-symbol' => ''
+		)
+	);
+	$medGeojsonObj = array(array(
+		'type' => 'FeatureCollection',
+		'features' => $media_dev_features
+	));
+	$medGeojsonStr=json_encode(new ArrayValue($medGeojsonObj), JSON_PRETTY_PRINT, 10);
+
+	echo "<script type='text/javascript'>\n";
+	echo "var med_geojson = $medGeojsonStr;";
+	echo "</script>";
+}
+
 if ($addFeaturedMap) {
 	$featuredMapItems = get_field( 'featured_map_items', get_the_ID(), true);
 	$features = [];
@@ -303,7 +330,6 @@ if ($addFeaturedMap) {
 		} else {
 			$popupBody .= "<h5><span style='font-weight: bold;'>$featuredMapItemTitle</span></h5><div class='u--show-medium-large'><img src='$featuredMapItemImageUrl'></div><BR>$featuredMapItemDescription";
 		}
-
 
 		$features[] = array(
 			'type' => 'Feature',
@@ -414,7 +440,8 @@ $hideFeaturedImage = FALSE;
 		if ($addFeaturedGallery) {
 			$hideFeaturedImage = true;
 		}
-		if ($addFeaturedMap) {
+
+		if ($addFeaturedMap || $media_dev_map) {
 			echo "<div class='usa-grid-full'><div id='map-featured' class='bbg__map--banner'></div>";
 			if ($featuredMapCaption != "") {
 				echo "<p class='bbg__article-header__caption'>$featuredMapCaption</p>";
@@ -609,7 +636,47 @@ $hideFeaturedImage = FALSE;
 </article><!-- #post-## -->
 
 
+<?php
+if ($media_dev_map) {
+?>
 
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+<script type="text/javascript">
+	L.mapbox.accessToken = 'pk.eyJ1IjoiYmJnd2ViZGV2IiwiYSI6ImNpcDVvY3VqYjAwbmx1d2tyOXlxdXhxcHkifQ.cD-q14aQKbS6gjG2WO-4nw';
+	var map = L.mapbox.map('map-featured', 'mapbox.streets')
+	<?php echo '.setView(['. $media_dev_lat . ', ' . $media_dev_lng . '], ' . $zoom . ');'; ?>
+	// MEDIA DEV JS
+	map.scrollWheelZoom.disable();
+	var markers = L.mapbox.featureLayer();
+	var coords = med_geojson[0].features[0].geometry.coordinates;
+	var marker = L.marker(new L.LatLng(coords[1], coords[0]));
+	var divNode = document.createElement('DIV');
+	marker.bindPopup(divNode);
+	marker.addTo(markers);
+	markers.addTo(map);
+
+	L.mapbox.featureLayer({
+		type: 'Feature',
+		geometry: {
+			type: 'Point',
+			coordinates: [
+				<?php echo $media_dev_lng . ', ' . $media_dev_lat; ?>
+			]
+		},
+		properties: {
+			title: '<?php echo $mapHeadline; ?>',
+			description: '<?php echo $mapDescription; ?>',
+			'marker-size': 'large',
+			'marker-color': '#981b1e',
+			'marker-symbol': ''
+		}
+	}).addTo(map);
+</script>
+
+<?php
+}
+?>
 
 <?php
 if ( $addFeaturedMap){

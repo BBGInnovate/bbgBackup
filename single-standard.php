@@ -90,8 +90,7 @@ get_header(); ?>
 		console.log("Doc height: " + documentHeight);
 		console.log("y: " + y);
 		console.log("deltaBottom: " + deltaBottom);
-		console.log(documentHeight + " - " + y + " ?<? " + deltaBottom);
-		console.log((documentHeight -  y) + " ?<? " + deltaBottom);
+
 		if (documentHeight - y < deltaBottom && showOffer) {
 			jQuery('.promoOffer').fadeIn();
 		} else {

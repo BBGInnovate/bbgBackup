@@ -115,7 +115,7 @@
 }
 
 .bbg__comments-list .reply {
-	@extend .usa-button.usa-button-outline;
+	@extend .usa-button, .usa-button-outline;
 
 	float: right;
 	font-size: $small-font-size;
