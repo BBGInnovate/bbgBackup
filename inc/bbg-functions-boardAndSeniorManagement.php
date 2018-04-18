@@ -98,7 +98,7 @@
 				}
 			}
 		}
-		$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $underSecretaryStr . '</div>' . $formerGovernorsLink;
+		$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . $underSecretaryStr . '</div>' . $formerGovernorsLink;
 
 		return $boardStr;
 	}
