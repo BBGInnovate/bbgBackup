@@ -29,6 +29,7 @@
 		$boardStr = "";
 		$chairpersonStr = "";
 		$secretaryStr = "";
+		$underSecretaryStr = "";
 		$actingStr = "";
 
 		while ( $custom_query -> have_posts() )  {
@@ -41,7 +42,9 @@
 			if ( ( get_the_title() != "Special Committees" ) && ( $showActive == $active ) ) {
 				$isChairperson = get_post_meta( $id, 'chairperson', true );
 				$isSecretary = get_post_meta( $id, 'secretary_of_state', true );
+				$isUnderSecretary = get_post_meta( $id, 'under_secretary_of_state', true );
 				$isActing = get_post_meta( $id, 'acting', true );
+
 				//$occupation=get_post_meta( $id, 'occupation', true );
 				$email = get_post_meta( $id, 'email', true );
 				$phone = get_post_meta( $id, 'phone', true );
@@ -88,12 +91,14 @@
 					$chairpersonStr = $b;
 				} else if ( $isSecretary ) {
 					$secretaryStr = $b;
+				} else if ($isUnderSecretary) {
+					$underSecretaryStr = $b;
 				} else {
 					$boardStr .= $b;
 				}
 			}
 		}
-		$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $secretaryStr . '</div>' . $formerGovernorsLink;
+		$boardStr = '<div class="usa-grid-full">' . $chairpersonStr . $boardStr . $underSecretaryStr . '</div>' . $formerGovernorsLink;
 
 		return $boardStr;
 	}
