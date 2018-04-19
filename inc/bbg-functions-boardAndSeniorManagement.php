@@ -56,11 +56,16 @@
 					$profilePhoto = wp_get_attachment_image_src( $profilePhotoID , 'mugshot' );
 					$profilePhoto = $profilePhoto[0];
 				}
-
 				$profileName = get_the_title();
-				$occupation = '<span class="bbg__profile-excerpt__occupation">';
-				if ( $isActing ) {
+				if (!$isUnderSecretary) {
+					$occupation = '<span class="bbg__profile-excerpt__occupation">';
+				} else {
+					$occupation = '<span class="bbg__profile-excerpt__occupation" style="display: inline; padding-left: 0.75em; font-size: 1.6rem; font-weight: 400;">';
+				}
+				if ( $isActing && !$isUnderSecretary ) {
 					$occupation .= 'Acting ';
+				} else if ( $isActing && $isUnderSecretary ) {
+					$occupation .= 'Acting ' . get_field('occupation', $id);
 				}
 
 				if ( $isChairperson ) {
@@ -70,21 +75,41 @@
 				}
 				$occupation .= '</span>';
 
-				$b =  '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-					$b .=  '<h3 class="bbg__profile-excerpt__name">';
-						$b .=  '<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
-					$b .=  '</h3>';
+				$b  = '<div class="bbg__profile-excerpt bbg-grid--1-2-2"';
+				if ($isUnderSecretary) {
+					$b .= ' style="clear: both; border-top: 1px solid #f1f1f1; margin-top: -1.5em"';
+				}
+				$b .= '>';
+				if (!$isUnderSecretary) {
+					$b .= 	'<h3 class="bbg__profile-excerpt__name">';
+					$b .= 		'<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
+					$b .= 	'</h3>';
+				}
 
-					//Only show a profile photo if it's set.
-					if ( $profilePhoto != "" ){
-						$b .= '<a href="' . get_the_permalink() . '">';
-							//$b.=  '<div class="bbg__profile-excerpt__photo-container">';
-								$b .= '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo' . $formerCSS . '" alt="Photo of BBG Governor '. get_the_title() .'"/>';
-							//$b.=  '</div>';
-						$b .= '</a>';
+				//Only show a profile photo if it's set.
+				if ( ($profilePhoto != "")){
+					$b .= '<a href="' . get_the_permalink() . '">';
+					$b .= 	'<img src="';
+					$b .= 		$profilePhoto;
+					$b .= 		'" class="bbg__profile-excerpt__photo';
+					$b .= 		$formerCSS;
+					$b .= 		'" alt="Photo of BBG Governor ';
+					$b .= 		get_the_title();
+					$b .= 		'"';
+					if ($isUnderSecretary) {
+						$b .= ' style="width: 15%"';
 					}
-
-					$b .= '<p>' . $occupation . get_the_excerpt() . '</p>';
+					$b .= 	' />';
+					$b .= '</a>';
+				}
+				if (!$isUnderSecretary) {
+					$b .= 	'<p>' . $occupation . get_the_excerpt() . '</p>';
+				} else {
+					$b .= 	'<h3 class="bbg__profile-excerpt__name" style="display:inline">';
+					$b .= 		'<a href="' . get_the_permalink() . '">' . $profileName . '</a>' . $occupation;
+					$b .= 	'</h3>';
+					$b .= 	'<p>' . get_the_excerpt() . '</p>';
+				}
 				$b .= '</div><!-- .bbg__profile-excerpt -->';
 
 				if ( $isChairperson ) {
@@ -144,32 +169,30 @@
 
 				$profileName = get_the_title($id);
 
-				$b = '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
-					$b .=  '<h3 class="bbg__profile-excerpt__name">';
-						$b .= '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
-					$b .= '</h3>';
+				$b  = '<div class="bbg__profile-excerpt bbg-grid--1-2-2">';
+				$b .= 	'<h3 class="bbg__profile-excerpt__name">';
+				$b .= 		'<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">' . $profileName . '</a>';
+				$b .= 	'</h3>';
 
-					//Only show a profile photo if it's set.
-					if ( $profilePhoto != "" ){
-						$b .= '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">';
-							//$b.= '<div class="bbg__profile-excerpt__photo-container">';
-							$b .= '<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of ' . $profileName . ', ' . $occupation . '"/>';
-							//$b.= '</div>';
-						$b .= '</a>';
-					}
+				//Only show a profile photo if it's set.
+				if ( $profilePhoto != "" ){
+					$b .= '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">';
+					$b .= 	'<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of ' . $profileName . ', ' . $occupation . '"/>';
+					$b .= '</a>';
+				}
 
-					$b .= '<p class="bbg__profile-excerpt__text">';
-						$b .= '<span class="bbg__profile-excerpt__occupation">' . $actingTitle . $occupation . '</span>';
-						$b .= my_excerpt($id);
-					$b .= '</p>';
+				$b .= 	'<p class="bbg__profile-excerpt__text">';
+				$b .= 		'<span class="bbg__profile-excerpt__occupation">' . $actingTitle . $occupation . '</span>';
+				$b .= 		my_excerpt($id);
+				$b .= 	'</p>';
 				$b .= '</div><!-- .bbg__profile-excerpt__profile -->';
 
 				$peopleStr .= $b;
 			}
 		}
-		$s = '';
+		$s  = '';
 		$s .= '<div class="usa-grid-full">';
-		$s .= $peopleStr;
+		$s .= 	$peopleStr;
 		$s .= '</div>';
 
 		return $s;
