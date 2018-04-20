@@ -45,7 +45,6 @@
 				$isUnderSecretary = get_post_meta( $id, 'under_secretary_of_state', true );
 				$isActing = get_post_meta( $id, 'acting', true );
 
-				//$occupation=get_post_meta( $id, 'occupation', true );
 				$email = get_post_meta( $id, 'email', true );
 				$phone = get_post_meta( $id, 'phone', true );
 				$twitterProfileHandle = get_post_meta( $id, 'twitter_handle', true );
@@ -57,20 +56,19 @@
 					$profilePhoto = $profilePhoto[0];
 				}
 				$profileName = get_the_title();
-				if (!$isUnderSecretary) {
-					$occupation = '<span class="bbg__profile-excerpt__occupation">';
-				} else {
-					$occupation = '<span class="bbg__profile-excerpt__occupation" style="display: inline; padding-left: 0.75em; font-size: 1.6rem; font-weight: 400;">';
-				}
-				if ( $isActing && !$isUnderSecretary ) {
+
+				$occupation = '<span class="bbg__profile-excerpt__occupation">';
+
+				if ($isActing && !$isUnderSecretary && !$isSecretary) {
 					$occupation .= 'Acting ';
-				} else if ( $isActing && $isUnderSecretary ) {
-					$occupation .= 'Acting ' . get_field('occupation', $id);
+				} else if ($isActing && $isUnderSecretary) {
+					$occupation .= 'Acting ';
+					$occupation .= get_field('occupation', $id);
 				}
 
-				if ( $isChairperson ) {
+				if ($isChairperson) {
 					$occupation .= 'Chairman of the Board';
-				} else if ( $isSecretary ) {
+				} else if ($isSecretary) {
 					$occupation .= 'Ex officio board member';
 				}
 				$occupation .= '</span>';
@@ -82,12 +80,19 @@
 				$b .= '>';
 				if (!$isUnderSecretary) {
 					$b .= 	'<h3 class="bbg__profile-excerpt__name">';
-					$b .= 		'<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
+					$b .= 		'<a href="';
+					$b .= 			get_the_permalink();
+					$b .= 			'">';
+					if ($isSecretary && $isActing) {
+						$b .= 		'Acting ';
+					}
+					$b .= 			$profileName;
+					$b .= 		'</a>';
 					$b .= 	'</h3>';
 				}
 
 				//Only show a profile photo if it's set.
-				if ( ($profilePhoto != "")){
+				if ($profilePhoto != "") {
 					$b .= '<a href="' . get_the_permalink() . '">';
 					$b .= 	'<img src="';
 					$b .= 		$profilePhoto;
@@ -97,7 +102,7 @@
 					$b .= 		get_the_title();
 					$b .= 		'"';
 					if ($isUnderSecretary) {
-						$b .= ' style="width: 15%"';
+						$b .= ' style="width: 18%"';
 					}
 					$b .= 	' />';
 					$b .= '</a>';
@@ -105,10 +110,10 @@
 				if (!$isUnderSecretary) {
 					$b .= 	'<p>' . $occupation . get_the_excerpt() . '</p>';
 				} else {
-					$b .= 	'<h3 class="bbg__profile-excerpt__name" style="display:inline">';
-					$b .= 		'<a href="' . get_the_permalink() . '">' . $profileName . '</a>' . $occupation;
+					$b .= 	'<h3 class="bbg__profile-excerpt__name" style="clear: none;">';
+					$b .= 		'<a href="' . get_the_permalink() . '">' . $profileName . '</a>';
 					$b .= 	'</h3>';
-					$b .= 	'<p>' . get_the_excerpt() . '</p>';
+					$b .= 	'<p style="margin-top: 0;">' . get_the_excerpt() . '</p>';
 				}
 				$b .= '</div><!-- .bbg__profile-excerpt -->';
 
@@ -176,9 +181,9 @@
 
 				//Only show a profile photo if it's set.
 				if ( $profilePhoto != "" ){
-					$b .= '<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">';
-					$b .= 	'<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of ' . $profileName . ', ' . $occupation . '"/>';
-					$b .= '</a>';
+					$b .= 	'<a href="' . get_the_permalink($id) . '" title="Read a full profile of ' . $profileName . '">';
+					$b .= 		'<img src="' . $profilePhoto . '" class="bbg__profile-excerpt__photo" alt="Photo of ' . $profileName . ', ' . $occupation . '"/>';
+					$b .= 	'</a>';
 				}
 
 				$b .= 	'<p class="bbg__profile-excerpt__text">';
