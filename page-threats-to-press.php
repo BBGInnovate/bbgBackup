@@ -258,6 +258,7 @@ wp_reset_query();
 			
 				<div align="center" id="mapFilters" class="u--show-medium-large">
 					<input type="radio" checked name="trainingYear" id="delivery_all" value="all" /><label for="delivery_all"> All</label>
+					<input type="radio" name="trainingYear" id="trainingYear_2018" value="2018" /><label for="trainingYear_2018"> 2018</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2017" value="2017" /><label for="trainingYear_2017"> 2017</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2016" value="2016" /><label for="trainingYear_2016"> 2016</label>
 					<input type="radio" name="trainingYear" id="trainingYear_2015" value="2015" /><label for="trainingYear_2015"> 2015</label>
@@ -268,6 +269,7 @@ wp_reset_query();
 					<p></p><h3>Select a year</h3>
 					<select name="trainingSelect">
 						<option value="all">All</option>
+						<option value="2018">2018</option>
 						<option value="2017">2017</option>
 						<option value="2016">2016</option>
 						<option value="2015">2015</option>
