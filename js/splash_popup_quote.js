@@ -1,31 +1,35 @@
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    console.log("cookie setter");
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	var expires = "expires="+ d.toUTCString();
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	console.log("cookie setter");
 }
 
-function getCookie(name) {
-	var nameEQ = name + "=";
+function getCookie(cname) {
+	var name = cname + "=";
 	var ca = document.cookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1, c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	for (var i = 0; i < ca.length; i++) { //list of cookies
+			var c = ca[i];// this cookie
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
 	}
-	return name;
-}
-
-function eraseCookie(name) {
-	document.cookie = name + '=; Max-Age=-99999999;';  
+	return "";
 }
 
 var cookieCheck = getCookie('splashDismissed');
-console.log(cookieCheck);
-if (cookieCheck != 'splashDismissed') {
+document.cookie = "splashDismissed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+console.log("cooke? " + cookieCheck);
+
+if (cookieCheck < 1) {
+	// eraseCookie('splashDismissed');
 	displaySplash();
 }
+// console.log(cookieCheck);
 
 function displaySplash() {
 	var splashBox = document.createElement('div');
