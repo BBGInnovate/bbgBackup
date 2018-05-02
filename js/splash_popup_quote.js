@@ -22,6 +22,7 @@ function eraseCookie(name) {
 }
 
 var cookieCheck = getCookie('splashDismissed');
+console.log(cookieCheck);
 if (cookieCheck != 'splashDismissed') {
 	displaySplash();
 }
