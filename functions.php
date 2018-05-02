@@ -1301,9 +1301,4 @@ function my_acf_init() {
 }
 add_action('acf/init', 'my_acf_init');
 
-// Allow subscribers to see Private posts and pages
-$subRole = get_role('enhanced_contributor');
-$subRole = add_cap('read_private_posts');
-$subRole = add_cap('read_private_pages');
-
 ?>
