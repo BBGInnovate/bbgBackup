@@ -1,0 +1,36 @@
+#splash-bg {
+	position: absolute;
+	z-index: 10000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+
+	#text-box {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+
+		h2 {color: #d6d7d9;}
+	}
+	a:link, a:visited {
+		color: #ffffff;
+		font-size: 1.1875em;
+		font-weight: 100;
+		text-decoration: underline;
+	}
+	#close-splash {
+		position: absolute;
+		top: -2em;
+		right: -2em;
+		border: 1px solid #ffffff;
+		border-radius: 1em;
+		padding: 4px 10px 7px;
+		font-weight: 100;
+		color: #ffffff;
+		cursor: pointer;
+	}
+}

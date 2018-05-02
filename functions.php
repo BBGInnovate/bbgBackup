@@ -193,6 +193,8 @@ function bbginnovate_scripts() {
 
 	wp_enqueue_style( 'bbginnovate-style-fonts', get_template_directory_uri() . "/css/bbg-fonts.css" );
 
+	wp_enqueue_script( 'bbginnovate-splash', get_template_directory_uri() . '/js/splash_popup_quote.js', array(), false, true);
+
 	wp_enqueue_script( 'bbginnovate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'bbginnovate-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
