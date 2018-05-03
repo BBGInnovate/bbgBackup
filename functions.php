@@ -1334,7 +1334,7 @@ add_filter('wp_handle_upload_prefilter', 'foia_upload_check');
 
 // CHANGE UPLOAD PATH IF FOIA REPORTS
 function foia_upload($file) {
-	define('UPLOADS', 'wp-content');
+	define('UPLOADS', 'wp-content/uploads');
 	$foia_path = '/foia-reports';
 	$file['path'] = $file['path'] . $foia_path;
 	$file['url'] = $file['url'] . $foia_path;
