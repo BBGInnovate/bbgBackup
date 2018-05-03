@@ -1333,8 +1333,9 @@ function foia_upload_check($file) {
 add_filter('wp_handle_upload_prefilter', 'foia_upload_check');
 
 // CHANGE UPLOAD PATH IF FOIA REPORTS
+// GOES TO https://www.bbg.gov/wp-content/media/foia-reports/
 function foia_upload($file) {
-	define('UPLOADS', 'wp-content/uploads');
+	define('UPLOADS', 'wp-content/');
 	$foia_path = '/foia-reports';
 	$file['path'] = $file['path'] . $foia_path;
 	$file['url'] = $file['url'] . $foia_path;

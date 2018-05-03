@@ -121,7 +121,7 @@ get_header(); ?>
 										echo $headlineStr;
 										the_content();
 										if (is_page('foia-reports')) {
-											$foia_path = 'wp-content/uploads/foia-reports';
+											$foia_path = 'wp-content/media/foia-reports';
 											$files = scandir($foia_path);
 
 											// GET FILE DATES FOR HEADERS
