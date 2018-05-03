@@ -1304,15 +1304,16 @@ add_action('acf/init', 'my_acf_init');
 // ALLOW (FOIA) XML FILES TO BE UPLOADED
 function accept_mime_types($mime_types) {
 	$mime_types['xml'] = 'application/xml';
+	$mime_types['zip'] = 'application/zip';
 	return $mime_types;
 }
 add_filter('upload_mimes', 'accept_mime_types', 1, 1);
 
 // CHECK IF FOIA REPORT MATCH
 function foia_regex_check($str) {
-	$foia_regex = ['/^BBG-20\d\d-Q[1-4].zip/', 
-				   '/^FOIA-20\d\d-Annual-Report-Raw-Data.csv/', 
-				   '/^BBG.FY\d\d.FINAL_.xml/'];
+	$foia_regex = ['/^BBG-20[0-9]{2}-Q[1-4]\.zip/', 
+				   '/^FOIA-20[0-9]{2}-Annual-Report-Raw-Data\.csv/', 
+				   '/^BBG\.FY[0-9]{2}\.FINAL\.xml/'];
 	foreach($foia_regex as $cur_regex) {
 		if (preg_match($cur_regex, $str)) {
 			return true;
