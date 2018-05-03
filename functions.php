@@ -1165,7 +1165,7 @@ function getSoapboxStr( $soap ) {
 			if ( $cat -> slug == "from-the-ceo" ) {
 				$isCEOPost = TRUE;
 				$soapClass = "bbg__voice--ceo";
-				$soapHeaderText = "From the CEO";
+				$soapHeaderText = "From the CEOX";
 				$profilePhoto = "/wp-content/media/2016/07/john_lansing_ceo-sq-200x200.jpg";
 				// $profilePhoto = "/innovationWP/bbg/wp-content/uploads/sites/2/2017/03/john_lansing_ceo-sq-200x200.jpg"; //for local testing
 				$profileName = "John Lansing";
@@ -1300,5 +1300,47 @@ function my_acf_init() {
 	acf_update_setting('google_api_key', 'AIzaSyDOdFiB1nc6J-XeeTnQisIfYonl3UHUNgQ');
 }
 add_action('acf/init', 'my_acf_init');
+
+// ALLOW (FOIA) XML FILES TO BE UPLOADED
+function accept_mime_types($mime_types) {
+	$mime_types['xml'] = 'application/xml';
+	return $mime_types;
+}
+add_filter('upload_mimes', 'accept_mime_types', 1, 1);
+
+// CHECK IF FOIA REPORT MATCH
+function foia_regex_check($str) {
+	$foia_regex = ['/^BBG-20\d\d-Q[1-4].zip/', 
+				   '/^FOIA-20\d\d-Annual-Report-Raw-Data.csv/', 
+				   '/^BBG.FY\d\d.FINAL_.xml/'];
+	foreach($foia_regex as $cur_regex) {
+		if (preg_match($cur_regex, $str)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+// ON UPLOAD, RUN FOIA CHECK
+function foia_upload_check($file) {
+	if (foia_regex_check($file['name'])) {
+		add_filter('option_uploads_use_yearmonth_folders', '__return_false', 100);
+		add_filter('upload_dir', 'foia_upload');
+	}
+	return $file;
+}
+add_filter('wp_handle_upload_prefilter', 'foia_upload_check');
+
+// CHANGE UPLOAD PATH IF FOIA REPORTS
+function foia_upload($file) {
+	define('UPLOADS', 'wp-content');
+	$foia_path = '/foia-reports';
+	$file['path'] = $file['path'] . $foia_path;
+	$file['url'] = $file['url'] . $foia_path;
+	return $file;
+}
+
+// DELETE FOIA REPORTS
+// Post for now and work on this later
 
 ?>
