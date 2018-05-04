@@ -32,7 +32,8 @@ include get_template_directory() . "/inc/shared_sidebar.php";
 function display_foia_reports() {
 	// $foia_url = WP_CONTENT_URL . '/uploads/foia-reports/'; // LOCAL
 	$foia_url = WP_CONTENT_URL . '/media/foia-reports/'; // LIVE
-	$foia_path = 'wp-content/uploads/foia-reports';
+	// $foia_path = 'wp-content/uploads/foia-reports'; // LOCAL
+	$foia_path = 'wp-content/media/foia-reports'; // LIVE
 	$filenames = preg_grep('/^([^.])/', scandir($foia_path));
 
 	function get_nums($x) {
