@@ -1304,7 +1304,6 @@ add_action('acf/init', 'my_acf_init');
 // ALLOW (FOIA) XML FILES TO BE UPLOADED
 function accept_mime_types($mime_types) {
 	$mime_types['xml'] = 'application/xml';
-	$mime_types['zip'] = 'application/zip';
 	return $mime_types;
 }
 add_filter('upload_mimes', 'accept_mime_types', 1, 1);
