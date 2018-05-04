@@ -1301,13 +1301,7 @@ function my_acf_init() {
 }
 add_action('acf/init', 'my_acf_init');
 
-// ALLOW (FOIA) XML FILES TO BE UPLOADED
-function accept_mime_types($mime_types) {
-	$mime_types['xml'] = 'application/xml';
-	return $mime_types;
-}
-add_filter('upload_mimes', 'accept_mime_types', 1, 1);
-
+// FOIA GROUP
 // CHECK IF FOIA REPORT MATCH
 function foia_regex_check($str) {
 	$foia_regex = ['/^BBG-20[0-9]{2}-Q[1-4]\.zip/', 
@@ -1332,16 +1326,14 @@ function foia_upload_check($file) {
 add_filter('wp_handle_upload_prefilter', 'foia_upload_check');
 
 // CHANGE UPLOAD PATH IF FOIA REPORTS
-// GOES TO https://www.bbg.gov/wp-content/media/foia-reports/
 function foia_upload($file) {
-	define('UPLOADS', 'wp-content/media');
+	// define('UPLOADS', 'wp-content/uploads'); // LOCAL
+	define('UPLOADS', 'wp-content/media'); // LIVE
 	$foia_path = '/foia-reports';
 	$file['path'] = $file['path'] . $foia_path;
 	$file['url'] = $file['url'] . $foia_path;
 	return $file;
 }
-
-// DELETE FOIA REPORTS
-// Post for now and work on this later
+// END FOIA GROUP
 
 ?>

@@ -29,6 +29,65 @@ $listsInclude = get_field( 'sidebar_dropdown_include', '', true);
 
 include get_template_directory() . "/inc/shared_sidebar.php";
 
+function display_foia_reports() {
+	// $foia_url = WP_CONTENT_URL . '/uploads/foia-reports/'; // LOCAL
+	$foia_url = WP_CONTENT_URL . '/media/foia-reports/'; // LIVE
+	$foia_path = 'wp-content/uploads/foia-reports';
+	$filenames = preg_grep('/^([^.])/', scandir($foia_path));
+
+	function get_nums($x) {
+		if (preg_match("/[0-9]+/", $x, $date_nums)) {
+			if (strlen($date_nums[0]) == 2) {
+				$date_nums[0] = '20' . $date_nums[0];
+			}
+			return $date_nums[0];
+		}
+	}
+	$num_group = [];
+	foreach($filenames as $file) {
+		$nums = get_nums($file);
+		array_push($num_group, $nums);
+	}
+	$num_group = array_unique($num_group);
+	rsort($num_group);
+	$counter = 0;
+	foreach($num_group as $year) {
+		if ($counter != 0) {
+			echo '</ul>';
+		}
+		echo '<h4>'.$year.'</h4>';
+		echo '<ul>';
+		foreach($filenames as $file) {
+			$file_year = get_nums($file);
+			if ($file_year == $year) {
+				$dl_link  = '<li><a href="';
+				$dl_link .= 	$foia_url . $file;
+				$dl_link .= 	'">';
+				$dl_link .= 		$file;
+				$dl_link .= '</a></li>';
+				echo $dl_link;
+			}
+		}
+		$counter++;
+	}
+
+/* ------------------------------
+make yearArr
+foreach ($yearArr as $year) {
+ 	echo year h4
+ 	foreach ($filenames as $file) {
+ 		regex match numset
+ 		if numset is two digits 
+ 			make 4 digits
+ 		if numset == $year
+ 			$build.push($filename)
+ 	}
+}
+------------------------------ */
+	
+	echo '</ul><p style="text-align: right;"><a href="https://www.bbg.gov/foia/">Visit the main FOIA page</a></p>';
+}
+
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$ogDescription = get_the_excerpt();
@@ -120,54 +179,9 @@ get_header(); ?>
 									<?php
 										echo $headlineStr;
 										the_content();
-										// if (is_page('foia-reports')) {
-										// 	$foia_path = 'wp-content/media/foia-reports';
-										// 	$files = scandir($foia_path);
-
-										// 	// GET FILE DATES FOR HEADERS
-										// 	$dates = [];
-										// 	for ($i = 0; $i < count($files); $i++) {
-										// 		if (preg_match("/[0-9]+/", $files[$i], $date_nums)) {
-										// 			if (strlen($date_nums[0]) == 2) {
-										// 				$date_nums[0] = '20' . $date_nums[0];
-										// 			}
-										// 			if ($date_nums[0] != end($dates)) {
-										// 				array_push($dates, $date_nums[0]);
-										// 			}
-										// 		}
-										// 	}
-										// 	// PRINT DATES HEADERS AND FILES RESPECTIVELY
-										// 	rsort($dates);
-										// 	// LOOP DATES
-										// 	for ($i = 0; $i < count($dates); $i++) {
-										// 		if ($i != 0) {
-										// 			echo '</ul><h4>' . $dates[$i] . '</h4><ul>';
-										// 		} else {
-										// 			echo '<h4>' . $dates[$i] . '</h4><ul>';
-										// 		}
-										// 		// LOOP FILES
-										// 		for ($j = 3; $j < count($files); $j++) {
-										// 			if (preg_match("/[0-9]+/", $files[$j], $date_nums)) {
-										// 				if (strlen($date_nums[0]) == 2) {
-										// 					$date_nums[0] = '20' . $date_nums[0];
-										// 				}
-										// 				// if file dates matches header date
-										// 				if ($date_nums[0] == $dates[$i]) {
-										// 					$dl_link  = '<li><a href="';
-										// 					$dl_link .= $files[$j];
-										// 					$dl_link .= '">';
-										// 					$dl_link .= $files[$j]; // explode
-										// 					$dl_link .= '</a></li>';
-										// 					echo $dl_link;
-										// 				}
-										// 			}
-										// 			else {
-										// 				break;
-										// 			}
-										// 		}
-										// 	}
-										// 	echo '</ul><p style="text-align: right;"><a href="https://www.bbg.gov/foia/">Visit the main FOIA page</a></p>';
-										// }
+										if (is_page('foia-reports')) {
+											display_foia_reports();
+										}
 									?>
 								</div>
 
