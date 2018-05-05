@@ -71,20 +71,6 @@ function display_foia_reports() {
 		}
 		$counter++;
 	}
-
-/* ------------------------------
-make yearArr
-foreach ($yearArr as $year) {
- 	echo year h4
- 	foreach ($filenames as $file) {
- 		regex match numset
- 		if numset is two digits 
- 			make 4 digits
- 		if numset == $year
- 			$build.push($filename)
- 	}
-}
------------------------------- */
 	
 	echo '</ul><p style="text-align: right;"><a href="https://www.bbg.gov/foia/">Visit the main FOIA page</a></p>';
 }
