@@ -59,6 +59,7 @@ $ogDescription = str_replace("[&hellip;]", "...", $ogDescription);
 $ogDescription = str_replace('"','&quot;',$ogDescription);
 $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or complex
 
+$splash_overlay = get_field('splash_page_overlay', 'option');
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -116,6 +117,15 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 	bbgConfig={};
 	bbgConfig.MAPBOX_API_KEY = '<?php echo MAPBOX_API_KEY; ?>';
 	bbgConfig.template_directory_uri = '<?php echo get_template_directory_uri() . "/"; ?>';
+
+	// SET COOKIES FOR SITEWIDE ALERT AND SPLASH OVERLAY
+	function setCookie(cname, cvalue, exdays) {
+		console.log("Setting cookie");
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
 </script>
 
 
@@ -170,7 +180,7 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 
 	<?php
 
-	if ( $sitewideAlert == "complex" && ( !isset( $_COOKIE['bannerDismissed'] ))  ) {
+	if ( $sitewideAlert == "complex" && ( !isset( $_COOKIE['richBannerDismissed'] ))  ) {
 
 		$q = get_field( 'sitewide_alert_complex', 'option' );	//off, simple, or complex
 		// var_dump($q);
@@ -227,26 +237,46 @@ $sitewideAlert = get_field('sitewide_alert', 'option');	//off, simple, or comple
 			</div>
 			<script type='text/javascript'>
 				jQuery( document ).ready(function() {
-
-					function setCookie(cname, cvalue, exdays) {
-						var d = new Date();
-						d.setTime(d.getTime() + (exdays*24*60*60*1000));
-						var expires = "expires="+d.toUTCString();
-						document.cookie = cname + "=" + cvalue + "; " + expires;
-					}
-
-
 					jQuery( '#dismissBanner' ).click(function(e) {
-						setCookie( 'bannerDismissed', 1, 365 );
+						setCookie( 'richBannerDismissed', 1, 7);
 						jQuery('#dismissableBanner').hide();
 					});
-
 				});
 			</script>
-<?php
-	}
-?>
+	<?php } ?>
 
+	<?php
+	if ($splash_overlay == 'Yes' && (!isset($_COOKIE['splashPageDismissed']))) {
+		$story_link_items = get_field('splash_story_link', 'options');
+
+		$splash  = '<div id="splash-bg">';
+		$splash .= 	'<div id="text-box" class="bbg__quotation">';
+		$splash .= 		'<a id="close-splash" class="ck-set" href="javascript:void(0)">';
+		$splash .= 			'<i id="dismissBanner" style="color:#CCC; cursor:pointer;" aria-role="button" class="fa fa-times-circle"></i>';
+		$splash .= 		'</a>';
+		$splash .= 		'<h2 class="bbg__quotation-text--large">';
+		$splash .= 			get_field('splash_quote', 'option');
+		$splash .= 		'</h2>';
+		$splash .= 		'<a class="ck-set" href="';
+		$splash .= 			$story_link_items->guid;
+		$splash .= 			'"><p>';
+		$splash .= 			get_field('splash_link_text', 'option');
+		$splash .= 		'</p></a>';
+		$splash .= 	'</div>';
+		$splash .= '</div>';
+		echo $splash;
+	?>
+	<script type='text/javascript'>
+		jQuery(document).ready(function() {
+			jQuery('.ck-set').click(function(e) {
+				setCookie('splashPageDismissed', 1, 7);
+				jQuery('#splash-bg').hide();
+			});
+		});
+	</script>
+	<?php
+	}
+	?>
 
 	<header id="masthead" class="site-header bbg-header" role="banner">
 
